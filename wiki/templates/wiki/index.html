@@ -1,0 +1,14 @@
+{% extends "wiki/base.html" %}
+{% block content %}
+<article class="note">
+  <h1 class="note-title">Wiki</h1>
+  {% if recent %}
+  <p>Créez une note <code>Accueil.md</code> pour personnaliser cette page. Dernières notes modifiées :</p>
+  <ul>
+    {% for n in recent %}<li><a href="{{ n.url }}">{{ n.title }}</a> <span class="muted">— {{ n.modified|date:"d/m/Y" }}</span></li>{% endfor %}
+  </ul>
+  {% else %}
+  <p>Le coffre est vide. Ajoutez des fichiers <code>.md</code> dans le dossier <code>vault/</code> pour créer des pages.</p>
+  {% endif %}
+</article>
+{% endblock %}

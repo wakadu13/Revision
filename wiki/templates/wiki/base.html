@@ -1,0 +1,44 @@
+{% load static %}<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Wiki{% endblock %} · ProjetPluri</title>
+  <link rel="stylesheet" href="{% static 'wiki/wiki.css' %}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11/styles/github.min.css" media="(prefers-color-scheme: light)">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11/styles/github-dark.min.css" media="(prefers-color-scheme: dark)">
+  <script src="{% static 'wiki/wiki.js' %}" defer></script>
+</head>
+<body>
+  <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden>
+  <header class="topbar">
+    <label for="nav-toggle" class="nav-button" aria-label="Afficher le menu">☰</label>
+    <a class="brand" href="{% url 'wiki:home' %}">ProjetPluri</a>
+  </header>
+  <div class="layout">
+    <nav class="sidebar">
+      <a class="brand" href="{% url 'wiki:home' %}">ProjetPluri</a>
+      <form class="search" action="{% url 'wiki:search' %}" method="get" role="search">
+        <input type="search" name="q" value="{{ query|default:'' }}" placeholder="Rechercher…" aria-label="Rechercher">
+      </form>
+      <ul class="nav-links">
+        <li><a href="{% url 'wiki:home' %}">Accueil</a></li>
+        <li><a href="{% url 'wiki:sommaire' %}">Sommaire</a></li>
+        <li><a href="{% url 'wiki:tags' %}">Tags</a></li>
+        <li><a href="{% url 'wiki:quiz_index' %}">QCM</a></li>
+        {% if can_edit %}<li><a href="{% url 'wiki:new' %}">+ Nouvelle page</a></li>{% endif %}
+      </ul>
+      <div class="tree">
+        {% include "wiki/tree.html" with node=tree %}
+      </div>
+      <p class="vault-count">{{ vault.notes|length }} note{{ vault.notes|length|pluralize }}</p>
+    </nav>
+    <main class="content">
+      {% block content %}{% endblock %}
+    </main>
+    <aside class="aside">
+      {% block aside %}{% endblock %}
+    </aside>
+  </div>
+</body>
+</html>

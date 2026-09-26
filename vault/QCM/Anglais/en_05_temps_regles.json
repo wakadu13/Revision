@@ -1,0 +1,914 @@
+{
+  "titre": "EN 5 — Temps : règles",
+  "description": "Preterit, present perfect, past perfect, continu, futur, conditionnels, passif, discours rapporté, souhaits et inversions",
+  "questions": [
+    {
+      "id": "tps01",
+      "type": "QCM",
+      "question": "Le preterit (simple past) s'emploie pour :",
+      "choix": [
+        "Une action terminée à un moment passé précis et coupé du présent",
+        "Une action qui dure encore",
+        "Un bilan du présent",
+        "Le futur proche"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Signaux : yesterday, last week, in 1945, two years ago, when I was young."
+    },
+    {
+      "id": "tps02",
+      "type": "QCM",
+      "question": "Forme du preterit des verbes réguliers :",
+      "choix": [
+        "base verbale + -ed",
+        "base verbale + -s",
+        "have + participe passé",
+        "was/were + -ing"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "worked, played, studied (y → ied), stopped (double consonne)."
+    },
+    {
+      "id": "tps03",
+      "type": "QCM",
+      "question": "Preterit négatif :",
+      "choix": [
+        "I didn't go",
+        "I not went",
+        "I didn't went",
+        "I wasn't go"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Après did, on revient à la base verbale."
+    },
+    {
+      "id": "tps04",
+      "type": "QCM",
+      "question": "Le present perfect (have + participe passé) exprime :",
+      "choix": [
+        "Un lien entre le passé et le présent : bilan, expérience, action qui continue",
+        "Une date passée précise",
+        "Une action future",
+        "Une habitude passée révolue"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« The UN has existed since 1945 » : elle existe encore."
+    },
+    {
+      "id": "tps05",
+      "type": "QCM",
+      "question": "Which is correct?",
+      "choix": [
+        "I have seen him yesterday",
+        "I saw him yesterday",
+        "I have saw him yesterday",
+        "I did seen him yesterday"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Règle d'or : une date passée précise (yesterday, in 1945, last week) interdit le present perfect."
+    },
+    {
+      "id": "tps06",
+      "type": "QCM",
+      "question": "« For » vs « since » :",
+      "choix": [
+        "for + durée, since + point de départ",
+        "for + point de départ, since + durée",
+        "les deux sont identiques",
+        "since s'emploie au futur"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "for ten years / since 2015, since I was born."
+    },
+    {
+      "id": "tps07",
+      "type": "QCM",
+      "question": "« Ago » s'emploie avec :",
+      "choix": [
+        "le preterit",
+        "le present perfect",
+        "le pluperfect",
+        "le futur"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "He left two years ago. (jamais « has left … ago »)"
+    },
+    {
+      "id": "tps08",
+      "type": "QCM",
+      "question": "Le present perfect continuous (have been + -ing) insiste sur :",
+      "choix": [
+        "La durée / l'activité en cours jusqu'à maintenant",
+        "Le résultat chiffré",
+        "Une action ponctuelle passée",
+        "Une hypothèse"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "They have been negotiating for hours (et ils négocient peut-être encore)."
+    },
+    {
+      "id": "tps09",
+      "type": "QCM",
+      "question": "Différence de sens :",
+      "choix": [
+        "I have read the report = c'est fini / I have been reading it = insiste sur la durée",
+        "Aucune différence",
+        "Le 1er est familier",
+        "Le 2e est au passé lointain"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "tps10",
+      "type": "QCM",
+      "question": "Le past perfect (pluperfect : had + participe passé) sert à :",
+      "choix": [
+        "Marquer une action antérieure à une autre action passée",
+        "Parler du présent",
+        "Exprimer le futur dans le passé",
+        "Décrire une habitude"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "When the Council voted, the war had already started."
+    },
+    {
+      "id": "tps11",
+      "type": "QCM",
+      "question": "Correct?",
+      "choix": [
+        "When he arrived, the meeting already started",
+        "When he arrived, the meeting had already started",
+        "When he had arrived, the meeting starts",
+        "When he arrives, the meeting had started"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "tps12",
+      "type": "QCM",
+      "question": "Past perfect continuous (had been + -ing) :",
+      "choix": [
+        "Durée d'une action avant un moment du passé",
+        "Action future",
+        "Habitude présente",
+        "Hypothèse présente"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "They had been talking for two hours when the deal was reached."
+    },
+    {
+      "id": "tps13",
+      "type": "QCM",
+      "question": "Le past continuous (was/were + -ing) exprime :",
+      "choix": [
+        "Une action en cours dans le passé, souvent interrompue",
+        "Un bilan",
+        "Une action antérieure",
+        "Une habitude révolue"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "I was watching the news when he called."
+    },
+    {
+      "id": "tps14",
+      "type": "QCM",
+      "question": "Dans « While I was reading, the phone rang », quel temps pour l'action brève ?",
+      "choix": [
+        "Preterit",
+        "Past continuous",
+        "Present perfect",
+        "Past perfect"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Action longue = past continuous (décor) ; action brève qui survient = preterit."
+    },
+    {
+      "id": "tps15",
+      "type": "QCM",
+      "question": "« Used to » exprime :",
+      "choix": [
+        "Une habitude ou un état passé qui n'existe plus",
+        "Une habitude présente",
+        "Une obligation",
+        "Le futur"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "The UN used to have 51 members. Négation : didn't use to."
+    },
+    {
+      "id": "tps16",
+      "type": "QCM",
+      "question": "Ne pas confondre : « to be used to + -ing » signifie :",
+      "choix": [
+        "Être habitué à",
+        "Avoir l'habitude autrefois",
+        "Utiliser",
+        "Devoir"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "He is used to speaking in public."
+    },
+    {
+      "id": "tps17",
+      "type": "QCM",
+      "question": "« Would » pour le passé :",
+      "choix": [
+        "Habitudes répétées passées (récits) : Every summer we would go…",
+        "États passés",
+        "Hypothèses uniquement",
+        "Obligation"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Contrairement à used to, would ne s'emploie pas pour les états (pas « I would be young »)."
+    },
+    {
+      "id": "tps18",
+      "type": "QCM",
+      "question": "Futur : « will » exprime plutôt :",
+      "choix": [
+        "Une décision au moment de parler, une prédiction, une promesse",
+        "Un projet déjà décidé",
+        "Un programme fixé",
+        "Une action en cours"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "tps19",
+      "type": "QCM",
+      "question": "« Be going to » exprime plutôt :",
+      "choix": [
+        "Une intention déjà décidée ou un indice visible dans le présent",
+        "Une décision spontanée",
+        "Une action terminée",
+        "Une habitude"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Look at the clouds: it is going to rain."
+    },
+    {
+      "id": "tps20",
+      "type": "QCM",
+      "question": "Future perfect (will have + participe passé) :",
+      "choix": [
+        "Action achevée avant un moment futur",
+        "Action en cours dans le futur",
+        "Action passée",
+        "Hypothèse"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "By 2030, the UN will have existed for 85 years."
+    },
+    {
+      "id": "tps21",
+      "type": "QCM",
+      "question": "Future continuous (will be + -ing) :",
+      "choix": [
+        "Action en cours à un moment futur",
+        "Action terminée",
+        "Habitude passée",
+        "Ordre"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "This time tomorrow, they will be voting."
+    },
+    {
+      "id": "tps22",
+      "type": "QCM",
+      "question": "Après « when », « as soon as », « until » parlant du futur, on emploie :",
+      "choix": [
+        "le présent simple",
+        "will + base verbale",
+        "le futur perfect",
+        "would"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "I will call you when I arrive (pas « when I will arrive »)."
+    },
+    {
+      "id": "tps23",
+      "type": "QCM",
+      "question": "Present simple vs present continuous :",
+      "choix": [
+        "Simple = habitudes et vérités générales ; continuous = en ce moment ou temporaire",
+        "L'inverse",
+        "Aucune différence",
+        "Le continuous est plus poli"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Water boils at 100 degrees / The water is boiling."
+    },
+    {
+      "id": "tps24",
+      "type": "QCR",
+      "question": "Quels verbes s'emploient rarement à la forme en -ing (stative verbs) ?",
+      "choix": [
+        "know",
+        "believe",
+        "want",
+        "belong",
+        "run"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explication": "On dit I know, pas « I am knowing ». Run est un verbe d'action."
+    },
+    {
+      "id": "tps25",
+      "type": "QCM",
+      "question": "« It is the first time… » se construit avec :",
+      "choix": [
+        "le present perfect : It is the first time I have seen this",
+        "le preterit",
+        "le futur",
+        "le pluperfect"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Idem : It is the third time he has been late."
+    },
+    {
+      "id": "tps26",
+      "type": "QCM",
+      "question": "Concordance des temps (reported speech) : « He said: I am tired » devient :",
+      "choix": [
+        "He said he was tired",
+        "He said he is tired",
+        "He said he has been tired",
+        "He said he will be tired"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Backshift : present → preterit ; preterit/present perfect → past perfect ; will → would."
+    },
+    {
+      "id": "tps27",
+      "type": "QCM",
+      "question": "« He said: I have finished » devient :",
+      "choix": [
+        "He said he had finished",
+        "He said he has finished",
+        "He said he finished yesterday",
+        "He said he would finish"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "tps28",
+      "type": "QCM",
+      "question": "Conditionnel type 1 (probable) :",
+      "choix": [
+        "If it rains, we will stay home",
+        "If it rained, we will stay home",
+        "If it will rain, we stay home",
+        "If it had rained, we will stay"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "If + présent, will + base verbale."
+    },
+    {
+      "id": "tps29",
+      "type": "QCM",
+      "question": "Conditionnel type 2 (irréel du présent) :",
+      "choix": [
+        "If I had more time, I would help",
+        "If I would have time, I help",
+        "If I have time, I would help",
+        "If I had had time, I would help"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "If + preterit, would + base verbale. Avec be : If I were you."
+    },
+    {
+      "id": "tps30",
+      "type": "QCM",
+      "question": "Conditionnel type 3 (irréel du passé) :",
+      "choix": [
+        "If they had voted, the war would have been avoided",
+        "If they voted, the war would be avoided",
+        "If they have voted, the war would be avoided",
+        "If they would have voted, the war was avoided"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "If + past perfect, would have + participe passé. Jamais « if… would have »."
+    },
+    {
+      "id": "tps31",
+      "type": "QCM",
+      "question": "Passif au preterit :",
+      "choix": [
+        "The resolution was vetoed",
+        "The resolution is vetoed",
+        "The resolution has vetoed",
+        "The resolution was veto"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "be conjugué au temps voulu + participe passé."
+    },
+    {
+      "id": "tps32",
+      "type": "QCM",
+      "question": "Passif au present perfect :",
+      "choix": [
+        "The treaty has been signed",
+        "The treaty has signed",
+        "The treaty was been signed",
+        "The treaty is signing"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "tps33",
+      "type": "QCR",
+      "question": "Quels mots vont plutôt avec le present perfect ?",
+      "choix": [
+        "already",
+        "just",
+        "yet",
+        "ever / never",
+        "yesterday"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explication": "Yesterday impose le preterit."
+    },
+    {
+      "id": "tps34",
+      "type": "QCM",
+      "question": "« I live here since 2020 » est faux. Correct :",
+      "choix": [
+        "I have lived here since 2020",
+        "I lived here since 2020",
+        "I am living here since 2020",
+        "I had lived here since 2020"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Erreur très fréquente chez les francophones : le français utilise le présent, l'anglais le present perfect."
+    },
+    {
+      "id": "tps35",
+      "type": "QCM",
+      "question": "« By the time the UN reacted, thousands … » :",
+      "choix": [
+        "had died",
+        "died",
+        "have died",
+        "were dying"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "By the time + preterit → past perfect dans l'autre proposition."
+    },
+    {
+      "id": "tps36",
+      "type": "QCM",
+      "question": "Participes passés irréguliers corrects :",
+      "choix": [
+        "go / went / gone",
+        "go / goed / gone",
+        "go / went / went",
+        "go / gone / went"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Mémoriser les 3 colonnes : take/took/taken, write/wrote/written, speak/spoke/spoken."
+    },
+    {
+      "id": "tps37",
+      "type": "QCM",
+      "question": "« Since » + present perfect, mais après « since » on met :",
+      "choix": [
+        "le preterit : since the war ended",
+        "le present perfect",
+        "le futur",
+        "le pluperfect"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "The country has been stable since the war ended."
+    },
+    {
+      "id": "tps38",
+      "type": "QCM",
+      "question": "Question au preterit :",
+      "choix": [
+        "When did the UN start?",
+        "When started the UN?",
+        "When the UN started?",
+        "When did the UN started?"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "tps39",
+      "type": "QCM",
+      "question": "« I have been to Geneva » vs « I have gone to Geneva » :",
+      "choix": [
+        "been = j'y suis allé et revenu ; gone = j'y suis parti et j'y suis encore",
+        "Aucune différence",
+        "been est incorrect",
+        "gone est du passé"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "tps40",
+      "type": "QCM",
+      "question": "Present perfect ou preterit ? « The Security Council … three resolutions last month. »",
+      "choix": [
+        "adopted",
+        "has adopted",
+        "had adopted",
+        "adopts"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Last month = période terminée."
+    },
+    {
+      "id": "tps41",
+      "type": "QCM",
+      "question": "Prononciation du -ed : dans « worked », « watched », « stopped », on entend :",
+      "choix": [
+        "[t]",
+        "[d]",
+        "[id]",
+        "rien"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "[t] après un son sourd (p, k, f, s, ch, sh). [d] après un son sonore (played, lived). [id] après t ou d (wanted, decided)."
+    },
+    {
+      "id": "tps42",
+      "type": "QCM",
+      "question": "Orthographe du preterit de « to study » :",
+      "choix": [
+        "studyed",
+        "studied",
+        "studed",
+        "studdied"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Consonne + y → ied. Mais voyelle + y : played, enjoyed."
+    },
+    {
+      "id": "tps43",
+      "type": "QCM",
+      "question": "Preterit de « to stop » :",
+      "choix": [
+        "stoped",
+        "stopped",
+        "stopt",
+        "stopped-"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Verbe court accentué terminé par 1 voyelle + 1 consonne → on double : stopped, planned, referred."
+    },
+    {
+      "id": "tps44",
+      "type": "QCM",
+      "question": "« I wish I … more time. »",
+      "choix": [
+        "had",
+        "have",
+        "would have",
+        "will have"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Wish + preterit = regret sur le présent. Wish + past perfect = regret sur le passé (I wish I had known)."
+    },
+    {
+      "id": "tps45",
+      "type": "QCM",
+      "question": "« It is high time we … something. »",
+      "choix": [
+        "did",
+        "do",
+        "will do",
+        "have done"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "It is (high) time + preterit : il serait temps que…"
+    },
+    {
+      "id": "tps46",
+      "type": "QCM",
+      "question": "« He acts as if he … in charge. »",
+      "choix": [
+        "were",
+        "is",
+        "will be",
+        "has been"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "As if / as though + preterit pour l'irréel."
+    },
+    {
+      "id": "tps47",
+      "type": "QCM",
+      "question": "« No sooner … the vote taken than the crisis began. »",
+      "choix": [
+        "had",
+        "has",
+        "was",
+        "did"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "No sooner had + participe passé + than. Inversion obligatoire. Variante : Hardly had… when…"
+    },
+    {
+      "id": "tps48",
+      "type": "QCM",
+      "question": "« Would » peut aussi exprimer :",
+      "choix": [
+        "Le futur vu du passé : He said he would come",
+        "Une habitude présente",
+        "Une obligation présente",
+        "Un ordre"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Futur dans le passé."
+    },
+    {
+      "id": "tps49",
+      "type": "QCM",
+      "question": "« I was going to call you, but… » exprime :",
+      "choix": [
+        "Une intention passée non réalisée",
+        "Une action en cours",
+        "Une habitude",
+        "Un bilan"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Was/were going to = futur dans le passé, souvent avorté."
+    },
+    {
+      "id": "tps50",
+      "type": "QCM",
+      "question": "« The plane … at 6 p.m. tomorrow » (horaire officiel) :",
+      "choix": [
+        "leaves",
+        "is leaving anyway",
+        "will be left",
+        "left"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Présent simple pour les horaires fixes. Le présent continu s'emploie pour un rendez-vous personnel déjà arrangé : I am meeting him tomorrow."
+    },
+    {
+      "id": "tps51",
+      "type": "QCM",
+      "question": "« To be about to » signifie :",
+      "choix": [
+        "Être sur le point de",
+        "Être obligé de",
+        "Avoir l'habitude de",
+        "Venir de"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "They are about to vote."
+    },
+    {
+      "id": "tps52",
+      "type": "QCM",
+      "question": "Comment traduire « je viens de le faire » ?",
+      "choix": [
+        "I have just done it",
+        "I come to do it",
+        "I just do it",
+        "I was just do it"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Just + present perfect (britannique). En américain : I just did it."
+    },
+    {
+      "id": "tps53",
+      "type": "QCM",
+      "question": "Mixed conditional : « If he had studied, he … a diplomat today. »",
+      "choix": [
+        "would be",
+        "would have been",
+        "will be",
+        "was"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Cause passée (type 3) + conséquence présente (type 2)."
+    },
+    {
+      "id": "tps54",
+      "type": "QCM",
+      "question": "Question au present perfect :",
+      "choix": [
+        "Have you ever been to Geneva?",
+        "Did you ever have been to Geneva?",
+        "Are you ever been to Geneva?",
+        "Have you ever went to Geneva?"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Ever / never s'emploient pour l'expérience de vie."
+    },
+    {
+      "id": "tps55",
+      "type": "QCM",
+      "question": "« Had better » exprime :",
+      "choix": [
+        "Un conseil fort : You had better leave now",
+        "Le passé",
+        "Une préférence passée",
+        "Une obligation légale"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Suivi de la base verbale, sans to."
+    },
+    {
+      "id": "tps56",
+      "type": "QCM",
+      "question": "Verbes à sens variable : « I am thinking about it » vs « I think it is wrong » :",
+      "choix": [
+        "Continu = activité mentale en cours ; simple = opinion",
+        "Aucune différence",
+        "Le continu est incorrect",
+        "Le simple est familier"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Idem : I have a car (posséder, pas de -ing) vs I am having lunch (prendre)."
+    },
+    {
+      "id": "tps57",
+      "type": "QCM",
+      "question": "Preterit de « to be » :",
+      "choix": [
+        "was / were",
+        "beed",
+        "been",
+        "was for all"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "I/he/she/it was ; you/we/they were."
+    },
+    {
+      "id": "tps58",
+      "type": "QCM",
+      "question": "Tag question au preterit :",
+      "choix": [
+        "You went there, didn't you?",
+        "You went there, don't you?",
+        "You went there, weren't you?",
+        "You went there, hadn't you?"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "tps59",
+      "type": "QCM",
+      "question": "« This morning » peut se construire :",
+      "choix": [
+        "au present perfect si la matinée n'est pas finie, au preterit si elle l'est",
+        "toujours au preterit",
+        "toujours au present perfect",
+        "jamais avec un temps du passé"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "À 10 h : I have received three emails this morning. Le soir : I received three emails this morning."
+    },
+    {
+      "id": "tps60",
+      "type": "QCM",
+      "question": "Passif au past perfect :",
+      "choix": [
+        "The decision had been taken before the summit",
+        "The decision had taken before the summit",
+        "The decision has been taken before",
+        "The decision was been taken"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    }
+  ]
+}

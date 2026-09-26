@@ -1,0 +1,534 @@
+{
+  "titre": "TSN 6 — Transformée de Fourier discrète",
+  "description": "DFT/IDFT, axe fréquentiel, fftshift, zero-padding, propriétés, convolution circulaire",
+  "questions": [
+    {
+      "id": "dft01",
+      "type": "QCM",
+      "question": "Définition de la DFT d'un vecteur $x$ de $N$ points :",
+      "choix": [
+        "$\\hat{x}[k]=\\sum_{n=0}^{N-1}x[n]e^{-2i\\pi nk/N}$",
+        "$\\hat{x}[k]=\\sum_{n=0}^{N-1}x[n]e^{+2i\\pi nk/N}$",
+        "$\\hat{x}[k]=\\int x(t)e^{-2i\\pi kt}dt$",
+        "$\\hat{x}[k]=x[k]/N$"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "dft02",
+      "type": "QCM",
+      "question": "Définition de l'IDFT :",
+      "choix": [
+        "$x[n]=\\sum_k\\hat{x}[k]e^{-2i\\pi nk/N}$",
+        "$x[n]=\\frac{1}{N}\\sum_k\\hat{x}[k]e^{+2i\\pi nk/N}$",
+        "$x[n]=N\\sum_k\\hat{x}[k]$",
+        "$x[n]=\\hat{x}[n]$"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Attention au facteur $1/N$ et au signe +."
+    },
+    {
+      "id": "dft03",
+      "type": "QCM",
+      "question": "Nombre d'échantillons $N$ pour un signal de durée $T$ échantillonné à $T_e$ :",
+      "choix": [
+        "$T/T_e$",
+        "$\\lfloor T/T_e\\rfloor+1$",
+        "$T\\,T_e$",
+        "$2T/T_e$"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "dft04",
+      "type": "QCM",
+      "question": "L'indice $k$ de la DFT correspond à la fréquence physique :",
+      "choix": [
+        "$k$",
+        "$kF_e/N$",
+        "$kN/F_e$",
+        "$k/N$ Hz"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Fréquence normalisée $k/N$, multipliée par $F_e$."
+    },
+    {
+      "id": "dft05",
+      "type": "QCM",
+      "question": "Écart entre deux fréquences calculées par la DFT :",
+      "choix": [
+        "$F_e$",
+        "$F_e/N$",
+        "$N/F_e$",
+        "$1/F_e$"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "dft06",
+      "type": "QCM",
+      "question": "$F_e=1$ kHz, $N=200$. Pas en fréquence de la DFT :",
+      "choix": [
+        "1 Hz",
+        "5 Hz",
+        "200 Hz",
+        "0.2 Hz"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "$1000/200=5$ Hz."
+    },
+    {
+      "id": "dft07",
+      "type": "QCM",
+      "question": "$F_e=1$ kHz, $N=200$. Durée d'observation :",
+      "choix": [
+        "0.2 s",
+        "2 s",
+        "0.02 s",
+        "5 s"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "$NT_e=200\\times1$ ms."
+    },
+    {
+      "id": "dft08",
+      "type": "QCM",
+      "question": "$F_e=1$ kHz, $N=200$, $\\cos(2\\pi\\,100\\,t)$. Indices des pics de la DFT :",
+      "choix": [
+        "20 et 180",
+        "100 et 900",
+        "10 et 190",
+        "20 seulement"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "$k=100/5=20$ et $N-20=180$ (fréquence négative)."
+    },
+    {
+      "id": "dft09",
+      "type": "QCM",
+      "question": "Les indices $k>N/2$ de la DFT correspondent :",
+      "choix": [
+        "à des fréquences supérieures à $F_e$",
+        "aux fréquences négatives ($f-F_e$)",
+        "à du bruit",
+        "à la composante continue"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "dft10",
+      "type": "QCM",
+      "question": "Rôle de la fonction fftshift() :",
+      "choix": [
+        "recentrer le spectre sur $[-F_e/2;F_e/2[$",
+        "calculer la FFT",
+        "ajouter des zéros",
+        "normaliser par $N$"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "dft11",
+      "type": "QCM",
+      "question": "Un code Matlab affiche la FFT d'un cosinus à 100 Hz ($F_e=1$ kHz) sur l'axe $0\\ldots F_e$. Un pic apparaît à 900 Hz. Il représente :",
+      "choix": [
+        "une erreur de calcul",
+        "la fréquence $-100$ Hz",
+        "un harmonique",
+        "du repliement"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "$900=1000-100$."
+    },
+    {
+      "id": "dft12",
+      "type": "QCM",
+      "question": "Fréquence normalisée associée à l'indice $k$ :",
+      "choix": [
+        "$k/N$ (sans unité)",
+        "$kN$",
+        "$k F_e$",
+        "$N/k$"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "dft13",
+      "type": "QCM",
+      "question": "Le zero-padding améliore-t-il la résolution spectrale ?",
+      "choix": [
+        "Oui",
+        "Non"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "La résolution dépend de la durée d'observation, pas du nombre de points calculés."
+    },
+    {
+      "id": "dft14",
+      "type": "QCR",
+      "question": "Effets du zero-padding ($N'=MN$) :",
+      "choix": [
+        "Plus de fréquences calculées (pas $F_e/N'$)",
+        "Aucune information ajoutée",
+        "Spectre interpolé, plus lisse",
+        "Meilleure résolution",
+        "Puissance du signal modifiée"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": ""
+    },
+    {
+      "id": "dft15",
+      "type": "QCM",
+      "question": "Avec un zero-padding $N'=MN$, combien de points sont ajoutés entre deux fréquences précédemment calculées ?",
+      "choix": [
+        "$M$",
+        "$M-1$",
+        "$N$",
+        "$MN$"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "dft16",
+      "type": "QCM",
+      "question": "En Matlab, fft(x, Np) avec Np > length(x) :",
+      "choix": [
+        "complète x par des zéros jusqu'à Np points",
+        "tronque x",
+        "calcule l'IFFT",
+        "recentre le spectre"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "dft17",
+      "type": "QCM",
+      "question": "DFT de $x=[1,2,0,1]$ :",
+      "choix": [
+        "$[4,\\ 1-i,\\ -2,\\ 1+i]$",
+        "$[4,\\ 1+i,\\ -2,\\ 1-i]$",
+        "$[4,\\ 0,\\ -2,\\ 0]$",
+        "$[1,\\ 2,\\ 0,\\ 1]$"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "$e^{-2i\\pi/4}=-i$. $\\hat{x}[1]=1-2i+i=1-i$."
+    },
+    {
+      "id": "dft18",
+      "type": "QCM",
+      "question": "DFT de $\\delta[n]$ (1 en $n=0$, 0 ailleurs) :",
+      "choix": [
+        "$N\\delta[k]$",
+        "1 pour tout $k$",
+        "0",
+        "$e^{-2i\\pi k/N}$"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "dft19",
+      "type": "QCM",
+      "question": "DFT d'un vecteur constant égal à 1 ($N$ points) :",
+      "choix": [
+        "1 pour tout $k$",
+        "$N\\delta[k]$",
+        "$\\delta[k]$",
+        "0"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "dft20",
+      "type": "QCM",
+      "question": "Que vaut $\\hat{x}[0]$ ?",
+      "choix": [
+        "La somme des échantillons (composante continue)",
+        "Le premier échantillon",
+        "0",
+        "La valeur max"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "dft21",
+      "type": "QCM",
+      "question": "DFT de $x[n-n_0]$ (décalage circulaire) :",
+      "choix": [
+        "$\\hat{x}[k-n_0]$",
+        "$e^{-2i\\pi n_0k/N}\\hat{x}[k]$",
+        "$e^{+2i\\pi n_0k/N}\\hat{x}[k]$",
+        "$\\hat{x}[k]/n_0$"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "dft22",
+      "type": "QCM",
+      "question": "DFT de $e^{2i\\pi k_0n/N}x[n]$ :",
+      "choix": [
+        "$\\hat{x}[k-k_0]$",
+        "$\\hat{x}[k+k_0]$",
+        "$e^{2i\\pi k_0}\\hat{x}[k]$",
+        "$k_0\\hat{x}[k]$"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "dft23",
+      "type": "QCM",
+      "question": "Pour un signal réel, la DFT vérifie :",
+      "choix": [
+        "$\\hat{x}[N-k]=\\hat{x}^*[k]$",
+        "$\\hat{x}[k]$ réel",
+        "$\\hat{x}[N-k]=-\\hat{x}[k]$",
+        "$\\hat{x}[k]=0$ pour $k>N/2$"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Symétrie hermitienne : la moitié du spectre suffit."
+    },
+    {
+      "id": "dft24",
+      "type": "QCM",
+      "question": "Théorème de Plancherel pour la DFT (définition sans normalisation) :",
+      "choix": [
+        "$\\sum|x[n]|^2=\\sum|\\hat{x}[k]|^2$",
+        "$\\sum|x[n]|^2=\\frac{1}{N}\\sum|\\hat{x}[k]|^2$",
+        "$\\sum|x[n]|^2=N\\sum|\\hat{x}[k]|^2$",
+        "$\\sum x[n]=\\sum\\hat{x}[k]$"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Vérif. avec $x=[1,2,0,1]$ : $6=(16+2+4+2)/4$."
+    },
+    {
+      "id": "dft25",
+      "type": "QCM",
+      "question": "Le produit terme à terme des DFT, $\\hat{h}\\odot\\hat{x}$, correspond en temps à :",
+      "choix": [
+        "la convolution linéaire $h*x$",
+        "la convolution circulaire $h\\circledast x$",
+        "le produit $hx$",
+        "la somme $h+x$"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "dft26",
+      "type": "QCM",
+      "question": "Pourquoi IDFT$(\\hat{h}\\odot\\hat{x})\\neq h*x$ en général ?",
+      "choix": [
+        "Car échantillonner les fréquences périodise $x$ (convolution circulaire)",
+        "À cause du bruit",
+        "Car la DFT n'est pas linéaire",
+        "À cause du repliement"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "dft27",
+      "type": "QCM",
+      "question": "Pour obtenir la convolution linéaire par DFT, on complète par des zéros jusqu'à :",
+      "choix": [
+        "$N\\geq N_h+N_x-1$",
+        "$N\\geq N_x$",
+        "$N=2^{N_x}$",
+        "$N\\geq N_h$"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "dft28",
+      "type": "QCM",
+      "question": "Convolution linéaire de $h=[1,1]$ et $x=[1,2,0,1]$ :",
+      "choix": [
+        "$[1,3,2,1,1]$",
+        "$[2,3,2,1]$",
+        "$[1,2,0,1]$",
+        "$[1,3,2,1]$"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "dft29",
+      "type": "QCM",
+      "question": "Convolution circulaire sur 4 points de $h=[1,1]$ et $x=[1,2,0,1]$ :",
+      "choix": [
+        "$[1,3,2,1,1]$",
+        "$[2,3,2,1]$",
+        "$[1,3,2,1]$",
+        "$[2,2,2,2]$"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le dernier terme (1) se replie sur le premier."
+    },
+    {
+      "id": "dft30",
+      "type": "QCM",
+      "question": "Échantillonner le spectre (DFT) revient, dans le domaine temporel, à :",
+      "choix": [
+        "périodiser le signal",
+        "le tronquer",
+        "le dériver",
+        "le quantifier"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Dualité de l'échantillonnage."
+    },
+    {
+      "id": "dft31",
+      "type": "QCM",
+      "question": "Une sinusoïde de fréquence $f_0$ non multiple de $F_e/N$ produit dans la DFT :",
+      "choix": [
+        "une raie unique parfaite",
+        "une fuite spectrale sur les indices voisins",
+        "du repliement",
+        "aucun pic"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "dft32",
+      "type": "QCM",
+      "question": "Pour $A\\cos(2\\pi f_0t)$ tombant sur un bin, la hauteur des pics de $|\\hat{x}[k]|/N$ vaut :",
+      "choix": [
+        "$A$",
+        "$A/2$",
+        "$A^2$",
+        "$2A$"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Deux raies de $A/2$ en $\\pm f_0$."
+    },
+    {
+      "id": "dft33",
+      "type": "QCM",
+      "question": "Complexité de la FFT pour $N$ points :",
+      "choix": [
+        "$N^2$",
+        "$N\\log_2 N$",
+        "$N$",
+        "$2^N$"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "La DFT directe coûte $N^2$."
+    },
+    {
+      "id": "dft34",
+      "type": "QCR",
+      "question": "Fonctions Matlab et leur rôle :",
+      "choix": [
+        "fft : calcule la DFT",
+        "ifft : calcule la DFT inverse",
+        "fftshift : réordonne pour centrer la fréquence nulle",
+        "fft normalise automatiquement par $1/N$"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "fft ne normalise pas : on divise par $N$ soi-même."
+    },
+    {
+      "id": "dft35",
+      "type": "QCM",
+      "question": "Si $N$ est petit, le spectre calculé par DFT :",
+      "choix": [
+        "est limité à peu de points et peut être mal interprété",
+        "est parfait",
+        "contient plus d'information",
+        "n'est pas périodique"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    }
+  ]
+}

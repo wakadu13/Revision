@@ -1,0 +1,613 @@
+{
+  "titre": "TSN 3 — Transformée de Fourier et DSP",
+  "description": "TF à temps continu, propriétés, TF usuelles, séries de Fourier, densité spectrale de puissance",
+  "questions": [
+    {
+      "id": "tf01",
+      "type": "QCM",
+      "question": "La transformée de Fourier de $x(t)$ est :",
+      "choix": [
+        "$\\int x(t)e^{-2i\\pi ft}dt$",
+        "$\\int x(t)e^{+2i\\pi ft}dt$",
+        "$\\sum_n x(n)e^{-2i\\pi fn}$",
+        "$\\int x(t)\\cos(ft)dt$"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "tf02",
+      "type": "QCM",
+      "question": "La transformée de Fourier inverse est :",
+      "choix": [
+        "$\\int X(f)e^{-2i\\pi ft}df$",
+        "$\\int X(f)e^{+2i\\pi ft}df$",
+        "$\\frac{1}{2\\pi}\\int X(f)df$",
+        "$|X(f)|^2$"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "tf03",
+      "type": "QCM",
+      "question": "Le théorème de Plancherel affirme que :",
+      "choix": [
+        "$\\int|x(t)|^2dt=\\int|X(f)|^2df$",
+        "$X(0)=x(0)$",
+        "$|X(f)|=|x(t)|$",
+        "$X$ est toujours réelle"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "L'énergie est la même en temps et en fréquence."
+    },
+    {
+      "id": "tf04",
+      "type": "QCM",
+      "question": "L'égalité de Parseval affirme que :",
+      "choix": [
+        "$\\int x(t)y^*(t)dt=\\int X(f)Y^*(f)df$",
+        "$\\int x(t)dt=X(0)^2$",
+        "$x*y=XY$",
+        "$X(-f)=X^*(f)$"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "La TF conserve le produit scalaire."
+    },
+    {
+      "id": "tf05",
+      "type": "QCM",
+      "question": "$|X(f)|^2$ s'interprète comme :",
+      "choix": [
+        "la puissance instantanée",
+        "la densité spectrale d'énergie",
+        "l'autocorrélation",
+        "la phase du signal"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "$|x(t)|^2$ est la puissance instantanée, $|X(f)|^2$ la densité spectrale d'énergie."
+    },
+    {
+      "id": "tf06",
+      "type": "QCM",
+      "question": "TF de $x(t-t_0)$ :",
+      "choix": [
+        "$X(f-t_0)$",
+        "$e^{-2i\\pi f t_0}X(f)$",
+        "$e^{+2i\\pi f t_0}X(f)$",
+        "$X(f)/t_0$"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Un retard se traduit par une phase linéaire ; le module est inchangé."
+    },
+    {
+      "id": "tf07",
+      "type": "QCM",
+      "question": "TF de $e^{2i\\pi f_0 t}x(t)$ :",
+      "choix": [
+        "$X(f+f_0)$",
+        "$X(f-f_0)$",
+        "$e^{2i\\pi f_0}X(f)$",
+        "$f_0X(f)$"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "La modulation décale le spectre de $f_0$."
+    },
+    {
+      "id": "tf08",
+      "type": "QCM",
+      "question": "TF de $x(t)\\cos(2\\pi f_0 t)$ :",
+      "choix": [
+        "$X(f-f_0)$",
+        "$\\frac{1}{2}[X(f-f_0)+X(f+f_0)]$",
+        "$X(f)\\cos(2\\pi f_0 f)$",
+        "$2X(f-f_0)$"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "$\\cos=\\frac{1}{2}(e^{2i\\pi f_0t}+e^{-2i\\pi f_0t})$ : deux copies du spectre en $\\pm f_0$."
+    },
+    {
+      "id": "tf09",
+      "type": "QCM",
+      "question": "TF de $x(\\alpha t)$ :",
+      "choix": [
+        "$\\alpha X(\\alpha f)$",
+        "$\\frac{1}{|\\alpha|}X(f/\\alpha)$",
+        "$X(f)/\\alpha$",
+        "$X(\\alpha f)$"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "tf10",
+      "type": "QCR",
+      "question": "On compresse un signal dans le temps ($x(\\alpha t)$ avec $\\alpha>1$). Qu'arrive-t-il à son spectre ?",
+      "choix": [
+        "Il s'élargit",
+        "Il se rétrécit",
+        "Son amplitude est multipliée par $1/|\\alpha|$",
+        "Il est inchangé"
+      ],
+      "reponses": [
+        0,
+        2
+      ],
+      "explication": "Plus un signal est court, plus son spectre est large."
+    },
+    {
+      "id": "tf11",
+      "type": "QCM",
+      "question": "TF de $(h*x)(t)$ :",
+      "choix": [
+        "$H(f)*X(f)$",
+        "$H(f)X(f)$",
+        "$H(f)+X(f)$",
+        "$H(f)/X(f)$"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Convolution en temps = produit en fréquence."
+    },
+    {
+      "id": "tf12",
+      "type": "QCM",
+      "question": "TF de $h(t)x(t)$ :",
+      "choix": [
+        "$H(f)X(f)$",
+        "$(H*X)(f)$",
+        "$H(f)+X(f)$",
+        "$H(-f)X(f)$"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Produit en temps = convolution en fréquence."
+    },
+    {
+      "id": "tf13",
+      "type": "QCM",
+      "question": "TF de $x'(t)$ :",
+      "choix": [
+        "$X'(f)$",
+        "$2i\\pi f X(f)$",
+        "$X(f)/(2i\\pi f)$",
+        "$-X(f)$"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "tf14",
+      "type": "QCM",
+      "question": "TF de $x^*(t)$ :",
+      "choix": [
+        "$X^*(f)$",
+        "$X^*(-f)$",
+        "$X(-f)$",
+        "$-X(f)$"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "tf15",
+      "type": "QCR",
+      "question": "Pour un signal $x(t)$ réel :",
+      "choix": [
+        "$X(-f)=X^*(f)$",
+        "$|X(f)|$ est paire",
+        "la phase de $X$ est impaire",
+        "$X(f)$ est toujours réelle"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "$X$ n'est réelle que si $x$ est réel ET pair."
+    },
+    {
+      "id": "tf16",
+      "type": "QCM",
+      "question": "La distribution de Dirac vérifie :",
+      "choix": [
+        "$\\int x(t)\\delta(t)dt=x(0)$",
+        "$\\delta(t)=1$ pour tout $t$",
+        "$\\int\\delta(t)dt=0$",
+        "$\\delta(0)=0$"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "tf17",
+      "type": "QCM",
+      "question": "$(x*\\delta_{t_0})(t)$ vaut :",
+      "choix": [
+        "$x(t_0)$",
+        "$x(t-t_0)$",
+        "$x(t)\\delta(t_0)$",
+        "$x(t+t_0)$"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Convoluer par un Dirac décalé retarde le signal."
+    },
+    {
+      "id": "tf18",
+      "type": "QCM",
+      "question": "TF de $\\delta(t-t_0)$ :",
+      "choix": [
+        "$\\delta(f-t_0)$",
+        "$e^{-2i\\pi f t_0}$",
+        "1",
+        "$\\cos(2\\pi f t_0)$"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "tf19",
+      "type": "QCM",
+      "question": "TF de la constante $x(t)=1$ :",
+      "choix": [
+        "1",
+        "$\\delta(f)$",
+        "0",
+        "$\\mathrm{sinc}(f)$"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "tf20",
+      "type": "QCM",
+      "question": "TF de $e^{2i\\pi f_0 t}$ :",
+      "choix": [
+        "$\\delta(f+f_0)$",
+        "$\\delta(f-f_0)$",
+        "$e^{-2i\\pi f_0 f}$",
+        "1"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Une seule raie en $+f_0$."
+    },
+    {
+      "id": "tf21",
+      "type": "QCM",
+      "question": "TF de $\\cos(2\\pi f_0 t)$ :",
+      "choix": [
+        "$\\delta(f-f_0)$",
+        "$\\frac{1}{2}[\\delta(f-f_0)+\\delta(f+f_0)]$",
+        "$\\frac{1}{2i}[\\delta(f-f_0)-\\delta(f+f_0)]$",
+        "$\\mathrm{sinc}(f_0)$"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Deux raies de hauteur 1/2 en $\\pm f_0$."
+    },
+    {
+      "id": "tf22",
+      "type": "QCM",
+      "question": "TF de $\\sin(2\\pi f_0 t)$ :",
+      "choix": [
+        "$\\frac{1}{2}[\\delta(f-f_0)+\\delta(f+f_0)]$",
+        "$\\frac{1}{2i}[\\delta(f-f_0)-\\delta(f+f_0)]$",
+        "$\\delta(f-f_0)$",
+        "$i\\,\\delta(f)$"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Module 1/2 en $\\pm f_0$ également."
+    },
+    {
+      "id": "tf23",
+      "type": "QCM",
+      "question": "TF de la porte $\\pi_{[-T/2;T/2]}(t)$ :",
+      "choix": [
+        "$T\\,\\mathrm{sinc}(\\pi f T)$",
+        "$\\mathrm{sinc}(f)$",
+        "$\\delta(f)$",
+        "$T\\cos(\\pi fT)$"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Avec $\\mathrm{sinc}(u)=\\sin(u)/u$."
+    },
+    {
+      "id": "tf24",
+      "type": "QCM",
+      "question": "Où s'annule $T\\,\\mathrm{sinc}(\\pi fT)$ ?",
+      "choix": [
+        "En $f=0$",
+        "En $f=k/T$, $k\\neq0$",
+        "En $f=kT$",
+        "Jamais"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Premiers zéros en $\\pm1/T$ : le lobe principal a une largeur $2/T$."
+    },
+    {
+      "id": "tf25",
+      "type": "QCM",
+      "question": "TF du peigne de Dirac $\\mathrm{III}_{T_e}(t)=\\sum_n\\delta(t-nT_e)$ :",
+      "choix": [
+        "$\\mathrm{III}_{T_e}(f)$",
+        "$\\frac{1}{T_e}\\mathrm{III}_{1/T_e}(f)$",
+        "$T_e\\,\\delta(f)$",
+        "1"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Un peigne de pas $T_e$ donne un peigne de pas $1/T_e=F_e$."
+    },
+    {
+      "id": "tf26",
+      "type": "QCM",
+      "question": "TF de $e^{-\\pi t^2}$ :",
+      "choix": [
+        "$e^{-\\pi f^2}$",
+        "$\\delta(f)$",
+        "$\\mathrm{sinc}(\\pi f)$",
+        "$e^{-f}$"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "La gaussienne est invariante par TF."
+    },
+    {
+      "id": "tf27",
+      "type": "QCM",
+      "question": "Le spectre d'un signal périodique de période $T$ est :",
+      "choix": [
+        "continu",
+        "un spectre de raies aux multiples de $1/T$",
+        "nul",
+        "une seule raie en $f=T$"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "$X(f)=\\sum_n c_n\\,\\delta(f-n/T)$."
+    },
+    {
+      "id": "tf28",
+      "type": "QCM",
+      "question": "Les coefficients de Fourier d'un signal $T$-périodique valent :",
+      "choix": [
+        "$c_n=\\frac{1}{T}\\int_{-T/2}^{T/2}x(t)e^{-2i\\pi nt/T}dt$",
+        "$c_n=\\int x(t)e^{2i\\pi nt}dt$",
+        "$c_n=x(nT)$",
+        "$c_n=T\\,x(n/T)$"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "tf29",
+      "type": "QCM",
+      "question": "Pourquoi utilise-t-on la DSP pour un signal aléatoire ?",
+      "choix": [
+        "Car sa transformée de Fourier n'existe pas",
+        "Car elle est plus rapide à calculer",
+        "Car le signal est périodique",
+        "Car le signal est à énergie finie"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "tf30",
+      "type": "QCM",
+      "question": "L'autocorrélation d'un processus $X$ est définie par :",
+      "choix": [
+        "$R_X(t_1,t_2)=\\mathbb{E}[X(t_1)X^*(t_2)]$",
+        "$R_X=\\mathbb{E}[X]^2$",
+        "$R_X=X*X$ toujours",
+        "$R_X=|X(f)|$"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "tf31",
+      "type": "QCR",
+      "question": "Un processus stationnaire au sens large (ordre 2) vérifie :",
+      "choix": [
+        "$\\mathbb{E}[x(t)]$ ne dépend pas de $t$",
+        "$R_x(t_1,t_2)$ ne dépend que de $t_1-t_2$",
+        "il est forcément gaussien",
+        "sa variance est nulle"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "tf32",
+      "type": "QCM",
+      "question": "Théorème de Wiener–Khinchin :",
+      "choix": [
+        "$S_x(f)=\\mathcal{F}(R_x)(f)$",
+        "$S_x(f)=R_x(f)^2$",
+        "$S_x=\\mathcal{F}(x)$",
+        "$R_x=S_x^2$"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "La DSP est la TF de l'autocorrélation."
+    },
+    {
+      "id": "tf33",
+      "type": "QCR",
+      "question": "Propriétés de la DSP $S_x(f)$ :",
+      "choix": [
+        "$S_x(f)\\geq0$",
+        "$P_x=\\int S_x(f)df$",
+        "Elle s'exprime en W/Hz",
+        "Elle peut être négative"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": ""
+    },
+    {
+      "id": "tf34",
+      "type": "QCM",
+      "question": "Pour un signal déterministe, $S_x(f)$ vaut :",
+      "choix": [
+        "$X(f)$",
+        "$|X(f)|^2$",
+        "$R_x(f)$",
+        "0"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "tf35",
+      "type": "QCM",
+      "question": "Si $y=h*x$ (filtre linéaire invariant), la DSP de sortie est :",
+      "choix": [
+        "$S_y=H\\,S_x$",
+        "$S_y=|H|^2S_x$",
+        "$S_y=S_x$",
+        "$S_y=|H|S_x^2$"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Relation fondamentale du filtrage des signaux aléatoires."
+    },
+    {
+      "id": "tf36",
+      "type": "QCM",
+      "question": "Si $x$ et $y$ sont indépendants, $S_{x+\\lambda y}$ vaut :",
+      "choix": [
+        "$S_x+\\lambda S_y$",
+        "$S_x+|\\lambda|^2S_y$",
+        "$S_xS_y$",
+        "$S_x-S_y$"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "tf37",
+      "type": "QCM",
+      "question": "Que vaut $R_x(0)$ ?",
+      "choix": [
+        "La puissance du signal",
+        "0",
+        "La fréquence moyenne",
+        "La phase"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "$R_x(0)=\\mathbb{E}[|x|^2]=P_x=\\int S_x$."
+    },
+    {
+      "id": "tf38",
+      "type": "QCR",
+      "question": "Un bruit blanc centré de variance $\\sigma^2$ :",
+      "choix": [
+        "a une DSP constante",
+        "a une autocorrélation $\\sigma^2\\delta(\\tau)$",
+        "est corrélé d'un instant à l'autre",
+        "a toute sa puissance en basse fréquence"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "tf39",
+      "type": "QCM",
+      "question": "Un bruit blanc de DSP $N_0/2$ traverse un passe-bas idéal de gain 1 sur $[-B;B]$. Puissance en sortie :",
+      "choix": [
+        "$N_0/2$",
+        "$N_0B$",
+        "$N_0B/2$",
+        "$2N_0B$"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "$\\int_{-B}^{B}N_0/2\\,df=N_0B$."
+    },
+    {
+      "id": "tf40",
+      "type": "QCM",
+      "question": "La TF inverse de la DSP donne :",
+      "choix": [
+        "le signal $x(t)$",
+        "l'autocorrélation $R_x(\\tau)$",
+        "la puissance instantanée",
+        "la phase"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{% extends "wiki/base.html" %}
+{% load static %}
+{% block title %}{% if is_new %}Nouvelle page{% else %}Modifier{% endif %} · {{ key }}{% endblock %}
+{% block content %}
+<article class="note editor">
+  <p class="breadcrumb">{% if is_new %}Nouvelle page{% else %}Modification{% endif %}</p>
+  <h1 class="note-title">{{ key }}</h1>
+  {% if error %}
+  <div class="callout" data-callout="danger"><div class="callout-title">{{ error }}</div></div>
+  {% endif %}
+  <form method="post" id="editor-form" data-preview-url="{{ preview_url }}">
+    {% csrf_token %}
+    <input type="hidden" name="version" value="{{ version }}">
+    <div class="toolbar" role="toolbar" aria-label="Mise en forme">
+      <button type="button" class="button primary" data-action="page-link" title="Ctrl+K">Lien vers une page</button>
+      <button type="button" class="button" data-action="web-link">Lien web</button>
+      <span class="toolbar-sep"></span>
+      <button type="button" class="button" data-action="bold" title="Gras (Ctrl+B)"><b>G</b></button>
+      <button type="button" class="button" data-action="italic" title="Italique (Ctrl+I)"><i>I</i></button>
+      <button type="button" class="button" data-action="highlight" title="Surligner"><mark>S</mark></button>
+      <button type="button" class="button" data-action="heading" title="Titre de section">Titre</button>
+      <button type="button" class="button" data-action="list" title="Liste à puces">Liste</button>
+      <button type="button" class="button" data-action="task" title="Case à cocher">☐ Tâche</button>
+      <button type="button" class="button" data-action="callout" title="Encadré">Encadré</button>
+      <span class="toolbar-fill"></span>
+      <button type="button" class="button" data-action="preview" aria-pressed="false">Aperçu</button>
+    </div>
+    <div class="editor-area">
+      <textarea name="content" id="editor" rows="22" spellcheck="true" autofocus
+        placeholder="Écrivez ici. Pour ajouter un lien, cliquez sur « Lien vers une page » ou tapez [[">{{ content }}</textarea>
+      <ul class="suggestions" role="listbox" hidden></ul>
+      <div class="markdown preview" hidden></div>
+    </div>
+    <div class="editor-actions">
+      <button type="submit" class="button primary">Enregistrer</button>
+      <a class="button" href="{% if note %}{{ note.url }}{% else %}{% url 'wiki:home' %}{% endif %}">Annuler</a>
+    </div>
+  </form>
+</article>
+
+<dialog id="page-link-dialog" class="dialog">
+  <h2>Lien vers une page</h2>
+  <label for="page-search">Page</label>
+  <input type="search" id="page-search" autocomplete="off" placeholder="Rechercher une page, ou taper le nom d'une nouvelle page">
+  <ul class="choices" id="page-choices" role="listbox"></ul>
+  <label for="page-label">Texte affiché <span class="muted">(facultatif)</span></label>
+  <input type="text" id="page-label" placeholder="Par défaut : le nom de la page">
+  <div class="dialog-actions">
+    <button type="button" class="button" data-close>Annuler</button>
+    <button type="button" class="button primary" id="page-ok">Insérer le lien</button>
+  </div>
+</dialog>
+
+<dialog id="web-link-dialog" class="dialog">
+  <h2>Lien web</h2>
+  <label for="web-url">Adresse</label>
+  <input type="url" id="web-url" placeholder="https://exemple.fr">
+  <label for="web-label">Texte affiché <span class="muted">(facultatif)</span></label>
+  <input type="text" id="web-label" placeholder="Par défaut : l'adresse">
+  <div class="dialog-actions">
+    <button type="button" class="button" data-close>Annuler</button>
+    <button type="button" class="button primary" id="web-ok">Insérer le lien</button>
+  </div>
+</dialog>
+
+{{ link_choices|json_script:"link-choices" }}
+<script src="{% static 'wiki/editor.js' %}" defer></script>
+{% endblock %}
+{% block aside %}
+<section class="panel">
+  <h2>Mémo</h2>
+  <ul class="memo">
+    <li><b>Lien vers une page</b> : choisissez la page dans la liste. Si elle n'existe pas encore, le lien permettra de la créer.</li>
+    <li>Tapez <kbd>[[</kbd> dans le texte pour voir les pages proposées, puis <kbd>Entrée</kbd>.</li>
+    <li>Sélectionnez un mot avant de cliquer sur un bouton pour l'utiliser comme texte du lien.</li>
+    <li><kbd>Ctrl</kbd>+<kbd>S</kbd> enregistre la page.</li>
+  </ul>
+</section>
+{% endblock %}

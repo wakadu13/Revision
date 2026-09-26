@@ -1,0 +1,25 @@
+{% extends "wiki/base.html" %}
+{% block title %}{{ name }}{% endblock %}
+{% block content %}
+<article class="note">
+  <h1 class="note-title">{{ name }}</h1>
+  <div class="callout" data-callout="info">
+    <div class="callout-title">Cette page n'existe pas encore</div>
+    <div class="callout-content">
+      {% if can_edit and can_create %}
+      <p>Vous pouvez la créer directement depuis le wiki.</p>
+      <p><a class="button primary" href="{% url 'wiki:edit' name %}">Créer cette page</a></p>
+      {% else %}
+      <p>Pour la créer, ajoutez le fichier <code>{{ filename }}</code> dans le dossier du coffre
+      (ou créez la note depuis Obsidian). Elle apparaîtra ici dès le prochain chargement.</p>
+      {% endif %}
+    </div>
+  </div>
+  {% if backlinks %}
+  <h2>Notes qui y font référence</h2>
+  <ul>
+    {% for n in backlinks %}<li><a href="{{ n.url }}">{{ n.title }}</a></li>{% endfor %}
+  </ul>
+  {% endif %}
+</article>
+{% endblock %}

@@ -1,0 +1,13 @@
+<ul class="sommaire-tree">
+  {% for folder in node.folders %}
+  <li class="sommaire-folder">
+    <details open>
+      <summary>{{ folder.name }} <span class="count">{{ folder.count }}</span></summary>
+      {% include "wiki/sommaire_tree.html" with node=folder %}
+    </details>
+  </li>
+  {% endfor %}
+  {% for n in node.notes %}
+  <li class="sommaire-note"><a href="{{ n.url }}">{{ n.title }}</a></li>
+  {% endfor %}
+</ul>

@@ -1,0 +1,26 @@
+{% extends "wiki/base.html" %}
+{% block title %}Recherche{% endblock %}
+{% block content %}
+<article class="note">
+  <h1 class="note-title">Recherche</h1>
+  <form class="search-big" action="{% url 'wiki:search' %}" method="get" role="search">
+    <input type="search" name="q" value="{{ query }}" placeholder="Rechercher dans toutes les notes…" aria-label="Rechercher" autofocus>
+    <button type="submit" class="button primary">Rechercher</button>
+  </form>
+  {% if query %}
+  <p class="muted">{{ results|length }} résultat{{ results|length|pluralize }} pour « {{ query }} »</p>
+  <ul class="results">
+    {% for n, snippet in results %}
+    <li>
+      <a href="{{ n.url }}">{{ n.title }}</a>{% if n.folder %} <span class="muted">— {{ n.folder }}</span>{% endif %}
+      <p>{{ snippet|safe }}</p>
+    </li>
+    {% empty %}
+    <li class="muted">Aucune note ne correspond. Essayez d'autres mots, ou consultez le <a href="{% url 'wiki:sommaire' %}">sommaire</a>.</li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p class="muted">Saisissez un ou plusieurs mots. La recherche ignore les accents et la casse. Vous pouvez aussi parcourir le <a href="{% url 'wiki:sommaire' %}">sommaire</a>.</p>
+  {% endif %}
+</article>
+{% endblock %}

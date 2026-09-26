@@ -1,0 +1,218 @@
+{
+  "titre": "TSN 7 — Bruits de numérisation",
+  "description": "Gigue, bruit de mesure, bruit de quantification, SNR d'un CAN",
+  "questions": [
+    {
+      "id": "bn01",
+      "type": "QCM",
+      "question": "La gigue (jitter) correspond à :",
+      "choix": [
+        "une instabilité des instants d'échantillonnage",
+        "une erreur d'arrondi",
+        "un bruit thermique du capteur",
+        "un repliement"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "$x(t_n)=x(nT_e+\\varepsilon[n])$, $\\varepsilon\\sim\\mathcal{N}(0,\\sigma_g^2)$."
+    },
+    {
+      "id": "bn02",
+      "type": "QCM",
+      "question": "La gigue dégrade surtout :",
+      "choix": [
+        "les basses fréquences",
+        "les hautes fréquences",
+        "la composante continue",
+        "rien"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "bn03",
+      "type": "QCM",
+      "question": "Pourquoi la gigue dégrade-t-elle surtout les hautes fréquences ?",
+      "choix": [
+        "L'erreur vaut environ $\\varepsilon\\,x'(nT_e)$, proportionnelle à la fréquence",
+        "Car $F_e$ est trop faible",
+        "Car le bruit est coloré",
+        "À cause du zero-padding"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Pour une sinusoïde, $x'$ est proportionnelle à $2\\pi f$."
+    },
+    {
+      "id": "bn04",
+      "type": "QCM",
+      "question": "Le bruit de mesure $b\\sim\\mathcal{N}(0,\\sigma_m^2)$ se traduit dans le spectre par :",
+      "choix": [
+        "un plancher de bruit sur tout le spectre",
+        "une raie à $F_e$",
+        "un décalage des raies",
+        "une périodisation"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "bn05",
+      "type": "QCM",
+      "question": "Le bruit de quantification a pour moyenne :",
+      "choix": [
+        "0",
+        "$\\Delta$",
+        "$\\Delta/2$",
+        "$\\Delta^2/12$"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "bn06",
+      "type": "QCM",
+      "question": "En modèle uniforme sur $[-\\Delta/2;\\Delta/2]$, la variance du bruit de quantification vaut :",
+      "choix": [
+        "$\\Delta/2$",
+        "$\\Delta^2/12$",
+        "$\\Delta^2/4$",
+        "$\\Delta^2$"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "bn07",
+      "type": "QCM",
+      "question": "Erreur de quantification maximale (sans saturation) :",
+      "choix": [
+        "$\\Delta$",
+        "$\\Delta/2$",
+        "$\\Delta^2/12$",
+        "$2\\Delta$"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "bn08",
+      "type": "QCM",
+      "question": "Ajouter 1 bit au CAN améliore le SNR de quantification d'environ :",
+      "choix": [
+        "1 dB",
+        "3 dB",
+        "6 dB",
+        "10 dB"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "$\\mathrm{SNR}\\approx6.02n+1.76$ dB."
+    },
+    {
+      "id": "bn09",
+      "type": "QCM",
+      "question": "SNR d'un CAN 10 bits pour une sinusoïde pleine échelle :",
+      "choix": [
+        "environ 20 dB",
+        "environ 62 dB",
+        "environ 98 dB",
+        "environ 40 dB"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "$6.02\\times10+1.76\\approx62$ dB."
+    },
+    {
+      "id": "bn10",
+      "type": "QCM",
+      "question": "Nombre minimal de bits pour un SNR d'au moins 60 dB :",
+      "choix": [
+        "8",
+        "9",
+        "10",
+        "12"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "$n\\geq(60-1.76)/6.02=9.67$."
+    },
+    {
+      "id": "bn11",
+      "type": "QCM",
+      "question": "$\\Delta=0.5$ V. Écart-type du bruit de quantification :",
+      "choix": [
+        "0.5 V",
+        "0.25 V",
+        "environ 0.144 V",
+        "environ 0.021 V"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "$\\sigma_q=\\Delta/\\sqrt{12}$. (0.021 V² est la variance.)"
+    },
+    {
+      "id": "bn12",
+      "type": "QCM",
+      "question": "CAN 12 bits, plage $\\pm5$ V. Pas de quantification :",
+      "choix": [
+        "environ 2.44 mV",
+        "environ 1.22 mV",
+        "environ 4.88 mV",
+        "10 mV"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "$10/4096\\approx2.44$ mV."
+    },
+    {
+      "id": "bn13",
+      "type": "QCM",
+      "question": "Modèle global du bruit de numérisation :",
+      "choix": [
+        "$x[n]=x(nT_e+\\varepsilon[n])+b[n]$",
+        "$x[n]=x(nT_e)$",
+        "$x[n]=b[n]$",
+        "$x[n]=x(nT_e)\\,\\varepsilon[n]$"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "bn14",
+      "type": "QCR",
+      "question": "Quelles sources dégradent le SNR lors de la numérisation ?",
+      "choix": [
+        "La gigue",
+        "Le bruit de mesure",
+        "Le bruit de quantification",
+        "Le zero-padding"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": ""
+    }
+  ]
+}

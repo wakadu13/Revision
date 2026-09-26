@@ -1,0 +1,40 @@
+{% extends "wiki/base.html" %}
+{% block title %}Sommaire{% endblock %}
+{% block content %}
+<article class="note">
+  <h1 class="note-title">Sommaire</h1>
+  <p class="muted">{{ total }} note{{ total|pluralize }} dans le wiki</p>
+
+  <form class="search-big" action="{% url 'wiki:search' %}" method="get" role="search">
+    <input type="search" name="q" placeholder="Rechercher dans toutes les notes…" aria-label="Rechercher" autofocus>
+    <button type="submit" class="button primary">Rechercher</button>
+  </form>
+
+  <div class="sommaire-toolbar">
+    <button type="button" class="button" data-fold="open">Tout déplier</button>
+    <button type="button" class="button" data-fold="close">Tout replier</button>
+  </div>
+
+  <div class="sommaire">
+    {% include "wiki/sommaire_tree.html" with node=root %}
+  </div>
+</article>
+<script>
+  document.querySelectorAll("[data-fold]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      var open = button.dataset.fold === "open";
+      document.querySelectorAll(".sommaire details").forEach(function (d) { d.open = open; });
+    });
+  });
+</script>
+{% endblock %}
+{% block aside %}
+{% if recent %}
+<section class="panel">
+  <h2>Récemment modifiées</h2>
+  <ul>
+    {% for n in recent %}<li><a href="{{ n.url }}">{{ n.title }}</a></li>{% endfor %}
+  </ul>
+</section>
+{% endif %}
+{% endblock %}

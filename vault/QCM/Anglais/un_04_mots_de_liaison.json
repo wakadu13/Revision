@@ -1,0 +1,585 @@
+{
+  "titre": "EN 4 — Mots de liaison",
+  "description": "Linking words : addition, contraste, cause, conséquence, exemple, conclusion",
+  "questions": [
+    {
+      "id": "lnk01",
+      "type": "QCM",
+      "question": "Correct spelling of the first linking word:",
+      "choix": [
+        "Firsly",
+        "Firstly",
+        "Firtsly",
+        "First ly"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Firstly / First of all / To begin with / In the first place."
+    },
+    {
+      "id": "lnk02",
+      "type": "QCM",
+      "question": "Correct spelling:",
+      "choix": [
+        "Futhermore",
+        "Furthermore",
+        "Furtermore",
+        "Further more"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Furthermore = de plus, en outre (registre soutenu)."
+    },
+    {
+      "id": "lnk03",
+      "type": "QCM",
+      "question": "« Moretheless » does not exist. The correct word is:",
+      "choix": [
+        "Nonetheless",
+        "Morenever",
+        "Neverthemore",
+        "Moreless"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Nonetheless = nevertheless = néanmoins. Les deux sont interchangeables."
+    },
+    {
+      "id": "lnk04",
+      "type": "QCM",
+      "question": "Which is the more formal way to say « on top of that »?",
+      "choix": [
+        "Moreover / Furthermore",
+        "So",
+        "Plus",
+        "And also"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« On top of that » et « what's more » sont familiers ; à l'oral c'est très bien, à l'écrit préfère moreover."
+    },
+    {
+      "id": "lnk05",
+      "type": "QCM",
+      "question": "« However » expresses:",
+      "choix": [
+        "Contrast (cependant)",
+        "Addition",
+        "Cause",
+        "Consequence"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Souvent en début de phrase, suivi d'une virgule : However, the veto blocks reform."
+    },
+    {
+      "id": "lnk06",
+      "type": "QCM",
+      "question": "Which word introduces a consequence?",
+      "choix": [
+        "Therefore",
+        "Although",
+        "Whereas",
+        "Despite"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Therefore / thus / hence / consequently / as a result = donc, par conséquent."
+    },
+    {
+      "id": "lnk07",
+      "type": "QCM",
+      "question": "« So » in a formal essay is best replaced by:",
+      "choix": [
+        "Therefore",
+        "Moreover",
+        "However",
+        "Indeed"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« So » est correct mais familier à l'écrit."
+    },
+    {
+      "id": "lnk08",
+      "type": "QCM",
+      "question": "Correct pair:",
+      "choix": [
+        "On the one hand… On the other hand…",
+        "On one hand… On other hand…",
+        "In one hand… In the other hand…",
+        "On the one hand… In the other hands…"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« On one hand » est toléré, mais la forme complète est plus sûre."
+    },
+    {
+      "id": "lnk09",
+      "type": "QCM",
+      "question": "« Whereas » means:",
+      "choix": [
+        "Alors que, tandis que (contraste)",
+        "Parce que",
+        "Donc",
+        "Par exemple"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "The P5 have a veto, whereas the other members do not."
+    },
+    {
+      "id": "lnk10",
+      "type": "QCM",
+      "question": "« Although » is followed by:",
+      "choix": [
+        "a clause: subject + verb",
+        "a noun only",
+        "the -ing form only",
+        "nothing"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Although the UN is criticized, it remains essential. Synonymes : though, even though."
+    },
+    {
+      "id": "lnk11",
+      "type": "QCM",
+      "question": "« Despite » and « in spite of » are followed by:",
+      "choix": [
+        "a noun or -ing form",
+        "subject + verb",
+        "an infinitive",
+        "an adjective only"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Despite the veto… / Despite being criticized… Mais : despite THE FACT THAT + sujet + verbe."
+    },
+    {
+      "id": "lnk12",
+      "type": "QCM",
+      "question": "Which expresses cause and is followed by a noun?",
+      "choix": [
+        "Because of / due to",
+        "Because",
+        "Since (time)",
+        "So that"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Because of the veto (nom) vs because the veto blocks decisions (proposition)."
+    },
+    {
+      "id": "lnk13",
+      "type": "QCR",
+      "question": "Which linking words introduce an example?",
+      "choix": [
+        "For instance",
+        "For example",
+        "Such as",
+        "Namely",
+        "Therefore"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explication": "Therefore introduit une conséquence."
+    },
+    {
+      "id": "lnk14",
+      "type": "QCR",
+      "question": "Which ones introduce a conclusion?",
+      "choix": [
+        "To sum up",
+        "All in all",
+        "In conclusion",
+        "On the whole",
+        "Moreover"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explication": "On peut aussi dire : to conclude, all things considered, ultimately."
+    },
+    {
+      "id": "lnk15",
+      "type": "QCM",
+      "question": "« Indeed » means:",
+      "choix": [
+        "En effet, de fait (renforce)",
+        "Cependant",
+        "Par ailleurs",
+        "Enfin"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "The UN is weakened; indeed, the Security Council is often paralyzed."
+    },
+    {
+      "id": "lnk16",
+      "type": "QCM",
+      "question": "False friend: « eventually » means:",
+      "choix": [
+        "Finalement, en fin de compte",
+        "Éventuellement, peut-être",
+        "Toujours",
+        "Rarement"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Pour « éventuellement », dis possibly ou perhaps."
+    },
+    {
+      "id": "lnk17",
+      "type": "QCM",
+      "question": "False friend: « actually » means:",
+      "choix": [
+        "En fait, en réalité",
+        "Actuellement",
+        "Activement",
+        "Récemment"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Pour « actuellement », dis currently ou at present."
+    },
+    {
+      "id": "lnk18",
+      "type": "QCM",
+      "question": "« Nevertheless » is closest to:",
+      "choix": [
+        "However / nonetheless",
+        "Moreover",
+        "Therefore",
+        "For instance"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "lnk19",
+      "type": "QCM",
+      "question": "« Yet » used as a linking word means:",
+      "choix": [
+        "and yet = pourtant",
+        "déjà",
+        "donc",
+        "ensuite"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "The UN has no army, yet it maintains peace in many regions."
+    },
+    {
+      "id": "lnk20",
+      "type": "QCM",
+      "question": "« Besides » means:",
+      "choix": [
+        "En outre, d'ailleurs (addition)",
+        "À côté de, physiquement",
+        "Malgré",
+        "Sauf"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Ne pas confondre avec « beside » (à côté de) au singulier."
+    },
+    {
+      "id": "lnk21",
+      "type": "QCM",
+      "question": "« Conversely » / « by contrast » express:",
+      "choix": [
+        "An opposite idea",
+        "An addition",
+        "A cause",
+        "An example"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "lnk22",
+      "type": "QCM",
+      "question": "To add a second argument, the formal sequence is:",
+      "choix": [
+        "Firstly… Secondly… Finally",
+        "Firstly… Two… End",
+        "First… After… After",
+        "One… Other… Last"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Variantes : first of all, then, next, lastly, last but not least."
+    },
+    {
+      "id": "lnk23",
+      "type": "QCM",
+      "question": "« As far as … is concerned » means:",
+      "choix": [
+        "En ce qui concerne…",
+        "Aussi loin que…",
+        "Tant que…",
+        "Dès que…"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Synonymes : regarding, concerning, with regard to, as for."
+    },
+    {
+      "id": "lnk24",
+      "type": "QCM",
+      "question": "« In other words » means:",
+      "choix": [
+        "Autrement dit",
+        "Dans d'autres mots du texte",
+        "Par ailleurs",
+        "Enfin"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Synonyme : that is to say (i.e.)."
+    },
+    {
+      "id": "lnk25",
+      "type": "QCM",
+      "question": "« Not only… but also… »:",
+      "choix": [
+        "Non seulement… mais aussi…",
+        "Ni… ni…",
+        "Soit… soit…",
+        "Pas du tout…"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Attention à l'inversion si la phrase commence par Not only : Not only does the UN keep peace, but it also provides aid."
+    },
+    {
+      "id": "lnk26",
+      "type": "QCM",
+      "question": "« Meanwhile » means:",
+      "choix": [
+        "Pendant ce temps",
+        "Autrefois",
+        "Bientôt",
+        "Néanmoins"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Autres marqueurs de temps : then, afterwards, since then, at the same time."
+    },
+    {
+      "id": "lnk27",
+      "type": "QCM",
+      "question": "« Admittedly » / « granted » are used to:",
+      "choix": [
+        "Concede a point before objecting",
+        "Add an example",
+        "Conclude",
+        "Express a cause"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Admittedly, the UN is imperfect; however, it remains indispensable."
+    },
+    {
+      "id": "lnk28",
+      "type": "QCM",
+      "question": "« Thus » and « hence » mean:",
+      "choix": [
+        "Ainsi, donc",
+        "Cependant",
+        "De plus",
+        "Par exemple"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Registre soutenu, fréquents à l'écrit."
+    },
+    {
+      "id": "lnk29",
+      "type": "QCR",
+      "question": "Which words express ADDITION?",
+      "choix": [
+        "Moreover",
+        "Furthermore",
+        "In addition",
+        "What's more",
+        "However"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explication": "However exprime un contraste."
+    },
+    {
+      "id": "lnk30",
+      "type": "QCR",
+      "question": "Which words express CONTRAST or CONCESSION?",
+      "choix": [
+        "However",
+        "Nevertheless",
+        "Although",
+        "Whereas",
+        "Therefore"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explication": "Therefore exprime une conséquence."
+    },
+    {
+      "id": "lnk31",
+      "type": "QCR",
+      "question": "Which words express CONSEQUENCE?",
+      "choix": [
+        "Therefore",
+        "As a result",
+        "Consequently",
+        "That is why",
+        "Namely"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explication": "Namely = à savoir (précision)."
+    },
+    {
+      "id": "lnk32",
+      "type": "QCM",
+      "question": "To open an essay, which is best?",
+      "choix": [
+        "To begin with / First of all",
+        "So",
+        "And",
+        "Well"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "lnk33",
+      "type": "QCM",
+      "question": "« Since » can mean:",
+      "choix": [
+        "Depuis (time) or since = as = puisque (cause)",
+        "Seulement",
+        "Sauf",
+        "Jusqu'à"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Since the Council is paralyzed, reform is discussed."
+    },
+    {
+      "id": "lnk34",
+      "type": "QCM",
+      "question": "« While » can express:",
+      "choix": [
+        "Time (pendant que) and contrast (alors que)",
+        "Cause only",
+        "Consequence only",
+        "Example only"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "lnk35",
+      "type": "QCM",
+      "question": "« Last but not least » means:",
+      "choix": [
+        "Enfin, et ce n'est pas le moins important",
+        "Le dernier et le pire",
+        "À la fin seulement",
+        "Au moins"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "lnk36",
+      "type": "QCM",
+      "question": "Choose the correct sentence:",
+      "choix": [
+        "Moreover, the UN faces a budget crisis",
+        "Moreover the UN face a budget crisis",
+        "In more of that, the UN faces a budget crisis",
+        "Moreover of that, the UN faces a crisis"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Les connecteurs en tête de phrase sont suivis d'une virgule."
+    },
+    {
+      "id": "lnk37",
+      "type": "QCR",
+      "question": "Useful phrases to structure an argumentative essay:",
+      "choix": [
+        "It can be argued that…",
+        "One may wonder whether…",
+        "This raises the question of…",
+        "All things considered…",
+        "In more of that…"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explication": "« We can ask ourselves whether… » est correct mais lourd ; préfère one may wonder whether."
+    }
+  ]
+}

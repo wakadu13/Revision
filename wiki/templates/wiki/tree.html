@@ -1,0 +1,13 @@
+<ul>
+  {% for folder in node.folders %}
+  <li class="tree-folder">
+    <details data-path="{{ folder.path }}">
+      <summary>{{ folder.name }}</summary>
+      {% include "wiki/tree.html" with node=folder %}
+    </details>
+  </li>
+  {% endfor %}
+  {% for n in node.notes %}
+  <li><a class="tree-note{% if n == note %} active{% endif %}" href="{{ n.url }}">{{ n.name }}</a></li>
+  {% endfor %}
+</ul>

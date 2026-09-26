@@ -1,0 +1,14 @@
+{% extends "wiki/base.html" %}
+{% block title %}Tags{% endblock %}
+{% block content %}
+<article class="note">
+  <h1 class="note-title">Tags</h1>
+  {% if tags %}
+  <ul class="tag-list">
+    {% for t, count in tags %}<li><a class="tag" href="{% url 'wiki:tag' t %}">#{{ t }}</a> <span class="muted">{{ count }}</span></li>{% endfor %}
+  </ul>
+  {% else %}
+  <p class="muted">Aucun tag pour l'instant.</p>
+  {% endif %}
+</article>
+{% endblock %}

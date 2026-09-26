@@ -1,0 +1,42 @@
+{% extends "wiki/base.html" %}
+{% block title %}{{ note.title }}{% endblock %}
+{% block content %}
+<article class="note">
+  {% if note.folders %}
+  <p class="breadcrumb">{% for part in note.folders %}{{ part }} / {% endfor %}</p>
+  {% endif %}
+  <div class="note-header">
+    <h1 class="note-title">{{ note.title }}</h1>
+    {% if can_edit %}<a class="button" href="{% url 'wiki:edit' note.key %}">Modifier</a>{% endif %}
+  </div>
+  {% if note.properties or note.tags or note.aliases %}
+  <dl class="properties">
+    {% if note.aliases %}<div><dt>Alias</dt><dd>{{ note.aliases|join:", " }}</dd></div>{% endif %}
+    {% if note.tags %}<div><dt>Tags</dt><dd>{% for t in note.tags %}<a class="tag" href="{% url 'wiki:tag' t|lower %}">#{{ t }}</a> {% endfor %}</dd></div>{% endif %}
+    {% for key, value in note.properties %}<div><dt>{{ key }}</dt><dd>{{ value }}</dd></div>{% endfor %}
+  </dl>
+  {% endif %}
+  <div class="markdown">
+    {{ content|safe }}
+  </div>
+  <footer class="note-footer">Modifiée le {{ note.modified|date:"d/m/Y à H:i" }} · <code>{{ note.path }}</code></footer>
+</article>
+{% endblock %}
+{% block aside %}
+  {% if toc %}
+  <section class="panel">
+    <h2>Sommaire</h2>
+    {{ toc|safe }}
+  </section>
+  {% endif %}
+  <section class="panel">
+    <h2>Rétroliens</h2>
+    {% if backlinks %}
+    <ul class="backlinks">
+      {% for n in backlinks %}<li><a href="{{ n.url }}">{{ n.title }}</a></li>{% endfor %}
+    </ul>
+    {% else %}
+    <p class="muted">Aucune note ne pointe ici.</p>
+    {% endif %}
+  </section>
+{% endblock %}

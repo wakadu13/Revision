@@ -1,0 +1,558 @@
+{
+  "titre": "UN 2 — The United Nations",
+  "description": "Histoire, organes, Secrétaire général, missions, objectifs et limites de l'ONU",
+  "questions": [
+    {
+      "id": "unc01",
+      "type": "QCM",
+      "question": "When was the UN founded?",
+      "choix": [
+        "1919",
+        "1945",
+        "1948",
+        "1955"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Charte signée le 26 juin 1945 (San Francisco), en vigueur le 24 octobre 1945 (UN Day)."
+    },
+    {
+      "id": "unc02",
+      "type": "QCM",
+      "question": "How many countries signed the Charter in 1945?",
+      "choix": [
+        "51",
+        "100",
+        "193",
+        "15"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "51 membres fondateurs."
+    },
+    {
+      "id": "unc03",
+      "type": "QCM",
+      "question": "How many Member States does the UN have today?",
+      "choix": [
+        "51",
+        "150",
+        "193",
+        "200"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Dernier admis : Soudan du Sud (2011)."
+    },
+    {
+      "id": "unc04",
+      "type": "QCM",
+      "question": "Which organization did the UN replace?",
+      "choix": [
+        "The League of Nations",
+        "NATO",
+        "The European Union",
+        "The Red Cross"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "SDN (Société des Nations), créée en 1919, qui a échoué à empêcher la 2e Guerre mondiale."
+    },
+    {
+      "id": "unc05",
+      "type": "QCM",
+      "question": "Where is UN headquarters?",
+      "choix": [
+        "Geneva",
+        "New York",
+        "The Hague",
+        "Paris"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Autres sièges : Genève, Vienne, Nairobi. La CIJ est à La Haye."
+    },
+    {
+      "id": "unc06",
+      "type": "QCM",
+      "question": "Who is the UN Secretary-General (September 2026)?",
+      "choix": [
+        "Ban Ki-moon",
+        "António Guterres",
+        "Kofi Annan",
+        "Michelle Bachelet"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "António Guterres (Portugal), 9e SG, en poste depuis le 1er janvier 2017. Son 2e mandat se termine le 31 décembre 2026 ; la sélection de son successeur est en cours. Correction : « Guterres », pas « Guteres »."
+    },
+    {
+      "id": "unc07",
+      "type": "QCM",
+      "question": "How is the Secretary-General appointed?",
+      "choix": [
+        "Elected by all citizens",
+        "Appointed by the General Assembly on the recommendation of the Security Council",
+        "Chosen by the USA",
+        "Appointed by the ICJ"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Correction de tes notes : ce n'est pas l'Assemblée seule. Article 97 de la Charte. Chaque membre permanent peut donc bloquer un candidat."
+    },
+    {
+      "id": "unc08",
+      "type": "QCM",
+      "question": "Length of a Secretary-General's term?",
+      "choix": [
+        "2 years",
+        "4 years",
+        "5 years, renewable",
+        "Life"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "En pratique, 2 mandats maximum."
+    },
+    {
+      "id": "unc09",
+      "type": "QCR",
+      "question": "What are the roles of the Secretary-General?",
+      "choix": [
+        "Head the Secretariat (chief administrative officer)",
+        "Bring threats to peace to the attention of the Security Council",
+        "Act as a mediator / « moral voice » (good offices)",
+        "Command a UN army",
+        "Veto Security Council resolutions"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "L'ONU n'a pas d'armée propre et le SG n'a pas de veto. Il consulte les dirigeants et voyage beaucoup (diplomatie)."
+    },
+    {
+      "id": "unc10",
+      "type": "QCM",
+      "question": "« The UN was not created to take mankind to heaven, but to save humanity from … »",
+      "choix": [
+        "war",
+        "hell",
+        "itself",
+        "poverty"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Citation de Dag Hammarskjöld, 2e Secrétaire général (1953-1961)."
+    },
+    {
+      "id": "unc11",
+      "type": "QCM",
+      "question": "How many main bodies (principal organs) does the UN have?",
+      "choix": [
+        "3",
+        "5",
+        "6",
+        "10"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "General Assembly, Security Council, ECOSOC, Trusteeship Council, ICJ, Secretariat."
+    },
+    {
+      "id": "unc12",
+      "type": "QCM",
+      "question": "Which principal organ has suspended its activities since 1994?",
+      "choix": [
+        "Trusteeship Council",
+        "ECOSOC",
+        "Secretariat",
+        "General Assembly"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Conseil de tutelle : son dernier territoire (Palaos) est devenu indépendant en 1994."
+    },
+    {
+      "id": "unc13",
+      "type": "QCM",
+      "question": "In the General Assembly, each Member State has:",
+      "choix": [
+        "a number of votes based on population",
+        "one vote",
+        "a vote based on its contribution",
+        "no vote"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« One country, one vote », quelle que soit sa taille."
+    },
+    {
+      "id": "unc14",
+      "type": "QCM",
+      "question": "Are General Assembly resolutions legally binding?",
+      "choix": [
+        "Yes, always",
+        "No, they are recommendations",
+        "Only for the P5",
+        "Only in wartime"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Elles ont un poids politique et moral. Seules certaines décisions du Conseil de sécurité sont contraignantes."
+    },
+    {
+      "id": "unc15",
+      "type": "QCM",
+      "question": "How many members does the Security Council have?",
+      "choix": [
+        "5",
+        "10",
+        "15",
+        "193"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "5 permanents + 10 non permanents."
+    },
+    {
+      "id": "unc16",
+      "type": "QCR",
+      "question": "Who are the five permanent members (P5)?",
+      "choix": [
+        "USA",
+        "United Kingdom",
+        "France",
+        "Russia",
+        "China",
+        "Germany",
+        "India"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "explication": "Les vainqueurs de la Seconde Guerre mondiale."
+    },
+    {
+      "id": "unc17",
+      "type": "QCM",
+      "question": "Non-permanent members of the Security Council are:",
+      "choix": [
+        "elected for 2 years and cannot be re-elected immediately",
+        "appointed for life",
+        "elected for 5 years",
+        "chosen by the P5"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Élus par l'Assemblée générale ; ils n'ont pas de droit de veto."
+    },
+    {
+      "id": "unc18",
+      "type": "QCM",
+      "question": "Why is the veto often described as « poison » for the Security Council?",
+      "choix": [
+        "One permanent member can block any decision, which paralyzes the Council",
+        "It is too expensive",
+        "It gives power to small countries",
+        "It is secret"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Cf. document « Rethinking the UN »."
+    },
+    {
+      "id": "unc19",
+      "type": "QCM",
+      "question": "The US vetoed a Kuwaiti draft resolution (2018) that condemned:",
+      "choix": [
+        "Israel's use of force against Palestinian civilians in Gaza",
+        "Russia's action in Syria",
+        "North Korea's missile tests",
+        "Iran's nuclear programme"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Exemple de veto protégeant un allié."
+    },
+    {
+      "id": "unc20",
+      "type": "QCM",
+      "question": "Russia used its veto many times (often with China) to block action against:",
+      "choix": [
+        "Bashar al-Assad's regime in Syria",
+        "the USA",
+        "Israel",
+        "Ukraine's government"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Russie, alliée d'Assad, a bloqué de nombreuses résolutions sur la Syrie depuis 2011."
+    },
+    {
+      "id": "unc21",
+      "type": "QCR",
+      "question": "Which regions have NO permanent member on the Security Council?",
+      "choix": [
+        "Africa",
+        "Latin America",
+        "Europe",
+        "Asia"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "Argument central pour réformer le Conseil : sa composition reflète 1945, pas le monde actuel."
+    },
+    {
+      "id": "unc22",
+      "type": "QCM",
+      "question": "The Economic and Social Council (ECOSOC):",
+      "choix": [
+        "coordinates economic, social and environmental work of the UN",
+        "judges war criminals",
+        "commands peacekeepers",
+        "elects the Pope"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Correction : « Economic and Social Council », pas « Union economic… ». 54 membres élus pour 3 ans. Lien avec les agences et ONG, suivi des Objectifs de développement durable."
+    },
+    {
+      "id": "unc23",
+      "type": "QCM",
+      "question": "The International Court of Justice (ICJ):",
+      "choix": [
+        "settles legal disputes between States",
+        "judges individuals for genocide",
+        "is based in New York",
+        "has 193 judges"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Organe judiciaire principal de l'ONU, à La Haye. 15 juges élus pour 9 ans. Donne aussi des avis consultatifs."
+    },
+    {
+      "id": "unc24",
+      "type": "QCM",
+      "question": "Is the International Criminal Court (ICC) a UN body?",
+      "choix": [
+        "Yes, one of the 6 main bodies",
+        "No, it is an independent court created by the Rome Statute",
+        "Yes, part of the Secretariat",
+        "It is the same as the ICJ"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Correction importante : la CPI est indépendante (Statut de Rome 1998, en fonction depuis 2002, La Haye). Elle juge des INDIVIDUS ; la CIJ juge des ÉTATS. Plusieurs grandes puissances (USA, Russie, Chine) n'en sont pas membres."
+    },
+    {
+      "id": "unc25",
+      "type": "QCM",
+      "question": "ICJ vs ICC — who is judged?",
+      "choix": [
+        "ICJ: States / ICC: individuals",
+        "ICJ: individuals / ICC: States",
+        "Both judge States",
+        "Both judge individuals"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "unc26",
+      "type": "QCR",
+      "question": "What are the main objectives (purposes) of the UN?",
+      "choix": [
+        "Maintain international peace and security",
+        "Protect human rights",
+        "Deliver humanitarian aid",
+        "Promote sustainable development",
+        "Uphold international law",
+        "Run national governments"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "explication": "Cf. article 1 de la Charte ; l'ONU respecte la souveraineté des États."
+    },
+    {
+      "id": "unc27",
+      "type": "QCR",
+      "question": "What types of missions does the UN carry out?",
+      "choix": [
+        "Peacekeeping (blue helmets)",
+        "Emergency aid for victims of conflicts and disasters",
+        "Election monitoring and mediation",
+        "Monitoring human rights",
+        "Invading countries to change their government"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explication": "Correction : « established peace » → « keep / build peace ». Les casques bleus sont déployés par le Conseil de sécurité, avec l'accord des parties."
+    },
+    {
+      "id": "unc28",
+      "type": "QCM",
+      "question": "The World Food Programme (WFP):",
+      "choix": [
+        "provides food assistance to millions of people in many countries",
+        "finances banks",
+        "trains armies",
+        "judges States"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "L'une des plus grandes agences humanitaires. Prix Nobel de la paix 2020."
+    },
+    {
+      "id": "unc29",
+      "type": "QCM",
+      "question": "Which document (1948) sets out universal human rights?",
+      "choix": [
+        "The Universal Declaration of Human Rights",
+        "The Rome Statute",
+        "The UN Charter",
+        "The Paris Agreement"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Adoptée à Paris par l'Assemblée générale le 10 décembre 1948."
+    },
+    {
+      "id": "unc30",
+      "type": "QCR",
+      "question": "What limits the UN's actions?",
+      "choix": [
+        "The veto of the P5",
+        "No army of its own: it depends on troops lent by States",
+        "Dependence on Member States' funding",
+        "State sovereignty",
+        "Non-binding General Assembly resolutions",
+        "Its lack of any Member States"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "explication": "Autres : lenteur bureaucratique, manque de représentativité du Conseil de sécurité, difficulté à faire appliquer les décisions."
+    },
+    {
+      "id": "unc31",
+      "type": "QCM",
+      "question": "The UN's power lies in:",
+      "choix": [
+        "Member States working together and reaching consensus",
+        "its army",
+        "its nuclear weapons",
+        "its central bank"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "unc32",
+      "type": "QCM",
+      "question": "What goals, adopted in 2015, guide UN development work until 2030?",
+      "choix": [
+        "The Sustainable Development Goals (SDGs)",
+        "The Millennium Plan",
+        "The Kyoto Goals",
+        "The Marshall Plan"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "17 ODD : pauvreté, faim, santé, éducation, climat…"
+    },
+    {
+      "id": "unc33",
+      "type": "QCM",
+      "question": "Which body can adopt legally binding decisions, such as sanctions or authorizing force?",
+      "choix": [
+        "The Security Council",
+        "The General Assembly",
+        "ECOSOC",
+        "The Secretariat"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Chapitre VII de la Charte."
+    },
+    {
+      "id": "unc34",
+      "type": "QCM",
+      "question": "The Secretariat is:",
+      "choix": [
+        "the UN's administrative staff, headed by the Secretary-General",
+        "a court",
+        "a council of 15 States",
+        "a humanitarian agency"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Des dizaines de milliers d'employés dans le monde."
+    },
+    {
+      "id": "unc35",
+      "type": "QCM",
+      "question": "Why do small / poor countries value the UN?",
+      "choix": [
+        "It gives them a voice (one vote each) and aid",
+        "It pays their debts",
+        "It makes them permanent members",
+        "It protects them with its own army"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    }
+  ]
+}

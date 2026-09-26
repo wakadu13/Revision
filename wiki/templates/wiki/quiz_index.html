@@ -1,0 +1,64 @@
+{% extends "wiki/base.html" %}
+{% block title %}QCM{% endblock %}
+{% block content %}
+<article class="note">
+  <h1 class="note-title">QCM de révision</h1>
+  <p class="muted">{{ total_sets }} set{{ total_sets|pluralize }} · {{ total_due }} question{{ total_due|pluralize }} à réviser</p>
+
+  <div class="quiz-actions">
+    <a class="button primary" href="{% url 'wiki:quiz_play' %}?revision=1">Révision intelligente</a>
+    <a class="button" href="{% url 'wiki:quiz_stats' %}">Statistiques</a>
+  </div>
+
+  {% if errors %}
+  <div class="callout" data-callout="warning">
+    <div class="callout-title">Sets ignorés (JSON invalide)</div>
+    <div class="callout-content"><ul>{% for e in errors %}<li>{{ e }}</li>{% endfor %}</ul></div>
+  </div>
+  {% endif %}
+
+  {% for cat in categories %}
+  <section class="quiz-category">
+    <h2>{{ cat.nom }}</h2>
+    <ul class="quiz-sets">
+      {% for entry in cat.sets %}
+      <li class="quiz-set">
+        <div class="quiz-set-head">
+          <span class="quiz-set-title">{{ entry.set.titre }}</span>
+          <span class="muted">{{ entry.summary.total }} question{{ entry.summary.total|pluralize }}</span>
+        </div>
+        {% if entry.set.description %}<p class="muted quiz-set-desc">{{ entry.set.description }}</p>{% endif %}
+        <div class="mastery" title="Maîtrise {{ entry.summary.pct_maitrise|floatformat:0 }} %">
+          <div class="mastery-fill" style="width: {{ entry.summary.pct_maitrise|floatformat:0 }}%"></div>
+        </div>
+        <div class="quiz-set-foot">
+          <span class="muted">Maîtrise {{ entry.summary.pct_maitrise|floatformat:0 }} %
+            {% if entry.summary.a_reviser %}· <b>{{ entry.summary.a_reviser }}</b> à réviser{% else %}· à jour ✓{% endif %}</span>
+          <span class="quiz-set-buttons">
+            {% if entry.summary.a_reviser %}<a class="button small primary" href="{% url 'wiki:quiz_play' %}?set={{ entry.set.id|urlencode }}&mode=review">Réviser</a>{% endif %}
+            <a class="button small" href="{% url 'wiki:quiz_play' %}?set={{ entry.set.id|urlencode }}&mode=all">Tout ({{ entry.summary.total }})</a>
+          </span>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% empty %}
+  <div class="callout" data-callout="info">
+    <div class="callout-title">Aucun set de QCM pour l'instant</div>
+    <div class="callout-content">
+      <p>Ajoutez un fichier <code>.json</code> dans le coffre pour créer un set. Le nom du dossier
+      qui le contient devient sa catégorie. Exemple minimal :</p>
+      <pre><code>{
+  "titre": "Mon premier set",
+  "questions": [
+    {"type": "QCM", "question": "2 + 2 = ?", "choix": ["3", "4", "5"], "reponses": [1]}
+  ]
+}</code></pre>
+      <p>Types disponibles : <code>QCM</code>, <code>QCR</code> (plusieurs bonnes réponses),
+      <code>TROU</code> (texte à trous) et <code>FLASHCARD</code> (recto/verso).</p>
+    </div>
+  </div>
+  {% endfor %}
+</article>
+{% endblock %}

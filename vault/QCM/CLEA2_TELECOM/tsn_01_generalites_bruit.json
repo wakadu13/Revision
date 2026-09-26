@@ -1,0 +1,380 @@
+{
+  "titre": "TSN 1 — Généralités et bruit",
+  "description": "Définitions, avantages/inconvénients du numérique, modèle de bruit, TCL, SNR",
+  "questions": [
+    {
+      "id": "gen01",
+      "type": "QCM",
+      "question": "Un signal numérique est un signal :",
+      "choix": [
+        "à temps continu et valeurs continues",
+        "à temps discret et valeurs continues",
+        "à temps discret et valeurs quantifiées",
+        "à temps continu et valeurs quantifiées"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Numérique = temps discret (échantillonné) ET valeurs quantifiées. Analogique = temps continu, valeurs continues."
+    },
+    {
+      "id": "gen02",
+      "type": "QCM",
+      "question": "Selon le cours, un signal est :",
+      "choix": [
+        "le support physique d'une information",
+        "une fonction toujours périodique",
+        "un bruit parasite",
+        "une suite de bits uniquement"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Un signal est le support physique d'une information, pour toute mesure ou transmission d'une source vers un destinataire."
+    },
+    {
+      "id": "gen03",
+      "type": "QCR",
+      "question": "Quels sont des avantages du traitement numérique du signal ?",
+      "choix": [
+        "Immunité aux interférences",
+        "Pas de dérive des composants",
+        "Bruit de quantification",
+        "Reproductibilité",
+        "Repliement de spectre"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "Le bruit de quantification et le repliement de spectre sont des inconvénients."
+    },
+    {
+      "id": "gen04",
+      "type": "QCR",
+      "question": "Quels sont des inconvénients du traitement numérique du signal ?",
+      "choix": [
+        "Bruit de quantification",
+        "Latence / temps de calcul",
+        "Stockage facilité",
+        "Plage dynamique limitée",
+        "Interopérabilité"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "Stockage et interopérabilité sont des avantages."
+    },
+    {
+      "id": "gen05",
+      "type": "QCM",
+      "question": "Quelle est la tendance actuelle en conception de récepteurs ?",
+      "choix": [
+        "Numériser le plus tard possible",
+        "Numériser le plus tôt possible",
+        "Ne jamais numériser",
+        "Numériser uniquement l'image"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Tendance : numériser le plus tôt possible pour bénéficier au maximum des avantages du numérique."
+    },
+    {
+      "id": "gen06",
+      "type": "QCM",
+      "question": "Qu'est-ce qu'un bruit ?",
+      "choix": [
+        "Ce qui porte l'information utile",
+        "Ce qui ne porte pas l'information utile et parasite le signal",
+        "Un signal déterministe connu",
+        "La partie basse fréquence du signal"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le bruit est ce qui n'est pas le signal : il ne porte pas l'information utile, le parasite, et est par nature inconnu."
+    },
+    {
+      "id": "gen07",
+      "type": "QCR",
+      "question": "Quelles propriétés caractérisent un bruit ?",
+      "choix": [
+        "Il parasite le signal",
+        "Il est par nature inconnu",
+        "Il est, dans une certaine mesure, imprévisible",
+        "Il est parfaitement déterministe",
+        "Il porte l'information utile"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": ""
+    },
+    {
+      "id": "gen08",
+      "type": "QCM",
+      "question": "Dans le modèle $y[n]=s[n]+b[n]$, pourquoi ne peut-on pas calculer $y[n]-b[n]$ pour retrouver $s[n]$ ?",
+      "choix": [
+        "Parce que $b[n]$ est inconnu",
+        "Parce que la soustraction n'est pas linéaire",
+        "Parce que $s[n]$ est aléatoire",
+        "Parce que $y[n]$ n'est pas mesuré"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Le bruit est inconnu : on ne connaît que sa loi. On utilise donc une approche statistique."
+    },
+    {
+      "id": "gen09",
+      "type": "QCM",
+      "question": "Si $y[n]=s[n]+b[n]$ avec $b[n]\\sim\\mathcal{N}(\\mu,\\sigma^2)$, que vaut $\\mathbb{E}[y[n]]$ ?",
+      "choix": [
+        "$s[n]$",
+        "$s[n]+\\mu$",
+        "$s[n]+\\sigma^2$",
+        "$\\mu$"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le signal utile est déterministe et le bruit a une moyenne $\\mu$ : $\\mathbb{E}[y[n]]=s[n]+\\mu$."
+    },
+    {
+      "id": "gen10",
+      "type": "QCM",
+      "question": "Que signifie BABG ?",
+      "choix": [
+        "Bruit additif blanc gaussien",
+        "Bruit aléatoire binaire généralisé",
+        "Bande à bruit gaussien",
+        "Bruit additif basse gamme"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "gen11",
+      "type": "QCM",
+      "question": "Dans l'écriture vectorielle $\\mathbf{b}\\sim\\mathcal{N}(\\mu\\mathbf{1}_N,\\sigma^2\\mathbf{I}_N)$, la matrice de covariance $\\sigma^2\\mathbf{I}_N$ signifie que :",
+      "choix": [
+        "les échantillons de bruit sont décorrélés et de même variance",
+        "le bruit est nul",
+        "tous les échantillons de bruit sont égaux",
+        "le bruit est corrélé d'un échantillon à l'autre"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Une covariance diagonale et constante signifie des échantillons décorrélés (bruit blanc) de même variance $\\sigma^2$."
+    },
+    {
+      "id": "gen12",
+      "type": "QCR",
+      "question": "Quels exemples relèvent d'une incertitude épistémique ?",
+      "choix": [
+        "Des erreurs de mesure",
+        "Un modèle $y=f(s)+b$ avec $f$ en partie inconnue",
+        "La physique quantique",
+        "Le manque de connaissance des paramètres du système"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "L'incertitude épistémique vient d'un manque de connaissance. La physique quantique relève de l'incertitude aléatoire (variabilité propre)."
+    },
+    {
+      "id": "gen13",
+      "type": "QCM",
+      "question": "L'incertitude aléatoire correspond à :",
+      "choix": [
+        "un manque de connaissance du système",
+        "la variabilité propre du système, non reproductible",
+        "une erreur de calcul",
+        "un défaut de l'ordinateur"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Exemple : $\\mathbf{s}\\sim\\mathcal{N}(\\mathbf{m}_s,\\mathbf{C}_s)$, variabilité intrinsèque."
+    },
+    {
+      "id": "gen14",
+      "type": "QCM",
+      "question": "Quel est l'énoncé du théorème central limite (avec $\\bar{X}_n$ la moyenne empirique) ?",
+      "choix": [
+        "$\\sqrt{n}\\,(\\bar{X}_n-\\mu)/\\sigma \\to \\mathcal{N}(0,1)$",
+        "$\\bar{X}_n \\to 0$",
+        "$n\\,\\bar{X}_n \\to \\mathcal{N}(\\mu,\\sigma^2)$",
+        "$\\bar{X}_n \\to \\mathcal{N}(0,n)$"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Convergence en loi vers une gaussienne centrée réduite."
+    },
+    {
+      "id": "gen15",
+      "type": "QCR",
+      "question": "Quelles sont les hypothèses du théorème central limite ?",
+      "choix": [
+        "Variables indépendantes",
+        "Variables identiquement distribuées",
+        "Variance finie et non nulle",
+        "Variables obligatoirement gaussiennes"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Les variables n'ont pas besoin d'être gaussiennes : c'est justement l'intérêt du théorème."
+    },
+    {
+      "id": "gen16",
+      "type": "QCM",
+      "question": "Pourquoi la loi normale est-elle omniprésente pour modéliser le bruit ?",
+      "choix": [
+        "Car un bruit est souvent la somme de nombreuses petites contributions indépendantes (TCL)",
+        "Car elle est la seule loi continue",
+        "Car elle a une moyenne toujours nulle",
+        "Car elle est bornée"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "gen17",
+      "type": "QCM",
+      "question": "Le rapport signal sur bruit en décibels s'écrit :",
+      "choix": [
+        "$10\\log_{10}(P_s/P_b)$",
+        "$20\\log_{10}(P_s/P_b)$",
+        "$P_s-P_b$",
+        "$\\log_{2}(P_s/P_b)$"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "En puissance : $10\\log_{10}$. (On utilise $20\\log_{10}$ pour un rapport d'amplitudes.)"
+    },
+    {
+      "id": "gen18",
+      "type": "QCM",
+      "question": "Si $P_s=100\\,P_b$, le SNR vaut :",
+      "choix": [
+        "10 dB",
+        "20 dB",
+        "40 dB",
+        "100 dB"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "$10\\log_{10}(100)=20$ dB."
+    },
+    {
+      "id": "gen19",
+      "type": "QCM",
+      "question": "Doubler la puissance du signal (bruit inchangé) augmente le SNR de :",
+      "choix": [
+        "1 dB",
+        "2 dB",
+        "3 dB",
+        "6 dB"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "$10\\log_{10}(2)\\approx3$ dB."
+    },
+    {
+      "id": "gen20",
+      "type": "QCM",
+      "question": "On moyenne $N$ mesures indépendantes $y_i=s+b_i$ avec $b_i$ de variance $\\sigma^2$. La variance du bruit résiduel vaut :",
+      "choix": [
+        "$\\sigma^2$",
+        "$N\\sigma^2$",
+        "$\\sigma^2/N$",
+        "$\\sigma^2/\\sqrt{N}$"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "La variance de la moyenne de $N$ variables indépendantes est divisée par $N$."
+    },
+    {
+      "id": "gen21",
+      "type": "QCM",
+      "question": "Lequel ne fait PAS partie de « traiter un signal » au sens du cours ?",
+      "choix": [
+        "Extraire l'information utile",
+        "La mettre en forme pour l'analyser",
+        "La nettoyer des parasites",
+        "Créer de l'information absente du signal"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": ""
+    },
+    {
+      "id": "gen22",
+      "type": "QCR",
+      "question": "Quelles sont des applications du traitement du signal numérique ?",
+      "choix": [
+        "Compression MP3 / JPEG / MP4",
+        "Imagerie radar SAR",
+        "Télécommunications numériques",
+        "Navigation et robotique"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explication": "Toutes ces applications sont citées dans le cours."
+    },
+    {
+      "id": "gen23",
+      "type": "QCM",
+      "question": "Un signal noté $s[m,n]\\in\\mathcal{M}_{M,N}(\\mathbb{R})$ représente typiquement :",
+      "choix": [
+        "un son mono",
+        "une image",
+        "une constante",
+        "une impulsion de Dirac"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Deux indices de même nature (spatiaux) : image."
+    },
+    {
+      "id": "gen24",
+      "type": "QCM",
+      "question": "Un signal peut-il exister uniquement sous forme numérique ?",
+      "choix": [
+        "Oui",
+        "Non, il a toujours une origine analogique"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Oui, le cours le précise (ex. données générées par un calculateur)."
+    }
+  ]
+}

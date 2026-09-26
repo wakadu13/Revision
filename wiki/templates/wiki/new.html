@@ -1,0 +1,22 @@
+{% extends "wiki/base.html" %}
+{% block title %}Nouvelle page{% endblock %}
+{% block content %}
+<article class="note">
+  <h1 class="note-title">Nouvelle page</h1>
+  {% if error %}
+  <div class="callout" data-callout="danger"><div class="callout-title">{{ error }}</div></div>
+  {% endif %}
+  <form method="get" class="form">
+    <label for="name">Nom de la page</label>
+    <input type="text" id="name" name="name" value="{{ name }}" required autofocus placeholder="Ex. : Compte rendu réunion">
+    <label for="folder">Dossier</label>
+    <select id="folder" name="folder">
+      <option value="">(racine du wiki)</option>
+      {% for f in folders %}<option value="{{ f }}"{% if f == folder %} selected{% endif %}>{{ f }}</option>{% endfor %}
+    </select>
+    <div class="editor-actions">
+      <button type="submit" class="button primary">Continuer</button>
+    </div>
+  </form>
+</article>
+{% endblock %}
