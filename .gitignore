@@ -174,3 +174,13 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 
+# ---> Obsidian / Proton Drive
+# Fichiers de conflit de synchronisation (Proton Drive / Obsidian LiveSync)
+*(#_Edit_conflict_*
+*_conflict-*
+# Caches et état de l'espace de travail Obsidian (regénérés en permanence)
+vault/.obsidian/workspace.json
+vault/.obsidian/workspace*.json
+vault/.obsidian/cache
+vault/.trash/
+
