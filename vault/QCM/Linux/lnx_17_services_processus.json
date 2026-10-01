@@ -1,0 +1,136 @@
+{
+  "titre": "Linux 17 — Gestion des services et des processus",
+  "description": "systemd, systemctl, journalctl, PID/PPID, signaux, jobs en arrière-plan",
+  "questions": [
+    {
+      "id": "svc01",
+      "type": "QCM",
+      "question": "Par quelle lettre les noms des daemons se terminent-ils souvent ?",
+      "choix": ["s", "d", "x", "p"],
+      "reponses": [1],
+      "explication": "Exemples : sshd, systemd."
+    },
+    {
+      "id": "svc02",
+      "type": "QCM",
+      "question": "Quel est le système d'initialisation adopté par la plupart des distributions modernes ?",
+      "choix": ["SysVinit", "systemd", "upstart", "OpenRC"],
+      "reponses": [1],
+      "explication": "C'est le premier processus démarré au boot, avec le PID 1."
+    },
+    {
+      "id": "svc03",
+      "type": "QCM",
+      "question": "Quel répertoire contient des informations sur chaque processus en cours ?",
+      "choix": ["/etc/", "/proc/", "/var/", "/sys/services/"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "svc04",
+      "type": "QCM",
+      "question": "Quelle commande démarre un service via systemd ?",
+      "choix": ["systemctl start <service>", "service run <service>", "systemctl boot <service>", "start <service>"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "svc05",
+      "type": "QCM",
+      "question": "Quelle commande active un service pour qu'il démarre automatiquement au boot ?",
+      "choix": ["systemctl enable <service>", "systemctl auto <service>", "systemctl boot <service>", "systemctl persist <service>"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "svc06",
+      "type": "QCM",
+      "question": "Quel outil permet de consulter les journaux d'un service géré par systemd ?",
+      "choix": ["journalctl", "syslog", "dmesg", "logread"],
+      "reponses": [0],
+      "explication": "Ex : journalctl -u ssh.service --no-pager"
+    },
+    {
+      "id": "svc07",
+      "type": "QCM",
+      "question": "Que signifie PPID ?",
+      "choix": [
+        "Process Priority ID",
+        "Parent Process ID",
+        "Primary Process Identifier",
+        "Protected Process ID"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "svc08",
+      "type": "QCR",
+      "question": "Quels états un processus peut-il avoir selon le cours ?",
+      "choix": ["En cours d'exécution", "En attente", "Arrêté", "Zombie", "Chiffré"],
+      "reponses": [0, 1, 2, 3],
+      "explication": ""
+    },
+    {
+      "id": "svc09",
+      "type": "QCM",
+      "question": "Quel signal tue immédiatement un processus sans nettoyage ?",
+      "choix": ["SIGTERM", "SIGKILL", "SIGHUP", "SIGSTOP"],
+      "reponses": [1],
+      "explication": "SIGKILL correspond au signal numéro 9."
+    },
+    {
+      "id": "svc10",
+      "type": "QCM",
+      "question": "Quel signal est envoyé lorsqu'un utilisateur appuie sur Ctrl+C ?",
+      "choix": ["SIGINT", "SIGTERM", "SIGKILL", "SIGSTOP"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "svc11",
+      "type": "QCM",
+      "question": "Quel signal est envoyé lorsqu'un utilisateur appuie sur Ctrl+Z ?",
+      "choix": ["SIGSTOP", "SIGTSTP", "SIGKILL", "SIGHUP"],
+      "reponses": [1],
+      "explication": "SIGTSTP suspend le processus mais peut être géré (contrairement à SIGSTOP)."
+    },
+    {
+      "id": "svc12",
+      "type": "QCM",
+      "question": "Quelle commande liste les processus suspendus/en arrière-plan de la session courante ?",
+      "choix": ["jobs", "ps -bg", "bg -l", "fg -l"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "svc13",
+      "type": "QCM",
+      "question": "Quelle commande fait passer un processus suspendu en exécution en arrière-plan ?",
+      "choix": ["fg", "bg", "jobs", "kill -CONT"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "svc14",
+      "type": "QCM",
+      "question": "Quel caractère à la fin d'une commande la lance directement en arrière-plan ?",
+      "choix": ["|", "&", ";", "&&"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "svc15",
+      "type": "QCM",
+      "question": "Quelle différence existe entre `;` et `&&` pour enchaîner des commandes ?",
+      "choix": [
+        "`;` exécute toujours la commande suivante, `&&` seulement si la précédente a réussi",
+        "`&&` exécute toujours la commande suivante, `;` seulement si la précédente a réussi",
+        "Aucune différence",
+        "`;` et `&&` font la même chose que `|`"
+      ],
+      "reponses": [0],
+      "explication": ""
+    }
+  ]
+}

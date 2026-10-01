@@ -1,0 +1,112 @@
+{
+  "titre": "Linux 20 — Travailler avec les services web",
+  "description": "Apache, modules, curl, wget et le serveur web Python",
+  "questions": [
+    {
+      "id": "web01",
+      "type": "QCR",
+      "question": "Quels serveurs web sont cités comme options populaires sous Linux ?",
+      "choix": ["Nginx", "IIS", "Apache", "TigerVNC"],
+      "reponses": [0, 1, 2],
+      "explication": "TigerVNC est un serveur VNC, pas un serveur web."
+    },
+    {
+      "id": "web02",
+      "type": "QCM",
+      "question": "Quel module Apache chiffre la communication entre navigateur et serveur ?",
+      "choix": ["mod_proxy", "mod_ssl", "mod_headers", "mod_rewrite"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "web03",
+      "type": "QCM",
+      "question": "Quel module Apache dirige les requêtes vers la bonne destination, utile pour un serveur proxy ?",
+      "choix": ["mod_ssl", "mod_proxy", "mod_rewrite", "mod_headers"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "web04",
+      "type": "QCR",
+      "question": "Quels modules permettent de modifier les en-têtes HTTP et les URL à la volée ?",
+      "choix": ["mod_headers", "mod_rewrite", "mod_ssl", "mod_proxy"],
+      "reponses": [0, 1],
+      "explication": ""
+    },
+    {
+      "id": "web05",
+      "type": "QCM",
+      "question": "Quelle commande démarre le service Apache via systemd ?",
+      "choix": ["sudo systemctl start apache2", "sudo apache2 run", "sudo start apache2", "sudo apachectl boot"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "web06",
+      "type": "QCM",
+      "question": "Sur quel port Apache sert-il par défaut le trafic HTTP ?",
+      "choix": ["21", "22", "80", "443"],
+      "reponses": [2],
+      "explication": ""
+    },
+    {
+      "id": "web07",
+      "type": "QCM",
+      "question": "Quel fichier faut-il modifier pour changer le port d'écoute d'Apache (ex. 8080) ?",
+      "choix": ["/etc/apache2/apache2.conf", "/etc/apache2/ports.conf", "/etc/apache2/httpd.conf", "/etc/apache2/listen.conf"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "web08",
+      "type": "QCM",
+      "question": "Quelle commande curl affiche uniquement les en-têtes HTTP de la réponse ?",
+      "choix": ["curl -I", "curl -v", "curl -o", "curl --headers"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "web09",
+      "type": "QCM",
+      "question": "Quelle est la différence principale entre curl et wget selon le cours ?",
+      "choix": [
+        "curl affiche le contenu en STDOUT, wget télécharge et stocke le contenu localement",
+        "wget ne fonctionne pas en HTTP",
+        "curl ne supporte pas HTTPS",
+        "Il n'y a aucune différence"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "web10",
+      "type": "QCR",
+      "question": "Quels protocoles curl peut-il utiliser selon le cours ?",
+      "choix": ["HTTP", "HTTPS", "FTP/SFTP/FTPS", "SNMP"],
+      "reponses": [0, 1, 2],
+      "explication": ""
+    },
+    {
+      "id": "web11",
+      "type": "QCM",
+      "question": "Quel est le répertoire racine servi par `python3 -m http.server` ?",
+      "choix": [
+        "Toujours /var/www/html",
+        "Le répertoire où la commande est exécutée",
+        "Le répertoire /home de l'utilisateur",
+        "Un répertoire configuré dans un fichier .conf"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "web12",
+      "type": "QCM",
+      "question": "Sur quel port le serveur web Python écoute-t-il par défaut ?",
+      "choix": ["80", "8000", "8080", "3000"],
+      "reponses": [1],
+      "explication": ""
+    }
+  ]
+}

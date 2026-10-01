@@ -1,0 +1,33 @@
+{
+  "titre": "Metasploit 8 — Databases",
+  "description": "PostgreSQL, msfdb, workspaces, import/export et commandes hosts/services/creds/loot",
+  "questions": [
+    { "id": "db01", "type": "QCM", "question": "Quel système de base de données msfconsole utilise-t-il nativement ?", "choix": ["MySQL", "PostgreSQL", "SQLite", "MongoDB"], "reponses": [1], "explication": "" },
+    { "id": "db02", "type": "QCM", "question": "Quelle commande permet de créer et initialiser la base de données MSF ?", "choix": ["msfdb init", "msfconsole --init-db", "db_create", "msf_setup"], "reponses": [0], "explication": "" },
+    { "id": "db03", "type": "QCM", "question": "Quelle commande permet de lancer msfconsole tout en se connectant automatiquement à la base de données ?", "choix": ["msfdb run", "msfconsole -db", "msfdb connect", "msfconsole --autodb"], "reponses": [0], "explication": "" },
+    { "id": "db04", "type": "QCM", "question": "Quelle commande, dans msfconsole, affiche le statut de la connexion à la base de données ?", "choix": ["db_status", "db_check", "status", "db_info"], "reponses": [0], "explication": "" },
+    { "id": "db05", "type": "QCM", "question": "Comment peut-on décrire un Workspace dans msfconsole ?", "choix": [
+        "Un utilisateur de la base de données",
+        "Un équivalent d'un dossier de projet pour segréguer résultats de scan/hôtes/infos",
+        "Un type de payload",
+        "Un plugin de scan"
+      ], "reponses": [1], "explication": "" },
+    { "id": "db06", "type": "QCM", "question": "Quelle commande permet d'ajouter un nouveau workspace nommé Target_1 ?", "choix": ["workspace -a Target_1", "workspace -n Target_1", "workspace add Target_1", "workspace create Target_1"], "reponses": [0], "explication": "" },
+    { "id": "db07", "type": "QCM", "question": "Quelle commande importe un fichier de résultats de scan (ex. Nmap XML) dans la base de données ?", "choix": ["db_import", "db_load", "import_scan", "hosts -a"], "reponses": [0], "explication": "Le format .xml est préféré pour db_import." },
+    { "id": "db08", "type": "QCM", "question": "Quelle commande permet d'exécuter Nmap directement depuis msfconsole et d'enregistrer automatiquement les résultats ?", "choix": ["db_nmap", "nmap_run", "scan_import", "run_nmap"], "reponses": [0], "explication": "" },
+    { "id": "db09", "type": "QCM", "question": "Quelle commande permet d'exporter le contenu de la base de données (ex. en xml) pour une sauvegarde ?", "choix": ["db_export", "db_backup", "db_save", "export_db"], "reponses": [0], "explication": "" },
+    { "id": "db10", "type": "QCR", "question": "Quelles commandes de base de données permettent de consulter des informations stockées après des scans ?", "choix": ["hosts", "services", "creds", "encoders"], "reponses": [0, 1, 2], "explication": "encoders n'est pas une commande liée à la base de données." },
+    { "id": "db11", "type": "QCM", "question": "À quoi sert la commande `loot` ?", "choix": [
+        "Afficher les modules payload disponibles",
+        "Offrir un aperçu des services et utilisateurs possédés, notamment les hash dumps",
+        "Lister les workspaces",
+        "Configurer les options d'un exploit"
+      ], "reponses": [1], "explication": "" },
+    { "id": "db12", "type": "QCM", "question": "À quoi sert la commande `creds` ?", "choix": [
+        "Visualiser et ajouter des identifiants récoltés sur les hôtes",
+        "Créer un nouveau compte utilisateur système",
+        "Lancer un scan de vulnérabilités",
+        "Changer de workspace"
+      ], "reponses": [0], "explication": "" }
+  ]
+}

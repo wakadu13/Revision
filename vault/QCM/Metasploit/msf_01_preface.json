@@ -1,0 +1,87 @@
+{
+  "titre": "Metasploit 1 — Preface",
+  "description": "Le débat autour des outils automatisés, leurs limites et la discipline nécessaire en pentest",
+  "questions": [
+    {
+      "id": "pre01",
+      "type": "QCR",
+      "question": "Quels inconvénients des outils automatisés sont mentionnés dans le cours ?",
+      "choix": [
+        "Créer une zone de confort difficile à quitter",
+        "Créer un risque de sécurité car publiés en ligne",
+        "Créer un effet tunnel vision",
+        "Rendre les tests d'intrusion illégaux"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": ""
+    },
+    {
+      "id": "pre02",
+      "type": "QCM",
+      "question": "Que signifie l'effet « tunnel vision » évoqué dans le texte ?",
+      "choix": [
+        "Se concentrer uniquement sur un seul outil au détriment d'autres approches",
+        "Une technique de camouflage réseau",
+        "Une méthode de chiffrement",
+        "Un type de pare-feu"
+      ],
+      "reponses": [0],
+      "explication": "\"If the tool cannot do it, neither can I.\""
+    },
+    {
+      "id": "pre03",
+      "type": "QCM",
+      "question": "Quel événement est cité comme exemple d'outils de sécurité rendus publics créant des risques ?",
+      "choix": ["La fuite Vault7 de la CIA", "La publication d'outils de la NSA", "Le piratage d'Equifax", "L'affaire Snowden"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "pre04",
+      "type": "QCM",
+      "question": "Selon le texte, pourquoi ne pourrons-nous jamais avoir assez de temps pour un audit complet ?",
+      "choix": [
+        "Car les clients refusent de payer",
+        "Car il y a trop de technologies en jeu dans chaque environnement",
+        "Car les outils sont trop lents",
+        "Car la loi l'interdit"
+      ],
+      "reponses": [1],
+      "explication": "Le temps est de l'argent et il faut prioriser l'impact potentiel le plus élevé."
+    },
+    {
+      "id": "pre05",
+      "type": "QCM",
+      "question": "Selon le texte, qui devons-nous chercher à impressionner en premier lieu ?",
+      "choix": ["La communauté infosec", "Le client uniquement", "Nous-mêmes", "Les concurrents"],
+      "reponses": [2],
+      "explication": "\"You only have to impress yourself, not the infosec community.\""
+    },
+    {
+      "id": "pre06",
+      "type": "QCM",
+      "question": "Quelle est la conclusion principale du texte sur l'usage des outils ?",
+      "choix": [
+        "Ne jamais utiliser d'outils automatisés",
+        "Utiliser l'outil comme un outil, pas comme l'ossature complète de l'évaluation",
+        "Toujours privilégier l'exploitation manuelle",
+        "Les outils remplacent totalement les compétences manuelles"
+      ],
+      "reponses": [1],
+      "explication": "\"Do not get tunnel vision. Use the tool as a tool.\""
+    },
+    {
+      "id": "pre07",
+      "type": "QCM",
+      "question": "Que recommande le texte concernant la documentation des outils utilisés ?",
+      "choix": [
+        "L'ignorer car elle est trop longue",
+        "La lire intégralement pour connaître intimement l'outil",
+        "Se fier uniquement aux forums en ligne",
+        "Ne lire que le résumé"
+      ],
+      "reponses": [1],
+      "explication": "\"Leave no stone (or function or class) unturned.\""
+    }
+  ]
+}

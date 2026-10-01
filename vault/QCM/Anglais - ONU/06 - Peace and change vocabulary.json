@@ -1,0 +1,625 @@
+{
+  "titre": "Worksheet: peace and change",
+  "description": "Vocabulaire de la paix (peacekeeping, peacemaking…) et du changement (transform, amend, revert, reverse, reform…).",
+  "questions": [
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "les négociations de paix",
+      "reponses_texte": [
+        "peace talks",
+        "peace negotiations"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "le processus de paix",
+      "reponses_texte": [
+        "the peace process",
+        "peace process"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "l'élaboration (le rétablissement) de la paix",
+      "reponses_texte": [
+        "peacemaking"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "la consolidation de la paix",
+      "reponses_texte": [
+        "peacebuilding"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "le désarmement",
+      "reponses_texte": [
+        "disarmament"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "une paix durable",
+      "reponses_texte": [
+        "a lasting peace",
+        "lasting peace",
+        "a sustainable peace",
+        "sustainable peace",
+        "a durable peace",
+        "durable peace"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QCM",
+      "question": "What is the difference between peacekeeping and peacemaking?",
+      "choix": [
+        "peacemaking = negotiating an end to a conflict; peacekeeping = maintaining a ceasefire on the ground",
+        "they mean exactly the same thing",
+        "peacemaking is only economic aid",
+        "peacekeeping = negotiating; peacemaking = sending soldiers"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Peacemaking = rétablir la paix par la négociation ; peacekeeping = la maintenir sur le terrain (Casques bleus) ; peacebuilding = la consolider."
+    },
+    {
+      "type": "TROU",
+      "question": "The UN was created to maintain international ___ and security.",
+      "reponses_texte": [
+        "peace"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "All member states have one ___ in the General Assembly.",
+      "reponses_texte": [
+        "vote"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "The Security Council can authorize ___ action against an aggressor. (indice : militaire)",
+      "reponses_texte": [
+        "military"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "The Security Council can authorize ___ missions to keep the peace.",
+      "reponses_texte": [
+        "peacekeeping"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "The UN promotes human ___ and sustainable development.",
+      "reponses_texte": [
+        "rights"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "The Secretary-General represents the ___ as a whole. (indice : l'Organisation)",
+      "reponses_texte": [
+        "Organization",
+        "organization",
+        "UN",
+        "United Nations",
+        "Organisation"
+      ]
+    },
+    {
+      "type": "QCR",
+      "question": "Which of these are usually considered SUCCESSES of the UN? (plusieurs réponses)",
+      "choix": [
+        "Efficiency and bureaucracy",
+        "Human Rights Protection (setting global standards)",
+        "Humanitarian Aid",
+        "Health and Development",
+        "Ability to prevent major wars and genocides",
+        "Equal representation in the Security Council"
+      ],
+      "reponses": [
+        1,
+        2,
+        3
+      ],
+      "explication": "C'est débattu, mais l'aide humanitaire, la santé (ex. éradication de la variole) et la définition des droits de l'homme sont souvent vus comme des réussites ; la bureaucratie, la représentation inégale (P5) et l'échec face à Rwanda/Srebrenica comme des échecs."
+    },
+    {
+      "type": "QCR",
+      "question": "Which of these are usually considered FAILURES or weaknesses of the UN? (plusieurs réponses)",
+      "choix": [
+        "Ability to prevent major wars and genocides",
+        "Efficiency and bureaucracy",
+        "Health and Development",
+        "Humanitarian Aid",
+        "Equal representation"
+      ],
+      "reponses": [
+        0,
+        1,
+        4
+      ],
+      "explication": "Lourdeur bureaucratique, P5 non représentatifs, génocides du Rwanda (1994) et de Srebrenica (1995)…"
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "What needs adapting to make the UN more efficient? (idées)",
+      "verso": "Reform the Security Council (more permanent seats for Africa, Latin America, limit the veto) · cut bureaucracy and duplication (cf. UN80) · secure stable funding · give the General Assembly more weight · make peacekeeping mandates more robust."
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "transform sth",
+      "verso": "transformer — completely change the appearance or character of sth, often to make it better. Ex : Computers have transformed our lives. Nom : transformation."
+    },
+    {
+      "type": "QCM",
+      "question": "What does « transform sth » mean?",
+      "choix": [
+        "a process or period of change from one state to another",
+        "make changes to correct a mistake or improve a law, statement, document",
+        "completely change the appearance or character of sth, often to make it better",
+        "change sth so it is the opposite of what it was before (reverse a decision/trend/policy)"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "transform sth = transformer. Ex : Computers have transformed our lives."
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "transformer",
+      "reponses_texte": [
+        "to transform",
+        "transform"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "amend sth",
+      "verso": "amender, modifier — make changes to correct a mistake or improve a law, statement, document. Ex : Civil servants are now amending the document. Nom : amendment."
+    },
+    {
+      "type": "QCM",
+      "question": "What does « amend sth » mean?",
+      "choix": [
+        "completely change the appearance or character of sth, often to make it better",
+        "make changes to correct a mistake or improve a law, statement, document",
+        "learn and get used to sth which is new and different",
+        "change your behaviour in order to be more successful in a new situation (syn. adjust to)"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "amend sth = amender, modifier. Ex : Civil servants are now amending the document."
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "amender, modifier",
+      "reponses_texte": [
+        "to amend",
+        "amend"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "adapt to sth",
+      "verso": "s'adapter à — change your behaviour in order to be more successful in a new situation (syn. adjust to). Ex : We must adapt to a changing world. Nom : adaptation."
+    },
+    {
+      "type": "QCM",
+      "question": "What does « adapt to sth » mean?",
+      "choix": [
+        "change gradually, often from something simple to something more complicated",
+        "completely change the appearance or character of sth, often to make it better",
+        "improve a system, an organization, a law by making changes to it",
+        "change your behaviour in order to be more successful in a new situation (syn. adjust to)"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "adapt to sth = s'adapter à. Ex : We must adapt to a changing world."
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "s'adapter à",
+      "reponses_texte": [
+        "to adapt to",
+        "adapt to"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "assimilate sth",
+      "verso": "assimiler — learn and get used to sth which is new and different. Ex : It takes time to assimilate new ideas. Nom : assimilation."
+    },
+    {
+      "type": "QCM",
+      "question": "What does « assimilate sth » mean?",
+      "choix": [
+        "change back to a state or situation that existed in the past (syn. go back)",
+        "change gradually, often from something simple to something more complicated",
+        "change sth so it is the opposite of what it was before (reverse a decision/trend/policy)",
+        "learn and get used to sth which is new and different"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "assimilate sth = assimiler. Ex : It takes time to assimilate new ideas."
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "assimiler",
+      "reponses_texte": [
+        "to assimilate",
+        "assimilate"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "evolve",
+      "verso": "évoluer — change gradually, often from something simple to something more complicated. Ex : Democracy has evolved over hundreds of years. Nom : evolution."
+    },
+    {
+      "type": "QCM",
+      "question": "What does « evolve » mean?",
+      "choix": [
+        "improve a system, an organization, a law by making changes to it",
+        "learn and get used to sth which is new and different",
+        "make changes to correct a mistake or improve a law, statement, document",
+        "change gradually, often from something simple to something more complicated"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "evolve = évoluer. Ex : Democracy has evolved over hundreds of years."
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "évoluer",
+      "reponses_texte": [
+        "to evolve",
+        "evolve"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "transition",
+      "verso": "une transition — a process or period of change from one state to another. Ex : We hope for a smooth transition. Nom : transition (in transition)."
+    },
+    {
+      "type": "QCM",
+      "question": "What does « transition » mean?",
+      "choix": [
+        "a process or period of change from one state to another",
+        "change sth so it is the opposite of what it was before (reverse a decision/trend/policy)",
+        "change your behaviour in order to be more successful in a new situation (syn. adjust to)",
+        "completely change the appearance or character of sth, often to make it better"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "transition = une transition. Ex : We hope for a smooth transition."
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "une transition",
+      "reponses_texte": [
+        "a transition",
+        "transition"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "revert (back) to sth",
+      "verso": "revenir à — change back to a state or situation that existed in the past (syn. go back). Ex : After weeks of unrest, life has reverted to normal. Nom : reversion."
+    },
+    {
+      "type": "QCM",
+      "question": "What does « revert (back) to sth » mean?",
+      "choix": [
+        "a process or period of change from one state to another",
+        "improve a system, an organization, a law by making changes to it",
+        "make changes to correct a mistake or improve a law, statement, document",
+        "change back to a state or situation that existed in the past (syn. go back)"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "revert (back) to sth = revenir à. Ex : After weeks of unrest, life has reverted to normal."
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "revenir à",
+      "reponses_texte": [
+        "to revert to",
+        "revert to",
+        "to revert back to",
+        "revert back to",
+        "to revert",
+        "revert"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "restore sth",
+      "verso": "restaurer, rétablir — return sth to its former state or condition. Ex : Some people want to restore the monarchy. Nom : restoration."
+    },
+    {
+      "type": "QCM",
+      "question": "What does « restore sth » mean?",
+      "choix": [
+        "improve a system, an organization, a law by making changes to it",
+        "a process or period of change from one state to another",
+        "return sth to its former state or condition",
+        "learn and get used to sth which is new and different"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "restore sth = restaurer, rétablir. Ex : Some people want to restore the monarchy."
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "restaurer, rétablir",
+      "reponses_texte": [
+        "to restore",
+        "restore"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "reverse sth",
+      "verso": "inverser, revenir sur — change sth so it is the opposite of what it was before (reverse a decision/trend/policy). Ex : They reversed their decision. Nom : reversal (adj. reversible ≠ irreversible)."
+    },
+    {
+      "type": "QCM",
+      "question": "What does « reverse sth » mean?",
+      "choix": [
+        "change sth so it is the opposite of what it was before (reverse a decision/trend/policy)",
+        "learn and get used to sth which is new and different",
+        "change back to a state or situation that existed in the past (syn. go back)",
+        "completely change the appearance or character of sth, often to make it better"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "reverse sth = inverser, revenir sur. Ex : They reversed their decision."
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "reform sth",
+      "verso": "réformer — improve a system, an organization, a law by making changes to it. Ex : There are new proposals to reform the prison system. Nom : reform."
+    },
+    {
+      "type": "QCM",
+      "question": "What does « reform sth » mean?",
+      "choix": [
+        "change back to a state or situation that existed in the past (syn. go back)",
+        "change gradually, often from something simple to something more complicated",
+        "improve a system, an organization, a law by making changes to it",
+        "change sth so it is the opposite of what it was before (reverse a decision/trend/policy)"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "reform sth = réformer. Ex : There are new proposals to reform the prison system."
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "réformer",
+      "reponses_texte": [
+        "to reform",
+        "reform"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "TROU",
+      "question": "There will be a period of ___ when the new government takes over.",
+      "reponses_texte": [
+        "transition"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "The building was badly damaged, but they are planning to ___ it.",
+      "reponses_texte": [
+        "restore"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "As a company we believe in ___, not revolution.",
+      "reponses_texte": [
+        "evolution"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "They've changed their minds completely: this is a ___ of the previous policy.",
+      "reponses_texte": [
+        "reversal"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "After years of civil war, the country will find it difficult to ___ back to normal.",
+      "reponses_texte": [
+        "revert",
+        "go"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "If only climate change could be ___ to leave a better planet to our children!",
+      "reponses_texte": [
+        "reversed"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "We will all have to ___ to climate change, or it will be a disaster for the planet.",
+      "reponses_texte": [
+        "adapt",
+        "adjust"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "Once the ice caps melt at the poles, the change is completely ___.",
+      "reponses_texte": [
+        "irreversible"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "We'll need time to ___ all the new ideas in their proposed plan.",
+      "reponses_texte": [
+        "assimilate"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "The Security Council urgently needs to be ___. (réformer, participe passé)",
+      "reponses_texte": [
+        "reformed"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "The General Assembly voted to ___ the resolution to correct a mistake. (amender)",
+      "reponses_texte": [
+        "amend"
+      ]
+    },
+    {
+      "type": "QCM",
+      "question": "Which word describes a COMPLETE change?",
+      "choix": [
+        "transform",
+        "amend",
+        "revert",
+        "evolve"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "transform = changer complètement."
+    },
+    {
+      "type": "QCR",
+      "question": "Which words describe a GRADUAL change? (plusieurs réponses)",
+      "choix": [
+        "transition",
+        "reverse",
+        "transform",
+        "evolve",
+        "revert"
+      ],
+      "reponses": [
+        0,
+        3
+      ],
+      "explication": "evolve (évoluer progressivement) et transition (période de changement)."
+    },
+    {
+      "type": "QCR",
+      "question": "Which words describe changing BACK to a previous state? (plusieurs réponses)",
+      "choix": [
+        "restore",
+        "assimilate",
+        "transform",
+        "evolve",
+        "revert"
+      ],
+      "reponses": [
+        0,
+        4
+      ],
+      "explication": "revert to (revenir à) et restore (restaurer)."
+    },
+    {
+      "type": "QCM",
+      "question": "What is the opposite of « reversible »?",
+      "choix": [
+        "irreversible",
+        "unreversible",
+        "non-reverse",
+        "disreversible"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "reversible ≠ irreversible."
+    },
+    {
+      "type": "QCR",
+      "question": "Match the nouns: which are correct? (plusieurs réponses)",
+      "choix": [
+        "restore → restoration",
+        "amend → amendment",
+        "evolve → evolution",
+        "restore → restorement",
+        "reverse → reversement",
+        "amend → amendation",
+        "reverse → reversal"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        6
+      ],
+      "explication": "amendment, restoration, evolution, reversal, transformation, assimilation, reform."
+    }
+  ]
+}

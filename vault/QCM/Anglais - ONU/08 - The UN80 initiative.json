@@ -1,0 +1,419 @@
+{
+  "titre": "The UN80 initiative",
+  "description": "La réforme UN80 (2025) : objectifs, chantiers et vocabulaire.",
+  "questions": [
+    {
+      "type": "QCM",
+      "question": "Who launched the UN80 initiative and when?",
+      "choix": [
+        "Secretary-General António Guterres, in March 2025",
+        "the General Assembly, in 2015",
+        "the Security Council, in 1945",
+        "the United States, in 2024"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Lancée en mars 2025 pour les 80 ans de l'ONU."
+    },
+    {
+      "type": "QCM",
+      "question": "Why is it called « UN80 »?",
+      "choix": [
+        "because it reviews 80 resolutions",
+        "because the UN marks its 80th anniversary (1945-2025)",
+        "because it lasts 80 months",
+        "because it has 80 member states"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "80e anniversaire."
+    },
+    {
+      "type": "QCM",
+      "question": "Which question does UN80 respond to?",
+      "choix": [
+        "How can the UN move its headquarters?",
+        "How can the UN become more agile, integrated and equipped to respond to today's complex challenges amid tightening resources?",
+        "How can the UN replace the Security Council?",
+        "How can the UN recruit more soldiers?"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "S'adapter avec moins de ressources."
+    },
+    {
+      "type": "QCR",
+      "question": "Which previous reforms does UN80 build on? (plusieurs réponses)",
+      "choix": [
+        "the peace and security reform",
+        "UN 2.0",
+        "the abolition of the veto",
+        "the UN development system repositioning",
+        "the management reform",
+        "the creation of the League of Nations"
+      ],
+      "reponses": [
+        0,
+        1,
+        3,
+        4
+      ],
+      "explication": "UN80 « builds on previous reforms… but takes them further »."
+    },
+    {
+      "type": "QCR",
+      "question": "What are the three key areas of the UN80 task force? (plusieurs réponses)",
+      "choix": [
+        "Efficiencies and improvements",
+        "Enlargement of the Security Council",
+        "Military expansion",
+        "Mandates implementation",
+        "Potential structural changes and programme realignments"
+      ],
+      "reponses": [
+        0,
+        3,
+        4
+      ],
+      "explication": "Les 3 chantiers de la task force."
+    },
+    {
+      "type": "QCM",
+      "question": "Approximately how many resolutions and mandate documents are being reviewed?",
+      "choix": [
+        "about 40,000",
+        "about 400",
+        "about 4,000",
+        "about 40"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Revue d'environ 4 000 résolutions pour simplifier, réduire les doublons et accroître l'impact."
+    },
+    {
+      "type": "QCM",
+      "question": "What is the aim of reviewing the mandates?",
+      "choix": [
+        "to streamline delivery, reduce duplication and increase impact",
+        "to give more power to the P5",
+        "to increase the number of staff",
+        "to cancel all resolutions"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "streamline = rationaliser, simplifier."
+    },
+    {
+      "type": "QCR",
+      "question": "What are the goals of UN80: a UN that is…? (plusieurs réponses)",
+      "choix": [
+        "richer thanks to new taxes",
+        "more effective in delivering the SDGs",
+        "more supportive of UN staff",
+        "more accountable to taxpayers and the people it serves",
+        "more efficient and cost-effective",
+        "more powerful than national governments",
+        "more responsive to crises and countries' needs"
+      ],
+      "reponses": [
+        1,
+        2,
+        3,
+        4,
+        6
+      ],
+      "explication": "Les 5 objectifs de l'initiative."
+    },
+    {
+      "type": "QCM",
+      "question": "Who appointed the UN80 task force?",
+      "choix": [
+        "the World Bank",
+        "the Secretary-General",
+        "the Security Council",
+        "the President of the General Assembly"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« The Secretary-General appointed a dedicated UN80 task force »."
+    },
+    {
+      "type": "QCM",
+      "question": "When was the UN80 text published on un.org?",
+      "choix": [
+        "March 1, 2015",
+        "October 24, 1945",
+        "July 15, 2025",
+        "September 18, 2024"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Publié le 15 juillet 2025."
+    },
+    {
+      "type": "TROU",
+      "question": "UN80 is the UN's ambitious, system-wide ___ effort.",
+      "reponses_texte": [
+        "reform"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "How can the UN become more agile amid ___ resources? (qui se raréfient)",
+      "reponses_texte": [
+        "tightening"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "It aims to make the UN more responsive and ___. (résilient)",
+      "reponses_texte": [
+        "resilient"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "…more ___ to taxpayers who underwrite its work. (qui rend des comptes)",
+      "reponses_texte": [
+        "accountable"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "It's about doing more, more effectively, and with fewer bureaucratic ___.",
+      "reponses_texte": [
+        "burdens"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "A review of 4,000 resolutions is underway to ___ delivery and reduce duplication. (rationaliser)",
+      "reponses_texte": [
+        "streamline"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "…to streamline delivery, reduce ___, and increase impact. (doublons)",
+      "reponses_texte": [
+        "duplication"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "The Initiative aims to use our ___ resources as effectively as possible. (limitées)",
+      "reponses_texte": [
+        "finite",
+        "limited"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "The Secretary-General appointed a dedicated UN80 task ___.",
+      "reponses_texte": [
+        "force"
+      ]
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "UN80 en bref",
+      "verso": "Reform launched by António Guterres in March 2025 (UN's 80th anniversary) to make the UN more agile, efficient and accountable with fewer resources: 3 areas (efficiencies, mandates review of ~4,000 resolutions, structural changes) and 5 goals (efficient, responsive, effective for the SDGs, accountable, supportive of staff)."
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "agile, réactif",
+      "reponses_texte": [
+        "agile"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "intégré",
+      "reponses_texte": [
+        "integrated"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "des ressources qui se raréfient",
+      "reponses_texte": [
+        "tightening resources"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "réactif (qui répond vite)",
+      "reponses_texte": [
+        "responsive"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "résilient",
+      "reponses_texte": [
+        "resilient"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "qui rend des comptes",
+      "reponses_texte": [
+        "accountable"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "les contribuables",
+      "reponses_texte": [
+        "taxpayers",
+        "the taxpayers"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "financer, garantir (un travail)",
+      "reponses_texte": [
+        "to underwrite",
+        "underwrite"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "des lourdeurs bureaucratiques",
+      "reponses_texte": [
+        "bureaucratic burdens"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "un groupe de travail",
+      "reponses_texte": [
+        "a task force",
+        "task force"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "rationaliser, simplifier",
+      "reponses_texte": [
+        "to streamline",
+        "streamline"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "les doublons",
+      "reponses_texte": [
+        "duplication"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "un réalignement",
+      "reponses_texte": [
+        "a realignment",
+        "realignment"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "la cohérence",
+      "reponses_texte": [
+        "coherence"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "rentable",
+      "reponses_texte": [
+        "cost-effective"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "des ressources limitées",
+      "reponses_texte": [
+        "finite resources",
+        "limited resources"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "le personnel",
+      "reponses_texte": [
+        "staff",
+        "the staff"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "être en cours",
+      "reponses_texte": [
+        "to be underway",
+        "be underway",
+        "underway"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    }
+  ]
+}

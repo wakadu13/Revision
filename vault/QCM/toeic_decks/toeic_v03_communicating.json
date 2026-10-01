@@ -1,0 +1,216 @@
+{
+  "titre": "TOEIC Vocabulary 3 — Communicating",
+  "description": "Thème « Communicating » du livret Vocabulary (d'après les corrigés).",
+  "questions": [
+    {
+      "id": "v03001",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « conference call (message) » ?",
+      "choix": [
+        "Investments",
+        "Communicating",
+        "Complaining & Apologizing",
+        "Banking & Personal Finance"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« conference call (message) » figure dans les corrigés du thème Communicating."
+    },
+    {
+      "id": "v03002",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « stepped out » ?",
+      "choix": [
+        "Meetings",
+        "Human Resources",
+        "Communicating",
+        "Real Estate & Housing"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« stepped out » figure dans les corrigés du thème Communicating."
+    },
+    {
+      "id": "v03003",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « further information » ?",
+      "choix": [
+        "Communicating",
+        "Investments",
+        "Life in the Office",
+        "High-Tech"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« further information » figure dans les corrigés du thème Communicating."
+    },
+    {
+      "id": "v03004",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « to contact » ?",
+      "choix": [
+        "Phrasal Verbs",
+        "Health & Healthcare",
+        "Human Resources",
+        "Communicating"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« to contact » figure dans les corrigés du thème Communicating."
+    },
+    {
+      "id": "v03005",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « to hesitate » ?",
+      "choix": [
+        "Life in the Office",
+        "Media",
+        "Communicating",
+        "Sustainable Development"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« to hesitate » figure dans les corrigés du thème Communicating."
+    },
+    {
+      "id": "v03006",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « who's calling » ?",
+      "choix": [
+        "High-Tech",
+        "Communicating",
+        "R&D & Industrialization",
+        "Media"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« who's calling » figure dans les corrigés du thème Communicating."
+    },
+    {
+      "id": "v03007",
+      "type": "QCM",
+      "question": "I'm so sorry it's been so long since I've ____ but I've been very busy.",
+      "choix": [
+        "writes",
+        "wrote",
+        "writing",
+        "written"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Phrase-corrigé du livret : « I'm so sorry it's been so long since I've written but I've been very busy. »"
+    },
+    {
+      "id": "v03008",
+      "type": "QCM",
+      "question": "Please don't ____ to contact me if you need any further information.",
+      "choix": [
+        "wait",
+        "refuse",
+        "hesitate",
+        "forget"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Phrase-corrigé du livret : « Please don't hesitate to contact me if you need any further information. »"
+    },
+    {
+      "id": "v03009",
+      "type": "QCM",
+      "question": "As promised, here are the ____ of the party.",
+      "choix": [
+        "minutes",
+        "brochures",
+        "invoices",
+        "pictures"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Phrase-corrigé du livret : « As promised, here are the pictures of the party. »"
+    },
+    {
+      "id": "v03010",
+      "type": "QCM",
+      "question": "I'm sorry but Mr. Cooper has just ____ out, could I have him call you back?",
+      "choix": [
+        "stepped",
+        "stopped",
+        "stood",
+        "stayed"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Phrase-corrigé du livret : « I'm sorry but Mr. Cooper has just stepped out, could I have him call you back? »"
+    },
+    {
+      "id": "v03011",
+      "type": "QCM",
+      "question": "Hello, this is Mr. Carleton. Could I speak to the ____, please?",
+      "choix": [
+        "management",
+        "manage",
+        "managing",
+        "manager"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Phrase-corrigé du livret : « Hello, this is Mr. Carleton. Could I speak to the manager, please? »"
+    },
+    {
+      "id": "v03012",
+      "type": "QCM",
+      "question": "I hope that everything is ____ with you.",
+      "choix": [
+        "well",
+        "fine to",
+        "goodly",
+        "good"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Phrase-corrigé du livret : « I hope that everything is well with you. »"
+    },
+    {
+      "id": "v03013",
+      "type": "QCM",
+      "question": "May I ask who's ____, please?",
+      "choix": [
+        "call",
+        "to call",
+        "calling",
+        "called"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Phrase-corrigé du livret : « May I ask who's calling, please? »"
+    },
+    {
+      "id": "v03014",
+      "type": "QCM",
+      "question": "I am ____ to you regarding the car you have for sale on quicksale.net.",
+      "choix": [
+        "writes",
+        "written",
+        "writing",
+        "wrote"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Phrase-corrigé du livret : « I am writing to you regarding the car you have for sale on quicksale.net. »"
+    }
+  ]
+}

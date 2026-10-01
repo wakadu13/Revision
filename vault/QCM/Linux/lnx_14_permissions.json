@@ -1,0 +1,127 @@
+{
+  "titre": "Linux 14 — Gestion des permissions",
+  "description": "rwx, chmod, chown, notation octale, SUID/SGID et sticky bit",
+  "questions": [
+    {
+      "id": "prm01",
+      "type": "QCM",
+      "question": "Quelle permission est nécessaire pour traverser (entrer dans) un répertoire ?",
+      "choix": ["Lecture (r)", "Écriture (w)", "Exécution (x)", "Aucune"],
+      "reponses": [2],
+      "explication": ""
+    },
+    {
+      "id": "prm02",
+      "type": "QCM",
+      "question": "Quelle permission est nécessaire pour créer, supprimer ou renommer des fichiers dans un répertoire ?",
+      "choix": ["Lecture (r)", "Écriture (w)", "Exécution (x)", "Sticky bit"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "prm03",
+      "type": "QCM",
+      "question": "Sur quel système de numération repose le système de permissions Linux ?",
+      "choix": ["Binaire pur", "Octal", "Hexadécimal", "Décimal"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "prm04",
+      "type": "QCM",
+      "question": "Quelle valeur octale correspond à la permission `rwx` ?",
+      "choix": ["5", "6", "7", "4"],
+      "reponses": [2],
+      "explication": "4(r)+2(w)+1(x)=7."
+    },
+    {
+      "id": "prm05",
+      "type": "QCM",
+      "question": "Quelle commande permet de modifier les permissions d'un fichier ?",
+      "choix": ["chown", "chmod", "chgrp", "chperm"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "prm06",
+      "type": "QCM",
+      "question": "Que fait `chmod a+r shell` ?",
+      "choix": [
+        "Retire la lecture à tous",
+        "Ajoute la permission de lecture pour tous les utilisateurs",
+        "Ajoute l'exécution pour le propriétaire uniquement",
+        "Supprime toutes les permissions"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "prm07",
+      "type": "QCM",
+      "question": "Quelle commande change le propriétaire et le groupe d'un fichier ?",
+      "choix": ["chmod", "chown", "chgroup", "own"],
+      "reponses": [1],
+      "explication": "Syntaxe : chown <user>:<group> <fichier>"
+    },
+    {
+      "id": "prm08",
+      "type": "QCM",
+      "question": "Comment sont indiqués les bits SUID/SGID dans la sortie de `ls -l` ?",
+      "choix": [
+        "Par un `t` à la place du `r`",
+        "Par un `s` à la place du `x` habituel",
+        "Par un `S` majuscule uniquement",
+        "Ils ne sont pas visibles"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "prm09",
+      "type": "QCM",
+      "question": "Que fait un programme avec le bit SUID activé lorsqu'il est exécuté ?",
+      "choix": [
+        "Il s'exécute avec les permissions de l'utilisateur qui le lance",
+        "Il s'exécute avec les permissions du propriétaire du fichier",
+        "Il refuse toute exécution",
+        "Il crée un nouvel utilisateur"
+      ],
+      "reponses": [1],
+      "explication": "Cela peut être un risque de sécurité si mal utilisé (voir GTFObins)."
+    },
+    {
+      "id": "prm10",
+      "type": "QCM",
+      "question": "À quoi sert le sticky bit sur un répertoire partagé ?",
+      "choix": [
+        "Empêcher toute lecture du répertoire",
+        "Permettre seulement au propriétaire du fichier, au propriétaire du répertoire ou à root de supprimer/renommer les fichiers",
+        "Chiffrer automatiquement les fichiers",
+        "Donner les droits d'exécution à tous"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "prm11",
+      "type": "QCM",
+      "question": "Que signifie un `T` majuscule pour le sticky bit ?",
+      "choix": [
+        "Le sticky bit est actif et la permission x pour les autres est présente",
+        "Les autres utilisateurs n'ont pas la permission d'exécution",
+        "Le sticky bit n'est pas activé",
+        "C'est une erreur de permission"
+      ],
+      "reponses": [1],
+      "explication": "Le t minuscule indique que la permission x est présente en plus du sticky bit."
+    },
+    {
+      "id": "prm12",
+      "type": "QCM",
+      "question": "Site cité pour trouver des applications exploitables via SUID/SGID mal configurés :",
+      "choix": ["exploit-db.com", "GTFObins", "CVE Details", "Shodan"],
+      "reponses": [1],
+      "explication": ""
+    }
+  ]
+}

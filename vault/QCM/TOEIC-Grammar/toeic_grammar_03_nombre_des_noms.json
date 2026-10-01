@@ -1,0 +1,156 @@
+{
+  "titre": "TOEIC Grammar — 03 Le nombre des noms",
+  "description": "Dénombrables, indénombrables, pluriels réguliers et irréguliers.",
+  "questions": [
+    {
+      "id": "toeic-g03-q01",
+      "type": "QCM",
+      "question": "The lorry drivers could see several …… on their road to the warehouse.",
+      "choix": [
+        "CEO",
+        "RADARs",
+        "SONAR",
+        "UFO"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Un pluriel est requis (*several*). Les acronymes s'accordent aussi : `RADARs`."
+    },
+    {
+      "id": "toeic-g03-q02",
+      "type": "QCM",
+      "question": "Formalities and information …… available at the Welcome Desk.",
+      "choix": [
+        "is being",
+        "are being",
+        "are",
+        "is"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Le sujet *formalities and information* est pluriel : `are`."
+    },
+    {
+      "id": "toeic-g03-q03",
+      "type": "QCM",
+      "question": "In line with our eco-friendly approach, any unsold fresh …… is cooked on the premises and added to our menu.",
+      "choix": [
+        "produces",
+        "production",
+        "product",
+        "produce"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "`Produce` est un indénombrable collectif (fruits et légumes), singulier sans *-s*."
+    },
+    {
+      "id": "toeic-g03-q04",
+      "type": "QCM",
+      "question": "The customer's …… of payment is a credit card.",
+      "choix": [
+        "ways",
+        "means",
+        "mean",
+        "methods"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Un singulier est attendu (*is*) : `means` est invariable (singulier et pluriel)."
+    },
+    {
+      "id": "toeic-g03-q05",
+      "type": "QCM",
+      "question": "The …… have invested 250,000 dollars in the brand new parking lot located downtown.",
+      "choix": [
+        "Miller",
+        "Robertson",
+        "Willis",
+        "Willises"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Un pluriel est requis (*have*). Les noms propres s'accordent au pluriel : *the Willises* (sifflante + *-es*)."
+    },
+    {
+      "id": "toeic-g03-q06",
+      "type": "QCM",
+      "question": "The hunters encountered a few …… in the woods but did not have their rifles on them.",
+      "choix": [
+        "deer",
+        "fox",
+        "wolf",
+        "pheasant"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "*A few* impose un pluriel. `Deer` est identique au singulier et au pluriel ; les autres seraient au singulier."
+    },
+    {
+      "id": "toeic-g03-q07",
+      "type": "QCM",
+      "question": "To attract a new clientele, the cab company has decided to hire a dozen …….",
+      "choix": [
+        "woman driver",
+        "woman drivers",
+        "women drivers",
+        "women driver"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "*A dozen* impose un pluriel, et quand les deux mots désignent la même personne, les deux se mettent au pluriel : `women drivers`."
+    },
+    {
+      "id": "toeic-g03-q08",
+      "type": "QCM",
+      "question": "The children are to wash their …… before dinner.",
+      "choix": [
+        "foot",
+        "faces",
+        "hand",
+        "nose"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Sujet pluriel, attribut ou complément précédé d'un possessif : c'est le pluriel qui l'emporte (`faces`)."
+    },
+    {
+      "id": "toeic-g03-q09",
+      "type": "QCM",
+      "question": "Cut-price …… and veg stalls stand next to antique dealers and small gourmet boutiques.",
+      "choix": [
+        "herb",
+        "flower",
+        "aromatic plant",
+        "fruit"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Un pluriel est nécessaire ; `fruit` est un pluriel valable ici (collectif). Les autres seraient au singulier."
+    },
+    {
+      "id": "toeic-g03-q10",
+      "type": "QCM",
+      "question": "Carrolton Street is one of the most pleasant shopping …… or this city.",
+      "choix": [
+        "avenue",
+        "venues",
+        "venue",
+        "street"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Après *one of the most*, un pluriel est obligatoire : `venues`."
+    }
+  ]
+}

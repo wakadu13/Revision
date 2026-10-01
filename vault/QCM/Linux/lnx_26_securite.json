@@ -1,0 +1,134 @@
+{
+  "titre": "Linux 26 — Sécurité Linux",
+  "description": "Principes de durcissement, moindre privilège, fail2ban, SELinux/AppArmor et TCP wrappers",
+  "questions": [
+    {
+      "id": "sec01",
+      "type": "QCM",
+      "question": "Quelle commande combine mise à jour de la liste des paquets et mise à niveau complète du système ?",
+      "choix": ["apt update && apt upgrade", "apt update && apt dist-upgrade", "apt install --all", "apt refresh"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "sec02",
+      "type": "QCM",
+      "question": "Que recommande le cours concernant SSH et l'utilisateur root ?",
+      "choix": [
+        "Toujours autoriser la connexion root",
+        "Interdire la connexion par mot de passe et empêcher root de se connecter via SSH",
+        "Désactiver complètement SSH",
+        "Utiliser uniquement Telnet"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "sec03",
+      "type": "QCM",
+      "question": "Qu'est-ce que le principe de moindre privilège ?",
+      "choix": [
+        "Donner tous les droits root à tous les utilisateurs",
+        "N'accorder à un utilisateur que les droits strictement nécessaires à ses tâches",
+        "Interdire tout accès sudo",
+        "Créer un seul compte partagé"
+      ],
+      "reponses": [1],
+      "explication": "Ex : spécifier une commande précise dans sudoers plutôt que des droits sudo complets."
+    },
+    {
+      "id": "sec04",
+      "type": "QCM",
+      "question": "Quel outil compte les tentatives de connexion échouées et bannit les hôtes après un certain seuil ?",
+      "choix": ["fail2ban", "SELinux", "AppArmor", "TCP wrappers"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "sec05",
+      "type": "QCR",
+      "question": "Quels éléments faut-il auditer périodiquement pour prévenir une escalade de privilèges, selon le cours ?",
+      "choix": [
+        "Un noyau obsolète",
+        "Des fichiers world-writable",
+        "Des tâches cron mal configurées",
+        "La couleur du terminal"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": ""
+    },
+    {
+      "id": "sec06",
+      "type": "QCM",
+      "question": "Qu'est-ce que SELinux ?",
+      "choix": [
+        "Un pare-feu réseau",
+        "Un module de sécurité du noyau pour des politiques de contrôle d'accès basées sur des étiquettes",
+        "Un antivirus",
+        "Un gestionnaire de paquets"
+      ],
+      "reponses": [1],
+      "explication": "Chaque processus, fichier, répertoire et objet reçoit une étiquette."
+    },
+    {
+      "id": "sec07",
+      "type": "QCR",
+      "question": "Quels outils/applications sont cités comme contribuant à la sécurité Linux ?",
+      "choix": ["Snort", "chkrootkit", "rkhunter", "Lynis", "fdisk"],
+      "reponses": [0, 1, 2, 3],
+      "explication": "fdisk est un outil de partitionnement, pas de sécurité."
+    },
+    {
+      "id": "sec08",
+      "type": "QCR",
+      "question": "Quels paramètres de sécurité sont recommandés dans le cours ?",
+      "choix": [
+        "Supprimer les services non nécessaires",
+        "Imposer des mots de passe forts",
+        "Désactiver les binaires SUID/SGID non désirés",
+        "Donner sudo complet à tous les utilisateurs"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": ""
+    },
+    {
+      "id": "sec09",
+      "type": "QCM",
+      "question": "Quels fichiers de configuration utilisent les TCP wrappers ?",
+      "choix": [
+        "/etc/hosts.allow et /etc/hosts.deny",
+        "/etc/tcpwrappers.conf",
+        "/etc/security/access.conf",
+        "/etc/wrappers.conf"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "sec10",
+      "type": "QCM",
+      "question": "Dans les TCP wrappers, quelle règle est appliquée en cas de correspondances multiples ?",
+      "choix": [
+        "La dernière règle qui correspond",
+        "La première règle qui correspond au service et à l'hôte",
+        "Toutes les règles sont appliquées simultanément",
+        "La règle la plus restrictive uniquement"
+      ],
+      "reponses": [1],
+      "explication": "L'ordre des règles dans les fichiers est donc important."
+    },
+    {
+      "id": "sec11",
+      "type": "QCM",
+      "question": "Quelle est une limite importante des TCP wrappers selon le cours ?",
+      "choix": [
+        "Ils ne remplacent pas un pare-feu et ne contrôlent pas l'accès par port",
+        "Ils sont plus puissants qu'un pare-feu",
+        "Ils fonctionnent uniquement sur Windows",
+        "Ils nécessitent SELinux"
+      ],
+      "reponses": [0],
+      "explication": ""
+    }
+  ]
+}

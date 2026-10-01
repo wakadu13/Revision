@@ -1,0 +1,154 @@
+{
+  "titre": "Linux 1 — Structure",
+  "description": "Histoire, philosophie, composants, architecture et hiérarchie du système de fichiers Linux",
+  "questions": [
+    {
+      "id": "str01",
+      "type": "QCM",
+      "question": "Qui a publié le système Unix en 1970 ?",
+      "choix": [
+        "Linus Torvalds",
+        "Richard Stallman",
+        "Ken Thompson et Dennis Ritchie",
+        "Bill Joy"
+      ],
+      "reponses": [2],
+      "explication": "Ken Thompson et Dennis Ritchie travaillaient chez AT&T."
+    },
+    {
+      "id": "str02",
+      "type": "QCM",
+      "question": "En quelle année Richard Stallman a-t-il lancé le projet GNU ?",
+      "choix": ["1970", "1977", "1983", "1991"],
+      "reponses": [2],
+      "explication": "Le projet GNU visait à créer un système Unix-like libre."
+    },
+    {
+      "id": "str03",
+      "type": "QCM",
+      "question": "Qui a créé le noyau Linux, et en quelle année ?",
+      "choix": [
+        "Richard Stallman, 1983",
+        "Linus Torvalds, 1991",
+        "Ken Thompson, 1970",
+        "Dennis Ritchie, 1977"
+      ],
+      "reponses": [1],
+      "explication": "Linus Torvalds, étudiant finlandais, a démarré Linux comme projet personnel en 1991."
+    },
+    {
+      "id": "str04",
+      "type": "QCM",
+      "question": "Sous quelle licence le noyau Linux est-il distribué ?",
+      "choix": ["MIT", "GNU GPL v2", "Apache 2.0", "BSD"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "str05",
+      "type": "QCR",
+      "question": "Quels systèmes d'exploitation basés sur Linux sont cités dans le cours ?",
+      "choix": ["Android", "Windows", "macOS", "Des distributions comme Ubuntu ou Debian"],
+      "reponses": [0, 3],
+      "explication": "Android est basé sur le noyau Linux ; Windows et macOS ne le sont pas."
+    },
+    {
+      "id": "str06",
+      "type": "QCM",
+      "question": "Qu'est-ce que Pwnbox utilisé dans les modules interactifs ?",
+      "choix": [
+        "Une version personnalisée de Kali Linux",
+        "Une version personnalisée de Parrot OS",
+        "Une VM Windows",
+        "Une distribution RedHat"
+      ],
+      "reponses": [1],
+      "explication": "Parrot OS est basé sur Debian et axé sur la sécurité, la vie privée et le développement."
+    },
+    {
+      "id": "str07",
+      "type": "QCR",
+      "question": "Quels principes font partie de la philosophie Linux ?",
+      "choix": [
+        "Everything is a file",
+        "Programmes petits et à but unique",
+        "Interfaces utilisateur captives obligatoires",
+        "Chaîner les programmes entre eux"
+      ],
+      "reponses": [0, 1, 3],
+      "explication": "Linux évite au contraire les interfaces utilisateur captives (« avoid captive user interfaces »)."
+    },
+    {
+      "id": "str08",
+      "type": "QCM",
+      "question": "Quel bootloader est utilisé par Parrot Linux ?",
+      "choix": ["LILO", "GRUB", "systemd-boot", "rEFInd"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "str09",
+      "type": "QCM",
+      "question": "Comment appelle-t-on les services d'arrière-plan sous Linux ?",
+      "choix": ["Services", "Daemons", "Jobs", "Threads"],
+      "reponses": [1],
+      "explication": "Les daemons assurent des fonctions comme la planification, l'impression, le multimédia."
+    },
+    {
+      "id": "str10",
+      "type": "QCM",
+      "question": "Quel composant fournit le sous-système graphique permettant d'exécuter des programmes graphiques localement ou à distance ?",
+      "choix": ["Le Shell", "Le Window Manager", "Le serveur graphique (X-server)", "Le Kernel"],
+      "reponses": [2],
+      "explication": ""
+    },
+    {
+      "id": "str11",
+      "type": "QCR",
+      "question": "Quelles couches composent l'architecture Linux selon le cours ?",
+      "choix": ["Hardware", "Kernel", "Shell", "System Utility", "Bootloader"],
+      "reponses": [0, 1, 2, 3],
+      "explication": "Le bootloader n'est pas listé comme une des 4 couches de l'architecture."
+    },
+    {
+      "id": "str12",
+      "type": "QCM",
+      "question": "Quel répertoire contient les binaires de commandes essentielles ?",
+      "choix": ["/etc", "/bin", "/opt", "/var"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "str13",
+      "type": "QCM",
+      "question": "Quel répertoire est le répertoire personnel de l'utilisateur root ?",
+      "choix": ["/home/root", "/root", "/usr/root", "/sys"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "str14",
+      "type": "QCM",
+      "question": "Quel répertoire contient des données variables comme les journaux (logs) ?",
+      "choix": ["/var", "/tmp", "/mnt", "/lib"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "str15",
+      "type": "QCM",
+      "question": "Quel répertoire est généralement effacé au démarrage et peut être supprimé sans avertissement ?",
+      "choix": ["/opt", "/tmp", "/boot", "/media"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "str16",
+      "type": "QCM",
+      "question": "Où sont mentionnés les points de montage temporaires pour systèmes de fichiers réguliers ?",
+      "choix": ["/media", "/mnt", "/dev", "/opt"],
+      "reponses": [1],
+      "explication": "/media est réservé aux médias amovibles externes comme les clés USB."
+    }
+  ]
+}

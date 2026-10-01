@@ -1,0 +1,381 @@
+{
+  "titre": "Rethinking the UN (audio)",
+  "description": "Phrases à trous du document audio « Rethinking the UN » + compréhension : P5, veto, organes de l'ONU.",
+  "questions": [
+    {
+      "type": "TROU",
+      "question": "The UN pledged to save ___ generations from the scourge of war.",
+      "reponses_texte": [
+        "succeeding"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "The former Secretary-General said the UN was there to save humankind from ___.",
+      "reponses_texte": [
+        "hell"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "It was set up in ___.",
+      "reponses_texte": [
+        "1945"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "The UN gathers ___ nations.",
+      "reponses_texte": [
+        "193"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "It has ___ main bodies.",
+      "reponses_texte": [
+        "six",
+        "6"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "Its main bodies include the Security ___, the General Assembly and the International Court of Justice.",
+      "reponses_texte": [
+        "Council"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "Its main bodies include the Security Council, the General ___ and the International Court of Justice.",
+      "reponses_texte": [
+        "Assembly"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "One of the most important agencies is the World ___ Programme.",
+      "reponses_texte": [
+        "Food"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "The World Food Programme provides ___ for millions of people.",
+      "reponses_texte": [
+        "food"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "The Security Council lies at the ___ of the system.",
+      "reponses_texte": [
+        "heart",
+        "centre",
+        "center"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "The council is made up of five ___ members.",
+      "reponses_texte": [
+        "permanent"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "The five permanent members have ___ power: they can block any decision they want.",
+      "reponses_texte": [
+        "veto"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "The US ___ Kuwait's resolution that condemned Israel's use of force against Palestinian civilians in Gaza.",
+      "reponses_texte": [
+        "vetoed"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "Russia, Bashar al-Assad's ally, used the veto ___ times to block action against his regime.",
+      "reponses_texte": [
+        "12",
+        "twelve"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "Unlike the P5, the Security Council's ten non-permanent members don't have veto ___.",
+      "reponses_texte": [
+        "power"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "Among the P5 there are no countries from Africa and Latin ___.",
+      "reponses_texte": [
+        "America"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "The P5 are the countries that won the Second World ___.",
+      "reponses_texte": [
+        "War"
+      ]
+    },
+    {
+      "type": "QCM",
+      "question": "Which Secretary-General said the UN was not created to take mankind to heaven, but to save humanity from hell?",
+      "choix": [
+        "Kofi Annan",
+        "Ban Ki-moon",
+        "Dag Hammarskjöld",
+        "Boutros Boutros-Ghali"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Dag Hammarskjöld, 2e Secrétaire général (1953-1961)."
+    },
+    {
+      "type": "QCR",
+      "question": "What are the six main bodies (organs) of the UN? (plusieurs réponses)",
+      "choix": [
+        "the World Food Programme",
+        "the Secretariat",
+        "NATO",
+        "the Security Council",
+        "the International Court of Justice",
+        "the Trusteeship Council",
+        "the Economic and Social Council (ECOSOC)",
+        "the General Assembly"
+      ],
+      "reponses": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "explication": "Le PAM est une agence/programme, pas un organe principal ; l'OTAN n'a rien à voir avec l'ONU."
+    },
+    {
+      "type": "QCM",
+      "question": "Why does the audio say the veto is « like a poison »?",
+      "choix": [
+        "because it gives too much power to small countries",
+        "because it is used by the General Assembly",
+        "because one permanent member can block any decision, which paralyses the Security Council",
+        "because it costs too much money"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Le veto permet à un seul P5 de tout bloquer."
+    },
+    {
+      "type": "QCM",
+      "question": "Can non-permanent members be re-elected immediately?",
+      "choix": [
+        "Yes, as many times as they want",
+        "Only if they get a veto",
+        "No, they can't be elected two years in a row (consecutive terms)",
+        "Only European countries can"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Article 23 de la Charte : pas de réélection immédiate."
+    },
+    {
+      "type": "QCM",
+      "question": "Which continents have no permanent member?",
+      "choix": [
+        "Europe and Asia",
+        "Europe only",
+        "North America and Asia",
+        "Africa and Latin America"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Critique fréquente : le Conseil ne reflète pas le monde d'aujourd'hui."
+    },
+    {
+      "type": "QCM",
+      "question": "Why are the P5 the P5?",
+      "choix": [
+        "they are the most populated countries",
+        "they were the main victors of the Second World War",
+        "they were elected in 2015",
+        "they pay the whole UN budget"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Les vainqueurs de 1945."
+    },
+    {
+      "type": "QCM",
+      "question": "Why is the UN especially important?",
+      "choix": [
+        "only for European countries",
+        "for smaller and poorer countries, which have a voice they would not have otherwise",
+        "only for the P5",
+        "only for rich countries"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Chaque État, même petit, a une voix à l'Assemblée générale."
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "s'engager solennellement à",
+      "reponses_texte": [
+        "to pledge",
+        "pledge"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "l'humanité",
+      "reponses_texte": [
+        "humankind",
+        "mankind",
+        "humanity"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "créer, fonder",
+      "reponses_texte": [
+        "to set up",
+        "set up"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "rassembler",
+      "reponses_texte": [
+        "to gather",
+        "gather"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "employer",
+      "reponses_texte": [
+        "to employ",
+        "employ"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "les organes principaux",
+      "reponses_texte": [
+        "the main bodies",
+        "main bodies",
+        "the main organs"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "être au cœur de",
+      "reponses_texte": [
+        "to lie at the heart of",
+        "lie at the heart of"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "être composé de",
+      "reponses_texte": [
+        "to be made up of",
+        "be made up of"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "bloquer",
+      "reponses_texte": [
+        "to block",
+        "block"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "condamner",
+      "reponses_texte": [
+        "to condemn",
+        "condemn"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "le recours à la force",
+      "reponses_texte": [
+        "the use of force",
+        "use of force"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "un allié",
+      "reponses_texte": [
+        "an ally",
+        "ally"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "consécutifs, d'affilée",
+      "reponses_texte": [
+        "in a row",
+        "consecutive"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    }
+  ]
+}

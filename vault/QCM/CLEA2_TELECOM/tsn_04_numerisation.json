@@ -1,6 +1,6 @@
 {
   "titre": "TSN 4 — Numérisation et échantillonnage",
-  "description": "Chaîne de réception, échantillonnage, Shannon, repliement, quantification, encodage",
+  "description": "Chaîne de réception, échantillonnage, Shannon, repliement, quantification, encodage, formules",
   "questions": [
     {
       "id": "num01",
@@ -12,9 +12,7 @@
         "Encodage, échantillonnage, quantification",
         "Échantillonnage, encodage, quantification"
       ],
-      "reponses": [
-        1
-      ],
+      "reponses": [1],
       "explication": ""
     },
     {
@@ -27,9 +25,7 @@
         "Passe-bas, échantillonneur, LNA, CAN, mélangeur",
         "CAN, mélangeur, LNA, passe-bande"
       ],
-      "reponses": [
-        0
-      ],
+      "reponses": [0],
       "explication": ""
     },
     {
@@ -42,9 +38,7 @@
         "un convertisseur analogique-numérique",
         "un oscillateur"
       ],
-      "reponses": [
-        0
-      ],
+      "reponses": [0],
       "explication": "Low Noise Amplifier."
     },
     {
@@ -57,9 +51,7 @@
         "échantillonner le signal",
         "supprimer le bruit"
       ],
-      "reponses": [
-        0
-      ],
+      "reponses": [0],
       "explication": ""
     },
     {
@@ -72,9 +64,7 @@
         "Quantifier",
         "Encoder en binaire"
       ],
-      "reponses": [
-        0
-      ],
+      "reponses": [0],
       "explication": ""
     },
     {
@@ -87,11 +77,7 @@
         "atténue les fréquences au-delà de $F_e/2$",
         "est placé après le CAN"
       ],
-      "reponses": [
-        0,
-        1,
-        2
-      ],
+      "reponses": [0, 1, 2],
       "explication": "Après échantillonnage il est trop tard : le repliement est irréversible."
     },
     {
@@ -99,15 +85,13 @@
       "type": "QCM",
       "question": "Mathématiquement, l'échantillonnage idéal à pas $T_e$ revient à :",
       "choix": [
-        "multiplier $x(t)$ par un peigne de Dirac $\\mathrm{III}_{T_e}$",
+        "multiplier $x(t)$ par un peigne de Dirac $\\text{Ш}_{T_e}$",
         "convoluer $x(t)$ par une porte",
         "dériver $x(t)$",
         "ajouter un bruit"
       ],
-      "reponses": [
-        0
-      ],
-      "explication": "$x(t)\\mathrm{III}_{T_e}(t)=\\sum_n x(nT_e)\\delta(t-nT_e)$."
+      "reponses": [0],
+      "explication": "$x(t)\\text{Ш}_{T_e}(t)=\\sum_n x(nT_e)\\delta(t-nT_e)$."
     },
     {
       "id": "num08",
@@ -119,9 +103,7 @@
         "$x(0)$",
         "$\\delta(t)$"
       ],
-      "reponses": [
-        1
-      ],
+      "reponses": [1],
       "explication": "Un échantillon."
     },
     {
@@ -134,9 +116,7 @@
         "une gaussienne",
         "un Dirac"
       ],
-      "reponses": [
-        0
-      ],
+      "reponses": [0],
       "explication": "Dans le domaine fréquentiel, cela convolue le spectre par un sinc."
     },
     {
@@ -149,9 +129,7 @@
         "Le spectre est dérivé",
         "Aucun effet"
       ],
-      "reponses": [
-        0
-      ],
+      "reponses": [0],
       "explication": ""
     },
     {
@@ -164,9 +142,7 @@
         "$\\sum_k X(kT_e)$",
         "$X(f)*\\delta(f)$"
       ],
-      "reponses": [
-        0
-      ],
+      "reponses": [0],
       "explication": "L'original + des répliques décalées de $kF_e$."
     },
     {
@@ -179,9 +155,7 @@
         "$F_e\\leq 2f_{max}$",
         "$F_e=f_{max}/2$"
       ],
-      "reponses": [
-        1
-      ],
+      "reponses": [1],
       "explication": ""
     },
     {
@@ -194,9 +168,7 @@
         "$2F_e$",
         "$1/F_e$"
       ],
-      "reponses": [
-        1
-      ],
+      "reponses": [1],
       "explication": ""
     },
     {
@@ -209,9 +181,7 @@
         "1300 Hz",
         "325 Hz"
       ],
-      "reponses": [
-        2
-      ],
+      "reponses": [2],
       "explication": ""
     },
     {
@@ -224,9 +194,7 @@
         "l'effet du fenêtrage",
         "le bruit de quantification"
       ],
-      "reponses": [
-        0
-      ],
+      "reponses": [0],
       "explication": ""
     },
     {
@@ -239,9 +207,7 @@
         "Oui, avec le zero-padding",
         "Oui, en augmentant $N$"
       ],
-      "reponses": [
-        1
-      ],
+      "reponses": [1],
       "explication": "Les composantes repliées se superposent au spectre utile."
     },
     {
@@ -254,9 +220,7 @@
         "15 Hz",
         "55 Hz"
       ],
-      "reponses": [
-        1
-      ],
+      "reponses": [1],
       "explication": "$|25-30|=5$ Hz."
     },
     {
@@ -269,9 +233,7 @@
         "1700 Hz",
         "200 Hz"
       ],
-      "reponses": [
-        1
-      ],
+      "reponses": [1],
       "explication": "$|700-1000|=300$ Hz."
     },
     {
@@ -284,9 +246,7 @@
         "350 Hz",
         "650 Hz"
       ],
-      "reponses": [
-        0
-      ],
+      "reponses": [0],
       "explication": "$|650-500|=150$ Hz."
     },
     {
@@ -299,9 +259,7 @@
         "150 Hz",
         "50 Hz"
       ],
-      "reponses": [
-        1
-      ],
+      "reponses": [1],
       "explication": ""
     },
     {
@@ -314,9 +272,7 @@
         "repliée à 5 Hz",
         "supprimée"
       ],
-      "reponses": [
-        1
-      ],
+      "reponses": [1],
       "explication": ""
     },
     {
@@ -329,9 +285,7 @@
         "10 Hz se replie à 90 Hz",
         "Tout se replie"
       ],
-      "reponses": [
-        0
-      ],
+      "reponses": [0],
       "explication": "$F_e/2=50$ Hz > 25 Hz."
     },
     {
@@ -344,9 +298,7 @@
         "un repliement total",
         "une quantification"
       ],
-      "reponses": [
-        1
-      ],
+      "reponses": [1],
       "explication": "Son spectre (gaussien) n'est pas à support borné."
     },
     {
@@ -359,9 +311,7 @@
         "600 Hz",
         "1000 Hz"
       ],
-      "reponses": [
-        2
-      ],
+      "reponses": [2],
       "explication": "Une fréquence $f$ apparaît en $1000-f$ : elle tombe dans $[0;400]$ si $f\\geq600$ Hz."
     },
     {
@@ -374,9 +324,7 @@
         "filtrer le signal",
         "moduler le signal"
       ],
-      "reponses": [
-        0
-      ],
+      "reponses": [0],
       "explication": "$P_\\Gamma$ projette sur l'ensemble de niveaux $\\Gamma$."
     },
     {
@@ -389,9 +337,7 @@
         "$2^n$",
         "$n^2$"
       ],
-      "reponses": [
-        2
-      ],
+      "reponses": [2],
       "explication": ""
     },
     {
@@ -404,9 +350,7 @@
         "1 V",
         "4/3 V"
       ],
-      "reponses": [
-        1
-      ],
+      "reponses": [1],
       "explication": "$4/2^3=0.5$ V."
     },
     {
@@ -419,9 +363,7 @@
         "0.45 V",
         "2.7 V"
       ],
-      "reponses": [
-        1
-      ],
+      "reponses": [1],
       "explication": "$8\\times0.45=3.6$ V, soit $[-1.8;1.8]$."
     },
     {
@@ -434,9 +376,7 @@
         "111",
         "011"
       ],
-      "reponses": [
-        0
-      ],
+      "reponses": [0],
       "explication": "Niveaux croissants 000 à 111 : 1.125 est l'avant-dernier."
     },
     {
@@ -449,9 +389,7 @@
         "010",
         "001"
       ],
-      "reponses": [
-        1
-      ],
+      "reponses": [1],
       "explication": ""
     },
     {
@@ -464,9 +402,7 @@
         "10",
         "11"
       ],
-      "reponses": [
-        1
-      ],
+      "reponses": [1],
       "explication": "Niveaux : -1.35→00, -0.45→01, 0.45→10, 1.35→11."
     },
     {
@@ -479,9 +415,7 @@
         "0.75 V",
         "1 V"
       ],
-      "reponses": [
-        2
-      ],
+      "reponses": [2],
       "explication": "Niveaux ±0.25, ±0.75, ±1.25, ±1.75 : le plus proche de 0.6 est 0.75."
     },
     {
@@ -494,9 +428,7 @@
         "échantillonner",
         "moduler"
       ],
-      "reponses": [
-        0
-      ],
+      "reponses": [0],
       "explication": ""
     },
     {
@@ -509,9 +441,7 @@
         "$F_e/n$",
         "$2^nF_e$"
       ],
-      "reponses": [
-        1
-      ],
+      "reponses": [1],
       "explication": ""
     },
     {
@@ -524,9 +454,7 @@
         "44.1 kbit/s",
         "2.8 Mbit/s"
       ],
-      "reponses": [
-        1
-      ],
+      "reponses": [1],
       "explication": "$2\\times16\\times44100\\approx1.41$ Mbit/s."
     },
     {
@@ -539,10 +467,60 @@
         "les couleurs et la luminosité",
         "le zoom et la rotation"
       ],
-      "reponses": [
-        0
-      ],
+      "reponses": [0],
       "explication": ""
+    },
+    {
+      "id": "num_f1",
+      "type": "QCM",
+      "question": "Définition de la fonction porte (indicatrice) $\\Pi_{[-T/2;T/2]}(t)$ :",
+      "choix": [
+        "1 si $t\\in[-T/2;T/2]$, 0 sinon",
+        "$\\sin(\\pi t/T)/(\\pi t/T)$",
+        "$e^{-t^2/T}$",
+        "$\\delta(t)$ sur $[-T/2;T/2]$"
+      ],
+      "reponses": [0],
+      "explication": "Sert à limiter la durée de mesure (troncature) avant l'échantillonnage."
+    },
+    {
+      "id": "num_f2",
+      "type": "QCM",
+      "question": "Formule complète de l'échantillonnage idéal à pas $T_e$ sur un intervalle $[-T/2;T/2]$ :",
+      "choix": [
+        "$\\sum_{nT_e\\in[-T/2;T/2]} x(nT_e)\\,\\delta_{nT_e}(t)$",
+        "$x(t)*\\Pi_{[-T/2;T/2]}(t)$",
+        "$\\int x(t)\\,dt$",
+        "$x(t)+\\delta(t)$"
+      ],
+      "reponses": [0],
+      "explication": "C'est $x(t)\\,\\text{Ш}_{T_e}(t)\\,\\Pi_{[-T/2;T/2]}(t)$ développé."
+    },
+    {
+      "id": "num_f3",
+      "type": "QCM",
+      "question": "Nombre de points $N$ pour une durée d'observation $T$ échantillonnée à $T_e$ :",
+      "choix": [
+        "$N=\\lfloor T/T_e\\rfloor+1$",
+        "$N=T\\cdot T_e$",
+        "$N=T/T_e$ exactement, sans arrondi possible",
+        "$N=2T/T_e$"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "num_f4",
+      "type": "QCM",
+      "question": "L'opération de quantification uniforme s'écrit formellement :",
+      "choix": [
+        "$P_\\Gamma\\big(x\\,\\text{Ш}_{T_e}\\,\\Pi_{[-T/2;T/2]}\\big)(t)$, avec $\\Gamma$ l'ensemble des niveaux",
+        "$x(t)*h(t)$",
+        "$\\mathcal{F}(x)(f)$",
+        "$x(t)+\\delta(t)$"
+      ],
+      "reponses": [0],
+      "explication": "$P_\\Gamma$ projette son entrée sur le niveau le plus proche dans $\\Gamma=\\{\\alpha_1,\\dots,\\alpha_M\\}$."
     }
   ]
 }

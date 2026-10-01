@@ -1,0 +1,501 @@
+{
+  "titre": "TOEIC Vocabulary 25 — Weather",
+  "description": "Thème « Weather » du livret Vocabulary (d'après les corrigés).",
+  "questions": [
+    {
+      "id": "v25001",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « chilly » ?",
+      "choix": [
+        "Life in the Office",
+        "Weather",
+        "Media",
+        "Human Resources"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« chilly » figure dans les corrigés du thème Weather."
+    },
+    {
+      "id": "v25002",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « humid » ?",
+      "choix": [
+        "Banking & Personal Finance",
+        "Health & Healthcare",
+        "Products",
+        "Weather"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« humid » figure dans les corrigés du thème Weather."
+    },
+    {
+      "id": "v25003",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « stormy » ?",
+      "choix": [
+        "Idioms & Expressions",
+        "Phrasal Verbs",
+        "Weather",
+        "R&D & Industrialization"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« stormy » figure dans les corrigés du thème Weather."
+    },
+    {
+      "id": "v25004",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « windy » ?",
+      "choix": [
+        "Weather",
+        "Graphs",
+        "Human Resources",
+        "Idioms & Expressions"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« windy » figure dans les corrigés du thème Weather."
+    },
+    {
+      "id": "v25005",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « snowy » ?",
+      "choix": [
+        "Weather",
+        "Communicating",
+        "Banking & Personal Finance",
+        "Real Estate & Housing"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« snowy » figure dans les corrigés du thème Weather."
+    },
+    {
+      "id": "v25006",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « hazy » ?",
+      "choix": [
+        "Weather",
+        "Graphs",
+        "Real Estate & Housing",
+        "Corporate Property"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« hazy » figure dans les corrigés du thème Weather."
+    },
+    {
+      "id": "v25007",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « below freezing » ?",
+      "choix": [
+        "Graphs",
+        "Commerce",
+        "Health & Healthcare",
+        "Weather"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« below freezing » figure dans les corrigés du thème Weather."
+    },
+    {
+      "id": "v25008",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « cloudy » ?",
+      "choix": [
+        "Weather",
+        "Communicating",
+        "Dining Out",
+        "Products"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« cloudy » figure dans les corrigés du thème Weather."
+    },
+    {
+      "id": "v25009",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « rainy » ?",
+      "choix": [
+        "High-Tech",
+        "Weather",
+        "Sustainable Development",
+        "Real Estate & Housing"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« rainy » figure dans les corrigés du thème Weather."
+    },
+    {
+      "id": "v25010",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « breezy » ?",
+      "choix": [
+        "Investments",
+        "Weather",
+        "Presentations",
+        "Commerce"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« breezy » figure dans les corrigés du thème Weather."
+    },
+    {
+      "id": "v25011",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « hotter than hell » ?",
+      "choix": [
+        "Banking & Personal Finance",
+        "Dining Out",
+        "Weather",
+        "Meetings"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« hotter than hell » figure dans les corrigés du thème Weather."
+    },
+    {
+      "id": "v25012",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « smoggy » ?",
+      "choix": [
+        "Logistics",
+        "Idioms & Expressions",
+        "Weather",
+        "Graphs"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« smoggy » figure dans les corrigés du thème Weather."
+    },
+    {
+      "id": "v25013",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « foggy » ?",
+      "choix": [
+        "Investments",
+        "Health & Healthcare",
+        "Idioms & Expressions",
+        "Weather"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« foggy » figure dans les corrigés du thème Weather."
+    },
+    {
+      "id": "v25014",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « balmy » ?",
+      "choix": [
+        "Presentations",
+        "Weather",
+        "Travel",
+        "Life in the Office"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« balmy » figure dans les corrigés du thème Weather."
+    },
+    {
+      "id": "v25015",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « frigid » ?",
+      "choix": [
+        "Corporate Property",
+        "Weather",
+        "Life in the Office",
+        "Marketing & Advertising"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« frigid » figure dans les corrigés du thème Weather."
+    },
+    {
+      "id": "v25016",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « showers » ?",
+      "choix": [
+        "Human Resources",
+        "Weather",
+        "Logistics",
+        "Graphs"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« showers » figure dans les corrigés du thème Weather."
+    },
+    {
+      "id": "v25017",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « flash floods » ?",
+      "choix": [
+        "Presentations",
+        "Weather",
+        "Media",
+        "Idioms & Expressions"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« flash floods » figure dans les corrigés du thème Weather."
+    },
+    {
+      "id": "v25018",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « hailstorm » ?",
+      "choix": [
+        "Weather",
+        "Presentations",
+        "Banking & Personal Finance",
+        "R&D & Industrialization"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« hailstorm » figure dans les corrigés du thème Weather."
+    },
+    {
+      "id": "v25019",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « sleet » ?",
+      "choix": [
+        "Phrasal Verbs",
+        "Sustainable Development",
+        "Weather",
+        "Idioms & Expressions"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« sleet » figure dans les corrigés du thème Weather."
+    },
+    {
+      "id": "v25020",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « flurries » ?",
+      "choix": [
+        "Weather",
+        "Marketing & Advertising",
+        "Products",
+        "Presentations"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« flurries » figure dans les corrigés du thème Weather."
+    },
+    {
+      "id": "v25021",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « wind chill » ?",
+      "choix": [
+        "Weather",
+        "Presentations",
+        "Commerce",
+        "Life in the Office"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« wind chill » figure dans les corrigés du thème Weather."
+    },
+    {
+      "id": "v25022",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « ice storm » ?",
+      "choix": [
+        "Investments",
+        "Products",
+        "Weather",
+        "Presentations"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« ice storm » figure dans les corrigés du thème Weather."
+    },
+    {
+      "id": "v25023",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « cold snap » ?",
+      "choix": [
+        "Phrasal Verbs",
+        "Banking & Personal Finance",
+        "Weather",
+        "Communicating"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« cold snap » figure dans les corrigés du thème Weather."
+    },
+    {
+      "id": "v25024",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « drizzle » ?",
+      "choix": [
+        "Weather",
+        "Graphs",
+        "Products",
+        "Banking & Personal Finance"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« drizzle » figure dans les corrigés du thème Weather."
+    },
+    {
+      "id": "v25025",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « downpour » ?",
+      "choix": [
+        "High-Tech",
+        "Human Resources",
+        "Presentations",
+        "Weather"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« downpour » figure dans les corrigés du thème Weather."
+    },
+    {
+      "id": "v25026",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « thunderstorm » ?",
+      "choix": [
+        "Weather",
+        "Presentations",
+        "Corporate Property",
+        "R&D & Industrialization"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« thunderstorm » figure dans les corrigés du thème Weather."
+    },
+    {
+      "id": "v25027",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « mudslide » ?",
+      "choix": [
+        "Weather",
+        "Dining Out",
+        "Meetings",
+        "Media"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« mudslide » figure dans les corrigés du thème Weather."
+    },
+    {
+      "id": "v25028",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « pollen index » ?",
+      "choix": [
+        "Presentations",
+        "Weather",
+        "Real Estate & Housing",
+        "Complaining & Apologizing"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« pollen index » figure dans les corrigés du thème Weather."
+    },
+    {
+      "id": "v25029",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « heat wave » ?",
+      "choix": [
+        "Weather",
+        "Human Resources",
+        "Meetings",
+        "Dining Out"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« heat wave » figure dans les corrigés du thème Weather."
+    },
+    {
+      "id": "v25030",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « UV index » ?",
+      "choix": [
+        "Complaining & Apologizing",
+        "Health & Healthcare",
+        "Weather",
+        "Commerce"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« UV index » figure dans les corrigés du thème Weather."
+    },
+    {
+      "id": "v25031",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « hurricane » ?",
+      "choix": [
+        "Real Estate & Housing",
+        "Presentations",
+        "Health & Healthcare",
+        "Weather"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« hurricane » figure dans les corrigés du thème Weather."
+    },
+    {
+      "id": "v25032",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « dust storm » ?",
+      "choix": [
+        "Weather",
+        "Media",
+        "Human Resources",
+        "Logistics"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« dust storm » figure dans les corrigés du thème Weather."
+    },
+    {
+      "id": "v25033",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « drought » ?",
+      "choix": [
+        "R&D & Industrialization",
+        "Travel",
+        "Weather",
+        "Human Resources"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« drought » figure dans les corrigés du thème Weather."
+    }
+  ]
+}

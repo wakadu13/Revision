@@ -1,0 +1,351 @@
+{
+  "titre": "TOEIC Vocabulary 7 — Graphs",
+  "description": "Thème « Graphs » du livret Vocabulary (d'après les corrigés).",
+  "questions": [
+    {
+      "id": "v07001",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « line graph » ?",
+      "choix": [
+        "Investments",
+        "Presentations",
+        "Graphs",
+        "Dining Out"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« line graph » figure dans les corrigés du thème Graphs."
+    },
+    {
+      "id": "v07002",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « bar chart » ?",
+      "choix": [
+        "Graphs",
+        "Products",
+        "Presentations",
+        "Meetings"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« bar chart » figure dans les corrigés du thème Graphs."
+    },
+    {
+      "id": "v07003",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « flowchart » ?",
+      "choix": [
+        "Graphs",
+        "Sustainable Development",
+        "Travel",
+        "R&D & Industrialization"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« flowchart » figure dans les corrigés du thème Graphs."
+    },
+    {
+      "id": "v07004",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « organisation chart » ?",
+      "choix": [
+        "Graphs",
+        "Logistics",
+        "Complaining & Apologizing",
+        "R&D & Industrialization"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« organisation chart » figure dans les corrigés du thème Graphs."
+    },
+    {
+      "id": "v07005",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « bubble chart » ?",
+      "choix": [
+        "Graphs",
+        "High-Tech",
+        "Idioms & Expressions",
+        "Health & Healthcare"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« bubble chart » figure dans les corrigés du thème Graphs."
+    },
+    {
+      "id": "v07006",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « pie chart » ?",
+      "choix": [
+        "Graphs",
+        "Sustainable Development",
+        "Corporate Property",
+        "Weather"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« pie chart » figure dans les corrigés du thème Graphs."
+    },
+    {
+      "id": "v07007",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « dramatic increase » ?",
+      "choix": [
+        "Graphs",
+        "High-Tech",
+        "Banking & Personal Finance",
+        "Complaining & Apologizing"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« dramatic increase » figure dans les corrigés du thème Graphs."
+    },
+    {
+      "id": "v07008",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « significant drop » ?",
+      "choix": [
+        "Idioms & Expressions",
+        "R&D & Industrialization",
+        "Graphs",
+        "Investments"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« significant drop » figure dans les corrigés du thème Graphs."
+    },
+    {
+      "id": "v07009",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « levelled off » ?",
+      "choix": [
+        "Graphs",
+        "Corporate Property",
+        "Phrasal Verbs",
+        "Dining Out"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« levelled off » figure dans les corrigés du thème Graphs."
+    },
+    {
+      "id": "v07010",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « upward trend » ?",
+      "choix": [
+        "Complaining & Apologizing",
+        "R&D & Industrialization",
+        "Media",
+        "Graphs"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« upward trend » figure dans les corrigés du thème Graphs."
+    },
+    {
+      "id": "v07011",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « plummeted » ?",
+      "choix": [
+        "Graphs",
+        "Idioms & Expressions",
+        "Life in the Office",
+        "Communicating"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« plummeted » figure dans les corrigés du thème Graphs."
+    },
+    {
+      "id": "v07012",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « sharp climb » ?",
+      "choix": [
+        "Media",
+        "Presentations",
+        "Graphs",
+        "Commerce"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« sharp climb » figure dans les corrigés du thème Graphs."
+    },
+    {
+      "id": "v07013",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « shoot up » ?",
+      "choix": [
+        "Graphs",
+        "Weather",
+        "Marketing & Advertising",
+        "Products"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« shoot up » figure dans les corrigés du thème Graphs."
+    },
+    {
+      "id": "v07014",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « sharp growth » ?",
+      "choix": [
+        "Graphs",
+        "Complaining & Apologizing",
+        "Communicating",
+        "Corporate Property"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« sharp growth » figure dans les corrigés du thème Graphs."
+    },
+    {
+      "id": "v07015",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « steady decline » ?",
+      "choix": [
+        "Graphs",
+        "Dining Out",
+        "Banking & Personal Finance",
+        "Travel"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« steady decline » figure dans les corrigés du thème Graphs."
+    },
+    {
+      "id": "v07016",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « remained constant » ?",
+      "choix": [
+        "Health & Healthcare",
+        "Banking & Personal Finance",
+        "Products",
+        "Graphs"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« remained constant » figure dans les corrigés du thème Graphs."
+    },
+    {
+      "id": "v07017",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « plunge » ?",
+      "choix": [
+        "Idioms & Expressions",
+        "Presentations",
+        "Dining Out",
+        "Graphs"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« plunge » figure dans les corrigés du thème Graphs."
+    },
+    {
+      "id": "v07018",
+      "type": "QCM",
+      "question": "The sales increased ____ 10%. (verbe + différence)",
+      "choix": [
+        "from ... to",
+        "at",
+        "by",
+        "to"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "By après un verbe : la différence."
+    },
+    {
+      "id": "v07019",
+      "type": "QCM",
+      "question": "The price rose ____ $20. (mouvement après le verbe)",
+      "choix": [
+        "to",
+        "from ... to",
+        "by",
+        "at"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "To après un verbe : le point d'arrivée (mouvement)."
+    },
+    {
+      "id": "v07020",
+      "type": "QCM",
+      "question": "Sales stayed ____ 20% (pas de changement)",
+      "choix": [
+        "by",
+        "from ... to",
+        "at",
+        "to"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "At : pas de changement."
+    },
+    {
+      "id": "v07021",
+      "type": "QCM",
+      "question": "Sales rose ____ 5% ____ 8%.",
+      "choix": [
+        "at",
+        "to",
+        "from ... to",
+        "by"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "From ... to : point de départ et point d'arrivée."
+    },
+    {
+      "id": "v07022",
+      "type": "QCM",
+      "question": "There was a rise ____ prices. (nom + sujet)",
+      "choix": [
+        "by",
+        "at",
+        "in",
+        "to"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "In après un nom : le sujet."
+    },
+    {
+      "id": "v07023",
+      "type": "QCM",
+      "question": "A rise ____ 10% (nom + montant)",
+      "choix": [
+        "at",
+        "to",
+        "by",
+        "of"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Of après un nom, avant un montant : la différence."
+    }
+  ]
+}

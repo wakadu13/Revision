@@ -3,17 +3,17 @@ aliases: [Syntaxe, Aide]
 tags: [guide, wiki/documentation]
 auteur: ProjetPluri
 ---
-Cette page montre la syntaxe Obsidian reconnue par le wiki.
+Cette page montre la syntaxe Obsidian reconnue par le wiki. ^intro
 
 ## Liens internes
 
 - Lien simple : [[Accueil]]
-- Lien avec texte : [[Projet Pluri|voir le projet]]
-- Lien vers un titre : [[Projet Pluri#Objectifs]]
+- Lien avec texte : [[QCM|voir le guide des QCM]]
+- Lien vers un titre : [[QCM#Les 5 types]]
 - Lien vers un titre de cette page : [[#Intégrations]]
-- Lien vers un bloc : [[Idées#^idee-cle]]
+- Lien vers un bloc : [[#^intro]]
 - Lien par alias : [[Aide]] pointe ici
-- Lien Markdown classique : [le projet](../Projets/Projet%20Pluri.md)
+- Lien Markdown classique : [le guide des QCM](QCM.md)
 - Page inexistante : [[Page à créer]]
 
 ## Intégrations
@@ -24,7 +24,7 @@ Une image, redimensionnée à 120 px :
 
 Une section d'une autre note :
 
-![[Projet Pluri#Objectifs]]
+![[QCM#Les 5 types]]
 
 ## Callouts
 

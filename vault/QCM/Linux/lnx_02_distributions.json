@@ -1,0 +1,106 @@
+{
+  "titre": "Linux 2 — Distributions Linux",
+  "description": "Distributions populaires, cas d'usage et spécificités de Debian",
+  "questions": [
+    {
+      "id": "dis01",
+      "type": "QCM",
+      "question": "Qu'est-ce qu'une distribution Linux (« distro ») ?",
+      "choix": [
+        "Un noyau Linux modifié uniquement pour serveurs",
+        "Un système d'exploitation basé sur le noyau Linux",
+        "Un logiciel de virtualisation",
+        "Une version de Windows compatible Linux"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "dis02",
+      "type": "QCM",
+      "question": "Quelle est la distribution la plus populaire pour les spécialistes en cybersécurité selon le cours ?",
+      "choix": ["Ubuntu", "Debian", "Kali Linux", "CentOS"],
+      "reponses": [2],
+      "explication": "Kali Linux inclut une large gamme d'outils axés sur la sécurité."
+    },
+    {
+      "id": "dis03",
+      "type": "QCM",
+      "question": "Quelle distribution est très répandue pour les utilisateurs de bureau ?",
+      "choix": ["Debian", "Ubuntu", "Red Hat Enterprise Linux", "CentOS"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "dis04",
+      "type": "QCM",
+      "question": "Quelle distribution est populaire pour les serveurs et les systèmes embarqués ?",
+      "choix": ["Ubuntu", "Fedora", "Debian", "Manjaro"],
+      "reponses": [2],
+      "explication": ""
+    },
+    {
+      "id": "dis05",
+      "type": "QCR",
+      "question": "Quelles distributions sont citées comme populaires en cybersécurité dans le cours ?",
+      "choix": ["ParrotOS", "BlackArch", "Pentoo", "Windows Server"],
+      "reponses": [0, 1, 2],
+      "explication": ""
+    },
+    {
+      "id": "dis06",
+      "type": "QCM",
+      "question": "Quel gestionnaire de paquets Debian utilise-t-il ?",
+      "choix": ["APT", "YUM", "DNF", "Pacman"],
+      "reponses": [0],
+      "explication": "APT signifie Advanced Package Tool."
+    },
+    {
+      "id": "dis07",
+      "type": "QCM",
+      "question": "Quel est le principal atout de Debian selon le cours ?",
+      "choix": [
+        "Sa simplicité pour les débutants",
+        "Sa stabilité et sa fiabilité",
+        "Sa légèreté extrême",
+        "Sa gratuité uniquement"
+      ],
+      "reponses": [1],
+      "explication": "Debian propose des versions à support long terme (jusqu'à 5 ans)."
+    },
+    {
+      "id": "dis08",
+      "type": "QCM",
+      "question": "Combien de temps les versions Debian à support long terme peuvent-elles fournir des correctifs de sécurité ?",
+      "choix": ["1 an", "2 ans", "jusqu'à 5 ans", "10 ans"],
+      "reponses": [2],
+      "explication": ""
+    },
+    {
+      "id": "dis09",
+      "type": "QCM",
+      "question": "Quelles entreprises/organisations utilisent typiquement Red Hat Enterprise Linux et CentOS ?",
+      "choix": [
+        "Les particuliers pour le bureau",
+        "L'informatique d'entreprise",
+        "Les systèmes embarqués uniquement",
+        "Les smartphones"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "dis10",
+      "type": "QCM",
+      "question": "Pourquoi les spécialistes en cybersécurité préfèrent-ils souvent Linux selon le cours ?",
+      "choix": [
+        "Car il est propriétaire",
+        "Car il est open-source et personnalisable",
+        "Car il ne nécessite aucune configuration",
+        "Car il n'a jamais de vulnérabilités"
+      ],
+      "reponses": [1],
+      "explication": ""
+    }
+  ]
+}

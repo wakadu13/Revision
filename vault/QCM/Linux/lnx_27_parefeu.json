@@ -1,0 +1,165 @@
+{
+  "titre": "Linux 27 — Configuration du pare-feu",
+  "description": "iptables, Netfilter, tables, chaînes, règles, cibles et correspondances",
+  "questions": [
+    {
+      "id": "fw01",
+      "type": "QCM",
+      "question": "Quels outils iptables a-t-il remplacés ?",
+      "choix": ["nftables et ufw", "ipchains et ipfwadm", "firewalld et SELinux", "TCP wrappers"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "fw02",
+      "type": "QCM",
+      "question": "Dans quel noyau iptables a-t-il été introduit pour la première fois ?",
+      "choix": ["Linux 2.0", "Linux 2.2", "Linux 2.4", "Linux 3.0"],
+      "reponses": [2],
+      "explication": "Introduit en 2000."
+    },
+    {
+      "id": "fw03",
+      "type": "QCM",
+      "question": "Quel framework du noyau fournit les points d'accroche (hooks) utilisés par iptables ?",
+      "choix": ["Netfilter", "SELinux", "AppArmor", "cgroups"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "fw04",
+      "type": "QCM",
+      "question": "Que signifie UFW ?",
+      "choix": ["Universal Firewall", "Uncomplicated Firewall", "Unified Filtering Wrapper", "User Firewall"],
+      "reponses": [1],
+      "explication": "UFW est construit sur le framework iptables."
+    },
+    {
+      "id": "fw05",
+      "type": "QCM",
+      "question": "Quelle solution offre une syntaxe plus moderne qu'iptables mais non compatible avec ses règles ?",
+      "choix": ["ufw", "nftables", "firewalld", "TCP wrappers"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "fw06",
+      "type": "QCM",
+      "question": "Quelle table iptables est utilisée pour filtrer le trafic selon IP, ports et protocoles ?",
+      "choix": ["nat", "mangle", "filter", "raw"],
+      "reponses": [2],
+      "explication": "Chaînes intégrées : INPUT, OUTPUT, FORWARD."
+    },
+    {
+      "id": "fw07",
+      "type": "QCM",
+      "question": "Quelle table iptables modifie les adresses IP source/destination des paquets (NAT) ?",
+      "choix": ["filter", "nat", "mangle", "raw"],
+      "reponses": [1],
+      "explication": "Chaînes : PREROUTING, POSTROUTING."
+    },
+    {
+      "id": "fw08",
+      "type": "QCM",
+      "question": "Quelle table iptables modifie les champs d'en-tête des paquets réseau ?",
+      "choix": ["filter", "nat", "mangle", "raw"],
+      "reponses": [2],
+      "explication": ""
+    },
+    {
+      "id": "fw09",
+      "type": "QCR",
+      "question": "Quelles chaînes intégrées possède la table `filter` ?",
+      "choix": ["INPUT", "OUTPUT", "FORWARD", "PREROUTING"],
+      "reponses": [0, 1, 2],
+      "explication": "PREROUTING appartient à la table nat/mangle, pas filter."
+    },
+    {
+      "id": "fw10",
+      "type": "QCM",
+      "question": "Quelle cible autorise un paquet à traverser le pare-feu ?",
+      "choix": ["DROP", "REJECT", "ACCEPT", "LOG"],
+      "reponses": [2],
+      "explication": ""
+    },
+    {
+      "id": "fw11",
+      "type": "QCM",
+      "question": "Quelle différence existe entre DROP et REJECT ?",
+      "choix": [
+        "DROP envoie un message d'erreur, REJECT non",
+        "REJECT envoie un message d'erreur à la source, DROP abandonne silencieusement le paquet",
+        "Ils sont identiques",
+        "DROP est utilisé uniquement en sortie"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "fw12",
+      "type": "QCM",
+      "question": "Quelle cible est généralement utilisée pour traduire des IP privées en IP publiques avec une IP source fixe ?",
+      "choix": ["SNAT", "DNAT", "MASQUERADE", "REDIRECT"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "fw13",
+      "type": "QCM",
+      "question": "Quelle cible est similaire à SNAT mais utilisée pour une adresse IP source dynamique ?",
+      "choix": ["DNAT", "MASQUERADE", "REDIRECT", "MARK"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "fw14",
+      "type": "QCM",
+      "question": "Que fait la commande `sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT` ?",
+      "choix": [
+        "Elle bloque le trafic SSH entrant",
+        "Elle autorise le trafic TCP entrant sur le port 22 (SSH)",
+        "Elle redirige le port 22 vers un autre port",
+        "Elle supprime toutes les règles"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "fw15",
+      "type": "QCM",
+      "question": "Quelle option iptables spécifie le port de destination à faire correspondre ?",
+      "choix": ["--sport", "--dport", "-d", "-m dport"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "fw16",
+      "type": "QCM",
+      "question": "Quelle correspondance (match) filtre selon l'état d'une connexion (NEW, ESTABLISHED, RELATED) ?",
+      "choix": ["-m state", "-m string", "-m limit", "-m mac"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "fw17",
+      "type": "QCM",
+      "question": "Quelle option ajoute une nouvelle règle à une chaîne iptables ?",
+      "choix": ["-A", "-D", "-L", "-F"],
+      "reponses": [0],
+      "explication": "-A = Append."
+    },
+    {
+      "id": "fw18",
+      "type": "QCM",
+      "question": "Les chaînes définies par l'utilisateur peuvent être ajoutées :",
+      "choix": [
+        "Uniquement à la table filter",
+        "À n'importe laquelle des trois tables principales",
+        "Uniquement à la table nat",
+        "Elles ne peuvent pas être créées"
+      ],
+      "reponses": [1],
+      "explication": ""
+    }
+  ]
+}

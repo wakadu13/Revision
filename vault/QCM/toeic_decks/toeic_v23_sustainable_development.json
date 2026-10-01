@@ -1,0 +1,276 @@
+{
+  "titre": "TOEIC Vocabulary 23 — Sustainable Development",
+  "description": "Thème « Sustainable Development » du livret Vocabulary (d'après les corrigés).",
+  "questions": [
+    {
+      "id": "v23001",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « waste disposal » ?",
+      "choix": [
+        "Sustainable Development",
+        "Commerce",
+        "Logistics",
+        "Communicating"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« waste disposal » figure dans les corrigés du thème Sustainable Development."
+    },
+    {
+      "id": "v23002",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « reduce » ?",
+      "choix": [
+        "Sustainable Development",
+        "Human Resources",
+        "Life in the Office",
+        "Corporate Property"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« reduce » figure dans les corrigés du thème Sustainable Development."
+    },
+    {
+      "id": "v23003",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « reuse » ?",
+      "choix": [
+        "Sustainable Development",
+        "Meetings",
+        "Graphs",
+        "Phrasal Verbs"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« reuse » figure dans les corrigés du thème Sustainable Development."
+    },
+    {
+      "id": "v23004",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « recycle » ?",
+      "choix": [
+        "Commerce",
+        "Banking & Personal Finance",
+        "Media",
+        "Sustainable Development"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« recycle » figure dans les corrigés du thème Sustainable Development."
+    },
+    {
+      "id": "v23005",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « carbon footprint » ?",
+      "choix": [
+        "Presentations",
+        "Life in the Office",
+        "Sustainable Development",
+        "High-Tech"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« carbon footprint » figure dans les corrigés du thème Sustainable Development."
+    },
+    {
+      "id": "v23006",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « landfill » ?",
+      "choix": [
+        "Communicating",
+        "Corporate Property",
+        "Sustainable Development",
+        "Media"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« landfill » figure dans les corrigés du thème Sustainable Development."
+    },
+    {
+      "id": "v23007",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « long term impact » ?",
+      "choix": [
+        "Banking & Personal Finance",
+        "Logistics",
+        "Sustainable Development",
+        "Complaining & Apologizing"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« long term impact » figure dans les corrigés du thème Sustainable Development."
+    },
+    {
+      "id": "v23008",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « Mother Earth » ?",
+      "choix": [
+        "Sustainable Development",
+        "Travel",
+        "Marketing & Advertising",
+        "Health & Healthcare"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« Mother Earth » figure dans les corrigés du thème Sustainable Development."
+    },
+    {
+      "id": "v23009",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « cut emissions » ?",
+      "choix": [
+        "Communicating",
+        "Banking & Personal Finance",
+        "Corporate Property",
+        "Sustainable Development"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« cut emissions » figure dans les corrigés du thème Sustainable Development."
+    },
+    {
+      "id": "v23010",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « renewable » ?",
+      "choix": [
+        "Phrasal Verbs",
+        "Sustainable Development",
+        "Commerce",
+        "High-Tech"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« renewable » figure dans les corrigés du thème Sustainable Development."
+    },
+    {
+      "id": "v23011",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « wind farms » ?",
+      "choix": [
+        "Phrasal Verbs",
+        "Meetings",
+        "Sustainable Development",
+        "Idioms & Expressions"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« wind farms » figure dans les corrigés du thème Sustainable Development."
+    },
+    {
+      "id": "v23012",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « hydroelectric power » ?",
+      "choix": [
+        "Media",
+        "Presentations",
+        "Corporate Property",
+        "Sustainable Development"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« hydroelectric power » figure dans les corrigés du thème Sustainable Development."
+    },
+    {
+      "id": "v23013",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « pesticides » ?",
+      "choix": [
+        "Travel",
+        "Dining Out",
+        "Health & Healthcare",
+        "Sustainable Development"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« pesticides » figure dans les corrigés du thème Sustainable Development."
+    },
+    {
+      "id": "v23014",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « desertification » ?",
+      "choix": [
+        "Communicating",
+        "Sustainable Development",
+        "R&D & Industrialization",
+        "Corporate Property"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« desertification » figure dans les corrigés du thème Sustainable Development."
+    },
+    {
+      "id": "v23015",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « floods » ?",
+      "choix": [
+        "Sustainable Development",
+        "Logistics",
+        "Communicating",
+        "Marketing & Advertising"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« floods » figure dans les corrigés du thème Sustainable Development."
+    },
+    {
+      "id": "v23016",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « committed to » ?",
+      "choix": [
+        "Sustainable Development",
+        "Weather",
+        "High-Tech",
+        "R&D & Industrialization"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« committed to » figure dans les corrigés du thème Sustainable Development."
+    },
+    {
+      "id": "v23017",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « natural environment » ?",
+      "choix": [
+        "Corporate Property",
+        "Commerce",
+        "Sustainable Development",
+        "Travel"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« natural environment » figure dans les corrigés du thème Sustainable Development."
+    },
+    {
+      "id": "v23018",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « standard of living » ?",
+      "choix": [
+        "Media",
+        "Presentations",
+        "Sustainable Development",
+        "Human Resources"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« standard of living » figure dans les corrigés du thème Sustainable Development."
+    }
+  ]
+}

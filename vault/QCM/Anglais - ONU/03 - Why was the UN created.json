@@ -1,0 +1,321 @@
+{
+  "titre": "Why was the UN created? (cause / conséquence)",
+  "description": "Les origines de l'ONU (schéma) et les connecteurs de cause / conséquence + nom.",
+  "questions": [
+    {
+      "type": "QCM",
+      "question": "Which root led to the objective « Protecting human rights »?",
+      "choix": [
+        "the crimes committed by the Nazis and Hitler",
+        "the world economic crisis of the 1930s",
+        "the failure of the League of Nations",
+        "the Cold War"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Les crimes nazis → protéger les droits de l'homme."
+    },
+    {
+      "type": "QCM",
+      "question": "Which roots led to the objective « Securing peace »?",
+      "choix": [
+        "the Second World War and the failure of the League of Nations",
+        "the crimes committed by the Nazis only",
+        "decolonization",
+        "the world economic crisis of the 1930s"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "La Seconde Guerre mondiale et l'échec de la SDN → garantir la paix."
+    },
+    {
+      "type": "QCM",
+      "question": "Which root led to the objective « Economic and social development »?",
+      "choix": [
+        "the crimes committed by the Nazis",
+        "the world economic crisis of the 1930s",
+        "the failure of the League of Nations",
+        "the invention of the atomic bomb"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "La crise économique mondiale des années 1930 → développement économique et social."
+    },
+    {
+      "type": "QCR",
+      "question": "What are the three tasks / objectives of the UN in the diagram? (plusieurs réponses)",
+      "choix": [
+        "Economic and social development",
+        "Creating a world government",
+        "Defending the League of Nations",
+        "Protecting human rights",
+        "Colonizing new territories",
+        "Securing peace"
+      ],
+      "reponses": [
+        0,
+        3,
+        5
+      ],
+      "explication": "Securing peace (au centre), protecting human rights, economic and social development — les deux derniers contribuent aussi à la paix (flèches)."
+    },
+    {
+      "type": "QCM",
+      "question": "In the diagram, what do « Protecting human rights » and « Economic and social development » point to?",
+      "choix": [
+        "the Roots",
+        "Securing peace",
+        "the 1930s crisis",
+        "the League of Nations"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Les deux objectifs servent l'objectif central : garantir la paix."
+    },
+    {
+      "type": "QCR",
+      "question": "Which phrases are followed by a noun or a noun phrase? (plusieurs réponses)",
+      "choix": [
+        "so that",
+        "because of",
+        "as a consequence of",
+        "due to",
+        "owing to",
+        "as a result of",
+        "thanks to",
+        "because"
+      ],
+      "reponses": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "explication": "due to / because of / owing to / thanks to / as a result of / as a consequence of + nom. « because » et « so that » sont suivis d'une proposition (sujet + verbe)."
+    },
+    {
+      "type": "QCM",
+      "question": "Choose the correct sentence.",
+      "choix": [
+        "The UN was created because of the League of Nations failed.",
+        "The UN was created because the failure of the League of Nations.",
+        "The UN was created because of the failure of the League of Nations.",
+        "The UN was created due to the League of Nations failed."
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "because of + nom ; because + sujet + verbe."
+    },
+    {
+      "type": "QCM",
+      "question": "Which phrase introduces a POSITIVE cause?",
+      "choix": [
+        "because of",
+        "thanks to",
+        "due to",
+        "owing to"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "thanks to = grâce à (cause positive)."
+    },
+    {
+      "type": "QCM",
+      "question": "« ___, a new organization was created. » (a full sentence follows)",
+      "choix": [
+        "As a result of",
+        "Owing to",
+        "As a result",
+        "Because of"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "As a result / As a consequence, + phrase complète ; as a result of + nom."
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "Cause / effect phrases + noun",
+      "verso": "due to = en raison de · because of = à cause de · owing to = en raison de · thanks to = grâce à · as a result of / as a consequence of = par suite de, en conséquence de. Tous suivis d'un nom ou groupe nominal."
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "League of Nations",
+      "verso": "la Société des Nations (SDN), créée en 1920 après la Première Guerre mondiale ; elle n'a pas pu empêcher la Seconde Guerre mondiale → remplacée par l'ONU en 1945."
+    },
+    {
+      "type": "TROU",
+      "question": "___ the crimes committed by the Nazis and Hitler, the UN decided to protect human rights. (indice : en raison de — 2 mots)",
+      "reponses_texte": [
+        "Due to",
+        "Owing to",
+        "Because of",
+        "due to",
+        "owing to",
+        "because of"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "The UN was created ___ the failure of the League of Nations. (indice : à cause de)",
+      "reponses_texte": [
+        "because of",
+        "due to",
+        "owing to"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "The UN was founded as a ___ of the Second World War. (indice : conséquence)",
+      "reponses_texte": [
+        "consequence",
+        "result"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "As a result ___ the world economic crisis of the 1930s, the UN promotes economic and social development.",
+      "reponses_texte": [
+        "of"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "___ to the UN, millions of refugees receive humanitarian aid. (indice : grâce à)",
+      "reponses_texte": [
+        "Thanks",
+        "thanks"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "The League of Nations ___ to prevent the Second World War. (indice : échouer, prétérit)",
+      "reponses_texte": [
+        "failed"
+      ]
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "Modèle de réponse (6 phrases)",
+      "verso": "1. Due to the crimes committed by the Nazis and Hitler, the UN was tasked with protecting human rights. 2. Because of the Second World War, the Allies wanted to secure peace. 3. Owing to the failure of the League of Nations, a new organization was needed. 4. As a consequence of the world economic crisis of the 1930s, the UN promotes economic and social development. 5. As a result of these events, 51 countries signed the Charter in 1945. 6. Thanks to the UN, human rights are protected by international law."
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "en raison de",
+      "reponses_texte": [
+        "due to",
+        "owing to"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "à cause de",
+      "reponses_texte": [
+        "because of"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "grâce à",
+      "reponses_texte": [
+        "thanks to"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "par suite de / en conséquence de",
+      "reponses_texte": [
+        "as a result of",
+        "as a consequence of"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "la Société des Nations (SDN)",
+      "reponses_texte": [
+        "the League of Nations",
+        "League of Nations"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "la crise économique mondiale des années 1930",
+      "reponses_texte": [
+        "the world economic crisis of the 1930s",
+        "world economic crisis of the 1930s",
+        "the Great Depression"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "les crimes commis par les nazis",
+      "reponses_texte": [
+        "the crimes committed by the Nazis",
+        "crimes committed by the Nazis"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "garantir la paix",
+      "reponses_texte": [
+        "to secure peace",
+        "secure peace",
+        "securing peace"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "les racines / les origines",
+      "reponses_texte": [
+        "the roots",
+        "roots"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "l'échec",
+      "reponses_texte": [
+        "the failure",
+        "failure"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    }
+  ]
+}

@@ -1,0 +1,1101 @@
+{
+  "titre": "TOEIC Grammar 2 — Les pronoms",
+  "description": "Personnels, possessifs, démonstratifs, réciproques, réfléchis, interrogatifs, indéfinis. 10 exercices du livret + 62 questions de cours.",
+  "questions": [
+    {
+      "id": "g02e001",
+      "type": "QCM",
+      "question": "If there isn't ____ to add, let's close this information meeting then.",
+      "choix": [
+        "nothing",
+        "anything",
+        "something",
+        "everything"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Phrase négative : not ... anything = « rien »."
+    },
+    {
+      "id": "g02e002",
+      "type": "QCM",
+      "question": "The workers and the unionists gathered ____ to organize their strike.",
+      "choix": [
+        "in the warehouse",
+        "each other",
+        "one another",
+        "themselves"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "To gather n'est pas réciproque en anglais : pas de pronom."
+    },
+    {
+      "id": "g02e003",
+      "type": "QCM",
+      "question": "____ items does the manufacturer plan to fabricate within a fortnight?",
+      "choix": [
+        "How much",
+        "How many",
+        "How often",
+        "How deep"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Items est un pluriel dénombrable : How many."
+    },
+    {
+      "id": "g02e004",
+      "type": "QCM",
+      "question": "Unfortunately, the CEO and ____ have decided to lay off a few engineers.",
+      "choix": [
+        "I",
+        "me",
+        "him",
+        "ours"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Fonction sujet : pronom personnel sujet I."
+    },
+    {
+      "id": "g02e005",
+      "type": "QCM",
+      "question": "Those solid-wood Balinese chairs are gorgeous and I don't know which of ____ I will purchase.",
+      "choix": [
+        "that",
+        "this",
+        "them",
+        "theirs"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Which of + pronom complément pluriel : them."
+    },
+    {
+      "id": "g02e006",
+      "type": "QCM",
+      "question": "Let's be positive; the sharpener must be ____ in this drawer.",
+      "choix": [
+        "everywhere",
+        "nowhere",
+        "somewhere",
+        "anywhere"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Sens positif + lieu : somewhere."
+    },
+    {
+      "id": "g02e007",
+      "type": "QCM",
+      "question": "____ of our sales representatives are available for the meeting.",
+      "choix": [
+        "Nothing",
+        "None",
+        "No one",
+        "Nobody"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "None of = « aucun de » (groupe restreint)."
+    },
+    {
+      "id": "g02e008",
+      "type": "QCM",
+      "question": "Germany has started to work on this technical innovation and Spain is planning to work on ____ as well.",
+      "choix": [
+        "its",
+        "it",
+        "itself",
+        "hers"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Complément d'objet : pronom personnel it."
+    },
+    {
+      "id": "g02e009",
+      "type": "QCM",
+      "question": "These orphans ____ fate depends on the association's generosity have managed to form a real family.",
+      "choix": [
+        "which",
+        "where",
+        "who",
+        "whose"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Relation de possession = « dont » : whose."
+    },
+    {
+      "id": "g02e010",
+      "type": "QCM",
+      "question": "____ does the Board of Administration meet in the headquarters?",
+      "choix": [
+        "How old",
+        "How wide",
+        "How often",
+        "How high"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "On demande une fréquence : How often."
+    },
+    {
+      "id": "g02c001",
+      "type": "QCM",
+      "question": "Le pronom personnel sujet de la 1re personne du singulier est :",
+      "choix": [
+        "I",
+        "me",
+        "my",
+        "mine"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g02c002",
+      "type": "QCM",
+      "question": "Quel pronom complément d'objet correspond à he ?",
+      "choix": [
+        "he",
+        "him",
+        "his",
+        "himself"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "he → him (objet)."
+    },
+    {
+      "id": "g02c003",
+      "type": "QCM",
+      "question": "Quel pronom complément d'objet correspond à she ?",
+      "choix": [
+        "she",
+        "her",
+        "hers",
+        "herself"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "she → her (objet)."
+    },
+    {
+      "id": "g02c004",
+      "type": "QCM",
+      "question": "Quel pronom complément d'objet correspond à they ?",
+      "choix": [
+        "they",
+        "their",
+        "them",
+        "theirs"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "they → them (objet)."
+    },
+    {
+      "id": "g02c005",
+      "type": "QCM",
+      "question": "The tax collector sent ____ a letter. (nous)",
+      "choix": [
+        "we",
+        "us",
+        "our",
+        "ours"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Fonction objet : us."
+    },
+    {
+      "id": "g02c006",
+      "type": "QCM",
+      "question": "The CEO and ____ have made important decisions.",
+      "choix": [
+        "me",
+        "I",
+        "myself",
+        "mine"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Fonction sujet : the CEO and I (« the CEO and me » est une faute fréquente chez les francophones)."
+    },
+    {
+      "id": "g02c007",
+      "type": "QCM",
+      "question": "The sales representatives ought to work for ____. (cela = it)",
+      "choix": [
+        "it",
+        "its",
+        "itself",
+        "it's"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Complément après préposition : pronom objet it."
+    },
+    {
+      "id": "g02c008",
+      "type": "QCM",
+      "question": "Quel est le pronom possessif de we ?",
+      "choix": [
+        "our",
+        "ours",
+        "us",
+        "ourselves"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "we → our (adjectif) / ours (pronom)."
+    },
+    {
+      "id": "g02c009",
+      "type": "QCM",
+      "question": "Quel est le pronom possessif de they ?",
+      "choix": [
+        "their",
+        "theirs",
+        "them",
+        "there's"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g02c010",
+      "type": "QCM",
+      "question": "Quel est le pronom possessif de she ?",
+      "choix": [
+        "her",
+        "hers",
+        "she's",
+        "herself"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g02c011",
+      "type": "QCM",
+      "question": "Les pronoms possessifs anglais varient-ils en genre et en nombre (comme « le mien / la mienne / les miens » en français) ?",
+      "choix": [
+        "Non, ni genre ni nombre",
+        "Oui, en genre seulement",
+        "Oui, en nombre seulement",
+        "Oui, en genre et en nombre"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Mine, yours, his, hers, ours, theirs : invariables ni genre ni nombre."
+    },
+    {
+      "id": "g02c012",
+      "type": "QCM",
+      "question": "____ might be outstanding. (Le leur)",
+      "choix": [
+        "Their",
+        "Theirs",
+        "Them",
+        "They"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Pronom possessif en fonction sujet : Theirs."
+    },
+    {
+      "id": "g02c013",
+      "type": "QCM",
+      "question": "He chose ____. (le mien)",
+      "choix": [
+        "my",
+        "mine",
+        "me",
+        "myself"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Pronom possessif en fonction objet : mine."
+    },
+    {
+      "id": "g02c014",
+      "type": "QCM",
+      "question": "« Let's have a look at ____. » (le leur)",
+      "choix": [
+        "their",
+        "theirs",
+        "them",
+        "they"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Pronom possessif objet : theirs."
+    },
+    {
+      "id": "g02c015",
+      "type": "QCM",
+      "question": "Les pronoms démonstratifs sont :",
+      "choix": [
+        "this, that, these, those",
+        "this, that, it, they",
+        "the, a, an, one",
+        "here, there, where, when"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g02c016",
+      "type": "QCM",
+      "question": "« This is a true story. » : this exprime :",
+      "choix": [
+        "la proximité",
+        "la distance",
+        "le passé",
+        "une négation"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g02c017",
+      "type": "QCM",
+      "question": "Que suggère « What's that? » dit sur un ton un peu méprisant ?",
+      "choix": [
+        "La distance ou le mépris",
+        "La proximité",
+        "La politesse",
+        "Une question sur le prix"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "That véhicule la distance, y compris psychologique."
+    },
+    {
+      "id": "g02c018",
+      "type": "QCM",
+      "question": "« It works like this » signifie :",
+      "choix": [
+        "Cela fonctionne comme ceci (démonstration sous les yeux)",
+        "Cela fonctionne comme cela (loin)",
+        "Cela ne fonctionne pas",
+        "Cela fonctionnait autrefois"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g02c019",
+      "type": "QCM",
+      "question": "Quel pronom réciproque est utilisé pour deux personnes ?",
+      "choix": [
+        "each other",
+        "one another",
+        "themselves",
+        "oneself"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "En règle générale : each other pour deux, one another pour trois et plus."
+    },
+    {
+      "id": "g02c020",
+      "type": "QCM",
+      "question": "Quel pronom réciproque est utilisé pour trois personnes et plus ?",
+      "choix": [
+        "each other",
+        "one another",
+        "himself",
+        "ourselves"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g02c021",
+      "type": "QCM",
+      "question": "The two lecturers introduced ____ at the beginning of the symposium.",
+      "choix": [
+        "themselves",
+        "each other",
+        "one another",
+        "them"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Deux personnes : each other."
+    },
+    {
+      "id": "g02c022",
+      "type": "QCM",
+      "question": "The employees congratulated ____ for their achievement (trois personnes ou plus).",
+      "choix": [
+        "themselves",
+        "each other",
+        "one another",
+        "them"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g02c023",
+      "type": "QCR",
+      "question": "Quels verbes ne sont PAS réciproques en anglais (pas de each other) ?",
+      "choix": [
+        "to meet",
+        "to gather",
+        "to quarrel",
+        "to congratulate",
+        "to argue",
+        "to fight"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        4,
+        5
+      ],
+      "explication": "To congratulate se construit avec one another ; to meet, gather, quarrel, argue, fight ne sont pas réciproques."
+    },
+    {
+      "id": "g02c024",
+      "type": "QCM",
+      "question": "Quel est le pronom réfléchi de he ?",
+      "choix": [
+        "himself",
+        "herself",
+        "itself",
+        "oneself"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g02c025",
+      "type": "QCM",
+      "question": "Quel est le pronom réfléchi de they ?",
+      "choix": [
+        "themself",
+        "theirselves",
+        "themselves",
+        "them"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g02c026",
+      "type": "QCM",
+      "question": "Quel est le pronom réfléchi de we ?",
+      "choix": [
+        "weself",
+        "ourself",
+        "ourselves",
+        "us"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g02c027",
+      "type": "QCM",
+      "question": "Quel est le pronom réfléchi de you (pluriel) ?",
+      "choix": [
+        "yourselves",
+        "yourself",
+        "youselves",
+        "your"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Yourself (singulier) / yourselves (pluriel)."
+    },
+    {
+      "id": "g02c028",
+      "type": "QCM",
+      "question": "They enjoyed ____ a lot at the concert.",
+      "choix": [
+        "theirselves",
+        "themselves",
+        "them",
+        "each other"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "To enjoy oneself : le pronom réfléchi suit le verbe."
+    },
+    {
+      "id": "g02c029",
+      "type": "QCM",
+      "question": "« I drove by myself » signifie :",
+      "choix": [
+        "J'ai conduit tout seul",
+        "J'ai conduit près de moi",
+        "J'ai conduit avec moi",
+        "J'ai conduit moi-même à côté"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "By + pronom réfléchi = tout seul."
+    },
+    {
+      "id": "g02c030",
+      "type": "QCM",
+      "question": "« They opened the safe by themselves » signifie :",
+      "choix": [
+        "Ils ont ouvert le coffre tout seuls",
+        "Ils se sont ouverts",
+        "Ils ont ouvert le coffre pour eux",
+        "Ils ont ouvert le coffre à côté"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g02c031",
+      "type": "QCM",
+      "question": "Dans « We will pick up the fruit ourselves », ourselves sert à :",
+      "choix": [
+        "insister sur le sujet",
+        "marquer la réciprocité",
+        "marquer le passif",
+        "marquer la négation"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Emphase sur le sujet : nous-mêmes."
+    },
+    {
+      "id": "g02c032",
+      "type": "QCM",
+      "question": "Dans « I saw the document itself », itself sert à :",
+      "choix": [
+        "insister sur le complément d'objet",
+        "marquer la réciprocité",
+        "former un pluriel",
+        "marquer la négation"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g02c033",
+      "type": "QCR",
+      "question": "Quels verbes se construisent avec un pronom réfléchi en anglais ?",
+      "choix": [
+        "to enjoy",
+        "to introduce",
+        "to help",
+        "to relax",
+        "to shave",
+        "to worry"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "To enjoy / introduce / help oneself. Relax, shave, worry ne prennent pas de pronom réfléchi (contrairement au français)."
+    },
+    {
+      "id": "g02c034",
+      "type": "QCR",
+      "question": "Quels verbes ne prennent PAS de pronom réfléchi en anglais ?",
+      "choix": [
+        "to get up",
+        "to sit down",
+        "to enjoy",
+        "to blame",
+        "to shave",
+        "to feel"
+      ],
+      "reponses": [
+        0,
+        1,
+        4,
+        5
+      ],
+      "explication": "Get up, sit down, shave, feel : pas de réfléchi. Enjoy / blame oneself : réfléchi."
+    },
+    {
+      "id": "g02c035",
+      "type": "QCM",
+      "question": "« How ____ is your house? » (Quelle taille ?)",
+      "choix": [
+        "much",
+        "many",
+        "big",
+        "often"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "How + adjectif : how big, how long..."
+    },
+    {
+      "id": "g02c036",
+      "type": "QCM",
+      "question": "« ____ does it cost? » (Combien ?)",
+      "choix": [
+        "How many",
+        "How much",
+        "How often",
+        "How old"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "How much + singulier / prix."
+    },
+    {
+      "id": "g02c037",
+      "type": "QCM",
+      "question": "« ____ dishes did you order? »",
+      "choix": [
+        "How much",
+        "How many",
+        "How often",
+        "How long"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "How many + pluriel."
+    },
+    {
+      "id": "g02c038",
+      "type": "QCM",
+      "question": "« ____ was the film shot? » (Où)",
+      "choix": [
+        "When",
+        "Why",
+        "Where",
+        "Whose"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g02c039",
+      "type": "QCM",
+      "question": "« ____ lorry is this? » (À qui est ce camion ?)",
+      "choix": [
+        "Who",
+        "Whose",
+        "Which",
+        "Where"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Whose = à qui (possession)."
+    },
+    {
+      "id": "g02c040",
+      "type": "QCM",
+      "question": "« ____ was she hired? » (Pourquoi)",
+      "choix": [
+        "Why",
+        "When",
+        "Who",
+        "How"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g02c041",
+      "type": "QCM",
+      "question": "« ____ tune will you play? » (Quelle mélodie ?)",
+      "choix": [
+        "Whose",
+        "Which",
+        "Who",
+        "What's"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Which + nom : choix parmi un ensemble."
+    },
+    {
+      "id": "g02c042",
+      "type": "QCM",
+      "question": "« ____ borrowed this money? » (Qui)",
+      "choix": [
+        "Whose",
+        "Who",
+        "Which",
+        "Whom"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g02c043",
+      "type": "QCM",
+      "question": "« I wonder ____ long they've been here. » (depuis combien de temps)",
+      "choix": [
+        "how",
+        "what",
+        "which",
+        "who"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "How + adjectif : how long."
+    },
+    {
+      "id": "g02c044",
+      "type": "QCM",
+      "question": "Dans une phrase affirmative, any signifie :",
+      "choix": [
+        "n'importe (quel / qui / quoi / où)",
+        "aucun",
+        "quelque(s)",
+        "tous"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g02c045",
+      "type": "QCM",
+      "question": "Dans une phrase négative, « not anyone » signifie :",
+      "choix": [
+        "personne",
+        "n'importe qui",
+        "quelqu'un",
+        "tout le monde"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g02c046",
+      "type": "QCM",
+      "question": "« Will ____ answer this question? » (quelqu'un, dans une question)",
+      "choix": [
+        "anyone",
+        "someone",
+        "no one",
+        "everyone"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Dans une question, anyone = quelqu'un."
+    },
+    {
+      "id": "g02c047",
+      "type": "QCM",
+      "question": "« ____ can register. » (n'importe qui)",
+      "choix": [
+        "Anyone",
+        "Someone",
+        "No one",
+        "None"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Affirmation : anyone = n'importe qui."
+    },
+    {
+      "id": "g02c048",
+      "type": "QCM",
+      "question": "« They could do ____ to avoid bankruptcy. » (n'importe quoi)",
+      "choix": [
+        "anything",
+        "something",
+        "nothing",
+        "anywhere"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g02c049",
+      "type": "QCM",
+      "question": "« I could not hear ____. » (rien)",
+      "choix": [
+        "anything",
+        "nothing",
+        "something",
+        "everything"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Phrase négative : not ... anything."
+    },
+    {
+      "id": "g02c050",
+      "type": "QCM",
+      "question": "« You can reach me ____ in the plant. » (n'importe où)",
+      "choix": [
+        "everywhere",
+        "anywhere",
+        "nowhere",
+        "somewhere"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g02c051",
+      "type": "QCM",
+      "question": "« We haven't seen this commercial ____. » (nulle part)",
+      "choix": [
+        "anywhere",
+        "nowhere",
+        "somewhere",
+        "everywhere"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g02c052",
+      "type": "QCM",
+      "question": "« ____ will enjoy the show. » (tout le monde)",
+      "choix": [
+        "Everyone",
+        "No one",
+        "None",
+        "Some"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g02c053",
+      "type": "QCM",
+      "question": "« ____ is sold for $5 in this shop. » (tout)",
+      "choix": [
+        "Everything",
+        "Everywhere",
+        "Everyone",
+        "Something"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g02c054",
+      "type": "QCM",
+      "question": "« Can ____ explain to me what's going on? » (quelqu'un)",
+      "choix": [
+        "someone",
+        "anyone",
+        "no one",
+        "none"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Some- dans une question avec attente positive."
+    },
+    {
+      "id": "g02c055",
+      "type": "QCM",
+      "question": "« If you spot ____ wrong, tell us. »",
+      "choix": [
+        "something",
+        "nothing",
+        "anywhere",
+        "no one"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g02c056",
+      "type": "QCM",
+      "question": "« Peter hid ____ in the house. » (quelque part)",
+      "choix": [
+        "somewhere",
+        "nowhere",
+        "anywhere",
+        "everywhere"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g02c057",
+      "type": "QCM",
+      "question": "« I met ____ I knew. » (personne)",
+      "choix": [
+        "no one",
+        "anyone",
+        "someone",
+        "everyone"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "No one dans une phrase affirmative = personne."
+    },
+    {
+      "id": "g02c058",
+      "type": "QCM",
+      "question": "« He has ____ to go. » (nulle part où aller)",
+      "choix": [
+        "nowhere",
+        "anywhere",
+        "somewhere",
+        "everywhere"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g02c059",
+      "type": "QCM",
+      "question": "« ____ of these ties goes with this suit. » (aucune)",
+      "choix": [
+        "None",
+        "No one",
+        "Nobody",
+        "Nothing"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "None of + pluriel défini."
+    },
+    {
+      "id": "g02c060",
+      "type": "QCM",
+      "question": "« ____ has been stolen. » (rien)",
+      "choix": [
+        "Nothing",
+        "None",
+        "Nobody",
+        "No one"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Nothing = rien (inanimé)."
+    },
+    {
+      "id": "g02c061",
+      "type": "QCM",
+      "question": "Les composés de no (no one, nobody, nowhere...) s'emploient :",
+      "choix": [
+        "dans des phrases affirmatives (ils portent déjà la négation)",
+        "dans des phrases négatives",
+        "uniquement dans les questions",
+        "uniquement au passé"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "On ne peut pas les utiliser dans des phrases négatives (sauf contexte très familier)."
+    },
+    {
+      "id": "g02c062",
+      "type": "QCM",
+      "question": "Quel pronom relatif exprime la possession (« dont ») ?",
+      "choix": [
+        "which",
+        "who",
+        "whose",
+        "where"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": ""
+    }
+  ]
+}

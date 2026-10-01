@@ -19,17 +19,45 @@ dossier** qui le contient devient la **catégorie**. Par exemple
     {"type": "QCM", "question": "Aire d'un cercle de rayon $r$ ?", "choix": ["$2\\pi r$", "$\\pi r^2$"], "reponses": [1], "explication": "Aire = $\\pi r^2$."},
     {"type": "QCR", "question": "Plusieurs bonnes réponses ?", "choix": ["A", "B", "C"], "reponses": [0, 2]},
     {"type": "TROU", "question": "She ___ (go) to school.", "reponses_texte": ["goes"]},
+    {"type": "QRC", "consigne": "Traduire en anglais", "question": "chien", "reponses_texte": ["dog"], "inverse": true, "consigne_inverse": "Traduire en français"},
     {"type": "FLASHCARD", "question": "to achieve", "verso": "réussir"}
   ]
 }
 ```
 
-## Les 4 types
+### Importer par glisser-déposer
+
+Les admins voient en haut de la page [/qcm/](/qcm/) une zone d'import : il suffit
+d'y **glisser des fichiers `.json`** (ou de cliquer pour les choisir). Choisissez
+d'abord la catégorie (dossier existant ou nouveau nom ; « Importés » par défaut).
+Chaque set est vérifié avant d'être enregistré dans `vault/QCM/<catégorie>/` ;
+les erreurs (JSON invalide, champ manquant…) s'affichent en haut de la page. Un
+fichier du même nom n'est remplacé que si « Remplacer les sets existants » est
+coché.
+
+## Les 5 types
 
 - **QCM** — une seule bonne réponse.
 - **QCR** — plusieurs bonnes réponses.
 - **TROU** — réponse libre (casse, accents et espaces ignorés).
+- **QRC** — question à réponse courte : un mot ou une phrase à retrouver en le
+  tapant (traduction, synonyme…). Voir ci-dessous.
 - **FLASHCARD** — recto/verso auto-évalué.
+
+### QRC : traduction, synonyme
+
+- `consigne` (optionnel) s'affiche au-dessus du mot : « Traduire en anglais »,
+  « Donner un synonyme »…
+- `reponses_texte` liste **toutes** les réponses acceptées. Si on trouve la
+  bonne, les autres sont affichées (pratique pour les synonymes).
+- `"inverse": true` ajoute automatiquement la question dans l'autre sens
+  (*chien → dog* puis *dog → chien*), avec sa propre consigne
+  `consigne_inverse`. L'inverse demande la 1re réponse de `reponses_texte` et
+  attend le texte de `question` : garde-les en texte simple, sans Markdown.
+- Casse, accents, espaces, apostrophes ’ / ' et ponctuation finale (`. ! ?`)
+  sont ignorés, pour les QRC comme pour les TROU.
+
+> Attention à ne pas confondre **QRC** (réponse tapée) et **QCR** (cases à cocher).
 
 Les `reponses` sont les **indices** des bons choix (à partir de 0). Le texte des
 questions et des choix accepte le **Markdown** et les **formules LaTeX** `$...$`.
@@ -42,3 +70,17 @@ mauvaise. Plus la boîte est haute, plus l'intervalle avant la prochaine révisi
 est long (1, 3, 7, 14, 30 jours). La **Révision intelligente** ne propose que les
 questions dues, les moins maîtrisées d'abord. La progression est enregistrée
 automatiquement ; les [statistiques](/qcm/stats/) montrent la maîtrise par set.
+
+## Révision intensive
+
+Pour tout savoir **dès le lendemain** (veille d'examen), le bouton **Intensif**
+d'un set — ou **Révision intensive de la catégorie** — pose toutes les questions,
+y compris celles déjà maîtrisées. Une question ratée revient quelques questions
+plus loin, puis encore plus tard : elle n'est considérée comme sue qu'après
+**2 bonnes réponses de suite**. Au passage suivant, l'ordre des choix est mélangé
+pour qu'on retienne la réponse, pas sa position. La session se termine quand tout
+est su, avec la liste des questions les plus difficiles.
+
+Seule la **première réponse** à chaque question est enregistrée pour la révision
+espacée : les répétitions ne gonflent pas les boîtes. Les questions ratées restent
+donc « à réviser » et reviennent le lendemain dans la Révision intelligente.

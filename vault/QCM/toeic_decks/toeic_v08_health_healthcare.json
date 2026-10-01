@@ -1,0 +1,501 @@
+{
+  "titre": "TOEIC Vocabulary 8 — Health & Healthcare",
+  "description": "Thème « Health & Healthcare » du livret Vocabulary (d'après les corrigés).",
+  "questions": [
+    {
+      "id": "v08001",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « dentist » ?",
+      "choix": [
+        "Travel",
+        "Health & Healthcare",
+        "Graphs",
+        "Complaining & Apologizing"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« dentist » figure dans les corrigés du thème Health & Healthcare."
+    },
+    {
+      "id": "v08002",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « toothache » ?",
+      "choix": [
+        "Presentations",
+        "R&D & Industrialization",
+        "Phrasal Verbs",
+        "Health & Healthcare"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« toothache » figure dans les corrigés du thème Health & Healthcare."
+    },
+    {
+      "id": "v08003",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « nauseous » ?",
+      "choix": [
+        "Graphs",
+        "Meetings",
+        "Health & Healthcare",
+        "Phrasal Verbs"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« nauseous » figure dans les corrigés du thème Health & Healthcare."
+    },
+    {
+      "id": "v08004",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « poorly » ?",
+      "choix": [
+        "Health & Healthcare",
+        "Travel",
+        "Media",
+        "Phrasal Verbs"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« poorly » figure dans les corrigés du thème Health & Healthcare."
+    },
+    {
+      "id": "v08005",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « check-up » ?",
+      "choix": [
+        "Life in the Office",
+        "Logistics",
+        "Health & Healthcare",
+        "Complaining & Apologizing"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« check-up » figure dans les corrigés du thème Health & Healthcare."
+    },
+    {
+      "id": "v08006",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « prescribe » ?",
+      "choix": [
+        "Products",
+        "Media",
+        "Health & Healthcare",
+        "Phrasal Verbs"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« prescribe » figure dans les corrigés du thème Health & Healthcare."
+    },
+    {
+      "id": "v08007",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « bandage » ?",
+      "choix": [
+        "Meetings",
+        "Banking & Personal Finance",
+        "Health & Healthcare",
+        "Sustainable Development"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« bandage » figure dans les corrigés du thème Health & Healthcare."
+    },
+    {
+      "id": "v08008",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « painkillers » ?",
+      "choix": [
+        "Life in the Office",
+        "Logistics",
+        "Media",
+        "Health & Healthcare"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« painkillers » figure dans les corrigés du thème Health & Healthcare."
+    },
+    {
+      "id": "v08009",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « general practitioner » ?",
+      "choix": [
+        "Communicating",
+        "Products",
+        "Weather",
+        "Health & Healthcare"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« general practitioner » figure dans les corrigés du thème Health & Healthcare."
+    },
+    {
+      "id": "v08010",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « waiting room » ?",
+      "choix": [
+        "R&D & Industrialization",
+        "Real Estate & Housing",
+        "Weather",
+        "Health & Healthcare"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« waiting room » figure dans les corrigés du thème Health & Healthcare."
+    },
+    {
+      "id": "v08011",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « contagious » ?",
+      "choix": [
+        "Health & Healthcare",
+        "Phrasal Verbs",
+        "Complaining & Apologizing",
+        "Dining Out"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« contagious » figure dans les corrigés du thème Health & Healthcare."
+    },
+    {
+      "id": "v08012",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « surgeon » ?",
+      "choix": [
+        "Communicating",
+        "Meetings",
+        "Complaining & Apologizing",
+        "Health & Healthcare"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« surgeon » figure dans les corrigés du thème Health & Healthcare."
+    },
+    {
+      "id": "v08013",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « operating room » ?",
+      "choix": [
+        "Health & Healthcare",
+        "Life in the Office",
+        "Banking & Personal Finance",
+        "Products"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« operating room » figure dans les corrigés du thème Health & Healthcare."
+    },
+    {
+      "id": "v08014",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « ward » ?",
+      "choix": [
+        "Health & Healthcare",
+        "Presentations",
+        "Logistics",
+        "Weather"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« ward » figure dans les corrigés du thème Health & Healthcare."
+    },
+    {
+      "id": "v08015",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « syrup » ?",
+      "choix": [
+        "Investments",
+        "Banking & Personal Finance",
+        "Health & Healthcare",
+        "Complaining & Apologizing"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« syrup » figure dans les corrigés du thème Health & Healthcare."
+    },
+    {
+      "id": "v08016",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « band aid » ?",
+      "choix": [
+        "Health & Healthcare",
+        "Meetings",
+        "High-Tech",
+        "Human Resources"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« band aid » figure dans les corrigés du thème Health & Healthcare."
+    },
+    {
+      "id": "v08017",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « specialist » ?",
+      "choix": [
+        "Weather",
+        "Banking & Personal Finance",
+        "Health & Healthcare",
+        "Logistics"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« specialist » figure dans les corrigés du thème Health & Healthcare."
+    },
+    {
+      "id": "v08018",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « eye drops » ?",
+      "choix": [
+        "Idioms & Expressions",
+        "Meetings",
+        "Complaining & Apologizing",
+        "Health & Healthcare"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« eye drops » figure dans les corrigés du thème Health & Healthcare."
+    },
+    {
+      "id": "v08019",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « bruise » ?",
+      "choix": [
+        "Phrasal Verbs",
+        "Health & Healthcare",
+        "Life in the Office",
+        "Idioms & Expressions"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« bruise » figure dans les corrigés du thème Health & Healthcare."
+    },
+    {
+      "id": "v08020",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « syringe » ?",
+      "choix": [
+        "Graphs",
+        "Banking & Personal Finance",
+        "Health & Healthcare",
+        "Corporate Property"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« syringe » figure dans les corrigés du thème Health & Healthcare."
+    },
+    {
+      "id": "v08021",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « health insurance » ?",
+      "choix": [
+        "Idioms & Expressions",
+        "Human Resources",
+        "Health & Healthcare",
+        "Marketing & Advertising"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« health insurance » figure dans les corrigés du thème Health & Healthcare."
+    },
+    {
+      "id": "v08022",
+      "type": "QCM",
+      "question": "Dans le livret, « surgeon » est associé à :",
+      "choix": [
+        "operating room",
+        "patient",
+        "ward",
+        "to cure"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "surgeon : operating room"
+    },
+    {
+      "id": "v08023",
+      "type": "QCM",
+      "question": "Dans le livret, « nurse » est associé à :",
+      "choix": [
+        "operating room",
+        "syrup",
+        "to cure",
+        "ward"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "nurse : ward"
+    },
+    {
+      "id": "v08024",
+      "type": "QCM",
+      "question": "Dans le livret, « cough » est associé à :",
+      "choix": [
+        "ward",
+        "operating room",
+        "specialist",
+        "syrup"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "cough : syrup"
+    },
+    {
+      "id": "v08025",
+      "type": "QCM",
+      "question": "Dans le livret, « band aid » est associé à :",
+      "choix": [
+        "operating room",
+        "cut",
+        "patient",
+        "to cure"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "band aid : cut"
+    },
+    {
+      "id": "v08026",
+      "type": "QCM",
+      "question": "Dans le livret, « allergy » est associé à :",
+      "choix": [
+        "ward",
+        "specialist",
+        "cut",
+        "syrup"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "allergy : specialist"
+    },
+    {
+      "id": "v08027",
+      "type": "QCM",
+      "question": "Dans le livret, « eye infection » est associé à :",
+      "choix": [
+        "eye drops",
+        "cream",
+        "cut",
+        "patient"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "eye infection : eye drops"
+    },
+    {
+      "id": "v08028",
+      "type": "QCM",
+      "question": "Dans le livret, « bruise » est associé à :",
+      "choix": [
+        "syrup",
+        "cream",
+        "operating room",
+        "shot"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "bruise : cream"
+    },
+    {
+      "id": "v08029",
+      "type": "QCM",
+      "question": "Dans le livret, « syringe » est associé à :",
+      "choix": [
+        "cream",
+        "to heal",
+        "operating room",
+        "shot"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "syringe : shot"
+    },
+    {
+      "id": "v08030",
+      "type": "QCM",
+      "question": "Dans le livret, « hospital » est associé à :",
+      "choix": [
+        "to heal",
+        "patient",
+        "cream",
+        "to cure"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "hospital : patient"
+    },
+    {
+      "id": "v08031",
+      "type": "QCM",
+      "question": "Dans le livret, « to treat » est associé à :",
+      "choix": [
+        "syrup",
+        "shot",
+        "operating room",
+        "to cure"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to treat : to cure"
+    },
+    {
+      "id": "v08032",
+      "type": "QCM",
+      "question": "Dans le livret, « to graze » est associé à :",
+      "choix": [
+        "shot",
+        "to cure",
+        "specialist",
+        "to heal"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to graze : to heal"
+    },
+    {
+      "id": "v08033",
+      "type": "QCM",
+      "question": "Lequel est l'intrus dans le thème santé (odd-man out) ?",
+      "choix": [
+        "health insurance",
+        "surgeon",
+        "nurse",
+        "syringe"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Le corrigé indique : l'intrus est health insurance."
+    }
+  ]
+}

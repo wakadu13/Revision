@@ -1,0 +1,334 @@
+{
+  "titre": "UN peacekeeping: achievements and challenges",
+  "description": "Does UN peacekeeping work? Naissance, réussites, échecs (Rwanda, Srebrenica, Liban) et vocabulaire.",
+  "questions": [
+    {
+      "type": "QCM",
+      "question": "Where and when was UN peacekeeping born?",
+      "choix": [
+        "in the Middle East, in 1948",
+        "in Korea, in 1950",
+        "in Europe, in 1945",
+        "in Rwanda, in 1994"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "1948 : observateurs de l'ONU (UNTSO) pour surveiller l'armistice entre Israël et ses voisins arabes."
+    },
+    {
+      "type": "QCM",
+      "question": "How many peacekeeping missions have there been since the start of the UN?",
+      "choix": [
+        "more than 70 (71)",
+        "more than 1,000",
+        "about 10",
+        "about 200"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Selon l'ONU, 71 missions depuis 1948."
+    },
+    {
+      "type": "QCM",
+      "question": "Roughly how many people serve in UN peacekeeping today?",
+      "choix": [
+        "about 10 million",
+        "about 500",
+        "several tens of thousands (≈ 50,000-70,000)",
+        "about 1 million"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Environ 70 000 en 2024, un peu plus de 50 000 en 2026 après les coupes budgétaires — le chiffre de la vidéo dépend de sa date."
+    },
+    {
+      "type": "QCM",
+      "question": "In how many missions do peacekeepers serve today?",
+      "choix": [
+        "71",
+        "25",
+        "11",
+        "3"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "11 missions en cours."
+    },
+    {
+      "type": "QCR",
+      "question": "What have peacekeeping missions helped achieve? (plusieurs réponses)",
+      "choix": [
+        "restoring hope",
+        "building peace",
+        "saving lives",
+        "imposing trade sanctions",
+        "strengthening institutions",
+        "delivering life-saving assistance",
+        "supporting the transition from war to peace",
+        "electing the Secretary-General",
+        "protecting people",
+        "rebuilding infrastructure"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        6,
+        8,
+        9
+      ],
+      "explication": "Les réussites mises en avant par la vidéo."
+    },
+    {
+      "type": "QCR",
+      "question": "In which countries did peacekeeping help restore stability? (plusieurs réponses)",
+      "choix": [
+        "Côte d'Ivoire",
+        "Rwanda",
+        "Cambodia",
+        "Sierra Leone",
+        "Liberia",
+        "Bosnia (Srebrenica)"
+      ],
+      "reponses": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "explication": "Exemples souvent cités de missions réussies (aussi Namibie, Mozambique, Timor-Leste…)."
+    },
+    {
+      "type": "QCM",
+      "question": "Which genocide did UN peacekeeping fail to prevent in 1994?",
+      "choix": [
+        "the Holocaust",
+        "the Cambodian genocide",
+        "the Armenian genocide",
+        "the Rwandan genocide"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Rwanda, 1994 : environ 800 000 morts malgré la présence de la MINUAR."
+    },
+    {
+      "type": "QCM",
+      "question": "Which massacre took place in 1995 despite UN peacekeepers?",
+      "choix": [
+        "the Srebrenica massacre (Bosnia)",
+        "the Sabra and Shatila massacre",
+        "the Tiananmen massacre",
+        "the My Lai massacre"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Srebrenica, juillet 1995 : 8 000 hommes et garçons bosniaques tués dans une « zone de sécurité » de l'ONU."
+    },
+    {
+      "type": "QCM",
+      "question": "After the Hamas attacks of October 7, 2023, where did peacekeeping fail to prevent an escalation between Hezbollah and Israel?",
+      "choix": [
+        "Lebanon (UNIFIL)",
+        "Egypt",
+        "Jordan",
+        "Cyprus"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "La FINUL au Sud-Liban."
+    },
+    {
+      "type": "QCM",
+      "question": "In spite of uncertainties in Gaza and Ukraine, do member states remain supportive of peacekeeping?",
+      "choix": [
+        "No, they want to abolish it",
+        "Only African countries",
+        "Only the P5",
+        "Yes"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Les États membres continuent de soutenir le maintien de la paix."
+    },
+    {
+      "type": "TROU",
+      "question": "UN peacekeeping was born in the ___ East in 1948.",
+      "reponses_texte": [
+        "Middle"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "Peacekeeping failed to prevent the 1994 ___ genocide.",
+      "reponses_texte": [
+        "Rwandan",
+        "Rwanda"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "Peacekeepers could not stop the 1995 ___ massacre.",
+      "reponses_texte": [
+        "Srebrenica"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "UN peacekeepers are known as the Blue ___.",
+      "reponses_texte": [
+        "Helmets"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "Peacekeeping missions help the transition from ___ to peace.",
+      "reponses_texte": [
+        "war"
+      ]
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "Does UN peacekeeping work? (bilan)",
+      "verso": "Achievements: 70+ missions since 1948, lives saved, civilians protected, stability restored (Liberia, Sierra Leone, Côte d'Ivoire, Cambodia…). Failures: Rwanda 1994, Srebrenica 1995, Lebanon after Oct. 7, 2023. Limits: mandates depend on the Security Council, lack of funding and troops, consent of the parties."
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "Caricature (Waza Africa) sur les Casques bleus",
+      "verso": "A woman tells a peacekeeper: « Thanks to you, the situation is dramatic. Without you, the situation would be tragic. » → ironie : les Casques bleus ne règlent pas tout, mais sans eux ce serait pire."
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "les Casques bleus",
+      "reponses_texte": [
+        "the Blue Helmets",
+        "Blue Helmets",
+        "peacekeepers"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "un soldat de la paix",
+      "reponses_texte": [
+        "a peacekeeper",
+        "peacekeeper"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "un cessez-le-feu",
+      "reponses_texte": [
+        "a ceasefire",
+        "ceasefire",
+        "a cease-fire"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "protéger les civils",
+      "reponses_texte": [
+        "to protect civilians",
+        "protect civilians"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "rétablir la stabilité",
+      "reponses_texte": [
+        "to restore stability",
+        "restore stability"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "une aide vitale",
+      "reponses_texte": [
+        "life-saving assistance",
+        "life-saving aid"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "un génocide",
+      "reponses_texte": [
+        "a genocide",
+        "genocide"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "un massacre",
+      "reponses_texte": [
+        "a massacre",
+        "massacre"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "une zone de conflit",
+      "reponses_texte": [
+        "a conflict area",
+        "conflict area",
+        "a conflict zone",
+        "conflict zone"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "les pays contributeurs de troupes",
+      "reponses_texte": [
+        "troop-contributing countries"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "un mandat (mission confiée par le Conseil de sécurité)",
+      "reponses_texte": [
+        "a mandate",
+        "mandate"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    }
+  ]
+}

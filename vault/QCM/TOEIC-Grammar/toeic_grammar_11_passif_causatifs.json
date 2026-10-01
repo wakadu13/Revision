@@ -1,0 +1,156 @@
+{
+  "titre": "TOEIC Grammar — 11 La voix passive et les verbes causatifs",
+  "description": "Voix passive à tous les temps et verbes causatifs get, have, let, make.",
+  "questions": [
+    {
+      "id": "toeic-g11-q01",
+      "type": "QCM",
+      "question": "A concentrated effort from our shareholders is what …… to improve the level of competency as well as operational and technical preparedness.",
+      "choix": [
+        "needing",
+        "needs",
+        "is needed",
+        "need"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Un effort est requis (il subit l'action) : voix passive avec *be* + participe passé, `is needed`."
+    },
+    {
+      "id": "toeic-g11-q02",
+      "type": "QCM",
+      "question": "This winter, our restaurant …… a new look centered around the theme of the rainforest.",
+      "choix": [
+        "has given",
+        "has been given",
+        "gave",
+        "is giving"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "C'est le restaurant qui subit le relooking : passif `has been given`."
+    },
+    {
+      "id": "toeic-g11-q03",
+      "type": "QCM",
+      "question": "Unexpectedly, the manager …… the trainee present the project to the whole team.",
+      "choix": [
+        "have",
+        "get",
+        "let",
+        "have made"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Verbe causatif au sens « laisser » : `let` + infinitif sans *to*. Contre toute attente, le directeur a laissé le stagiaire présenter."
+    },
+    {
+      "id": "toeic-g11-q04",
+      "type": "QCM",
+      "question": "They found all the bank's safes …… by one of their former security agents.",
+      "choix": [
+        "had been robbed",
+        "were robbed",
+        "have been robbed",
+        "will have been robbed"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "La phrase est introduite par un prétérit : il faut un pluperfect à la voix passive, `had been robbed`."
+    },
+    {
+      "id": "toeic-g11-q05",
+      "type": "QCM",
+      "question": "Mr. Stoneseifer …… to have had lunch with our competitor's CEO in a very trendy eatery.",
+      "choix": [
+        "believes",
+        "is believing",
+        "is believed",
+        "has been believing"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Traduit : « On croit que M. Stoneseifer a déjeuné… » : « on » se traduit souvent par le passif, `is believed`."
+    },
+    {
+      "id": "toeic-g11-q06",
+      "type": "QCM",
+      "question": "Before you get comfortable, please ensure your hand baggage …….",
+      "choix": [
+        "is safely stowed",
+        "safely stows",
+        "will be safely stowed",
+        "is safely stowing"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Il faut une voix passive au présent : les bagages sont rangés. Le futur est incorrect (ce serait après que les passagers sont installés)."
+    },
+    {
+      "id": "toeic-g11-q07",
+      "type": "QCM",
+      "question": "The applicants …… two hours in the waiting room.",
+      "choix": [
+        "were waited",
+        "were made to wait",
+        "have been waited",
+        "made them to wait"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Il est vraisemblable qu'on ait fait attendre les candidats : `were made to wait` (passif avec *make* + *to*)."
+    },
+    {
+      "id": "toeic-g11-q08",
+      "type": "QCM",
+      "question": "The new hires …… some good advice to increase their performance.",
+      "choix": [
+        "gave",
+        "will give",
+        "were given",
+        "should give"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Il est vraisemblable que les recrues aient reçu des conseils : passif `were given`."
+    },
+    {
+      "id": "toeic-g11-q09",
+      "type": "QCM",
+      "question": "The alarming weather forecasts …… the authorities take radical decisions to protect the population.",
+      "choix": [
+        "had",
+        "let",
+        "made",
+        "got"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Verbe causatif porteur d'obligation : `made` + infinitif sans *to*. *Got* exigerait *to*."
+    },
+    {
+      "id": "toeic-g11-q10",
+      "type": "QCM",
+      "question": "Camping fuel containers …… for carriage by passenger in carry-on or checked-in baggage or on one's person.",
+      "choix": [
+        "are forbidden",
+        "forbid",
+        "forbade",
+        "are being forbidden"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Voix passive nécessaire : les articles sont interdits. Le présent en -ING n'a pas de sens pour un règlement."
+    }
+  ]
+}

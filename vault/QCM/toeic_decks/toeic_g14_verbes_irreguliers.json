@@ -1,0 +1,5136 @@
+{
+  "titre": "TOEIC Grammar — Verbes irréguliers",
+  "description": "Tableau des principaux verbes irréguliers du livret : prétérit, participe passé, traduction (114 verbes).",
+  "questions": [
+    {
+      "id": "g14v001",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to arise » (s'élever) ?",
+      "choix": [
+        "arose",
+        "went",
+        "arisen",
+        "arised"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to arise — arose — arisen"
+    },
+    {
+      "id": "g14v002",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to arise » (s'élever) ?",
+      "choix": [
+        "arisen",
+        "arose",
+        "cut",
+        "arised"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to arise — arose — arisen"
+    },
+    {
+      "id": "g14v003",
+      "type": "QCM",
+      "question": "Que signifie « to arise » (arose / arisen) ?",
+      "choix": [
+        "s'élever",
+        "fermer",
+        "apporter",
+        "gagner"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to arise = s'élever"
+    },
+    {
+      "id": "g14v004",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to be » (être) ?",
+      "choix": [
+        "bed",
+        "wound",
+        "was / were",
+        "been"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to be — was / were — been"
+    },
+    {
+      "id": "g14v005",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to be » (être) ?",
+      "choix": [
+        "known",
+        "been",
+        "bed",
+        "was / were"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to be — was / were — been"
+    },
+    {
+      "id": "g14v006",
+      "type": "QCM",
+      "question": "Que signifie « to be » (was / were / been) ?",
+      "choix": [
+        "conduire",
+        "faire",
+        "entendre",
+        "être"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to be = être"
+    },
+    {
+      "id": "g14v007",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to beat » (battre) ?",
+      "choix": [
+        "beated",
+        "beat",
+        "beaten",
+        "lit"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to beat — beat — beaten"
+    },
+    {
+      "id": "g14v008",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to beat » (battre) ?",
+      "choix": [
+        "beat",
+        "beaten",
+        "beated",
+        "known"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to beat — beat — beaten"
+    },
+    {
+      "id": "g14v009",
+      "type": "QCM",
+      "question": "Que signifie « to beat » (beat / beaten) ?",
+      "choix": [
+        "être",
+        "geler",
+        "battre",
+        "sonner"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to beat = battre"
+    },
+    {
+      "id": "g14v010",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to become » (devenir) ?",
+      "choix": [
+        "became",
+        "become",
+        "becomed",
+        "drew"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to become — became — become"
+    },
+    {
+      "id": "g14v011",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to become » (devenir) ?",
+      "choix": [
+        "became",
+        "becomed",
+        "become",
+        "fought"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to become — became — become"
+    },
+    {
+      "id": "g14v012",
+      "type": "QCM",
+      "question": "Que signifie « to become » (became / become) ?",
+      "choix": [
+        "devenir",
+        "choisir",
+        "oublier",
+        "avoir"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to become = devenir"
+    },
+    {
+      "id": "g14v013",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to begin » (commencer) ?",
+      "choix": [
+        "begined",
+        "began",
+        "begun",
+        "bled"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to begin — began — begun"
+    },
+    {
+      "id": "g14v014",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to begin » (commencer) ?",
+      "choix": [
+        "began",
+        "been",
+        "begun",
+        "begined"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to begin — began — begun"
+    },
+    {
+      "id": "g14v015",
+      "type": "QCM",
+      "question": "Que signifie « to begin » (began / begun) ?",
+      "choix": [
+        "commencer",
+        "coûter",
+        "briller",
+        "brûler"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to begin = commencer"
+    },
+    {
+      "id": "g14v016",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to bend » (plier, ployer, courber) ?",
+      "choix": [
+        "wrote",
+        "bended",
+        "bent",
+        "bend"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to bend — bent — bent (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v017",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to bend » (plier, ployer, courber) ?",
+      "choix": [
+        "bent",
+        "bended",
+        "bend",
+        "fought"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to bend — bent — bent"
+    },
+    {
+      "id": "g14v018",
+      "type": "QCM",
+      "question": "Que signifie « to bend » (bent / bent) ?",
+      "choix": [
+        "casser",
+        "voir",
+        "lancer, jeter",
+        "plier, ployer, courber"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to bend = plier, ployer, courber"
+    },
+    {
+      "id": "g14v019",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to bind » (lier) ?",
+      "choix": [
+        "paid",
+        "bound",
+        "binded",
+        "bind"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to bind — bound — bound (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v020",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to bind » (lier) ?",
+      "choix": [
+        "bind",
+        "binded",
+        "swept",
+        "bound"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to bind — bound — bound"
+    },
+    {
+      "id": "g14v021",
+      "type": "QCM",
+      "question": "Que signifie « to bind » (bound / bound) ?",
+      "choix": [
+        "lier",
+        "entendre",
+        "dire, raconter",
+        "sonner"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to bind = lier"
+    },
+    {
+      "id": "g14v022",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to bite » (mordre) ?",
+      "choix": [
+        "bit",
+        "bited",
+        "hit",
+        "bitten"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to bite — bit — bitten"
+    },
+    {
+      "id": "g14v023",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to bite » (mordre) ?",
+      "choix": [
+        "bit",
+        "spun",
+        "bited",
+        "bitten"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to bite — bit — bitten"
+    },
+    {
+      "id": "g14v024",
+      "type": "QCM",
+      "question": "Que signifie « to bite » (bit / bitten) ?",
+      "choix": [
+        "gagner",
+        "mordre",
+        "choisir",
+        "tomber"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to bite = mordre"
+    },
+    {
+      "id": "g14v025",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to bleed » (saigner) ?",
+      "choix": [
+        "bled",
+        "bleeded",
+        "bleed",
+        "lay"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to bleed — bled — bled (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v026",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to bleed » (saigner) ?",
+      "choix": [
+        "bleed",
+        "gone",
+        "bleeded",
+        "bled"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to bleed — bled — bled"
+    },
+    {
+      "id": "g14v027",
+      "type": "QCM",
+      "question": "Que signifie « to bleed » (bled / bled) ?",
+      "choix": [
+        "vendre",
+        "sentir (les odeurs)",
+        "saigner",
+        "frapper"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to bleed = saigner"
+    },
+    {
+      "id": "g14v028",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to blow » (souffler) ?",
+      "choix": [
+        "spent",
+        "blown",
+        "blew",
+        "blowed"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to blow — blew — blown"
+    },
+    {
+      "id": "g14v029",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to blow » (souffler) ?",
+      "choix": [
+        "drunk",
+        "blew",
+        "blown",
+        "blowed"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to blow — blew — blown"
+    },
+    {
+      "id": "g14v030",
+      "type": "QCM",
+      "question": "Que signifie « to blow » (blew / blown) ?",
+      "choix": [
+        "souffler",
+        "vouloir dire, signifier",
+        "casser",
+        "voler, dérober"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to blow = souffler"
+    },
+    {
+      "id": "g14v031",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to break » (casser) ?",
+      "choix": [
+        "broke",
+        "broken",
+        "breaked",
+        "read"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to break — broke — broken"
+    },
+    {
+      "id": "g14v032",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to break » (casser) ?",
+      "choix": [
+        "broken",
+        "breaked",
+        "broke",
+        "stood"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to break — broke — broken"
+    },
+    {
+      "id": "g14v033",
+      "type": "QCM",
+      "question": "Que signifie « to break » (broke / broken) ?",
+      "choix": [
+        "commencer",
+        "épeler",
+        "casser",
+        "dire"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to break = casser"
+    },
+    {
+      "id": "g14v034",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to bring » (apporter) ?",
+      "choix": [
+        "sang",
+        "bring",
+        "brought",
+        "bringed"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to bring — brought — brought (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v035",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to bring » (apporter) ?",
+      "choix": [
+        "laid",
+        "brought",
+        "bring",
+        "bringed"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to bring — brought — brought"
+    },
+    {
+      "id": "g14v036",
+      "type": "QCM",
+      "question": "Que signifie « to bring » (brought / brought) ?",
+      "choix": [
+        "apporter",
+        "voler (avec des ailes)",
+        "trouver",
+        "être"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to bring = apporter"
+    },
+    {
+      "id": "g14v037",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to build » (construire) ?",
+      "choix": [
+        "sat",
+        "builded",
+        "built",
+        "build"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to build — built — built (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v038",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to build » (construire) ?",
+      "choix": [
+        "smelt",
+        "build",
+        "builded",
+        "built"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to build — built — built"
+    },
+    {
+      "id": "g14v039",
+      "type": "QCM",
+      "question": "Que signifie « to build » (built / built) ?",
+      "choix": [
+        "conduire",
+        "construire",
+        "sonner",
+        "enseigner"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to build = construire"
+    },
+    {
+      "id": "g14v040",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to burn » (brûler) ?",
+      "choix": [
+        "burn",
+        "swam",
+        "burned",
+        "burnt"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to burn — burnt — burnt (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v041",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to burn » (brûler) ?",
+      "choix": [
+        "burnt",
+        "burned",
+        "swum",
+        "burn"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to burn — burnt — burnt"
+    },
+    {
+      "id": "g14v042",
+      "type": "QCM",
+      "question": "Que signifie « to burn » (burnt / burnt) ?",
+      "choix": [
+        "brûler",
+        "lancer, jeter",
+        "faire",
+        "tenir"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to burn = brûler"
+    },
+    {
+      "id": "g14v043",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to burst » (éclater) ?",
+      "choix": [
+        "burst",
+        "hurt",
+        "bursted",
+        "swept"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to burst — burst — burst (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v044",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to burst » (éclater) ?",
+      "choix": [
+        "forbidden",
+        "shaven",
+        "burst",
+        "bursted"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to burst — burst — burst"
+    },
+    {
+      "id": "g14v045",
+      "type": "QCM",
+      "question": "Que signifie « to burst » (burst / burst) ?",
+      "choix": [
+        "éclater",
+        "être",
+        "conduire, mener",
+        "boire"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to burst = éclater"
+    },
+    {
+      "id": "g14v046",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to buy » (acheter) ?",
+      "choix": [
+        "bled",
+        "buyed",
+        "buy",
+        "bought"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to buy — bought — bought (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v047",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to buy » (acheter) ?",
+      "choix": [
+        "stuck",
+        "buy",
+        "bought",
+        "buyed"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to buy — bought — bought"
+    },
+    {
+      "id": "g14v048",
+      "type": "QCM",
+      "question": "Que signifie « to buy » (bought / bought) ?",
+      "choix": [
+        "choisir",
+        "dire",
+        "souffler",
+        "acheter"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to buy = acheter"
+    },
+    {
+      "id": "g14v049",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to cast » (jeter, lancer) ?",
+      "choix": [
+        "casted",
+        "cast",
+        "drew",
+        "bled"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to cast — cast — cast (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v050",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to cast » (jeter, lancer) ?",
+      "choix": [
+        "cast",
+        "eaten",
+        "casted",
+        "stolen"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to cast — cast — cast"
+    },
+    {
+      "id": "g14v051",
+      "type": "QCM",
+      "question": "Que signifie « to cast » (cast / cast) ?",
+      "choix": [
+        "jeter, lancer",
+        "boire",
+        "s’élever, se lever (soleil)",
+        "apporter"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to cast = jeter, lancer"
+    },
+    {
+      "id": "g14v052",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to catch » (attraper) ?",
+      "choix": [
+        "catched",
+        "cast",
+        "catch",
+        "caught"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to catch — caught — caught (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v053",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to catch » (attraper) ?",
+      "choix": [
+        "catched",
+        "spun",
+        "catch",
+        "caught"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to catch — caught — caught"
+    },
+    {
+      "id": "g14v054",
+      "type": "QCM",
+      "question": "Que signifie « to catch » (caught / caught) ?",
+      "choix": [
+        "être",
+        "éclater",
+        "attraper",
+        "tomber"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to catch = attraper"
+    },
+    {
+      "id": "g14v055",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to choose » (choisir) ?",
+      "choix": [
+        "chosen",
+        "led",
+        "chose",
+        "choosed"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to choose — chose — chosen"
+    },
+    {
+      "id": "g14v056",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to choose » (choisir) ?",
+      "choix": [
+        "sent",
+        "chosen",
+        "choosed",
+        "chose"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to choose — chose — chosen"
+    },
+    {
+      "id": "g14v057",
+      "type": "QCM",
+      "question": "Que signifie « to choose » (chose / chosen) ?",
+      "choix": [
+        "acheter",
+        "choisir",
+        "trouver",
+        "étaler, étendre"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to choose = choisir"
+    },
+    {
+      "id": "g14v058",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to come » (venir) ?",
+      "choix": [
+        "come",
+        "came",
+        "comed",
+        "sold"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to come — came — come"
+    },
+    {
+      "id": "g14v059",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to come » (venir) ?",
+      "choix": [
+        "came",
+        "comed",
+        "come",
+        "cost"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to come — came — come"
+    },
+    {
+      "id": "g14v060",
+      "type": "QCM",
+      "question": "Que signifie « to come » (came / come) ?",
+      "choix": [
+        "être",
+        "venir",
+        "chercher",
+        "rêver"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to come = venir"
+    },
+    {
+      "id": "g14v061",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to cost » (coûter) ?",
+      "choix": [
+        "burnt",
+        "spent",
+        "costed",
+        "cost"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to cost — cost — cost (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v062",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to cost » (coûter) ?",
+      "choix": [
+        "costed",
+        "wound",
+        "sat",
+        "cost"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to cost — cost — cost"
+    },
+    {
+      "id": "g14v063",
+      "type": "QCM",
+      "question": "Que signifie « to cost » (cost / cost) ?",
+      "choix": [
+        "coûter",
+        "conduire, mener",
+        "donner",
+        "venir"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to cost = coûter"
+    },
+    {
+      "id": "g14v064",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to cut » (couper) ?",
+      "choix": [
+        "cuted",
+        "brought",
+        "cut",
+        "bled"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to cut — cut — cut (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v065",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to cut » (couper) ?",
+      "choix": [
+        "cut",
+        "run",
+        "let",
+        "cuted"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to cut — cut — cut"
+    },
+    {
+      "id": "g14v066",
+      "type": "QCM",
+      "question": "Que signifie « to cut » (cut / cut) ?",
+      "choix": [
+        "montrer",
+        "avoir",
+        "couper",
+        "acheter"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to cut = couper"
+    },
+    {
+      "id": "g14v067",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to deal » (s'occuper de, traiter) ?",
+      "choix": [
+        "dealed",
+        "deal",
+        "let",
+        "dealt"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to deal — dealt — dealt (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v068",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to deal » (s'occuper de, traiter) ?",
+      "choix": [
+        "dealed",
+        "deal",
+        "dealt",
+        "kept"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to deal — dealt — dealt"
+    },
+    {
+      "id": "g14v069",
+      "type": "QCM",
+      "question": "Que signifie « to deal » (dealt / dealt) ?",
+      "choix": [
+        "obtenir, devenir",
+        "s'occuper de, traiter",
+        "(se) fendre",
+        "frapper"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to deal = s'occuper de, traiter"
+    },
+    {
+      "id": "g14v070",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to do » (faire) ?",
+      "choix": [
+        "did",
+        "done",
+        "doed",
+        "sent"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to do — did — done"
+    },
+    {
+      "id": "g14v071",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to do » (faire) ?",
+      "choix": [
+        "dreamt",
+        "done",
+        "doed",
+        "did"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to do — did — done"
+    },
+    {
+      "id": "g14v072",
+      "type": "QCM",
+      "question": "Que signifie « to do » (did / done) ?",
+      "choix": [
+        "faire",
+        "courir",
+        "subir",
+        "sentir (les odeurs)"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to do = faire"
+    },
+    {
+      "id": "g14v073",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to draw » (dessiner, retirer) ?",
+      "choix": [
+        "drawn",
+        "drew",
+        "drawed",
+        "froze"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to draw — drew — drawn"
+    },
+    {
+      "id": "g14v074",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to draw » (dessiner, retirer) ?",
+      "choix": [
+        "drew",
+        "drawed",
+        "fed",
+        "drawn"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to draw — drew — drawn"
+    },
+    {
+      "id": "g14v075",
+      "type": "QCM",
+      "question": "Que signifie « to draw » (drew / drawn) ?",
+      "choix": [
+        "obtenir, devenir",
+        "dessiner, retirer",
+        "rêver",
+        "étaler, étendre"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to draw = dessiner, retirer"
+    },
+    {
+      "id": "g14v076",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to dream » (rêver) ?",
+      "choix": [
+        "dream",
+        "put",
+        "dreamed",
+        "dreamt"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to dream — dreamt — dreamt (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v077",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to dream » (rêver) ?",
+      "choix": [
+        "dreamed",
+        "dream",
+        "swept",
+        "dreamt"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to dream — dreamt — dreamt"
+    },
+    {
+      "id": "g14v078",
+      "type": "QCM",
+      "question": "Que signifie « to dream » (dreamt / dreamt) ?",
+      "choix": [
+        "(se) nourrir",
+        "mordre",
+        "comprendre",
+        "rêver"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to dream = rêver"
+    },
+    {
+      "id": "g14v079",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to drink » (boire) ?",
+      "choix": [
+        "drunk",
+        "drank",
+        "caught",
+        "drinked"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to drink — drank — drunk"
+    },
+    {
+      "id": "g14v080",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to drink » (boire) ?",
+      "choix": [
+        "drunk",
+        "swum",
+        "drinked",
+        "drank"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to drink — drank — drunk"
+    },
+    {
+      "id": "g14v081",
+      "type": "QCM",
+      "question": "Que signifie « to drink » (drank / drunk) ?",
+      "choix": [
+        "boire",
+        "glisser",
+        "prêter",
+        "fermer"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to drink = boire"
+    },
+    {
+      "id": "g14v082",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to drive » (conduire) ?",
+      "choix": [
+        "drived",
+        "built",
+        "drove",
+        "driven"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to drive — drove — driven"
+    },
+    {
+      "id": "g14v083",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to drive » (conduire) ?",
+      "choix": [
+        "woken",
+        "drove",
+        "drived",
+        "driven"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to drive — drove — driven"
+    },
+    {
+      "id": "g14v084",
+      "type": "QCM",
+      "question": "Que signifie « to drive » (drove / driven) ?",
+      "choix": [
+        "conduire",
+        "vendre",
+        "souffler",
+        "commencer"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to drive = conduire"
+    },
+    {
+      "id": "g14v085",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to eat » (manger) ?",
+      "choix": [
+        "sprang",
+        "eaten",
+        "ate",
+        "eated"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to eat — ate — eaten"
+    },
+    {
+      "id": "g14v086",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to eat » (manger) ?",
+      "choix": [
+        "eaten",
+        "eated",
+        "ate",
+        "blown"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to eat — ate — eaten"
+    },
+    {
+      "id": "g14v087",
+      "type": "QCM",
+      "question": "Que signifie « to eat » (ate / eaten) ?",
+      "choix": [
+        "vouloir dire, signifier",
+        "manger",
+        "souffler",
+        "faire, fabriquer"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to eat = manger"
+    },
+    {
+      "id": "g14v088",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to fall » (tomber) ?",
+      "choix": [
+        "fell",
+        "falled",
+        "caught",
+        "fallen"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to fall — fell — fallen"
+    },
+    {
+      "id": "g14v089",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to fall » (tomber) ?",
+      "choix": [
+        "done",
+        "falled",
+        "fell",
+        "fallen"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to fall — fell — fallen"
+    },
+    {
+      "id": "g14v090",
+      "type": "QCM",
+      "question": "Que signifie « to fall » (fell / fallen) ?",
+      "choix": [
+        "rêver",
+        "aller",
+        "entendre",
+        "tomber"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to fall = tomber"
+    },
+    {
+      "id": "g14v091",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to feed » ((se) nourrir) ?",
+      "choix": [
+        "fed",
+        "feeded",
+        "read",
+        "feed"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to feed — fed — fed (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v092",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to feed » ((se) nourrir) ?",
+      "choix": [
+        "bitten",
+        "feed",
+        "feeded",
+        "fed"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to feed — fed — fed"
+    },
+    {
+      "id": "g14v093",
+      "type": "QCM",
+      "question": "Que signifie « to feed » (fed / fed) ?",
+      "choix": [
+        "raser",
+        "faire",
+        "écrire",
+        "(se) nourrir"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to feed = (se) nourrir"
+    },
+    {
+      "id": "g14v094",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to feel » (sentir) ?",
+      "choix": [
+        "led",
+        "feeled",
+        "feel",
+        "felt"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to feel — felt — felt (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v095",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to feel » (sentir) ?",
+      "choix": [
+        "feel",
+        "laid",
+        "feeled",
+        "felt"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to feel — felt — felt"
+    },
+    {
+      "id": "g14v096",
+      "type": "QCM",
+      "question": "Que signifie « to feel » (felt / felt) ?",
+      "choix": [
+        "comprendre",
+        "faire, fabriquer",
+        "sentir",
+        "couper"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to feel = sentir"
+    },
+    {
+      "id": "g14v097",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to fight » (se battre) ?",
+      "choix": [
+        "fighted",
+        "fight",
+        "wrote",
+        "fought"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to fight — fought — fought (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v098",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to fight » (se battre) ?",
+      "choix": [
+        "fight",
+        "fought",
+        "fighted",
+        "forgiven"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to fight — fought — fought"
+    },
+    {
+      "id": "g14v099",
+      "type": "QCM",
+      "question": "Que signifie « to fight » (fought / fought) ?",
+      "choix": [
+        "s'élever",
+        "se battre",
+        "garder",
+        "être couché"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to fight = se battre"
+    },
+    {
+      "id": "g14v100",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to find » (trouver) ?",
+      "choix": [
+        "drove",
+        "found",
+        "find",
+        "finded"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to find — found — found (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v101",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to find » (trouver) ?",
+      "choix": [
+        "found",
+        "find",
+        "been",
+        "finded"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to find — found — found"
+    },
+    {
+      "id": "g14v102",
+      "type": "QCM",
+      "question": "Que signifie « to find » (found / found) ?",
+      "choix": [
+        "devenir",
+        "porter (des vêtements)",
+        "comprendre",
+        "trouver"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to find = trouver"
+    },
+    {
+      "id": "g14v103",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to fly » (voler (avec des ailes)) ?",
+      "choix": [
+        "flown",
+        "ate",
+        "flyed",
+        "flew"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to fly — flew — flown"
+    },
+    {
+      "id": "g14v104",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to fly » (voler (avec des ailes)) ?",
+      "choix": [
+        "flyed",
+        "said",
+        "flew",
+        "flown"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to fly — flew — flown"
+    },
+    {
+      "id": "g14v105",
+      "type": "QCM",
+      "question": "Que signifie « to fly » (flew / flown) ?",
+      "choix": [
+        "voler (avec des ailes)",
+        "venir",
+        "tomber",
+        "accrocher, suspendre"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to fly = voler (avec des ailes)"
+    },
+    {
+      "id": "g14v106",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to forbid » (interdire) ?",
+      "choix": [
+        "forbided",
+        "stuck",
+        "forbidden",
+        "forbade"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to forbid — forbade — forbidden"
+    },
+    {
+      "id": "g14v107",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to forbid » (interdire) ?",
+      "choix": [
+        "swum",
+        "forbided",
+        "forbidden",
+        "forbade"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to forbid — forbade — forbidden"
+    },
+    {
+      "id": "g14v108",
+      "type": "QCM",
+      "question": "Que signifie « to forbid » (forbade / forbidden) ?",
+      "choix": [
+        "obtenir, devenir",
+        "se battre",
+        "dessiner, retirer",
+        "interdire"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to forbid = interdire"
+    },
+    {
+      "id": "g14v109",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to forget » (oublier) ?",
+      "choix": [
+        "forgot",
+        "forgeted",
+        "forgotten",
+        "set"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to forget — forgot — forgotten"
+    },
+    {
+      "id": "g14v110",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to forget » (oublier) ?",
+      "choix": [
+        "led",
+        "forgeted",
+        "forgotten",
+        "forgot"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to forget — forgot — forgotten"
+    },
+    {
+      "id": "g14v111",
+      "type": "QCM",
+      "question": "Que signifie « to forget » (forgot / forgotten) ?",
+      "choix": [
+        "attraper",
+        "dormir",
+        "couper",
+        "oublier"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to forget = oublier"
+    },
+    {
+      "id": "g14v112",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to forgive » (pardonner) ?",
+      "choix": [
+        "forgived",
+        "forgave",
+        "forgiven",
+        "wound"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to forgive — forgave — forgiven"
+    },
+    {
+      "id": "g14v113",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to forgive » (pardonner) ?",
+      "choix": [
+        "forgiven",
+        "forgave",
+        "dealt",
+        "forgived"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to forgive — forgave — forgiven"
+    },
+    {
+      "id": "g14v114",
+      "type": "QCM",
+      "question": "Que signifie « to forgive » (forgave / forgiven) ?",
+      "choix": [
+        "lire",
+        "tenir",
+        "être debout",
+        "pardonner"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to forgive = pardonner"
+    },
+    {
+      "id": "g14v115",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to freeze » (geler) ?",
+      "choix": [
+        "frozen",
+        "bent",
+        "freezed",
+        "froze"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to freeze — froze — frozen"
+    },
+    {
+      "id": "g14v116",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to freeze » (geler) ?",
+      "choix": [
+        "freezed",
+        "froze",
+        "spelt",
+        "frozen"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to freeze — froze — frozen"
+    },
+    {
+      "id": "g14v117",
+      "type": "QCM",
+      "question": "Que signifie « to freeze » (froze / frozen) ?",
+      "choix": [
+        "(se) retirer",
+        "geler",
+        "coller",
+        "jeter, lancer"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to freeze = geler"
+    },
+    {
+      "id": "g14v118",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to get » (obtenir, devenir) ?",
+      "choix": [
+        "got",
+        "caught",
+        "geted",
+        "get"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to get — got — got (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v119",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to get » (obtenir, devenir) ?",
+      "choix": [
+        "woken",
+        "got",
+        "get",
+        "geted"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to get — got — got"
+    },
+    {
+      "id": "g14v120",
+      "type": "QCM",
+      "question": "Que signifie « to get » (got / got) ?",
+      "choix": [
+        "sentir (les odeurs)",
+        "porter (des vêtements)",
+        "faire",
+        "obtenir, devenir"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to get = obtenir, devenir"
+    },
+    {
+      "id": "g14v121",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to give » (donner) ?",
+      "choix": [
+        "gave",
+        "slid",
+        "gived",
+        "given"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to give — gave — given"
+    },
+    {
+      "id": "g14v122",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to give » (donner) ?",
+      "choix": [
+        "gave",
+        "given",
+        "forgotten",
+        "gived"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to give — gave — given"
+    },
+    {
+      "id": "g14v123",
+      "type": "QCM",
+      "question": "Que signifie « to give » (gave / given) ?",
+      "choix": [
+        "sentir",
+        "donner",
+        "coller",
+        "mordre"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to give = donner"
+    },
+    {
+      "id": "g14v124",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to go » (aller) ?",
+      "choix": [
+        "burnt",
+        "went",
+        "gone",
+        "goed"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to go — went — gone"
+    },
+    {
+      "id": "g14v125",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to go » (aller) ?",
+      "choix": [
+        "goed",
+        "bound",
+        "went",
+        "gone"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to go — went — gone"
+    },
+    {
+      "id": "g14v126",
+      "type": "QCM",
+      "question": "Que signifie « to go » (went / gone) ?",
+      "choix": [
+        "conduire",
+        "balayer",
+        "aller",
+        "manger"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to go = aller"
+    },
+    {
+      "id": "g14v127",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to grow » (grandir) ?",
+      "choix": [
+        "sat",
+        "grown",
+        "grew",
+        "growed"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to grow — grew — grown"
+    },
+    {
+      "id": "g14v128",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to grow » (grandir) ?",
+      "choix": [
+        "set",
+        "grew",
+        "grown",
+        "growed"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to grow — grew — grown"
+    },
+    {
+      "id": "g14v129",
+      "type": "QCM",
+      "question": "Que signifie « to grow » (grew / grown) ?",
+      "choix": [
+        "vouloir dire, signifier",
+        "(se) nourrir",
+        "garder",
+        "grandir"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to grow = grandir"
+    },
+    {
+      "id": "g14v130",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to hang » (accrocher, suspendre) ?",
+      "choix": [
+        "stuck",
+        "hanged",
+        "hung",
+        "hang"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to hang — hung — hung (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v131",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to hang » (accrocher, suspendre) ?",
+      "choix": [
+        "hung",
+        "fallen",
+        "hanged",
+        "hang"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to hang — hung — hung"
+    },
+    {
+      "id": "g14v132",
+      "type": "QCM",
+      "question": "Que signifie « to hang » (hung / hung) ?",
+      "choix": [
+        "accrocher, suspendre",
+        "tomber",
+        "rencontrer",
+        "être debout"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to hang = accrocher, suspendre"
+    },
+    {
+      "id": "g14v133",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to have » (avoir) ?",
+      "choix": [
+        "lent",
+        "haved",
+        "have",
+        "had"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to have — had — had (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v134",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to have » (avoir) ?",
+      "choix": [
+        "had",
+        "held",
+        "have",
+        "haved"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to have — had — had"
+    },
+    {
+      "id": "g14v135",
+      "type": "QCM",
+      "question": "Que signifie « to have » (had / had) ?",
+      "choix": [
+        "avoir",
+        "éclater",
+        "prendre",
+        "lier"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to have = avoir"
+    },
+    {
+      "id": "g14v136",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to hear » (entendre) ?",
+      "choix": [
+        "set",
+        "hear",
+        "heared",
+        "heard"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to hear — heard — heard (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v137",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to hear » (entendre) ?",
+      "choix": [
+        "heared",
+        "begun",
+        "hear",
+        "heard"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to hear — heard — heard"
+    },
+    {
+      "id": "g14v138",
+      "type": "QCM",
+      "question": "Que signifie « to hear » (heard / heard) ?",
+      "choix": [
+        "s'élever",
+        "se réveiller",
+        "vendre",
+        "entendre"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to hear = entendre"
+    },
+    {
+      "id": "g14v139",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to hide » (cacher) ?",
+      "choix": [
+        "hided",
+        "hidden",
+        "hid",
+        "rang"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to hide — hid — hidden"
+    },
+    {
+      "id": "g14v140",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to hide » (cacher) ?",
+      "choix": [
+        "hided",
+        "hid",
+        "hidden",
+        "shone"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to hide — hid — hidden"
+    },
+    {
+      "id": "g14v141",
+      "type": "QCM",
+      "question": "Que signifie « to hide » (hid / hidden) ?",
+      "choix": [
+        "faire du vélo, du cheval",
+        "avoir",
+        "tomber",
+        "cacher"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to hide = cacher"
+    },
+    {
+      "id": "g14v142",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to hit » (frapper) ?",
+      "choix": [
+        "laid",
+        "hited",
+        "hit",
+        "rose"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to hit — hit — hit (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v143",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to hit » (frapper) ?",
+      "choix": [
+        "sent",
+        "hited",
+        "hit",
+        "eaten"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to hit — hit — hit"
+    },
+    {
+      "id": "g14v144",
+      "type": "QCM",
+      "question": "Que signifie « to hit » (hit / hit) ?",
+      "choix": [
+        "tourner rapidement",
+        "raser",
+        "dire, raconter",
+        "frapper"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to hit = frapper"
+    },
+    {
+      "id": "g14v145",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to hold » (tenir) ?",
+      "choix": [
+        "hold",
+        "lent",
+        "held",
+        "holded"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to hold — held — held (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v146",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to hold » (tenir) ?",
+      "choix": [
+        "held",
+        "hold",
+        "risen",
+        "holded"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to hold — held — held"
+    },
+    {
+      "id": "g14v147",
+      "type": "QCM",
+      "question": "Que signifie « to hold » (held / held) ?",
+      "choix": [
+        "rêver",
+        "allumer",
+        "tenir",
+        "s’élever, se lever (soleil)"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to hold = tenir"
+    },
+    {
+      "id": "g14v148",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to hurt » (blesser, faire mal) ?",
+      "choix": [
+        "hurted",
+        "fell",
+        "took",
+        "hurt"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to hurt — hurt — hurt (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v149",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to hurt » (blesser, faire mal) ?",
+      "choix": [
+        "hurt",
+        "hurted",
+        "cut",
+        "held"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to hurt — hurt — hurt"
+    },
+    {
+      "id": "g14v150",
+      "type": "QCM",
+      "question": "Que signifie « to hurt » (hurt / hurt) ?",
+      "choix": [
+        "entendre",
+        "blesser, faire mal",
+        "geler",
+        "(se) fendre"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to hurt = blesser, faire mal"
+    },
+    {
+      "id": "g14v151",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to keep » (garder) ?",
+      "choix": [
+        "keep",
+        "kept",
+        "cost",
+        "keeped"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to keep — kept — kept (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v152",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to keep » (garder) ?",
+      "choix": [
+        "thought",
+        "keeped",
+        "keep",
+        "kept"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to keep — kept — kept"
+    },
+    {
+      "id": "g14v153",
+      "type": "QCM",
+      "question": "Que signifie « to keep » (kept / kept) ?",
+      "choix": [
+        "rêver",
+        "lancer, jeter",
+        "battre",
+        "garder"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to keep = garder"
+    },
+    {
+      "id": "g14v154",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to know » (savoir, connaitre) ?",
+      "choix": [
+        "shook",
+        "known",
+        "knew",
+        "knowed"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to know — knew — known"
+    },
+    {
+      "id": "g14v155",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to know » (savoir, connaitre) ?",
+      "choix": [
+        "knowed",
+        "known",
+        "knew",
+        "got"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to know — knew — known"
+    },
+    {
+      "id": "g14v156",
+      "type": "QCM",
+      "question": "Que signifie « to know » (knew / known) ?",
+      "choix": [
+        "vendre",
+        "brûler",
+        "mordre",
+        "savoir, connaitre"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to know = savoir, connaitre"
+    },
+    {
+      "id": "g14v157",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to lay » (poser) ?",
+      "choix": [
+        "sent",
+        "laid",
+        "layed",
+        "lay"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to lay — laid — laid (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v158",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to lay » (poser) ?",
+      "choix": [
+        "lay",
+        "withdrawn",
+        "laid",
+        "layed"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to lay — laid — laid"
+    },
+    {
+      "id": "g14v159",
+      "type": "QCM",
+      "question": "Que signifie « to lay » (laid / laid) ?",
+      "choix": [
+        "pardonner",
+        "lire",
+        "faire",
+        "poser"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to lay = poser"
+    },
+    {
+      "id": "g14v160",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to lead » (conduire, mener) ?",
+      "choix": [
+        "lead",
+        "blew",
+        "leaded",
+        "led"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to lead — led — led (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v161",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to lead » (conduire, mener) ?",
+      "choix": [
+        "leaded",
+        "burst",
+        "lead",
+        "led"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to lead — led — led"
+    },
+    {
+      "id": "g14v162",
+      "type": "QCM",
+      "question": "Que signifie « to lead » (led / led) ?",
+      "choix": [
+        "conduire, mener",
+        "aller",
+        "tourner rapidement",
+        "laisser, quitter"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to lead = conduire, mener"
+    },
+    {
+      "id": "g14v163",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to learn » (apprendre) ?",
+      "choix": [
+        "learnt",
+        "underwent",
+        "learn",
+        "learned"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to learn — learnt — learnt (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v164",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to learn » (apprendre) ?",
+      "choix": [
+        "laid",
+        "learned",
+        "learnt",
+        "learn"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to learn — learnt — learnt"
+    },
+    {
+      "id": "g14v165",
+      "type": "QCM",
+      "question": "Que signifie « to learn » (learnt / learnt) ?",
+      "choix": [
+        "obtenir, devenir",
+        "voler, dérober",
+        "avoir",
+        "apprendre"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to learn = apprendre"
+    },
+    {
+      "id": "g14v166",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to leave » (laisser, quitter) ?",
+      "choix": [
+        "leaved",
+        "leave",
+        "left",
+        "felt"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to leave — left — left (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v167",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to leave » (laisser, quitter) ?",
+      "choix": [
+        "left",
+        "leaved",
+        "leave",
+        "caught"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to leave — left — left"
+    },
+    {
+      "id": "g14v168",
+      "type": "QCM",
+      "question": "Que signifie « to leave » (left / left) ?",
+      "choix": [
+        "coller",
+        "laisser, quitter",
+        "frapper",
+        "(se) fendre"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to leave = laisser, quitter"
+    },
+    {
+      "id": "g14v169",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to lend » (prêter) ?",
+      "choix": [
+        "stuck",
+        "lended",
+        "lent",
+        "lend"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to lend — lent — lent (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v170",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to lend » (prêter) ?",
+      "choix": [
+        "lent",
+        "sold",
+        "lend",
+        "lended"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to lend — lent — lent"
+    },
+    {
+      "id": "g14v171",
+      "type": "QCM",
+      "question": "Que signifie « to lend » (lent / lent) ?",
+      "choix": [
+        "lier",
+        "se réveiller",
+        "prêter",
+        "mordre"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to lend = prêter"
+    },
+    {
+      "id": "g14v172",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to let » (laisser, permettre) ?",
+      "choix": [
+        "leted",
+        "slid",
+        "let",
+        "did"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to let — let — let (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v173",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to let » (laisser, permettre) ?",
+      "choix": [
+        "leted",
+        "let",
+        "lit",
+        "rung"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to let — let — let"
+    },
+    {
+      "id": "g14v174",
+      "type": "QCM",
+      "question": "Que signifie « to let » (let / let) ?",
+      "choix": [
+        "(se) fendre",
+        "voler (avec des ailes)",
+        "porter (des vêtements)",
+        "laisser, permettre"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to let = laisser, permettre"
+    },
+    {
+      "id": "g14v175",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to lie » (être couché) ?",
+      "choix": [
+        "dreamt",
+        "lain",
+        "lied",
+        "lay"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to lie — lay — lain"
+    },
+    {
+      "id": "g14v176",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to lie » (être couché) ?",
+      "choix": [
+        "lied",
+        "sent",
+        "lay",
+        "lain"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to lie — lay — lain"
+    },
+    {
+      "id": "g14v177",
+      "type": "QCM",
+      "question": "Que signifie « to lie » (lay / lain) ?",
+      "choix": [
+        "apprendre",
+        "être couché",
+        "donner",
+        "s’élever, se lever (soleil)"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to lie = être couché"
+    },
+    {
+      "id": "g14v178",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to light » (allumer) ?",
+      "choix": [
+        "light",
+        "understood",
+        "lighted",
+        "lit"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to light — lit — lit (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v179",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to light » (allumer) ?",
+      "choix": [
+        "light",
+        "lighted",
+        "spent",
+        "lit"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to light — lit — lit"
+    },
+    {
+      "id": "g14v180",
+      "type": "QCM",
+      "question": "Que signifie « to light » (lit / lit) ?",
+      "choix": [
+        "rencontrer",
+        "allumer",
+        "devenir",
+        "dire"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to light = allumer"
+    },
+    {
+      "id": "g14v181",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to lose » (perdre) ?",
+      "choix": [
+        "lose",
+        "slid",
+        "lost",
+        "losed"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to lose — lost — lost (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v182",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to lose » (perdre) ?",
+      "choix": [
+        "seen",
+        "lost",
+        "lose",
+        "losed"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to lose — lost — lost"
+    },
+    {
+      "id": "g14v183",
+      "type": "QCM",
+      "question": "Que signifie « to lose » (lost / lost) ?",
+      "choix": [
+        "perdre",
+        "être",
+        "apprendre",
+        "vouloir dire, signifier"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to lose = perdre"
+    },
+    {
+      "id": "g14v184",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to make » (faire, fabriquer) ?",
+      "choix": [
+        "maked",
+        "cost",
+        "made",
+        "make"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to make — made — made (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v185",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to make » (faire, fabriquer) ?",
+      "choix": [
+        "left",
+        "made",
+        "maked",
+        "make"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to make — made — made"
+    },
+    {
+      "id": "g14v186",
+      "type": "QCM",
+      "question": "Que signifie « to make » (made / made) ?",
+      "choix": [
+        "saigner",
+        "être debout",
+        "devenir",
+        "faire, fabriquer"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to make = faire, fabriquer"
+    },
+    {
+      "id": "g14v187",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to mean » (vouloir dire, signifier) ?",
+      "choix": [
+        "meant",
+        "woke",
+        "mean",
+        "meaned"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to mean — meant — meant (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v188",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to mean » (vouloir dire, signifier) ?",
+      "choix": [
+        "meaned",
+        "mean",
+        "meant",
+        "found"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to mean — meant — meant"
+    },
+    {
+      "id": "g14v189",
+      "type": "QCM",
+      "question": "Que signifie « to mean » (meant / meant) ?",
+      "choix": [
+        "savoir, connaitre",
+        "vouloir dire, signifier",
+        "laisser, quitter",
+        "envoyer"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to mean = vouloir dire, signifier"
+    },
+    {
+      "id": "g14v190",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to meet » (rencontrer) ?",
+      "choix": [
+        "met",
+        "meeted",
+        "bled",
+        "meet"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to meet — met — met (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v191",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to meet » (rencontrer) ?",
+      "choix": [
+        "meet",
+        "met",
+        "meeted",
+        "risen"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to meet — met — met"
+    },
+    {
+      "id": "g14v192",
+      "type": "QCM",
+      "question": "Que signifie « to meet » (met / met) ?",
+      "choix": [
+        "battre",
+        "éclater",
+        "(se) fendre",
+        "rencontrer"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to meet = rencontrer"
+    },
+    {
+      "id": "g14v193",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to pay » (payer) ?",
+      "choix": [
+        "pay",
+        "wrote",
+        "payed",
+        "paid"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to pay — paid — paid (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v194",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to pay » (payer) ?",
+      "choix": [
+        "paid",
+        "pay",
+        "cut",
+        "payed"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to pay — paid — paid"
+    },
+    {
+      "id": "g14v195",
+      "type": "QCM",
+      "question": "Que signifie « to pay » (paid / paid) ?",
+      "choix": [
+        "nager",
+        "payer",
+        "sentir (les odeurs)",
+        "montrer"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to pay = payer"
+    },
+    {
+      "id": "g14v196",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to put » (mettre, poser) ?",
+      "choix": [
+        "put",
+        "puted",
+        "heard",
+        "forbade"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to put — put — put (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v197",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to put » (mettre, poser) ?",
+      "choix": [
+        "puted",
+        "felt",
+        "put",
+        "bought"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to put — put — put"
+    },
+    {
+      "id": "g14v198",
+      "type": "QCM",
+      "question": "Que signifie « to put » (put / put) ?",
+      "choix": [
+        "commencer",
+        "mettre, poser",
+        "enseigner",
+        "interdire"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to put = mettre, poser"
+    },
+    {
+      "id": "g14v199",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to read » (lire) ?",
+      "choix": [
+        "thought",
+        "readed",
+        "read",
+        "burnt"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to read — read — read (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v200",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to read » (lire) ?",
+      "choix": [
+        "dealt",
+        "bitten",
+        "readed",
+        "read"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to read — read — read"
+    },
+    {
+      "id": "g14v201",
+      "type": "QCM",
+      "question": "Que signifie « to read » (read / read) ?",
+      "choix": [
+        "briller",
+        "lire",
+        "sentir",
+        "être assis"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to read = lire"
+    },
+    {
+      "id": "g14v202",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to ride » (faire du vélo, du cheval) ?",
+      "choix": [
+        "fought",
+        "rode",
+        "ridden",
+        "rided"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to ride — rode — ridden"
+    },
+    {
+      "id": "g14v203",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to ride » (faire du vélo, du cheval) ?",
+      "choix": [
+        "ridden",
+        "rided",
+        "rode",
+        "gone"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to ride — rode — ridden"
+    },
+    {
+      "id": "g14v204",
+      "type": "QCM",
+      "question": "Que signifie « to ride » (rode / ridden) ?",
+      "choix": [
+        "sentir (les odeurs)",
+        "faire du vélo, du cheval",
+        "avoir",
+        "étaler, étendre"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to ride = faire du vélo, du cheval"
+    },
+    {
+      "id": "g14v205",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to ring » (sonner) ?",
+      "choix": [
+        "rung",
+        "ringed",
+        "rang",
+        "lay"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to ring — rang — rung"
+    },
+    {
+      "id": "g14v206",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to ring » (sonner) ?",
+      "choix": [
+        "rung",
+        "ringed",
+        "lain",
+        "rang"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to ring — rang — rung"
+    },
+    {
+      "id": "g14v207",
+      "type": "QCM",
+      "question": "Que signifie « to ring » (rang / rung) ?",
+      "choix": [
+        "savoir, connaitre",
+        "(se) retirer",
+        "pardonner",
+        "sonner"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to ring = sonner"
+    },
+    {
+      "id": "g14v208",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to rise » (s’élever, se lever (soleil)) ?",
+      "choix": [
+        "risen",
+        "fought",
+        "rised",
+        "rose"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to rise — rose — risen"
+    },
+    {
+      "id": "g14v209",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to rise » (s’élever, se lever (soleil)) ?",
+      "choix": [
+        "rised",
+        "rose",
+        "run",
+        "risen"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to rise — rose — risen"
+    },
+    {
+      "id": "g14v210",
+      "type": "QCM",
+      "question": "Que signifie « to rise » (rose / risen) ?",
+      "choix": [
+        "faire, fabriquer",
+        "envoyer",
+        "geler",
+        "s’élever, se lever (soleil)"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to rise = s’élever, se lever (soleil)"
+    },
+    {
+      "id": "g14v211",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to run » (courir) ?",
+      "choix": [
+        "run",
+        "runed",
+        "ran",
+        "shook"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to run — ran — run"
+    },
+    {
+      "id": "g14v212",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to run » (courir) ?",
+      "choix": [
+        "run",
+        "runed",
+        "kept",
+        "ran"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to run — ran — run"
+    },
+    {
+      "id": "g14v213",
+      "type": "QCM",
+      "question": "Que signifie « to run » (ran / run) ?",
+      "choix": [
+        "donner",
+        "balayer",
+        "courir",
+        "apporter"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to run = courir"
+    },
+    {
+      "id": "g14v214",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to say » (dire) ?",
+      "choix": [
+        "fell",
+        "said",
+        "say",
+        "sayed"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to say — said — said (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v215",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to say » (dire) ?",
+      "choix": [
+        "say",
+        "let",
+        "sayed",
+        "said"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to say — said — said"
+    },
+    {
+      "id": "g14v216",
+      "type": "QCM",
+      "question": "Que signifie « to say » (said / said) ?",
+      "choix": [
+        "tenir",
+        "cacher",
+        "dire",
+        "chanter"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to say = dire"
+    },
+    {
+      "id": "g14v217",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to see » (voir) ?",
+      "choix": [
+        "saw",
+        "seen",
+        "split",
+        "seed"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to see — saw — seen"
+    },
+    {
+      "id": "g14v218",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to see » (voir) ?",
+      "choix": [
+        "seed",
+        "seen",
+        "saw",
+        "broken"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to see — saw — seen"
+    },
+    {
+      "id": "g14v219",
+      "type": "QCM",
+      "question": "Que signifie « to see » (saw / seen) ?",
+      "choix": [
+        "apprendre",
+        "prêter",
+        "s'élever",
+        "voir"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to see = voir"
+    },
+    {
+      "id": "g14v220",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to seek » (chercher) ?",
+      "choix": [
+        "seeked",
+        "sought",
+        "seek",
+        "led"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to seek — sought — sought (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v221",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to seek » (chercher) ?",
+      "choix": [
+        "learnt",
+        "seek",
+        "sought",
+        "seeked"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to seek — sought — sought"
+    },
+    {
+      "id": "g14v222",
+      "type": "QCM",
+      "question": "Que signifie « to seek » (sought / sought) ?",
+      "choix": [
+        "manger",
+        "apprendre",
+        "chercher",
+        "geler"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to seek = chercher"
+    },
+    {
+      "id": "g14v223",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to sell » (vendre) ?",
+      "choix": [
+        "selled",
+        "sold",
+        "sell",
+        "lay"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to sell — sold — sold (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v224",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to sell » (vendre) ?",
+      "choix": [
+        "sell",
+        "fallen",
+        "sold",
+        "selled"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to sell — sold — sold"
+    },
+    {
+      "id": "g14v225",
+      "type": "QCM",
+      "question": "Que signifie « to sell » (sold / sold) ?",
+      "choix": [
+        "lancer, jeter",
+        "grandir",
+        "mordre",
+        "vendre"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to sell = vendre"
+    },
+    {
+      "id": "g14v226",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to send » (envoyer) ?",
+      "choix": [
+        "send",
+        "stuck",
+        "sended",
+        "sent"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to send — sent — sent (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v227",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to send » (envoyer) ?",
+      "choix": [
+        "send",
+        "sended",
+        "slept",
+        "sent"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to send — sent — sent"
+    },
+    {
+      "id": "g14v228",
+      "type": "QCM",
+      "question": "Que signifie « to send » (sent / sent) ?",
+      "choix": [
+        "s'occuper de, traiter",
+        "choisir",
+        "envoyer",
+        "attraper"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to send = envoyer"
+    },
+    {
+      "id": "g14v229",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to set » (poser, fixer) ?",
+      "choix": [
+        "seted",
+        "set",
+        "spent",
+        "spread"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to set — set — set (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v230",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to set » (poser, fixer) ?",
+      "choix": [
+        "come",
+        "read",
+        "set",
+        "seted"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to set — set — set"
+    },
+    {
+      "id": "g14v231",
+      "type": "QCM",
+      "question": "Que signifie « to set » (set / set) ?",
+      "choix": [
+        "poser, fixer",
+        "plier, ployer, courber",
+        "prêter",
+        "tirer (fusil), tourner (film)"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to set = poser, fixer"
+    },
+    {
+      "id": "g14v232",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to shake » (secouer) ?",
+      "choix": [
+        "shook",
+        "shaked",
+        "did",
+        "shaken"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to shake — shook — shaken"
+    },
+    {
+      "id": "g14v233",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to shake » (secouer) ?",
+      "choix": [
+        "shaked",
+        "shook",
+        "shaken",
+        "beaten"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to shake — shook — shaken"
+    },
+    {
+      "id": "g14v234",
+      "type": "QCM",
+      "question": "Que signifie « to shake » (shook / shaken) ?",
+      "choix": [
+        "balayer",
+        "boire",
+        "tirer (fusil), tourner (film)",
+        "secouer"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to shake = secouer"
+    },
+    {
+      "id": "g14v235",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to shave » (raser) ?",
+      "choix": [
+        "shaved",
+        "made",
+        "split",
+        "shaven"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to shave — shaved — shaven"
+    },
+    {
+      "id": "g14v236",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to shave » (raser) ?",
+      "choix": [
+        "shaved",
+        "begun",
+        "shaven",
+        "forbidden"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to shave — shaved — shaven"
+    },
+    {
+      "id": "g14v237",
+      "type": "QCM",
+      "question": "Que signifie « to shave » (shaved / shaven) ?",
+      "choix": [
+        "interdire",
+        "rêver",
+        "éclater",
+        "raser"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to shave = raser"
+    },
+    {
+      "id": "g14v238",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to shine » (briller) ?",
+      "choix": [
+        "burnt",
+        "shined",
+        "shine",
+        "shone"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to shine — shone — shone (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v239",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to shine » (briller) ?",
+      "choix": [
+        "shone",
+        "lent",
+        "shine",
+        "shined"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to shine — shone — shone"
+    },
+    {
+      "id": "g14v240",
+      "type": "QCM",
+      "question": "Que signifie « to shine » (shone / shone) ?",
+      "choix": [
+        "sentir (les odeurs)",
+        "briller",
+        "apporter",
+        "geler"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to shine = briller"
+    },
+    {
+      "id": "g14v241",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to shoot » (tirer (fusil), tourner (film)) ?",
+      "choix": [
+        "shooted",
+        "shot",
+        "went",
+        "shoot"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to shoot — shot — shot (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v242",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to shoot » (tirer (fusil), tourner (film)) ?",
+      "choix": [
+        "brought",
+        "shoot",
+        "shooted",
+        "shot"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to shoot — shot — shot"
+    },
+    {
+      "id": "g14v243",
+      "type": "QCM",
+      "question": "Que signifie « to shoot » (shot / shot) ?",
+      "choix": [
+        "lier",
+        "tirer (fusil), tourner (film)",
+        "balayer",
+        "enrouler, remonter (montre)"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to shoot = tirer (fusil), tourner (film)"
+    },
+    {
+      "id": "g14v244",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to show » (montrer) ?",
+      "choix": [
+        "smelt",
+        "showed",
+        "shown",
+        "brought"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to show — showed — shown"
+    },
+    {
+      "id": "g14v245",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to show » (montrer) ?",
+      "choix": [
+        "lost",
+        "caught",
+        "shown",
+        "showed"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to show — showed — shown"
+    },
+    {
+      "id": "g14v246",
+      "type": "QCM",
+      "question": "Que signifie « to show » (showed / shown) ?",
+      "choix": [
+        "montrer",
+        "enseigner",
+        "blesser, faire mal",
+        "vouloir dire, signifier"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to show = montrer"
+    },
+    {
+      "id": "g14v247",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to shut » (fermer) ?",
+      "choix": [
+        "shut",
+        "shuted",
+        "bled",
+        "swam"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to shut — shut — shut (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v248",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to shut » (fermer) ?",
+      "choix": [
+        "shuted",
+        "shut",
+        "come",
+        "found"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to shut — shut — shut"
+    },
+    {
+      "id": "g14v249",
+      "type": "QCM",
+      "question": "Que signifie « to shut » (shut / shut) ?",
+      "choix": [
+        "dormir",
+        "faire, fabriquer",
+        "plier, ployer, courber",
+        "fermer"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to shut = fermer"
+    },
+    {
+      "id": "g14v250",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to sing » (chanter) ?",
+      "choix": [
+        "sang",
+        "slept",
+        "singed",
+        "sung"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to sing — sang — sung"
+    },
+    {
+      "id": "g14v251",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to sing » (chanter) ?",
+      "choix": [
+        "drawn",
+        "singed",
+        "sung",
+        "sang"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to sing — sang — sung"
+    },
+    {
+      "id": "g14v252",
+      "type": "QCM",
+      "question": "Que signifie « to sing » (sang / sung) ?",
+      "choix": [
+        "nager",
+        "raser",
+        "chanter",
+        "battre"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to sing = chanter"
+    },
+    {
+      "id": "g14v253",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to sit » (être assis) ?",
+      "choix": [
+        "sit",
+        "gave",
+        "sited",
+        "sat"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to sit — sat — sat (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v254",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to sit » (être assis) ?",
+      "choix": [
+        "sit",
+        "hidden",
+        "sat",
+        "sited"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to sit — sat — sat"
+    },
+    {
+      "id": "g14v255",
+      "type": "QCM",
+      "question": "Que signifie « to sit » (sat / sat) ?",
+      "choix": [
+        "cacher",
+        "être assis",
+        "accrocher, suspendre",
+        "sentir (les odeurs)"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to sit = être assis"
+    },
+    {
+      "id": "g14v256",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to sleep » (dormir) ?",
+      "choix": [
+        "sleep",
+        "sleeped",
+        "slept",
+        "rode"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to sleep — slept — slept (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v257",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to sleep » (dormir) ?",
+      "choix": [
+        "slept",
+        "sleep",
+        "grown",
+        "sleeped"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to sleep — slept — slept"
+    },
+    {
+      "id": "g14v258",
+      "type": "QCM",
+      "question": "Que signifie « to sleep » (slept / slept) ?",
+      "choix": [
+        "dire",
+        "dormir",
+        "faire du vélo, du cheval",
+        "passer du temps, dépenser"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to sleep = dormir"
+    },
+    {
+      "id": "g14v259",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to slide » (glisser) ?",
+      "choix": [
+        "hit",
+        "slid",
+        "slide",
+        "slided"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to slide — slid — slid (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v260",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to slide » (glisser) ?",
+      "choix": [
+        "slided",
+        "slid",
+        "spread",
+        "slide"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to slide — slid — slid"
+    },
+    {
+      "id": "g14v261",
+      "type": "QCM",
+      "question": "Que signifie « to slide » (slid / slid) ?",
+      "choix": [
+        "rencontrer",
+        "glisser",
+        "sentir",
+        "envoyer"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to slide = glisser"
+    },
+    {
+      "id": "g14v262",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to smell » (sentir (les odeurs)) ?",
+      "choix": [
+        "smell",
+        "smelt",
+        "smelled",
+        "saw"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to smell — smelt — smelt (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v263",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to smell » (sentir (les odeurs)) ?",
+      "choix": [
+        "smell",
+        "smelled",
+        "kept",
+        "smelt"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to smell — smelt — smelt"
+    },
+    {
+      "id": "g14v264",
+      "type": "QCM",
+      "question": "Que signifie « to smell » (smelt / smelt) ?",
+      "choix": [
+        "sentir (les odeurs)",
+        "sentir",
+        "nager",
+        "tomber"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to smell = sentir (les odeurs)"
+    },
+    {
+      "id": "g14v265",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to speak » (parler) ?",
+      "choix": [
+        "spoken",
+        "threw",
+        "spoke",
+        "speaked"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to speak — spoke — spoken"
+    },
+    {
+      "id": "g14v266",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to speak » (parler) ?",
+      "choix": [
+        "spoke",
+        "gone",
+        "spoken",
+        "speaked"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to speak — spoke — spoken"
+    },
+    {
+      "id": "g14v267",
+      "type": "QCM",
+      "question": "Que signifie « to speak » (spoke / spoken) ?",
+      "choix": [
+        "penser",
+        "tenir",
+        "enrouler, remonter (montre)",
+        "parler"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to speak = parler"
+    },
+    {
+      "id": "g14v268",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to spell » (épeler) ?",
+      "choix": [
+        "became",
+        "spelt",
+        "spelled",
+        "spell"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to spell — spelt — spelt (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v269",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to spell » (épeler) ?",
+      "choix": [
+        "spell",
+        "spelt",
+        "bled",
+        "spelled"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to spell — spelt — spelt"
+    },
+    {
+      "id": "g14v270",
+      "type": "QCM",
+      "question": "Que signifie « to spell » (spelt / spelt) ?",
+      "choix": [
+        "manger",
+        "épeler",
+        "subir",
+        "vendre"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to spell = épeler"
+    },
+    {
+      "id": "g14v271",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to spend » (passer du temps, dépenser) ?",
+      "choix": [
+        "thought",
+        "spended",
+        "spend",
+        "spent"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to spend — spent — spent (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v272",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to spend » (passer du temps, dépenser) ?",
+      "choix": [
+        "made",
+        "spended",
+        "spend",
+        "spent"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to spend — spent — spent"
+    },
+    {
+      "id": "g14v273",
+      "type": "QCM",
+      "question": "Que signifie « to spend » (spent / spent) ?",
+      "choix": [
+        "poser",
+        "coller",
+        "passer du temps, dépenser",
+        "vendre"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to spend = passer du temps, dépenser"
+    },
+    {
+      "id": "g14v274",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to spin » (tourner rapidement) ?",
+      "choix": [
+        "spun",
+        "spin",
+        "spined",
+        "bent"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to spin — spun — spun (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v275",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to spin » (tourner rapidement) ?",
+      "choix": [
+        "spun",
+        "spined",
+        "spin",
+        "drawn"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to spin — spun — spun"
+    },
+    {
+      "id": "g14v276",
+      "type": "QCM",
+      "question": "Que signifie « to spin » (spun / spun) ?",
+      "choix": [
+        "aller",
+        "prendre",
+        "tourner rapidement",
+        "garder"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to spin = tourner rapidement"
+    },
+    {
+      "id": "g14v277",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to split » ((se) fendre) ?",
+      "choix": [
+        "came",
+        "split",
+        "drank",
+        "splited"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to split — split — split (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v278",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to split » ((se) fendre) ?",
+      "choix": [
+        "splited",
+        "split",
+        "spelt",
+        "cast"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to split — split — split"
+    },
+    {
+      "id": "g14v279",
+      "type": "QCM",
+      "question": "Que signifie « to split » (split / split) ?",
+      "choix": [
+        "(se) fendre",
+        "vouloir dire, signifier",
+        "tourner rapidement",
+        "apprendre"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to split = (se) fendre"
+    },
+    {
+      "id": "g14v280",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to spread » (étaler, étendre) ?",
+      "choix": [
+        "showed",
+        "spreaded",
+        "built",
+        "spread"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to spread — spread — spread (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v281",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to spread » (étaler, étendre) ?",
+      "choix": [
+        "worn",
+        "drunk",
+        "spreaded",
+        "spread"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to spread — spread — spread"
+    },
+    {
+      "id": "g14v282",
+      "type": "QCM",
+      "question": "Que signifie « to spread » (spread / spread) ?",
+      "choix": [
+        "poser",
+        "saigner",
+        "étaler, étendre",
+        "faire du vélo, du cheval"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to spread = étaler, étendre"
+    },
+    {
+      "id": "g14v283",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to spring » (bondir, jaillir) ?",
+      "choix": [
+        "springed",
+        "sprung",
+        "sprang",
+        "cast"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to spring — sprang — sprung"
+    },
+    {
+      "id": "g14v284",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to spring » (bondir, jaillir) ?",
+      "choix": [
+        "springed",
+        "sprung",
+        "shut",
+        "sprang"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to spring — sprang — sprung"
+    },
+    {
+      "id": "g14v285",
+      "type": "QCM",
+      "question": "Que signifie « to spring » (sprang / sprung) ?",
+      "choix": [
+        "envoyer",
+        "entendre",
+        "brûler",
+        "bondir, jaillir"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to spring = bondir, jaillir"
+    },
+    {
+      "id": "g14v286",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to stand » (être debout) ?",
+      "choix": [
+        "stood",
+        "standed",
+        "drank",
+        "stand"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to stand — stood — stood (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v287",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to stand » (être debout) ?",
+      "choix": [
+        "standed",
+        "stood",
+        "stand",
+        "frozen"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to stand — stood — stood"
+    },
+    {
+      "id": "g14v288",
+      "type": "QCM",
+      "question": "Que signifie « to stand » (stood / stood) ?",
+      "choix": [
+        "sentir",
+        "voir",
+        "interdire",
+        "être debout"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to stand = être debout"
+    },
+    {
+      "id": "g14v289",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to steal » (voler, dérober) ?",
+      "choix": [
+        "stole",
+        "wrote",
+        "stealed",
+        "stolen"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to steal — stole — stolen"
+    },
+    {
+      "id": "g14v290",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to steal » (voler, dérober) ?",
+      "choix": [
+        "stole",
+        "drunk",
+        "stealed",
+        "stolen"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to steal — stole — stolen"
+    },
+    {
+      "id": "g14v291",
+      "type": "QCM",
+      "question": "Que signifie « to steal » (stole / stolen) ?",
+      "choix": [
+        "voler, dérober",
+        "balayer",
+        "frapper",
+        "parler"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to steal = voler, dérober"
+    },
+    {
+      "id": "g14v292",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to stick » (coller) ?",
+      "choix": [
+        "sticked",
+        "cut",
+        "stick",
+        "stuck"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to stick — stuck — stuck (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v293",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to stick » (coller) ?",
+      "choix": [
+        "stuck",
+        "stick",
+        "sticked",
+        "arisen"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to stick — stuck — stuck"
+    },
+    {
+      "id": "g14v294",
+      "type": "QCM",
+      "question": "Que signifie « to stick » (stuck / stuck) ?",
+      "choix": [
+        "bondir, jaillir",
+        "éclater",
+        "coller",
+        "obtenir, devenir"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to stick = coller"
+    },
+    {
+      "id": "g14v295",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to strike » (frapper) ?",
+      "choix": [
+        "meant",
+        "striked",
+        "struck",
+        "strike"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to strike — struck — struck (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v296",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to strike » (frapper) ?",
+      "choix": [
+        "striked",
+        "lain",
+        "struck",
+        "strike"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to strike — struck — struck"
+    },
+    {
+      "id": "g14v297",
+      "type": "QCM",
+      "question": "Que signifie « to strike » (struck / struck) ?",
+      "choix": [
+        "frapper",
+        "boire",
+        "penser",
+        "parler"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to strike = frapper"
+    },
+    {
+      "id": "g14v298",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to sweep » (balayer) ?",
+      "choix": [
+        "sweep",
+        "paid",
+        "swept",
+        "sweeped"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to sweep — swept — swept (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v299",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to sweep » (balayer) ?",
+      "choix": [
+        "sweep",
+        "swept",
+        "arisen",
+        "sweeped"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to sweep — swept — swept"
+    },
+    {
+      "id": "g14v300",
+      "type": "QCM",
+      "question": "Que signifie « to sweep » (swept / swept) ?",
+      "choix": [
+        "choisir",
+        "balayer",
+        "sentir",
+        "subir"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to sweep = balayer"
+    },
+    {
+      "id": "g14v301",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to swim » (nager) ?",
+      "choix": [
+        "swimed",
+        "dealt",
+        "swum",
+        "swam"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to swim — swam — swum"
+    },
+    {
+      "id": "g14v302",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to swim » (nager) ?",
+      "choix": [
+        "swam",
+        "bent",
+        "swum",
+        "swimed"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to swim — swam — swum"
+    },
+    {
+      "id": "g14v303",
+      "type": "QCM",
+      "question": "Que signifie « to swim » (swam / swum) ?",
+      "choix": [
+        "s’élever, se lever (soleil)",
+        "nager",
+        "allumer",
+        "tenir"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to swim = nager"
+    },
+    {
+      "id": "g14v304",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to take » (prendre) ?",
+      "choix": [
+        "taked",
+        "took",
+        "taken",
+        "spelt"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to take — took — taken"
+    },
+    {
+      "id": "g14v305",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to take » (prendre) ?",
+      "choix": [
+        "taken",
+        "taked",
+        "took",
+        "become"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to take — took — taken"
+    },
+    {
+      "id": "g14v306",
+      "type": "QCM",
+      "question": "Que signifie « to take » (took / taken) ?",
+      "choix": [
+        "sentir (les odeurs)",
+        "lier",
+        "prendre",
+        "geler"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to take = prendre"
+    },
+    {
+      "id": "g14v307",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to teach » (enseigner) ?",
+      "choix": [
+        "teached",
+        "said",
+        "teach",
+        "taught"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to teach — taught — taught (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v308",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to teach » (enseigner) ?",
+      "choix": [
+        "taught",
+        "teached",
+        "cast",
+        "teach"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to teach — taught — taught"
+    },
+    {
+      "id": "g14v309",
+      "type": "QCM",
+      "question": "Que signifie « to teach » (taught / taught) ?",
+      "choix": [
+        "voler, dérober",
+        "prêter",
+        "porter (des vêtements)",
+        "enseigner"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to teach = enseigner"
+    },
+    {
+      "id": "g14v310",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to tell » (dire, raconter) ?",
+      "choix": [
+        "wound",
+        "tell",
+        "told",
+        "telled"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to tell — told — told (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v311",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to tell » (dire, raconter) ?",
+      "choix": [
+        "telled",
+        "tell",
+        "told",
+        "wound"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to tell — told — told"
+    },
+    {
+      "id": "g14v312",
+      "type": "QCM",
+      "question": "Que signifie « to tell » (told / told) ?",
+      "choix": [
+        "être couché",
+        "tenir",
+        "dire, raconter",
+        "avoir"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to tell = dire, raconter"
+    },
+    {
+      "id": "g14v313",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to think » (penser) ?",
+      "choix": [
+        "thinked",
+        "think",
+        "learnt",
+        "thought"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to think — thought — thought (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v314",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to think » (penser) ?",
+      "choix": [
+        "think",
+        "thinked",
+        "sung",
+        "thought"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to think — thought — thought"
+    },
+    {
+      "id": "g14v315",
+      "type": "QCM",
+      "question": "Que signifie « to think » (thought / thought) ?",
+      "choix": [
+        "gagner",
+        "être assis",
+        "penser",
+        "frapper"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to think = penser"
+    },
+    {
+      "id": "g14v316",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to throw » (lancer, jeter) ?",
+      "choix": [
+        "let",
+        "threw",
+        "thrown",
+        "throwed"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to throw — threw — thrown"
+    },
+    {
+      "id": "g14v317",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to throw » (lancer, jeter) ?",
+      "choix": [
+        "throwed",
+        "come",
+        "threw",
+        "thrown"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to throw — threw — thrown"
+    },
+    {
+      "id": "g14v318",
+      "type": "QCM",
+      "question": "Que signifie « to throw » (threw / thrown) ?",
+      "choix": [
+        "conduire, mener",
+        "passer du temps, dépenser",
+        "lancer, jeter",
+        "entendre"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to throw = lancer, jeter"
+    },
+    {
+      "id": "g14v319",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to undergo » (subir) ?",
+      "choix": [
+        "undergone",
+        "woke",
+        "undergoed",
+        "underwent"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to undergo — underwent — undergone"
+    },
+    {
+      "id": "g14v320",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to undergo » (subir) ?",
+      "choix": [
+        "bought",
+        "undergoed",
+        "underwent",
+        "undergone"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to undergo — underwent — undergone"
+    },
+    {
+      "id": "g14v321",
+      "type": "QCM",
+      "question": "Que signifie « to undergo » (underwent / undergone) ?",
+      "choix": [
+        "s'élever",
+        "subir",
+        "courir",
+        "rencontrer"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to undergo = subir"
+    },
+    {
+      "id": "g14v322",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to understand » (comprendre) ?",
+      "choix": [
+        "understand",
+        "understood",
+        "met",
+        "understanded"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to understand — understood — understood (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v323",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to understand » (comprendre) ?",
+      "choix": [
+        "understand",
+        "understanded",
+        "gone",
+        "understood"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to understand — understood — understood"
+    },
+    {
+      "id": "g14v324",
+      "type": "QCM",
+      "question": "Que signifie « to understand » (understood / understood) ?",
+      "choix": [
+        "comprendre",
+        "lier",
+        "voler (avec des ailes)",
+        "étaler, étendre"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to understand = comprendre"
+    },
+    {
+      "id": "g14v325",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to wake » (se réveiller) ?",
+      "choix": [
+        "woken",
+        "waked",
+        "woke",
+        "became"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to wake — woke — woken"
+    },
+    {
+      "id": "g14v326",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to wake » (se réveiller) ?",
+      "choix": [
+        "shown",
+        "woken",
+        "woke",
+        "waked"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to wake — woke — woken"
+    },
+    {
+      "id": "g14v327",
+      "type": "QCM",
+      "question": "Que signifie « to wake » (woke / woken) ?",
+      "choix": [
+        "courir",
+        "se réveiller",
+        "plier, ployer, courber",
+        "battre"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to wake = se réveiller"
+    },
+    {
+      "id": "g14v328",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to wear » (porter (des vêtements)) ?",
+      "choix": [
+        "worn",
+        "lit",
+        "wore",
+        "weared"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to wear — wore — worn"
+    },
+    {
+      "id": "g14v329",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to wear » (porter (des vêtements)) ?",
+      "choix": [
+        "wore",
+        "weared",
+        "said",
+        "worn"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to wear — wore — worn"
+    },
+    {
+      "id": "g14v330",
+      "type": "QCM",
+      "question": "Que signifie « to wear » (wore / worn) ?",
+      "choix": [
+        "poser",
+        "rencontrer",
+        "venir",
+        "porter (des vêtements)"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to wear = porter (des vêtements)"
+    },
+    {
+      "id": "g14v331",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to win » (gagner) ?",
+      "choix": [
+        "won",
+        "win",
+        "wined",
+        "met"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to win — won — won (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v332",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to win » (gagner) ?",
+      "choix": [
+        "won",
+        "wined",
+        "win",
+        "flown"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to win — won — won"
+    },
+    {
+      "id": "g14v333",
+      "type": "QCM",
+      "question": "Que signifie « to win » (won / won) ?",
+      "choix": [
+        "coûter",
+        "manger",
+        "gagner",
+        "nager"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to win = gagner"
+    },
+    {
+      "id": "g14v334",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to wind » (enrouler, remonter (montre)) ?",
+      "choix": [
+        "wind",
+        "wound",
+        "winded",
+        "forbade"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to wind — wound — wound (prétérit et participe passé identiques)"
+    },
+    {
+      "id": "g14v335",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to wind » (enrouler, remonter (montre)) ?",
+      "choix": [
+        "winded",
+        "wound",
+        "rung",
+        "wind"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to wind — wound — wound"
+    },
+    {
+      "id": "g14v336",
+      "type": "QCM",
+      "question": "Que signifie « to wind » (wound / wound) ?",
+      "choix": [
+        "grandir",
+        "enrouler, remonter (montre)",
+        "payer",
+        "couper"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to wind = enrouler, remonter (montre)"
+    },
+    {
+      "id": "g14v337",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to withdraw » ((se) retirer) ?",
+      "choix": [
+        "withdrawn",
+        "withdrew",
+        "woke",
+        "withdrawed"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to withdraw — withdrew — withdrawn"
+    },
+    {
+      "id": "g14v338",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to withdraw » ((se) retirer) ?",
+      "choix": [
+        "withdrew",
+        "withdrawed",
+        "shone",
+        "withdrawn"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to withdraw — withdrew — withdrawn"
+    },
+    {
+      "id": "g14v339",
+      "type": "QCM",
+      "question": "Que signifie « to withdraw » (withdrew / withdrawn) ?",
+      "choix": [
+        "mettre, poser",
+        "être couché",
+        "coûter",
+        "(se) retirer"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to withdraw = (se) retirer"
+    },
+    {
+      "id": "g14v340",
+      "type": "QCM",
+      "question": "Quel est le prétérit de « to write » (écrire) ?",
+      "choix": [
+        "wrote",
+        "bled",
+        "writed",
+        "written"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to write — wrote — written"
+    },
+    {
+      "id": "g14v341",
+      "type": "QCM",
+      "question": "Quel est le participe passé de « to write » (écrire) ?",
+      "choix": [
+        "taught",
+        "wrote",
+        "writed",
+        "written"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to write — wrote — written"
+    },
+    {
+      "id": "g14v342",
+      "type": "QCM",
+      "question": "Que signifie « to write » (wrote / written) ?",
+      "choix": [
+        "écrire",
+        "tourner rapidement",
+        "casser",
+        "balayer"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to write = écrire"
+    }
+  ]
+}

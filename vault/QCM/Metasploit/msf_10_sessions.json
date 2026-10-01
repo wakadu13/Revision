@@ -1,0 +1,31 @@
+{
+  "titre": "Metasploit 10 — Sessions",
+  "description": "Gestion des sessions actives, backgrounding et jobs",
+  "questions": [
+    { "id": "ses01", "type": "QCM", "question": "À quoi servent les Sessions dans msfconsole ?", "choix": [
+        "Créer des interfaces de contrôle dédiées pour chaque module déployé",
+        "Encoder les payloads",
+        "Gérer les workspaces de la base de données",
+        "Lister les plugins disponibles"
+      ], "reponses": [0], "explication": "Cela permet de gérer plusieurs modules simultanément." },
+    { "id": "ses02", "type": "QCM", "question": "Quelle combinaison de touches permet de mettre une session en arrière-plan (background) ?", "choix": ["CTRL+C", "CTRL+Z", "CTRL+D", "CTRL+X"], "reponses": [1], "explication": "On peut aussi taper la commande `background`." },
+    { "id": "ses03", "type": "QCM", "question": "Que se passe-t-il si une session est mise en arrière-plan ?", "choix": [
+        "Elle se termine immédiatement",
+        "Elle continue de fonctionner et la connexion persiste",
+        "Elle est automatiquement supprimée après 60 secondes",
+        "Le payload est réencodé"
+      ], "reponses": [1], "explication": "Une session peut toutefois mourir si le payload rencontre un problème runtime." },
+    { "id": "ses04", "type": "QCM", "question": "Quelle commande liste les sessions actives ?", "choix": ["sessions", "jobs -l", "show sessions", "list active"], "reponses": [0], "explication": "" },
+    { "id": "ses05", "type": "QCM", "question": "Quelle commande permet d'interagir avec une session spécifique par son numéro ?", "choix": ["sessions -i [no.]", "use session [no.]", "session connect [no.]", "load session [no.]"], "reponses": [0], "explication": "" },
+    { "id": "ses06", "type": "QCM", "question": "À quelle catégorie de modules appartiennent typiquement les modules qu'on lie à une session déjà active (récolte de credentials, local exploit suggester, scanners internes) ?", "choix": ["Auxiliary", "Post", "Encoders", "Nops"], "reponses": [1], "explication": "Les modules Post-Exploitation." },
+    { "id": "ses07", "type": "QCM", "question": "Pourquoi utiliser la commande `jobs` plutôt que CTRL+C pour arrêter un exploit actif utilisant un port ?", "choix": [
+        "CTRL+C libère automatiquement le port",
+        "CTRL+C ne libère pas le port, il faut utiliser jobs pour identifier et terminer la tâche",
+        "jobs redémarre automatiquement le service",
+        "CTRL+C supprime la base de données"
+      ], "reponses": [1], "explication": "" },
+    { "id": "ses08", "type": "QCM", "question": "Quelle commande liste toutes les tâches (jobs) actives en arrière-plan ?", "choix": ["jobs -l", "sessions -l", "jobs -a", "tasks -l"], "reponses": [0], "explication": "" },
+    { "id": "ses09", "type": "QCM", "question": "Quelle option permet de lancer un exploit directement en tant que job en arrière-plan ?", "choix": ["exploit -j", "exploit -b", "run --background", "exploit --job"], "reponses": [0], "explication": "" },
+    { "id": "ses10", "type": "QCM", "question": "Quelle option de la commande jobs permet de terminer toutes les tâches en cours ?", "choix": ["jobs -K", "jobs -k all", "jobs --stop", "jobs -x"], "reponses": [0], "explication": "-k avec un ID cible un job spécifique, -K les termine tous." }
+  ]
+}

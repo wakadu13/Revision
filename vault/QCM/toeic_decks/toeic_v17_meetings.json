@@ -1,0 +1,231 @@
+{
+  "titre": "TOEIC Vocabulary 17 — Meetings",
+  "description": "Thème « Meetings » du livret Vocabulary (d'après les corrigés).",
+  "questions": [
+    {
+      "id": "v17001",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « conference call » ?",
+      "choix": [
+        "Human Resources",
+        "Meetings",
+        "Commerce",
+        "Banking & Personal Finance"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« conference call » figure dans les corrigés du thème Meetings."
+    },
+    {
+      "id": "v17002",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « video-conference » ?",
+      "choix": [
+        "Meetings",
+        "Communicating",
+        "Human Resources",
+        "Phrasal Verbs"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« video-conference » figure dans les corrigés du thème Meetings."
+    },
+    {
+      "id": "v17003",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « AGM » ?",
+      "choix": [
+        "Meetings",
+        "Travel",
+        "Complaining & Apologizing",
+        "Weather"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« AGM » figure dans les corrigés du thème Meetings."
+    },
+    {
+      "id": "v17004",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « board meeting » ?",
+      "choix": [
+        "Weather",
+        "Meetings",
+        "Complaining & Apologizing",
+        "Idioms & Expressions"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« board meeting » figure dans les corrigés du thème Meetings."
+    },
+    {
+      "id": "v17005",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « conference » ?",
+      "choix": [
+        "Idioms & Expressions",
+        "Commerce",
+        "Meetings",
+        "Dining Out"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« conference » figure dans les corrigés du thème Meetings."
+    },
+    {
+      "id": "v17006",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « agenda » ?",
+      "choix": [
+        "Travel",
+        "Meetings",
+        "Sustainable Development",
+        "Real Estate & Housing"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« agenda » figure dans les corrigés du thème Meetings."
+    },
+    {
+      "id": "v17007",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « objective » ?",
+      "choix": [
+        "Presentations",
+        "Meetings",
+        "Products",
+        "Graphs"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« objective » figure dans les corrigés du thème Meetings."
+    },
+    {
+      "id": "v17008",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « keynote speech » ?",
+      "choix": [
+        "Graphs",
+        "Life in the Office",
+        "Meetings",
+        "Human Resources"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« keynote speech » figure dans les corrigés du thème Meetings."
+    },
+    {
+      "id": "v17009",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « brainstorm session » ?",
+      "choix": [
+        "Idioms & Expressions",
+        "Real Estate & Housing",
+        "Travel",
+        "Meetings"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« brainstorm session » figure dans les corrigés du thème Meetings."
+    },
+    {
+      "id": "v17010",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « motion » ?",
+      "choix": [
+        "Human Resources",
+        "High-Tech",
+        "Graphs",
+        "Meetings"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« motion » figure dans les corrigés du thème Meetings."
+    },
+    {
+      "id": "v17011",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « proposal » ?",
+      "choix": [
+        "Media",
+        "High-Tech",
+        "Meetings",
+        "Logistics"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« proposal » figure dans les corrigés du thème Meetings."
+    },
+    {
+      "id": "v17012",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « vote » ?",
+      "choix": [
+        "Media",
+        "Complaining & Apologizing",
+        "Dining Out",
+        "Meetings"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« vote » figure dans les corrigés du thème Meetings."
+    },
+    {
+      "id": "v17013",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « proxy vote » ?",
+      "choix": [
+        "Meetings",
+        "Real Estate & Housing",
+        "Idioms & Expressions",
+        "Phrasal Verbs"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« proxy vote » figure dans les corrigés du thème Meetings."
+    },
+    {
+      "id": "v17014",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « AOB » ?",
+      "choix": [
+        "Meetings",
+        "Communicating",
+        "Health & Healthcare",
+        "High-Tech"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« AOB » figure dans les corrigés du thème Meetings."
+    },
+    {
+      "id": "v17015",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « minutes » ?",
+      "choix": [
+        "Corporate Property",
+        "Logistics",
+        "Meetings",
+        "Investments"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« minutes » figure dans les corrigés du thème Meetings."
+    }
+  ]
+}

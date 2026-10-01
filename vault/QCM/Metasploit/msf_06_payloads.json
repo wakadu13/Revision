@@ -1,0 +1,56 @@
+{
+  "titre": "Metasploit 6 — Payloads",
+  "description": "Types de payloads (Singles, Stagers, Stages), Meterpreter et sélection de payload",
+  "questions": [
+    { "id": "pay01", "type": "QCM", "question": "Qu'est-ce qu'un Payload dans Metasploit ?", "choix": [
+        "Un module qui aide l'exploit à renvoyer un shell à l'attaquant",
+        "Un scanner de vulnérabilités",
+        "Un outil de reporting",
+        "Un pare-feu"
+      ], "reponses": [0], "explication": "" },
+    { "id": "pay02", "type": "QCR", "question": "Quels sont les trois types de modules payload dans Metasploit Framework ?", "choix": ["Singles", "Stagers", "Stages", "Encoders"], "reponses": [0, 1, 2], "explication": "Les Encoders sont un type de module distinct." },
+    { "id": "pay03", "type": "QCM", "question": "Quel caractère indique qu'un payload est « staged » (avec étapes) dans son nom ?", "choix": ["-", "/", "_", ":"], "reponses": [1], "explication": "Ex : windows/shell/bind_tcp = stager + stage, vs windows/shell_bind_tcp = single." },
+    { "id": "pay04", "type": "QCM", "question": "Que contient un payload de type Single ?", "choix": [
+        "Seulement le stager",
+        "L'exploit et l'intégralité du shellcode pour la tâche",
+        "Seulement le stage",
+        "Rien, il attend un stage externe"
+      ], "reponses": [1], "explication": "Les Singles sont autonomes (self-contained) mais peuvent être volumineux." },
+    { "id": "pay05", "type": "QCM", "question": "Quel est le rôle d'un Stager ?", "choix": [
+        "Fournir des fonctionnalités avancées sans limite de taille",
+        "Établir une connexion sortante initiale vers l'attaquant et préparer le canal pour le stage",
+        "Encoder le payload final",
+        "Scanner le réseau cible"
+      ], "reponses": [1], "explication": "Le stager est conçu pour être petit et fiable." },
+    { "id": "pay06", "type": "QCM", "question": "Quel est le rôle d'un Stage ?", "choix": [
+        "Initier la connexion sortante",
+        "Fournir des fonctionnalités avancées sans limite de taille, téléchargées par le stager",
+        "Encoder les caractères interdits",
+        "Créer la session PostgreSQL"
+      ], "reponses": [1], "explication": "Exemples : Meterpreter, VNC Injection." },
+    { "id": "pay07", "type": "QCM", "question": "Pourquoi les connexions reverse (reverse_tcp, reverse_https) sont-elles souvent plus efficaces ?", "choix": [
+        "Elles sont plus rapides en bande passante",
+        "Elles exploitent les règles de trafic sortant généralement moins filtrées",
+        "Elles ne nécessitent pas d'adresse IP",
+        "Elles sont chiffrées par défaut"
+      ], "reponses": [1], "explication": "Le trafic sortant bénéficie souvent d'une confiance ('security trust zone') plus grande." },
+    { "id": "pay08", "type": "QCM", "question": "Comment appelle-t-on le shellcode initial envoyé pour établir la connexion retour ?", "choix": ["Stage1", "Stage0", "Encoder0", "PreStage"], "reponses": [1], "explication": "" },
+    { "id": "pay09", "type": "QCR", "question": "Quelles propriétés caractérisent le payload Meterpreter ?", "choix": [
+        "Utilise l'injection DLL",
+        "Réside entièrement en mémoire, sans trace sur disque",
+        "Permet de charger/décharger des plugins dynamiquement",
+        "Nécessite obligatoirement un antivirus désactivé"
+      ], "reponses": [0, 1, 2], "explication": "" },
+    { "id": "pay10", "type": "QCM", "question": "Quelle commande liste tous les payloads disponibles dans msfconsole ?", "choix": ["show payloads", "list payloads", "search payloads", "payloads -a"], "reponses": [0], "explication": "" },
+    { "id": "pay11", "type": "QCM", "question": "Quelle commande permet de filtrer les résultats d'une commande comme show payloads, par exemple pour ne garder que 'meterpreter' ?", "choix": ["filter", "grep", "find", "search"], "reponses": [1], "explication": "Ex: grep meterpreter show payloads." },
+    { "id": "pay12", "type": "QCM", "question": "Quelle commande permet de définir le payload à utiliser une fois un module exploit sélectionné ?", "choix": ["set payload <no.>", "use payload <no.>", "load payload <no.>", "payload set <no.>"], "reponses": [0], "explication": "" },
+    { "id": "pay13", "type": "QCM", "question": "Quelle commande Meterpreter permet de connaître l'utilisateur sous lequel le serveur tourne, équivalent Linux de whoami ?", "choix": ["whoami", "getuid", "id", "user"], "reponses": [1], "explication": "whoami ne fonctionne pas directement dans le prompt Meterpreter." },
+    { "id": "pay14", "type": "QCM", "question": "Quelle commande Meterpreter permet de basculer vers un vrai shell système (CLI Windows) ?", "choix": ["cmd", "shell", "exec", "run cmd"], "reponses": [1], "explication": "Cela crée un nouveau canal (channel)." },
+    { "id": "pay15", "type": "QCM", "question": "Que représente le payload de type windows/x64/meterpreter/$ ?", "choix": [
+        "Un simple shell de commande",
+        "Le payload Meterpreter et ses variétés associées",
+        "Un encodeur x64",
+        "Un module auxiliary"
+      ], "reponses": [1], "explication": "" }
+  ]
+}

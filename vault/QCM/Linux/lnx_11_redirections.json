@@ -1,0 +1,106 @@
+{
+  "titre": "Linux 11 — Descripteurs de Fichiers et Redirections",
+  "description": "STDIN, STDOUT, STDERR, redirections et pipes",
+  "questions": [
+    {
+      "id": "fd01",
+      "type": "QCM",
+      "question": "Quel est le numéro de descripteur de fichier de STDIN ?",
+      "choix": ["0", "1", "2", "3"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "fd02",
+      "type": "QCM",
+      "question": "Quel est le numéro de descripteur de fichier de STDOUT ?",
+      "choix": ["0", "1", "2", "3"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "fd03",
+      "type": "QCM",
+      "question": "Quel est le numéro de descripteur de fichier de STDERR ?",
+      "choix": ["0", "1", "2", "3"],
+      "reponses": [2],
+      "explication": ""
+    },
+    {
+      "id": "fd04",
+      "type": "QCM",
+      "question": "Que fait `commande > fichier` si le fichier existe déjà ?",
+      "choix": [
+        "Ajoute la sortie à la fin du fichier",
+        "Écrase le fichier sans confirmation",
+        "Provoque une erreur",
+        "Ne fait rien"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "fd05",
+      "type": "QCM",
+      "question": "Quel opérateur permet d'ajouter la sortie à un fichier existant sans l'écraser ?",
+      "choix": [">", ">>", "<", "<<"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "fd06",
+      "type": "QCM",
+      "question": "Quel opérateur redirige un fichier vers l'entrée standard d'une commande ?",
+      "choix": [">", ">>", "<", "|"],
+      "reponses": [2],
+      "explication": ""
+    },
+    {
+      "id": "fd07",
+      "type": "QCM",
+      "question": "À quoi sert `<<EOF` avec `cat` ?",
+      "choix": [
+        "Rediriger STDERR",
+        "Lire un flux d'entrée standard jusqu'à un marqueur de fin (EOF)",
+        "Supprimer un fichier",
+        "Chercher un fichier"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "fd08",
+      "type": "QCM",
+      "question": "À quoi servent les pipes (`|`) ?",
+      "choix": [
+        "Rediriger STDIN vers un fichier",
+        "Faire traiter le STDOUT d'un programme par un autre programme",
+        "Supprimer STDERR",
+        "Créer un nouveau fichier"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "fd09",
+      "type": "QCM",
+      "question": "Quelle commande redirige STDOUT vers stdout.txt et STDERR vers stderr.txt en une seule ligne ?",
+      "choix": [
+        "commande > stdout.txt < stderr.txt",
+        "commande 2> stderr.txt 1> stdout.txt",
+        "commande >> stdout.txt stderr.txt",
+        "commande | stdout.txt | stderr.txt"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "fd10",
+      "type": "QCM",
+      "question": "Quel outil compte le nombre de lignes de la sortie d'une commande ?",
+      "choix": ["count", "wc -l", "lc", "nl -count"],
+      "reponses": [1],
+      "explication": ""
+    }
+  ]
+}

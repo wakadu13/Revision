@@ -1,0 +1,98 @@
+{
+  "titre": "Linux 10 — Rechercher des Fichiers et des Dossiers",
+  "description": "which, find et ses options, locate et updatedb",
+  "questions": [
+    {
+      "id": "rec01",
+      "type": "QCM",
+      "question": "Que renvoie la commande `which` ?",
+      "choix": [
+        "Le contenu d'un fichier",
+        "Le chemin vers le fichier/lien exécutable d'un programme",
+        "La liste des utilisateurs",
+        "Les permissions d'un fichier"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "rec02",
+      "type": "QCM",
+      "question": "Dans `find`, quelle option filtre par type de fichier (fichier régulier) ?",
+      "choix": ["-name", "-type f", "-user", "-size"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "rec03",
+      "type": "QCM",
+      "question": "Quelle option de `find` filtre par propriétaire du fichier ?",
+      "choix": ["-owner", "-user", "-group", "-uid"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "rec04",
+      "type": "QCM",
+      "question": "Quelle option de `find` filtre les fichiers plus récents qu'une date donnée ?",
+      "choix": ["-newermt", "-mtime", "-atime", "-date"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "rec05",
+      "type": "QCM",
+      "question": "Quelle option de `find` exécute une commande sur chaque résultat trouvé ?",
+      "choix": ["-run", "-exec ... \\;", "-cmd", "-do"],
+      "reponses": [1],
+      "explication": "Les accolades {} servent de placeholder pour chaque résultat."
+    },
+    {
+      "id": "rec06",
+      "type": "QCM",
+      "question": "Que signifie `2>/dev/null` ajouté à une commande find ?",
+      "choix": [
+        "Redirige STDOUT vers /dev/null",
+        "Redirige STDERR vers le périphérique nul (supprime les erreurs affichées)",
+        "Supprime tous les résultats",
+        "Redirige STDIN"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "rec07",
+      "type": "QCM",
+      "question": "Sur quoi repose la commande `locate` pour effectuer ses recherches rapidement ?",
+      "choix": [
+        "Un parcours complet du disque à chaque appel",
+        "Une base de données locale mise à jour périodiquement",
+        "Une connexion réseau",
+        "Le cache du navigateur"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "rec08",
+      "type": "QCM",
+      "question": "Quelle commande met à jour la base de données utilisée par `locate` ?",
+      "choix": ["sudo updatedb", "locate --update", "find --refresh", "sudo locate -u"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "rec09",
+      "type": "QCM",
+      "question": "Quel est l'inconvénient principal de `locate` par rapport à `find` ?",
+      "choix": [
+        "Il est plus lent",
+        "Il dispose de moins d'options de filtrage",
+        "Il ne fonctionne pas sur Linux",
+        "Il nécessite des droits root systématiquement"
+      ],
+      "reponses": [1],
+      "explication": ""
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "titre": "Metasploit 2 — Introduction to Metasploit",
+  "description": "Metasploit Project, Framework vs Pro, architecture et emplacement des fichiers",
+  "questions": [
+    { "id": "int01", "type": "QCM", "question": "Dans quel langage de programmation le Metasploit Project est-il écrit ?", "choix": ["Python", "Ruby", "Perl", "C++"], "reponses": [1], "explication": "" },
+    { "id": "int02", "type": "QCR", "question": "Quelles sont les deux versions de Metasploit citées dans le cours ?", "choix": ["Metasploit Framework", "Metasploit Pro", "Metasploit Community", "Metasploit Lite"], "reponses": [0, 1], "explication": "Framework est open-source/gratuit, Pro est commercial/entreprise." },
+    { "id": "int03", "type": "QCR", "question": "Quelles caractéristiques distinguent Metasploit Framework ?", "choix": ["Open Source", "Community Driven", "Free", "Paid Subscription"], "reponses": [0, 1, 2], "explication": "" },
+    { "id": "int04", "type": "QCR", "question": "Quelles fonctionnalités supplémentaires apporte Metasploit Pro par rapport au Framework ?", "choix": ["Task Chains", "GUI", "Quick Start Wizards", "msfconsole"], "reponses": [0, 1, 2], "explication": "msfconsole est l'interface du Framework, pas une fonctionnalité exclusive à Pro." },
+    { "id": "int05", "type": "QCM", "question": "Comment le cours décrit-il Metasploit par rapport à un « jack of all trades » ?", "choix": ["Comme un jack of all trades complet", "Comme un couteau suisse avec juste assez d'outils", "Comme un simple scanner de ports", "Comme un antivirus"], "reponses": [1], "explication": "" },
+    { "id": "int06", "type": "QCM", "question": "Quelle est l'interface la plus populaire pour accéder au Metasploit Framework ?", "choix": ["msfvenom", "msfconsole", "Armitage", "msfgui"], "reponses": [1], "explication": "" },
+    { "id": "int07", "type": "QCR", "question": "Quelles caractéristiques msfconsole offre-t-elle selon le cours ?", "choix": ["Support readline complet", "Tabbing et complétion de commande", "Exécution de commandes externes", "Interface graphique obligatoire"], "reponses": [0, 1, 2], "explication": "" },
+    { "id": "int08", "type": "QCM", "question": "Où se trouvent par défaut les fichiers de base de Metasploit Framework sous ParrotOS Security ?", "choix": ["/opt/metasploit", "/usr/share/metasploit-framework", "/etc/metasploit", "/var/lib/metasploit"], "reponses": [1], "explication": "" },
+    { "id": "int09", "type": "QCR", "question": "Quels dossiers de premier niveau composent /usr/share/metasploit-framework/modules ?", "choix": ["auxiliary", "encoders", "payloads", "plugins"], "reponses": [0, 1, 2], "explication": "Le dossier plugins est distinct du dossier modules." },
+    { "id": "int10", "type": "QCM", "question": "À quoi servent les Plugins dans msfconsole ?", "choix": [
+        "Ils remplacent les modules exploits",
+        "Ils offrent plus de flexibilité en étant chargés manuellement ou automatiquement pour ajouter des fonctionnalités",
+        "Ils servent uniquement à la documentation",
+        "Ils gèrent les mises à jour du système"
+      ], "reponses": [1], "explication": "" },
+    { "id": "int11", "type": "QCM", "question": "Que contient le dossier /scripts du Framework ?", "choix": ["Les exploits Windows", "La fonctionnalité Meterpreter et d'autres scripts utiles", "Les fichiers de configuration réseau", "Les payloads uniquement"], "reponses": [1], "explication": "" },
+    { "id": "int12", "type": "QCM", "question": "Que contient le dossier /tools du Framework ?", "choix": [
+        "Des utilitaires en ligne de commande appelables depuis msfconsole",
+        "Uniquement de la documentation",
+        "Les modules auxiliary",
+        "Les logs de session"
+      ], "reponses": [0], "explication": "" }
+  ]
+}

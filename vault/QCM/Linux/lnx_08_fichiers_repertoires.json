@@ -1,0 +1,93 @@
+{
+  "titre": "Linux 8 — Travailler avec les Fichiers et les Répertoires",
+  "description": "touch, mkdir, mv, cp et l'outil tree",
+  "questions": [
+    {
+      "id": "fic01",
+      "type": "QCM",
+      "question": "Quelle commande crée un fichier vide ?",
+      "choix": ["mkdir", "touch", "new", "create"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "fic02",
+      "type": "QCM",
+      "question": "Quelle commande crée un répertoire ?",
+      "choix": ["touch", "mkdir", "cd", "mkfile"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "fic03",
+      "type": "QCM",
+      "question": "Quelle option de `mkdir` permet de créer automatiquement les répertoires parents manquants ?",
+      "choix": ["-r", "-f", "-p", "-a"],
+      "reponses": [2],
+      "explication": "Ex : mkdir -p Storage/local/user/documents"
+    },
+    {
+      "id": "fic04",
+      "type": "QCM",
+      "question": "Quel outil permet d'afficher une arborescence de fichiers/dossiers ?",
+      "choix": ["tree", "ls -R", "find -tree", "map"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "fic05",
+      "type": "QCM",
+      "question": "Quelle commande permet de déplacer ET de renommer des fichiers/répertoires ?",
+      "choix": ["cp", "mv", "rn", "ren"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "fic06",
+      "type": "QCM",
+      "question": "Quelle commande permet de copier un fichier vers un autre emplacement ?",
+      "choix": ["mv", "cp", "touch", "cat"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "fic07",
+      "type": "QCM",
+      "question": "Que représente le point simple (`.`) dans une commande comme `touch ./fichier.txt` ?",
+      "choix": [
+        "Le répertoire racine",
+        "Le répertoire courant",
+        "Le répertoire parent",
+        "Un caractère générique"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "fic08",
+      "type": "QCM",
+      "question": "Quelle commande renomme `info.txt` en `information.txt` ?",
+      "choix": [
+        "cp info.txt information.txt",
+        "mv info.txt information.txt",
+        "rename info.txt information.txt",
+        "touch information.txt"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "fic09",
+      "type": "QCM",
+      "question": "Quelle est la principale différence entre la gestion de fichiers sous Windows et sous Linux selon le cours ?",
+      "choix": [
+        "Linux n'a pas de fichiers",
+        "Sous Linux, le terminal permet de consulter et modifier les fichiers directement en ligne de commande",
+        "Windows ne permet pas de renommer des fichiers",
+        "Il n'y a aucune différence"
+      ],
+      "reponses": [1],
+      "explication": ""
+    }
+  ]
+}

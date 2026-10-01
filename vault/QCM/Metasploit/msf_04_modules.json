@@ -1,0 +1,32 @@
+{
+  "titre": "Metasploit 4 — Modules",
+  "description": "Syntaxe des modules, types, recherche et sélection de modules",
+  "questions": [
+    { "id": "mod01", "type": "QCM", "question": "Quelle est la syntaxe générale d'un module Metasploit ?", "choix": ["<name>/<type>/<os>/<service>", "<type>/<os>/<service>/<name>", "<os>/<type>/<name>/<service>", "<service>/<name>/<type>/<os>"], "reponses": [1], "explication": "" },
+    { "id": "mod02", "type": "QCM", "question": "Que signifie l'échec d'un exploit Metasploit selon le cours ?", "choix": [
+        "Que la vulnérabilité n'existe pas",
+        "Que l'exploit Metasploit ne fonctionne pas, pas nécessairement que la vulnérabilité n'existe pas",
+        "Que le module est corrompu",
+        "Que la cible est hors ligne"
+      ], "reponses": [1], "explication": "Beaucoup d'exploits nécessitent une personnalisation selon la cible." },
+    { "id": "mod03", "type": "QCR", "question": "Quels types de modules sont listés dans le tableau des types Metasploit ?", "choix": ["Auxiliary", "Encoders", "Exploits", "Firewalls"], "reponses": [0, 1, 2], "explication": "" },
+    { "id": "mod04", "type": "QCM", "question": "Quel type de module assure que les payloads arrivent intacts à destination ?", "choix": ["NOPs", "Encoders", "Post", "Plugins"], "reponses": [1], "explication": "" },
+    { "id": "mod05", "type": "QCM", "question": "Quel type de module garde une taille de payload constante entre les tentatives d'exploit ?", "choix": ["NOPs (No Operation code)", "Encoders", "Auxiliary", "Post"], "reponses": [0], "explication": "" },
+    { "id": "mod06", "type": "QCR", "question": "Quels types de modules peuvent être sélectionnés avec la commande `use` en tant que modules « initiators » (interactables) ?", "choix": ["Auxiliary", "Exploits", "Post", "Encoders"], "reponses": [0, 1, 2], "explication": "Les Encoders ne sont pas des modules interactables directement utilisables via `use` comme initiateurs." },
+    { "id": "mod07", "type": "QCM", "question": "Que désigne le tag `Service` dans le chemin d'un module ?", "choix": [
+        "Le système d'exploitation cible",
+        "Le service vulnérable ciblé sur la machine",
+        "Le numéro d'index du module",
+        "Le nom de l'auteur du module"
+      ], "reponses": [1], "explication": "" },
+    { "id": "mod08", "type": "QCM", "question": "Quelle commande dans msfconsole permet de rechercher des modules ?", "choix": ["search", "find", "locate", "query"], "reponses": [0], "explication": "" },
+    { "id": "mod09", "type": "QCR", "question": "Quels mots-clés de recherche sont mentionnés dans le cours pour filtrer les modules ?", "choix": ["cve", "platform", "rank", "network"], "reponses": [0, 1, 2], "explication": "" },
+    { "id": "mod10", "type": "QCM", "question": "Quelle option de `search` permet d'exclure des résultats correspondants ?", "choix": ["Préfixer la valeur par '-'", "Ajouter '!' à la fin", "Utiliser -x", "Utiliser --exclude"], "reponses": [0], "explication": "" },
+    { "id": "mod11", "type": "QCM", "question": "Quelle commande permet de sélectionner un module Metasploit par son numéro d'index issu d'une recherche ?", "choix": ["use <no.>", "select <no.>", "run <no.>", "load <no.>"], "reponses": [0], "explication": "" },
+    { "id": "mod12", "type": "QCM", "question": "Quelle commande affiche les options requises pour un module sélectionné ?", "choix": ["show options", "list settings", "config", "params"], "reponses": [0], "explication": "Les options nécessitant une valeur avant exploitation ont 'Yes' sous la colonne Required." },
+    { "id": "mod13", "type": "QCM", "question": "Quelle commande permet d'obtenir des détails complets sur un module sélectionné (description, références, cibles) ?", "choix": ["info", "details", "describe", "man"], "reponses": [0], "explication": "" },
+    { "id": "mod14", "type": "QCM", "question": "Quelle commande permet de définir une valeur d'option de manière temporaire pour la session en cours ?", "choix": ["set", "setg", "config", "assign"], "reponses": [0], "explication": "" },
+    { "id": "mod15", "type": "QCM", "question": "Quelle commande permet de définir une valeur d'option de manière permanente jusqu'au redémarrage du programme ?", "choix": ["set", "setg", "setp", "global"], "reponses": [1], "explication": "Utile pour garder la même cible (RHOSTS) sans devoir la resaisir." },
+    { "id": "mod16", "type": "QCM", "question": "Quelle variable faut-il définir pour un payload reverse_tcp afin d'indiquer l'adresse IP de l'attaquant ?", "choix": ["RHOSTS", "LHOST", "RPORT", "SRVHOST"], "reponses": [1], "explication": "" }
+  ]
+}

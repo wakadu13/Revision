@@ -1,0 +1,157 @@
+{
+  "titre": "Linux 22 — Gestion des systèmes de fichiers",
+  "description": "Systèmes de fichiers, inodes, disques, montage/démontage et espace swap",
+  "questions": [
+    {
+      "id": "fs01",
+      "type": "QCM",
+      "question": "Quel système de fichiers est le choix par défaut pour la plupart des systèmes Linux modernes ?",
+      "choix": ["ext2", "ext4", "NTFS", "FAT32"],
+      "reponses": [1],
+      "explication": "ext4 offre un bon équilibre entre performance, fiabilité et fichiers volumineux."
+    },
+    {
+      "id": "fs02",
+      "type": "QCM",
+      "question": "Quel système de fichiers ne dispose pas de journalisation ?",
+      "choix": ["ext2", "ext4", "Btrfs", "XFS"],
+      "reponses": [0],
+      "explication": "ext2 reste utile pour des scénarios à faible surcharge, comme les clés USB."
+    },
+    {
+      "id": "fs03",
+      "type": "QCM",
+      "question": "Quel système de fichiers est connu pour le snapshotting et les vérifications d'intégrité intégrées ?",
+      "choix": ["ext2", "Btrfs", "NTFS", "FAT32"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "fs04",
+      "type": "QCM",
+      "question": "Quel système de fichiers excelle dans la gestion de fichiers volumineux et de fortes demandes d'E/S ?",
+      "choix": ["XFS", "ext2", "NTFS", "FAT32"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "fs05",
+      "type": "QCM",
+      "question": "Quel système de fichiers est utile pour la compatibilité en dual-boot avec Windows ?",
+      "choix": ["ext4", "Btrfs", "NTFS", "XFS"],
+      "reponses": [2],
+      "explication": ""
+    },
+    {
+      "id": "fs06",
+      "type": "QCM",
+      "question": "Que stocke un inode ?",
+      "choix": [
+        "Les données réelles du fichier et son nom",
+        "Des métadonnées (permissions, propriété, taille, horodatages) et des pointeurs vers les données",
+        "Uniquement le nom du fichier",
+        "Le contenu chiffré du fichier"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "fs07",
+      "type": "QCR",
+      "question": "Quels sont les principaux types de fichiers sous Linux selon le cours ?",
+      "choix": ["Fichiers ordinaires", "Répertoires", "Liens symboliques", "Inodes"],
+      "reponses": [0, 1, 2],
+      "explication": "L'inode est une structure de métadonnées, pas un type de fichier en soi."
+    },
+    {
+      "id": "fs08",
+      "type": "QCM",
+      "question": "Quel outil est l'outil principal pour créer, supprimer et gérer des partitions ?",
+      "choix": ["mount", "fdisk", "mkswap", "lsof"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "fs09",
+      "type": "QCM",
+      "question": "Comment appelle-t-on l'action de lier un disque/partition à un répertoire pour le rendre accessible ?",
+      "choix": ["le partitionnement", "le montage", "le formatage", "le swap"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "fs10",
+      "type": "QCM",
+      "question": "Quel fichier liste les systèmes de fichiers à monter automatiquement au démarrage ?",
+      "choix": ["/etc/mtab", "/etc/fstab", "/etc/mount.conf", "/etc/disks"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "fs11",
+      "type": "QCM",
+      "question": "Quelle option dans /etc/fstab empêche un système de fichiers de se monter automatiquement au démarrage ?",
+      "choix": ["ro", "noauto", "defaults", "nofail"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "fs12",
+      "type": "QCM",
+      "question": "Quelle commande démonte un système de fichiers ?",
+      "choix": ["mount -u", "umount", "unmount", "fdisk -u"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "fs13",
+      "type": "QCM",
+      "question": "Quel outil permet de vérifier si un processus utilise encore un système de fichiers avant de le démonter ?",
+      "choix": ["lsof", "fdisk", "mkswap", "swapon"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "fs14",
+      "type": "QCM",
+      "question": "Que fait la commande `mkswap` ?",
+      "choix": [
+        "Active l'espace d'échange",
+        "Prépare un périphérique/fichier comme zone d'échange",
+        "Supprime l'espace d'échange",
+        "Monte une partition swap"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "fs15",
+      "type": "QCM",
+      "question": "Que fait la commande `swapon` ?",
+      "choix": ["Crée une zone d'échange", "Active l'espace d'échange préparé", "Formate une partition", "Liste les partitions"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "fs16",
+      "type": "QCM",
+      "question": "À quoi sert le swap en plus d'étendre la mémoire physique ?",
+      "choix": ["Au chiffrement", "À l'hibernation", "Au partitionnement", "À la journalisation"],
+      "reponses": [1],
+      "explication": "L'hibernation enregistre l'état du système dans le swap avant extinction."
+    },
+    {
+      "id": "fs17",
+      "type": "QCM",
+      "question": "Pourquoi est-il recommandé de chiffrer l'espace swap ?",
+      "choix": [
+        "Car des données sensibles peuvent y être temporairement stockées",
+        "Car cela accélère le système",
+        "Car c'est obligatoire pour tous les systèmes",
+        "Car cela réduit la taille du swap"
+      ],
+      "reponses": [0],
+      "explication": ""
+    }
+  ]
+}

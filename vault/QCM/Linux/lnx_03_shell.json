@@ -1,0 +1,95 @@
+{
+  "titre": "Linux 3 — Introduction au Shell",
+  "description": "Terminal, émulateurs de terminal, multiplexeurs et le shell Bash",
+  "questions": [
+    {
+      "id": "sh01",
+      "type": "QCM",
+      "question": "Qu'est-ce qu'un terminal Linux ?",
+      "choix": [
+        "Un langage de programmation",
+        "Une interface d'E/S textuelle entre l'utilisateur et le noyau",
+        "Un gestionnaire de paquets",
+        "Un système de fichiers"
+      ],
+      "reponses": [1],
+      "explication": "Le terminal est aussi appelé shell ou ligne de commande."
+    },
+    {
+      "id": "sh02",
+      "type": "QCM",
+      "question": "Le terme « console » fait référence à :",
+      "choix": [
+        "une fenêtre graphique",
+        "un écran en mode texte",
+        "un shell distant",
+        "un gestionnaire de fenêtres"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "sh03",
+      "type": "QCM",
+      "question": "Qu'est-ce que l'émulation de terminal ?",
+      "choix": [
+        "Un logiciel qui émule la fonction d'un terminal dans une GUI",
+        "Un shell alternatif à Bash",
+        "Un protocole réseau",
+        "Un outil de compilation"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "sh04",
+      "type": "QCM",
+      "question": "Quel outil multiplexeur de terminal est cité en exemple dans le cours ?",
+      "choix": ["Screen", "Tmux", "Byobu", "Zellij"],
+      "reponses": [1],
+      "explication": "Tmux permet de diviser le terminal en plusieurs volets."
+    },
+    {
+      "id": "sh05",
+      "type": "QCM",
+      "question": "Quel est le shell le plus couramment utilisé sous Linux ?",
+      "choix": ["Zsh", "Fish", "Bash", "Ksh"],
+      "reponses": [2],
+      "explication": "Bash (Bourne-Again Shell) fait partie du projet GNU."
+    },
+    {
+      "id": "sh06",
+      "type": "QCR",
+      "question": "Quels shells sont cités comme alternatives à Bash dans le cours ?",
+      "choix": ["Tcsh/Csh", "Ksh", "Zsh", "PowerShell"],
+      "reponses": [0, 1, 2],
+      "explication": "PowerShell n'est pas un shell natif Linux."
+    },
+    {
+      "id": "sh07",
+      "type": "QCM",
+      "question": "Que peut-on faire avec un shell qu'on ne peut pas faire aussi facilement via une GUI, selon le cours ?",
+      "choix": [
+        "Automatiser des processus via des scripts",
+        "Rien de plus qu'une GUI",
+        "Uniquement afficher des images",
+        "Compiler du code C sans outils"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "sh08",
+      "type": "QCM",
+      "question": "Dans l'analogie du cours, le terminal est comparé à :",
+      "choix": [
+        "la salle des serveurs",
+        "le bureau d'un réceptionniste",
+        "le kernel",
+        "un daemon"
+      ],
+      "reponses": [1],
+      "explication": "Le shell est comparé à la salle des serveurs principale."
+    }
+  ]
+}

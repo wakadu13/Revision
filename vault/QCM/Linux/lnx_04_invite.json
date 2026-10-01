@@ -1,0 +1,101 @@
+{
+  "titre": "Linux 4 — Description de l'invite",
+  "description": "Structure de l'invite bash, variable PS1 et caractères spéciaux",
+  "questions": [
+    {
+      "id": "inv01",
+      "type": "QCM",
+      "question": "Quel symbole marque le répertoire personnel d'un utilisateur dans l'invite ?",
+      "choix": ["#", "$", "~", "@"],
+      "reponses": [2],
+      "explication": ""
+    },
+    {
+      "id": "inv02",
+      "type": "QCM",
+      "question": "Quel symbole apparaît dans l'invite d'un utilisateur non privilégié ?",
+      "choix": ["#", "$", "%", "&"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "inv03",
+      "type": "QCM",
+      "question": "Quel symbole apparaît dans l'invite de l'utilisateur root ?",
+      "choix": ["$", "#", "~", "!"],
+      "reponses": [1],
+      "explication": "Le caractère dièse indique un shell privilégié."
+    },
+    {
+      "id": "inv04",
+      "type": "QCM",
+      "question": "Quelle variable contrôle l'apparence de l'invite de commande bash ?",
+      "choix": ["PATH", "PS1", "HOME", "SHELL"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "inv05",
+      "type": "QCM",
+      "question": "Dans quel fichier personnalise-t-on typiquement l'invite pour Bash ?",
+      "choix": [".bashrc", "/etc/passwd", ".profile uniquement", "PS1.conf"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "inv06",
+      "type": "QCM",
+      "question": "Que représente le caractère spécial \\u dans PS1 ?",
+      "choix": ["le nom d'hôte", "le nom d'utilisateur actuel", "le répertoire courant", "la date"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "inv07",
+      "type": "QCM",
+      "question": "Que représente le caractère spécial \\w dans PS1 ?",
+      "choix": [
+        "le nom d'hôte complet",
+        "le chemin complet du répertoire de travail actuel",
+        "l'heure actuelle",
+        "le nombre de tâches"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "inv08",
+      "type": "QCM",
+      "question": "Que représente le caractère spécial \\h dans PS1 ?",
+      "choix": ["le nom d'hôte", "l'heure", "le nom d'utilisateur", "le shell"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "inv09",
+      "type": "QCM",
+      "question": "Pourquoi peut-on ne voir qu'un simple $ ou # après avoir uploadé un reverse shell ?",
+      "choix": [
+        "Car le système est en mode root",
+        "Car la variable PS1 n'est pas correctement définie",
+        "Car le réseau est coupé",
+        "Car bash n'est pas installé"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "inv10",
+      "type": "QCM",
+      "question": "Pourquoi personnaliser l'invite peut-il être utile lors de tests d'intrusion ?",
+      "choix": [
+        "Pour suivre plus efficacement ses actions (ex. avec l'IP cible)",
+        "Pour accélérer l'exécution des commandes",
+        "Pour masquer son identité",
+        "Pour désactiver les logs"
+      ],
+      "reponses": [0],
+      "explication": ""
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "titre": "Linux 30 — Raccourcis",
+  "description": "Raccourcis clavier essentiels du shell Bash",
+  "questions": [
+    {
+      "id": "rac01",
+      "type": "QCM",
+      "question": "Quel raccourci lance la saisie semi-automatique ?",
+      "choix": ["[TAB]", "[CTRL]+T", "[ALT]+T", "[CTRL]+A"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "rac02",
+      "type": "QCM",
+      "question": "Quel raccourci déplace le curseur au début de la ligne actuelle ?",
+      "choix": ["[CTRL]+E", "[CTRL]+A", "[CTRL]+U", "[ALT]+B"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "rac03",
+      "type": "QCM",
+      "question": "Quel raccourci déplace le curseur à la fin de la ligne actuelle ?",
+      "choix": ["[CTRL]+A", "[CTRL]+E", "[CTRL]+K", "[ALT]+F"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "rac04",
+      "type": "QCM",
+      "question": "Quel raccourci efface tout depuis le curseur jusqu'au début de la ligne ?",
+      "choix": ["[CTRL]+K", "[CTRL]+U", "[CTRL]+W", "[CTRL]+Y"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "rac05",
+      "type": "QCM",
+      "question": "Quel raccourci efface tout depuis le curseur jusqu'à la fin de la ligne ?",
+      "choix": ["[CTRL]+K", "[CTRL]+U", "[CTRL]+W", "[CTRL]+A"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "rac06",
+      "type": "QCM",
+      "question": "Quel raccourci efface le mot précédant la position du curseur ?",
+      "choix": ["[CTRL]+U", "[CTRL]+K", "[CTRL]+W", "[CTRL]+Y"],
+      "reponses": [2],
+      "explication": ""
+    },
+    {
+      "id": "rac07",
+      "type": "QCM",
+      "question": "Quel raccourci colle le texte précédemment effacé ?",
+      "choix": ["[CTRL]+P", "[CTRL]+Y", "[CTRL]+V", "[CTRL]+X"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "rac08",
+      "type": "QCM",
+      "question": "Quel signal est envoyé par [CTRL]+C pour terminer un processus ?",
+      "choix": ["SIGKILL", "SIGINT", "SIGTSTP", "SIGTERM"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "rac09",
+      "type": "QCM",
+      "question": "Que fait [CTRL]+D ?",
+      "choix": [
+        "Termine le processus courant",
+        "Ferme le canal STDIN (fin de fichier / EOF)",
+        "Efface le terminal",
+        "Suspend le processus"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "rac10",
+      "type": "QCM",
+      "question": "Quel raccourci efface le terminal (alternative à la commande `clear`) ?",
+      "choix": ["[CTRL]+L", "[CTRL]+C", "[CTRL]+X", "[CTRL]+E"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "rac11",
+      "type": "QCM",
+      "question": "Quel signal [CTRL]+Z envoie-t-il pour suspendre un processus ?",
+      "choix": ["SIGINT", "SIGSTOP", "SIGTSTP", "SIGKILL"],
+      "reponses": [2],
+      "explication": ""
+    },
+    {
+      "id": "rac12",
+      "type": "QCM",
+      "question": "Quel raccourci recherche dans l'historique des commandes précédemment saisies ?",
+      "choix": ["[CTRL]+H", "[CTRL]+R", "[CTRL]+F", "[CTRL]+S"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "rac13",
+      "type": "QCM",
+      "question": "Quelles touches permettent de naviguer dans l'historique des commandes précédente/suivante ?",
+      "choix": ["[←] / [→]", "[↑] / [↓]", "[PgUp] / [PgDn]", "[Home] / [End]"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "rac14",
+      "type": "QCM",
+      "question": "Quel raccourci bascule entre les applications ouvertes ?",
+      "choix": ["[CTRL]+[TAB]", "[ALT]+[TAB]", "[CTRL]+[ALT]", "[SHIFT]+[TAB]"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "rac15",
+      "type": "QCM",
+      "question": "Quel raccourci saute au début du mot actuel/précédent ?",
+      "choix": ["[CTRL]+[←]", "[ALT]+B", "[CTRL]+A", "[CTRL]+W"],
+      "reponses": [0],
+      "explication": "[ALT]+B recule aussi d'un mot, mais [CTRL]+[←] est explicitement cité pour sauter au mot."
+    }
+  ]
+}

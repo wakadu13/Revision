@@ -1,0 +1,266 @@
+{
+  "titre": "TSN 10 — Filtrage linéaire",
+  "description": "SLIT, réponse impulsionnelle, fonction de transfert, filtrage des signaux aléatoires, RIF/RII",
+  "questions": [
+    {
+      "id": "filt01",
+      "type": "QCM",
+      "question": "Un filtre linéaire invariant (SLIT) est un système qui vérifie :",
+      "choix": [
+        "linéarité et invariance temporelle",
+        "linéarité seulement",
+        "invariance seulement",
+        "aucune propriété particulière"
+      ],
+      "reponses": [0],
+      "explication": "Linéarité : la sortie d'une combinaison linéaire est la combinaison des sorties. Invariance : un retard en entrée donne le même retard en sortie."
+    },
+    {
+      "id": "filt02",
+      "type": "QCM",
+      "question": "La propriété de linéarité d'un système s'écrit :",
+      "choix": [
+        "$x(t)+\\lambda y(t) \\to \\tilde x(t)+\\lambda\\tilde y(t)$",
+        "$x(t-t_0)\\to\\tilde x(t-t_0)$",
+        "$x(t)y(t)\\to\\tilde x(t)\\tilde y(t)$",
+        "$x(\\alpha t)\\to\\tilde x(\\alpha t)$"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "filt03",
+      "type": "QCM",
+      "question": "En sortie d'un filtre de réponse impulsionnelle $h(t)$, la relation temporelle est :",
+      "choix": [
+        "$y(t) = (h*x)(t)$",
+        "$y(t) = h(t)\\,x(t)$",
+        "$y(t) = h(t)+x(t)$",
+        "$y(t) = h(t)/x(t)$"
+      ],
+      "reponses": [0],
+      "explication": "La sortie d'un SLIT est la convolution de l'entrée par la réponse impulsionnelle."
+    },
+    {
+      "id": "filt04",
+      "type": "QCM",
+      "question": "En fréquence, la relation entrée-sortie d'un SLIT s'écrit :",
+      "choix": [
+        "$Y(f) = H(f)\\,X(f)$",
+        "$Y(f) = H(f)+X(f)$",
+        "$Y(f) = H(f)*X(f)$",
+        "$Y(f) = X(f)/H(f)$"
+      ],
+      "reponses": [0],
+      "explication": "Convolution en temps devient produit en fréquence."
+    },
+    {
+      "id": "filt05",
+      "type": "QCM",
+      "question": "$H(f)$ est appelée :",
+      "choix": [
+        "la fonction de transfert",
+        "la réponse impulsionnelle",
+        "la densité spectrale de puissance",
+        "l'autocorrélation"
+      ],
+      "reponses": [0],
+      "explication": "$h(t)$ est la réponse impulsionnelle (domaine temporel), $H(f)$ sa transformée de Fourier (domaine fréquentiel)."
+    },
+    {
+      "id": "filt06",
+      "type": "QCM",
+      "question": "Pour un signal aléatoire filtré par un SLIT, la relation entre DSP d'entrée et de sortie est :",
+      "choix": [
+        "$S_y(f) = |H(f)|^2\\,S_x(f)$",
+        "$S_y(f) = H(f)\\,S_x(f)$",
+        "$S_y(f) = S_x(f) + |H(f)|^2$",
+        "$S_y(f) = H(f)^2 + S_x(f)$"
+      ],
+      "reponses": [0],
+      "explication": "Le filtrage agit sur la DSP par le carré du module de $H$ : c'est un gain en puissance."
+    },
+    {
+      "id": "filt07",
+      "type": "QCM",
+      "question": "$|H(f)|^2$ s'interprète comme :",
+      "choix": [
+        "le gain en puissance du filtre à la fréquence $f$",
+        "la puissance totale du signal filtré",
+        "l'autocorrélation du filtre",
+        "la réponse impulsionnelle au carré"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "filt08",
+      "type": "QCM",
+      "question": "La convolution discrète s'écrit :",
+      "choix": [
+        "$y[n] = \\sum_m h[m]\\,x[n-m]$",
+        "$y[n] = \\sum_m h[m]\\,x[m]$",
+        "$y[n] = h[n]\\,x[n]$",
+        "$y[n] = h[n] + x[n]$"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "filt09",
+      "type": "QCM",
+      "question": "En fréquence discrète, $Y[k]=H[k]X[k]$ n'est valable que si :",
+      "choix": [
+        "on évite l'effet circulaire par zéro-padding",
+        "le signal est périodique",
+        "le filtre est RIF uniquement",
+        "N est une puissance de 2"
+      ],
+      "reponses": [0],
+      "explication": "Sinon, le produit des DFT correspond à une convolution circulaire, pas linéaire."
+    },
+    {
+      "id": "filt10",
+      "type": "QCM",
+      "question": "Un filtre RIF (réponse impulsionnelle finie) s'écrit :",
+      "choix": [
+        "$y[n] = \\sum_{m=0}^{L-1} b_m\\,x[n-m]$",
+        "$y[n] = \\sum b_m x[n-m] - \\sum_{m\\ge1} a_m y[n-m]$",
+        "$y[n] = h[n]*h[n]$",
+        "$y[n] = x[n]/h[n]$"
+      ],
+      "reponses": [0],
+      "explication": "Un RIF ne dépend que des entrées passées, pas des sorties passées."
+    },
+    {
+      "id": "filt11",
+      "type": "QCM",
+      "question": "Un filtre RII (réponse impulsionnelle infinie, récursif) s'écrit :",
+      "choix": [
+        "$y[n] = \\sum b_m x[n-m] - \\sum_{m\\ge1} a_m y[n-m]$",
+        "$y[n] = \\sum_{m=0}^{L-1} b_m x[n-m]$",
+        "$y[n] = x[n-1]$",
+        "$y[n] = \\delta[n]$"
+      ],
+      "reponses": [0],
+      "explication": "Un RII est récursif : la sortie dépend aussi des sorties passées."
+    },
+    {
+      "id": "filt12",
+      "type": "QCR",
+      "question": "Différences entre un filtre RIF et un filtre RII :",
+      "choix": [
+        "Un RIF a une réponse impulsionnelle de durée finie",
+        "Un RII est récursif (dépend de ses sorties passées)",
+        "Un RIF est toujours instable",
+        "Un RII a nécessairement une réponse impulsionnelle finie"
+      ],
+      "reponses": [0, 1],
+      "explication": ""
+    },
+    {
+      "id": "filt13",
+      "type": "QCM",
+      "question": "En MATLAB, quelle fonction applique un filtre RIF/RII défini par ses coefficients (b,a) à un signal x ?",
+      "choix": [
+        "y = filter(b, a, x)",
+        "y = conv(b, a)",
+        "y = fft(b, a, x)",
+        "y = freqz(x)"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "filt14",
+      "type": "QCM",
+      "question": "En MATLAB, quelle fonction affiche la réponse en fréquence d'un filtre (b,a) ?",
+      "choix": [
+        "freqz(b, a, nfft, Fe)",
+        "filter(b, a)",
+        "conv(b, a)",
+        "pwelch(b, a)"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "filt15",
+      "type": "QCM",
+      "question": "En MATLAB, comment calcule-t-on la convolution linéaire de deux vecteurs x et h ?",
+      "choix": [
+        "conv(x, h)",
+        "filter(x, h)",
+        "xcorr(x, h)",
+        "fft(x, h)"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "filt16",
+      "type": "QCM",
+      "question": "Le filtre anti-repliement rencontré dans la chaîne de numérisation est un exemple de :",
+      "choix": [
+        "filtre linéaire (passe-bas)",
+        "quantificateur",
+        "échantillonneur",
+        "encodeur"
+      ],
+      "reponses": [0],
+      "explication": "Il est placé avant l'échantillonneur pour garantir l'hypothèse « bande limitée »."
+    },
+    {
+      "id": "filt17",
+      "type": "QCM",
+      "question": "Le fenêtrage (multiplication par une fenêtre d'apodisation) est-il un filtrage linéaire au sens de ce chapitre ?",
+      "choix": [
+        "Non, c'est un produit dans le domaine temporel, pas une convolution",
+        "Oui, c'est un filtre RIF",
+        "Oui, c'est un filtre RII",
+        "Oui, c'est équivalent à un passe-bande"
+      ],
+      "reponses": [0],
+      "explication": "Le fenêtrage est un produit terme à terme en temps, donc une convolution (un filtrage) en fréquence — mais ce n'est pas un filtre appliqué au signal lui-même."
+    },
+    {
+      "id": "filt18",
+      "type": "QCM",
+      "question": "Si $x$ est un bruit blanc de DSP $\\sigma^2$ filtré par $h$, la DSP en sortie $S_y(f)$ vaut :",
+      "choix": [
+        "$|H(f)|^2\\sigma^2$",
+        "$\\sigma^2$",
+        "$H(f)\\sigma^2$",
+        "$|H(f)|\\sigma^2$"
+      ],
+      "reponses": [0],
+      "explication": "Application directe de $S_y=|H|^2S_x$ avec $S_x=\\sigma^2$ constant (bruit blanc)."
+    },
+    {
+      "id": "filt19",
+      "type": "QCM",
+      "question": "Un filtre passe-bas idéal appliqué à un bruit blanc de DSP $N_0/2$ sur la bande $[-B;B]$ produit en sortie un bruit dit :",
+      "choix": [
+        "coloré (bruit passe-bas, non blanc)",
+        "toujours blanc",
+        "nul",
+        "gaussien uniquement en dehors de la bande"
+      ],
+      "reponses": [0],
+      "explication": "Le filtrage façonne la DSP : le bruit en sortie n'est plus plat, il est coloré."
+    },
+    {
+      "id": "filt20",
+      "type": "QCM",
+      "question": "Exemple de bruit AR(1), $z[n]=a\\,z[n-1]+e[n]$ avec $e$ bruit blanc : sa DSP théorique est proportionnelle à :",
+      "choix": [
+        "$1/|1-a\\,e^{-2i\\pi f/F_e}|^2$",
+        "$|1-a\\,e^{-2i\\pi f/F_e}|^2$",
+        "constante",
+        "$a^2$"
+      ],
+      "reponses": [0],
+      "explication": "$z$ est obtenu en filtrant $e$ par un filtre récursif de fonction de transfert $H(f)=1/(1-a e^{-2i\\pi f/F_e})$, d'où $S_z=|H|^2 S_e$."
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "titre": "Linux 23 — Conteneurisation",
+  "description": "Docker, Dockerfile, gestion des conteneurs, LXC, cgroups et namespaces",
+  "questions": [
+    {
+      "id": "cnt01",
+      "type": "QCM",
+      "question": "Quelle est la différence fondamentale entre un conteneur et une machine virtuelle ?",
+      "choix": [
+        "Un conteneur a son propre noyau complet",
+        "Un conteneur partage le noyau du système hôte, ce qui le rend plus léger",
+        "Une VM est toujours plus légère",
+        "Il n'y a aucune différence"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "cnt02",
+      "type": "QCR",
+      "question": "Quelles technologies de conteneurisation sont citées comme fonctionnant principalement sur Linux ?",
+      "choix": ["Docker", "Docker Compose", "LXC", "VirtualBox"],
+      "reponses": [0, 1, 2],
+      "explication": "VirtualBox est un hyperviseur de virtualisation complète, pas de la conteneurisation."
+    },
+    {
+      "id": "cnt03",
+      "type": "QCM",
+      "question": "Où obtient-on généralement des images Docker préfabriquées ?",
+      "choix": ["Docker Hub", "GitHub uniquement", "APT", "PyPI"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "cnt04",
+      "type": "QCM",
+      "question": "Quel fichier contient les instructions nécessaires au moteur Docker pour construire un conteneur ?",
+      "choix": ["docker-compose.yml", "Dockerfile", "container.conf", "build.sh"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "cnt05",
+      "type": "QCM",
+      "question": "Quelle commande construit une image Docker à partir d'un Dockerfile en lui donnant un tag ?",
+      "choix": ["docker build -t <nom> .", "docker create <nom>", "docker image <nom>", "docker run -t <nom>"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "cnt06",
+      "type": "QCM",
+      "question": "Quelle commande démarre un conteneur en mappant le port hôte 8080 vers le port conteneur 80 ?",
+      "choix": [
+        "docker run -p 8080:80 -d <image>",
+        "docker start -port 8080:80 <image>",
+        "docker build -p 8080:80 <image>",
+        "docker exec -p 8080:80 <image>"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "cnt07",
+      "type": "QCM",
+      "question": "Quelle commande liste tous les conteneurs Docker en cours d'exécution ?",
+      "choix": ["docker ls", "docker ps", "docker images", "docker list"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "cnt08",
+      "type": "QCM",
+      "question": "Pourquoi dit-on que les conteneurs Docker sont « sans état » (stateless) ?",
+      "choix": [
+        "Ils ne peuvent jamais démarrer",
+        "Les modifications faites à l'intérieur d'un conteneur en cours d'exécution sont perdues à l'arrêt/suppression",
+        "Ils n'ont pas d'adresse IP",
+        "Ils ne peuvent pas exécuter de services"
+      ],
+      "reponses": [1],
+      "explication": "D'où l'usage de volumes pour persister les données."
+    },
+    {
+      "id": "cnt09",
+      "type": "QCM",
+      "question": "Quels outils aident à orchestrer plusieurs conteneurs en production ?",
+      "choix": ["Docker Compose ou Kubernetes", "fdisk", "rsync", "cron uniquement"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "cnt10",
+      "type": "QCM",
+      "question": "Quelle technologie de virtualisation légère permet à plusieurs systèmes Linux isolés de s'exécuter sur un seul hôte, utilisant cgroups et namespaces ?",
+      "choix": ["Docker", "LXC", "VirtualBox", "QEMU"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "cnt11",
+      "type": "QCM",
+      "question": "Selon le cours, quelle est une différence clé entre Docker et LXC ?",
+      "choix": [
+        "Docker est centré sur l'application, LXC sur des environnements Linux complets au niveau système",
+        "LXC est plus portable que Docker",
+        "Docker ne peut pas être utilisé pour l'isolation",
+        "LXC utilise des images standardisées comme Docker"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "cnt12",
+      "type": "QCM",
+      "question": "Quelle commande crée un nouveau conteneur LXC nommé `linuxcontainer` basé sur un modèle Ubuntu ?",
+      "choix": [
+        "lxc-create -n linuxcontainer -t ubuntu",
+        "lxc-new linuxcontainer ubuntu",
+        "lxc-build -n linuxcontainer",
+        "docker create linuxcontainer -t ubuntu"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "cnt13",
+      "type": "QCM",
+      "question": "Où se trouve le fichier de configuration d'un conteneur LXC privilégié nommé `linuxcontainer` ?",
+      "choix": [
+        "/etc/lxc/linuxcontainer.conf",
+        "/var/lib/lxc/linuxcontainer/config",
+        "/usr/share/lxc/linuxcontainer.conf",
+        "/home/linuxcontainer/config"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "cnt14",
+      "type": "QCM",
+      "question": "Quel paramètre limite le CPU alloué à un conteneur LXC (valeur par défaut 1024) ?",
+      "choix": ["lxc.cgroup.cpu.shares", "lxc.net.0.type", "lxc.mount.entry", "lxc.cgroup.memory.limit_in_bytes"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "cnt15",
+      "type": "QCM",
+      "question": "Quel paramètre limite la mémoire maximale qu'un conteneur LXC peut utiliser ?",
+      "choix": ["lxc.cgroup.cpu.shares", "lxc.cgroup.memory.limit_in_bytes", "lxc.net.0.link", "lxc.mount.entry"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "cnt16",
+      "type": "QCM",
+      "question": "Quelle commande applique une limite de ressource en direct sur un conteneur LXC déjà démarré ?",
+      "choix": ["lxc-cgroup", "lxc-info", "lxc-config", "lxc-attach"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "cnt17",
+      "type": "QCR",
+      "question": "Quelles ressources sont isolées grâce aux namespaces du noyau Linux selon le cours ?",
+      "choix": ["Les ID de processus (pid)", "Les interfaces réseau (net)", "Le système de fichiers racine (mnt)", "Le matériel physique CPU"],
+      "reponses": [0, 1, 2],
+      "explication": ""
+    },
+    {
+      "id": "cnt18",
+      "type": "QCM",
+      "question": "Quelle commande exécute un shell ou une commande à l'intérieur d'un conteneur LXC en cours d'exécution ?",
+      "choix": ["lxc-attach", "lxc-console", "lxc-info", "lxc-ls"],
+      "reponses": [0],
+      "explication": ""
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "titre": "Linux 13 — Expressions régulières",
+  "description": "Opérateurs de groupement RegEx et utilisation avec grep -E",
+  "questions": [
+    {
+      "id": "rgx01",
+      "type": "QCM",
+      "question": "À quoi servent les parenthèses `(a)` en regex ?",
+      "choix": [
+        "Définir une classe de caractères",
+        "Grouper des parties d'une regex",
+        "Définir un quantificateur",
+        "Indiquer un OR"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "rgx02",
+      "type": "QCM",
+      "question": "À quoi servent les crochets `[a-z]` en regex ?",
+      "choix": [
+        "Définir un quantificateur",
+        "Définir une classe de caractères",
+        "Grouper des motifs",
+        "Indiquer une négation totale"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "rgx03",
+      "type": "QCM",
+      "question": "À quoi servent les accolades `{1,10}` en regex ?",
+      "choix": [
+        "Définir un quantificateur (répétitions)",
+        "Grouper des motifs",
+        "Définir une classe de caractères",
+        "Indiquer un OR"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "rgx04",
+      "type": "QCM",
+      "question": "Quel opérateur regex représente le OR logique ?",
+      "choix": ["&", "|", ".*", "!"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "rgx05",
+      "type": "QCM",
+      "question": "Quel motif fonctionne comme un opérateur AND (les deux expressions doivent apparaître, dans l'ordre) ?",
+      "choix": ["|", "()", ".*", "[]"],
+      "reponses": [2],
+      "explication": "Exemple : grep -E \"(my.*false)\""
+    },
+    {
+      "id": "rgx06",
+      "type": "QCM",
+      "question": "Quelle option de `grep` faut-il utiliser pour activer les regex étendues (utiliser | et () sans échappement) ?",
+      "choix": ["-E", "-G", "-P", "-x"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "rgx07",
+      "type": "QCM",
+      "question": "Que fait `grep -E \"(my|false)\" /etc/passwd` ?",
+      "choix": [
+        "Affiche les lignes contenant à la fois 'my' et 'false'",
+        "Affiche les lignes contenant 'my' OU 'false'",
+        "Affiche les lignes ne contenant ni 'my' ni 'false'",
+        "Renvoie une erreur"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "rgx08",
+      "type": "QCM",
+      "question": "Quelle est une manière équivalente à `grep -E \"(my.*false)\"` en utilisant deux commandes grep séparées ?",
+      "choix": [
+        "grep \"my\" | grep \"false\"",
+        "grep \"my\" || grep \"false\"",
+        "grep -v \"my\" | grep -v \"false\"",
+        "grep \"my\" && \"false\""
+      ],
+      "reponses": [0],
+      "explication": ""
+    }
+  ]
+}

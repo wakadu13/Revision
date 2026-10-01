@@ -1,0 +1,2084 @@
+{
+  "titre": "UN Vocabulary – Traduction EN ↔ FR (QRC)",
+  "description": "Tous les mots de la fiche sur l'ONU (189 mots), à écrire : anglais → français et inversement.",
+  "questions": [
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a breakthrough",
+      "reponses_texte": [
+        "une percée",
+        "une avancée décisive"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a discovery",
+      "reponses_texte": [
+        "une découverte",
+        "une trouvaille"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a significant development",
+      "reponses_texte": [
+        "une avancée significative",
+        "une évolution importante"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a success",
+      "reponses_texte": [
+        "un succès",
+        "une réussite"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a deadlock",
+      "reponses_texte": [
+        "une impasse",
+        "un blocage"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a stalemate",
+      "reponses_texte": [
+        "une impasse",
+        "une situation de blocage"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a gridlock",
+      "reponses_texte": [
+        "une paralysie",
+        "un blocage",
+        "un embouteillage"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a standstill",
+      "reponses_texte": [
+        "un arrêt complet",
+        "un point mort"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a standoff",
+      "reponses_texte": [
+        "un bras de fer",
+        "une impasse"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a lack of",
+      "reponses_texte": [
+        "un manque de",
+        "une absence de"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "an insufficiency",
+      "reponses_texte": [
+        "une insuffisance",
+        "un manque"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a natural disaster",
+      "reponses_texte": [
+        "une catastrophe naturelle",
+        "un désastre naturel"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a catastrophe",
+      "reponses_texte": [
+        "une catastrophe",
+        "un désastre"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a plight",
+      "reponses_texte": [
+        "une situation critique",
+        "une détresse",
+        "une situation désespérée"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a difficulty",
+      "reponses_texte": [
+        "une difficulté",
+        "un obstacle"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a retaliation",
+      "reponses_texte": [
+        "des représailles",
+        "une riposte"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "an act of getting even",
+      "reponses_texte": [
+        "un acte de vengeance",
+        "une revanche"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a scourge",
+      "reponses_texte": [
+        "un fléau",
+        "une calamité"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a plague",
+      "reponses_texte": [
+        "une peste",
+        "un fléau"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a curse",
+      "reponses_texte": [
+        "une malédiction",
+        "un fléau"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "an affliction",
+      "reponses_texte": [
+        "une affliction",
+        "une souffrance"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a bane",
+      "reponses_texte": [
+        "un fléau",
+        "une plaie"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a blight",
+      "reponses_texte": [
+        "un fléau",
+        "une plaie"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "an agreement",
+      "reponses_texte": [
+        "un accord",
+        "une entente"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a consensus",
+      "reponses_texte": [
+        "un consensus",
+        "un accord général"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "an accord",
+      "reponses_texte": [
+        "un accord",
+        "une entente"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "unanimity",
+      "reponses_texte": [
+        "l'unanimité",
+        "un accord unanime"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "clout",
+      "reponses_texte": [
+        "le poids politique",
+        "l'influence"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "influence",
+      "reponses_texte": [
+        "l'influence",
+        "l'ascendant"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "sway",
+      "reponses_texte": [
+        "l'emprise",
+        "l'influence"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "power",
+      "reponses_texte": [
+        "le pouvoir",
+        "la puissance"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "leverage",
+      "reponses_texte": [
+        "un moyen de pression",
+        "un levier"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "authority",
+      "reponses_texte": [
+        "l'autorité",
+        "le pouvoir"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "trusteeship",
+      "reponses_texte": [
+        "la tutelle",
+        "l'administration fiduciaire"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "stewardship",
+      "reponses_texte": [
+        "la gestion responsable",
+        "l'intendance"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "guardianship",
+      "reponses_texte": [
+        "la tutelle",
+        "la garde"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "custodianship",
+      "reponses_texte": [
+        "la garde",
+        "la conservation"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "oversight",
+      "reponses_texte": [
+        "la supervision",
+        "le contrôle",
+        "un oubli"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a watchdog",
+      "reponses_texte": [
+        "un organisme de surveillance",
+        "un chien de garde"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a guardian",
+      "reponses_texte": [
+        "un gardien",
+        "un tuteur"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "an overseer",
+      "reponses_texte": [
+        "un surveillant",
+        "un superviseur"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a monitor",
+      "reponses_texte": [
+        "un observateur",
+        "un contrôleur"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a regulator",
+      "reponses_texte": [
+        "un régulateur",
+        "une autorité de régulation"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a supervisor",
+      "reponses_texte": [
+        "un superviseur",
+        "un responsable"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a blueprint",
+      "reponses_texte": [
+        "un plan directeur",
+        "un modèle"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a plan",
+      "reponses_texte": [
+        "un plan",
+        "un projet"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a design",
+      "reponses_texte": [
+        "une conception",
+        "un dessin",
+        "un plan"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "an outline",
+      "reponses_texte": [
+        "les grandes lignes",
+        "une ébauche"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a scheme",
+      "reponses_texte": [
+        "un programme",
+        "un dispositif",
+        "un plan"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a draft",
+      "reponses_texte": [
+        "un brouillon",
+        "une ébauche",
+        "un avant-projet"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a framework",
+      "reponses_texte": [
+        "un cadre",
+        "une structure"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a bonanza",
+      "reponses_texte": [
+        "une aubaine",
+        "une mine d'or"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a windfall",
+      "reponses_texte": [
+        "une aubaine",
+        "un bénéfice inattendu"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a jackpot",
+      "reponses_texte": [
+        "le gros lot",
+        "le jackpot"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a treasure trove",
+      "reponses_texte": [
+        "une mine d'or",
+        "un trésor"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a boon",
+      "reponses_texte": [
+        "une aubaine",
+        "un bienfait"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a goldmine",
+      "reponses_texte": [
+        "une mine d'or",
+        "une source de richesse"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a caveat",
+      "reponses_texte": [
+        "une mise en garde",
+        "une réserve"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a warning",
+      "reponses_texte": [
+        "un avertissement",
+        "une mise en garde"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a caution",
+      "reponses_texte": [
+        "une mise en garde",
+        "un avertissement",
+        "la prudence"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "an achievement",
+      "reponses_texte": [
+        "une réussite",
+        "un accomplissement"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "an accomplishment",
+      "reponses_texte": [
+        "un accomplissement",
+        "une réussite"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "collaboration",
+      "reponses_texte": [
+        "la collaboration",
+        "le travail en commun"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "cooperation",
+      "reponses_texte": [
+        "la coopération",
+        "la collaboration"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "poverty",
+      "reponses_texte": [
+        "la pauvreté",
+        "la misère"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "impoverishment",
+      "reponses_texte": [
+        "l'appauvrissement",
+        "la paupérisation"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "extensive",
+      "reponses_texte": [
+        "vaste",
+        "étendu",
+        "considérable"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "substantial",
+      "reponses_texte": [
+        "substantiel",
+        "considérable",
+        "important"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "imploding",
+      "reponses_texte": [
+        "en pleine implosion",
+        "en train de s'effondrer"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "collapsing",
+      "reponses_texte": [
+        "en train de s'effondrer",
+        "qui s'écroule"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "overriding",
+      "reponses_texte": [
+        "primordial",
+        "prépondérant"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "paramount",
+      "reponses_texte": [
+        "primordial",
+        "d'une importance capitale"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "predominant",
+      "reponses_texte": [
+        "prédominant",
+        "prépondérant"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "supreme",
+      "reponses_texte": [
+        "suprême",
+        "souverain"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "primary",
+      "reponses_texte": [
+        "principal",
+        "premier"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "outspoken",
+      "reponses_texte": [
+        "qui a son franc-parler",
+        "direct"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "candid",
+      "reponses_texte": [
+        "franc",
+        "sincère"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "frank",
+      "reponses_texte": [
+        "franc",
+        "honnête"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "forthright",
+      "reponses_texte": [
+        "franc",
+        "direct"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "blunt",
+      "reponses_texte": [
+        "brusque",
+        "sans détour",
+        "direct"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "direct",
+      "reponses_texte": [
+        "direct",
+        "franc"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "gloomy",
+      "reponses_texte": [
+        "sombre",
+        "morose"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "bleak",
+      "reponses_texte": [
+        "sombre",
+        "peu prometteur"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "dismal",
+      "reponses_texte": [
+        "lugubre",
+        "lamentable"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "dreary",
+      "reponses_texte": [
+        "morne",
+        "ennuyeux"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "somber",
+      "reponses_texte": [
+        "sombre",
+        "grave"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "depressing",
+      "reponses_texte": [
+        "déprimant",
+        "démoralisant"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "resounding",
+      "reponses_texte": [
+        "retentissant",
+        "éclatant"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "tremendous",
+      "reponses_texte": [
+        "énorme",
+        "formidable"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "huge",
+      "reponses_texte": [
+        "énorme",
+        "immense"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "unprecedented",
+      "reponses_texte": [
+        "sans précédent",
+        "inédit"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "extraordinary",
+      "reponses_texte": [
+        "extraordinaire",
+        "exceptionnel"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "overlooked",
+      "reponses_texte": [
+        "négligé",
+        "oublié"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "neglected",
+      "reponses_texte": [
+        "négligé",
+        "délaissé"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "ignored",
+      "reponses_texte": [
+        "ignoré",
+        "passé sous silence"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "missed",
+      "reponses_texte": [
+        "manqué",
+        "raté"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "disregarded",
+      "reponses_texte": [
+        "non pris en compte",
+        "ignoré"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "omitted",
+      "reponses_texte": [
+        "omis",
+        "oublié"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to come unstuck",
+      "reponses_texte": [
+        "tomber à l'eau",
+        "échouer complètement"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to fail completely",
+      "reponses_texte": [
+        "échouer complètement",
+        "subir un échec total"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to defuse",
+      "reponses_texte": [
+        "désamorcer",
+        "apaiser"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to embark upon",
+      "reponses_texte": [
+        "se lancer dans",
+        "entreprendre"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to start",
+      "reponses_texte": [
+        "commencer",
+        "démarrer"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to begin",
+      "reponses_texte": [
+        "commencer",
+        "débuter"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to enforce",
+      "reponses_texte": [
+        "faire appliquer",
+        "faire respecter"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to escalate",
+      "reponses_texte": [
+        "s'intensifier",
+        "dégénérer",
+        "s'aggraver"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to worsen",
+      "reponses_texte": [
+        "s'aggraver",
+        "empirer"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to increase",
+      "reponses_texte": [
+        "augmenter",
+        "s'accroître"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to aggravate",
+      "reponses_texte": [
+        "aggraver",
+        "envenimer"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to fulfil",
+      "reponses_texte": [
+        "réaliser",
+        "accomplir",
+        "remplir (une mission)"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to realize",
+      "reponses_texte": [
+        "réaliser",
+        "concrétiser",
+        "se rendre compte"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to go from strength to strength",
+      "reponses_texte": [
+        "aller de succès en succès",
+        "prospérer de plus en plus"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to highlight",
+      "reponses_texte": [
+        "souligner",
+        "mettre en évidence"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to underline",
+      "reponses_texte": [
+        "souligner",
+        "mettre l'accent sur"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to make it",
+      "reponses_texte": [
+        "y arriver",
+        "réussir"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to succeed",
+      "reponses_texte": [
+        "réussir",
+        "avoir du succès"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to maintain",
+      "reponses_texte": [
+        "maintenir",
+        "préserver"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to preserve",
+      "reponses_texte": [
+        "préserver",
+        "conserver"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to preserve peace",
+      "reponses_texte": [
+        "préserver la paix",
+        "maintenir la paix"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to mitigate",
+      "reponses_texte": [
+        "atténuer",
+        "limiter"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to alleviate",
+      "reponses_texte": [
+        "soulager",
+        "atténuer"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to overcome",
+      "reponses_texte": [
+        "surmonter",
+        "vaincre"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to deal with",
+      "reponses_texte": [
+        "gérer",
+        "s'occuper de",
+        "faire face à"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to respect",
+      "reponses_texte": [
+        "respecter",
+        "honorer"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to obey",
+      "reponses_texte": [
+        "obéir à",
+        "se conformer à"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to reverse",
+      "reponses_texte": [
+        "revenir sur",
+        "annuler",
+        "inverser"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to go back on",
+      "reponses_texte": [
+        "revenir sur",
+        "renier"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to settle",
+      "reponses_texte": [
+        "régler",
+        "résoudre"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to shed",
+      "reponses_texte": [
+        "se débarrasser de",
+        "supprimer (des emplois)"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to discard",
+      "reponses_texte": [
+        "jeter",
+        "se débarrasser de"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to cast off",
+      "reponses_texte": [
+        "rejeter",
+        "se défaire de"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to drop",
+      "reponses_texte": [
+        "laisser tomber",
+        "abandonner"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to release",
+      "reponses_texte": [
+        "libérer",
+        "relâcher"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to jettison",
+      "reponses_texte": [
+        "larguer",
+        "se délester de"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to tackle",
+      "reponses_texte": [
+        "s'attaquer à",
+        "aborder"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to address",
+      "reponses_texte": [
+        "aborder",
+        "traiter"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to confront",
+      "reponses_texte": [
+        "affronter",
+        "faire face à"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to grapple with",
+      "reponses_texte": [
+        "se débattre avec",
+        "s'attaquer à"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to take on",
+      "reponses_texte": [
+        "s'attaquer à",
+        "se charger de"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to flare",
+      "reponses_texte": [
+        "s'embraser",
+        "flamber"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to blaze",
+      "reponses_texte": [
+        "flamber",
+        "brûler vivement"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to erupt",
+      "reponses_texte": [
+        "éclater",
+        "entrer en éruption"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to ignite",
+      "reponses_texte": [
+        "enflammer",
+        "déclencher"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to flare up",
+      "reponses_texte": [
+        "éclater",
+        "s'embraser"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to outlast",
+      "reponses_texte": [
+        "survivre à",
+        "durer plus longtemps que"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to survive",
+      "reponses_texte": [
+        "survivre",
+        "survivre à"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to endure",
+      "reponses_texte": [
+        "endurer",
+        "durer"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to outlive",
+      "reponses_texte": [
+        "survivre à",
+        "vivre plus longtemps que"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to withstand",
+      "reponses_texte": [
+        "résister à",
+        "supporter"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to persist",
+      "reponses_texte": [
+        "persister",
+        "perdurer"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to stall",
+      "reponses_texte": [
+        "entraver",
+        "s'enliser",
+        "bloquer"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to hinder",
+      "reponses_texte": [
+        "entraver",
+        "gêner"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to hamper",
+      "reponses_texte": [
+        "entraver",
+        "freiner"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to strengthen",
+      "reponses_texte": [
+        "renforcer",
+        "consolider"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to reinforce",
+      "reponses_texte": [
+        "renforcer",
+        "consolider"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to threaten",
+      "reponses_texte": [
+        "menacer",
+        "mettre en danger"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to trust",
+      "reponses_texte": [
+        "faire confiance à",
+        "se fier à"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to have faith in",
+      "reponses_texte": [
+        "avoir foi en",
+        "croire en"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to withdraw",
+      "reponses_texte": [
+        "se retirer",
+        "retirer"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to pull out",
+      "reponses_texte": [
+        "se retirer",
+        "quitter"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to move away",
+      "reponses_texte": [
+        "s'éloigner",
+        "déménager"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a humanitarian crisis",
+      "reponses_texte": [
+        "une crise humanitaire"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a member state",
+      "reponses_texte": [
+        "un État membre"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a multilateral response",
+      "reponses_texte": [
+        "une réponse multilatérale"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a refugee",
+      "reponses_texte": [
+        "un réfugié"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "diplomacy",
+      "reponses_texte": [
+        "la diplomatie"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to face off against",
+      "reponses_texte": [
+        "affronter",
+        "s'opposer à"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "funding cuts",
+      "reponses_texte": [
+        "des coupes budgétaires",
+        "des réductions de financement"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "the General Assembly",
+      "reponses_texte": [
+        "l'Assemblée générale"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "global governance",
+      "reponses_texte": [
+        "la gouvernance mondiale"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "human rights",
+      "reponses_texte": [
+        "les droits de l'homme",
+        "les droits humains"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "humanitarian aid",
+      "reponses_texte": [
+        "l'aide humanitaire"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "international law",
+      "reponses_texte": [
+        "le droit international"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "an NGO",
+      "reponses_texte": [
+        "une ONG",
+        "une organisation non gouvernementale"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "peacekeeping",
+      "reponses_texte": [
+        "le maintien de la paix"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "a resolution",
+      "reponses_texte": [
+        "une résolution"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "sanctions",
+      "reponses_texte": [
+        "des sanctions"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "the Secretary-General",
+      "reponses_texte": [
+        "le Secrétaire général"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "the Security Council",
+      "reponses_texte": [
+        "le Conseil de sécurité"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "the SDGs",
+      "reponses_texte": [
+        "les ODD",
+        "les objectifs de développement durable"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "sustainable development",
+      "reponses_texte": [
+        "le développement durable"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "the Charter",
+      "reponses_texte": [
+        "la Charte des Nations unies"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "the world stage",
+      "reponses_texte": [
+        "la scène internationale",
+        "la scène mondiale"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "it is high time",
+      "reponses_texte": [
+        "il est grand temps",
+        "il est plus que temps"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to be in limbo",
+      "reponses_texte": [
+        "être en suspens",
+        "être dans l'incertitude"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to run dry",
+      "reponses_texte": [
+        "se tarir",
+        "être à sec"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to seize up",
+      "reponses_texte": [
+        "se gripper",
+        "se bloquer"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "to take to the rostrum",
+      "reponses_texte": [
+        "monter à la tribune",
+        "prendre la parole à la tribune"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en français",
+      "question": "veto-wielding powers",
+      "reponses_texte": [
+        "les puissances dotées du droit de veto"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en anglais"
+    }
+  ]
+}

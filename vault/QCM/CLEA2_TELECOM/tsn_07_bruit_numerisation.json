@@ -1,6 +1,6 @@
 {
   "titre": "TSN 7 — Bruits de numérisation",
-  "description": "Gigue, bruit de mesure, bruit de quantification, SNR d'un CAN",
+  "description": "Gigue, bruit de mesure, bruit de quantification, SNR d'un CAN, formules",
   "questions": [
     {
       "id": "bn01",
@@ -12,9 +12,7 @@
         "un bruit thermique du capteur",
         "un repliement"
       ],
-      "reponses": [
-        0
-      ],
+      "reponses": [0],
       "explication": "$x(t_n)=x(nT_e+\\varepsilon[n])$, $\\varepsilon\\sim\\mathcal{N}(0,\\sigma_g^2)$."
     },
     {
@@ -27,9 +25,7 @@
         "la composante continue",
         "rien"
       ],
-      "reponses": [
-        1
-      ],
+      "reponses": [1],
       "explication": ""
     },
     {
@@ -42,9 +38,7 @@
         "Car le bruit est coloré",
         "À cause du zero-padding"
       ],
-      "reponses": [
-        0
-      ],
+      "reponses": [0],
       "explication": "Pour une sinusoïde, $x'$ est proportionnelle à $2\\pi f$."
     },
     {
@@ -57,9 +51,7 @@
         "un décalage des raies",
         "une périodisation"
       ],
-      "reponses": [
-        0
-      ],
+      "reponses": [0],
       "explication": ""
     },
     {
@@ -72,9 +64,7 @@
         "$\\Delta/2$",
         "$\\Delta^2/12$"
       ],
-      "reponses": [
-        0
-      ],
+      "reponses": [0],
       "explication": ""
     },
     {
@@ -87,9 +77,7 @@
         "$\\Delta^2/4$",
         "$\\Delta^2$"
       ],
-      "reponses": [
-        1
-      ],
+      "reponses": [1],
       "explication": ""
     },
     {
@@ -102,9 +90,7 @@
         "$\\Delta^2/12$",
         "$2\\Delta$"
       ],
-      "reponses": [
-        1
-      ],
+      "reponses": [1],
       "explication": ""
     },
     {
@@ -117,9 +103,7 @@
         "6 dB",
         "10 dB"
       ],
-      "reponses": [
-        2
-      ],
+      "reponses": [2],
       "explication": "$\\mathrm{SNR}\\approx6.02n+1.76$ dB."
     },
     {
@@ -132,9 +116,7 @@
         "environ 98 dB",
         "environ 40 dB"
       ],
-      "reponses": [
-        1
-      ],
+      "reponses": [1],
       "explication": "$6.02\\times10+1.76\\approx62$ dB."
     },
     {
@@ -147,9 +129,7 @@
         "10",
         "12"
       ],
-      "reponses": [
-        2
-      ],
+      "reponses": [2],
       "explication": "$n\\geq(60-1.76)/6.02=9.67$."
     },
     {
@@ -162,9 +142,7 @@
         "environ 0.144 V",
         "environ 0.021 V"
       ],
-      "reponses": [
-        2
-      ],
+      "reponses": [2],
       "explication": "$\\sigma_q=\\Delta/\\sqrt{12}$. (0.021 V² est la variance.)"
     },
     {
@@ -177,9 +155,7 @@
         "environ 4.88 mV",
         "10 mV"
       ],
-      "reponses": [
-        0
-      ],
+      "reponses": [0],
       "explication": "$10/4096\\approx2.44$ mV."
     },
     {
@@ -192,9 +168,7 @@
         "$x[n]=b[n]$",
         "$x[n]=x(nT_e)\\,\\varepsilon[n]$"
       ],
-      "reponses": [
-        0
-      ],
+      "reponses": [0],
       "explication": ""
     },
     {
@@ -207,11 +181,46 @@
         "Le bruit de quantification",
         "Le zero-padding"
       ],
-      "reponses": [
-        0,
-        1,
-        2
+      "reponses": [0, 1, 2],
+      "explication": ""
+    },
+    {
+      "id": "bn_f1",
+      "type": "QCM",
+      "question": "Formule approchée du SNR dû à la gigue, pour une sinusoïde de fréquence $f$ :",
+      "choix": [
+        "$\\text{SNR}_{\\text{gigue}}\\approx-20\\log_{10}(2\\pi f\\sigma_g)$ dB",
+        "$\\text{SNR}_{\\text{gigue}}\\approx6.02f+1.76$ dB",
+        "$\\text{SNR}_{\\text{gigue}}\\approx10\\log_{10}(f/\\sigma_g)$ dB",
+        "$\\text{SNR}_{\\text{gigue}}\\approx\\sigma_g^2$"
       ],
+      "reponses": [0],
+      "explication": "Obtenue au premier ordre : $x(nT_e+\\varepsilon)\\approx x(nT_e)+\\varepsilon\\,x'(nT_e)$, avec $x'$ proportionnelle à $2\\pi f$ pour une sinusoïde."
+    },
+    {
+      "id": "bn_f2",
+      "type": "QCM",
+      "question": "Modèle du bruit de gigue sur l'instant d'échantillonnage :",
+      "choix": [
+        "$x(t_n)=x(nT_e+\\varepsilon[n])$, avec $\\varepsilon[n]\\sim\\mathcal{N}(0,\\sigma_g^2)$",
+        "$x(t_n)=x(nT_e)+\\varepsilon[n]$",
+        "$x(t_n)=x(nT_e)\\cdot\\varepsilon[n]$",
+        "$x(t_n)=x(nT_e)$, toujours exact"
+      ],
+      "reponses": [0],
+      "explication": "C'est une erreur sur l'instant de mesure, pas une erreur additive sur l'amplitude."
+    },
+    {
+      "id": "bn_f3",
+      "type": "QCM",
+      "question": "Modèle du bruit de mesure additif :",
+      "choix": [
+        "$\\tilde x[n]=x[n]+b_{\\text{mesure}}[n]$, $b_{\\text{mesure}}\\sim\\mathcal{N}(0,\\sigma_m^2)$",
+        "$\\tilde x[n]=x[n]\\cdot b_{\\text{mesure}}[n]$",
+        "$\\tilde x[n]=x(nT_e+b_{\\text{mesure}}[n])$",
+        "$\\tilde x[n]=b_{\\text{mesure}}[n]$ seul"
+      ],
+      "reponses": [0],
       "explication": ""
     }
   ]

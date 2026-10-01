@@ -1,0 +1,801 @@
+{
+  "titre": "TOEIC Grammar 6 — Les comparatifs et les superlatifs",
+  "description": "Supériorité, infériorité, égalité, superlatifs, irréguliers. 10 exercices du livret + 43 questions de cours.",
+  "questions": [
+    {
+      "id": "g06e001",
+      "type": "QCM",
+      "question": "These two wonderful koalas are by far the ____ in the zoo.",
+      "choix": [
+        "oldest",
+        "eldest",
+        "older",
+        "elder"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Superlatif de supériorité : deux koalas parmi tous ceux du zoo."
+    },
+    {
+      "id": "g06e002",
+      "type": "QCM",
+      "question": "This play is probably the ____ I have ever seen in this theater.",
+      "choix": [
+        "least",
+        "better",
+        "more",
+        "best"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Superlatif de supériorité (une pièce parmi toutes les autres) : the best."
+    },
+    {
+      "id": "g06e003",
+      "type": "QCM",
+      "question": "Indian cuisine is reputed to be one of the ____ in the world.",
+      "choix": [
+        "hotter",
+        "hot",
+        "hottest",
+        "least"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "One of the + superlatif : hottest."
+    },
+    {
+      "id": "g06e004",
+      "type": "QCM",
+      "question": "Of these two experts, Steve Stoneseifer is definitely ____.",
+      "choix": [
+        "the most competent",
+        "the more competent",
+        "the least competent",
+        "the worst"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Comparaison entre deux éléments : comparatif (the more competent)."
+    },
+    {
+      "id": "g06e005",
+      "type": "QCM",
+      "question": "According to John, between Tarzan and Jane and Romeo and Juliet, the ____ moving plot is the second one.",
+      "choix": [
+        "more",
+        "most",
+        "least",
+        "darkest"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Comparaison entre deux éléments : comparatif de supériorité."
+    },
+    {
+      "id": "g06e006",
+      "type": "QCM",
+      "question": "Between the secretary and the CEO's assistant, the first one is ____.",
+      "choix": [
+        "the more efficient",
+        "more efficient",
+        "the most efficient",
+        "most efficient"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Comparaison entre deux éléments : the more efficient."
+    },
+    {
+      "id": "g06e007",
+      "type": "QCM",
+      "question": "Our plan is to break up with an older supplier because he is no ____ competitive.",
+      "choix": [
+        "less long",
+        "long",
+        "longer",
+        "longest"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "No longer = « ne plus » : il n'est plus compétitif."
+    },
+    {
+      "id": "g06e008",
+      "type": "QCM",
+      "question": "This device is ____ more economic than the other one.",
+      "choix": [
+        "much more",
+        "as",
+        "the more",
+        "many more"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Comparatif de supériorité renforcé : much more economic than."
+    },
+    {
+      "id": "g06e009",
+      "type": "QCM",
+      "question": "If you need ____ details, please, give us a call.",
+      "choix": [
+        "others",
+        "further",
+        "as many",
+        "as much"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Further = « de plus amples »."
+    },
+    {
+      "id": "g06e010",
+      "type": "QCM",
+      "question": "This dish is probably the ____ edible that our customers have ever eaten and we have been particularly embarrassed by this unusual situation.",
+      "choix": [
+        "most",
+        "least",
+        "more",
+        "less"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Superlatif d'infériorité (sens négatif, presence de ever) : the least edible."
+    },
+    {
+      "id": "g06c001",
+      "type": "QCM",
+      "question": "Comparatif de supériorité d'un adjectif court : ",
+      "choix": [
+        "adjectif + -er + than",
+        "more + adjectif + than",
+        "the + adjectif + -est",
+        "as + adjectif + as"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Paul is taller than Peter."
+    },
+    {
+      "id": "g06c002",
+      "type": "QCM",
+      "question": "Comparatif de supériorité d'un adjectif long :",
+      "choix": [
+        "more + adjectif + than",
+        "adjectif + -er + than",
+        "less + adjectif + than",
+        "the + -est"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g06c003",
+      "type": "QCM",
+      "question": "Quel est le comparatif de tall ?",
+      "choix": [
+        "taller",
+        "more tall",
+        "tallest",
+        "tallerer"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g06c004",
+      "type": "QCM",
+      "question": "Quel est le comparatif de nice ?",
+      "choix": [
+        "nicer",
+        "more nice",
+        "nicest",
+        "niceer"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g06c005",
+      "type": "QCM",
+      "question": "Quel est le comparatif de big ?",
+      "choix": [
+        "biger",
+        "bigger",
+        "more big",
+        "biggest"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Voyelle + consonne : on double la consonne."
+    },
+    {
+      "id": "g06c006",
+      "type": "QCM",
+      "question": "Quel est le comparatif de flat ?",
+      "choix": [
+        "flater",
+        "flatter",
+        "more flat",
+        "flatest"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g06c007",
+      "type": "QCM",
+      "question": "Quel est le comparatif de happy ?",
+      "choix": [
+        "happyer",
+        "happier",
+        "more happy",
+        "happiest"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "-y → -i."
+    },
+    {
+      "id": "g06c008",
+      "type": "QCM",
+      "question": "Quel est le comparatif de sunny ?",
+      "choix": [
+        "sunnyer",
+        "sunnier",
+        "more sunny",
+        "sunniest"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g06c009",
+      "type": "QCM",
+      "question": "Quel est le comparatif de noble ?",
+      "choix": [
+        "nobler",
+        "more noble",
+        "noblest",
+        "nobleer"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Adjectifs de deux syllabes en -le, -er, -ow : courts."
+    },
+    {
+      "id": "g06c010",
+      "type": "QCM",
+      "question": "Quel est le comparatif de narrow ?",
+      "choix": [
+        "narrower",
+        "more narrow",
+        "narrowest",
+        "narrowwer"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g06c011",
+      "type": "QCM",
+      "question": "Quel est le comparatif de clever ?",
+      "choix": [
+        "cleverer",
+        "more clever",
+        "cleverest",
+        "clevererer"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g06c012",
+      "type": "QCM",
+      "question": "Quel est le comparatif de successful ?",
+      "choix": [
+        "successfuler",
+        "more successful",
+        "most successful",
+        "successfull"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Adjectif long : more."
+    },
+    {
+      "id": "g06c013",
+      "type": "QCM",
+      "question": "Quel est le comparatif de sociable ?",
+      "choix": [
+        "more sociable",
+        "sociabler",
+        "sociabler than",
+        "most sociable"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Les autres adjectifs de deux syllabes sont considérés comme longs (livret)."
+    },
+    {
+      "id": "g06c014",
+      "type": "QCM",
+      "question": "Quel est le comparatif de logical ?",
+      "choix": [
+        "more logical",
+        "logicaler",
+        "most logical",
+        "logicallier"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g06c015",
+      "type": "QCM",
+      "question": "Les participes passés utilisés comme adjectifs forment leur comparatif avec :",
+      "choix": [
+        "more",
+        "-er",
+        "less",
+        "the most"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "More developed, more liked, more delighted."
+    },
+    {
+      "id": "g06c016",
+      "type": "QCM",
+      "question": "Comparatifs mixtes (fun, cool, chic) :",
+      "choix": [
+        "acceptent -er ou more",
+        "n'acceptent que more",
+        "n'acceptent que -er",
+        "n'ont pas de comparatif"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g06c017",
+      "type": "QCM",
+      "question": "« De plus en plus » (adjectif court) :",
+      "choix": [
+        "adjectif-er and adjectif-er",
+        "more and more + adjectif court",
+        "the adjectif-er",
+        "less and less"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "cheaper and cheaper."
+    },
+    {
+      "id": "g06c018",
+      "type": "QCM",
+      "question": "These products get ____ and ____. (de plus en plus abordables)",
+      "choix": [
+        "cheaper",
+        "more cheap",
+        "cheapest",
+        "cheap"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g06c019",
+      "type": "QCM",
+      "question": "« De plus en plus » (adjectif long) :",
+      "choix": [
+        "more and more + adjectif",
+        "adjectif-er and adjectif-er",
+        "the more ... the more",
+        "less and less"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Their design is more and more sophisticated."
+    },
+    {
+      "id": "g06c020",
+      "type": "QCM",
+      "question": "« Plus... plus ... » (adjectifs courts) :",
+      "choix": [
+        "the -er ... the -er",
+        "the more ... the more",
+        "as ... as",
+        "more and more"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "The simpler a slogan is, the easier it is to remember."
+    },
+    {
+      "id": "g06c021",
+      "type": "QCM",
+      "question": "« Plus... plus ... » (adjectifs longs) :",
+      "choix": [
+        "the more ... the more",
+        "the -er ... the -er",
+        "as ... as",
+        "more and more"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g06c022",
+      "type": "QCM",
+      "question": "Comparatif d'infériorité :",
+      "choix": [
+        "less + adjectif + than",
+        "more + adjectif + than",
+        "adjectif-er + than",
+        "as + adjectif + as"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Que l'adjectif soit court ou long."
+    },
+    {
+      "id": "g06c023",
+      "type": "QCM",
+      "question": "« De moins en moins » :",
+      "choix": [
+        "less and less + adjectif",
+        "more and more + adjectif",
+        "the less ... the less",
+        "adjectif-er and adjectif-er"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g06c024",
+      "type": "QCM",
+      "question": "Comparatif d'égalité :",
+      "choix": [
+        "as + adjectif + as",
+        "so + adjectif + as",
+        "more + adjectif + as",
+        "the same + adjectif + as"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Paul is as tall as Peter."
+    },
+    {
+      "id": "g06c025",
+      "type": "QCM",
+      "question": "« Autant de » + nom dénombrable :",
+      "choix": [
+        "as many + nom + as",
+        "as much + nom + as",
+        "as more + nom + as",
+        "so many + nom + so"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "There are as many plates as glasses."
+    },
+    {
+      "id": "g06c026",
+      "type": "QCM",
+      "question": "« Autant de » + nom indénombrable :",
+      "choix": [
+        "as much + nom + as",
+        "as many + nom + as",
+        "as more + nom + as",
+        "so much + nom + so"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "There is as much wine as water."
+    },
+    {
+      "id": "g06c027",
+      "type": "QCM",
+      "question": "There is as ____ wine as water in the caddy.",
+      "choix": [
+        "much",
+        "many",
+        "more",
+        "most"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g06c028",
+      "type": "QCM",
+      "question": "There are as ____ plates as glasses on the table.",
+      "choix": [
+        "many",
+        "much",
+        "more",
+        "most"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g06c029",
+      "type": "QCM",
+      "question": "Superlatif de supériorité d'un adjectif court :",
+      "choix": [
+        "the + adjectif + -est",
+        "the most + adjectif",
+        "the more + adjectif",
+        "more + adjectif + than"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Paul is the tallest."
+    },
+    {
+      "id": "g06c030",
+      "type": "QCM",
+      "question": "Superlatif de supériorité d'un adjectif long :",
+      "choix": [
+        "the most + adjectif",
+        "the + adjectif + -est",
+        "the more + adjectif",
+        "as + adjectif + as"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g06c031",
+      "type": "QCM",
+      "question": "Le superlatif anglais s'emploie à partir de :",
+      "choix": [
+        "trois éléments",
+        "deux éléments",
+        "quatre éléments",
+        "un seul élément"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Si la comparaison ne porte que sur deux éléments, on utilise le comparatif."
+    },
+    {
+      "id": "g06c032",
+      "type": "QCM",
+      "question": "Between Mary and Sarah, Mary is ____ funny.",
+      "choix": [
+        "the funnier",
+        "the funniest",
+        "funnyer",
+        "the more funny"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Deux éléments : comparatif (Between ... the funnier)."
+    },
+    {
+      "id": "g06c033",
+      "type": "QCM",
+      "question": "Among Peter, Paul and Philip, Peter is ____.",
+      "choix": [
+        "taller",
+        "the tallest",
+        "the taller",
+        "most tall"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g06c034",
+      "type": "QCM",
+      "question": "Superlatif d'infériorité :",
+      "choix": [
+        "the least + adjectif",
+        "the less + adjectif",
+        "the lesser + adjectif",
+        "the most + adjectif"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g06c035",
+      "type": "QCM",
+      "question": "Quel est le comparatif de good ?",
+      "choix": [
+        "gooder",
+        "better",
+        "more good",
+        "best"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g06c036",
+      "type": "QCM",
+      "question": "Quel est le superlatif de good ?",
+      "choix": [
+        "goodest",
+        "the best",
+        "the most good",
+        "better"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g06c037",
+      "type": "QCM",
+      "question": "Quel est le comparatif de bad ?",
+      "choix": [
+        "badder",
+        "worse",
+        "more bad",
+        "worst"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g06c038",
+      "type": "QCM",
+      "question": "Quel est le superlatif de bad ?",
+      "choix": [
+        "the baddest",
+        "the worst",
+        "the most bad",
+        "worse"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g06c039",
+      "type": "QCM",
+      "question": "Quel est le comparatif de far ?",
+      "choix": [
+        "further / farther",
+        "farer",
+        "more far",
+        "farthest"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Further est le plus courant."
+    },
+    {
+      "id": "g06c040",
+      "type": "QCM",
+      "question": "Quel est le superlatif de far ?",
+      "choix": [
+        "the furthest / the farthest",
+        "the farrest",
+        "the most far",
+        "further"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g06c041",
+      "type": "QCM",
+      "question": "Quel est le comparatif de old (pour une fratrie : aîné) ?",
+      "choix": [
+        "elder",
+        "elderer",
+        "older only",
+        "more old"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Elder / eldest s'emploient pour une fratrie."
+    },
+    {
+      "id": "g06c042",
+      "type": "QCM",
+      "question": "Quel est le superlatif de old ?",
+      "choix": [
+        "oldest / eldest",
+        "olderest",
+        "the most old",
+        "elderest ..."
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Oldest ; eldest pour une fratrie."
+    },
+    {
+      "id": "g06c043",
+      "type": "QCM",
+      "question": "Pour une fratrie (« l'aîné »), on dit :",
+      "choix": [
+        "the eldest",
+        "the oldest only",
+        "the most old",
+        "the more old"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    }
+  ]
+}

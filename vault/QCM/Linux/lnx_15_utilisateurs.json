@@ -1,0 +1,88 @@
+{
+  "titre": "Linux 15 — Gestion des utilisateurs",
+  "description": "sudo, su, useradd/userdel/usermod, addgroup/delgroup, passwd",
+  "questions": [
+    {
+      "id": "usr01",
+      "type": "QCM",
+      "question": "Que signifie « sudo » ?",
+      "choix": ["Super Dominant", "Superuser Do", "Systemداemon", "Standard User Do"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "usr02",
+      "type": "QCM",
+      "question": "Pourquoi un utilisateur standard ne peut-il pas lire /etc/shadow directement ?",
+      "choix": [
+        "Le fichier n'existe pas",
+        "Seul root peut le lire/modifier pour protéger les données d'authentification",
+        "Il faut être connecté en SSH",
+        "Le fichier est toujours vide"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "usr03",
+      "type": "QCM",
+      "question": "Quelle commande demande les identifiants via PAM pour basculer vers un autre utilisateur (root par défaut) ?",
+      "choix": ["sudo", "su", "login", "passwd"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "usr04",
+      "type": "QCM",
+      "question": "Quelle commande crée un nouvel utilisateur ?",
+      "choix": ["useradd", "usermod", "userdel", "adduser only"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "usr05",
+      "type": "QCM",
+      "question": "Quelle commande supprime un compte utilisateur et ses fichiers associés ?",
+      "choix": ["userdel", "usermod", "useradd", "rmuser"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "usr06",
+      "type": "QCM",
+      "question": "Quelle commande modifie un compte utilisateur existant ?",
+      "choix": ["usermod", "useradd", "userdel", "moduser"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "usr07",
+      "type": "QCM",
+      "question": "Quelle commande change le mot de passe d'un utilisateur ?",
+      "choix": ["passwd", "chpass", "userpass", "setpass"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "usr08",
+      "type": "QCR",
+      "question": "Quelles commandes servent à gérer les groupes ?",
+      "choix": ["addgroup", "delgroup", "usermod", "userdel"],
+      "reponses": [0, 1],
+      "explication": "usermod et userdel gèrent les utilisateurs, pas directement les groupes."
+    },
+    {
+      "id": "usr09",
+      "type": "QCM",
+      "question": "Pourquoi comprendre la gestion des utilisateurs est-elle utile en cybersécurité ?",
+      "choix": [
+        "Pour identifier des vulnérabilités et évaluer la posture de sécurité",
+        "Uniquement pour créer des comptes",
+        "Cela n'a aucun intérêt en sécurité",
+        "Uniquement pour changer les mots de passe"
+      ],
+      "reponses": [0],
+      "explication": ""
+    }
+  ]
+}

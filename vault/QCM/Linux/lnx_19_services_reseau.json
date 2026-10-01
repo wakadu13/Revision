@@ -1,0 +1,172 @@
+{
+  "titre": "Linux 19 — Services Réseau",
+  "description": "SSH, NFS, serveurs web (Apache, Python) et VPN",
+  "questions": [
+    {
+      "id": "net01",
+      "type": "QCM",
+      "question": "Quel est le serveur SSH le plus couramment utilisé ?",
+      "choix": ["OpenSSH", "Dropbear", "PuTTY", "WinSCP"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "net02",
+      "type": "QCM",
+      "question": "Quelle commande installe le serveur OpenSSH ?",
+      "choix": [
+        "sudo apt install openssh-server -y",
+        "sudo apt install ssh-client -y",
+        "sudo systemctl install ssh",
+        "sudo dpkg openssh"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "net03",
+      "type": "QCM",
+      "question": "Quel fichier de configuration permet de personnaliser OpenSSH (nombre de connexions, auth par clé, etc.) ?",
+      "choix": ["/etc/ssh/ssh_config", "/etc/ssh/sshd_config", "/etc/openssh.conf", "/etc/ssh/server.conf"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "net04",
+      "type": "QCM",
+      "question": "Pourquoi le FTP non chiffré est-il un risque de sécurité, selon l'exemple du cours ?",
+      "choix": [
+        "Il consomme trop de bande passante",
+        "Les identifiants peuvent être capturés en clair sur le réseau",
+        "Il ne fonctionne pas sous Linux",
+        "Il nécessite toujours un mot de passe root"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "net05",
+      "type": "QCM",
+      "question": "Que permet le protocole NFS ?",
+      "choix": [
+        "Chiffrer les mots de passe",
+        "Stocker et gérer des fichiers sur des systèmes distants comme s'ils étaient locaux",
+        "Planifier des tâches",
+        "Gérer les permissions utilisateur"
+      ],
+      "reponses": [1],
+      "explication": "NFS = Network File System."
+    },
+    {
+      "id": "net06",
+      "type": "QCM",
+      "question": "Quel paquet installe un serveur NFS sous Ubuntu/Debian ?",
+      "choix": ["nfs-kernel-server", "nfs-utils", "nfs-server-tools", "openNFS"],
+      "reponses": [0],
+      "explication": "NFS-Ganesha est utilisé sur Solaris, OpenNFS sur Red Hat."
+    },
+    {
+      "id": "net07",
+      "type": "QCM",
+      "question": "Quel protocole les serveurs web utilisent-ils pour transmettre des données aux navigateurs ?",
+      "choix": ["FTP", "HTTP", "SSH", "SNMP"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "net08",
+      "type": "QCR",
+      "question": "Quels serveurs web populaires sous Linux sont cités dans le cours ?",
+      "choix": ["Apache", "Nginx", "Lighttpd", "Caddy", "OpenSSH"],
+      "reponses": [0, 1, 2, 3],
+      "explication": "OpenSSH est un serveur SSH, pas un serveur web."
+    },
+    {
+      "id": "net09",
+      "type": "QCM",
+      "question": "Quel fichier contient les paramètres globaux d'Apache, dont les répertoires accessibles ?",
+      "choix": ["/etc/apache2/apache2.conf", "/etc/httpd.conf", "/var/www/apache.conf", "/etc/apache/server.conf"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "net10",
+      "type": "QCM",
+      "question": "Quel répertoire est le dossier par défaut accessible via Apache selon l'exemple du cours ?",
+      "choix": ["/var/www/html", "/srv/apache", "/home/www", "/usr/share/apache2"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "net11",
+      "type": "QCM",
+      "question": "Quel fichier permet de personnaliser les paramètres au niveau d'un répertoire spécifique pour Apache ?",
+      "choix": [".htaccess", "apache2.local", "dir.conf", ".apacherc"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "net12",
+      "type": "QCM",
+      "question": "Quelle commande démarre rapidement un serveur web Python sur le port 8000 par défaut ?",
+      "choix": [
+        "python3 -m webserver",
+        "python3 -m http.server",
+        "python3 serve.py",
+        "python3 -m simplehttp"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "net13",
+      "type": "QCM",
+      "question": "Comment spécifier un port différent (ex. 443) pour le serveur web Python ?",
+      "choix": [
+        "python3 -m http.server 443",
+        "python3 -m http.server --port=443",
+        "python3 -m http.server -p 443",
+        "python3 http.server:443"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "net14",
+      "type": "QCM",
+      "question": "Que fait un VPN pour la connexion entre client et serveur ?",
+      "choix": [
+        "Il établit un tunnel chiffré",
+        "Il augmente la vitesse de connexion uniquement",
+        "Il remplace le pare-feu",
+        "Il ne protège que les fichiers, pas le trafic"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "net15",
+      "type": "QCR",
+      "question": "Quelles solutions VPN sont citées comme utilisées sur des serveurs Linux ?",
+      "choix": ["OpenVPN", "L2TP/IPsec", "PPTP", "OpenSSH"],
+      "reponses": [0, 1, 2],
+      "explication": "OpenSSH n'est pas une solution VPN."
+    },
+    {
+      "id": "net16",
+      "type": "QCM",
+      "question": "Quel fichier permet de personnaliser un serveur OpenVPN ?",
+      "choix": ["/etc/openvpn/server.conf", "/etc/vpn.conf", "/etc/openvpn/client.ovpn", "/etc/vpn/settings.conf"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "net17",
+      "type": "QCM",
+      "question": "Quelle extension de fichier est utilisée pour se connecter à un serveur OpenVPN en tant que client ?",
+      "choix": [".vpn", ".ovpn", ".conf", ".key"],
+      "reponses": [1],
+      "explication": "Exemple : sudo openvpn --config internal.ovpn"
+    }
+  ]
+}

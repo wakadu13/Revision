@@ -1,0 +1,154 @@
+{
+  "titre": "Linux 25 — Protocoles de bureau à distance sous Linux",
+  "description": "RDP, VNC, X11/XServer, XDMCP et TigerVNC",
+  "questions": [
+    {
+      "id": "rdp01",
+      "type": "QCM",
+      "question": "Quel protocole de bureau à distance est principalement utilisé dans les environnements Windows ?",
+      "choix": ["VNC", "RDP", "X11", "XDMCP"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "rdp02",
+      "type": "QCM",
+      "question": "Quel protocole est populaire dans les environnements Linux tout en étant multiplateforme ?",
+      "choix": ["RDP", "VNC", "SMB", "NFS"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "rdp03",
+      "type": "QCM",
+      "question": "Qu'est-ce que le XServer ?",
+      "choix": [
+        "Un serveur de fichiers",
+        "La partie côté utilisateur du protocole réseau X Window System (X11)",
+        "Un serveur DNS",
+        "Un pare-feu"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "rdp04",
+      "type": "QCM",
+      "question": "Dans quelle plage de ports TCP se situent généralement les serveurs X ?",
+      "choix": ["21-25", "80-90", "6000-6010", "5900-5910"],
+      "reponses": [2],
+      "explication": "Le premier affichage X :0 ouvre le port TCP 6000."
+    },
+    {
+      "id": "rdp05",
+      "type": "QCM",
+      "question": "Où le rendu graphique est-il effectué avec le protocole X11, contrairement à VNC/RDP ?",
+      "choix": [
+        "Sur l'ordinateur distant, comme VNC/RDP",
+        "Sur l'ordinateur local",
+        "Dans le cloud",
+        "Il n'y a pas de rendu avec X11"
+      ],
+      "reponses": [1],
+      "explication": "Cela économise du trafic et de la charge sur l'ordinateur distant."
+    },
+    {
+      "id": "rdp06",
+      "type": "QCM",
+      "question": "Quel est l'inconvénient majeur de X11 mentionné dans le cours ?",
+      "choix": [
+        "Il ne fonctionne pas sur Linux",
+        "La transmission de données n'est pas chiffrée par défaut",
+        "Il ne permet pas le rendu local",
+        "Il nécessite RDP"
+      ],
+      "reponses": [1],
+      "explication": "Ce problème peut être surmonté en tunnelisant via SSH."
+    },
+    {
+      "id": "rdp07",
+      "type": "QCM",
+      "question": "Quelle option faut-il activer dans /etc/ssh/sshd_config pour permettre la redirection X11 ?",
+      "choix": ["X11Forwarding yes", "AllowX11 yes", "ForwardX11 enable", "X11Tunnel yes"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "rdp08",
+      "type": "QCM",
+      "question": "Quelle option de la commande ssh permet de lancer une application graphique distante via X11 forwarding ?",
+      "choix": ["ssh -X", "ssh -G", "ssh -Y11", "ssh -gui"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "rdp09",
+      "type": "QCR",
+      "question": "Quels outils X11 peuvent être utilisés par un attaquant pour capturer le contenu des fenêtres d'un serveur X ouvert ?",
+      "choix": ["xwd", "xgrabsc", "vncserver", "iptables"],
+      "reponses": [0, 1],
+      "explication": ""
+    },
+    {
+      "id": "rdp10",
+      "type": "QCM",
+      "question": "Sur quel port UDP XDMCP fonctionne-t-il ?",
+      "choix": ["177", "22", "3389", "5900"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "rdp11",
+      "type": "QCM",
+      "question": "Quel type d'attaque est mentionné comme moyen d'exploiter XDMCP ?",
+      "choix": ["Attaque par force brute", "Attaque de l'homme du milieu (MITM)", "Injection SQL", "Cross-Site Scripting"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "rdp12",
+      "type": "QCM",
+      "question": "Sur quel port TCP le serveur VNC écoute-t-il traditionnellement pour le display 0 ?",
+      "choix": ["5900", "3389", "6000", "22"],
+      "reponses": [0],
+      "explication": "Les affichages supplémentaires utilisent 5901, 5902, etc."
+    },
+    {
+      "id": "rdp13",
+      "type": "QCM",
+      "question": "Quel gestionnaire de bureau est recommandé pour TigerVNC car les connexions avec GNOME sont instables ?",
+      "choix": ["KDE", "XFCE4", "Cinnamon", "MATE"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "rdp14",
+      "type": "QCM",
+      "question": "Quel fichier détermine comment la session VNC est créée en lien avec le gestionnaire d'affichage ?",
+      "choix": ["config", "xstartup", "vncserver.conf", "session.sh"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "rdp15",
+      "type": "QCM",
+      "question": "Comment sécuriser une connexion VNC selon le cours ?",
+      "choix": [
+        "En désactivant l'authentification",
+        "En créant un tunnel SSH à travers lequel la connexion est tunnelisée",
+        "En utilisant uniquement UDP",
+        "Ce n'est pas possible"
+      ],
+      "reponses": [1],
+      "explication": "Exemple : ssh -L 5901:127.0.0.1:5901 -N -f -l user host"
+    },
+    {
+      "id": "rdp16",
+      "type": "QCM",
+      "question": "Quelle commande liste les sessions VNC actives avec leurs ports et PID ?",
+      "choix": ["vncserver -list", "vncserver -ls", "vncinfo", "vncserver --status"],
+      "reponses": [0],
+      "explication": ""
+    }
+  ]
+}

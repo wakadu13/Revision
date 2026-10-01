@@ -1,0 +1,122 @@
+{
+  "titre": "Linux 6 — Informations système",
+  "description": "Commandes essentielles d'information système : whoami, id, uname, ifconfig, ps, etc.",
+  "questions": [
+    {
+      "id": "sys01",
+      "type": "QCM",
+      "question": "Quelle commande affiche le nom d'utilisateur actuel ?",
+      "choix": ["id", "whoami", "hostname", "who"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "sys02",
+      "type": "QCM",
+      "question": "Quelle commande renvoie l'identité de l'utilisateur (UID, GID, groupes) ?",
+      "choix": ["whoami", "id", "pwd", "env"],
+      "reponses": [1],
+      "explication": "Utile pour auditer les droits/groupes d'un utilisateur."
+    },
+    {
+      "id": "sys03",
+      "type": "QCM",
+      "question": "Qu'indique l'appartenance d'un utilisateur au groupe `sudo` ?",
+      "choix": [
+        "Il peut lire /var/log uniquement",
+        "Il peut exécuter certaines ou toutes les commandes en tant que root",
+        "Il ne peut pas se connecter en SSH",
+        "Il fait partie du groupe adm automatiquement"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "sys04",
+      "type": "QCM",
+      "question": "Qu'indique l'appartenance au groupe `adm` ?",
+      "choix": [
+        "Accès administrateur complet",
+        "Possibilité de lire les fichiers journaux dans /var/log",
+        "Accès root automatique",
+        "Aucune signification particulière"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "sys05",
+      "type": "QCM",
+      "question": "Quelle commande affiche des informations de base sur le système d'exploitation et le matériel ?",
+      "choix": ["uname", "hostname", "pwd", "ps"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "sys06",
+      "type": "QCM",
+      "question": "Que fait `uname -r` ?",
+      "choix": [
+        "Affiche le nom du réseau",
+        "Affiche la publication (release) du noyau",
+        "Redémarre le système",
+        "Affiche le nom d'hôte"
+      ],
+      "reponses": [1],
+      "explication": "Utile pour rechercher des exploits de noyau correspondant à la version."
+    },
+    {
+      "id": "sys07",
+      "type": "QCM",
+      "question": "Que fait `uname -a` ?",
+      "choix": [
+        "Affiche uniquement l'architecture",
+        "Affiche toutes les informations système dans un ordre spécifique",
+        "Affiche uniquement le nom d'hôte",
+        "Liste les paquets installés"
+      ],
+      "reponses": [1],
+      "explication": "Nom du noyau, hostname, kernel release, kernel version, matériel, OS."
+    },
+    {
+      "id": "sys08",
+      "type": "QCR",
+      "question": "Quelles commandes servent à afficher des informations réseau ?",
+      "choix": ["ifconfig", "ip", "netstat", "pwd"],
+      "reponses": [0, 1, 2],
+      "explication": "pwd affiche le répertoire de travail, pas des infos réseau."
+    },
+    {
+      "id": "sys09",
+      "type": "QCM",
+      "question": "Quelle commande liste les périphériques de bloc (disques) ?",
+      "choix": ["lsblk", "lsusb", "lspci", "lsof"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "sys10",
+      "type": "QCM",
+      "question": "Quelle commande liste les fichiers ouverts ?",
+      "choix": ["lsof", "lsblk", "lspci", "ps"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "sys11",
+      "type": "QCM",
+      "question": "Quel protocole est utilisé pour se connecter et exécuter des commandes à distance de manière sécurisée ?",
+      "choix": ["FTP", "SSH", "Telnet", "HTTP"],
+      "reponses": [1],
+      "explication": "SSH = Secure Shell."
+    },
+    {
+      "id": "sys12",
+      "type": "QCM",
+      "question": "Quelle commande renvoie le nom du répertoire de travail actuel ?",
+      "choix": ["cd", "pwd", "ls", "whoami"],
+      "reponses": [1],
+      "explication": ""
+    }
+  ]
+}

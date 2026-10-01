@@ -1,0 +1,364 @@
+{
+  "titre": "The Security Council: its tasks",
+  "description": "Composition et missions du Conseil de sécurité + tasked with / in charge of / assigned to / responsible for.",
+  "questions": [
+    {
+      "type": "QCR",
+      "question": "Who are the 5 permanent members of the Security Council? (plusieurs réponses)",
+      "choix": [
+        "Brazil",
+        "India",
+        "Russia",
+        "the United Kingdom",
+        "Japan",
+        "France",
+        "China",
+        "Germany",
+        "the United States"
+      ],
+      "reponses": [
+        2,
+        3,
+        5,
+        6,
+        8
+      ],
+      "explication": "P5 : Chine, Russie, France, États-Unis, Royaume-Uni — tous ont le droit de veto."
+    },
+    {
+      "type": "QCM",
+      "question": "How many members does the Security Council have in total?",
+      "choix": [
+        "10",
+        "15",
+        "5",
+        "193"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "5 membres permanents + 10 non permanents."
+    },
+    {
+      "type": "QCM",
+      "question": "How long are the terms of the 10 non-permanent members?",
+      "choix": [
+        "5 years",
+        "for life",
+        "1 year",
+        "2 years"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Élus pour 2 ans."
+    },
+    {
+      "type": "QCM",
+      "question": "What special power do the 5 permanent members have?",
+      "choix": [
+        "two votes each",
+        "the power to dissolve the General Assembly",
+        "the power to appoint judges alone",
+        "the power of veto"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Le droit de veto : un seul « non » d'un P5 bloque une résolution."
+    },
+    {
+      "type": "QCR",
+      "question": "What is the Security Council tasked with? (plusieurs réponses)",
+      "choix": [
+        "electing the President of the United States",
+        "voting the budget of each Member State",
+        "recommending methods to adjust or settle such disputes",
+        "investigating any dispute that may lead to international friction",
+        "running the World Food Programme",
+        "maintaining international peace and security",
+        "taking military action against an aggressor",
+        "recommending the appointment of the Secretary-General",
+        "recommending the admission of new members"
+      ],
+      "reponses": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        8
+      ],
+      "explication": "Les 6 missions de la fiche (+ élire, avec l'Assemblée générale, les juges de la Cour internationale de justice)."
+    },
+    {
+      "type": "QCM",
+      "question": "With which body does the Security Council elect the judges of the International Court of Justice?",
+      "choix": [
+        "the General Assembly",
+        "the European Union",
+        "the World Food Programme",
+        "the Secretariat"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Conseil de sécurité + Assemblée générale élisent ensemble les juges de la CIJ."
+    },
+    {
+      "type": "QCM",
+      "question": "Who appoints the Secretary-General?",
+      "choix": [
+        "the International Court of Justice",
+        "the General Assembly, on the recommendation of the Security Council",
+        "the President of the United States",
+        "the Security Council alone"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le Conseil recommande, l'Assemblée générale nomme."
+    },
+    {
+      "type": "QCM",
+      "question": "Which structure is followed by an INFINITIVE?",
+      "choix": [
+        "in charge of",
+        "tasked with",
+        "assigned to",
+        "responsible for"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "assigned to + infinitif ; tasked with / in charge of / responsible for + -ing."
+    },
+    {
+      "type": "QCR",
+      "question": "Which structures are followed by a verb in -ING? (plusieurs réponses)",
+      "choix": [
+        "responsible for",
+        "assigned to",
+        "in charge of",
+        "tasked with",
+        "able to"
+      ],
+      "reponses": [
+        0,
+        2,
+        3
+      ],
+      "explication": "tasked with / in charge of / responsible for + V-ing."
+    },
+    {
+      "type": "TROU",
+      "question": "The UN Security Council is tasked with ___ international peace and security. (maintain)",
+      "reponses_texte": [
+        "maintaining"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "The Security Council is in charge of ___ any dispute that may lead to international friction. (investigate)",
+      "reponses_texte": [
+        "investigating"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "The Security Council is assigned to ___ the admission of new members. (recommend)",
+      "reponses_texte": [
+        "recommend"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "The Security Council is responsible for ___ military action against an aggressor. (take)",
+      "reponses_texte": [
+        "taking"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "The Security Council is responsible for ___ methods to settle disputes. (recommend)",
+      "reponses_texte": [
+        "recommending"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "Together with the General Assembly, it elects the judges of the International Court of ___.",
+      "reponses_texte": [
+        "Justice"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "The Council has 5 permanent members with the power of ___.",
+      "reponses_texte": [
+        "veto"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "The 10 non-permanent members are elected for ___-year terms.",
+      "reponses_texte": [
+        "2",
+        "two"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "The Security Council ___ ; its decisions are binding on Member States. (indice : décide)",
+      "reponses_texte": [
+        "decides"
+      ]
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "The U.N. Security Council is…",
+      "verso": "tasked with maintaining international peace and security · in charge of investigating disputes · assigned to recommend the admission of new members · responsible for taking military action against an aggressor."
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "Composition du Conseil de sécurité",
+      "verso": "15 members: 5 permanent members with the power of veto (China, Russia, France, the USA, the UK) + 10 non-permanent members elected for 2-year terms."
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "un différend",
+      "reponses_texte": [
+        "a dispute",
+        "dispute"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "un agresseur",
+      "reponses_texte": [
+        "an aggressor",
+        "aggressor"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "des frictions / tensions internationales",
+      "reponses_texte": [
+        "international friction",
+        "friction"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "régler un différend",
+      "reponses_texte": [
+        "to settle a dispute",
+        "settle a dispute",
+        "to solve a dispute",
+        "to adjust a dispute"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "la nomination (à un poste)",
+      "reponses_texte": [
+        "the appointment",
+        "appointment"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "l'admission de nouveaux membres",
+      "reponses_texte": [
+        "the admission of new members",
+        "admission of new members"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "enquêter sur",
+      "reponses_texte": [
+        "to investigate",
+        "investigate"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "un mandat (durée)",
+      "reponses_texte": [
+        "a term",
+        "term"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "les juges",
+      "reponses_texte": [
+        "the judges",
+        "judges"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "la Cour internationale de justice",
+      "reponses_texte": [
+        "the International Court of Justice",
+        "International Court of Justice",
+        "the ICJ",
+        "ICJ"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "chargé de (+ -ing)",
+      "reponses_texte": [
+        "tasked with",
+        "in charge of",
+        "responsible for"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "une action militaire",
+      "reponses_texte": [
+        "military action"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    }
+  ]
+}

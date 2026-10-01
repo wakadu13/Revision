@@ -1,10 +1,12 @@
 {
-  "titre": "Démo — les 4 types de questions",
+  "titre": "Démo — les 5 types de questions",
   "description": "Un set d'exemple pour découvrir les QCM du wiki.",
   "questions": [
     {"id": "aire", "type": "QCM", "question": "Quelle est l'aire d'un cercle de rayon $r$ ?", "choix": ["$2\\pi r$", "$\\pi r^2$", "$\\pi r$", "$2r$"], "reponses": [1], "explication": "L'aire vaut $\\pi r^2$, le périmètre vaut $2\\pi r$."},
     {"id": "osi", "type": "QCR", "question": "Parmi ces couches, lesquelles font partie du modèle **OSI** ?", "choix": ["Transport", "Session", "Cuisine", "Présentation"], "reponses": [0, 1, 3], "explication": "Il n'y a pas de couche « Cuisine » dans OSI."},
     {"id": "trou-en", "type": "TROU", "question": "She ___ (go) to school every day.", "reponses_texte": ["goes"], "explication": "Présent simple, 3e personne du singulier → *-es*."},
+    {"id": "trad-chien", "type": "QRC", "consigne": "Traduire en anglais", "question": "chien", "reponses_texte": ["dog"], "inverse": true, "consigne_inverse": "Traduire en français"},
+    {"id": "syn-big", "type": "QRC", "consigne": "Donner un synonyme", "question": "big", "reponses_texte": ["large", "huge", "great", "enormous"], "explication": "*huge* et *enormous* insistent sur la très grande taille."},
     {"id": "flash", "type": "FLASHCARD", "question": "to achieve", "verso": "réussir, accomplir", "explication": "Ex. : « She achieved her goal. »"}
   ]
 }

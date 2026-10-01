@@ -1,0 +1,156 @@
+{
+  "titre": "TOEIC Vocabulary 18 — Phrasal Verbs",
+  "description": "Thème « Phrasal Verbs » du livret Vocabulary (d'après les corrigés).",
+  "questions": [
+    {
+      "id": "v18001",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « to go back » ?",
+      "choix": [
+        "Communicating",
+        "Phrasal Verbs",
+        "Sustainable Development",
+        "Travel"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« to go back » figure dans les corrigés du thème Phrasal Verbs."
+    },
+    {
+      "id": "v18002",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « to turn out » ?",
+      "choix": [
+        "Communicating",
+        "Investments",
+        "Phrasal Verbs",
+        "Idioms & Expressions"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« to turn out » figure dans les corrigés du thème Phrasal Verbs."
+    },
+    {
+      "id": "v18003",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « to shut down » ?",
+      "choix": [
+        "Media",
+        "Banking & Personal Finance",
+        "Life in the Office",
+        "Phrasal Verbs"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« to shut down » figure dans les corrigés du thème Phrasal Verbs."
+    },
+    {
+      "id": "v18004",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « to set up » ?",
+      "choix": [
+        "Phrasal Verbs",
+        "Human Resources",
+        "Corporate Property",
+        "Presentations"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« to set up » figure dans les corrigés du thème Phrasal Verbs."
+    },
+    {
+      "id": "v18005",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « to take over » ?",
+      "choix": [
+        "Phrasal Verbs",
+        "Graphs",
+        "Presentations",
+        "Real Estate & Housing"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« to take over » figure dans les corrigés du thème Phrasal Verbs."
+    },
+    {
+      "id": "v18006",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « to keep up » ?",
+      "choix": [
+        "Phrasal Verbs",
+        "Marketing & Advertising",
+        "Human Resources",
+        "Real Estate & Housing"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« to keep up » figure dans les corrigés du thème Phrasal Verbs."
+    },
+    {
+      "id": "v18007",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « to turn on » ?",
+      "choix": [
+        "Banking & Personal Finance",
+        "Corporate Property",
+        "Dining Out",
+        "Phrasal Verbs"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« to turn on » figure dans les corrigés du thème Phrasal Verbs."
+    },
+    {
+      "id": "v18008",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « to buy up » ?",
+      "choix": [
+        "Commerce",
+        "Meetings",
+        "Phrasal Verbs",
+        "Media"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« to buy up » figure dans les corrigés du thème Phrasal Verbs."
+    },
+    {
+      "id": "v18009",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « to think over » ?",
+      "choix": [
+        "Phrasal Verbs",
+        "Media",
+        "High-Tech",
+        "Products"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« to think over » figure dans les corrigés du thème Phrasal Verbs."
+    },
+    {
+      "id": "v18010",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « to back out » ?",
+      "choix": [
+        "Idioms & Expressions",
+        "Investments",
+        "R&D & Industrialization",
+        "Phrasal Verbs"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« to back out » figure dans les corrigés du thème Phrasal Verbs."
+    }
+  ]
+}

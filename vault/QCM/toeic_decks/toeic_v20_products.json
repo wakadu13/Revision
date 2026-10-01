@@ -1,0 +1,366 @@
+{
+  "titre": "TOEIC Vocabulary 20 — Products",
+  "description": "Thème « Products » du livret Vocabulary (d'après les corrigés).",
+  "questions": [
+    {
+      "id": "v20001",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « benefits » ?",
+      "choix": [
+        "Phrasal Verbs",
+        "High-Tech",
+        "Investments",
+        "Products"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« benefits » figure dans les corrigés du thème Products."
+    },
+    {
+      "id": "v20002",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « brand name » ?",
+      "choix": [
+        "Graphs",
+        "Health & Healthcare",
+        "Products",
+        "Sustainable Development"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« brand name » figure dans les corrigés du thème Products."
+    },
+    {
+      "id": "v20003",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « easy-to-use » ?",
+      "choix": [
+        "Corporate Property",
+        "Marketing & Advertising",
+        "Products",
+        "High-Tech"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« easy-to-use » figure dans les corrigés du thème Products."
+    },
+    {
+      "id": "v20004",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « high-performance » ?",
+      "choix": [
+        "Life in the Office",
+        "Weather",
+        "Communicating",
+        "Products"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« high-performance » figure dans les corrigés du thème Products."
+    },
+    {
+      "id": "v20005",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « environment-friendly » ?",
+      "choix": [
+        "High-Tech",
+        "Travel",
+        "Products",
+        "Marketing & Advertising"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« environment-friendly » figure dans les corrigés du thème Products."
+    },
+    {
+      "id": "v20006",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « packaging » ?",
+      "choix": [
+        "Products",
+        "Graphs",
+        "High-Tech",
+        "Dining Out"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« packaging » figure dans les corrigés du thème Products."
+    },
+    {
+      "id": "v20007",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « after-sales service » ?",
+      "choix": [
+        "Corporate Property",
+        "Products",
+        "Graphs",
+        "Marketing & Advertising"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« after-sales service » figure dans les corrigés du thème Products."
+    },
+    {
+      "id": "v20008",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « user-friendly » ?",
+      "choix": [
+        "Logistics",
+        "Products",
+        "Presentations",
+        "Marketing & Advertising"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« user-friendly » figure dans les corrigés du thème Products."
+    },
+    {
+      "id": "v20009",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « functions » ?",
+      "choix": [
+        "Presentations",
+        "Health & Healthcare",
+        "Products",
+        "Investments"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« functions » figure dans les corrigés du thème Products."
+    },
+    {
+      "id": "v20010",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « components » ?",
+      "choix": [
+        "Logistics",
+        "Communicating",
+        "Weather",
+        "Products"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« components » figure dans les corrigés du thème Products."
+    },
+    {
+      "id": "v20011",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « durable » ?",
+      "choix": [
+        "Idioms & Expressions",
+        "Life in the Office",
+        "Products",
+        "Health & Healthcare"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« durable » figure dans les corrigés du thème Products."
+    },
+    {
+      "id": "v20012",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « timeless » ?",
+      "choix": [
+        "Products",
+        "Presentations",
+        "R&D & Industrialization",
+        "High-Tech"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« timeless » figure dans les corrigés du thème Products."
+    },
+    {
+      "id": "v20013",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « aesthetics » ?",
+      "choix": [
+        "Graphs",
+        "Media",
+        "Communicating",
+        "Products"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« aesthetics » figure dans les corrigés du thème Products."
+    },
+    {
+      "id": "v20014",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « logo » ?",
+      "choix": [
+        "R&D & Industrialization",
+        "Products",
+        "Travel",
+        "Graphs"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« logo » figure dans les corrigés du thème Products."
+    },
+    {
+      "id": "v20015",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « innovative » ?",
+      "choix": [
+        "Real Estate & Housing",
+        "Dining Out",
+        "Marketing & Advertising",
+        "Products"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« innovative » figure dans les corrigés du thème Products."
+    },
+    {
+      "id": "v20016",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « features » ?",
+      "choix": [
+        "Phrasal Verbs",
+        "Products",
+        "Idioms & Expressions",
+        "Travel"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« features » figure dans les corrigés du thème Products."
+    },
+    {
+      "id": "v20017",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « latest model » ?",
+      "choix": [
+        "Products",
+        "Banking & Personal Finance",
+        "Weather",
+        "Health & Healthcare"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« latest model » figure dans les corrigés du thème Products."
+    },
+    {
+      "id": "v20018",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « improvement » ?",
+      "choix": [
+        "Real Estate & Housing",
+        "Weather",
+        "Products",
+        "Idioms & Expressions"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« improvement » figure dans les corrigés du thème Products."
+    },
+    {
+      "id": "v20019",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « depth » ?",
+      "choix": [
+        "Investments",
+        "Health & Healthcare",
+        "Products",
+        "Corporate Property"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« depth » figure dans les corrigés du thème Products."
+    },
+    {
+      "id": "v20020",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « weight » ?",
+      "choix": [
+        "Products",
+        "Human Resources",
+        "Commerce",
+        "Presentations"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« weight » figure dans les corrigés du thème Products."
+    },
+    {
+      "id": "v20021",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « height » ?",
+      "choix": [
+        "Products",
+        "Weather",
+        "Sustainable Development",
+        "Travel"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« height » figure dans les corrigés du thème Products."
+    },
+    {
+      "id": "v20022",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « surface » ?",
+      "choix": [
+        "Complaining & Apologizing",
+        "Products",
+        "Commerce",
+        "Graphs"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« surface » figure dans les corrigés du thème Products."
+    },
+    {
+      "id": "v20023",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « thickness » ?",
+      "choix": [
+        "Real Estate & Housing",
+        "Media",
+        "High-Tech",
+        "Products"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« thickness » figure dans les corrigés du thème Products."
+    },
+    {
+      "id": "v20024",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « breadth » ?",
+      "choix": [
+        "Media",
+        "Products",
+        "Commerce",
+        "Corporate Property"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« breadth » figure dans les corrigés du thème Products."
+    }
+  ]
+}

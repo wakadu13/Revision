@@ -1,0 +1,306 @@
+{
+  "titre": "TOEIC Vocabulary 5 — Corporate Property",
+  "description": "Thème « Corporate Property » du livret Vocabulary (d'après les corrigés).",
+  "questions": [
+    {
+      "id": "v05001",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « warehouse » ?",
+      "choix": [
+        "Investments",
+        "Corporate Property",
+        "Presentations",
+        "R&D & Industrialization"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« warehouse » figure dans les corrigés du thème Corporate Property."
+    },
+    {
+      "id": "v05002",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « factory » ?",
+      "choix": [
+        "Products",
+        "Corporate Property",
+        "Health & Healthcare",
+        "Commerce"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« factory » figure dans les corrigés du thème Corporate Property."
+    },
+    {
+      "id": "v05003",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « plant » ?",
+      "choix": [
+        "R&D & Industrialization",
+        "Corporate Property",
+        "Weather",
+        "Sustainable Development"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« plant » figure dans les corrigés du thème Corporate Property."
+    },
+    {
+      "id": "v05004",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « shopping mall » ?",
+      "choix": [
+        "Products",
+        "Corporate Property",
+        "Idioms & Expressions",
+        "Commerce"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« shopping mall » figure dans les corrigés du thème Corporate Property."
+    },
+    {
+      "id": "v05005",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « retail store » ?",
+      "choix": [
+        "Marketing & Advertising",
+        "Corporate Property",
+        "Commerce",
+        "Life in the Office"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« retail store » figure dans les corrigés du thème Corporate Property."
+    },
+    {
+      "id": "v05006",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « medical center » ?",
+      "choix": [
+        "Products",
+        "Corporate Property",
+        "R&D & Industrialization",
+        "Complaining & Apologizing"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« medical center » figure dans les corrigés du thème Corporate Property."
+    },
+    {
+      "id": "v05007",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « unit (apartment) » ?",
+      "choix": [
+        "Sustainable Development",
+        "Meetings",
+        "Human Resources",
+        "Corporate Property"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« unit (apartment) » figure dans les corrigés du thème Corporate Property."
+    },
+    {
+      "id": "v05008",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « apartment complex » ?",
+      "choix": [
+        "Real Estate & Housing",
+        "Phrasal Verbs",
+        "Graphs",
+        "Corporate Property"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« apartment complex » figure dans les corrigés du thème Corporate Property."
+    },
+    {
+      "id": "v05009",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « office building » ?",
+      "choix": [
+        "Corporate Property",
+        "Meetings",
+        "Phrasal Verbs",
+        "R&D & Industrialization"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« office building » figure dans les corrigés du thème Corporate Property."
+    },
+    {
+      "id": "v05010",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « premises » ?",
+      "choix": [
+        "Health & Healthcare",
+        "Complaining & Apologizing",
+        "Life in the Office",
+        "Corporate Property"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« premises » figure dans les corrigés du thème Corporate Property."
+    },
+    {
+      "id": "v05011",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « zoning regulations » ?",
+      "choix": [
+        "High-Tech",
+        "R&D & Industrialization",
+        "Phrasal Verbs",
+        "Corporate Property"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« zoning regulations » figure dans les corrigés du thème Corporate Property."
+    },
+    {
+      "id": "v05012",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « landlord » ?",
+      "choix": [
+        "Sustainable Development",
+        "Corporate Property",
+        "Idioms & Expressions",
+        "Travel"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« landlord » figure dans les corrigés du thème Corporate Property."
+    },
+    {
+      "id": "v05013",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « rental income optimization » ?",
+      "choix": [
+        "Health & Healthcare",
+        "Corporate Property",
+        "Human Resources",
+        "Life in the Office"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« rental income optimization » figure dans les corrigés du thème Corporate Property."
+    },
+    {
+      "id": "v05014",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « greenfield site » ?",
+      "choix": [
+        "Graphs",
+        "Corporate Property",
+        "Commerce",
+        "Banking & Personal Finance"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« greenfield site » figure dans les corrigés du thème Corporate Property."
+    },
+    {
+      "id": "v05015",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « property portfolio » ?",
+      "choix": [
+        "Media",
+        "Products",
+        "Health & Healthcare",
+        "Corporate Property"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« property portfolio » figure dans les corrigés du thème Corporate Property."
+    },
+    {
+      "id": "v05016",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « bankruptcy » ?",
+      "choix": [
+        "Health & Healthcare",
+        "Corporate Property",
+        "Weather",
+        "Travel"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« bankruptcy » figure dans les corrigés du thème Corporate Property."
+    },
+    {
+      "id": "v05017",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « downtown development » ?",
+      "choix": [
+        "Travel",
+        "Real Estate & Housing",
+        "Presentations",
+        "Corporate Property"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« downtown development » figure dans les corrigés du thème Corporate Property."
+    },
+    {
+      "id": "v05018",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « construction industry » ?",
+      "choix": [
+        "Media",
+        "Corporate Property",
+        "Dining Out",
+        "Phrasal Verbs"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« construction industry » figure dans les corrigés du thème Corporate Property."
+    },
+    {
+      "id": "v05019",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « amenities » ?",
+      "choix": [
+        "Travel",
+        "Dining Out",
+        "Corporate Property",
+        "Real Estate & Housing"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« amenities » figure dans les corrigés du thème Corporate Property."
+    },
+    {
+      "id": "v05020",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « implementation » ?",
+      "choix": [
+        "Sustainable Development",
+        "Corporate Property",
+        "Presentations",
+        "Media"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« implementation » figure dans les corrigés du thème Corporate Property."
+    }
+  ]
+}

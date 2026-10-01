@@ -1,0 +1,246 @@
+{
+  "titre": "TOEIC Vocabulary 15 — Marketing & Advertising",
+  "description": "Thème « Marketing & Advertising » du livret Vocabulary (d'après les corrigés).",
+  "questions": [
+    {
+      "id": "v15001",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « poster » ?",
+      "choix": [
+        "Marketing & Advertising",
+        "Communicating",
+        "Products",
+        "Dining Out"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« poster » figure dans les corrigés du thème Marketing & Advertising."
+    },
+    {
+      "id": "v15002",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « billboard » ?",
+      "choix": [
+        "Marketing & Advertising",
+        "Presentations",
+        "High-Tech",
+        "Media"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« billboard » figure dans les corrigés du thème Marketing & Advertising."
+    },
+    {
+      "id": "v15003",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « hoarding » ?",
+      "choix": [
+        "Marketing & Advertising",
+        "Weather",
+        "Logistics",
+        "Investments"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« hoarding » figure dans les corrigés du thème Marketing & Advertising."
+    },
+    {
+      "id": "v15004",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « window bill » ?",
+      "choix": [
+        "Phrasal Verbs",
+        "Sustainable Development",
+        "Presentations",
+        "Marketing & Advertising"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« window bill » figure dans les corrigés du thème Marketing & Advertising."
+    },
+    {
+      "id": "v15005",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « brochures » ?",
+      "choix": [
+        "Health & Healthcare",
+        "Marketing & Advertising",
+        "Commerce",
+        "Weather"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« brochures » figure dans les corrigés du thème Marketing & Advertising."
+    },
+    {
+      "id": "v15006",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « leaflets » ?",
+      "choix": [
+        "Marketing & Advertising",
+        "Investments",
+        "Health & Healthcare",
+        "Weather"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« leaflets » figure dans les corrigés du thème Marketing & Advertising."
+    },
+    {
+      "id": "v15007",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « SWOT analysis » ?",
+      "choix": [
+        "Marketing & Advertising",
+        "Logistics",
+        "Complaining & Apologizing",
+        "R&D & Industrialization"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« SWOT analysis » figure dans les corrigés du thème Marketing & Advertising."
+    },
+    {
+      "id": "v15008",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « jingles » ?",
+      "choix": [
+        "Logistics",
+        "Marketing & Advertising",
+        "Complaining & Apologizing",
+        "Commerce"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« jingles » figure dans les corrigés du thème Marketing & Advertising."
+    },
+    {
+      "id": "v15009",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « product launch » ?",
+      "choix": [
+        "Dining Out",
+        "Media",
+        "Marketing & Advertising",
+        "Corporate Property"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« product launch » figure dans les corrigés du thème Marketing & Advertising."
+    },
+    {
+      "id": "v15010",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « sex appeal » ?",
+      "choix": [
+        "R&D & Industrialization",
+        "Corporate Property",
+        "Investments",
+        "Marketing & Advertising"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« sex appeal » figure dans les corrigés du thème Marketing & Advertising."
+    },
+    {
+      "id": "v15011",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « subliminal advertising » ?",
+      "choix": [
+        "Products",
+        "Weather",
+        "Graphs",
+        "Marketing & Advertising"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« subliminal advertising » figure dans les corrigés du thème Marketing & Advertising."
+    },
+    {
+      "id": "v15012",
+      "type": "QCM",
+      "question": "Our ____ analysis showed no real threats, but we still should try harder.",
+      "choix": [
+        "PIN",
+        "SWOT",
+        "AGM",
+        "VAT"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Phrase-corrigé du livret : « Our SWOT analysis showed no real threats, but we still should try harder. »"
+    },
+    {
+      "id": "v15013",
+      "type": "QCM",
+      "question": "Their composer has made catchy ____ for thousands of commercials.",
+      "choix": [
+        "jingles",
+        "billboards",
+        "leaflets",
+        "brochures"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Phrase-corrigé du livret : « Their composer has made catchy jingles for thousands of commercials. »"
+    },
+    {
+      "id": "v15014",
+      "type": "QCM",
+      "question": "In addition to the millions of dollars spent on commercials, they had a big product ____.",
+      "choix": [
+        "back out",
+        "launch",
+        "takeover",
+        "shut down"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Phrase-corrigé du livret : « In addition to the millions of dollars spent on commercials, they had a big product launch. »"
+    },
+    {
+      "id": "v15015",
+      "type": "QCM",
+      "question": "____ appeal has long been a tactic to gain the customer's attention.",
+      "choix": [
+        "Sex",
+        "Shelf",
+        "Brand",
+        "Product"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Phrase-corrigé du livret : « Sex appeal has long been a tactic to gain the customer's attention. »"
+    },
+    {
+      "id": "v15016",
+      "type": "QCM",
+      "question": "____ advertising is deemed by many to be an unethical technique.",
+      "choix": [
+        "Window",
+        "Poster",
+        "Subliminal",
+        "Trending"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Phrase-corrigé du livret : « Subliminal advertising is deemed by many to be an unethical technique. »"
+    }
+  ]
+}

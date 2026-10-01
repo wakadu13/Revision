@@ -1,0 +1,5454 @@
+{
+  "titre": "UN Vocabulary – Traduction EN ↔ FR (QCR)",
+  "description": "Tous les mots de la fiche sur l'ONU, synonymes compris (189 mots) : chaque mot en QCR anglais → français, puis français → anglais.",
+  "questions": [
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a breakthrough » ? (plusieurs réponses)",
+      "choix": [
+        "une avancée décisive",
+        "la supervision",
+        "un dispositif",
+        "un modèle",
+        "une percée"
+      ],
+      "reponses": [
+        0,
+        4
+      ],
+      "explication": "a breakthrough = une percée / une avancée décisive."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a discovery » ? (plusieurs réponses)",
+      "choix": [
+        "une détresse",
+        "un gardien",
+        "une découverte",
+        "une trouvaille",
+        "l'intendance"
+      ],
+      "reponses": [
+        2,
+        3
+      ],
+      "explication": "a discovery = une découverte / une trouvaille."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a significant development » ? (plusieurs réponses)",
+      "choix": [
+        "un obstacle",
+        "l'unanimité",
+        "un oubli",
+        "une avancée significative",
+        "une évolution importante"
+      ],
+      "reponses": [
+        3,
+        4
+      ],
+      "explication": "a significant development = une avancée significative / une évolution importante."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a success » ? (plusieurs réponses)",
+      "choix": [
+        "une conception",
+        "la paupérisation",
+        "l'intendance",
+        "un succès",
+        "une réussite"
+      ],
+      "reponses": [
+        3,
+        4
+      ],
+      "explication": "a success = un succès / une réussite."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a deadlock » ? (plusieurs réponses)",
+      "choix": [
+        "une impasse",
+        "l'influence",
+        "un accomplissement",
+        "un blocage",
+        "l'emprise"
+      ],
+      "reponses": [
+        0,
+        3
+      ],
+      "explication": "a deadlock = une impasse / un blocage."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a stalemate » ? (plusieurs réponses)",
+      "choix": [
+        "une situation de blocage",
+        "une impasse",
+        "une affliction",
+        "la puissance",
+        "la paupérisation"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "a stalemate = une impasse / une situation de blocage."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a gridlock » ? (plusieurs réponses)",
+      "choix": [
+        "une calamité",
+        "la gestion responsable",
+        "une paralysie",
+        "un embouteillage",
+        "un blocage",
+        "une avancée significative"
+      ],
+      "reponses": [
+        2,
+        3,
+        4
+      ],
+      "explication": "a gridlock = une paralysie / un blocage / un embouteillage."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a standstill » ? (plusieurs réponses)",
+      "choix": [
+        "un arrêt complet",
+        "une découverte",
+        "une avancée décisive",
+        "l'intendance",
+        "un point mort"
+      ],
+      "reponses": [
+        0,
+        4
+      ],
+      "explication": "a standstill = un arrêt complet / un point mort."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a standoff » ? (plusieurs réponses)",
+      "choix": [
+        "un bras de fer",
+        "une ébauche",
+        "une impasse",
+        "un consensus",
+        "un programme"
+      ],
+      "reponses": [
+        0,
+        2
+      ],
+      "explication": "a standoff = un bras de fer / une impasse."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a lack of » ? (plusieurs réponses)",
+      "choix": [
+        "un manque de",
+        "une absence de",
+        "les grandes lignes",
+        "un avertissement",
+        "la coopération"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "a lack of = un manque de / une absence de."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « an insufficiency » ? (plusieurs réponses)",
+      "choix": [
+        "un embouteillage",
+        "un manque",
+        "un régulateur",
+        "une insuffisance",
+        "un bénéfice inattendu"
+      ],
+      "reponses": [
+        1,
+        3
+      ],
+      "explication": "an insufficiency = une insuffisance / un manque."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a natural disaster » ? (plusieurs réponses)",
+      "choix": [
+        "un désastre naturel",
+        "le pouvoir",
+        "une catastrophe naturelle",
+        "le jackpot",
+        "un embouteillage"
+      ],
+      "reponses": [
+        0,
+        2
+      ],
+      "explication": "a natural disaster = une catastrophe naturelle / un désastre naturel."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a catastrophe » ? (plusieurs réponses)",
+      "choix": [
+        "une catastrophe",
+        "un désastre",
+        "une paralysie",
+        "un contrôleur",
+        "une mine d'or"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "a catastrophe = une catastrophe / un désastre."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a plight » ? (plusieurs réponses)",
+      "choix": [
+        "une détresse",
+        "la collaboration",
+        "un succès",
+        "une percée",
+        "une situation désespérée",
+        "une situation critique"
+      ],
+      "reponses": [
+        0,
+        4,
+        5
+      ],
+      "explication": "a plight = une situation critique / une détresse / une situation désespérée."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a difficulty » ? (plusieurs réponses)",
+      "choix": [
+        "une difficulté",
+        "l'unanimité",
+        "un obstacle",
+        "un consensus",
+        "une trouvaille"
+      ],
+      "reponses": [
+        0,
+        2
+      ],
+      "explication": "a difficulty = une difficulté / un obstacle."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a retaliation » ? (plusieurs réponses)",
+      "choix": [
+        "une riposte",
+        "l'ascendant",
+        "des représailles",
+        "une impasse",
+        "un dispositif"
+      ],
+      "reponses": [
+        0,
+        2
+      ],
+      "explication": "a retaliation = des représailles / une riposte."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « an act of getting even » ? (plusieurs réponses)",
+      "choix": [
+        "l'unanimité",
+        "un acte de vengeance",
+        "un accomplissement",
+        "une revanche",
+        "un projet"
+      ],
+      "reponses": [
+        1,
+        3
+      ],
+      "explication": "an act of getting even = un acte de vengeance / une revanche."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a scourge » ? (plusieurs réponses)",
+      "choix": [
+        "un fléau",
+        "un oubli",
+        "la coopération",
+        "une aubaine",
+        "une calamité"
+      ],
+      "reponses": [
+        0,
+        4
+      ],
+      "explication": "a scourge = un fléau / une calamité."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a plague » ? (plusieurs réponses)",
+      "choix": [
+        "une peste",
+        "une impasse",
+        "un fléau",
+        "un projet",
+        "le contrôle"
+      ],
+      "reponses": [
+        0,
+        2
+      ],
+      "explication": "a plague = une peste / un fléau."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a curse » ? (plusieurs réponses)",
+      "choix": [
+        "le jackpot",
+        "un arrêt complet",
+        "une malédiction",
+        "la coopération",
+        "un fléau"
+      ],
+      "reponses": [
+        2,
+        4
+      ],
+      "explication": "a curse = une malédiction / un fléau."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « an affliction » ? (plusieurs réponses)",
+      "choix": [
+        "un tuteur",
+        "une affliction",
+        "une revanche",
+        "l'administration fiduciaire",
+        "une souffrance"
+      ],
+      "reponses": [
+        1,
+        4
+      ],
+      "explication": "an affliction = une affliction / une souffrance."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a bane » ? (plusieurs réponses)",
+      "choix": [
+        "une plaie",
+        "un point mort",
+        "un fléau",
+        "une découverte",
+        "le gros lot"
+      ],
+      "reponses": [
+        0,
+        2
+      ],
+      "explication": "a bane = un fléau / une plaie."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a blight » ? (plusieurs réponses)",
+      "choix": [
+        "un succès",
+        "un fléau",
+        "une plaie",
+        "un oubli",
+        "une mine d'or"
+      ],
+      "reponses": [
+        1,
+        2
+      ],
+      "explication": "a blight = un fléau / une plaie."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « an agreement » ? (plusieurs réponses)",
+      "choix": [
+        "une mine d'or",
+        "un superviseur",
+        "un organisme de surveillance",
+        "une entente",
+        "un accord"
+      ],
+      "reponses": [
+        3,
+        4
+      ],
+      "explication": "an agreement = un accord / une entente."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a consensus » ? (plusieurs réponses)",
+      "choix": [
+        "un accord général",
+        "la prudence",
+        "le jackpot",
+        "un consensus",
+        "un programme"
+      ],
+      "reponses": [
+        0,
+        3
+      ],
+      "explication": "a consensus = un consensus / un accord général."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « an accord » ? (plusieurs réponses)",
+      "choix": [
+        "une entente",
+        "une autorité de régulation",
+        "le gros lot",
+        "une catastrophe",
+        "un accord"
+      ],
+      "reponses": [
+        0,
+        4
+      ],
+      "explication": "an accord = un accord / une entente."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « unanimity » ? (plusieurs réponses)",
+      "choix": [
+        "l'unanimité",
+        "une impasse",
+        "la garde",
+        "un accord unanime",
+        "un arrêt complet"
+      ],
+      "reponses": [
+        0,
+        3
+      ],
+      "explication": "unanimity = l'unanimité / un accord unanime."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « clout » ? (plusieurs réponses)",
+      "choix": [
+        "un trésor",
+        "l'influence",
+        "une affliction",
+        "le poids politique",
+        "une trouvaille"
+      ],
+      "reponses": [
+        1,
+        3
+      ],
+      "explication": "clout = le poids politique / l'influence."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « influence » ? (plusieurs réponses)",
+      "choix": [
+        "une insuffisance",
+        "une mine d'or",
+        "un plan directeur",
+        "l'ascendant",
+        "l'influence"
+      ],
+      "reponses": [
+        3,
+        4
+      ],
+      "explication": "influence = l'influence / l'ascendant."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « sway » ? (plusieurs réponses)",
+      "choix": [
+        "un fléau",
+        "l'influence",
+        "une mine d'or",
+        "l'emprise",
+        "un avertissement"
+      ],
+      "reponses": [
+        1,
+        3
+      ],
+      "explication": "sway = l'emprise / l'influence."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « power » ? (plusieurs réponses)",
+      "choix": [
+        "la puissance",
+        "le pouvoir",
+        "une réserve",
+        "un arrêt complet",
+        "la collaboration"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "power = le pouvoir / la puissance."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « leverage » ? (plusieurs réponses)",
+      "choix": [
+        "une plaie",
+        "une affliction",
+        "un moyen de pression",
+        "un fléau",
+        "un levier"
+      ],
+      "reponses": [
+        2,
+        4
+      ],
+      "explication": "leverage = un moyen de pression / un levier."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « authority » ? (plusieurs réponses)",
+      "choix": [
+        "un brouillon",
+        "l'autorité",
+        "un dessin",
+        "une ébauche",
+        "le pouvoir"
+      ],
+      "reponses": [
+        1,
+        4
+      ],
+      "explication": "authority = l'autorité / le pouvoir."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « trusteeship » ? (plusieurs réponses)",
+      "choix": [
+        "une paralysie",
+        "l'administration fiduciaire",
+        "une plaie",
+        "la tutelle",
+        "un bénéfice inattendu"
+      ],
+      "reponses": [
+        1,
+        3
+      ],
+      "explication": "trusteeship = la tutelle / l'administration fiduciaire."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « stewardship » ? (plusieurs réponses)",
+      "choix": [
+        "la gestion responsable",
+        "un fléau",
+        "l'intendance",
+        "une malédiction",
+        "un brouillon"
+      ],
+      "reponses": [
+        0,
+        2
+      ],
+      "explication": "stewardship = la gestion responsable / l'intendance."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « guardianship » ? (plusieurs réponses)",
+      "choix": [
+        "une affliction",
+        "un dessin",
+        "le jackpot",
+        "la garde",
+        "la tutelle"
+      ],
+      "reponses": [
+        3,
+        4
+      ],
+      "explication": "guardianship = la tutelle / la garde."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « custodianship » ? (plusieurs réponses)",
+      "choix": [
+        "un cadre",
+        "un succès",
+        "la conservation",
+        "la garde",
+        "une mine d'or"
+      ],
+      "reponses": [
+        2,
+        3
+      ],
+      "explication": "custodianship = la garde / la conservation."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « oversight » ? (plusieurs réponses)",
+      "choix": [
+        "un oubli",
+        "un accord général",
+        "la supervision",
+        "le jackpot",
+        "le contrôle",
+        "une avancée significative"
+      ],
+      "reponses": [
+        0,
+        2,
+        4
+      ],
+      "explication": "oversight = la supervision / le contrôle / un oubli."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a watchdog » ? (plusieurs réponses)",
+      "choix": [
+        "un chien de garde",
+        "un organisme de surveillance",
+        "un projet",
+        "une calamité",
+        "le travail en commun"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "a watchdog = un organisme de surveillance / un chien de garde."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a guardian » ? (plusieurs réponses)",
+      "choix": [
+        "un accord unanime",
+        "un bienfait",
+        "un avertissement",
+        "un tuteur",
+        "un gardien"
+      ],
+      "reponses": [
+        3,
+        4
+      ],
+      "explication": "a guardian = un gardien / un tuteur."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « an overseer » ? (plusieurs réponses)",
+      "choix": [
+        "un superviseur",
+        "une structure",
+        "un surveillant",
+        "un arrêt complet",
+        "une ébauche"
+      ],
+      "reponses": [
+        0,
+        2
+      ],
+      "explication": "an overseer = un surveillant / un superviseur."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a monitor » ? (plusieurs réponses)",
+      "choix": [
+        "l'unanimité",
+        "un observateur",
+        "l'appauvrissement",
+        "un contrôleur",
+        "un accomplissement"
+      ],
+      "reponses": [
+        1,
+        3
+      ],
+      "explication": "a monitor = un observateur / un contrôleur."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a regulator » ? (plusieurs réponses)",
+      "choix": [
+        "un embouteillage",
+        "un régulateur",
+        "la collaboration",
+        "un consensus",
+        "une autorité de régulation"
+      ],
+      "reponses": [
+        1,
+        4
+      ],
+      "explication": "a regulator = un régulateur / une autorité de régulation."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a supervisor » ? (plusieurs réponses)",
+      "choix": [
+        "un responsable",
+        "une source de richesse",
+        "un superviseur",
+        "un programme",
+        "un fléau"
+      ],
+      "reponses": [
+        0,
+        2
+      ],
+      "explication": "a supervisor = un superviseur / un responsable."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a blueprint » ? (plusieurs réponses)",
+      "choix": [
+        "un modèle",
+        "un plan directeur",
+        "une évolution importante",
+        "un gardien",
+        "un superviseur"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "a blueprint = un plan directeur / un modèle."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a plan » ? (plusieurs réponses)",
+      "choix": [
+        "une calamité",
+        "la supervision",
+        "un projet",
+        "un plan",
+        "une avancée significative"
+      ],
+      "reponses": [
+        2,
+        3
+      ],
+      "explication": "a plan = un plan / un projet."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a design » ? (plusieurs réponses)",
+      "choix": [
+        "des représailles",
+        "une conception",
+        "un plan",
+        "une malédiction",
+        "la supervision",
+        "un dessin"
+      ],
+      "reponses": [
+        1,
+        2,
+        5
+      ],
+      "explication": "a design = une conception / un dessin / un plan."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « an outline » ? (plusieurs réponses)",
+      "choix": [
+        "une ébauche",
+        "une difficulté",
+        "les grandes lignes",
+        "l'intendance",
+        "un désastre"
+      ],
+      "reponses": [
+        0,
+        2
+      ],
+      "explication": "an outline = les grandes lignes / une ébauche."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a scheme » ? (plusieurs réponses)",
+      "choix": [
+        "un dispositif",
+        "le poids politique",
+        "un plan",
+        "un acte de vengeance",
+        "un blocage",
+        "un programme"
+      ],
+      "reponses": [
+        0,
+        2,
+        5
+      ],
+      "explication": "a scheme = un programme / un dispositif / un plan."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a draft » ? (plusieurs réponses)",
+      "choix": [
+        "un brouillon",
+        "l'unanimité",
+        "un avant-projet",
+        "une ébauche",
+        "un désastre",
+        "un régulateur"
+      ],
+      "reponses": [
+        0,
+        2,
+        3
+      ],
+      "explication": "a draft = un brouillon / une ébauche / un avant-projet."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a framework » ? (plusieurs réponses)",
+      "choix": [
+        "un cadre",
+        "une calamité",
+        "un succès",
+        "une structure",
+        "une autorité de régulation"
+      ],
+      "reponses": [
+        0,
+        3
+      ],
+      "explication": "a framework = un cadre / une structure."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a bonanza » ? (plusieurs réponses)",
+      "choix": [
+        "une catastrophe naturelle",
+        "un plan directeur",
+        "une aubaine",
+        "les grandes lignes",
+        "une mine d'or"
+      ],
+      "reponses": [
+        2,
+        4
+      ],
+      "explication": "a bonanza = une aubaine / une mine d'or."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a windfall » ? (plusieurs réponses)",
+      "choix": [
+        "la collaboration",
+        "un plan",
+        "une aubaine",
+        "un dessin",
+        "un bénéfice inattendu"
+      ],
+      "reponses": [
+        2,
+        4
+      ],
+      "explication": "a windfall = une aubaine / un bénéfice inattendu."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a jackpot » ? (plusieurs réponses)",
+      "choix": [
+        "un consensus",
+        "la paupérisation",
+        "le gros lot",
+        "une réserve",
+        "le jackpot"
+      ],
+      "reponses": [
+        2,
+        4
+      ],
+      "explication": "a jackpot = le gros lot / le jackpot."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a treasure trove » ? (plusieurs réponses)",
+      "choix": [
+        "la prudence",
+        "un accord unanime",
+        "un trésor",
+        "un programme",
+        "une mine d'or"
+      ],
+      "reponses": [
+        2,
+        4
+      ],
+      "explication": "a treasure trove = une mine d'or / un trésor."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a boon » ? (plusieurs réponses)",
+      "choix": [
+        "une aubaine",
+        "une réserve",
+        "un bienfait",
+        "la tutelle",
+        "un accord unanime"
+      ],
+      "reponses": [
+        0,
+        2
+      ],
+      "explication": "a boon = une aubaine / un bienfait."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a goldmine » ? (plusieurs réponses)",
+      "choix": [
+        "un fléau",
+        "une source de richesse",
+        "un dessin",
+        "les grandes lignes",
+        "une mine d'or"
+      ],
+      "reponses": [
+        1,
+        4
+      ],
+      "explication": "a goldmine = une mine d'or / une source de richesse."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a caveat » ? (plusieurs réponses)",
+      "choix": [
+        "un obstacle",
+        "un tuteur",
+        "une réserve",
+        "un oubli",
+        "une mise en garde"
+      ],
+      "reponses": [
+        2,
+        4
+      ],
+      "explication": "a caveat = une mise en garde / une réserve."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a warning » ? (plusieurs réponses)",
+      "choix": [
+        "un régulateur",
+        "la misère",
+        "l'unanimité",
+        "un avertissement",
+        "une mise en garde"
+      ],
+      "reponses": [
+        3,
+        4
+      ],
+      "explication": "a warning = un avertissement / une mise en garde."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a caution » ? (plusieurs réponses)",
+      "choix": [
+        "une mise en garde",
+        "l'emprise",
+        "un bienfait",
+        "une souffrance",
+        "la prudence",
+        "un avertissement"
+      ],
+      "reponses": [
+        0,
+        4,
+        5
+      ],
+      "explication": "a caution = une mise en garde / un avertissement / la prudence."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « an achievement » ? (plusieurs réponses)",
+      "choix": [
+        "une réussite",
+        "un accomplissement",
+        "un moyen de pression",
+        "la supervision",
+        "une autorité de régulation"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "an achievement = une réussite / un accomplissement."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « an accomplishment » ? (plusieurs réponses)",
+      "choix": [
+        "la coopération",
+        "l'intendance",
+        "un accomplissement",
+        "un brouillon",
+        "une réussite"
+      ],
+      "reponses": [
+        2,
+        4
+      ],
+      "explication": "an accomplishment = un accomplissement / une réussite."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « collaboration » ? (plusieurs réponses)",
+      "choix": [
+        "le travail en commun",
+        "une mine d'or",
+        "la misère",
+        "la collaboration",
+        "l'appauvrissement"
+      ],
+      "reponses": [
+        0,
+        3
+      ],
+      "explication": "collaboration = la collaboration / le travail en commun."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « cooperation » ? (plusieurs réponses)",
+      "choix": [
+        "la puissance",
+        "la conservation",
+        "la collaboration",
+        "la coopération",
+        "un bénéfice inattendu"
+      ],
+      "reponses": [
+        2,
+        3
+      ],
+      "explication": "cooperation = la coopération / la collaboration."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « poverty » ? (plusieurs réponses)",
+      "choix": [
+        "une situation de blocage",
+        "un bras de fer",
+        "la tutelle",
+        "la misère",
+        "la pauvreté"
+      ],
+      "reponses": [
+        3,
+        4
+      ],
+      "explication": "poverty = la pauvreté / la misère."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « impoverishment » ? (plusieurs réponses)",
+      "choix": [
+        "l'appauvrissement",
+        "les grandes lignes",
+        "l'intendance",
+        "un blocage",
+        "la paupérisation"
+      ],
+      "reponses": [
+        0,
+        4
+      ],
+      "explication": "impoverishment = l'appauvrissement / la paupérisation."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « extensive » ? (plusieurs réponses)",
+      "choix": [
+        "vaste",
+        "en train de s'effondrer",
+        "qui s'écroule",
+        "étendu",
+        "morose",
+        "considérable"
+      ],
+      "reponses": [
+        0,
+        3,
+        5
+      ],
+      "explication": "extensive = vaste / étendu / considérable."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « substantial » ? (plusieurs réponses)",
+      "choix": [
+        "considérable",
+        "raté",
+        "important",
+        "brusque",
+        "franc",
+        "substantiel"
+      ],
+      "reponses": [
+        0,
+        2,
+        5
+      ],
+      "explication": "substantial = substantiel / considérable / important."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « imploding » ? (plusieurs réponses)",
+      "choix": [
+        "immense",
+        "en train de s'effondrer",
+        "prédominant",
+        "en pleine implosion",
+        "primordial"
+      ],
+      "reponses": [
+        1,
+        3
+      ],
+      "explication": "imploding = en pleine implosion / en train de s'effondrer."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « collapsing » ? (plusieurs réponses)",
+      "choix": [
+        "qui s'écroule",
+        "en train de s'effondrer",
+        "qui a son franc-parler",
+        "substantiel",
+        "principal"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "collapsing = en train de s'effondrer / qui s'écroule."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « overriding » ? (plusieurs réponses)",
+      "choix": [
+        "ennuyeux",
+        "primordial",
+        "en train de s'effondrer",
+        "honnête",
+        "prépondérant"
+      ],
+      "reponses": [
+        1,
+        4
+      ],
+      "explication": "overriding = primordial / prépondérant."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « paramount » ? (plusieurs réponses)",
+      "choix": [
+        "déprimant",
+        "brusque",
+        "d'une importance capitale",
+        "sans détour",
+        "primordial"
+      ],
+      "reponses": [
+        2,
+        4
+      ],
+      "explication": "paramount = primordial / d'une importance capitale."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « predominant » ? (plusieurs réponses)",
+      "choix": [
+        "prépondérant",
+        "prédominant",
+        "passé sous silence",
+        "direct",
+        "délaissé"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "predominant = prédominant / prépondérant."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « supreme » ? (plusieurs réponses)",
+      "choix": [
+        "peu prometteur",
+        "direct",
+        "suprême",
+        "souverain",
+        "grave"
+      ],
+      "reponses": [
+        2,
+        3
+      ],
+      "explication": "supreme = suprême / souverain."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « primary » ? (plusieurs réponses)",
+      "choix": [
+        "principal",
+        "premier",
+        "brusque",
+        "franc",
+        "manqué"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "primary = principal / premier."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « outspoken » ? (plusieurs réponses)",
+      "choix": [
+        "morne",
+        "délaissé",
+        "qui a son franc-parler",
+        "inédit",
+        "direct"
+      ],
+      "reponses": [
+        2,
+        4
+      ],
+      "explication": "outspoken = qui a son franc-parler / direct."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « candid » ? (plusieurs réponses)",
+      "choix": [
+        "sincère",
+        "franc",
+        "en pleine implosion",
+        "non pris en compte",
+        "oublié"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "candid = franc / sincère."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « frank » ? (plusieurs réponses)",
+      "choix": [
+        "honnête",
+        "qui s'écroule",
+        "considérable",
+        "inédit",
+        "franc"
+      ],
+      "reponses": [
+        0,
+        4
+      ],
+      "explication": "frank = franc / honnête."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « forthright » ? (plusieurs réponses)",
+      "choix": [
+        "délaissé",
+        "passé sous silence",
+        "direct",
+        "franc",
+        "souverain"
+      ],
+      "reponses": [
+        2,
+        3
+      ],
+      "explication": "forthright = franc / direct."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « blunt » ? (plusieurs réponses)",
+      "choix": [
+        "brusque",
+        "vaste",
+        "direct",
+        "sans détour",
+        "en pleine implosion",
+        "important"
+      ],
+      "reponses": [
+        0,
+        2,
+        3
+      ],
+      "explication": "blunt = brusque / sans détour / direct."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « direct » ? (plusieurs réponses)",
+      "choix": [
+        "extraordinaire",
+        "prépondérant",
+        "direct",
+        "franc",
+        "morose"
+      ],
+      "reponses": [
+        2,
+        3
+      ],
+      "explication": "direct = direct / franc."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « gloomy » ? (plusieurs réponses)",
+      "choix": [
+        "morose",
+        "extraordinaire",
+        "sans précédent",
+        "sombre",
+        "sincère"
+      ],
+      "reponses": [
+        0,
+        3
+      ],
+      "explication": "gloomy = sombre / morose."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « bleak » ? (plusieurs réponses)",
+      "choix": [
+        "considérable",
+        "d'une importance capitale",
+        "sombre",
+        "en pleine implosion",
+        "peu prometteur"
+      ],
+      "reponses": [
+        2,
+        4
+      ],
+      "explication": "bleak = sombre / peu prometteur."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « dismal » ? (plusieurs réponses)",
+      "choix": [
+        "direct",
+        "qui s'écroule",
+        "substantiel",
+        "lamentable",
+        "lugubre"
+      ],
+      "reponses": [
+        3,
+        4
+      ],
+      "explication": "dismal = lugubre / lamentable."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « dreary » ? (plusieurs réponses)",
+      "choix": [
+        "ennuyeux",
+        "raté",
+        "brusque",
+        "morne",
+        "délaissé"
+      ],
+      "reponses": [
+        0,
+        3
+      ],
+      "explication": "dreary = morne / ennuyeux."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « somber » ? (plusieurs réponses)",
+      "choix": [
+        "manqué",
+        "sombre",
+        "délaissé",
+        "grave",
+        "retentissant"
+      ],
+      "reponses": [
+        1,
+        3
+      ],
+      "explication": "somber = sombre / grave."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « depressing » ? (plusieurs réponses)",
+      "choix": [
+        "sans détour",
+        "important",
+        "démoralisant",
+        "déprimant",
+        "raté"
+      ],
+      "reponses": [
+        2,
+        3
+      ],
+      "explication": "depressing = déprimant / démoralisant."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « resounding » ? (plusieurs réponses)",
+      "choix": [
+        "omis",
+        "direct",
+        "qui s'écroule",
+        "retentissant",
+        "éclatant"
+      ],
+      "reponses": [
+        3,
+        4
+      ],
+      "explication": "resounding = retentissant / éclatant."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « tremendous » ? (plusieurs réponses)",
+      "choix": [
+        "oublié",
+        "franc",
+        "énorme",
+        "formidable",
+        "honnête"
+      ],
+      "reponses": [
+        2,
+        3
+      ],
+      "explication": "tremendous = énorme / formidable."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « huge » ? (plusieurs réponses)",
+      "choix": [
+        "franc",
+        "morne",
+        "direct",
+        "immense",
+        "énorme"
+      ],
+      "reponses": [
+        3,
+        4
+      ],
+      "explication": "huge = énorme / immense."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « unprecedented » ? (plusieurs réponses)",
+      "choix": [
+        "sans précédent",
+        "morose",
+        "inédit",
+        "peu prometteur",
+        "grave"
+      ],
+      "reponses": [
+        0,
+        2
+      ],
+      "explication": "unprecedented = sans précédent / inédit."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « extraordinary » ? (plusieurs réponses)",
+      "choix": [
+        "qui s'écroule",
+        "extraordinaire",
+        "démoralisant",
+        "exceptionnel",
+        "sombre"
+      ],
+      "reponses": [
+        1,
+        3
+      ],
+      "explication": "extraordinary = extraordinaire / exceptionnel."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « overlooked » ? (plusieurs réponses)",
+      "choix": [
+        "lamentable",
+        "oublié",
+        "retentissant",
+        "négligé",
+        "considérable"
+      ],
+      "reponses": [
+        1,
+        3
+      ],
+      "explication": "overlooked = négligé / oublié."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « neglected » ? (plusieurs réponses)",
+      "choix": [
+        "grave",
+        "primordial",
+        "inédit",
+        "négligé",
+        "délaissé"
+      ],
+      "reponses": [
+        3,
+        4
+      ],
+      "explication": "neglected = négligé / délaissé."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « ignored » ? (plusieurs réponses)",
+      "choix": [
+        "ignoré",
+        "sincère",
+        "important",
+        "passé sous silence",
+        "exceptionnel"
+      ],
+      "reponses": [
+        0,
+        3
+      ],
+      "explication": "ignored = ignoré / passé sous silence."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « missed » ? (plusieurs réponses)",
+      "choix": [
+        "en train de s'effondrer",
+        "manqué",
+        "raté",
+        "honnête",
+        "premier"
+      ],
+      "reponses": [
+        1,
+        2
+      ],
+      "explication": "missed = manqué / raté."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « disregarded » ? (plusieurs réponses)",
+      "choix": [
+        "extraordinaire",
+        "non pris en compte",
+        "ignoré",
+        "sans détour",
+        "brusque"
+      ],
+      "reponses": [
+        1,
+        2
+      ],
+      "explication": "disregarded = non pris en compte / ignoré."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « omitted » ? (plusieurs réponses)",
+      "choix": [
+        "primordial",
+        "peu prometteur",
+        "oublié",
+        "omis",
+        "prédominant"
+      ],
+      "reponses": [
+        2,
+        3
+      ],
+      "explication": "omitted = omis / oublié."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to come unstuck » ? (plusieurs réponses)",
+      "choix": [
+        "échouer complètement",
+        "gêner",
+        "inverser",
+        "tomber à l'eau",
+        "supprimer (des emplois)"
+      ],
+      "reponses": [
+        0,
+        3
+      ],
+      "explication": "to come unstuck = tomber à l'eau / échouer complètement."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to fail completely » ? (plusieurs réponses)",
+      "choix": [
+        "faire respecter",
+        "entrer en éruption",
+        "subir un échec total",
+        "échouer complètement",
+        "souligner"
+      ],
+      "reponses": [
+        2,
+        3
+      ],
+      "explication": "to fail completely = échouer complètement / subir un échec total."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to defuse » ? (plusieurs réponses)",
+      "choix": [
+        "préserver la paix",
+        "apaiser",
+        "désamorcer",
+        "souligner",
+        "commencer"
+      ],
+      "reponses": [
+        1,
+        2
+      ],
+      "explication": "to defuse = désamorcer / apaiser."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to embark upon » ? (plusieurs réponses)",
+      "choix": [
+        "se délester de",
+        "annuler",
+        "se lancer dans",
+        "entreprendre",
+        "brûler vivement"
+      ],
+      "reponses": [
+        2,
+        3
+      ],
+      "explication": "to embark upon = se lancer dans / entreprendre."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to start » ? (plusieurs réponses)",
+      "choix": [
+        "revenir sur",
+        "commencer",
+        "jeter",
+        "préserver",
+        "démarrer"
+      ],
+      "reponses": [
+        1,
+        4
+      ],
+      "explication": "to start = commencer / démarrer."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to begin » ? (plusieurs réponses)",
+      "choix": [
+        "se conformer à",
+        "commencer",
+        "traiter",
+        "débuter",
+        "obéir à"
+      ],
+      "reponses": [
+        1,
+        3
+      ],
+      "explication": "to begin = commencer / débuter."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to enforce » ? (plusieurs réponses)",
+      "choix": [
+        "faire appliquer",
+        "prospérer de plus en plus",
+        "apaiser",
+        "faire respecter",
+        "vivre plus longtemps que"
+      ],
+      "reponses": [
+        0,
+        3
+      ],
+      "explication": "to enforce = faire appliquer / faire respecter."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to escalate » ? (plusieurs réponses)",
+      "choix": [
+        "s'intensifier",
+        "s'aggraver",
+        "avoir du succès",
+        "s'enliser",
+        "se délester de",
+        "dégénérer"
+      ],
+      "reponses": [
+        0,
+        1,
+        5
+      ],
+      "explication": "to escalate = s'intensifier / dégénérer / s'aggraver."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to worsen » ? (plusieurs réponses)",
+      "choix": [
+        "empirer",
+        "s'aggraver",
+        "laisser tomber",
+        "mettre en danger",
+        "maintenir la paix"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "to worsen = s'aggraver / empirer."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to increase » ? (plusieurs réponses)",
+      "choix": [
+        "s'accroître",
+        "mettre en danger",
+        "se fier à",
+        "augmenter",
+        "s'attaquer à"
+      ],
+      "reponses": [
+        0,
+        3
+      ],
+      "explication": "to increase = augmenter / s'accroître."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to aggravate » ? (plusieurs réponses)",
+      "choix": [
+        "aggraver",
+        "commencer",
+        "s'éloigner",
+        "envenimer",
+        "freiner"
+      ],
+      "reponses": [
+        0,
+        3
+      ],
+      "explication": "to aggravate = aggraver / envenimer."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to fulfil » ? (plusieurs réponses)",
+      "choix": [
+        "s'aggraver",
+        "remplir (une mission)",
+        "réaliser",
+        "dégénérer",
+        "accomplir",
+        "revenir sur"
+      ],
+      "reponses": [
+        1,
+        2,
+        4
+      ],
+      "explication": "to fulfil = réaliser / accomplir / remplir (une mission)."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to realize » ? (plusieurs réponses)",
+      "choix": [
+        "mettre l'accent sur",
+        "réaliser",
+        "supporter",
+        "consolider",
+        "concrétiser",
+        "se rendre compte"
+      ],
+      "reponses": [
+        1,
+        4,
+        5
+      ],
+      "explication": "to realize = réaliser / concrétiser / se rendre compte."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to go from strength to strength » ? (plusieurs réponses)",
+      "choix": [
+        "aller de succès en succès",
+        "annuler",
+        "persister",
+        "prospérer de plus en plus",
+        "quitter"
+      ],
+      "reponses": [
+        0,
+        3
+      ],
+      "explication": "to go from strength to strength = aller de succès en succès / prospérer de plus en plus."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to highlight » ? (plusieurs réponses)",
+      "choix": [
+        "souligner",
+        "mettre en évidence",
+        "apaiser",
+        "inverser",
+        "survivre"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "to highlight = souligner / mettre en évidence."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to underline » ? (plusieurs réponses)",
+      "choix": [
+        "conserver",
+        "se fier à",
+        "souligner",
+        "mettre l'accent sur",
+        "renier"
+      ],
+      "reponses": [
+        2,
+        3
+      ],
+      "explication": "to underline = souligner / mettre l'accent sur."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to make it » ? (plusieurs réponses)",
+      "choix": [
+        "flamber",
+        "y arriver",
+        "réussir",
+        "préserver la paix",
+        "persister"
+      ],
+      "reponses": [
+        1,
+        2
+      ],
+      "explication": "to make it = y arriver / réussir."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to succeed » ? (plusieurs réponses)",
+      "choix": [
+        "avoir du succès",
+        "déclencher",
+        "réussir",
+        "relâcher",
+        "atténuer"
+      ],
+      "reponses": [
+        0,
+        2
+      ],
+      "explication": "to succeed = réussir / avoir du succès."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to maintain » ? (plusieurs réponses)",
+      "choix": [
+        "régler",
+        "quitter",
+        "maintenir",
+        "préserver",
+        "s'intensifier"
+      ],
+      "reponses": [
+        2,
+        3
+      ],
+      "explication": "to maintain = maintenir / préserver."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to preserve » ? (plusieurs réponses)",
+      "choix": [
+        "conserver",
+        "dégénérer",
+        "vaincre",
+        "s'enliser",
+        "préserver"
+      ],
+      "reponses": [
+        0,
+        4
+      ],
+      "explication": "to preserve = préserver / conserver."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to preserve peace » ? (plusieurs réponses)",
+      "choix": [
+        "croire en",
+        "maintenir la paix",
+        "abandonner",
+        "préserver la paix",
+        "faire appliquer"
+      ],
+      "reponses": [
+        1,
+        3
+      ],
+      "explication": "to preserve peace = préserver la paix / maintenir la paix."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to mitigate » ? (plusieurs réponses)",
+      "choix": [
+        "limiter",
+        "atténuer",
+        "débuter",
+        "survivre",
+        "laisser tomber"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "to mitigate = atténuer / limiter."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to alleviate » ? (plusieurs réponses)",
+      "choix": [
+        "soulager",
+        "consolider",
+        "commencer",
+        "atténuer",
+        "mettre en danger"
+      ],
+      "reponses": [
+        0,
+        3
+      ],
+      "explication": "to alleviate = soulager / atténuer."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to overcome » ? (plusieurs réponses)",
+      "choix": [
+        "abandonner",
+        "subir un échec total",
+        "vaincre",
+        "faire appliquer",
+        "surmonter"
+      ],
+      "reponses": [
+        2,
+        4
+      ],
+      "explication": "to overcome = surmonter / vaincre."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to deal with » ? (plusieurs réponses)",
+      "choix": [
+        "flamber",
+        "gérer",
+        "faire face à",
+        "s'occuper de",
+        "vivre plus longtemps que",
+        "limiter"
+      ],
+      "reponses": [
+        1,
+        2,
+        3
+      ],
+      "explication": "to deal with = gérer / s'occuper de / faire face à."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to respect » ? (plusieurs réponses)",
+      "choix": [
+        "honorer",
+        "tomber à l'eau",
+        "prospérer de plus en plus",
+        "respecter",
+        "aggraver"
+      ],
+      "reponses": [
+        0,
+        3
+      ],
+      "explication": "to respect = respecter / honorer."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to obey » ? (plusieurs réponses)",
+      "choix": [
+        "résister à",
+        "soulager",
+        "se conformer à",
+        "obéir à",
+        "supprimer (des emplois)"
+      ],
+      "reponses": [
+        2,
+        3
+      ],
+      "explication": "to obey = obéir à / se conformer à."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to reverse » ? (plusieurs réponses)",
+      "choix": [
+        "renforcer",
+        "obéir à",
+        "inverser",
+        "revenir sur",
+        "y arriver",
+        "annuler"
+      ],
+      "reponses": [
+        2,
+        3,
+        5
+      ],
+      "explication": "to reverse = revenir sur / annuler / inverser."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to go back on » ? (plusieurs réponses)",
+      "choix": [
+        "remplir (une mission)",
+        "éclater",
+        "revenir sur",
+        "renier",
+        "mettre l'accent sur"
+      ],
+      "reponses": [
+        2,
+        3
+      ],
+      "explication": "to go back on = revenir sur / renier."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to settle » ? (plusieurs réponses)",
+      "choix": [
+        "s'enliser",
+        "régler",
+        "entrer en éruption",
+        "résoudre",
+        "brûler vivement"
+      ],
+      "reponses": [
+        1,
+        3
+      ],
+      "explication": "to settle = régler / résoudre."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to shed » ? (plusieurs réponses)",
+      "choix": [
+        "résoudre",
+        "supprimer (des emplois)",
+        "se débarrasser de",
+        "entreprendre",
+        "entrer en éruption"
+      ],
+      "reponses": [
+        1,
+        2
+      ],
+      "explication": "to shed = se débarrasser de / supprimer (des emplois)."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to discard » ? (plusieurs réponses)",
+      "choix": [
+        "se débarrasser de",
+        "jeter",
+        "surmonter",
+        "entreprendre",
+        "désamorcer"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "to discard = jeter / se débarrasser de."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to cast off » ? (plusieurs réponses)",
+      "choix": [
+        "durer plus longtemps que",
+        "subir un échec total",
+        "prospérer de plus en plus",
+        "se défaire de",
+        "rejeter"
+      ],
+      "reponses": [
+        3,
+        4
+      ],
+      "explication": "to cast off = rejeter / se défaire de."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to drop » ? (plusieurs réponses)",
+      "choix": [
+        "laisser tomber",
+        "remplir (une mission)",
+        "augmenter",
+        "atténuer",
+        "abandonner"
+      ],
+      "reponses": [
+        0,
+        4
+      ],
+      "explication": "to drop = laisser tomber / abandonner."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to release » ? (plusieurs réponses)",
+      "choix": [
+        "dégénérer",
+        "bloquer",
+        "libérer",
+        "relâcher",
+        "conserver"
+      ],
+      "reponses": [
+        2,
+        3
+      ],
+      "explication": "to release = libérer / relâcher."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to jettison » ? (plusieurs réponses)",
+      "choix": [
+        "larguer",
+        "y arriver",
+        "se délester de",
+        "aller de succès en succès",
+        "honorer"
+      ],
+      "reponses": [
+        0,
+        2
+      ],
+      "explication": "to jettison = larguer / se délester de."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to tackle » ? (plusieurs réponses)",
+      "choix": [
+        "durer",
+        "aborder",
+        "abandonner",
+        "empirer",
+        "s'attaquer à"
+      ],
+      "reponses": [
+        1,
+        4
+      ],
+      "explication": "to tackle = s'attaquer à / aborder."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to address » ? (plusieurs réponses)",
+      "choix": [
+        "aborder",
+        "rejeter",
+        "se fier à",
+        "débuter",
+        "traiter"
+      ],
+      "reponses": [
+        0,
+        4
+      ],
+      "explication": "to address = aborder / traiter."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to confront » ? (plusieurs réponses)",
+      "choix": [
+        "affronter",
+        "renforcer",
+        "avoir foi en",
+        "faire face à",
+        "consolider"
+      ],
+      "reponses": [
+        0,
+        3
+      ],
+      "explication": "to confront = affronter / faire face à."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to grapple with » ? (plusieurs réponses)",
+      "choix": [
+        "mettre l'accent sur",
+        "s'attaquer à",
+        "entraver",
+        "se débattre avec",
+        "maintenir"
+      ],
+      "reponses": [
+        1,
+        3
+      ],
+      "explication": "to grapple with = se débattre avec / s'attaquer à."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to take on » ? (plusieurs réponses)",
+      "choix": [
+        "flamber",
+        "se charger de",
+        "préserver la paix",
+        "survivre à",
+        "s'attaquer à"
+      ],
+      "reponses": [
+        1,
+        4
+      ],
+      "explication": "to take on = s'attaquer à / se charger de."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to flare » ? (plusieurs réponses)",
+      "choix": [
+        "avoir foi en",
+        "laisser tomber",
+        "bloquer",
+        "s'embraser",
+        "flamber"
+      ],
+      "reponses": [
+        3,
+        4
+      ],
+      "explication": "to flare = s'embraser / flamber."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to blaze » ? (plusieurs réponses)",
+      "choix": [
+        "libérer",
+        "préserver la paix",
+        "brûler vivement",
+        "flamber",
+        "perdurer"
+      ],
+      "reponses": [
+        2,
+        3
+      ],
+      "explication": "to blaze = flamber / brûler vivement."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to erupt » ? (plusieurs réponses)",
+      "choix": [
+        "entrer en éruption",
+        "maintenir",
+        "mettre en danger",
+        "éclater",
+        "abandonner"
+      ],
+      "reponses": [
+        0,
+        3
+      ],
+      "explication": "to erupt = éclater / entrer en éruption."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to ignite » ? (plusieurs réponses)",
+      "choix": [
+        "enflammer",
+        "résoudre",
+        "déclencher",
+        "croire en",
+        "réussir"
+      ],
+      "reponses": [
+        0,
+        2
+      ],
+      "explication": "to ignite = enflammer / déclencher."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to flare up » ? (plusieurs réponses)",
+      "choix": [
+        "s'embraser",
+        "faire confiance à",
+        "s'occuper de",
+        "débuter",
+        "éclater"
+      ],
+      "reponses": [
+        0,
+        4
+      ],
+      "explication": "to flare up = éclater / s'embraser."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to outlast » ? (plusieurs réponses)",
+      "choix": [
+        "larguer",
+        "survivre à",
+        "durer plus longtemps que",
+        "faire confiance à",
+        "se lancer dans"
+      ],
+      "reponses": [
+        1,
+        2
+      ],
+      "explication": "to outlast = survivre à / durer plus longtemps que."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to survive » ? (plusieurs réponses)",
+      "choix": [
+        "s'embraser",
+        "survivre",
+        "entraver",
+        "quitter",
+        "survivre à"
+      ],
+      "reponses": [
+        1,
+        4
+      ],
+      "explication": "to survive = survivre / survivre à."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to endure » ? (plusieurs réponses)",
+      "choix": [
+        "aggraver",
+        "durer",
+        "endurer",
+        "supprimer (des emplois)",
+        "réussir"
+      ],
+      "reponses": [
+        1,
+        2
+      ],
+      "explication": "to endure = endurer / durer."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to outlive » ? (plusieurs réponses)",
+      "choix": [
+        "vivre plus longtemps que",
+        "brûler vivement",
+        "augmenter",
+        "survivre à",
+        "flamber"
+      ],
+      "reponses": [
+        0,
+        3
+      ],
+      "explication": "to outlive = survivre à / vivre plus longtemps que."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to withstand » ? (plusieurs réponses)",
+      "choix": [
+        "éclater",
+        "remplir (une mission)",
+        "résister à",
+        "supporter",
+        "s'aggraver"
+      ],
+      "reponses": [
+        2,
+        3
+      ],
+      "explication": "to withstand = résister à / supporter."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to persist » ? (plusieurs réponses)",
+      "choix": [
+        "réaliser",
+        "remplir (une mission)",
+        "se retirer",
+        "persister",
+        "perdurer"
+      ],
+      "reponses": [
+        3,
+        4
+      ],
+      "explication": "to persist = persister / perdurer."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to stall » ? (plusieurs réponses)",
+      "choix": [
+        "faire respecter",
+        "s'enliser",
+        "entraver",
+        "s'aggraver",
+        "faire face à",
+        "bloquer"
+      ],
+      "reponses": [
+        1,
+        2,
+        5
+      ],
+      "explication": "to stall = entraver / s'enliser / bloquer."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to hinder » ? (plusieurs réponses)",
+      "choix": [
+        "entrer en éruption",
+        "entraver",
+        "démarrer",
+        "envenimer",
+        "gêner"
+      ],
+      "reponses": [
+        1,
+        4
+      ],
+      "explication": "to hinder = entraver / gêner."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to hamper » ? (plusieurs réponses)",
+      "choix": [
+        "atténuer",
+        "entraver",
+        "mettre l'accent sur",
+        "freiner",
+        "laisser tomber"
+      ],
+      "reponses": [
+        1,
+        3
+      ],
+      "explication": "to hamper = entraver / freiner."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to strengthen » ? (plusieurs réponses)",
+      "choix": [
+        "supprimer (des emplois)",
+        "consolider",
+        "bloquer",
+        "régler",
+        "renforcer"
+      ],
+      "reponses": [
+        1,
+        4
+      ],
+      "explication": "to strengthen = renforcer / consolider."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to reinforce » ? (plusieurs réponses)",
+      "choix": [
+        "consolider",
+        "revenir sur",
+        "mettre l'accent sur",
+        "faire appliquer",
+        "renforcer"
+      ],
+      "reponses": [
+        0,
+        4
+      ],
+      "explication": "to reinforce = renforcer / consolider."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to threaten » ? (plusieurs réponses)",
+      "choix": [
+        "annuler",
+        "démarrer",
+        "menacer",
+        "mettre en danger",
+        "s'embraser"
+      ],
+      "reponses": [
+        2,
+        3
+      ],
+      "explication": "to threaten = menacer / mettre en danger."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to trust » ? (plusieurs réponses)",
+      "choix": [
+        "se fier à",
+        "faire confiance à",
+        "démarrer",
+        "retirer",
+        "préserver la paix"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "to trust = faire confiance à / se fier à."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to have faith in » ? (plusieurs réponses)",
+      "choix": [
+        "croire en",
+        "se conformer à",
+        "avoir foi en",
+        "commencer",
+        "s'enliser"
+      ],
+      "reponses": [
+        0,
+        2
+      ],
+      "explication": "to have faith in = avoir foi en / croire en."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to withdraw » ? (plusieurs réponses)",
+      "choix": [
+        "obéir à",
+        "durer plus longtemps que",
+        "menacer",
+        "retirer",
+        "se retirer"
+      ],
+      "reponses": [
+        3,
+        4
+      ],
+      "explication": "to withdraw = se retirer / retirer."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to pull out » ? (plusieurs réponses)",
+      "choix": [
+        "enflammer",
+        "vaincre",
+        "quitter",
+        "subir un échec total",
+        "se retirer"
+      ],
+      "reponses": [
+        2,
+        4
+      ],
+      "explication": "to pull out = se retirer / quitter."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to move away » ? (plusieurs réponses)",
+      "choix": [
+        "désamorcer",
+        "survivre",
+        "honorer",
+        "déménager",
+        "s'éloigner"
+      ],
+      "reponses": [
+        3,
+        4
+      ],
+      "explication": "to move away = s'éloigner / déménager."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a humanitarian crisis » ? (plusieurs réponses)",
+      "choix": [
+        "s'opposer à",
+        "des réductions de financement",
+        "une situation où la population a un besoin urgent d'aide",
+        "une crise humanitaire",
+        "les opérations des Casques bleus"
+      ],
+      "reponses": [
+        2,
+        3
+      ],
+      "explication": "a humanitarian crisis = une crise humanitaire / une situation où la population a un besoin urgent d'aide."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a member state » ? (plusieurs réponses)",
+      "choix": [
+        "un État membre",
+        "des sanctions",
+        "une personne forcée de fuir son pays",
+        "se tarir",
+        "un pays qui appartient à l'ONU"
+      ],
+      "reponses": [
+        0,
+        4
+      ],
+      "explication": "a member state = un État membre / un pays qui appartient à l'ONU."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a multilateral response » ? (plusieurs réponses)",
+      "choix": [
+        "un réfugié",
+        "une réaction collective coordonnée entre plusieurs pays",
+        "une réponse multilatérale",
+        "la scène mondiale",
+        "les ODD"
+      ],
+      "reponses": [
+        1,
+        2
+      ],
+      "explication": "a multilateral response = une réponse multilatérale / une réaction collective coordonnée entre plusieurs pays."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a refugee » ? (plusieurs réponses)",
+      "choix": [
+        "être dans l'incertitude",
+        "une personne forcée de fuir son pays",
+        "un réfugié",
+        "le plus haut responsable de l'ONU",
+        "se bloquer"
+      ],
+      "reponses": [
+        1,
+        2
+      ],
+      "explication": "a refugee = un réfugié / une personne forcée de fuir son pays."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « diplomacy » ? (plusieurs réponses)",
+      "choix": [
+        "une crise humanitaire",
+        "les droits de l'homme",
+        "la diplomatie",
+        "les négociations entre pays",
+        "la Charte des Nations unies"
+      ],
+      "reponses": [
+        2,
+        3
+      ],
+      "explication": "diplomacy = la diplomatie / les négociations entre pays."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to face off against » ? (plusieurs réponses)",
+      "choix": [
+        "l'Assemblée générale",
+        "s'opposer à",
+        "l'organe de 15 membres chargé de la paix et de la sécurité",
+        "les droits humains",
+        "affronter"
+      ],
+      "reponses": [
+        1,
+        4
+      ],
+      "explication": "to face off against = affronter / s'opposer à."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « funding cuts » ? (plusieurs réponses)",
+      "choix": [
+        "la Charte des Nations unies",
+        "les objectifs de développement durable",
+        "une résolution",
+        "des coupes budgétaires",
+        "des réductions de financement"
+      ],
+      "reponses": [
+        3,
+        4
+      ],
+      "explication": "funding cuts = des coupes budgétaires / des réductions de financement."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « the General Assembly » ? (plusieurs réponses)",
+      "choix": [
+        "la réunion de tous les membres de l'ONU",
+        "l'Assemblée générale",
+        "les négociations entre pays",
+        "une réaction collective coordonnée entre plusieurs pays",
+        "des sanctions"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "the General Assembly = l'Assemblée générale / la réunion de tous les membres de l'ONU."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « global governance » ? (plusieurs réponses)",
+      "choix": [
+        "le plus haut responsable de l'ONU",
+        "l'aide aux populations en crise",
+        "la gouvernance mondiale",
+        "le Secrétaire général",
+        "la gestion collective des problèmes mondiaux"
+      ],
+      "reponses": [
+        2,
+        4
+      ],
+      "explication": "global governance = la gouvernance mondiale / la gestion collective des problèmes mondiaux."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « human rights » ? (plusieurs réponses)",
+      "choix": [
+        "une situation où la population a un besoin urgent d'aide",
+        "monter à la tribune",
+        "les droits de l'homme",
+        "le texte fondateur de l'ONU (1945)",
+        "les droits humains"
+      ],
+      "reponses": [
+        2,
+        4
+      ],
+      "explication": "human rights = les droits de l'homme / les droits humains."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « humanitarian aid » ? (plusieurs réponses)",
+      "choix": [
+        "l'aide aux populations en crise",
+        "les opérations des Casques bleus",
+        "l'aide humanitaire",
+        "le développement durable",
+        "des mesures punitives contre un pays"
+      ],
+      "reponses": [
+        0,
+        2
+      ],
+      "explication": "humanitarian aid = l'aide humanitaire / l'aide aux populations en crise."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « international law » ? (plusieurs réponses)",
+      "choix": [
+        "les règles que les pays s'engagent à respecter",
+        "le droit international",
+        "une ONG",
+        "être en suspens",
+        "la gestion collective des problèmes mondiaux"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "international law = le droit international / les règles que les pays s'engagent à respecter."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « an NGO » ? (plusieurs réponses)",
+      "choix": [
+        "être à sec",
+        "les négociations entre pays",
+        "une ONG",
+        "une organisation non gouvernementale",
+        "l'organe de 15 membres chargé de la paix et de la sécurité"
+      ],
+      "reponses": [
+        2,
+        3
+      ],
+      "explication": "an NGO = une ONG / une organisation non gouvernementale."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « peacekeeping » ? (plusieurs réponses)",
+      "choix": [
+        "les opérations des Casques bleus",
+        "les ODD",
+        "l'aide humanitaire",
+        "le maintien de la paix",
+        "s'opposer à"
+      ],
+      "reponses": [
+        0,
+        3
+      ],
+      "explication": "peacekeeping = le maintien de la paix / les opérations des Casques bleus."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « a resolution » ? (plusieurs réponses)",
+      "choix": [
+        "être en suspens",
+        "une décision officielle de l'ONU",
+        "une organisation non gouvernementale",
+        "la Charte des Nations unies",
+        "une résolution"
+      ],
+      "reponses": [
+        1,
+        4
+      ],
+      "explication": "a resolution = une résolution / une décision officielle de l'ONU."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « sanctions » ? (plusieurs réponses)",
+      "choix": [
+        "des sanctions",
+        "des mesures punitives contre un pays",
+        "se tarir",
+        "l'aide aux populations en crise",
+        "les ODD"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "sanctions = des sanctions / des mesures punitives contre un pays."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « the Secretary-General » ? (plusieurs réponses)",
+      "choix": [
+        "le Secrétaire général",
+        "le plus haut responsable de l'ONU",
+        "le Conseil de sécurité",
+        "la gouvernance mondiale",
+        "se gripper"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "the Secretary-General = le Secrétaire général / le plus haut responsable de l'ONU."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « the Security Council » ? (plusieurs réponses)",
+      "choix": [
+        "se bloquer",
+        "l'organe de 15 membres chargé de la paix et de la sécurité",
+        "les règles que les pays s'engagent à respecter",
+        "la diplomatie",
+        "le Conseil de sécurité"
+      ],
+      "reponses": [
+        1,
+        4
+      ],
+      "explication": "the Security Council = le Conseil de sécurité / l'organe de 15 membres chargé de la paix et de la sécurité."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « the SDGs » ? (plusieurs réponses)",
+      "choix": [
+        "les puissances dotées du droit de veto",
+        "les objectifs de développement durable",
+        "les ODD",
+        "la réunion de tous les membres de l'ONU",
+        "les opérations des Casques bleus"
+      ],
+      "reponses": [
+        1,
+        2
+      ],
+      "explication": "the SDGs = les ODD / les objectifs de développement durable."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « sustainable development » ? (plusieurs réponses)",
+      "choix": [
+        "le développement durable",
+        "il est plus que temps",
+        "des sanctions",
+        "les droits humains",
+        "améliorer la vie sans compromettre l'avenir"
+      ],
+      "reponses": [
+        0,
+        4
+      ],
+      "explication": "sustainable development = le développement durable / améliorer la vie sans compromettre l'avenir."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « the Charter » ? (plusieurs réponses)",
+      "choix": [
+        "le texte fondateur de l'ONU (1945)",
+        "des sanctions",
+        "être dans l'incertitude",
+        "la Charte des Nations unies",
+        "les négociations entre pays"
+      ],
+      "reponses": [
+        0,
+        3
+      ],
+      "explication": "the Charter = la Charte des Nations unies / le texte fondateur de l'ONU (1945)."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « the world stage » ? (plusieurs réponses)",
+      "choix": [
+        "des sanctions",
+        "la scène mondiale",
+        "une personne forcée de fuir son pays",
+        "la scène internationale",
+        "le développement durable"
+      ],
+      "reponses": [
+        1,
+        3
+      ],
+      "explication": "the world stage = la scène internationale / la scène mondiale."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « it is high time » ? (plusieurs réponses)",
+      "choix": [
+        "il est plus que temps",
+        "une situation où la population a un besoin urgent d'aide",
+        "un État membre",
+        "l'aide humanitaire",
+        "il est grand temps"
+      ],
+      "reponses": [
+        0,
+        4
+      ],
+      "explication": "it is high time = il est grand temps / il est plus que temps."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to be in limbo » ? (plusieurs réponses)",
+      "choix": [
+        "l'Assemblée générale",
+        "être en suspens",
+        "les objectifs de développement durable",
+        "être dans l'incertitude",
+        "la Charte des Nations unies"
+      ],
+      "reponses": [
+        1,
+        3
+      ],
+      "explication": "to be in limbo = être en suspens / être dans l'incertitude."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to run dry » ? (plusieurs réponses)",
+      "choix": [
+        "être en suspens",
+        "être à sec",
+        "se tarir",
+        "des réductions de financement",
+        "le développement durable"
+      ],
+      "reponses": [
+        1,
+        2
+      ],
+      "explication": "to run dry = se tarir / être à sec."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to seize up » ? (plusieurs réponses)",
+      "choix": [
+        "se gripper",
+        "un pays qui appartient à l'ONU",
+        "être en suspens",
+        "se bloquer",
+        "la scène internationale"
+      ],
+      "reponses": [
+        0,
+        3
+      ],
+      "explication": "to seize up = se gripper / se bloquer."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « to take to the rostrum » ? (plusieurs réponses)",
+      "choix": [
+        "monter à la tribune",
+        "la diplomatie",
+        "se gripper",
+        "prendre la parole à la tribune",
+        "la réunion de tous les membres de l'ONU"
+      ],
+      "reponses": [
+        0,
+        3
+      ],
+      "explication": "to take to the rostrum = monter à la tribune / prendre la parole à la tribune."
+    },
+    {
+      "type": "QCR",
+      "question": "Quelles sont les traductions / équivalents corrects de « veto-wielding powers » ? (plusieurs réponses)",
+      "choix": [
+        "les puissances dotées du droit de veto",
+        "la diplomatie",
+        "des coupes budgétaires",
+        "les membres permanents du Conseil de sécurité (P5)",
+        "la gestion collective des problèmes mondiaux"
+      ],
+      "reponses": [
+        0,
+        3
+      ],
+      "explication": "veto-wielding powers = les puissances dotées du droit de veto / les membres permanents du Conseil de sécurité (P5)."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « une percée » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a plight",
+        "a breakthrough",
+        "a scourge",
+        "guardianship"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "a breakthrough = une percée / une avancée décisive."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « une découverte » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a catastrophe",
+        "a discovery",
+        "power",
+        "an affliction"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "a discovery = une découverte / une trouvaille."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « une avancée significative » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a significant development",
+        "a monitor",
+        "an agreement",
+        "collaboration"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "a significant development = une avancée significative / une évolution importante."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « un succès » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a success",
+        "a scourge",
+        "a scheme",
+        "a monitor"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "a success = un succès / une réussite."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « une impasse » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a scourge",
+        "a draft",
+        "cooperation",
+        "a standoff",
+        "a deadlock",
+        "a breakthrough",
+        "a stalemate"
+      ],
+      "reponses": [
+        3,
+        4,
+        6
+      ],
+      "explication": "a deadlock = une impasse / un blocage; a stalemate = une impasse / une situation de blocage; a standoff = un bras de fer / une impasse."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « une paralysie » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a lack of",
+        "a gridlock",
+        "poverty",
+        "an affliction"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "a gridlock = une paralysie / un blocage / un embouteillage."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « un arrêt complet » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a standstill",
+        "a blueprint",
+        "a draft",
+        "collaboration"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "a standstill = un arrêt complet / un point mort."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « un bras de fer » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a treasure trove",
+        "a retaliation",
+        "a plan",
+        "a standoff"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "a standoff = un bras de fer / une impasse."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « un manque de » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a guardian",
+        "clout",
+        "cooperation",
+        "a lack of"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "a lack of = un manque de / une absence de."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « une insuffisance » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a stalemate",
+        "a blueprint",
+        "an insufficiency",
+        "an outline"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "an insufficiency = une insuffisance / un manque."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « une catastrophe naturelle » ? (plusieurs réponses possibles)",
+      "choix": [
+        "an act of getting even",
+        "a natural disaster",
+        "a supervisor",
+        "a guardian"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "a natural disaster = une catastrophe naturelle / un désastre naturel."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « une catastrophe » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a gridlock",
+        "a standoff",
+        "a catastrophe",
+        "clout"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "a catastrophe = une catastrophe / un désastre."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « une situation critique » ? (plusieurs réponses possibles)",
+      "choix": [
+        "unanimity",
+        "a plight",
+        "a jackpot",
+        "a blueprint"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "a plight = une situation critique / une détresse / une situation désespérée."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « une difficulté » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a difficulty",
+        "a discovery",
+        "a caution",
+        "collaboration"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "a difficulty = une difficulté / un obstacle."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « des représailles » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a retaliation",
+        "a blight",
+        "a caution",
+        "an agreement"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "a retaliation = des représailles / une riposte."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « un acte de vengeance » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a stalemate",
+        "a lack of",
+        "a bane",
+        "an act of getting even"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "an act of getting even = un acte de vengeance / une revanche."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « un fléau » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a curse",
+        "a bane",
+        "a framework",
+        "a jackpot",
+        "a success",
+        "a blight",
+        "a draft",
+        "a plague",
+        "a scourge"
+      ],
+      "reponses": [
+        0,
+        1,
+        5,
+        7,
+        8
+      ],
+      "explication": "a scourge = un fléau / une calamité; a plague = une peste / un fléau; a curse = une malédiction / un fléau; a bane = un fléau / une plaie; a blight = un fléau / une plaie."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « une peste » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a goldmine",
+        "a plague",
+        "an achievement",
+        "authority"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "a plague = une peste / un fléau."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « une malédiction » ? (plusieurs réponses possibles)",
+      "choix": [
+        "an accord",
+        "a curse",
+        "a caution",
+        "a retaliation"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "a curse = une malédiction / un fléau."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « une affliction » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a windfall",
+        "trusteeship",
+        "oversight",
+        "an affliction"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "an affliction = une affliction / une souffrance."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « un accord » ? (plusieurs réponses possibles)",
+      "choix": [
+        "an accord",
+        "authority",
+        "a scourge",
+        "sway",
+        "an agreement"
+      ],
+      "reponses": [
+        0,
+        4
+      ],
+      "explication": "an agreement = un accord / une entente; an accord = un accord / une entente."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « un consensus » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a goldmine",
+        "a catastrophe",
+        "a draft",
+        "a consensus"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "a consensus = un consensus / un accord général."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « l'unanimité » ? (plusieurs réponses possibles)",
+      "choix": [
+        "stewardship",
+        "unanimity",
+        "trusteeship",
+        "authority"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "unanimity = l'unanimité / un accord unanime."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « le poids politique » ? (plusieurs réponses possibles)",
+      "choix": [
+        "clout",
+        "a goldmine",
+        "an affliction",
+        "a windfall"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "clout = le poids politique / l'influence."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « l'influence » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a breakthrough",
+        "a gridlock",
+        "a difficulty",
+        "sway",
+        "influence",
+        "clout",
+        "an agreement"
+      ],
+      "reponses": [
+        3,
+        4,
+        5
+      ],
+      "explication": "clout = le poids politique / l'influence; influence = l'influence / l'ascendant; sway = l'emprise / l'influence."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « l'emprise » ? (plusieurs réponses possibles)",
+      "choix": [
+        "sway",
+        "poverty",
+        "a lack of",
+        "a curse"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "sway = l'emprise / l'influence."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « le pouvoir » ? (plusieurs réponses possibles)",
+      "choix": [
+        "an achievement",
+        "power",
+        "authority",
+        "a draft",
+        "a plight"
+      ],
+      "reponses": [
+        1,
+        2
+      ],
+      "explication": "power = le pouvoir / la puissance; authority = l'autorité / le pouvoir."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « un moyen de pression » ? (plusieurs réponses possibles)",
+      "choix": [
+        "leverage",
+        "impoverishment",
+        "a scourge",
+        "a blight"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "leverage = un moyen de pression / un levier."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « l'autorité » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a difficulty",
+        "an act of getting even",
+        "a retaliation",
+        "authority"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "authority = l'autorité / le pouvoir."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « la tutelle » ? (plusieurs réponses possibles)",
+      "choix": [
+        "guardianship",
+        "a blueprint",
+        "a consensus",
+        "a blight",
+        "trusteeship"
+      ],
+      "reponses": [
+        0,
+        4
+      ],
+      "explication": "trusteeship = la tutelle / l'administration fiduciaire; guardianship = la tutelle / la garde."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « la gestion responsable » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a plague",
+        "a consensus",
+        "collaboration",
+        "stewardship"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "stewardship = la gestion responsable / l'intendance."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « la garde » ? (plusieurs réponses possibles)",
+      "choix": [
+        "custodianship",
+        "collaboration",
+        "a caveat",
+        "an agreement",
+        "guardianship"
+      ],
+      "reponses": [
+        0,
+        4
+      ],
+      "explication": "guardianship = la tutelle / la garde; custodianship = la garde / la conservation."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « la supervision » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a boon",
+        "unanimity",
+        "oversight",
+        "an accord"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "oversight = la supervision / le contrôle / un oubli."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « un organisme de surveillance » ? (plusieurs réponses possibles)",
+      "choix": [
+        "unanimity",
+        "cooperation",
+        "a plight",
+        "a watchdog"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "a watchdog = un organisme de surveillance / un chien de garde."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « un gardien » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a difficulty",
+        "a blueprint",
+        "a caution",
+        "a guardian"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "a guardian = un gardien / un tuteur."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « un surveillant » ? (plusieurs réponses possibles)",
+      "choix": [
+        "unanimity",
+        "an affliction",
+        "an overseer",
+        "a gridlock"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "an overseer = un surveillant / un superviseur."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « un observateur » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a monitor",
+        "unanimity",
+        "an agreement",
+        "a catastrophe"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "a monitor = un observateur / un contrôleur."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « un régulateur » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a framework",
+        "a scourge",
+        "a natural disaster",
+        "a regulator"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "a regulator = un régulateur / une autorité de régulation."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « un superviseur » ? (plusieurs réponses possibles)",
+      "choix": [
+        "an overseer",
+        "a supervisor",
+        "a bonanza",
+        "cooperation",
+        "a gridlock"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "an overseer = un surveillant / un superviseur; a supervisor = un superviseur / un responsable."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « un plan directeur » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a monitor",
+        "an affliction",
+        "power",
+        "a blueprint"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "a blueprint = un plan directeur / un modèle."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « un plan » ? (plusieurs réponses possibles)",
+      "choix": [
+        "impoverishment",
+        "a watchdog",
+        "a caution",
+        "a design",
+        "a plan",
+        "a standoff",
+        "a scheme"
+      ],
+      "reponses": [
+        3,
+        4,
+        6
+      ],
+      "explication": "a plan = un plan / un projet; a design = une conception / un dessin / un plan; a scheme = un programme / un dispositif / un plan."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « une conception » ? (plusieurs réponses possibles)",
+      "choix": [
+        "oversight",
+        "a design",
+        "a monitor",
+        "an accord"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "a design = une conception / un dessin / un plan."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « les grandes lignes » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a discovery",
+        "a watchdog",
+        "a monitor",
+        "an outline"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "an outline = les grandes lignes / une ébauche."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « un programme » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a scheme",
+        "a caution",
+        "clout",
+        "a treasure trove"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "a scheme = un programme / un dispositif / un plan."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « un brouillon » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a warning",
+        "a draft",
+        "a jackpot",
+        "poverty"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "a draft = un brouillon / une ébauche / un avant-projet."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « un cadre » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a treasure trove",
+        "a gridlock",
+        "a framework",
+        "clout"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "a framework = un cadre / une structure."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « une aubaine » ? (plusieurs réponses possibles)",
+      "choix": [
+        "an accord",
+        "a windfall",
+        "impoverishment",
+        "stewardship",
+        "a boon",
+        "a bonanza",
+        "an insufficiency"
+      ],
+      "reponses": [
+        1,
+        4,
+        5
+      ],
+      "explication": "a bonanza = une aubaine / une mine d'or; a windfall = une aubaine / un bénéfice inattendu; a boon = une aubaine / un bienfait."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « le gros lot » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a stalemate",
+        "a jackpot",
+        "oversight",
+        "a caveat"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "a jackpot = le gros lot / le jackpot."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « une mine d'or » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a goldmine",
+        "a bonanza",
+        "a monitor",
+        "a treasure trove",
+        "a plan",
+        "a gridlock",
+        "a scheme"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "a bonanza = une aubaine / une mine d'or; a treasure trove = une mine d'or / un trésor; a goldmine = une mine d'or / une source de richesse."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « une mise en garde » ? (plusieurs réponses possibles)",
+      "choix": [
+        "sway",
+        "a caution",
+        "a warning",
+        "a caveat",
+        "a supervisor",
+        "a curse",
+        "a significant development"
+      ],
+      "reponses": [
+        1,
+        2,
+        3
+      ],
+      "explication": "a caveat = une mise en garde / une réserve; a warning = un avertissement / une mise en garde; a caution = une mise en garde / un avertissement / la prudence."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « un avertissement » ? (plusieurs réponses possibles)",
+      "choix": [
+        "leverage",
+        "a caution",
+        "a warning",
+        "a success",
+        "a deadlock"
+      ],
+      "reponses": [
+        1,
+        2
+      ],
+      "explication": "a warning = un avertissement / une mise en garde; a caution = une mise en garde / un avertissement / la prudence."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « une réussite » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a supervisor",
+        "a success",
+        "a monitor",
+        "an accomplishment",
+        "power",
+        "an achievement",
+        "impoverishment"
+      ],
+      "reponses": [
+        1,
+        3,
+        5
+      ],
+      "explication": "a success = un succès / une réussite; an achievement = une réussite / un accomplissement; an accomplishment = un accomplissement / une réussite."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « un accomplissement » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a framework",
+        "an achievement",
+        "a natural disaster",
+        "an accomplishment",
+        "an act of getting even"
+      ],
+      "reponses": [
+        1,
+        3
+      ],
+      "explication": "an achievement = une réussite / un accomplissement; an accomplishment = un accomplissement / une réussite."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « la collaboration » ? (plusieurs réponses possibles)",
+      "choix": [
+        "cooperation",
+        "an overseer",
+        "collaboration",
+        "a framework",
+        "a lack of"
+      ],
+      "reponses": [
+        0,
+        2
+      ],
+      "explication": "collaboration = la collaboration / le travail en commun; cooperation = la coopération / la collaboration."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « la coopération » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a lack of",
+        "a difficulty",
+        "a goldmine",
+        "cooperation"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "cooperation = la coopération / la collaboration."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « la pauvreté » ? (plusieurs réponses possibles)",
+      "choix": [
+        "poverty",
+        "a standstill",
+        "a discovery",
+        "a goldmine"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "poverty = la pauvreté / la misère."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « l'appauvrissement » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a treasure trove",
+        "a goldmine",
+        "a plan",
+        "impoverishment"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "impoverishment = l'appauvrissement / la paupérisation."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « vaste » ? (plusieurs réponses possibles)",
+      "choix": [
+        "dreary",
+        "dismal",
+        "extensive",
+        "ignored"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "extensive = vaste / étendu / considérable."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « substantiel » ? (plusieurs réponses possibles)",
+      "choix": [
+        "disregarded",
+        "substantial",
+        "ignored",
+        "imploding"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "substantial = substantiel / considérable / important."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « en pleine implosion » ? (plusieurs réponses possibles)",
+      "choix": [
+        "direct",
+        "extensive",
+        "imploding",
+        "overlooked"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "imploding = en pleine implosion / en train de s'effondrer."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « en train de s'effondrer » ? (plusieurs réponses possibles)",
+      "choix": [
+        "collapsing",
+        "unprecedented",
+        "imploding",
+        "supreme",
+        "huge"
+      ],
+      "reponses": [
+        0,
+        2
+      ],
+      "explication": "imploding = en pleine implosion / en train de s'effondrer; collapsing = en train de s'effondrer / qui s'écroule."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « primordial » ? (plusieurs réponses possibles)",
+      "choix": [
+        "missed",
+        "overriding",
+        "paramount",
+        "direct",
+        "collapsing"
+      ],
+      "reponses": [
+        1,
+        2
+      ],
+      "explication": "overriding = primordial / prépondérant; paramount = primordial / d'une importance capitale."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « prédominant » ? (plusieurs réponses possibles)",
+      "choix": [
+        "predominant",
+        "disregarded",
+        "ignored",
+        "imploding"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "predominant = prédominant / prépondérant."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « suprême » ? (plusieurs réponses possibles)",
+      "choix": [
+        "neglected",
+        "supreme",
+        "missed",
+        "bleak"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "supreme = suprême / souverain."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « principal » ? (plusieurs réponses possibles)",
+      "choix": [
+        "frank",
+        "bleak",
+        "primary",
+        "ignored"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "primary = principal / premier."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « qui a son franc-parler » ? (plusieurs réponses possibles)",
+      "choix": [
+        "extensive",
+        "outspoken",
+        "paramount",
+        "gloomy"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "outspoken = qui a son franc-parler / direct."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « franc » ? (plusieurs réponses possibles)",
+      "choix": [
+        "dismal",
+        "imploding",
+        "forthright",
+        "candid",
+        "direct",
+        "frank",
+        "overriding",
+        "predominant"
+      ],
+      "reponses": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "explication": "candid = franc / sincère; frank = franc / honnête; forthright = franc / direct; direct = direct / franc."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « brusque » ? (plusieurs réponses possibles)",
+      "choix": [
+        "overriding",
+        "ignored",
+        "blunt",
+        "neglected"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "blunt = brusque / sans détour / direct."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « direct » ? (plusieurs réponses possibles)",
+      "choix": [
+        "tremendous",
+        "direct",
+        "forthright",
+        "missed",
+        "blunt",
+        "outspoken",
+        "dismal",
+        "overriding"
+      ],
+      "reponses": [
+        1,
+        2,
+        4,
+        5
+      ],
+      "explication": "outspoken = qui a son franc-parler / direct; forthright = franc / direct; blunt = brusque / sans détour / direct; direct = direct / franc."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « sombre » ? (plusieurs réponses possibles)",
+      "choix": [
+        "bleak",
+        "neglected",
+        "gloomy",
+        "blunt",
+        "somber",
+        "collapsing",
+        "candid"
+      ],
+      "reponses": [
+        0,
+        2,
+        4
+      ],
+      "explication": "gloomy = sombre / morose; bleak = sombre / peu prometteur; somber = sombre / grave."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « lugubre » ? (plusieurs réponses possibles)",
+      "choix": [
+        "dismal",
+        "supreme",
+        "missed",
+        "huge"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "dismal = lugubre / lamentable."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « morne » ? (plusieurs réponses possibles)",
+      "choix": [
+        "extraordinary",
+        "disregarded",
+        "extensive",
+        "dreary"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "dreary = morne / ennuyeux."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « déprimant » ? (plusieurs réponses possibles)",
+      "choix": [
+        "primary",
+        "overriding",
+        "depressing",
+        "outspoken"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "depressing = déprimant / démoralisant."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « retentissant » ? (plusieurs réponses possibles)",
+      "choix": [
+        "resounding",
+        "missed",
+        "forthright",
+        "imploding"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "resounding = retentissant / éclatant."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « énorme » ? (plusieurs réponses possibles)",
+      "choix": [
+        "huge",
+        "tremendous",
+        "ignored",
+        "dreary",
+        "disregarded"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "tremendous = énorme / formidable; huge = énorme / immense."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « sans précédent » ? (plusieurs réponses possibles)",
+      "choix": [
+        "dreary",
+        "neglected",
+        "unprecedented",
+        "bleak"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "unprecedented = sans précédent / inédit."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « extraordinaire » ? (plusieurs réponses possibles)",
+      "choix": [
+        "frank",
+        "extraordinary",
+        "neglected",
+        "overlooked"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "extraordinary = extraordinaire / exceptionnel."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « négligé » ? (plusieurs réponses possibles)",
+      "choix": [
+        "neglected",
+        "depressing",
+        "overlooked",
+        "frank",
+        "somber"
+      ],
+      "reponses": [
+        0,
+        2
+      ],
+      "explication": "overlooked = négligé / oublié; neglected = négligé / délaissé."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « ignoré » ? (plusieurs réponses possibles)",
+      "choix": [
+        "unprecedented",
+        "ignored",
+        "forthright",
+        "predominant",
+        "disregarded"
+      ],
+      "reponses": [
+        1,
+        4
+      ],
+      "explication": "ignored = ignoré / passé sous silence; disregarded = non pris en compte / ignoré."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « manqué » ? (plusieurs réponses possibles)",
+      "choix": [
+        "dismal",
+        "somber",
+        "bleak",
+        "missed"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "missed = manqué / raté."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « non pris en compte » ? (plusieurs réponses possibles)",
+      "choix": [
+        "collapsing",
+        "primary",
+        "disregarded",
+        "extensive"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "disregarded = non pris en compte / ignoré."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « omis » ? (plusieurs réponses possibles)",
+      "choix": [
+        "imploding",
+        "frank",
+        "omitted",
+        "tremendous"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "omitted = omis / oublié."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « tomber à l'eau » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to drop",
+        "to strengthen",
+        "to outlast",
+        "to come unstuck"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to come unstuck = tomber à l'eau / échouer complètement."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « échouer complètement » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to mitigate",
+        "to respect",
+        "to endure",
+        "to come unstuck",
+        "to fail completely"
+      ],
+      "reponses": [
+        3,
+        4
+      ],
+      "explication": "to come unstuck = tomber à l'eau / échouer complètement; to fail completely = échouer complètement / subir un échec total."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « désamorcer » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to respect",
+        "to drop",
+        "to succeed",
+        "to defuse"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to defuse = désamorcer / apaiser."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « se lancer dans » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to tackle",
+        "to embark upon",
+        "to escalate",
+        "to defuse"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to embark upon = se lancer dans / entreprendre."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « commencer » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to make it",
+        "to withdraw",
+        "to start",
+        "to maintain",
+        "to begin"
+      ],
+      "reponses": [
+        2,
+        4
+      ],
+      "explication": "to start = commencer / démarrer; to begin = commencer / débuter."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « faire appliquer » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to outlive",
+        "to discard",
+        "to preserve peace",
+        "to enforce"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to enforce = faire appliquer / faire respecter."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « s'intensifier » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to escalate",
+        "to preserve",
+        "to tackle",
+        "to reverse"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to escalate = s'intensifier / dégénérer / s'aggraver."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « s'aggraver » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to preserve",
+        "to worsen",
+        "to overcome",
+        "to escalate",
+        "to move away"
+      ],
+      "reponses": [
+        1,
+        3
+      ],
+      "explication": "to escalate = s'intensifier / dégénérer / s'aggraver; to worsen = s'aggraver / empirer."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « augmenter » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to start",
+        "to begin",
+        "to strengthen",
+        "to increase"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to increase = augmenter / s'accroître."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « aggraver » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to maintain",
+        "to survive",
+        "to trust",
+        "to aggravate"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to aggravate = aggraver / envenimer."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « réaliser » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to begin",
+        "to fulfil",
+        "to preserve peace",
+        "to embark upon",
+        "to realize"
+      ],
+      "reponses": [
+        1,
+        4
+      ],
+      "explication": "to fulfil = réaliser / accomplir / remplir (une mission); to realize = réaliser / concrétiser / se rendre compte."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « aller de succès en succès » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to go from strength to strength",
+        "to strengthen",
+        "to hinder",
+        "to defuse"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to go from strength to strength = aller de succès en succès / prospérer de plus en plus."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « souligner » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to highlight",
+        "to move away",
+        "to outlast",
+        "to stall",
+        "to underline"
+      ],
+      "reponses": [
+        0,
+        4
+      ],
+      "explication": "to highlight = souligner / mettre en évidence; to underline = souligner / mettre l'accent sur."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « y arriver » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to reinforce",
+        "to flare up",
+        "to move away",
+        "to make it"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to make it = y arriver / réussir."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « réussir » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to make it",
+        "to succeed",
+        "to persist",
+        "to maintain",
+        "to ignite"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "to make it = y arriver / réussir; to succeed = réussir / avoir du succès."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « maintenir » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to shed",
+        "to mitigate",
+        "to enforce",
+        "to maintain"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to maintain = maintenir / préserver."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « préserver » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to go back on",
+        "to fulfil",
+        "to tackle",
+        "to maintain",
+        "to preserve"
+      ],
+      "reponses": [
+        3,
+        4
+      ],
+      "explication": "to maintain = maintenir / préserver; to preserve = préserver / conserver."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « préserver la paix » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to highlight",
+        "to pull out",
+        "to take on",
+        "to preserve peace"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to preserve peace = préserver la paix / maintenir la paix."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « atténuer » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to cast off",
+        "to mitigate",
+        "to discard",
+        "to address",
+        "to alleviate"
+      ],
+      "reponses": [
+        1,
+        4
+      ],
+      "explication": "to mitigate = atténuer / limiter; to alleviate = soulager / atténuer."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « soulager » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to withstand",
+        "to alleviate",
+        "to realize",
+        "to release"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to alleviate = soulager / atténuer."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « surmonter » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to stall",
+        "to survive",
+        "to threaten",
+        "to overcome"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to overcome = surmonter / vaincre."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « gérer » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to outlast",
+        "to stall",
+        "to deal with",
+        "to strengthen"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to deal with = gérer / s'occuper de / faire face à."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « respecter » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to withdraw",
+        "to ignite",
+        "to alleviate",
+        "to respect"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to respect = respecter / honorer."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « obéir à » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to obey",
+        "to withdraw",
+        "to threaten",
+        "to have faith in"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to obey = obéir à / se conformer à."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « revenir sur » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to enforce",
+        "to go back on",
+        "to maintain",
+        "to grapple with",
+        "to reverse"
+      ],
+      "reponses": [
+        1,
+        4
+      ],
+      "explication": "to reverse = revenir sur / annuler / inverser; to go back on = revenir sur / renier."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « régler » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to start",
+        "to respect",
+        "to release",
+        "to settle"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to settle = régler / résoudre."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « se débarrasser de » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to deal with",
+        "to shed",
+        "to discard",
+        "to worsen",
+        "to underline"
+      ],
+      "reponses": [
+        1,
+        2
+      ],
+      "explication": "to shed = se débarrasser de / supprimer (des emplois); to discard = jeter / se débarrasser de."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « jeter » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to discard",
+        "to succeed",
+        "to ignite",
+        "to address"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to discard = jeter / se débarrasser de."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « rejeter » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to preserve peace",
+        "to confront",
+        "to cast off",
+        "to come unstuck"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to cast off = rejeter / se défaire de."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « laisser tomber » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to stall",
+        "to address",
+        "to make it",
+        "to drop"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to drop = laisser tomber / abandonner."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « libérer » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to escalate",
+        "to release",
+        "to deal with",
+        "to come unstuck"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to release = libérer / relâcher."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « larguer » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to take on",
+        "to jettison",
+        "to realize",
+        "to fulfil"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to jettison = larguer / se délester de."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « s'attaquer à » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to blaze",
+        "to take on",
+        "to increase",
+        "to tackle",
+        "to grapple with",
+        "to withdraw",
+        "to worsen"
+      ],
+      "reponses": [
+        1,
+        3,
+        4
+      ],
+      "explication": "to tackle = s'attaquer à / aborder; to grapple with = se débattre avec / s'attaquer à; to take on = s'attaquer à / se charger de."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « aborder » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to address",
+        "to outlast",
+        "to strengthen",
+        "to flare up",
+        "to tackle"
+      ],
+      "reponses": [
+        0,
+        4
+      ],
+      "explication": "to tackle = s'attaquer à / aborder; to address = aborder / traiter."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « affronter » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to start",
+        "to aggravate",
+        "to face off against",
+        "to confront",
+        "to survive"
+      ],
+      "reponses": [
+        2,
+        3
+      ],
+      "explication": "to confront = affronter / faire face à; to face off against = affronter / s'opposer à."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « se débattre avec » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to underline",
+        "to grapple with",
+        "to reverse",
+        "to have faith in"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to grapple with = se débattre avec / s'attaquer à."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « s'embraser » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to flare up",
+        "to flare",
+        "to jettison",
+        "to reverse",
+        "to move away"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "to flare = s'embraser / flamber; to flare up = éclater / s'embraser."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « flamber » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to flare",
+        "to endure",
+        "to move away",
+        "to drop",
+        "to blaze"
+      ],
+      "reponses": [
+        0,
+        4
+      ],
+      "explication": "to flare = s'embraser / flamber; to blaze = flamber / brûler vivement."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « éclater » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to erupt",
+        "to withstand",
+        "to flare up",
+        "to persist",
+        "to withdraw"
+      ],
+      "reponses": [
+        0,
+        2
+      ],
+      "explication": "to erupt = éclater / entrer en éruption; to flare up = éclater / s'embraser."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « enflammer » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to come unstuck",
+        "to ignite",
+        "to strengthen",
+        "to stall"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to ignite = enflammer / déclencher."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « survivre à » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to outlast",
+        "to fulfil",
+        "to outlive",
+        "to respect",
+        "to release",
+        "to survive",
+        "to defuse"
+      ],
+      "reponses": [
+        0,
+        2,
+        5
+      ],
+      "explication": "to outlast = survivre à / durer plus longtemps que; to survive = survivre / survivre à; to outlive = survivre à / vivre plus longtemps que."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « survivre » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to underline",
+        "to survive",
+        "to respect",
+        "to erupt"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to survive = survivre / survivre à."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « endurer » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to go back on",
+        "to fail completely",
+        "to endure",
+        "to flare"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to endure = endurer / durer."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « résister à » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to withstand",
+        "to defuse",
+        "to worsen",
+        "to flare up"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to withstand = résister à / supporter."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « persister » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to overcome",
+        "to persist",
+        "to grapple with",
+        "to cast off"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to persist = persister / perdurer."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « entraver » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to succeed",
+        "to worsen",
+        "to settle",
+        "to stall",
+        "to start",
+        "to hamper",
+        "to hinder"
+      ],
+      "reponses": [
+        3,
+        5,
+        6
+      ],
+      "explication": "to stall = entraver / s'enliser / bloquer; to hinder = entraver / gêner; to hamper = entraver / freiner."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « renforcer » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to tackle",
+        "to enforce",
+        "to reinforce",
+        "to strengthen",
+        "to jettison"
+      ],
+      "reponses": [
+        2,
+        3
+      ],
+      "explication": "to strengthen = renforcer / consolider; to reinforce = renforcer / consolider."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « menacer » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to move away",
+        "to start",
+        "to threaten",
+        "to cast off"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to threaten = menacer / mettre en danger."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « faire confiance à » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to trust",
+        "to highlight",
+        "to move away",
+        "to overcome"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to trust = faire confiance à / se fier à."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « avoir foi en » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to overcome",
+        "to mitigate",
+        "to have faith in",
+        "to maintain"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to have faith in = avoir foi en / croire en."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « se retirer » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to withdraw",
+        "to pull out",
+        "to come unstuck",
+        "to enforce",
+        "to erupt"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "to withdraw = se retirer / retirer; to pull out = se retirer / quitter."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « s'éloigner » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to persist",
+        "to underline",
+        "to move away",
+        "to increase"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "to move away = s'éloigner / déménager."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « une crise humanitaire » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a humanitarian crisis",
+        "the SDGs",
+        "an NGO",
+        "sanctions"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "a humanitarian crisis = une crise humanitaire / une situation où la population a un besoin urgent d'aide."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « un État membre » ? (plusieurs réponses possibles)",
+      "choix": [
+        "international law",
+        "an NGO",
+        "a refugee",
+        "a member state"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "a member state = un État membre / un pays qui appartient à l'ONU."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « une réponse multilatérale » ? (plusieurs réponses possibles)",
+      "choix": [
+        "the General Assembly",
+        "the Security Council",
+        "a humanitarian crisis",
+        "a multilateral response"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "a multilateral response = une réponse multilatérale / une réaction collective coordonnée entre plusieurs pays."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « un réfugié » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a refugee",
+        "global governance",
+        "the world stage",
+        "the SDGs"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "a refugee = un réfugié / une personne forcée de fuir son pays."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « la diplomatie » ? (plusieurs réponses possibles)",
+      "choix": [
+        "the Charter",
+        "diplomacy",
+        "to take to the rostrum",
+        "a refugee"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "diplomacy = la diplomatie / les négociations entre pays."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « des coupes budgétaires » ? (plusieurs réponses possibles)",
+      "choix": [
+        "international law",
+        "diplomacy",
+        "funding cuts",
+        "an NGO"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "funding cuts = des coupes budgétaires / des réductions de financement."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « l'Assemblée générale » ? (plusieurs réponses possibles)",
+      "choix": [
+        "the Secretary-General",
+        "the General Assembly",
+        "a multilateral response",
+        "it is high time"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "the General Assembly = l'Assemblée générale / la réunion de tous les membres de l'ONU."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « la gouvernance mondiale » ? (plusieurs réponses possibles)",
+      "choix": [
+        "the Security Council",
+        "peacekeeping",
+        "the world stage",
+        "global governance"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "global governance = la gouvernance mondiale / la gestion collective des problèmes mondiaux."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « les droits de l'homme » ? (plusieurs réponses possibles)",
+      "choix": [
+        "the Security Council",
+        "human rights",
+        "it is high time",
+        "global governance"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "human rights = les droits de l'homme / les droits humains."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « l'aide humanitaire » ? (plusieurs réponses possibles)",
+      "choix": [
+        "the Secretary-General",
+        "humanitarian aid",
+        "sustainable development",
+        "to run dry"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "humanitarian aid = l'aide humanitaire / l'aide aux populations en crise."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « le droit international » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to seize up",
+        "funding cuts",
+        "international law",
+        "peacekeeping"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "international law = le droit international / les règles que les pays s'engagent à respecter."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « une ONG » ? (plusieurs réponses possibles)",
+      "choix": [
+        "it is high time",
+        "human rights",
+        "a member state",
+        "an NGO"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "an NGO = une ONG / une organisation non gouvernementale."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « le maintien de la paix » ? (plusieurs réponses possibles)",
+      "choix": [
+        "veto-wielding powers",
+        "the SDGs",
+        "peacekeeping",
+        "to run dry"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "peacekeeping = le maintien de la paix / les opérations des Casques bleus."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « une résolution » ? (plusieurs réponses possibles)",
+      "choix": [
+        "international law",
+        "an NGO",
+        "to seize up",
+        "a resolution"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "a resolution = une résolution / une décision officielle de l'ONU."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « des sanctions » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to seize up",
+        "sustainable development",
+        "the Secretary-General",
+        "sanctions"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "sanctions = des sanctions / des mesures punitives contre un pays."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « le Secrétaire général » ? (plusieurs réponses possibles)",
+      "choix": [
+        "it is high time",
+        "global governance",
+        "international law",
+        "the Secretary-General"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "the Secretary-General = le Secrétaire général / le plus haut responsable de l'ONU."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « le Conseil de sécurité » ? (plusieurs réponses possibles)",
+      "choix": [
+        "sustainable development",
+        "diplomacy",
+        "the Security Council",
+        "peacekeeping"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "the Security Council = le Conseil de sécurité / l'organe de 15 membres chargé de la paix et de la sécurité."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « les ODD » ? (plusieurs réponses possibles)",
+      "choix": [
+        "sanctions",
+        "to run dry",
+        "diplomacy",
+        "the SDGs"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "the SDGs = les ODD / les objectifs de développement durable."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « le développement durable » ? (plusieurs réponses possibles)",
+      "choix": [
+        "the world stage",
+        "sustainable development",
+        "international law",
+        "a multilateral response"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "sustainable development = le développement durable / améliorer la vie sans compromettre l'avenir."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « la Charte des Nations unies » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a humanitarian crisis",
+        "veto-wielding powers",
+        "it is high time",
+        "the Charter"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "the Charter = la Charte des Nations unies / le texte fondateur de l'ONU (1945)."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « la scène internationale » ? (plusieurs réponses possibles)",
+      "choix": [
+        "veto-wielding powers",
+        "humanitarian aid",
+        "the world stage",
+        "funding cuts"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "the world stage = la scène internationale / la scène mondiale."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « il est grand temps » ? (plusieurs réponses possibles)",
+      "choix": [
+        "humanitarian aid",
+        "a resolution",
+        "funding cuts",
+        "it is high time"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "it is high time = il est grand temps / il est plus que temps."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « être en suspens » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to be in limbo",
+        "a resolution",
+        "sanctions",
+        "the General Assembly"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "to be in limbo = être en suspens / être dans l'incertitude."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « se tarir » ? (plusieurs réponses possibles)",
+      "choix": [
+        "a resolution",
+        "funding cuts",
+        "peacekeeping",
+        "to run dry"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to run dry = se tarir / être à sec."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « se gripper » ? (plusieurs réponses possibles)",
+      "choix": [
+        "an NGO",
+        "to seize up",
+        "humanitarian aid",
+        "to take to the rostrum"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "to seize up = se gripper / se bloquer."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « monter à la tribune » ? (plusieurs réponses possibles)",
+      "choix": [
+        "humanitarian aid",
+        "sanctions",
+        "sustainable development",
+        "to take to the rostrum"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "to take to the rostrum = monter à la tribune / prendre la parole à la tribune."
+    },
+    {
+      "type": "QCR",
+      "question": "Quels mots ou expressions anglais traduisent « les puissances dotées du droit de veto » ? (plusieurs réponses possibles)",
+      "choix": [
+        "to run dry",
+        "veto-wielding powers",
+        "to face off against",
+        "funding cuts"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "veto-wielding powers = les puissances dotées du droit de veto / les membres permanents du Conseil de sécurité (P5)."
+    }
+  ]
+}

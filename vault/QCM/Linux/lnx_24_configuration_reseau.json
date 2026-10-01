@@ -1,0 +1,152 @@
+{
+  "titre": "Linux 24 — Configuration du Réseau",
+  "description": "Interfaces réseau, NAC (DAC/MAC/RBAC), DNS, dépannage réseau, SELinux/AppArmor/TCP wrappers",
+  "questions": [
+    {
+      "id": "rsx01",
+      "type": "QCM",
+      "question": "Quel modèle de contrôle d'accès laisse le propriétaire de la ressource définir les autorisations ?",
+      "choix": ["DAC", "MAC", "RBAC", "ACL uniquement"],
+      "reponses": [0],
+      "explication": "Discretionary Access Control."
+    },
+    {
+      "id": "rsx02",
+      "type": "QCM",
+      "question": "Quel modèle applique les autorisations via le système d'exploitation, plus sécurisé mais moins flexible ?",
+      "choix": ["DAC", "MAC", "RBAC", "NAC"],
+      "reponses": [1],
+      "explication": "Mandatory Access Control."
+    },
+    {
+      "id": "rsx03",
+      "type": "QCM",
+      "question": "Quel modèle attribue les permissions en fonction des rôles au sein d'une organisation ?",
+      "choix": ["DAC", "MAC", "RBAC", "TCP wrappers"],
+      "reponses": [2],
+      "explication": "Role-Based Access Control."
+    },
+    {
+      "id": "rsx04",
+      "type": "QCM",
+      "question": "Quelle commande est dépréciée mais encore largement utilisée pour afficher/configurer les interfaces réseau, remplacée par `ip` ?",
+      "choix": ["netstat", "ifconfig", "ss", "route"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "rsx05",
+      "type": "QCM",
+      "question": "Quelle commande active une interface réseau (équivalent moderne) ?",
+      "choix": ["ip link set eth0 up", "ip addr eth0 up", "ifconfig up eth0", "route up eth0"],
+      "reponses": [0],
+      "explication": "ifconfig eth0 up fonctionne aussi (ancienne syntaxe)."
+    },
+    {
+      "id": "rsx06",
+      "type": "QCM",
+      "question": "Quelle commande définit la passerelle par défaut pour une interface ?",
+      "choix": ["route add default gw <ip> <interface>", "ifconfig gw <ip>", "ip gateway <ip>", "dns set gateway <ip>"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "rsx07",
+      "type": "QCM",
+      "question": "Quel fichier contient les adresses des serveurs DNS utilisés par le système ?",
+      "choix": ["/etc/hosts", "/etc/resolv.conf", "/etc/dns.conf", "/etc/network/dns"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "rsx08",
+      "type": "QCM",
+      "question": "Pourquoi les modifications de /etc/resolv.conf ne persistent-elles souvent pas après redémarrage ?",
+      "choix": [
+        "Le fichier est en lecture seule",
+        "Il peut être écrasé par NetworkManager ou systemd-resolved",
+        "Il est supprimé automatiquement toutes les 24h",
+        "DNS ne fonctionne pas sous Linux"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "rsx09",
+      "type": "QCM",
+      "question": "Quel fichier définit une configuration réseau statique persistante avec adresse IP, masque et passerelle ?",
+      "choix": ["/etc/network/interfaces", "/etc/resolv.conf", "/etc/hosts", "/etc/netplan.conf"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "rsx10",
+      "type": "QCM",
+      "question": "Quel outil envoie des paquets ICMP pour tester la connectivité vers un hôte distant ?",
+      "choix": ["ping", "traceroute", "netstat", "nmap"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "rsx11",
+      "type": "QCM",
+      "question": "Quel outil trace la route (les sauts/hops) empruntée par les paquets jusqu'à un hôte distant ?",
+      "choix": ["ping", "traceroute", "netstat", "ss"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "rsx12",
+      "type": "QCM",
+      "question": "Quel outil affiche les connexions réseau actives et leurs ports ?",
+      "choix": ["traceroute", "netstat", "ping", "iptables"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "rsx13",
+      "type": "QCR",
+      "question": "Quels outils sont cités pour surveiller/analyser le trafic réseau ?",
+      "choix": ["Wireshark", "tshark", "Tcpdump", "fdisk"],
+      "reponses": [0, 1, 2],
+      "explication": ""
+    },
+    {
+      "id": "rsx14",
+      "type": "QCM",
+      "question": "Quel mécanisme de durcissement Linux est un système MAC intégré au noyau offrant un contrôle très granulaire mais complexe à configurer ?",
+      "choix": ["AppArmor", "SELinux", "TCP wrappers", "RBAC"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "rsx15",
+      "type": "QCM",
+      "question": "Quel mécanisme MAC est implémenté comme un module de sécurité Linux (LSM) et est généralement plus simple à utiliser que SELinux ?",
+      "choix": ["SELinux", "AppArmor", "TCP wrappers", "iptables"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "rsx16",
+      "type": "QCM",
+      "question": "Quel mécanisme contrôle l'accès aux services réseau en fonction de l'adresse IP des connexions entrantes, mais pas au niveau des ports ?",
+      "choix": ["SELinux", "AppArmor", "TCP wrappers", "RBAC"],
+      "reponses": [2],
+      "explication": ""
+    },
+    {
+      "id": "rsx17",
+      "type": "QCR",
+      "question": "Quelles causes courantes de problèmes réseau sont citées dans le cours ?",
+      "choix": [
+        "Pare-feu ou routeurs mal configurés",
+        "Paramètres DNS incorrects",
+        "Congestion du réseau",
+        "Trop de RAM disponible"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": ""
+    }
+  ]
+}

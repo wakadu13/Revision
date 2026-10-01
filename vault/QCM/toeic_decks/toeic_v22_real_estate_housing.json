@@ -1,0 +1,651 @@
+{
+  "titre": "TOEIC Vocabulary 22 — Real Estate & Housing",
+  "description": "Thème « Real Estate & Housing » du livret Vocabulary (d'après les corrigés).",
+  "questions": [
+    {
+      "id": "v22001",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « property tax » ?",
+      "choix": [
+        "Travel",
+        "Real Estate & Housing",
+        "Corporate Property",
+        "Meetings"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« property tax » figure dans les corrigés du thème Real Estate & Housing."
+    },
+    {
+      "id": "v22002",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « furnished apartment » ?",
+      "choix": [
+        "Corporate Property",
+        "Weather",
+        "Media",
+        "Real Estate & Housing"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« furnished apartment » figure dans les corrigés du thème Real Estate & Housing."
+    },
+    {
+      "id": "v22003",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « co-signer » ?",
+      "choix": [
+        "Investments",
+        "Real Estate & Housing",
+        "Products",
+        "Human Resources"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« co-signer » figure dans les corrigés du thème Real Estate & Housing."
+    },
+    {
+      "id": "v22004",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « condominium » ?",
+      "choix": [
+        "Corporate Property",
+        "Media",
+        "Products",
+        "Real Estate & Housing"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« condominium » figure dans les corrigés du thème Real Estate & Housing."
+    },
+    {
+      "id": "v22005",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « co-op board » ?",
+      "choix": [
+        "Human Resources",
+        "Sustainable Development",
+        "Real Estate & Housing",
+        "Marketing & Advertising"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« co-op board » figure dans les corrigés du thème Real Estate & Housing."
+    },
+    {
+      "id": "v22006",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « notice of default » ?",
+      "choix": [
+        "Dining Out",
+        "Logistics",
+        "High-Tech",
+        "Real Estate & Housing"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« notice of default » figure dans les corrigés du thème Real Estate & Housing."
+    },
+    {
+      "id": "v22007",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « appraised » ?",
+      "choix": [
+        "R&D & Industrialization",
+        "Life in the Office",
+        "Real Estate & Housing",
+        "High-Tech"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« appraised » figure dans les corrigés du thème Real Estate & Housing."
+    },
+    {
+      "id": "v22008",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « out of my price range » ?",
+      "choix": [
+        "Graphs",
+        "High-Tech",
+        "Presentations",
+        "Real Estate & Housing"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« out of my price range » figure dans les corrigés du thème Real Estate & Housing."
+    },
+    {
+      "id": "v22009",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « roommate » ?",
+      "choix": [
+        "Travel",
+        "Meetings",
+        "Real Estate & Housing",
+        "Idioms & Expressions"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« roommate » figure dans les corrigés du thème Real Estate & Housing."
+    },
+    {
+      "id": "v22010",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « landlord » ?",
+      "choix": [
+        "Banking & Personal Finance",
+        "Logistics",
+        "High-Tech",
+        "Real Estate & Housing"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« landlord » figure dans les corrigés du thème Real Estate & Housing."
+    },
+    {
+      "id": "v22011",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « lease » ?",
+      "choix": [
+        "Real Estate & Housing",
+        "Presentations",
+        "Commerce",
+        "Dining Out"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« lease » figure dans les corrigés du thème Real Estate & Housing."
+    },
+    {
+      "id": "v22012",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « home tours » ?",
+      "choix": [
+        "Complaining & Apologizing",
+        "Products",
+        "Real Estate & Housing",
+        "Health & Healthcare"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« home tours » figure dans les corrigés du thème Real Estate & Housing."
+    },
+    {
+      "id": "v22013",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « foreclosure » ?",
+      "choix": [
+        "Weather",
+        "Real Estate & Housing",
+        "High-Tech",
+        "Graphs"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« foreclosure » figure dans les corrigés du thème Real Estate & Housing."
+    },
+    {
+      "id": "v22014",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « move-in-ready » ?",
+      "choix": [
+        "Presentations",
+        "Real Estate & Housing",
+        "Weather",
+        "Phrasal Verbs"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« move-in-ready » figure dans les corrigés du thème Real Estate & Housing."
+    },
+    {
+      "id": "v22015",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « remodel » ?",
+      "choix": [
+        "Graphs",
+        "Investments",
+        "Real Estate & Housing",
+        "Phrasal Verbs"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« remodel » figure dans les corrigés du thème Real Estate & Housing."
+    },
+    {
+      "id": "v22016",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « tenant » ?",
+      "choix": [
+        "Commerce",
+        "Dining Out",
+        "High-Tech",
+        "Real Estate & Housing"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« tenant » figure dans les corrigés du thème Real Estate & Housing."
+    },
+    {
+      "id": "v22017",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « security deposit » ?",
+      "choix": [
+        "Graphs",
+        "Marketing & Advertising",
+        "Phrasal Verbs",
+        "Real Estate & Housing"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« security deposit » figure dans les corrigés du thème Real Estate & Housing."
+    },
+    {
+      "id": "v22018",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « sub-division » ?",
+      "choix": [
+        "Real Estate & Housing",
+        "Health & Healthcare",
+        "Communicating",
+        "Products"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« sub-division » figure dans les corrigés du thème Real Estate & Housing."
+    },
+    {
+      "id": "v22019",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « affordable » ?",
+      "choix": [
+        "Commerce",
+        "Travel",
+        "Corporate Property",
+        "Real Estate & Housing"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« affordable » figure dans les corrigés du thème Real Estate & Housing."
+    },
+    {
+      "id": "v22020",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « inspection » ?",
+      "choix": [
+        "Travel",
+        "Life in the Office",
+        "Weather",
+        "Real Estate & Housing"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« inspection » figure dans les corrigés du thème Real Estate & Housing."
+    },
+    {
+      "id": "v22021",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « termites » ?",
+      "choix": [
+        "Idioms & Expressions",
+        "Real Estate & Housing",
+        "Commerce",
+        "Media"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« termites » figure dans les corrigés du thème Real Estate & Housing."
+    },
+    {
+      "id": "v22022",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « asbestos » ?",
+      "choix": [
+        "Real Estate & Housing",
+        "Idioms & Expressions",
+        "Life in the Office",
+        "Meetings"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« asbestos » figure dans les corrigés du thème Real Estate & Housing."
+    },
+    {
+      "id": "v22023",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « doorman » ?",
+      "choix": [
+        "High-Tech",
+        "Dining Out",
+        "Real Estate & Housing",
+        "Complaining & Apologizing"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« doorman » figure dans les corrigés du thème Real Estate & Housing."
+    },
+    {
+      "id": "v22024",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « utilities » ?",
+      "choix": [
+        "Commerce",
+        "Products",
+        "Media",
+        "Real Estate & Housing"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« utilities » figure dans les corrigés du thème Real Estate & Housing."
+    },
+    {
+      "id": "v22025",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « master bedroom » ?",
+      "choix": [
+        "Investments",
+        "Dining Out",
+        "Real Estate & Housing",
+        "Complaining & Apologizing"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« master bedroom » figure dans les corrigés du thème Real Estate & Housing."
+    },
+    {
+      "id": "v22026",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « add-on » ?",
+      "choix": [
+        "Real Estate & Housing",
+        "R&D & Industrialization",
+        "Meetings",
+        "Marketing & Advertising"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« add-on » figure dans les corrigés du thème Real Estate & Housing."
+    },
+    {
+      "id": "v22027",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « walk-in-closet » ?",
+      "choix": [
+        "Products",
+        "Real Estate & Housing",
+        "Corporate Property",
+        "Dining Out"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« walk-in-closet » figure dans les corrigés du thème Real Estate & Housing."
+    },
+    {
+      "id": "v22028",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « flipping houses » ?",
+      "choix": [
+        "Meetings",
+        "Banking & Personal Finance",
+        "Real Estate & Housing",
+        "Products"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« flipping houses » figure dans les corrigés du thème Real Estate & Housing."
+    },
+    {
+      "id": "v22029",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « refinancing » ?",
+      "choix": [
+        "Dining Out",
+        "Real Estate & Housing",
+        "Sustainable Development",
+        "Idioms & Expressions"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« refinancing » figure dans les corrigés du thème Real Estate & Housing."
+    },
+    {
+      "id": "v22030",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « mortgage » ?",
+      "choix": [
+        "Real Estate & Housing",
+        "High-Tech",
+        "Communicating",
+        "Logistics"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« mortgage » figure dans les corrigés du thème Real Estate & Housing."
+    },
+    {
+      "id": "v22031",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « fixer-upper » ?",
+      "choix": [
+        "Logistics",
+        "Real Estate & Housing",
+        "Travel",
+        "Complaining & Apologizing"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« fixer-upper » figure dans les corrigés du thème Real Estate & Housing."
+    },
+    {
+      "id": "v22032",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « broker » ?",
+      "choix": [
+        "Graphs",
+        "Presentations",
+        "High-Tech",
+        "Real Estate & Housing"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« broker » figure dans les corrigés du thème Real Estate & Housing."
+    },
+    {
+      "id": "v22033",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « no money down » ?",
+      "choix": [
+        "Phrasal Verbs",
+        "Real Estate & Housing",
+        "Life in the Office",
+        "Communicating"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« no money down » figure dans les corrigés du thème Real Estate & Housing."
+    },
+    {
+      "id": "v22034",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « power of attorney » ?",
+      "choix": [
+        "Products",
+        "Travel",
+        "Real Estate & Housing",
+        "Dining Out"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« power of attorney » figure dans les corrigés du thème Real Estate & Housing."
+    },
+    {
+      "id": "v22035",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « estate » ?",
+      "choix": [
+        "Banking & Personal Finance",
+        "Real Estate & Housing",
+        "Health & Healthcare",
+        "Human Resources"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« estate » figure dans les corrigés du thème Real Estate & Housing."
+    },
+    {
+      "id": "v22036",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « escrow » ?",
+      "choix": [
+        "Real Estate & Housing",
+        "Corporate Property",
+        "Health & Healthcare",
+        "Media"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« escrow » figure dans les corrigés du thème Real Estate & Housing."
+    },
+    {
+      "id": "v22037",
+      "type": "QCM",
+      "question": "We got a stern letter from the county because we haven't paid our property ____ in a year.",
+      "choix": [
+        "tax",
+        "escrow",
+        "deposit",
+        "lease"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Phrase-corrigé du livret : « We got a stern letter from the county because we haven't paid our property tax in a year. »"
+    },
+    {
+      "id": "v22038",
+      "type": "QCM",
+      "question": "Alice is moving to Singapore for six months and she will need a ____ apartment.",
+      "choix": [
+        "affordable",
+        "furnished",
+        "remodeled",
+        "foreclosed"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Phrase-corrigé du livret : « Alice is moving to Singapore for six months and she will need a furnished apartment. »"
+    },
+    {
+      "id": "v22039",
+      "type": "QCM",
+      "question": "The house was affordable, but the bank still insisted that we have a ____.",
+      "choix": [
+        "co-signer",
+        "doorman",
+        "tenant",
+        "broker"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Phrase-corrigé du livret : « The house was affordable, but the bank still insisted that we have a co-signer. »"
+    },
+    {
+      "id": "v22040",
+      "type": "QCM",
+      "question": "Elisa is so lucky to have her ____ so close to the waterfront.",
+      "choix": [
+        "escrow",
+        "condominium",
+        "foreclosure",
+        "termite"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Phrase-corrigé du livret : « Elisa is so lucky to have her condominium so close to the waterfront. »"
+    },
+    {
+      "id": "v22041",
+      "type": "QCM",
+      "question": "The clause in the contract says that we must sell the apartment to the ____ board.",
+      "choix": [
+        "condo",
+        "co-op",
+        "lease",
+        "escrow"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Phrase-corrigé du livret : « The clause in the contract says that we must sell the apartment to the co-op board. »"
+    },
+    {
+      "id": "v22042",
+      "type": "QCM",
+      "question": "Nick hadn't paid his mortgage in months and received a notice of ____.",
+      "choix": [
+        "default",
+        "inspection",
+        "maturity",
+        "refinancing"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Phrase-corrigé du livret : « Nick hadn't paid his mortgage in months and received a notice of default. »"
+    },
+    {
+      "id": "v22043",
+      "type": "QCM",
+      "question": "After Mrs. Landringham died, her house was ____ at over three million dollars.",
+      "choix": [
+        "flipped",
+        "appraised",
+        "remodeled",
+        "refinanced"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Phrase-corrigé du livret : « After Mrs. Landringham died, her house was appraised at over three million dollars. »"
+    }
+  ]
+}

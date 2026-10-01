@@ -1,0 +1,605 @@
+{
+  "titre": "TSN 11 — Formulaire à retenir (rappel transversal)",
+  "description": "Rappel rapide de toutes les formules clés du module, tous chapitres confondus",
+  "questions": [
+    {
+      "id": "form01",
+      "type": "QCM",
+      "question": "TF directe (convention du cours) :",
+      "choix": [
+        "$X(f) = \\int x(t)e^{-2i\\pi ft}dt$",
+        "$X(f) = \\int x(t)e^{+2i\\pi ft}dt$",
+        "$X(f) = \\sum x[n]e^{-2i\\pi fn}$",
+        "$X(f) = x(t)\\,e^{-2i\\pi ft}$"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form02",
+      "type": "QCM",
+      "question": "TF inverse (convention du cours) :",
+      "choix": [
+        "$x(t) = \\int X(f)e^{2i\\pi ft}df$",
+        "$x(t) = \\int X(f)e^{-2i\\pi ft}df$",
+        "$x(t) = X(f)e^{2i\\pi ft}$",
+        "$x(t) = \\frac1{2\\pi}\\int X(f)df$"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form03",
+      "type": "QCM",
+      "question": "Théorème de Plancherel :",
+      "choix": [
+        "$\\int|x(t)|^2dt = \\int|X(f)|^2df$",
+        "$\\int x(t)dt = X(0)$",
+        "$x(0) = \\int X(f)df$",
+        "$|X(f)|=|x(t)|$"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form04",
+      "type": "QCM",
+      "question": "TF d'un Dirac décalé $\\delta_{t_0}(t)$ :",
+      "choix": [
+        "$e^{-2i\\pi ft_0}$",
+        "$\\delta(f-t_0)$",
+        "1",
+        "$e^{+2i\\pi ft_0}$"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form05",
+      "type": "QCM",
+      "question": "TF de la sinusoïde complexe $e^{2i\\pi f_0t}$ :",
+      "choix": [
+        "$\\delta_{f_0}(f)$",
+        "$\\delta(f)$",
+        "$e^{-2i\\pi f_0f}$",
+        "1"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form06",
+      "type": "QCM",
+      "question": "TF de $\\cos(2\\pi f_0t)$ :",
+      "choix": [
+        "$\\frac12(\\delta_{f_0}+\\delta_{-f_0})$",
+        "$\\delta_{f_0}$",
+        "$\\frac1{2i}(\\delta_{f_0}-\\delta_{-f_0})$",
+        "$\\cos(2\\pi f_0f)$"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form07",
+      "type": "QCM",
+      "question": "TF de la porte $\\Pi_{[-T/2;T/2]}(t)$ :",
+      "choix": [
+        "$T\\,\\mathrm{sinc}(\\pi fT)$, nulle en $f=k/T$",
+        "$\\mathrm{sinc}(f)$",
+        "$\\delta(f)$",
+        "$T$"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form08",
+      "type": "QCM",
+      "question": "TF du peigne de Dirac $\\text{Ш}_{T_e}(t)$ :",
+      "choix": [
+        "$\\frac1{T_e}\\text{Ш}_{1/T_e}(f)$",
+        "$T_e\\,\\text{Ш}_{T_e}(f)$",
+        "$\\delta(f)$",
+        "1"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form09",
+      "type": "QCR",
+      "question": "Propriétés de la TF continue, lesquelles sont exactes ?",
+      "choix": [
+        "Retard $x(t-t_0) \\to e^{-2i\\pi ft_0}X(f)$",
+        "Modulation $e^{2i\\pi f_0t}x(t) \\to X(f-f_0)$",
+        "Convolution $(h*x)\\to HX$ et produit $hx\\to H*X$",
+        "Signal réel $\\Rightarrow X(-f)=-X^*(f)$"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": "Pour un signal réel, la symétrie hermitienne est $X(-f)=X^*(f)$ (sans le signe moins)."
+    },
+    {
+      "id": "form10",
+      "type": "QCM",
+      "question": "Modèle complet du signal numérisé (troncature, échantillonnage, quantification) :",
+      "choix": [
+        "$P_\\Gamma\\big(s\\cdot\\Pi_{[-T/2;T/2]}\\cdot\\text{Ш}_{T_e}\\big)$",
+        "$s(t)+b(t)$",
+        "$s(t)*h(t)$",
+        "$P_\\Gamma(s(t))$ seul"
+      ],
+      "reponses": [0],
+      "explication": "Dans cet ordre : on tronque, on échantillonne, puis on quantifie."
+    },
+    {
+      "id": "form11",
+      "type": "QCM",
+      "question": "Effet de la troncature à durée $T$ sur le spectre :",
+      "choix": [
+        "convolution par un sinc → résolution $1/T$",
+        "périodisation de période $F_e$",
+        "ajout d'un bruit $\\Delta^2/12$",
+        "aucun effet"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form12",
+      "type": "QCM",
+      "question": "Effet de l'échantillonnage à pas $T_e$ sur le spectre :",
+      "choix": [
+        "périodisation de période $F_e=1/T_e$",
+        "convolution par un sinc",
+        "ajout d'un bruit blanc",
+        "dérivation du spectre"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form13",
+      "type": "QCM",
+      "question": "Effet de la quantification ($n$ bits, pas $\\Delta$) sur le signal :",
+      "choix": [
+        "bruit additif de variance $\\Delta^2/12$, environ 6 dB/bit de SNR",
+        "périodisation du spectre",
+        "convolution par un sinc",
+        "aucun effet notable"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form14",
+      "type": "QCM",
+      "question": "Théorème de Shannon-Nyquist :",
+      "choix": [
+        "$F_e > 2f_{\\max}$, sinon repliement",
+        "$F_e = f_{\\max}$",
+        "$F_e < 2f_{\\max}$",
+        "$F_e = 2/T$"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form15",
+      "type": "QCM",
+      "question": "En cas de repliement, la fréquence apparente d'une sinusoïde de fréquence $f$ est :",
+      "choix": [
+        "$f - kF_e \\in [-F_e/2;F_e/2]$",
+        "$f + F_e$",
+        "$f/F_e$",
+        "$F_e - f^2$"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form16",
+      "type": "QCM",
+      "question": "Nombre de points $N$ pour une durée $T$ échantillonnée à $T_e$ :",
+      "choix": [
+        "$N=\\lfloor T/T_e\\rfloor+1$",
+        "$N=T\\,T_e$",
+        "$N=T/T_e$ (sans arrondi)",
+        "$N=2T/T_e$"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form17",
+      "type": "QCM",
+      "question": "Largeur du lobe principal et 1er lobe secondaire de la fenêtre rectangulaire :",
+      "choix": [
+        "$2/T$ ; −13 dB",
+        "$4/T$ ; −31 dB",
+        "$4/T$ ; −41 dB",
+        "$6/T$ ; −58 dB"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form18",
+      "type": "QCM",
+      "question": "Largeur du lobe principal et 1er lobe secondaire de la fenêtre de Hann :",
+      "choix": [
+        "$4/T$ ; −31 dB",
+        "$2/T$ ; −13 dB",
+        "$4/T$ ; −41 dB",
+        "$6/T$ ; −58 dB"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form19",
+      "type": "QCM",
+      "question": "Largeur du lobe principal et 1er lobe secondaire de la fenêtre de Hamming :",
+      "choix": [
+        "$4/T$ ; −41 dB",
+        "$2/T$ ; −13 dB",
+        "$4/T$ ; −31 dB",
+        "$6/T$ ; −58 dB"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form20",
+      "type": "QCM",
+      "question": "Largeur du lobe principal et 1er lobe secondaire de la fenêtre de Blackman :",
+      "choix": [
+        "$6/T$ ; −58 dB",
+        "$2/T$ ; −13 dB",
+        "$4/T$ ; −31 dB",
+        "$4/T$ ; −41 dB"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form21",
+      "type": "QCM",
+      "question": "Définition de la DFT :",
+      "choix": [
+        "$X[k]=\\sum_{n=0}^{N-1}x[n]e^{-2i\\pi nk/N}$",
+        "$X[k]=\\frac1N\\sum_{n=0}^{N-1}x[n]e^{2i\\pi nk/N}$",
+        "$X[k]=\\int x(t)e^{-2i\\pi kt}dt$",
+        "$X[k]=x[k]$"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form22",
+      "type": "QCM",
+      "question": "Définition de l'IDFT :",
+      "choix": [
+        "$x[n]=\\frac1N\\sum_{k=0}^{N-1}X[k]e^{2i\\pi nk/N}$",
+        "$x[n]=\\sum_{k=0}^{N-1}X[k]e^{-2i\\pi nk/N}$",
+        "$x[n]=N\\sum X[k]$",
+        "$x[n]=X[n]$"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form23",
+      "type": "QCM",
+      "question": "Pas de la grille fréquentielle de la DFT :",
+      "choix": [
+        "$\\Delta f = F_e/N$",
+        "$\\Delta f = F_e$",
+        "$\\Delta f = 1/F_e$",
+        "$\\Delta f = N/F_e$"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form24",
+      "type": "QCM",
+      "question": "Égalité de Plancherel pour la DFT (convention du cours, sans normalisation à l'aller) :",
+      "choix": [
+        "$\\sum|x[n]|^2 = \\frac1N\\sum|X[k]|^2$",
+        "$\\sum|x[n]|^2 = \\sum|X[k]|^2$",
+        "$\\sum|x[n]|^2 = N\\sum|X[k]|^2$",
+        "$\\sum x[n] = \\sum X[k]$"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form25",
+      "type": "QCM",
+      "question": "Pour un signal réel, la DFT vérifie :",
+      "choix": [
+        "$X[N-k]=X^*[k]$",
+        "$X[k]$ est toujours réelle",
+        "$X[-k]=-X[k]$",
+        "$X[k]=0$ pour $k$ pair"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form26",
+      "type": "QCM",
+      "question": "Le zéro-padding :",
+      "choix": [
+        "interpole le spectre mais n'améliore pas la résolution",
+        "améliore la résolution proportionnellement au facteur de padding",
+        "ajoute de l'information au signal",
+        "réduit la variance du périodogramme"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form27",
+      "type": "QCM",
+      "question": "Un cosinus d'amplitude $A$ donne dans `abs(fft(x))/N` deux pics de hauteur :",
+      "choix": [
+        "$A/2$",
+        "$A$",
+        "$2A$",
+        "$A^2$"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form28",
+      "type": "QCM",
+      "question": "Le produit de deux DFT correspond en temps à :",
+      "choix": [
+        "une convolution circulaire",
+        "une convolution linéaire",
+        "un produit terme à terme",
+        "une simple addition"
+      ],
+      "reponses": [0],
+      "explication": "Pour retrouver la convolution linéaire, compléter par des zéros jusqu'à $N_x+N_h-1$."
+    },
+    {
+      "id": "form29",
+      "type": "QCM",
+      "question": "Stationnarité au sens large (ordre 2) :",
+      "choix": [
+        "$\\mathbb{E}[x(t)]=m_x$ constant et $R_x(t_1,t_2)=R_x(t_1-t_2)$",
+        "$x(t)$ est périodique",
+        "$x(t)$ est gaussien",
+        "$R_x(t_1,t_2)=0$"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form30",
+      "type": "QCM",
+      "question": "Théorème de Wiener–Khinchin :",
+      "choix": [
+        "$S_x(f)=\\mathcal{F}(R_x)(f)$",
+        "$S_x(f)=R_x(f)^2$",
+        "$R_x(\\tau)=S_x(\\tau)$",
+        "$S_x(f)=x(f)$"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form31",
+      "type": "QCM",
+      "question": "Puissance totale d'un signal aléatoire :",
+      "choix": [
+        "$P_x=\\int S_x(f)df = R_x(0)$",
+        "$P_x=S_x(0)$",
+        "$P_x=\\max S_x$",
+        "$P_x=R_x(\\infty)$"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form32",
+      "type": "QCM",
+      "question": "Filtrage d'un signal aléatoire par un SLIT $h$ :",
+      "choix": [
+        "$S_y=|H|^2S_x$",
+        "$S_y=HS_x$",
+        "$S_y=S_x+|H|^2$",
+        "$S_y=S_x$"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form33",
+      "type": "QCM",
+      "question": "Bruit blanc de variance $\\sigma^2$ :",
+      "choix": [
+        "$R_b=\\sigma^2\\delta$, $S_b=\\sigma^2$",
+        "$R_b=\\sigma^2$, $S_b=\\sigma^2\\delta$",
+        "$R_b=0$",
+        "$S_b=0$"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form34",
+      "type": "QCM",
+      "question": "Autocorrélation de $A\\cos(2\\pi f_0t+\\phi)$, $\\phi\\sim\\mathcal U[0,2\\pi]$ :",
+      "choix": [
+        "$R(\\tau)=\\frac{A^2}{2}\\cos(2\\pi f_0\\tau)$",
+        "$R(\\tau)=A\\cos(2\\pi f_0\\tau)$",
+        "$R(\\tau)=A^2\\delta(\\tau)$",
+        "$R(\\tau)=0$"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form35",
+      "type": "QCM",
+      "question": "Signaux indépendants (et centrés) $x$ et $y$ :",
+      "choix": [
+        "$S_{x+\\lambda y}=S_x+|\\lambda|^2S_y$",
+        "$S_{x+\\lambda y}=S_x+\\lambda S_y$",
+        "$S_{x+\\lambda y}=S_xS_y$",
+        "$S_{x+\\lambda y}=\\max(S_x,S_y)$"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form36",
+      "type": "QCM",
+      "question": "Estimateur biaisé de l'autocorrélation :",
+      "choix": [
+        "$\\frac1N\\sum_{k=n}^{N-1}x[k]x^*[k-n]$, $\\mathbb{E}=\\frac{N-|n|}{N}R$",
+        "$\\frac1{N-n}\\sum_{k=n}^{N-1}x[k]x^*[k-n]$",
+        "$\\frac1N\\sum x[k]$",
+        "$x[n]x^*[0]$"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form37",
+      "type": "QCM",
+      "question": "Estimateur non biaisé de l'autocorrélation :",
+      "choix": [
+        "$\\frac1{N-n}\\sum_{k=n}^{N-1}x[k]x^*[k-n]$, sans biais",
+        "$\\frac1N\\sum_{k=n}^{N-1}x[k]x^*[k-n]$",
+        "$\\frac1N\\sum x[k]^2$",
+        "identique au biaisé"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form38",
+      "type": "QCM",
+      "question": "Erreur quadratique moyenne d'un estimateur :",
+      "choix": [
+        "$\\text{EQM}=\\text{Var}(\\hat\\theta)+\\text{biais}^2(\\hat\\theta)$",
+        "$\\text{EQM}=\\text{Var}(\\hat\\theta)-\\text{biais}^2(\\hat\\theta)$",
+        "$\\text{EQM}=\\text{biais}(\\hat\\theta)$",
+        "$\\text{EQM}=\\sqrt{\\text{Var}(\\hat\\theta)}$"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form39",
+      "type": "QCM",
+      "question": "Corrélogramme :",
+      "choix": [
+        "$\\hat S_x[k]=\\text{DFT}(\\hat R_x)[k]$",
+        "$\\hat S_x[k]=\\hat R_x[k]^2$",
+        "$\\hat S_x[k]=x[k]^2$",
+        "$\\hat S_x[k]=\\text{IDFT}(x)[k]$"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form40",
+      "type": "QCM",
+      "question": "Périodogramme :",
+      "choix": [
+        "$\\hat S_x[k]=\\frac1N|\\text{DFT}(x)[k]|^2$",
+        "$\\hat S_x[k]=\\text{DFT}(x)[k]$",
+        "$\\hat S_x[k]=N|\\text{DFT}(x)[k]|^2$",
+        "$\\hat S_x[k]=|x[k]|^2$"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form41",
+      "type": "QCM",
+      "question": "Méthode de Bartlett : découpage en $J$ segments de $M$ points, variance réduite d'un facteur environ :",
+      "choix": [
+        "$J$",
+        "$J^2$",
+        "$\\sqrt J$",
+        "$M$"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form42",
+      "type": "QCM",
+      "question": "Méthode de Welch : segments de taille $M$ qui se chevauchent, variance réduite d'un facteur environ :",
+      "choix": [
+        "$J'$ (avec $J'>J$ de Bartlett)",
+        "$J$ identique à Bartlett",
+        "$M^2$",
+        "aucune réduction"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form43",
+      "type": "QCM",
+      "question": "Filtrage linéaire, relation fréquentielle générale :",
+      "choix": [
+        "$Y(f)=H(f)X(f)$",
+        "$Y(f)=H(f)+X(f)$",
+        "$Y(f)=H(f)*X(f)$",
+        "$Y(f)=X(f)/H(f)$"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form44",
+      "type": "QCR",
+      "question": "Les 5 idées à ne jamais oublier du cours (formulaire) :",
+      "choix": [
+        "Produit en temps ⟺ convolution en fréquence (et réciproquement)",
+        "Échantillonner ⟹ périodiser le spectre ; $F_e>2f_{\\max}$",
+        "Résolution = $1/T$ : seule la durée d'observation l'améliore",
+        "Fenêtrer = compromis résolution/fuite ; moyenner (Welch) = compromis résolution/variance",
+        "Le bruit blanc a une DSP nulle"
+      ],
+      "reponses": [0, 1, 2, 3],
+      "explication": "Le bruit blanc a au contraire une DSP constante (plancher plat $\\sigma^2$), pas nulle."
+    },
+    {
+      "id": "form45",
+      "type": "QCM",
+      "question": "SNR de quantification d'un CAN sur $n$ bits (sinusoïde pleine échelle) :",
+      "choix": [
+        "$\\text{SNR}\\approx 6{,}02\\,n+1{,}76$ dB",
+        "$\\text{SNR}\\approx 3\\,n$ dB",
+        "$\\text{SNR}\\approx 10\\,n$ dB",
+        "$\\text{SNR}\\approx n^2$ dB"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "form46",
+      "type": "QCM",
+      "question": "Variance du bruit de quantification uniforme de pas $\\Delta$ :",
+      "choix": [
+        "$\\sigma_q^2=\\Delta^2/12$",
+        "$\\sigma_q^2=\\Delta/2$",
+        "$\\sigma_q^2=\\Delta^2$",
+        "$\\sigma_q^2=\\Delta/12$"
+      ],
+      "reponses": [0],
+      "explication": ""
+    }
+  ]
+}

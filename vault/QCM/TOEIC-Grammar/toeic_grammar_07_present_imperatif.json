@@ -1,0 +1,156 @@
+{
+  "titre": "TOEIC Grammar — 07 Le présent et l'impératif",
+  "description": "Présent simple, présent continu et impératif.",
+  "questions": [
+    {
+      "id": "toeic-g07-q01",
+      "type": "QCM",
+      "question": "The \"Which Terminal?\" information boards at Flight Connections …… which terminal your flight is departing from.",
+      "choix": [
+        "shows",
+        "is showing",
+        "show",
+        "is shown"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Généralité au présent simple, sujet pluriel (*boards*) : `show`."
+    },
+    {
+      "id": "toeic-g07-q02",
+      "type": "QCM",
+      "question": "…… attempt to service your equipment yourself unless you have expertise in this field.",
+      "choix": [
+        "Do not",
+        "Let's",
+        "Please",
+        "Does"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Impératif négatif : `Do not`. *Unless* montre que seuls les experts peuvent le faire."
+    },
+    {
+      "id": "toeic-g07-q03",
+      "type": "QCM",
+      "question": "This month, the Institute of Arts …… a Philip Stone's exhibition celebrating the birth of electricity in this country.",
+      "choix": [
+        "host",
+        "hosts",
+        "do host",
+        "hosting"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Présent simple à la 3e personne du singulier (*the Institute*) : `hosts`."
+    },
+    {
+      "id": "toeic-g07-q04",
+      "type": "QCM",
+      "question": "Powered by wind turbines and solar power for the first decade, this inn …… all surplus food to farm animals, including the local herds.",
+      "choix": [
+        "gives",
+        "has been given",
+        "give",
+        "giving"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Présent simple à la 3e personne du singulier (*this inn*) : `gives`."
+    },
+    {
+      "id": "toeic-g07-q05",
+      "type": "QCM",
+      "question": "Pamela Jennings's passion for tomatoes …… back to her grandparents' farm in Massachussetts.",
+      "choix": [
+        "is going",
+        "goes",
+        "go",
+        "is gone"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Présent simple à la 3e personne du singulier (*passion*) : `goes`."
+    },
+    {
+      "id": "toeic-g07-q06",
+      "type": "QCM",
+      "question": "Lester University in Rocksburry …… part of a leading global not-for-profit education group established over 25-years by the Gulkan family from Turkey.",
+      "choix": [
+        "is",
+        "being",
+        "are",
+        "be"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Présent simple de *be* à la 3e personne du singulier : `is`."
+    },
+    {
+      "id": "toeic-g07-q07",
+      "type": "QCM",
+      "question": "SouthWest Airlines and its codeshare partners both …… to Denver, Phoenix, San Francisco, San Diego, and all major American destinations.",
+      "choix": [
+        "flies",
+        "fly",
+        "are flying",
+        "flying"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Présent simple à la 3e personne du pluriel : `fly`."
+    },
+    {
+      "id": "toeic-g07-q08",
+      "type": "QCM",
+      "question": "…… seeking contemporary chic and stylish beach-house villas in an innovative resort?",
+      "choix": [
+        "You are",
+        "You",
+        "Do you",
+        "Are you"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Présent en -ING à la 2e personne du pluriel, avec inversion car c'est une question : `Are you`."
+    },
+    {
+      "id": "toeic-g07-q09",
+      "type": "QCM",
+      "question": "Decades of experience and research …… us to say with certainty that the design of our clothes will fit your body comfortably.",
+      "choix": [
+        "are allowing",
+        "allows",
+        "allow",
+        "allowing"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Présent simple, sujet pluriel (*decades*), généralité : `allow`."
+    },
+    {
+      "id": "toeic-g07-q10",
+      "type": "QCM",
+      "question": "How …… Humphrey Rodel's charity work?",
+      "choix": [
+        "do being a pilot help",
+        "does being a pilot helps",
+        "is being a pilot help",
+        "does being a pilot help"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Présent simple à la 3e personne du singulier (*being a pilot*), avec inversion interrogative : `does being a pilot help`."
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "titre": "Linux 7 — Navigation",
+  "description": "pwd, ls, cd, autocomplétion et historique des commandes",
+  "questions": [
+    {
+      "id": "nav01",
+      "type": "QCM",
+      "question": "Quelle commande affiche le répertoire courant ?",
+      "choix": ["ls", "pwd", "cd", "cwd"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "nav02",
+      "type": "QCM",
+      "question": "Quelle option de `ls` affiche des informations détaillées (permissions, propriétaire, taille, date) ?",
+      "choix": ["-a", "-l", "-h", "-t"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "nav03",
+      "type": "QCM",
+      "question": "Quelle commande liste également les fichiers cachés (commençant par un point) ?",
+      "choix": ["ls -l", "ls -la", "ls -h", "ls -t"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "nav04",
+      "type": "QCM",
+      "question": "Dans la sortie de `ls -l`, que représente la première colonne (ex. drwxr-xr-x) ?",
+      "choix": [
+        "Le type de fichier et les permissions",
+        "Le nombre de liens durs",
+        "Le propriétaire",
+        "La taille"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "nav05",
+      "type": "QCM",
+      "question": "Quelle commande permet de changer de répertoire ?",
+      "choix": ["mv", "cd", "cp", "ls"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "nav06",
+      "type": "QCM",
+      "question": "Que fait la commande `cd -` ?",
+      "choix": [
+        "Elle revient au répertoire personnel",
+        "Elle retourne au dernier répertoire visité",
+        "Elle remonte d'un niveau",
+        "Elle supprime le répertoire courant"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "nav07",
+      "type": "QCM",
+      "question": "Que représente l'entrée `..` lors d'un `ls -la` ?",
+      "choix": ["Le répertoire courant", "Le répertoire parent", "Un lien symbolique", "Un fichier caché"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "nav08",
+      "type": "QCM",
+      "question": "Que représente l'entrée `.` lors d'un `ls -la` ?",
+      "choix": ["Le répertoire courant", "Le répertoire parent", "Le répertoire personnel", "Le répertoire racine"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "nav09",
+      "type": "QCM",
+      "question": "Quel raccourci clavier permet de nettoyer le terminal ?",
+      "choix": ["Ctrl+L", "Ctrl+C", "Ctrl+D", "Ctrl+Z"],
+      "reponses": [0],
+      "explication": "La commande `clear` fait la même chose."
+    },
+    {
+      "id": "nav10",
+      "type": "QCM",
+      "question": "Quel raccourci permet de rechercher dans l'historique des commandes ?",
+      "choix": ["Ctrl+R", "Ctrl+H", "Ctrl+F", "Ctrl+S"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "nav11",
+      "type": "QCM",
+      "question": "Combien de fois faut-il appuyer sur [TAB] pour lister toutes les entrées possibles d'une autocomplétion ambiguë ?",
+      "choix": ["1 fois", "2 fois", "3 fois", "Cela ne fonctionne pas"],
+      "reponses": [1],
+      "explication": ""
+    }
+  ]
+}

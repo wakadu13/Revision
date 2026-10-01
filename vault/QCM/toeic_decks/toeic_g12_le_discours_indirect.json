@@ -1,0 +1,673 @@
+{
+  "titre": "TOEIC Grammar 12 — Le discours indirect",
+  "description": "Concordance des personnes et des temps, repères. 10 exercices du livret + 34 questions de cours.",
+  "questions": [
+    {
+      "id": "g12e001",
+      "type": "QCM",
+      "question": "Peter Jennings said he would visit the factory as soon as he ____ released from hospital.",
+      "choix": [
+        "had been",
+        "will be",
+        "would have been",
+        "was"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Subordonnée de temps au prétérit (complétive au conditionnel présent)."
+    },
+    {
+      "id": "g12e002",
+      "type": "QCM",
+      "question": "They were sure that after his long and tiring walk in the woods, the gardener ____ a nap when they arrived.",
+      "choix": [
+        "will have",
+        "would be having",
+        "had",
+        "was having"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Circonstancielle de temps au prétérit : complétive au conditionnel présent."
+    },
+    {
+      "id": "g12e003",
+      "type": "QCM",
+      "question": "Mrs. Woodrige asked us what time we ____ we would bring the bulk goods.",
+      "choix": [
+        "thought",
+        "think",
+        "would think",
+        "are thinking"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Complétive au conditionnel : thought (prétérit) est cohérent avec asked."
+    },
+    {
+      "id": "g12e004",
+      "type": "QCM",
+      "question": "Paul Hutchinson declared that as long as the survey had not been finished he ____ any information.",
+      "choix": [
+        "had not released",
+        "will not release",
+        "would not have released",
+        "would not release"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Subordonnée de temps au pluperfect : complétive au conditionnel présent (would not release)."
+    },
+    {
+      "id": "g12e005",
+      "type": "QCM",
+      "question": "Joe Stevens wonders whether anybody ____ that information on time.",
+      "choix": [
+        "will ever get",
+        "would ever get",
+        "would ever have got",
+        "should ever get"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Principale au présent : complétive au futur."
+    },
+    {
+      "id": "g12e006",
+      "type": "QCM",
+      "question": "They were sorry to hear that the drought ____ many crops in the region.",
+      "choix": [
+        "have damaged",
+        "had damaged",
+        "would have damaged",
+        "damages"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Principale au prétérit : complétive au pluperfect (action antérieure)."
+    },
+    {
+      "id": "g12e007",
+      "type": "QCM",
+      "question": "The real estate agent advised the landlord to install a fitted kitchen so that the rental ____ faster.",
+      "choix": [
+        "could have been done",
+        "could be done",
+        "would have been done",
+        "is being done"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Principale au prétérit : complétive au conditionnel présent."
+    },
+    {
+      "id": "g12e008",
+      "type": "QCM",
+      "question": "The sales representative apologizes about bringing the wrong samples and promises he ____ the right ones next time.",
+      "choix": [
+        "would have brought",
+        "had brought",
+        "will bring",
+        "shall have brought"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Principale au présent + next time : futur."
+    },
+    {
+      "id": "g12e009",
+      "type": "QCM",
+      "question": "The captain regretted that the propeller ____ during the competition and added he would come back next year with a brand new ship.",
+      "choix": [
+        "had broken",
+        "is broken",
+        "would break",
+        "would have broken"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Principale au prétérit : pluperfect (le regret est postérieur à la casse)."
+    },
+    {
+      "id": "g12e010",
+      "type": "QCM",
+      "question": "The children had always thought Santa Claus ____ them another board game.",
+      "choix": [
+        "should have brought",
+        "should bring",
+        "brought",
+        "should be bringing"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Principale au pluperfect : le conditionnel est envisageable dans la subordonnée."
+    },
+    {
+      "id": "g12c001",
+      "type": "QCM",
+      "question": "Le discours indirect rapporte :",
+      "choix": [
+        "un discours direct",
+        "un futur",
+        "une hypothèse",
+        "un ordre uniquement"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g12c002",
+      "type": "QCR",
+      "question": "Verbes introducteurs du discours indirect :",
+      "choix": [
+        "add",
+        "advise",
+        "agree",
+        "apologize",
+        "ask",
+        "wonder"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "explication": "Aussi answer, beg, command, decide, declare, deny, explain, inquire, object, order, plead, regret, remind, reply, request, require, say, suggest, tell, want to know."
+    },
+    {
+      "id": "g12c003",
+      "type": "QCM",
+      "question": "La proposition principale du discours direct devient, au discours indirect :",
+      "choix": [
+        "une proposition complétive",
+        "une proposition relative",
+        "une proposition infinitive",
+        "une proposition indépendante"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g12c004",
+      "type": "QCM",
+      "question": "Avec un sujet identique (le sujet répète ses propres paroles), le pronom :",
+      "choix": [
+        "reste identique",
+        "change toujours",
+        "devient he",
+        "disparaît"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "I say that I've been busy all day."
+    },
+    {
+      "id": "g12c005",
+      "type": "QCM",
+      "question": "Avec un sujet différent, on modifie :",
+      "choix": [
+        "le sujet et les possessifs",
+        "uniquement le verbe",
+        "uniquement l'adverbe",
+        "rien"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "I've been busy all day → She is saying she has been busy all day."
+    },
+    {
+      "id": "g12c006",
+      "type": "QCM",
+      "question": "« My glasses are darker than yours » → He is saying that ____ glasses are darker than yours.",
+      "choix": [
+        "his",
+        "my",
+        "her",
+        "their"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g12c007",
+      "type": "QCM",
+      "question": "« Mine are safe » → He is saying that ____ are safe.",
+      "choix": [
+        "his",
+        "mine",
+        "hers",
+        "theirs"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g12c008",
+      "type": "QCM",
+      "question": "Principale au présent : la complétive :",
+      "choix": [
+        "garde le temps d'origine",
+        "recule d'un temps",
+        "passe au futur",
+        "passe au past perfect"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g12c009",
+      "type": "QCM",
+      "question": "Principale au passé : la complétive :",
+      "choix": [
+        "se met au passé à un degré supérieur (recul d'un temps)",
+        "garde le temps d'origine",
+        "passe au futur",
+        "reste au présent"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g12c010",
+      "type": "QCM",
+      "question": "Présent → (principale au passé) :",
+      "choix": [
+        "prétérit",
+        "past perfect",
+        "présent",
+        "conditionnel"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« I know all his songs » → He said (that) he knew all his songs."
+    },
+    {
+      "id": "g12c011",
+      "type": "QCM",
+      "question": "Prétérit → (principale au passé) :",
+      "choix": [
+        "past perfect",
+        "prétérit",
+        "présent",
+        "conditionnel"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g12c012",
+      "type": "QCM",
+      "question": "Futur (will) → (principale au passé) :",
+      "choix": [
+        "conditionnel (would)",
+        "past perfect",
+        "présent",
+        "prétérit"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« I will know » → He said he would know."
+    },
+    {
+      "id": "g12c013",
+      "type": "QCM",
+      "question": "Présent continu → :",
+      "choix": [
+        "prétérit continu",
+        "présent continu",
+        "past perfect",
+        "futur"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g12c014",
+      "type": "QCM",
+      "question": "Impératif → :",
+      "choix": [
+        "infinitif complet (told me to ...)",
+        "gérondif",
+        "prétérit",
+        "base verbale"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« Learn his songs! » → She told me to learn his songs."
+    },
+    {
+      "id": "g12c015",
+      "type": "QCM",
+      "question": "« Don't purchase this hat » → I advise you ____ this hat.",
+      "choix": [
+        "not to purchase",
+        "don't purchase",
+        "not purchase",
+        "to not purchasing"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g12c016",
+      "type": "QCM",
+      "question": "« Must » au style direct devient au style indirect :",
+      "choix": [
+        "must / had to",
+        "musted",
+        "shall",
+        "would"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "I said (that) I must / had to know all his songs."
+    },
+    {
+      "id": "g12c017",
+      "type": "QCM",
+      "question": "« May » au présent → présent :",
+      "choix": [
+        "I am saying (that) I may know all his songs",
+        "I am saying (that) I might have",
+        "I said I may had",
+        "I say I musts"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g12c018",
+      "type": "QCM",
+      "question": "Phrase interrogative directe → discours indirect :",
+      "choix": [
+        "ordre des mots de la déclarative (pas d'inversion)",
+        "inversion conservée",
+        "futur obligatoire",
+        "infinitif"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Where did you buy these earrings? → I wanted to know where she had bought these earrings."
+    },
+    {
+      "id": "g12c019",
+      "type": "QCM",
+      "question": "« Would you do that for me? » →",
+      "choix": [
+        "I asked her if she would do that for me",
+        "I asked her would she do that for me",
+        "I asked her if would she do that for me",
+        "I asked if she will do"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g12c020",
+      "type": "QCM",
+      "question": "Now (discours direct) devient au discours indirect :",
+      "choix": [
+        "then",
+        "now",
+        "today",
+        "that day"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g12c021",
+      "type": "QCM",
+      "question": "Until now devient :",
+      "choix": [
+        "until then",
+        "until now",
+        "up to today",
+        "since then"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g12c022",
+      "type": "QCM",
+      "question": "Today devient :",
+      "choix": [
+        "that day / that very day",
+        "today",
+        "the day before",
+        "the following day"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g12c023",
+      "type": "QCM",
+      "question": "Tomorrow / next day devient :",
+      "choix": [
+        "the following day / the day after / the next day",
+        "the day before",
+        "that day",
+        "then"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g12c024",
+      "type": "QCM",
+      "question": "Yesterday devient :",
+      "choix": [
+        "the day before / the previous day",
+        "the following day",
+        "that day",
+        "then"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g12c025",
+      "type": "QCM",
+      "question": "The day after tomorrow devient :",
+      "choix": [
+        "two days after",
+        "two days before",
+        "the day before",
+        "the next day"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g12c026",
+      "type": "QCM",
+      "question": "The day before yesterday devient :",
+      "choix": [
+        "two days before / two days earlier",
+        "two days after",
+        "the day after",
+        "the following day"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g12c027",
+      "type": "QCM",
+      "question": "Last week devient :",
+      "choix": [
+        "the week before",
+        "the following week",
+        "that week",
+        "then"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g12c028",
+      "type": "QCM",
+      "question": "Ago devient :",
+      "choix": [
+        "before / earlier",
+        "after",
+        "then",
+        "next"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g12c029",
+      "type": "QCM",
+      "question": "Here devient :",
+      "choix": [
+        "there",
+        "here",
+        "that",
+        "those"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g12c030",
+      "type": "QCM",
+      "question": "This devient :",
+      "choix": [
+        "that",
+        "this",
+        "these",
+        "those"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g12c031",
+      "type": "QCM",
+      "question": "These devient :",
+      "choix": [
+        "those",
+        "these",
+        "that",
+        "this"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g12c032",
+      "type": "QCM",
+      "question": "Les changements de repères temporels/spatiaux ont lieu quand :",
+      "choix": [
+        "le verbe introductif est au passé",
+        "le verbe introductif est au présent",
+        "toujours",
+        "jamais"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g12c033",
+      "type": "QCM",
+      "question": "Dans une complétive au discours indirect, on utilise l'ordre des mots :",
+      "choix": [
+        "du déclaratif",
+        "de l'interrogatif",
+        "de l'impératif",
+        "de l'exclamatif"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g12c034",
+      "type": "QCM",
+      "question": "She asked him when he ____ learning his songs by heart.",
+      "choix": [
+        "was",
+        "is",
+        "has been",
+        "would be"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Présent continu → prétérit continu."
+    }
+  ]
+}

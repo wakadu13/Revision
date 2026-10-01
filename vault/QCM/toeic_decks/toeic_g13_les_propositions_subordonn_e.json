@@ -1,0 +1,495 @@
+{
+  "titre": "TOEIC Grammar 13 — Les propositions subordonnées relatives",
+  "description": "Who, whom, whose, which, that, where, when. 10 exercices du livret + 22 questions de cours.",
+  "questions": [
+    {
+      "id": "g13e001",
+      "type": "QCM",
+      "question": "We are currently working with inspirational organizations ____ the creative economy both in the United States and overseas.",
+      "choix": [
+        "whose lead",
+        "who lead",
+        "lead",
+        "which lead"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Pronom relatif sujet pour un inanimé : which. Who implique un animé ; whose une appartenance."
+    },
+    {
+      "id": "g13e002",
+      "type": "QCM",
+      "question": "Melvin Sparks ____ laboratory is based in Cairns is testing the potential of 3-printing to save coral reefs.",
+      "choix": [
+        "in which",
+        "where",
+        "which",
+        "whose"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Relation d'appartenance (« dont ») : whose."
+    },
+    {
+      "id": "g13e003",
+      "type": "QCM",
+      "question": "The moment ____ Sylvia de Oliveira went on stage to get her prize was probably one of the most emotional of her life.",
+      "choix": [
+        "when",
+        "where",
+        "which",
+        "in which"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Relatif associé à une temporalité : when."
+    },
+    {
+      "id": "g13e004",
+      "type": "QCM",
+      "question": "The manor house ____ has just flown away was renovated a month ago.",
+      "choix": [
+        "who's roof",
+        "the roof of which",
+        "which roof",
+        "that roof"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Génitif pour un inanimé : the roof of which (ou whose roof)."
+    },
+    {
+      "id": "g13e005",
+      "type": "QCM",
+      "question": "Anyone ____ family situation has changed due to marriage, divorce, birth of child, or death must complete the following form.",
+      "choix": [
+        "whose",
+        "who's",
+        "that",
+        "which"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Génitif pour un animé : whose."
+    },
+    {
+      "id": "g13e006",
+      "type": "QCM",
+      "question": "This bar ____ blends Pop Art style with a souk-like interior offers a delicious oriental music and fantastic cocktails.",
+      "choix": [
+        "who",
+        "which",
+        "whose",
+        "whom"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Pronom relatif sujet pour un inanimé : which."
+    },
+    {
+      "id": "g13e007",
+      "type": "QCM",
+      "question": "Skydive directly over the beach in Wollongong and experience the widest blue ____ you will ever know.",
+      "choix": [
+        "yonder whom",
+        "yonder whose",
+        "yonder where",
+        "yonder"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Relatif complément d'objet pour inanimé : which, that ou relatif zéro (choisi ici)."
+    },
+    {
+      "id": "g13e008",
+      "type": "QCM",
+      "question": "Reward and recognition practices are seen to be particularly poor in the public and not-for-profit sectors, ____ over two-thirds report they support effective leadership to little or no extent.",
+      "choix": [
+        "which",
+        "during which",
+        "when",
+        "where"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Relatif de lieu (secteurs) : where."
+    },
+    {
+      "id": "g13e009",
+      "type": "QCM",
+      "question": "Each applicant ____ has been granted a visa will be sent their own Visa Grant Notice.",
+      "choix": [
+        "which",
+        "whom",
+        "that",
+        "during which"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Relatif sujet pour un animé : that (ou who)."
+    },
+    {
+      "id": "g13e010",
+      "type": "QCM",
+      "question": "Our Dutch supplier, ____ we are so fond of thanks to his creative insight, will send his new collection within a fortnight.",
+      "choix": [
+        "whom",
+        "whose",
+        "who",
+        "which"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Relatif complément d'objet pour un animé : whom."
+    },
+    {
+      "id": "g13c001",
+      "type": "QCR",
+      "question": "Quels sont les pronoms relatifs anglais cités dans le livret ?",
+      "choix": [
+        "who",
+        "whom",
+        "whose",
+        "which",
+        "that",
+        "where",
+        "when"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "explication": "Aussi : pronom relatif zéro (∅)."
+    },
+    {
+      "id": "g13c002",
+      "type": "QCM",
+      "question": "Pour un sujet animé, on emploie :",
+      "choix": [
+        "who ou that",
+        "which uniquement",
+        "whose",
+        "where"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "The grocer that / who sells this produce."
+    },
+    {
+      "id": "g13c003",
+      "type": "QCM",
+      "question": "Pour un sujet non animé, on emploie :",
+      "choix": [
+        "which ou that",
+        "who",
+        "whom",
+        "whose"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "The menus which / that are indicated..."
+    },
+    {
+      "id": "g13c004",
+      "type": "QCM",
+      "question": "COD animé :",
+      "choix": [
+        "whom, that ou ∅",
+        "which",
+        "whose",
+        "where"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "The baby-sitter whom / that / ∅ you hired."
+    },
+    {
+      "id": "g13c005",
+      "type": "QCM",
+      "question": "COD non animé :",
+      "choix": [
+        "which, that ou ∅",
+        "who",
+        "whom",
+        "whose"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "The engine which / that / ∅ the mechanic has been fixing."
+    },
+    {
+      "id": "g13c006",
+      "type": "QCM",
+      "question": "COI animé :",
+      "choix": [
+        "whom (prépositions : at whom / whom ... at)",
+        "which",
+        "whose",
+        "when"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "The child at whom you smiled / whom you smiled at."
+    },
+    {
+      "id": "g13c007",
+      "type": "QCM",
+      "question": "COI non animé :",
+      "choix": [
+        "which (for which / which ... for)",
+        "whom",
+        "who",
+        "whose"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "The watch for which she's been looking."
+    },
+    {
+      "id": "g13c008",
+      "type": "QCM",
+      "question": "Génitif (possession), animé :",
+      "choix": [
+        "whose",
+        "who's",
+        "whom",
+        "which"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "The engineer whose project is so demanding."
+    },
+    {
+      "id": "g13c009",
+      "type": "QCM",
+      "question": "Génitif, non animé :",
+      "choix": [
+        "whose ou the ... of which",
+        "who's",
+        "whom",
+        "when"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "The room whose furniture is all white / the furniture of which."
+    },
+    {
+      "id": "g13c010",
+      "type": "QCM",
+      "question": "Relatif de lieu :",
+      "choix": [
+        "where / in which",
+        "when",
+        "whom",
+        "whose"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "The café where we had breakfast."
+    },
+    {
+      "id": "g13c011",
+      "type": "QCM",
+      "question": "Relatif de temps :",
+      "choix": [
+        "when / in which / during which",
+        "where",
+        "whom",
+        "whose"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "The era when dinosaurs lived."
+    },
+    {
+      "id": "g13c012",
+      "type": "QCM",
+      "question": "Les animés sont généralement :",
+      "choix": [
+        "des êtres humains (et parfois des animaux proches)",
+        "des choses",
+        "des lieux",
+        "des concepts"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g13c013",
+      "type": "QCM",
+      "question": "Les non animés sont :",
+      "choix": [
+        "des choses, lieux, concepts, situations",
+        "des êtres humains",
+        "des animaux proches",
+        "des groupes de personnes"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g13c014",
+      "type": "QCM",
+      "question": "Who's est :",
+      "choix": [
+        "la contraction de who is / who has",
+        "le génitif de who",
+        "un pronom relatif COD",
+        "un pronom démonstratif"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Whose = génitif ; who's = who is."
+    },
+    {
+      "id": "g13c015",
+      "type": "QCM",
+      "question": "Une proposition relative descriptive (entre virgules) peut-elle se construire avec that ?",
+      "choix": [
+        "Non, jamais",
+        "Oui, toujours",
+        "Uniquement avec whose",
+        "Uniquement au pluriel"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "On ne peut pas dire *My sister Sybil, that I feel so close to..."
+    },
+    {
+      "id": "g13c016",
+      "type": "QCM",
+      "question": "Le relatif zéro (∅) est possible :",
+      "choix": [
+        "en fonction de complément d'objet (pas de sujet)",
+        "en fonction de sujet",
+        "en fonction de génitif",
+        "jamais"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Il est impossible en tant que sujet."
+    },
+    {
+      "id": "g13c017",
+      "type": "QCM",
+      "question": "The man ____ called you is my boss.",
+      "choix": [
+        "who",
+        "whom",
+        "whose",
+        "where"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g13c018",
+      "type": "QCM",
+      "question": "The book ____ you lent me is great.",
+      "choix": [
+        "which",
+        "who",
+        "whose",
+        "where"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g13c019",
+      "type": "QCM",
+      "question": "The company ____ CEO resigned is in trouble.",
+      "choix": [
+        "whose",
+        "who's",
+        "which",
+        "whom"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g13c020",
+      "type": "QCM",
+      "question": "The city ____ I was born is beautiful.",
+      "choix": [
+        "where",
+        "which",
+        "who",
+        "whose"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g13c021",
+      "type": "QCM",
+      "question": "The year ____ the company was founded was 1999.",
+      "choix": [
+        "when",
+        "where",
+        "whom",
+        "whose"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g13c022",
+      "type": "QCM",
+      "question": "The girl to ____ I spoke is my sister.",
+      "choix": [
+        "whom",
+        "who",
+        "whose",
+        "where"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "titre": "Linux 12 — Filtrer le contenu",
+  "description": "more, less, head, tail, sort, grep, cut, tr, column, awk, sed, wc",
+  "questions": [
+    {
+      "id": "flt01",
+      "type": "QCM",
+      "question": "Quelle différence principale existe entre `more` et `less` après avoir quitté avec [Q] ?",
+      "choix": [
+        "less garde toujours la sortie affichée",
+        "more garde la sortie affichée dans le terminal, less non",
+        "Il n'y a aucune différence",
+        "less ne peut pas être quitté"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "flt02",
+      "type": "QCM",
+      "question": "Combien de lignes `head` affiche-t-il par défaut ?",
+      "choix": ["5", "10", "20", "Toutes"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "flt03",
+      "type": "QCM",
+      "question": "Que fait `tail` par défaut ?",
+      "choix": [
+        "Affiche les 10 premières lignes",
+        "Affiche les 10 dernières lignes",
+        "Trie le fichier",
+        "Compte les lignes"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "flt04",
+      "type": "QCM",
+      "question": "Quel outil trie les lignes par ordre alphabétique/numérique ?",
+      "choix": ["sort", "cut", "tr", "awk"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "flt05",
+      "type": "QCM",
+      "question": "Quelle option de `grep` inverse la correspondance (exclut les lignes correspondantes) ?",
+      "choix": ["-i", "-v", "-c", "-n"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "flt06",
+      "type": "QCM",
+      "question": "Quel outil extrait un champ spécifique d'une ligne selon un délimiteur (-d) et une position (-f) ?",
+      "choix": ["cut", "tr", "sort", "column"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "flt07",
+      "type": "QCM",
+      "question": "Quel outil remplace un caractère par un autre dans un flux de texte ?",
+      "choix": ["sed", "tr", "cut", "awk"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "flt08",
+      "type": "QCM",
+      "question": "Quel outil affiche une sortie sous forme de tableau avec l'option -t ?",
+      "choix": ["column", "tr", "cut", "grep"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "flt09",
+      "type": "QCM",
+      "question": "Dans awk, que représente `$1` ?",
+      "choix": ["Le dernier champ", "Le premier champ", "Le nombre de champs", "La ligne entière"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "flt10",
+      "type": "QCM",
+      "question": "Dans awk, que représente `$NF` ?",
+      "choix": ["Le premier champ", "Le dernier champ", "Un nombre fixe", "Le nom du fichier"],
+      "reponses": [1],
+      "explication": "NF = Number of Fields."
+    },
+    {
+      "id": "flt11",
+      "type": "QCM",
+      "question": "Quel outil, dit « stream editor », sert à substituer du texte avec la syntaxe s/motif/remplacement/g ?",
+      "choix": ["awk", "sed", "grep", "cut"],
+      "reponses": [1],
+      "explication": "Le flag g signifie remplacer toutes les correspondances (global)."
+    },
+    {
+      "id": "flt12",
+      "type": "QCM",
+      "question": "Quelle option de `wc` compte uniquement les lignes ?",
+      "choix": ["-c", "-w", "-l", "-m"],
+      "reponses": [2],
+      "explication": ""
+    },
+    {
+      "id": "flt13",
+      "type": "QCM",
+      "question": "Le fichier /etc/passwd est comparé dans le cours à :",
+      "choix": ["un journal système", "un annuaire téléphonique des utilisateurs", "une base de mots de passe chiffrés", "un fichier de configuration réseau"],
+      "reponses": [1],
+      "explication": ""
+    }
+  ]
+}

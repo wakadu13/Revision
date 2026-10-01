@@ -1,0 +1,1357 @@
+{
+  "titre": "TOEIC Grammar 5 — Les prépositions de lieu et de temps",
+  "description": "Lieu, mouvement, temps, expressions courantes. 10 exercices du livret + 79 questions de cours.",
+  "questions": [
+    {
+      "id": "g05e001",
+      "type": "QCM",
+      "question": "The jewel brand has sold this original steel waterproof watch ____ 1956.",
+      "choix": [
+        "in",
+        "for",
+        "by",
+        "since"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "1956 est une date et l'action se poursuit dans le présent : since."
+    },
+    {
+      "id": "g05e002",
+      "type": "QCM",
+      "question": "The real estate agency has been looking for a flat ____ more than 6 weeks.",
+      "choix": [
+        "for",
+        "during",
+        "by",
+        "within"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Durée chiffrée en semaines : for."
+    },
+    {
+      "id": "g05e003",
+      "type": "QCM",
+      "question": "There may be times ____ your journey when you require assistance, so don't hesitate to ask the crew if you need help.",
+      "choix": [
+        "during",
+        "in which",
+        "within",
+        "at"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Période précise dont la durée est globale et non chiffrée : during."
+    },
+    {
+      "id": "g05e004",
+      "type": "QCM",
+      "question": "No duty-free goods will be provided ____ board.",
+      "choix": [
+        "in",
+        "on",
+        "at",
+        "into"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "On board = à bord (expression figée, contexte de transport)."
+    },
+    {
+      "id": "g05e005",
+      "type": "QCM",
+      "question": "They don't have much time ____ them and must make a decision as soon as possible.",
+      "choix": [
+        "ahead of",
+        "in front of",
+        "opposite",
+        "facing"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Il s'agit du temps qui reste devant eux ; les trois autres prépositions sont des prépositions de lieu."
+    },
+    {
+      "id": "g05e006",
+      "type": "QCM",
+      "question": "Water cascades and ornamental gardens can be found ____ the park.",
+      "choix": [
+        "up to",
+        "within",
+        "until",
+        "across"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Lieux à l'intérieur d'un autre lieu : within."
+    },
+    {
+      "id": "g05e007",
+      "type": "QCM",
+      "question": "Make sure that all the hand luggage is stowed into the compartment ____ your heads.",
+      "choix": [
+        "on",
+        "underneath",
+        "beyond",
+        "above"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Objet situé au-dessus d'autres éléments : above."
+    },
+    {
+      "id": "g05e008",
+      "type": "QCM",
+      "question": "The plant has been built ____ the superstore.",
+      "choix": [
+        "opposite",
+        "upon",
+        "outside",
+        "in front"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Sens de « en face » : opposite."
+    },
+    {
+      "id": "g05e009",
+      "type": "QCM",
+      "question": "All the evidence was ____ the culprit's eyes but he would not recognize the truth.",
+      "choix": [
+        "ahead of",
+        "before",
+        "below",
+        "underneath"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« Devant ses yeux » / « sous ses yeux » : before."
+    },
+    {
+      "id": "g05e010",
+      "type": "QCM",
+      "question": "All the files are ____ the cupboard.",
+      "choix": [
+        "next",
+        "close",
+        "nearly",
+        "by"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« Près de » : by. Next et close nécessitent to ; nearly = presque."
+    },
+    {
+      "id": "g05c001",
+      "type": "QCM",
+      "question": "Above indique surtout :",
+      "choix": [
+        "une mesure sur une échelle verticale",
+        "une idée de traversée",
+        "la proximité",
+        "la durée"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Above : position au-dessus sur une échelle verticale."
+    },
+    {
+      "id": "g05c002",
+      "type": "QCM",
+      "question": "Over indique surtout :",
+      "choix": [
+        "une idée de traversée / « par-dessus »",
+        "une durée",
+        "la position en dessous",
+        "la provenance"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "The horse jumped over the fence."
+    },
+    {
+      "id": "g05c003",
+      "type": "QCM",
+      "question": "The horse jumped ____ the fence.",
+      "choix": [
+        "above",
+        "over",
+        "under",
+        "beneath"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c004",
+      "type": "QCM",
+      "question": "The flat ____ ours has been bought by a fireman.",
+      "choix": [
+        "above",
+        "across",
+        "through",
+        "toward"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c005",
+      "type": "QCM",
+      "question": "Ahead of signifie :",
+      "choix": [
+        "devant, qui précède",
+        "en face de",
+        "derrière",
+        "à côté de"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Their team is ahead of us."
+    },
+    {
+      "id": "g05c006",
+      "type": "QCM",
+      "question": "Facing peut se traduire par :",
+      "choix": [
+        "ci-contre, en regard, en face",
+        "au-dessus",
+        "dessous",
+        "près de"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "On the facing page."
+    },
+    {
+      "id": "g05c007",
+      "type": "QCM",
+      "question": "Opposite implique :",
+      "choix": [
+        "que l'objet est de l'autre côté de la source",
+        "que l'objet est derrière",
+        "que l'objet est dessous",
+        "que l'objet est dessus"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "The company is opposite the school."
+    },
+    {
+      "id": "g05c008",
+      "type": "QCM",
+      "question": "They sat ____ the gate. (en face du portail)",
+      "choix": [
+        "opposite",
+        "upon",
+        "into",
+        "onto"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c009",
+      "type": "QCM",
+      "question": "At (lieu) s'emploie pour :",
+      "choix": [
+        "un lieu d'activité collective (at the meeting, at the theater)",
+        "un lieu clos uniquement",
+        "une chaîne de montagnes",
+        "une durée"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c010",
+      "type": "QCM",
+      "question": "« At the door » signifie :",
+      "choix": [
+        "près de la porte",
+        "dans la porte",
+        "sur la porte",
+        "à travers la porte"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c011",
+      "type": "QCM",
+      "question": "« At Sarah Smith's » signifie :",
+      "choix": [
+        "chez Sarah Smith",
+        "à la place de Sarah",
+        "avec Sarah",
+        "sur Sarah"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c012",
+      "type": "QCM",
+      "question": "« At the top » signifie :",
+      "choix": [
+        "en haut (point précis)",
+        "au sommet d'une échelle de valeurs",
+        "sous le sommet",
+        "au sein du sommet"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c013",
+      "type": "QCM",
+      "question": "Before (lieu) peut signifier :",
+      "choix": [
+        "en présence de",
+        "derrière",
+        "au-dessous",
+        "sur"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Before the manager = en présence du directeur."
+    },
+    {
+      "id": "g05c014",
+      "type": "QCM",
+      "question": "In front of peut signifier que l'on voit l'objet :",
+      "choix": [
+        "de dos",
+        "de face",
+        "de côté",
+        "de dessous"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "The car in front of mine."
+    },
+    {
+      "id": "g05c015",
+      "type": "QCR",
+      "question": "Quelles prépositions se traduisent par « près de » (quasi interchangeables) ?",
+      "choix": [
+        "beside",
+        "by",
+        "close to",
+        "near",
+        "next to",
+        "across"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c016",
+      "type": "QCM",
+      "question": "In (lieu) s'emploie pour :",
+      "choix": [
+        "un lieu géographique ou un lieu clos (in the plant)",
+        "un point précis",
+        "une traversée",
+        "une provenance"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c017",
+      "type": "QCM",
+      "question": "Inside / outside sont :",
+      "choix": [
+        "les formes emphatiques de in / out",
+        "des prépositions de temps",
+        "des prépositions de mouvement",
+        "des adverbes de fréquence"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c018",
+      "type": "QCM",
+      "question": "Off signifie :",
+      "choix": [
+        "hors de, en dehors de",
+        "sur",
+        "dessous",
+        "près de"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Off campus, off Broadway."
+    },
+    {
+      "id": "g05c019",
+      "type": "QCM",
+      "question": "On / upon signifient :",
+      "choix": [
+        "sur",
+        "dessous",
+        "hors de",
+        "au-dessus de"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c020",
+      "type": "QCM",
+      "question": "Pour les moyens de transport en commun on dit :",
+      "choix": [
+        "on the bus / train / plane",
+        "in the bus",
+        "at the bus",
+        "by the bus"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "On the bus, on the train, on the streetcar, on the plane."
+    },
+    {
+      "id": "g05c021",
+      "type": "QCR",
+      "question": "Quelles prépositions signifient « dessous, en dessous » ?",
+      "choix": [
+        "under",
+        "below",
+        "beneath",
+        "underneath",
+        "over",
+        "above"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c022",
+      "type": "QCM",
+      "question": "Within (lieu) peut signifier :",
+      "choix": [
+        "à l'intérieur / dans un rayon de / au sein de",
+        "sur",
+        "en face de",
+        "derrière"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "A box within a box ; within 2 miles ; within the company."
+    },
+    {
+      "id": "g05c023",
+      "type": "QCM",
+      "question": "The institute is ____ 2 miles from the university. (à moins de)",
+      "choix": [
+        "within",
+        "during",
+        "since",
+        "ago"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c024",
+      "type": "QCM",
+      "question": "Across indique :",
+      "choix": [
+        "la traversée d'une surface plane",
+        "la traversée d'une épaisseur",
+        "la provenance",
+        "la durée"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "He drove across the park."
+    },
+    {
+      "id": "g05c025",
+      "type": "QCM",
+      "question": "Through indique :",
+      "choix": [
+        "la traversée d'une épaisseur (tunnel, planche)",
+        "la traversée d'une surface plane",
+        "la durée",
+        "la position dessus"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c026",
+      "type": "QCM",
+      "question": "The train went ____ the tunnel.",
+      "choix": [
+        "across",
+        "through",
+        "over",
+        "above"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c027",
+      "type": "QCM",
+      "question": "She ran ____ the street.",
+      "choix": [
+        "across",
+        "through",
+        "within",
+        "between"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c028",
+      "type": "QCM",
+      "question": "From indique :",
+      "choix": [
+        "la provenance",
+        "la direction",
+        "la durée",
+        "la simultanéité"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c029",
+      "type": "QCM",
+      "question": "Of peut avoir le sens de :",
+      "choix": [
+        "la qualité / l'origine d'une personne (of humble birth)",
+        "la traversée",
+        "la durée",
+        "la fréquence"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c030",
+      "type": "QCM",
+      "question": "Into / onto signalent :",
+      "choix": [
+        "un déplacement avec changement de lieu",
+        "une durée",
+        "une provenance",
+        "une position statique"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c031",
+      "type": "QCM",
+      "question": "The fish dived ____ the lake.",
+      "choix": [
+        "into",
+        "onto",
+        "across",
+        "through"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c032",
+      "type": "QCM",
+      "question": "The cat jumped ____ the sofa.",
+      "choix": [
+        "into",
+        "onto",
+        "from",
+        "within"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c033",
+      "type": "QCM",
+      "question": "To indique la destination et towards indique :",
+      "choix": [
+        "la direction",
+        "la durée",
+        "la provenance",
+        "la fréquence"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c034",
+      "type": "QCM",
+      "question": "He drove ____ Lyons. (destination)",
+      "choix": [
+        "to",
+        "towards",
+        "within",
+        "during"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c035",
+      "type": "QCM",
+      "question": "Ago se traduit par :",
+      "choix": [
+        "il y a",
+        "depuis",
+        "pendant",
+        "d'ici"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c036",
+      "type": "QCM",
+      "question": "They left the company two months ____.",
+      "choix": [
+        "ago",
+        "before",
+        "since",
+        "during"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c037",
+      "type": "QCM",
+      "question": "At (temps) s'emploie pour :",
+      "choix": [
+        "une fête, une heure précise, des moments de la journée (at night, at dawn)",
+        "un mois",
+        "une année",
+        "une saison"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c038",
+      "type": "QCM",
+      "question": "____ Christmas / ____ Easter :",
+      "choix": [
+        "at",
+        "in",
+        "on",
+        "for"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c039",
+      "type": "QCM",
+      "question": "____ noon / ____ breakfast :",
+      "choix": [
+        "at",
+        "in",
+        "on",
+        "during"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c040",
+      "type": "QCM",
+      "question": "____ night / ____ dawn :",
+      "choix": [
+        "at",
+        "in",
+        "on",
+        "for"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c041",
+      "type": "QCM",
+      "question": "Before / earlier (temps) peuvent signifier :",
+      "choix": [
+        "auparavant, précédemment",
+        "d'ici",
+        "pendant",
+        "depuis"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "They had rented this flat two years before."
+    },
+    {
+      "id": "g05c042",
+      "type": "QCM",
+      "question": "By (temps) signifie :",
+      "choix": [
+        "d'ici à, avant",
+        "depuis",
+        "pendant",
+        "il y a"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Complete the file by December 15."
+    },
+    {
+      "id": "g05c043",
+      "type": "QCM",
+      "question": "You need to check out ____ 12:00.",
+      "choix": [
+        "by",
+        "since",
+        "during",
+        "within"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c044",
+      "type": "QCM",
+      "question": "During signifie :",
+      "choix": [
+        "pendant (période précise, durée globale non chiffrée)",
+        "depuis",
+        "d'ici",
+        "il y a"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "During the break, during the elections."
+    },
+    {
+      "id": "g05c045",
+      "type": "QCM",
+      "question": "For exprime :",
+      "choix": [
+        "la durée écoulée (chiffrée)",
+        "une date précise",
+        "une fête",
+        "un moment de la journée"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "For five months, for years."
+    },
+    {
+      "id": "g05c046",
+      "type": "QCM",
+      "question": "They haven't met ____ years.",
+      "choix": [
+        "for",
+        "during",
+        "since",
+        "by"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c047",
+      "type": "QCM",
+      "question": "I will work there ____ five months.",
+      "choix": [
+        "for",
+        "during",
+        "since",
+        "by"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c048",
+      "type": "QCM",
+      "question": "From ... till / until / to signalent :",
+      "choix": [
+        "le point de départ et la fin d'une action",
+        "seulement le début",
+        "seulement la fin",
+        "une fréquence"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c049",
+      "type": "QCM",
+      "question": "From ... on / onwards signifient :",
+      "choix": [
+        "à partir de",
+        "d'ici",
+        "pendant",
+        "depuis"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "From next Tuesday onwards."
+    },
+    {
+      "id": "g05c050",
+      "type": "QCM",
+      "question": "In (temps) peut indiquer :",
+      "choix": [
+        "un mois, une année, une période, un moment de la journée, une action à venir",
+        "un jour précis uniquement",
+        "une heure précise uniquement",
+        "une fête"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "In August, in 1967, in the afternoon, in three years."
+    },
+    {
+      "id": "g05c051",
+      "type": "QCM",
+      "question": "____ August / ____ 1967 / ____ the Renaissance",
+      "choix": [
+        "in",
+        "on",
+        "at",
+        "by"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c052",
+      "type": "QCM",
+      "question": "____ Tuesday / ____ October 5 / ____ Saturday night",
+      "choix": [
+        "on",
+        "in",
+        "at",
+        "by"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "On + jour / date complète."
+    },
+    {
+      "id": "g05c053",
+      "type": "QCM",
+      "question": "« In a fortnight » signifie :",
+      "choix": [
+        "en / d'ici quinze jours",
+        "depuis quinze jours",
+        "pendant quinze jours",
+        "il y a quinze jours"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c054",
+      "type": "QCM",
+      "question": "Since se traduit par :",
+      "choix": [
+        "depuis (point de départ précis)",
+        "pendant",
+        "d'ici",
+        "il y a"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c055",
+      "type": "QCM",
+      "question": "We have been working for this customer ____ 1996.",
+      "choix": [
+        "since",
+        "for",
+        "during",
+        "by"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c056",
+      "type": "QCM",
+      "question": "She has had hearing issues ____ she was born.",
+      "choix": [
+        "since",
+        "for",
+        "by",
+        "during"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c057",
+      "type": "QCM",
+      "question": "Till / until signifient :",
+      "choix": [
+        "jusqu'à",
+        "depuis",
+        "d'ici",
+        "pendant"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c058",
+      "type": "QCM",
+      "question": "Within (temps) signifie :",
+      "choix": [
+        "d'ici, en moins de (donnée chiffrée)",
+        "depuis",
+        "il y a",
+        "pendant"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Within a month / within a year."
+    },
+    {
+      "id": "g05c059",
+      "type": "QCM",
+      "question": "The contract should be signed ____ a month.",
+      "choix": [
+        "within",
+        "during",
+        "since",
+        "ago"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c060",
+      "type": "QCR",
+      "question": "Lesquels sont des prépositions ou adverbes de temps (et non de lieu) ?",
+      "choix": [
+        "for",
+        "since",
+        "during",
+        "ago",
+        "across",
+        "through"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c061",
+      "type": "QCM",
+      "question": "« At least » signifie :",
+      "choix": [
+        "au moins",
+        "au plus",
+        "à peine",
+        "finalement"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c062",
+      "type": "QCM",
+      "question": "« In time » signifie :",
+      "choix": [
+        "à temps",
+        "à l'heure",
+        "au moins",
+        "finalement"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c063",
+      "type": "QCM",
+      "question": "« On time » signifie :",
+      "choix": [
+        "à l'heure",
+        "à temps",
+        "finalement",
+        "sur le temps"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c064",
+      "type": "QCM",
+      "question": "« In the end » signifie :",
+      "choix": [
+        "finalement",
+        "à la fin de la rue",
+        "au bout du compte matériel",
+        "toujours"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c065",
+      "type": "QCM",
+      "question": "« In the rain » signifie :",
+      "choix": [
+        "sous la pluie",
+        "dans la pluie ancienne",
+        "pendant la pluie",
+        "par la pluie"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c066",
+      "type": "QCM",
+      "question": "« In a low voice » signifie :",
+      "choix": [
+        "à voix basse",
+        "avec une basse voix",
+        "dans un bas prix",
+        "doucement"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c067",
+      "type": "QCM",
+      "question": "« On foot » signifie :",
+      "choix": [
+        "à pied",
+        "sur le pied",
+        "au pied",
+        "en pied"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c068",
+      "type": "QCM",
+      "question": "« On the phone » signifie :",
+      "choix": [
+        "au téléphone",
+        "sur le téléphone",
+        "dans le téléphone",
+        "avec le téléphone"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c069",
+      "type": "QCM",
+      "question": "« On the whole » signifie :",
+      "choix": [
+        "tout bien considéré",
+        "sur le tout",
+        "au total",
+        "en entier"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c070",
+      "type": "QCM",
+      "question": "Nervous ____ (nerveux de)",
+      "choix": [
+        "about",
+        "of",
+        "for",
+        "at"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c071",
+      "type": "QCM",
+      "question": "The same ____ (le même que)",
+      "choix": [
+        "as",
+        "than",
+        "from",
+        "of"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c072",
+      "type": "QCM",
+      "question": "To be struck ____ (être frappé par)",
+      "choix": [
+        "at",
+        "of",
+        "for",
+        "from"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c073",
+      "type": "QCM",
+      "question": "Responsible ____ (responsable de)",
+      "choix": [
+        "for",
+        "of",
+        "about",
+        "at"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c074",
+      "type": "QCM",
+      "question": "The reason ____ (la raison de)",
+      "choix": [
+        "for",
+        "of",
+        "about",
+        "from"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c075",
+      "type": "QCM",
+      "question": "Different ____ (différent de)",
+      "choix": [
+        "from",
+        "of",
+        "for",
+        "than"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c076",
+      "type": "QCM",
+      "question": "Interest ____ / interested ____ (intérêt dans / intéressé par)",
+      "choix": [
+        "in",
+        "of",
+        "for",
+        "at"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c077",
+      "type": "QCM",
+      "question": "In charge ____ (chargé de)",
+      "choix": [
+        "of",
+        "for",
+        "about",
+        "to"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c078",
+      "type": "QCM",
+      "question": "Accused ____ (accusé de)",
+      "choix": [
+        "of",
+        "for",
+        "about",
+        "from"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g05c079",
+      "type": "QCM",
+      "question": "Aware ____ (conscient de)",
+      "choix": [
+        "of",
+        "for",
+        "about",
+        "from"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    }
+  ]
+}

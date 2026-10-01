@@ -1,0 +1,319 @@
+{
+  "titre": "Research on the UN + essay (Russia / Ukraine)",
+  "description": "Le Secrétaire général, l'organisation, ses missions et ses limites ; arguments pour l'essai sur la guerre en Ukraine.",
+  "questions": [
+    {
+      "type": "QCM",
+      "question": "Who has been UN Secretary-General since 2017?",
+      "choix": [
+        "Kofi Annan (Ghana)",
+        "António Guterres (Portugal)",
+        "Dag Hammarskjöld (Sweden)",
+        "Ban Ki-moon (South Korea)"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "António Guterres, ancien Premier ministre portugais ; son second mandat s'achève le 31 décembre 2026 (successeur à partir du 1er janvier 2027)."
+    },
+    {
+      "type": "QCR",
+      "question": "What is the Secretary-General's mission? (plusieurs réponses)",
+      "choix": [
+        "commanding a UN army",
+        "head of the Secretariat, the UN's chief administrative officer",
+        "bringing to the Security Council's attention any threat to peace",
+        "using his « good offices » to mediate in conflicts",
+        "being the spokesperson of the UN",
+        "vetoing Security Council resolutions"
+      ],
+      "reponses": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "explication": "Article 97-99 de la Charte : chef de l'administration, médiation, alerte du Conseil, porte-parole."
+    },
+    {
+      "type": "QCM",
+      "question": "Where is UN headquarters?",
+      "choix": [
+        "Brussels",
+        "New York",
+        "Geneva",
+        "Paris"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Siège à New York ; autres sièges : Genève, Vienne, Nairobi."
+    },
+    {
+      "type": "QCM",
+      "question": "When is UN Day (the Charter came into force)?",
+      "choix": [
+        "October 24, 1945",
+        "June 26, 1945",
+        "December 10, 1948",
+        "May 8, 1945"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Charte signée le 26 juin 1945 à San Francisco, en vigueur le 24 octobre 1945."
+    },
+    {
+      "type": "QCR",
+      "question": "What types of missions does the UN carry out? (plusieurs réponses)",
+      "choix": [
+        "peacekeeping operations",
+        "mediation and peacemaking",
+        "development programmes",
+        "humanitarian aid",
+        "electoral assistance",
+        "invading countries",
+        "collecting national taxes",
+        "human rights monitoring"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        7
+      ],
+      "explication": "Les grands domaines d'action de l'ONU."
+    },
+    {
+      "type": "QCR",
+      "question": "What are the objectives of the UN (Charter, Article 1)? (plusieurs réponses)",
+      "choix": [
+        "to achieve international cooperation on economic, social and humanitarian problems",
+        "to create a world government",
+        "to promote respect for human rights",
+        "to defend the interests of the P5",
+        "to develop friendly relations among nations",
+        "to maintain international peace and security"
+      ],
+      "reponses": [
+        0,
+        2,
+        4,
+        5
+      ],
+      "explication": "Article 1 de la Charte."
+    },
+    {
+      "type": "QCR",
+      "question": "What limits the UN's action? (plusieurs réponses)",
+      "choix": [
+        "it depends on member states' funding",
+        "it has too many soldiers",
+        "it has no army of its own",
+        "the principle of national sovereignty",
+        "the veto of the five permanent members",
+        "it can impose taxes on citizens",
+        "General Assembly resolutions are not binding"
+      ],
+      "reponses": [
+        0,
+        2,
+        3,
+        4,
+        6
+      ],
+      "explication": "Les limites structurelles de l'ONU."
+    },
+    {
+      "type": "QCM",
+      "question": "What happened to the Security Council draft resolution condemning Russia's invasion of Ukraine (February 25, 2022)?",
+      "choix": [
+        "China vetoed it",
+        "it was adopted unanimously",
+        "Russia vetoed it",
+        "it was never voted on"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Russie membre permanent → veto."
+    },
+    {
+      "type": "QCM",
+      "question": "On March 2, 2022, how many states voted in the General Assembly to demand Russia's withdrawal from Ukraine?",
+      "choix": [
+        "5",
+        "35",
+        "141",
+        "193"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Résolution ES-11/1 : 141 pour, 5 contre, 35 abstentions — mais non contraignante."
+    },
+    {
+      "type": "QCM",
+      "question": "What was the Black Sea Grain Initiative (July 2022)?",
+      "choix": [
+        "UN sanctions against Russia",
+        "a deal brokered by the UN and Türkiye to let Ukrainian grain be exported",
+        "a peacekeeping mission in Ukraine",
+        "a NATO operation"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Accord sur les céréales, abandonné par la Russie en juillet 2023."
+    },
+    {
+      "type": "QCM",
+      "question": "What did the International Court of Justice order on March 16, 2022?",
+      "choix": [
+        "that Russia immediately suspend its military operations in Ukraine",
+        "that Ukraine join NATO",
+        "that Russia leave the UN",
+        "nothing"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Ordonnance non respectée par la Russie."
+    },
+    {
+      "type": "QCM",
+      "question": "From which UN body was Russia suspended in April 2022?",
+      "choix": [
+        "the Human Rights Council",
+        "the General Assembly",
+        "UNESCO",
+        "the Security Council"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Vote de l'Assemblée générale, 7 avril 2022."
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "Essay: Does the existence of the UN make a difference in the Russia–Ukraine conflict? (plan)",
+      "verso": "LIMITS: Russia, a P5 member, vetoes any Security Council action; GA resolutions (141 votes, March 2022) are not binding; the ICJ order was ignored. BUT: the UN isolated Russia diplomatically (GA votes, suspension from the Human Rights Council), brokered the Black Sea Grain Initiative (2022-2023), sends humanitarian aid, IAEA inspectors at Zaporizhzhia nuclear plant, documents human rights violations. → It makes a difference for civilians, not for ending the war."
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "Useful phrases for the essay",
+      "verso": "In light of… / Admittedly,… / However,… / Not only… but also… / As a result of… / It is undeniable that… / To a certain extent… / All things considered,…"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "le Secrétariat",
+      "reponses_texte": [
+        "the Secretariat",
+        "Secretariat"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "le siège (de l'ONU)",
+      "reponses_texte": [
+        "the headquarters",
+        "headquarters",
+        "HQ"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "contraignant",
+      "reponses_texte": [
+        "binding"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "la souveraineté nationale",
+      "reponses_texte": [
+        "national sovereignty"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "la médiation / les bons offices",
+      "reponses_texte": [
+        "good offices",
+        "mediation"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "le retrait (des troupes)",
+      "reponses_texte": [
+        "the withdrawal",
+        "withdrawal"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "une invasion",
+      "reponses_texte": [
+        "an invasion",
+        "invasion"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "négocier (un accord)",
+      "reponses_texte": [
+        "to broker",
+        "broker",
+        "to negotiate"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "au vu de, à la lumière de",
+      "reponses_texte": [
+        "in light of"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "justifier sa réponse",
+      "reponses_texte": [
+        "to justify your answer",
+        "justify your answer"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    }
+  ]
+}

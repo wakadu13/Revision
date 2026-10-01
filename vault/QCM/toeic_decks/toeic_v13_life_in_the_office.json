@@ -1,0 +1,621 @@
+{
+  "titre": "TOEIC Vocabulary 13 — Life in the Office",
+  "description": "Thème « Life in the Office » du livret Vocabulary (d'après les corrigés).",
+  "questions": [
+    {
+      "id": "v13001",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « office hours » ?",
+      "choix": [
+        "Life in the Office",
+        "Real Estate & Housing",
+        "Banking & Personal Finance",
+        "Investments"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« office hours » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13002",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « flexitime » ?",
+      "choix": [
+        "Life in the Office",
+        "R&D & Industrialization",
+        "Complaining & Apologizing",
+        "Weather"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« flexitime » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13003",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « teleworking » ?",
+      "choix": [
+        "R&D & Industrialization",
+        "Commerce",
+        "Life in the Office",
+        "Meetings"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« teleworking » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13004",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « overtime » ?",
+      "choix": [
+        "Graphs",
+        "Life in the Office",
+        "Human Resources",
+        "R&D & Industrialization"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« overtime » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13005",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « unsocial hours » ?",
+      "choix": [
+        "Idioms & Expressions",
+        "Life in the Office",
+        "Sustainable Development",
+        "Corporate Property"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« unsocial hours » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13006",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « shift » ?",
+      "choix": [
+        "Human Resources",
+        "Life in the Office",
+        "Corporate Property",
+        "Meetings"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« shift » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13007",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « shredder » ?",
+      "choix": [
+        "Life in the Office",
+        "Weather",
+        "Real Estate & Housing",
+        "Marketing & Advertising"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« shredder » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13008",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « notice board » ?",
+      "choix": [
+        "Travel",
+        "Human Resources",
+        "Meetings",
+        "Life in the Office"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« notice board » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13009",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « car park » ?",
+      "choix": [
+        "Corporate Property",
+        "Banking & Personal Finance",
+        "Life in the Office",
+        "Communicating"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« car park » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13010",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « open space » ?",
+      "choix": [
+        "Media",
+        "Marketing & Advertising",
+        "Life in the Office",
+        "Products"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« open space » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13011",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « security guard » ?",
+      "choix": [
+        "Real Estate & Housing",
+        "Life in the Office",
+        "Corporate Property",
+        "Media"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« security guard » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13012",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « water cooler » ?",
+      "choix": [
+        "Corporate Property",
+        "Weather",
+        "Life in the Office",
+        "Logistics"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« water cooler » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13013",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « photocopier » ?",
+      "choix": [
+        "Real Estate & Housing",
+        "Marketing & Advertising",
+        "Communicating",
+        "Life in the Office"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« photocopier » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13014",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « conference room » ?",
+      "choix": [
+        "High-Tech",
+        "Real Estate & Housing",
+        "Life in the Office",
+        "Banking & Personal Finance"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« conference room » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13015",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « air conditioning » ?",
+      "choix": [
+        "Meetings",
+        "Life in the Office",
+        "High-Tech",
+        "Media"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« air conditioning » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13016",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « smoke detector » ?",
+      "choix": [
+        "Banking & Personal Finance",
+        "Life in the Office",
+        "Real Estate & Housing",
+        "Media"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« smoke detector » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13017",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « office supplies » ?",
+      "choix": [
+        "Idioms & Expressions",
+        "Communicating",
+        "Life in the Office",
+        "Real Estate & Housing"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« office supplies » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13018",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « hole punch » ?",
+      "choix": [
+        "Life in the Office",
+        "Marketing & Advertising",
+        "Products",
+        "R&D & Industrialization"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« hole punch » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13019",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « name tag » ?",
+      "choix": [
+        "High-Tech",
+        "Presentations",
+        "Life in the Office",
+        "Commerce"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« name tag » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13020",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « business cards » ?",
+      "choix": [
+        "R&D & Industrialization",
+        "Meetings",
+        "Life in the Office",
+        "Dining Out"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« business cards » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13021",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « whiteout » ?",
+      "choix": [
+        "Idioms & Expressions",
+        "Commerce",
+        "Life in the Office",
+        "R&D & Industrialization"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« whiteout » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13022",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « printer cartridge » ?",
+      "choix": [
+        "Complaining & Apologizing",
+        "Banking & Personal Finance",
+        "Travel",
+        "Life in the Office"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« printer cartridge » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13023",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « wastepaper basket » ?",
+      "choix": [
+        "Products",
+        "Phrasal Verbs",
+        "Logistics",
+        "Life in the Office"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« wastepaper basket » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13024",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « filing cabinet » ?",
+      "choix": [
+        "Life in the Office",
+        "R&D & Industrialization",
+        "Products",
+        "Complaining & Apologizing"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« filing cabinet » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13025",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « eraser » ?",
+      "choix": [
+        "Weather",
+        "Life in the Office",
+        "Logistics",
+        "Human Resources"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« eraser » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13026",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « executive toy » ?",
+      "choix": [
+        "Complaining & Apologizing",
+        "Weather",
+        "Life in the Office",
+        "Banking & Personal Finance"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« executive toy » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13027",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « stapler » ?",
+      "choix": [
+        "Dining Out",
+        "Marketing & Advertising",
+        "Life in the Office",
+        "Presentations"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« stapler » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13028",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « headquarters » ?",
+      "choix": [
+        "Dining Out",
+        "High-Tech",
+        "Real Estate & Housing",
+        "Life in the Office"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« headquarters » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13029",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « blue-sky thinking » ?",
+      "choix": [
+        "Presentations",
+        "Media",
+        "Investments",
+        "Life in the Office"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« blue-sky thinking » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13030",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « skill set » ?",
+      "choix": [
+        "Life in the Office",
+        "Phrasal Verbs",
+        "Dining Out",
+        "Marketing & Advertising"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« skill set » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13031",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « going forward » ?",
+      "choix": [
+        "Products",
+        "Life in the Office",
+        "Marketing & Advertising",
+        "Travel"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« going forward » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13032",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « feedback » ?",
+      "choix": [
+        "Products",
+        "Real Estate & Housing",
+        "Banking & Personal Finance",
+        "Life in the Office"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« feedback » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13033",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « branch office » ?",
+      "choix": [
+        "Life in the Office",
+        "Real Estate & Housing",
+        "Sustainable Development",
+        "Phrasal Verbs"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« branch office » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13034",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « best practice » ?",
+      "choix": [
+        "Banking & Personal Finance",
+        "Idioms & Expressions",
+        "Phrasal Verbs",
+        "Life in the Office"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« best practice » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13035",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « scalable » ?",
+      "choix": [
+        "Dining Out",
+        "Life in the Office",
+        "Phrasal Verbs",
+        "Human Resources"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« scalable » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13036",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « thinking out of the box » ?",
+      "choix": [
+        "Corporate Property",
+        "Meetings",
+        "Graphs",
+        "Life in the Office"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« thinking out of the box » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13037",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « touch base » ?",
+      "choix": [
+        "Commerce",
+        "Phrasal Verbs",
+        "Life in the Office",
+        "Graphs"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« touch base » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13038",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « subsidiary » ?",
+      "choix": [
+        "High-Tech",
+        "Commerce",
+        "R&D & Industrialization",
+        "Life in the Office"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« subsidiary » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13039",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « close of play » ?",
+      "choix": [
+        "Corporate Property",
+        "Banking & Personal Finance",
+        "Commerce",
+        "Life in the Office"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« close of play » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13040",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « on the same page » ?",
+      "choix": [
+        "High-Tech",
+        "Dining Out",
+        "Life in the Office",
+        "Products"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« on the same page » figure dans les corrigés du thème Life in the Office."
+    },
+    {
+      "id": "v13041",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « call it a day » ?",
+      "choix": [
+        "Life in the Office",
+        "Phrasal Verbs",
+        "Idioms & Expressions",
+        "Media"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« call it a day » figure dans les corrigés du thème Life in the Office."
+    }
+  ]
+}

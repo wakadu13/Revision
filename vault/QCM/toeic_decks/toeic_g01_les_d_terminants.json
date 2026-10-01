@@ -1,0 +1,1109 @@
+{
+  "titre": "TOEIC Grammar 1 — Les déterminants",
+  "description": "Articles, quantifieurs, adjectifs possessifs et démonstratifs. 10 exercices du livret + 63 questions de cours.",
+  "questions": [
+    {
+      "id": "g01e001",
+      "type": "QCM",
+      "question": "This hotel has a vegetable garden on ____ roof and a system that reuses the heat from drained water.",
+      "choix": [
+        "his",
+        "its",
+        "her",
+        "our"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Hotel est un inanimé singulier : il faut l'adjectif possessif neutre its."
+    },
+    {
+      "id": "g01e002",
+      "type": "QCM",
+      "question": "Britannia Building, occupied for ____ years by the Garrick Building Society, was converted into a banking hall in 1892.",
+      "choix": [
+        "plenty",
+        "much",
+        "many",
+        "any"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Many + pluriel dénombrable. Plenty exigerait of ; much ne s'emploie qu'avec l'indénombrable."
+    },
+    {
+      "id": "g01e003",
+      "type": "QCM",
+      "question": "Most countries require that a passport be valid at least six months beyond the completion of ____ trip.",
+      "choix": [
+        "the",
+        "a",
+        "an",
+        "several"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Article indéfini attendu (un voyage quelconque). An est impossible devant une consonne, several exige un pluriel."
+    },
+    {
+      "id": "g01e004",
+      "type": "QCM",
+      "question": "Cerumenosis means there is ____ wax inside the ear, which can cause hearing loss.",
+      "choix": [
+        "all",
+        "every",
+        "plenty of",
+        "each"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Plenty of = « beaucoup de », compatible avec l'indénombrable wax."
+    },
+    {
+      "id": "g01e005",
+      "type": "QCM",
+      "question": "Life jackets are provided for use in ____ event of an emergency.",
+      "choix": [
+        "every",
+        "little",
+        "the",
+        "few"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "The est obligatoire devant un nom suivi de of."
+    },
+    {
+      "id": "g01e006",
+      "type": "QCM",
+      "question": "Name or date changes are permitted at ____ time before departure for a fee of $50.",
+      "choix": [
+        "some",
+        "any",
+        "several",
+        "this"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Any en phrase affirmative = « n'importe quel »."
+    },
+    {
+      "id": "g01e007",
+      "type": "QCM",
+      "question": "____ information can be found on Xnet weekly newsletter.",
+      "choix": [
+        "Few",
+        "Several",
+        "A lot of",
+        "Many"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Information est indénombrable (singulier) : seul A lot of convient."
+    },
+    {
+      "id": "g01e008",
+      "type": "QCM",
+      "question": "We thank you all in advance for ____ help with making today's event a success.",
+      "choix": [
+        "his",
+        "your",
+        "our",
+        "their"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "On remercie « vous tous » : l'adjectif possessif est your."
+    },
+    {
+      "id": "g01e009",
+      "type": "QCM",
+      "question": "We are pleased to offer you complimentary drinks from ____ onboard bar, including still and sparkling mineral water, juices...",
+      "choix": [
+        "all",
+        "several",
+        "some",
+        "the"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "On parle du bar précis situé à bord : article défini the."
+    },
+    {
+      "id": "g01e010",
+      "type": "QCM",
+      "question": "In ____ days, the plant manufactured wooden toys.",
+      "choix": [
+        "these",
+        "this",
+        "those",
+        "that"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Pluriel + distance temporelle (prétérit) : in those days = « à cette époque »."
+    },
+    {
+      "id": "g01c001",
+      "type": "QCM",
+      "question": "She is ____ fashion designer.",
+      "choix": [
+        "a",
+        "an",
+        "the",
+        "(no article)"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Devant un nom de métier, l'article indéfini est obligatoire en anglais ; a devant une consonne."
+    },
+    {
+      "id": "g01c002",
+      "type": "QCM",
+      "question": "He is ____ mechanic. Choisissez l'article correct.",
+      "choix": [
+        "a",
+        "an",
+        "the",
+        "(no article)"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Nom de métier : article indéfini, a devant consonne (mechanic)."
+    },
+    {
+      "id": "g01c003",
+      "type": "QCM",
+      "question": "____ arson (un incendie volontaire). Quel article ?",
+      "choix": [
+        "a",
+        "an",
+        "the",
+        "(no article)"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "An se place devant une voyelle (arson) ; a devant une consonne."
+    },
+    {
+      "id": "g01c004",
+      "type": "QCM",
+      "question": "____ heir (un héritier). Quel article ?",
+      "choix": [
+        "a",
+        "an",
+        "the",
+        "(no article)"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le h de heir est muet : on emploie an."
+    },
+    {
+      "id": "g01c005",
+      "type": "QCM",
+      "question": "____ unicorn (une licorne). Quel article ?",
+      "choix": [
+        "a",
+        "an",
+        "the",
+        "(no article)"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Le u de unicorn se prononce [ju] comme you : on emploie a."
+    },
+    {
+      "id": "g01c006",
+      "type": "QCM",
+      "question": "He is ____ president of the United States. (une seule personne peut exercer cette fonction)",
+      "choix": [
+        "a",
+        "an",
+        "the",
+        "(no article)"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Quand une seule personne peut exercer la fonction, l'article est omis (article zéro)."
+    },
+    {
+      "id": "g01c007",
+      "type": "QCM",
+      "question": "What ____ beautiful pattern!",
+      "choix": [
+        "a",
+        "an",
+        "the",
+        "(no article)"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "What + a/an + nom singulier = « Quel... ! »."
+    },
+    {
+      "id": "g01c008",
+      "type": "QCM",
+      "question": "What ____ beautiful patterns! (pluriel)",
+      "choix": [
+        "a",
+        "an",
+        "the",
+        "(no article)"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Au pluriel, l'article disparaît : What beautiful patterns!"
+    },
+    {
+      "id": "g01c009",
+      "type": "QCM",
+      "question": "She is such ____ absent-minded pupil!",
+      "choix": [
+        "a",
+        "an",
+        "the",
+        "(no article)"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Such + a/an + nom singulier ; absent-minded commence par une voyelle : an."
+    },
+    {
+      "id": "g01c010",
+      "type": "QCM",
+      "question": "They are such ____ absent-minded pupils!",
+      "choix": [
+        "a",
+        "an",
+        "the",
+        "(no article)"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Au pluriel, such n'est plus suivi de a/an : such absent-minded pupils."
+    },
+    {
+      "id": "g01c011",
+      "type": "QCM",
+      "question": "He's so bright ____ constable!",
+      "choix": [
+        "a",
+        "an",
+        "the",
+        "(no article)"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "So + adjectif + a/an + nom singulier."
+    },
+    {
+      "id": "g01c012",
+      "type": "QCM",
+      "question": "It is too frightening ____ movie!",
+      "choix": [
+        "a",
+        "an",
+        "the",
+        "(no article)"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Too + adjectif + a/an + nom singulier."
+    },
+    {
+      "id": "g01c013",
+      "type": "QCM",
+      "question": "I work two days ____ week.",
+      "choix": [
+        "a",
+        "the",
+        "per the",
+        "(no article)"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "L'article indéfini a le sens de « par » : two days a week."
+    },
+    {
+      "id": "g01c014",
+      "type": "QCM",
+      "question": "It is $49.99 ____ person.",
+      "choix": [
+        "a",
+        "the",
+        "an",
+        "of"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Sens de « par » : $49.99 a person."
+    },
+    {
+      "id": "g01c015",
+      "type": "QCM",
+      "question": "Quel est le sens de « It is $49.99 a person » ?",
+      "choix": [
+        "C'est 49,99 $ par personne",
+        "C'est 49,99 $ pour une personne précise",
+        "C'est 49,99 $ la personne, c'est fixe",
+        "C'est 49,99 $ en tout"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "A = « par »."
+    },
+    {
+      "id": "g01c016",
+      "type": "QCM",
+      "question": "The expertise ____ the baker.",
+      "choix": [
+        "of",
+        "in",
+        "for",
+        "by"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Quand of est présent dans le groupe nominal, le nom est très probablement précédé de the."
+    },
+    {
+      "id": "g01c017",
+      "type": "QCM",
+      "question": "Quand of détermine un nom dans un groupe nominal, celui-ci est généralement précédé de :",
+      "choix": [
+        "a",
+        "an",
+        "the",
+        "aucun article"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Of détermine le nom : the expertise of the baker, the instinct of the animal."
+    },
+    {
+      "id": "g01c018",
+      "type": "QCM",
+      "question": "____ Mississippi is a long river. Quel article ?",
+      "choix": [
+        "A",
+        "An",
+        "The",
+        "(no article)"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Les noms de fleuves prennent the."
+    },
+    {
+      "id": "g01c019",
+      "type": "QCM",
+      "question": "____ Andes stretch along South America.",
+      "choix": [
+        "A",
+        "An",
+        "The",
+        "(no article)"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Les noms de chaînes de montagnes (pluriel) prennent the."
+    },
+    {
+      "id": "g01c020",
+      "type": "QCM",
+      "question": "____ Philippines is an archipelago. Quel article ?",
+      "choix": [
+        "A",
+        "An",
+        "The",
+        "(no article)"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Les noms de pays au pluriel prennent the."
+    },
+    {
+      "id": "g01c021",
+      "type": "QCM",
+      "question": "____ Czech Republic is in Europe. Quel article ?",
+      "choix": [
+        "A",
+        "An",
+        "The",
+        "(no article)"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Les pays en deux mots (Republic, Coast...) prennent the."
+    },
+    {
+      "id": "g01c022",
+      "type": "QCM",
+      "question": "____ Lebanon is a country in the Middle East.",
+      "choix": [
+        "A",
+        "An",
+        "The",
+        "(no article)"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Les noms de pays au singulier ne prennent pas d'article."
+    },
+    {
+      "id": "g01c023",
+      "type": "QCM",
+      "question": "____ dinner is served at 7.",
+      "choix": [
+        "A",
+        "An",
+        "The",
+        "(no article)"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Les repas ne prennent pas d'article (sens général)."
+    },
+    {
+      "id": "g01c024",
+      "type": "QCM",
+      "question": "In ____ fall, we launch new products.",
+      "choix": [
+        "a",
+        "the",
+        "an",
+        "(no article)"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Les saisons ne prennent pas d'article : in fall."
+    },
+    {
+      "id": "g01c025",
+      "type": "QCM",
+      "question": "____ diamonds are eternal.",
+      "choix": [
+        "The",
+        "A",
+        "An",
+        "(no article)"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Généralité au pluriel : pas d'article."
+    },
+    {
+      "id": "g01c026",
+      "type": "QCM",
+      "question": "The defendant appeared in ____ court.",
+      "choix": [
+        "a",
+        "the",
+        "an",
+        "(no article)"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Les institutions (in jail, in court, in film) ne prennent pas d'article."
+    },
+    {
+      "id": "g01c027",
+      "type": "QCM",
+      "question": "Quelle expression est correcte ?",
+      "choix": [
+        "in the jail (au sens « en prison »)",
+        "in jail (au sens « en prison »)",
+        "in a jail (au sens « en prison »)",
+        "in an jail"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Institution : in jail sans article."
+    },
+    {
+      "id": "g01c028",
+      "type": "QCM",
+      "question": "____ most items were sold out.",
+      "choix": [
+        "The",
+        "A",
+        "An",
+        "(no article)"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Most pris au sens de « la plupart de » n'est pas précédé de the."
+    },
+    {
+      "id": "g01c029",
+      "type": "QCM",
+      "question": "I saw him ____ last Sunday.",
+      "choix": [
+        "the",
+        "a",
+        "an",
+        "(no article)"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Last / next + jour, semaine, mois, année : pas d'article."
+    },
+    {
+      "id": "g01c030",
+      "type": "QCM",
+      "question": "____ gold is the most expensive metal.",
+      "choix": [
+        "The",
+        "A",
+        "An",
+        "(no article)"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Les noms de matières, de sports, de matières scolaires et de couleurs ne prennent pas d'article."
+    },
+    {
+      "id": "g01c031",
+      "type": "QCM",
+      "question": "____ tennis is a very old sport.",
+      "choix": [
+        "The",
+        "A",
+        "An",
+        "(no article)"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Les sports ne prennent pas d'article."
+    },
+    {
+      "id": "g01c032",
+      "type": "QCM",
+      "question": "____ literature is a complex topic.",
+      "choix": [
+        "The",
+        "A",
+        "An",
+        "(no article)"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Les matières scolaires ne prennent pas d'article."
+    },
+    {
+      "id": "g01c033",
+      "type": "QCM",
+      "question": "____ white symbolizes purity.",
+      "choix": [
+        "The",
+        "A",
+        "An",
+        "(no article)"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Les noms de couleurs, en sens général, ne prennent pas d'article."
+    },
+    {
+      "id": "g01c034",
+      "type": "QCM",
+      "question": "Claiborne Boulevard / Louis Armstrong Park / Victoria Building : avec quel article ?",
+      "choix": [
+        "the",
+        "a",
+        "an",
+        "aucun article"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Les noms propres de rues, parcs, ponts et bâtiments ne prennent pas d'article."
+    },
+    {
+      "id": "g01c035",
+      "type": "QCM",
+      "question": "____ President Burke gave a speech.",
+      "choix": [
+        "The",
+        "A",
+        "An",
+        "(no article)"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Devant les titres et fonctions suivis d'un nom propre, pas d'article."
+    },
+    {
+      "id": "g01c036",
+      "type": "QCM",
+      "question": "Some est employé surtout :",
+      "choix": [
+        "dans les phrases affirmatives et les questions",
+        "dans les phrases négatives",
+        "dans les phrases interrogatives négatives uniquement",
+        "dans les subordonnées de but uniquement"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Some est un quantifieur positif : phrases affirmatives et questions (attente d'une réponse positive)."
+    },
+    {
+      "id": "g01c037",
+      "type": "QCM",
+      "question": "Pourquoi dit-on « Do you have some change? » ?",
+      "choix": [
+        "On attend une réponse affirmative",
+        "On attend une réponse négative",
+        "Il n'y a aucune attente",
+        "C'est une double négation"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Some dans une question exprime l'attente d'une réponse positive."
+    },
+    {
+      "id": "g01c038",
+      "type": "QCM",
+      "question": "Dans « Select any letter between A and Z », any signifie :",
+      "choix": [
+        "n'importe quelle",
+        "aucune",
+        "certaines",
+        "quelques"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Any dans une phrase affirmative = « n'importe »."
+    },
+    {
+      "id": "g01c039",
+      "type": "QCM",
+      "question": "Dans « Did you put any pepper into the dressing? », any signifie :",
+      "choix": [
+        "quelque / du",
+        "n'importe quel",
+        "aucun",
+        "tous"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Dans une question, any = « quelque », « du / de la », sans attente de réponse."
+    },
+    {
+      "id": "g01c040",
+      "type": "QCM",
+      "question": "There is ____ yogurt in the fridge. (« Il n'y en a pas »)",
+      "choix": [
+        "no",
+        "not any",
+        "none",
+        "nothing"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "No + nom dans une phrase affirmative. Not any nécessite « isn't »."
+    },
+    {
+      "id": "g01c041",
+      "type": "QCM",
+      "question": "There isn't ____ soccer match on TV tonight.",
+      "choix": [
+        "no",
+        "any",
+        "some",
+        "none"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Phrase négative : not ... any."
+    },
+    {
+      "id": "g01c042",
+      "type": "QCM",
+      "question": "Laquelle est incorrecte (double négation) ?",
+      "choix": [
+        "I haven't any money.",
+        "I have no money.",
+        "I haven't no money.",
+        "I don't have any money."
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "La double négation (haven't no) est incorrecte en anglais standard."
+    },
+    {
+      "id": "g01c043",
+      "type": "QCM",
+      "question": "Much s'emploie avec :",
+      "choix": [
+        "des noms indénombrables",
+        "des noms dénombrables pluriels",
+        "des verbes uniquement",
+        "tous les noms"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Much + indénombrable (much furniture, much realism)."
+    },
+    {
+      "id": "g01c044",
+      "type": "QCM",
+      "question": "Many s'emploie avec :",
+      "choix": [
+        "des noms dénombrables pluriels",
+        "des noms indénombrables",
+        "des noms au singulier",
+        "des verbes"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Many + dénombrable pluriel (many umbrellas)."
+    },
+    {
+      "id": "g01c045",
+      "type": "QCM",
+      "question": "How ____ furniture did you buy?",
+      "choix": [
+        "much",
+        "many",
+        "few",
+        "several"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Furniture est indénombrable : much."
+    },
+    {
+      "id": "g01c046",
+      "type": "QCM",
+      "question": "Several s'emploie avec :",
+      "choix": [
+        "des noms au pluriel",
+        "des indénombrables",
+        "des noms au singulier",
+        "tous les noms"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Several = « plusieurs » + pluriel."
+    },
+    {
+      "id": "g01c047",
+      "type": "QCM",
+      "question": "Quelle est la différence entre few et a few ?",
+      "choix": [
+        "A few est plus positif : « quelques »",
+        "Few est plus positif",
+        "Aucune",
+        "A few s'emploie avec l'indénombrable"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Few = « peu de » (négatif) ; a few = « quelques » (plus généreux). A few + pluriel, a little + singulier."
+    },
+    {
+      "id": "g01c048",
+      "type": "QCM",
+      "question": "____ little energy remains. Choisissez la nuance « un peu de » (positive).",
+      "choix": [
+        "A",
+        "The",
+        "Few",
+        "Many"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "A little = « un peu de » (idée positive) devant un singulier indénombrable."
+    },
+    {
+      "id": "g01c049",
+      "type": "QCM",
+      "question": "A lot of et plenty of se combinent avec :",
+      "choix": [
+        "des noms singuliers et pluriels",
+        "uniquement des pluriels",
+        "uniquement des singuliers",
+        "aucun nom"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "A lot of / plenty of : dénombrables et indénombrables (a lot of doubt, plenty of room)."
+    },
+    {
+      "id": "g01c050",
+      "type": "QCM",
+      "question": "Every / each sont suivis de :",
+      "choix": [
+        "un nom singulier dénombrable",
+        "un nom pluriel",
+        "un indénombrable",
+        "un verbe"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Each / every + singulier dénombrable (every customer, each degree)."
+    },
+    {
+      "id": "g01c051",
+      "type": "QCM",
+      "question": "All peut être suivi de :",
+      "choix": [
+        "un nom pluriel ou singulier",
+        "uniquement un singulier dénombrable",
+        "uniquement un pluriel",
+        "aucun nom"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "All se combine avec dénombrables et indénombrables (all year long, all the folders)."
+    },
+    {
+      "id": "g01c052",
+      "type": "QCR",
+      "question": "Quels quantifieurs se combinent avec un nom indénombrable (ex. furniture) ?",
+      "choix": [
+        "much",
+        "many",
+        "a little",
+        "plenty of",
+        "several",
+        "a lot of"
+      ],
+      "reponses": [
+        0,
+        3,
+        5
+      ],
+      "explication": "Much, a little, plenty of, a lot of. Many et several exigent un pluriel."
+    },
+    {
+      "id": "g01c053",
+      "type": "QCR",
+      "question": "Quels quantifieurs se combinent avec un nom dénombrable pluriel ?",
+      "choix": [
+        "many",
+        "several",
+        "a few",
+        "much",
+        "a little",
+        "every"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Many, several, a few. Much et a little vont avec les indénombrables ; every avec le singulier."
+    },
+    {
+      "id": "g01c054",
+      "type": "QCM",
+      "question": "Quel est l'adjectif possessif de she ?",
+      "choix": [
+        "his",
+        "her",
+        "its",
+        "hers"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "she → her ; hers est un pronom possessif."
+    },
+    {
+      "id": "g01c055",
+      "type": "QCM",
+      "question": "Quel est l'adjectif possessif de it ?",
+      "choix": [
+        "it's",
+        "its",
+        "his",
+        "their"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "it → its (sans apostrophe)."
+    },
+    {
+      "id": "g01c056",
+      "type": "QCM",
+      "question": "Quel est l'adjectif possessif de we ?",
+      "choix": [
+        "us",
+        "ours",
+        "our",
+        "we's"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "we → our (adjectif) ; ours = pronom."
+    },
+    {
+      "id": "g01c057",
+      "type": "QCM",
+      "question": "Quel est l'adjectif possessif de they ?",
+      "choix": [
+        "them",
+        "theirs",
+        "their",
+        "there"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "they → their."
+    },
+    {
+      "id": "g01c058",
+      "type": "QCM",
+      "question": "Les adjectifs possessifs anglais s'accordent avec :",
+      "choix": [
+        "le possesseur",
+        "la chose possédée",
+        "le verbe",
+        "le nombre de la chose possédée"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Ils renseignent sur le possesseur : his company (possesseur masculin), her car (féminin)."
+    },
+    {
+      "id": "g01c059",
+      "type": "QCM",
+      "question": "Dans « his company », que nous apprend « his » ?",
+      "choix": [
+        "Le possesseur est masculin",
+        "L'entreprise est masculine",
+        "L'entreprise est au pluriel",
+        "L'entreprise est neutre"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Les substantifs n'ont pas de genre : his indique le genre du possesseur."
+    },
+    {
+      "id": "g01c060",
+      "type": "QCM",
+      "question": "Quelle forme exprime la proximité (au sens propre ou figuré) ?",
+      "choix": [
+        "this",
+        "that",
+        "those",
+        "the"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "This / these = proximité ; that / those = distance."
+    },
+    {
+      "id": "g01c061",
+      "type": "QCM",
+      "question": "Quelle forme exprime la distance ?",
+      "choix": [
+        "this",
+        "these",
+        "that",
+        "here"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "That / those véhiculent une notion de distance."
+    },
+    {
+      "id": "g01c062",
+      "type": "QCM",
+      "question": "« this afternoon » signifie :",
+      "choix": [
+        "cet après-midi (celui en cours)",
+        "cet après-midi-là (passé)",
+        "tous les après-midi",
+        "chaque après-midi"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "This = proximité temporelle ; that afternoon = cet après-midi-là."
+    },
+    {
+      "id": "g01c063",
+      "type": "QCM",
+      "question": "Au pluriel, that devient :",
+      "choix": [
+        "this",
+        "those",
+        "these",
+        "them"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "that → those ; this → these."
+    }
+  ]
+}

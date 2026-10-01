@@ -1,0 +1,171 @@
+{
+  "titre": "TOEIC Vocabulary 9 — High-Tech",
+  "description": "Thème « High-Tech » du livret Vocabulary (d'après les corrigés).",
+  "questions": [
+    {
+      "id": "v09001",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « analyst » ?",
+      "choix": [
+        "Graphs",
+        "Media",
+        "High-Tech",
+        "Corporate Property"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« analyst » figure dans les corrigés du thème High-Tech."
+    },
+    {
+      "id": "v09002",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « monitor » ?",
+      "choix": [
+        "Travel",
+        "High-Tech",
+        "Graphs",
+        "R&D & Industrialization"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« monitor » figure dans les corrigés du thème High-Tech."
+    },
+    {
+      "id": "v09003",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « secure » ?",
+      "choix": [
+        "Real Estate & Housing",
+        "High-Tech",
+        "Marketing & Advertising",
+        "Dining Out"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« secure » figure dans les corrigés du thème High-Tech."
+    },
+    {
+      "id": "v09004",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « user experience » ?",
+      "choix": [
+        "Human Resources",
+        "High-Tech",
+        "Complaining & Apologizing",
+        "Real Estate & Housing"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« user experience » figure dans les corrigés du thème High-Tech."
+    },
+    {
+      "id": "v09005",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « designers » ?",
+      "choix": [
+        "Life in the Office",
+        "Logistics",
+        "Idioms & Expressions",
+        "High-Tech"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« designers » figure dans les corrigés du thème High-Tech."
+    },
+    {
+      "id": "v09006",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « engineers » ?",
+      "choix": [
+        "Commerce",
+        "High-Tech",
+        "Presentations",
+        "Life in the Office"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« engineers » figure dans les corrigés du thème High-Tech."
+    },
+    {
+      "id": "v09007",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « application » ?",
+      "choix": [
+        "Graphs",
+        "Commerce",
+        "High-Tech",
+        "Complaining & Apologizing"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« application » figure dans les corrigés du thème High-Tech."
+    },
+    {
+      "id": "v09008",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « install » ?",
+      "choix": [
+        "Commerce",
+        "Sustainable Development",
+        "Travel",
+        "High-Tech"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« install » figure dans les corrigés du thème High-Tech."
+    },
+    {
+      "id": "v09009",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « device » ?",
+      "choix": [
+        "Investments",
+        "Banking & Personal Finance",
+        "Presentations",
+        "High-Tech"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« device » figure dans les corrigés du thème High-Tech."
+    },
+    {
+      "id": "v09010",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « data » ?",
+      "choix": [
+        "Travel",
+        "Weather",
+        "Idioms & Expressions",
+        "High-Tech"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« data » figure dans les corrigés du thème High-Tech."
+    },
+    {
+      "id": "v09011",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « mainframe » ?",
+      "choix": [
+        "Real Estate & Housing",
+        "High-Tech",
+        "Commerce",
+        "Life in the Office"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« mainframe » figure dans les corrigés du thème High-Tech."
+    }
+  ]
+}

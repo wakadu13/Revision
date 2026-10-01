@@ -1,0 +1,125 @@
+{
+  "titre": "Linux 21 — Sauvegarde et Restauration",
+  "description": "Rsync, Duplicity, Deja Dup, chiffrement et automatisation via cron",
+  "questions": [
+    {
+      "id": "bak01",
+      "type": "QCR",
+      "question": "Quels outils de sauvegarde sont cités pour Ubuntu ?",
+      "choix": ["Rsync", "Deja Dup", "Duplicity", "Fdisk"],
+      "reponses": [0, 1, 2],
+      "explication": "Fdisk est un outil de gestion de partitions, pas de sauvegarde."
+    },
+    {
+      "id": "bak02",
+      "type": "QCM",
+      "question": "Quel est le principal avantage de Rsync selon le cours ?",
+      "choix": [
+        "Il chiffre toujours les données",
+        "Il ne transfère que les portions de fichiers modifiées",
+        "Il nécessite une interface graphique",
+        "Il fonctionne uniquement en local"
+      ],
+      "reponses": [1],
+      "explication": "Cela le rend très efficace pour de grandes quantités de données."
+    },
+    {
+      "id": "bak03",
+      "type": "QCM",
+      "question": "Quel outil s'appuie sur Rsync tout en ajoutant des fonctionnalités de chiffrement ?",
+      "choix": ["Deja Dup", "Duplicity", "GnuPG", "LUKS"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "bak04",
+      "type": "QCM",
+      "question": "Quel outil offre une interface graphique simple pour la sauvegarde et utilise Rsync en arrière-plan ?",
+      "choix": ["Duplicity", "Deja Dup", "LUKS", "eCryptfs"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "bak05",
+      "type": "QCR",
+      "question": "Quels outils de chiffrement supplémentaires sont cités pour protéger les sauvegardes ?",
+      "choix": ["GnuPG", "eCryptfs", "LUKS", "Rsync"],
+      "reponses": [0, 1, 2],
+      "explication": "Rsync n'est pas un outil de chiffrement en soi."
+    },
+    {
+      "id": "bak06",
+      "type": "QCM",
+      "question": "Que fait l'option `-a` (archive) de rsync ?",
+      "choix": [
+        "Compresse les données",
+        "Préserve les attributs originaux des fichiers (permissions, horodatages, etc.)",
+        "Chiffre le transfert",
+        "Supprime les fichiers source après transfert"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "bak07",
+      "type": "QCM",
+      "question": "Que fait l'option `-z` de rsync ?",
+      "choix": ["Chiffre les données", "Active la compression pour des transferts plus rapides", "Supprime les doublons", "Active le mode verbeux"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "bak08",
+      "type": "QCM",
+      "question": "Que fait l'option `--delete` de rsync ?",
+      "choix": [
+        "Supprime le répertoire source",
+        "Supprime sur l'hôte distant les fichiers qui ne sont plus présents dans la source",
+        "Supprime les anciennes sauvegardes uniquement",
+        "Supprime tous les fichiers cachés"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "bak09",
+      "type": "QCM",
+      "question": "Comment indique-t-on à rsync d'utiliser SSH pour chiffrer le transfert ?",
+      "choix": ["-e ssh", "--ssh", "-s", "--secure"],
+      "reponses": [0],
+      "explication": "Exemple : rsync -avz -e ssh ..."
+    },
+    {
+      "id": "bak10",
+      "type": "QCM",
+      "question": "Quelle commande génère une paire de clés SSH pour une authentification sans mot de passe ?",
+      "choix": ["ssh-keygen -t rsa -b 2048", "ssh-copy-id", "ssh-add", "openssl genrsa"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "bak11",
+      "type": "QCM",
+      "question": "Quelle commande copie la clé publique vers le serveur distant pour l'authentification par clé ?",
+      "choix": ["ssh-keygen", "ssh-copy-id user@backup_server", "scp id_rsa.pub", "ssh-add remote"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "bak12",
+      "type": "QCM",
+      "question": "Quelle entrée crontab exécute un script de sauvegarde toutes les heures à la minute 0 ?",
+      "choix": ["0 * * * * /path/script.sh", "* 0 * * * /path/script.sh", "0 0 * * * /path/script.sh", "* * 0 * * /path/script.sh"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "bak13",
+      "type": "QCM",
+      "question": "Quelle commande permet d'éditer le crontab de l'utilisateur courant ?",
+      "choix": ["crontab -e", "cron -edit", "vim crontab", "crontab -l -w"],
+      "reponses": [0],
+      "explication": ""
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+{
+  "titre": "TOEIC Vocabulary 4 — Complaining & Apologizing",
+  "description": "Thème « Complaining & Apologizing » du livret Vocabulary (d'après les corrigés).",
+  "questions": [
+    {
+      "id": "v04001",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « bother » ?",
+      "choix": [
+        "Health & Healthcare",
+        "Complaining & Apologizing",
+        "Idioms & Expressions",
+        "Meetings"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« bother » figure dans les corrigés du thème Complaining & Apologizing."
+    },
+    {
+      "id": "v04002",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « misunderstanding » ?",
+      "choix": [
+        "Complaining & Apologizing",
+        "Marketing & Advertising",
+        "Life in the Office",
+        "Travel"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« misunderstanding » figure dans les corrigés du thème Complaining & Apologizing."
+    },
+    {
+      "id": "v04003",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « fed up with » ?",
+      "choix": [
+        "Complaining & Apologizing",
+        "Health & Healthcare",
+        "Presentations",
+        "Idioms & Expressions"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« fed up with » figure dans les corrigés du thème Complaining & Apologizing."
+    },
+    {
+      "id": "v04004",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « regret » ?",
+      "choix": [
+        "Health & Healthcare",
+        "Products",
+        "Graphs",
+        "Complaining & Apologizing"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« regret » figure dans les corrigés du thème Complaining & Apologizing."
+    },
+    {
+      "id": "v04005",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « dissatisfied » ?",
+      "choix": [
+        "Products",
+        "Complaining & Apologizing",
+        "R&D & Industrialization",
+        "Media"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« dissatisfied » figure dans les corrigés du thème Complaining & Apologizing."
+    },
+    {
+      "id": "v04006",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « sincere » ?",
+      "choix": [
+        "Complaining & Apologizing",
+        "Weather",
+        "Life in the Office",
+        "High-Tech"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« sincere » figure dans les corrigés du thème Complaining & Apologizing."
+    },
+    {
+      "id": "v04007",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « inconvenience » ?",
+      "choix": [
+        "Dining Out",
+        "Complaining & Apologizing",
+        "Travel",
+        "Health & Healthcare"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« inconvenience » figure dans les corrigés du thème Complaining & Apologizing."
+    },
+    {
+      "id": "v04008",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « unacceptable » ?",
+      "choix": [
+        "Complaining & Apologizing",
+        "Dining Out",
+        "Communicating",
+        "Idioms & Expressions"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« unacceptable » figure dans les corrigés du thème Complaining & Apologizing."
+    },
+    {
+      "id": "v04009",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « apologize » ?",
+      "choix": [
+        "Marketing & Advertising",
+        "Corporate Property",
+        "Dining Out",
+        "Complaining & Apologizing"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« apologize » figure dans les corrigés du thème Complaining & Apologizing."
+    },
+    {
+      "id": "v04010",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « sort it out » ?",
+      "choix": [
+        "Logistics",
+        "Dining Out",
+        "Complaining & Apologizing",
+        "Meetings"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« sort it out » figure dans les corrigés du thème Complaining & Apologizing."
+    }
+  ]
+}

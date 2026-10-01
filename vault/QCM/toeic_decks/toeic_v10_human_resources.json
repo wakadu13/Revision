@@ -1,0 +1,471 @@
+{
+  "titre": "TOEIC Vocabulary 10 — Human Resources",
+  "description": "Thème « Human Resources » du livret Vocabulary (d'après les corrigés).",
+  "questions": [
+    {
+      "id": "v10001",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « applicant » ?",
+      "choix": [
+        "Meetings",
+        "Logistics",
+        "Human Resources",
+        "Real Estate & Housing"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« applicant » figure dans les corrigés du thème Human Resources."
+    },
+    {
+      "id": "v10002",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « candidate » ?",
+      "choix": [
+        "Commerce",
+        "Human Resources",
+        "R&D & Industrialization",
+        "Health & Healthcare"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« candidate » figure dans les corrigés du thème Human Resources."
+    },
+    {
+      "id": "v10003",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « application form » ?",
+      "choix": [
+        "Health & Healthcare",
+        "Human Resources",
+        "Sustainable Development",
+        "Investments"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« application form » figure dans les corrigés du thème Human Resources."
+    },
+    {
+      "id": "v10004",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « job search » ?",
+      "choix": [
+        "Idioms & Expressions",
+        "Human Resources",
+        "Graphs",
+        "Dining Out"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« job search » figure dans les corrigés du thème Human Resources."
+    },
+    {
+      "id": "v10005",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « shortlist » ?",
+      "choix": [
+        "Real Estate & Housing",
+        "Human Resources",
+        "Health & Healthcare",
+        "Sustainable Development"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« shortlist » figure dans les corrigés du thème Human Resources."
+    },
+    {
+      "id": "v10006",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « back pay » ?",
+      "choix": [
+        "Investments",
+        "Idioms & Expressions",
+        "Human Resources",
+        "Health & Healthcare"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« back pay » figure dans les corrigés du thème Human Resources."
+    },
+    {
+      "id": "v10007",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « payslip » ?",
+      "choix": [
+        "Commerce",
+        "Presentations",
+        "Travel",
+        "Human Resources"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« payslip » figure dans les corrigés du thème Human Resources."
+    },
+    {
+      "id": "v10008",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « salary » ?",
+      "choix": [
+        "Complaining & Apologizing",
+        "Human Resources",
+        "Corporate Property",
+        "R&D & Industrialization"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« salary » figure dans les corrigés du thème Human Resources."
+    },
+    {
+      "id": "v10009",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « wage » ?",
+      "choix": [
+        "Investments",
+        "Human Resources",
+        "Marketing & Advertising",
+        "Products"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« wage » figure dans les corrigés du thème Human Resources."
+    },
+    {
+      "id": "v10010",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « wage ceiling » ?",
+      "choix": [
+        "Communicating",
+        "High-Tech",
+        "Meetings",
+        "Human Resources"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« wage ceiling » figure dans les corrigés du thème Human Resources."
+    },
+    {
+      "id": "v10011",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « absenteeism » ?",
+      "choix": [
+        "Dining Out",
+        "Human Resources",
+        "Phrasal Verbs",
+        "Travel"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« absenteeism » figure dans les corrigés du thème Human Resources."
+    },
+    {
+      "id": "v10012",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « labour court » ?",
+      "choix": [
+        "Human Resources",
+        "Meetings",
+        "Investments",
+        "Commerce"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« labour court » figure dans les corrigés du thème Human Resources."
+    },
+    {
+      "id": "v10013",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « labour relations » ?",
+      "choix": [
+        "Human Resources",
+        "Commerce",
+        "High-Tech",
+        "Graphs"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« labour relations » figure dans les corrigés du thème Human Resources."
+    },
+    {
+      "id": "v10014",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « labour union » ?",
+      "choix": [
+        "Travel",
+        "Human Resources",
+        "Life in the Office",
+        "Meetings"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« labour union » figure dans les corrigés du thème Human Resources."
+    },
+    {
+      "id": "v10015",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « on strike » ?",
+      "choix": [
+        "Products",
+        "Human Resources",
+        "Graphs",
+        "Complaining & Apologizing"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« on strike » figure dans les corrigés du thème Human Resources."
+    },
+    {
+      "id": "v10016",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « dismiss » ?",
+      "choix": [
+        "Idioms & Expressions",
+        "Human Resources",
+        "Life in the Office",
+        "R&D & Industrialization"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« dismiss » figure dans les corrigés du thème Human Resources."
+    },
+    {
+      "id": "v10017",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « severance pay » ?",
+      "choix": [
+        "High-Tech",
+        "Human Resources",
+        "Phrasal Verbs",
+        "Presentations"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« severance pay » figure dans les corrigés du thème Human Resources."
+    },
+    {
+      "id": "v10018",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « take on » ?",
+      "choix": [
+        "Human Resources",
+        "Media",
+        "Commerce",
+        "Presentations"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« take on » figure dans les corrigés du thème Human Resources."
+    },
+    {
+      "id": "v10019",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « full-time » ?",
+      "choix": [
+        "Complaining & Apologizing",
+        "Corporate Property",
+        "Travel",
+        "Human Resources"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« full-time » figure dans les corrigés du thème Human Resources."
+    },
+    {
+      "id": "v10020",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « part-time » ?",
+      "choix": [
+        "Human Resources",
+        "Presentations",
+        "Real Estate & Housing",
+        "Health & Healthcare"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« part-time » figure dans les corrigés du thème Human Resources."
+    },
+    {
+      "id": "v10021",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « sick leave » ?",
+      "choix": [
+        "Human Resources",
+        "Weather",
+        "Phrasal Verbs",
+        "Logistics"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« sick leave » figure dans les corrigés du thème Human Resources."
+    },
+    {
+      "id": "v10022",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « national holiday » ?",
+      "choix": [
+        "Banking & Personal Finance",
+        "Complaining & Apologizing",
+        "Weather",
+        "Human Resources"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« national holiday » figure dans les corrigés du thème Human Resources."
+    },
+    {
+      "id": "v10023",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « moonlighting » ?",
+      "choix": [
+        "Investments",
+        "Corporate Property",
+        "Human Resources",
+        "Dining Out"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« moonlighting » figure dans les corrigés du thème Human Resources."
+    },
+    {
+      "id": "v10024",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « staff » ?",
+      "choix": [
+        "Weather",
+        "Human Resources",
+        "Meetings",
+        "R&D & Industrialization"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« staff » figure dans les corrigés du thème Human Resources."
+    },
+    {
+      "id": "v10025",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « trial period » ?",
+      "choix": [
+        "Commerce",
+        "Weather",
+        "Human Resources",
+        "Investments"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« trial period » figure dans les corrigés du thème Human Resources."
+    },
+    {
+      "id": "v10026",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « manpower » ?",
+      "choix": [
+        "Weather",
+        "Graphs",
+        "Sustainable Development",
+        "Human Resources"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« manpower » figure dans les corrigés du thème Human Resources."
+    },
+    {
+      "id": "v10027",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « working papers » ?",
+      "choix": [
+        "Sustainable Development",
+        "Human Resources",
+        "Media",
+        "R&D & Industrialization"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« working papers » figure dans les corrigés du thème Human Resources."
+    },
+    {
+      "id": "v10028",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « executive » ?",
+      "choix": [
+        "Human Resources",
+        "Presentations",
+        "Phrasal Verbs",
+        "Products"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« executive » figure dans les corrigés du thème Human Resources."
+    },
+    {
+      "id": "v10029",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « unemployment » ?",
+      "choix": [
+        "Human Resources",
+        "Investments",
+        "Logistics",
+        "Weather"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« unemployment » figure dans les corrigés du thème Human Resources."
+    },
+    {
+      "id": "v10030",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « retire » ?",
+      "choix": [
+        "Human Resources",
+        "Banking & Personal Finance",
+        "Products",
+        "Complaining & Apologizing"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« retire » figure dans les corrigés du thème Human Resources."
+    },
+    {
+      "id": "v10031",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « training » ?",
+      "choix": [
+        "Human Resources",
+        "R&D & Industrialization",
+        "Complaining & Apologizing",
+        "Phrasal Verbs"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« training » figure dans les corrigés du thème Human Resources."
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "titre": "Linux 29 — Solaris",
+  "description": "Solaris vs distributions Linux : système de fichiers, paquets, permissions et outils",
+  "questions": [
+    {
+      "id": "sol01",
+      "type": "QCM",
+      "question": "Par quelle entreprise Solaris a-t-il été développé à l'origine ?",
+      "choix": ["Oracle Corporation", "Sun Microsystems", "IBM", "Red Hat"],
+      "reponses": [1],
+      "explication": "Sun Microsystems a ensuite été racheté par Oracle."
+    },
+    {
+      "id": "sol02",
+      "type": "QCM",
+      "question": "Solaris est-il open source ?",
+      "choix": [
+        "Oui, comme la plupart des distributions Linux",
+        "Non, c'est un système propriétaire dont le code source n'est pas public",
+        "Il est partiellement open source uniquement pour le noyau",
+        "Cela dépend de la version"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "sol03",
+      "type": "QCM",
+      "question": "Quel hyperviseur intégré Solaris propose-t-il ?",
+      "choix": ["KVM", "Oracle VM Server for SPARC", "Hyper-V", "Xen"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "sol04",
+      "type": "QCM",
+      "question": "Quel système de fichiers avancé les distributions Linux utilisent-elles couramment, offrant compression et snapshots ?",
+      "choix": ["ZFS", "NTFS", "FAT32", "SMF"],
+      "reponses": [0],
+      "explication": "ZFS = Zettabyte File System."
+    },
+    {
+      "id": "sol05",
+      "type": "QCM",
+      "question": "Quel framework de gestion des services Solaris utilise-t-il ?",
+      "choix": ["systemd", "SMF (Service Management Facility)", "SysVinit", "upstart"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "sol06",
+      "type": "QCM",
+      "question": "Quelle commande affiche des informations système détaillées sous Solaris (équivalent avancé de `uname -a`) ?",
+      "choix": ["uname -a", "showrev -a", "sysinfo", "solinfo"],
+      "reponses": [1],
+      "explication": "showrev fournit aussi le niveau de correctif et le fournisseur matériel."
+    },
+    {
+      "id": "sol07",
+      "type": "QCM",
+      "question": "Quelle commande installe un paquet sous Solaris ?",
+      "choix": ["apt-get install", "pkgadd -d", "yum install", "dpkg -i"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "sol08",
+      "type": "QCM",
+      "question": "Quel gestionnaire de paquets moderne Solaris utilise-t-il ?",
+      "choix": ["IPS (Image Packaging System)", "APT", "RPM", "SPM uniquement"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "sol09",
+      "type": "QCM",
+      "question": "Pourquoi `sudo` n'était-il pas utilisé historiquement sous Solaris pour l'installation de paquets ?",
+      "choix": [
+        "Car Solaris utilisait RBAC pour attribuer des permissions granulaires",
+        "Car Solaris n'a jamais eu de superutilisateur",
+        "Car sudo n'existe pas sous Unix",
+        "Car les paquets ne nécessitent aucun privilège"
+      ],
+      "reponses": [0],
+      "explication": "sudo est pris en charge depuis Solaris 11."
+    },
+    {
+      "id": "sol10",
+      "type": "QCM",
+      "question": "Comment recherche-t-on les fichiers avec le bit SUID positionné sous Solaris avec `find` ?",
+      "choix": ["find / -perm 4000", "find / -perm -4000", "find / -suid", "find / -type suid"],
+      "reponses": [1],
+      "explication": "Sous Ubuntu, on utilise `find / -perm 4000` (sans le tiret)."
+    },
+    {
+      "id": "sol11",
+      "type": "QCM",
+      "question": "Quelle commande partage un répertoire via NFS sous Solaris ?",
+      "choix": ["share -F nfs -o rw /export/home", "nfs-export /export/home", "mount -share /export/home", "export nfs /export/home"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "sol12",
+      "type": "QCM",
+      "question": "Où est stockée la configuration NFS sous Solaris ?",
+      "choix": ["/etc/exports", "/etc/dfs/dfstab", "/etc/nfs.conf", "/etc/fstab"],
+      "reponses": [1],
+      "explication": "Sous Linux, c'est généralement /etc/exports."
+    },
+    {
+      "id": "sol13",
+      "type": "QCM",
+      "question": "Quel outil Solaris est l'équivalent de `lsof` pour lister les fichiers ouverts par un processus ?",
+      "choix": ["pfiles", "showrev", "truss", "pkgadd"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "sol14",
+      "type": "QCM",
+      "question": "Quel outil Solaris est l'équivalent de `strace` pour tracer les appels système ?",
+      "choix": ["pfiles", "truss", "showrev", "pkgadd"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "sol15",
+      "type": "QCM",
+      "question": "Quelle capacité `truss` a-t-il que `strace` n'a pas, selon le cours ?",
+      "choix": [
+        "Tracer les signaux envoyés à un processus et les appels système des processus enfants",
+        "Fonctionner sans privilèges",
+        "Chiffrer la sortie",
+        "Fonctionner sur Windows"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "sol16",
+      "type": "QCR",
+      "question": "Selon le cours, dans quelles catégories les différences entre Solaris et Linux peuvent-elles être regroupées ?",
+      "choix": [
+        "Système de fichiers",
+        "Gestion des processus",
+        "Gestion des paquets",
+        "Langage de programmation par défaut"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": ""
+    }
+  ]
+}

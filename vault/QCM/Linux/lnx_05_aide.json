@@ -1,0 +1,59 @@
+{
+  "titre": "Linux 5 — Obtenir de l'aide",
+  "description": "man, --help, -h, apropos et ressources externes",
+  "questions": [
+    {
+      "id": "aid01",
+      "type": "QCM",
+      "question": "Quelle commande affiche les pages de manuel détaillées d'un outil ?",
+      "choix": ["help", "man", "info-tool", "manual"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "aid02",
+      "type": "QCM",
+      "question": "Quelle syntaxe affiche une aide rapide sans consulter toute la documentation ?",
+      "choix": ["<tool> --help", "man -short <tool>", "<tool> /?", "info <tool> -s"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "aid03",
+      "type": "QCM",
+      "question": "Quel outil (comme curl) propose une version courte de l'aide avec -h ?",
+      "choix": ["ls", "curl", "man", "apropos"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "aid04",
+      "type": "QCM",
+      "question": "Quel outil recherche un mot-clé dans les descriptions courtes de toutes les pages de manuel ?",
+      "choix": ["apropos", "grep man", "which", "locate"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "aid05",
+      "type": "QCM",
+      "question": "Quel site web est cité pour expliquer une commande longue et complexe ?",
+      "choix": ["stackoverflow.com", "explainshell.com", "man7.org", "linux.org"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "aid06",
+      "type": "QCM",
+      "question": "Que fait la commande `ls` ?",
+      "choix": [
+        "Elle liste les fichiers et répertoires",
+        "Elle affiche le contenu d'un fichier",
+        "Elle change de répertoire",
+        "Elle supprime des fichiers"
+      ],
+      "reponses": [0],
+      "explication": ""
+    }
+  ]
+}

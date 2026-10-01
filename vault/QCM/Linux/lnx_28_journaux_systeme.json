@@ -1,0 +1,125 @@
+{
+  "titre": "Linux 28 — Journaux système",
+  "description": "Journaux du noyau, système, authentification, application et sécurité, et leurs emplacements",
+  "questions": [
+    {
+      "id": "log01",
+      "type": "QCR",
+      "question": "Quels types de journaux système sont cités dans le cours ?",
+      "choix": [
+        "Journaux du noyau",
+        "Journaux système",
+        "Journaux d'authentification",
+        "Journaux de navigation web"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": ""
+    },
+    {
+      "id": "log02",
+      "type": "QCM",
+      "question": "Où sont stockés les journaux du noyau ?",
+      "choix": ["/var/log/syslog", "/var/log/kern.log", "/var/log/auth.log", "/var/log/dmesg.log"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "log03",
+      "type": "QCM",
+      "question": "Où sont stockés les journaux au niveau du système (démarrages/arrêts de services, redémarrages) ?",
+      "choix": ["/var/log/kern.log", "/var/log/syslog", "/var/log/auth.log", "/var/log/secure"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "log04",
+      "type": "QCM",
+      "question": "Où sont stockées les tentatives d'authentification (réussies et échouées) sur Ubuntu ?",
+      "choix": ["/var/log/kern.log", "/var/log/syslog", "/var/log/auth.log", "/var/log/access.log"],
+      "reponses": [2],
+      "explication": "Sur CentOS/RHEL, l'équivalent est /var/log/secure."
+    },
+    {
+      "id": "log05",
+      "type": "QCM",
+      "question": "Où sont stockés par défaut les journaux d'accès OpenSSH sur CentOS/RHEL ?",
+      "choix": ["/var/log/auth.log", "/var/log/secure", "/var/log/ssh.log", "/var/log/openssh.log"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "log06",
+      "type": "QCM",
+      "question": "Où Apache stocke-t-il typiquement ses journaux d'erreurs ?",
+      "choix": ["/var/log/apache2/error.log", "/var/log/httpd_error.log", "/var/log/web/apache.log", "/etc/apache2/error.log"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "log07",
+      "type": "QCM",
+      "question": "Où sont stockés les journaux d'un service géré par systemd ?",
+      "choix": ["/var/log/systemd.log", "/var/log/journal/", "/etc/systemd/log", "/var/journal/"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "log08",
+      "type": "QCM",
+      "question": "Où l'outil Fail2ban enregistre-t-il les tentatives de connexion échouées ?",
+      "choix": ["/var/log/fail2ban.log", "/var/log/auth.log uniquement", "/var/log/security.log", "/var/log/ban.log"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "log09",
+      "type": "QCM",
+      "question": "Où le pare-feu UFW enregistre-t-il son activité ?",
+      "choix": ["/var/log/ufw.log", "/var/log/firewall.log", "/var/log/iptables.log", "/var/log/syslog uniquement"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "log10",
+      "type": "QCM",
+      "question": "Quelle est la différence essentielle entre /var/log/syslog et /var/log/auth.log ?",
+      "choix": [
+        "Ils contiennent exactement les mêmes informations",
+        "auth.log se concentre spécifiquement sur les tentatives d'authentification",
+        "syslog ne contient jamais d'informations de connexion",
+        "auth.log est réservé aux applications web"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "log11",
+      "type": "QCR",
+      "question": "Quels outils en ligne de commande sont cités pour consulter et analyser les journaux ?",
+      "choix": ["tail", "grep", "sed", "fdisk"],
+      "reponses": [0, 1, 2],
+      "explication": ""
+    },
+    {
+      "id": "log12",
+      "type": "QCM",
+      "question": "Pourquoi les journaux système sont-ils précieux pour un testeur d'intrusion ?",
+      "choix": [
+        "Ils permettent d'identifier des connexions non autorisées et des activités anormales",
+        "Ils accélèrent le système",
+        "Ils ne servent qu'aux développeurs",
+        "Ils remplacent le besoin d'un pare-feu"
+      ],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "log13",
+      "type": "QCM",
+      "question": "Que faut-il configurer pour éviter que les fichiers journaux ne deviennent trop volumineux ?",
+      "choix": ["La rotation des journaux (log rotation)", "Le swap", "Le montage automatique", "Le pare-feu"],
+      "reponses": [0],
+      "explication": ""
+    }
+  ]
+}

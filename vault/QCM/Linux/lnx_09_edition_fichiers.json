@@ -1,0 +1,99 @@
+{
+  "titre": "Linux 9 — Édition de Fichiers",
+  "description": "Nano, Vim, ses modes, et les fichiers /etc/passwd et /etc/shadow",
+  "questions": [
+    {
+      "id": "edi01",
+      "type": "QCM",
+      "question": "Quel éditeur est présenté comme plus simple à comprendre que Vim ?",
+      "choix": ["Emacs", "Nano", "Gedit", "Ed"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "edi02",
+      "type": "QCM",
+      "question": "Quel raccourci permet d'enregistrer un fichier dans Nano ?",
+      "choix": ["Ctrl+X", "Ctrl+O", "Ctrl+S", "Ctrl+W"],
+      "reponses": [1],
+      "explication": "Ctrl+X permet ensuite de quitter Nano."
+    },
+    {
+      "id": "edi03",
+      "type": "QCM",
+      "question": "Quel raccourci permet de rechercher du texte dans Nano ?",
+      "choix": ["Ctrl+F", "Ctrl+W", "Ctrl+R", "Ctrl+G"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "edi04",
+      "type": "QCM",
+      "question": "Quelle commande affiche le contenu d'un fichier dans le terminal ?",
+      "choix": ["nano", "cat", "vim", "less -e"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "edi05",
+      "type": "QCM",
+      "question": "Vim est un clone amélioré de quel éditeur ?",
+      "choix": ["Ed", "Vi", "Emacs", "Pico"],
+      "reponses": [1],
+      "explication": "Vim = Vi IMproved."
+    },
+    {
+      "id": "edi06",
+      "type": "QCR",
+      "question": "Quels modes fondamentaux propose Vim ?",
+      "choix": ["Normal", "Insert", "Visual", "Command", "Turbo"],
+      "reponses": [0, 1, 2, 3],
+      "explication": "Vim propose 6 modes : Normal, Insert, Visual, Command, Replace, Ex. « Turbo » n'existe pas."
+    },
+    {
+      "id": "edi07",
+      "type": "QCM",
+      "question": "Dans quel mode de Vim toutes les saisies sont-elles interprétées comme des commandes ?",
+      "choix": ["Insert", "Normal", "Replace", "Visual"],
+      "reponses": [1],
+      "explication": "C'est le mode par défaut au démarrage de Vim."
+    },
+    {
+      "id": "edi08",
+      "type": "QCM",
+      "question": "Comment quitte-t-on Vim (mode commande) ?",
+      "choix": [":q", ":exit", "Ctrl+X", "Ctrl+C"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "edi09",
+      "type": "QCM",
+      "question": "Quelle commande lance le tutoriel interactif de Vim ?",
+      "choix": ["vimhelp", "vimtutor", "vim --tutor", "tutorial-vim"],
+      "reponses": [1],
+      "explication": "Accessible aussi via :Tutor dans Vim."
+    },
+    {
+      "id": "edi10",
+      "type": "QCM",
+      "question": "Que contient le fichier /etc/passwd ?",
+      "choix": [
+        "Les hachages de mots de passe actuels",
+        "Les informations sur les utilisateurs (nom, UID, GID, home, shell)",
+        "La configuration réseau",
+        "Les journaux système"
+      ],
+      "reponses": [1],
+      "explication": "Aujourd'hui les hachages sont stockés dans /etc/shadow."
+    },
+    {
+      "id": "edi11",
+      "type": "QCM",
+      "question": "Où sont aujourd'hui stockés les hachages de mots de passe, avec des permissions plus strictes ?",
+      "choix": ["/etc/passwd", "/etc/shadow", "/etc/group", "/etc/security"],
+      "reponses": [1],
+      "explication": ""
+    }
+  ]
+}

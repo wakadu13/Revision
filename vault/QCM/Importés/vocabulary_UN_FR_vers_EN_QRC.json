@@ -1,0 +1,1509 @@
+{
+  "titre": "UN Vocabulary – Français → Anglais (QRC)",
+  "description": "Tous les mots de la fiche sur l'ONU : écris la traduction anglaise du mot français.",
+  "questions": [
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "une percée",
+      "reponses_texte": [
+        "a breakthrough",
+        "breakthrough"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "une découverte",
+      "reponses_texte": [
+        "a discovery",
+        "discovery"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "une avancée significative",
+      "reponses_texte": [
+        "a significant development",
+        "significant development"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "un succès",
+      "reponses_texte": [
+        "a success",
+        "success"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "une impasse",
+      "reponses_texte": [
+        "a standoff",
+        "standoff",
+        "a deadlock",
+        "deadlock",
+        "a stalemate",
+        "stalemate"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "une paralysie",
+      "reponses_texte": [
+        "a gridlock",
+        "gridlock"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "un arrêt complet",
+      "reponses_texte": [
+        "a standstill",
+        "standstill"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "un bras de fer",
+      "reponses_texte": [
+        "a standoff",
+        "standoff"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "un manque de",
+      "reponses_texte": [
+        "a lack of",
+        "lack of"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "une insuffisance",
+      "reponses_texte": [
+        "an insufficiency",
+        "insufficiency"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "une catastrophe naturelle",
+      "reponses_texte": [
+        "a natural disaster",
+        "natural disaster"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "une catastrophe",
+      "reponses_texte": [
+        "a catastrophe",
+        "catastrophe"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "une situation critique",
+      "reponses_texte": [
+        "a plight",
+        "plight"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "une difficulté",
+      "reponses_texte": [
+        "a difficulty",
+        "difficulty"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "des représailles",
+      "reponses_texte": [
+        "a retaliation",
+        "retaliation"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "un acte de vengeance",
+      "reponses_texte": [
+        "an act of getting even",
+        "act of getting even"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "un fléau",
+      "reponses_texte": [
+        "a curse",
+        "curse",
+        "a bane",
+        "bane",
+        "a blight",
+        "blight",
+        "a plague",
+        "plague",
+        "a scourge",
+        "scourge"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "une peste",
+      "reponses_texte": [
+        "a plague",
+        "plague"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "une malédiction",
+      "reponses_texte": [
+        "a curse",
+        "curse"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "une affliction",
+      "reponses_texte": [
+        "an affliction",
+        "affliction"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "un accord",
+      "reponses_texte": [
+        "an accord",
+        "accord",
+        "an agreement",
+        "agreement"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "un consensus",
+      "reponses_texte": [
+        "a consensus",
+        "consensus"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "l'unanimité",
+      "reponses_texte": [
+        "unanimity"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "le poids politique",
+      "reponses_texte": [
+        "clout"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "l'influence",
+      "reponses_texte": [
+        "sway",
+        "influence",
+        "clout"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "l'emprise",
+      "reponses_texte": [
+        "sway"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "le pouvoir",
+      "reponses_texte": [
+        "power",
+        "authority"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "un moyen de pression",
+      "reponses_texte": [
+        "leverage"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "l'autorité",
+      "reponses_texte": [
+        "authority"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "la tutelle",
+      "reponses_texte": [
+        "guardianship",
+        "trusteeship"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "la gestion responsable",
+      "reponses_texte": [
+        "stewardship"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "la garde",
+      "reponses_texte": [
+        "custodianship",
+        "guardianship"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "la supervision",
+      "reponses_texte": [
+        "oversight"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "un organisme de surveillance",
+      "reponses_texte": [
+        "a watchdog",
+        "watchdog"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "un gardien",
+      "reponses_texte": [
+        "a guardian",
+        "guardian"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "un surveillant",
+      "reponses_texte": [
+        "an overseer",
+        "overseer"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "un observateur",
+      "reponses_texte": [
+        "a monitor",
+        "monitor"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "un régulateur",
+      "reponses_texte": [
+        "a regulator",
+        "regulator"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "un superviseur",
+      "reponses_texte": [
+        "an overseer",
+        "overseer",
+        "a supervisor",
+        "supervisor"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "un plan directeur",
+      "reponses_texte": [
+        "a blueprint",
+        "blueprint"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "un plan",
+      "reponses_texte": [
+        "a design",
+        "design",
+        "a plan",
+        "plan",
+        "a scheme",
+        "scheme"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "une conception",
+      "reponses_texte": [
+        "a design",
+        "design"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "les grandes lignes",
+      "reponses_texte": [
+        "an outline",
+        "outline"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "un programme",
+      "reponses_texte": [
+        "a scheme",
+        "scheme"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "un brouillon",
+      "reponses_texte": [
+        "a draft",
+        "draft"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "un cadre",
+      "reponses_texte": [
+        "a framework",
+        "framework"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "une aubaine",
+      "reponses_texte": [
+        "a windfall",
+        "windfall",
+        "a boon",
+        "boon",
+        "a bonanza",
+        "bonanza"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "le gros lot",
+      "reponses_texte": [
+        "a jackpot",
+        "jackpot"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "une mine d'or",
+      "reponses_texte": [
+        "a goldmine",
+        "goldmine",
+        "a bonanza",
+        "bonanza",
+        "a treasure trove",
+        "treasure trove"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "une mise en garde",
+      "reponses_texte": [
+        "a caution",
+        "caution",
+        "a warning",
+        "warning",
+        "a caveat",
+        "caveat"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "un avertissement",
+      "reponses_texte": [
+        "a caution",
+        "caution",
+        "a warning",
+        "warning"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "une réussite",
+      "reponses_texte": [
+        "a success",
+        "success",
+        "an accomplishment",
+        "accomplishment",
+        "an achievement",
+        "achievement"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "un accomplissement",
+      "reponses_texte": [
+        "an achievement",
+        "achievement",
+        "an accomplishment",
+        "accomplishment"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "la collaboration",
+      "reponses_texte": [
+        "cooperation",
+        "collaboration"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "la coopération",
+      "reponses_texte": [
+        "cooperation"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "la pauvreté",
+      "reponses_texte": [
+        "poverty"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "l'appauvrissement",
+      "reponses_texte": [
+        "impoverishment"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "vaste",
+      "reponses_texte": [
+        "extensive"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "substantiel",
+      "reponses_texte": [
+        "substantial"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "en pleine implosion",
+      "reponses_texte": [
+        "imploding"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "en train de s'effondrer",
+      "reponses_texte": [
+        "collapsing",
+        "imploding"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "primordial",
+      "reponses_texte": [
+        "overriding",
+        "paramount"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "prédominant",
+      "reponses_texte": [
+        "predominant"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "suprême",
+      "reponses_texte": [
+        "supreme"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "principal",
+      "reponses_texte": [
+        "primary"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "qui a son franc-parler",
+      "reponses_texte": [
+        "outspoken"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "franc",
+      "reponses_texte": [
+        "forthright",
+        "candid",
+        "direct",
+        "frank"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "brusque",
+      "reponses_texte": [
+        "blunt"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "direct",
+      "reponses_texte": [
+        "direct",
+        "forthright",
+        "blunt",
+        "outspoken"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "sombre",
+      "reponses_texte": [
+        "bleak",
+        "gloomy",
+        "somber"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "lugubre",
+      "reponses_texte": [
+        "dismal"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "morne",
+      "reponses_texte": [
+        "dreary"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "déprimant",
+      "reponses_texte": [
+        "depressing"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "retentissant",
+      "reponses_texte": [
+        "resounding"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "énorme",
+      "reponses_texte": [
+        "huge",
+        "tremendous"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "sans précédent",
+      "reponses_texte": [
+        "unprecedented"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "extraordinaire",
+      "reponses_texte": [
+        "extraordinary"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "négligé",
+      "reponses_texte": [
+        "neglected",
+        "overlooked"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "ignoré",
+      "reponses_texte": [
+        "ignored",
+        "disregarded"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "manqué",
+      "reponses_texte": [
+        "missed"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "non pris en compte",
+      "reponses_texte": [
+        "disregarded"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "omis",
+      "reponses_texte": [
+        "omitted"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "tomber à l'eau",
+      "reponses_texte": [
+        "to come unstuck",
+        "come unstuck"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "échouer complètement",
+      "reponses_texte": [
+        "to come unstuck",
+        "come unstuck",
+        "to fail completely",
+        "fail completely"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "désamorcer",
+      "reponses_texte": [
+        "to defuse",
+        "defuse"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "se lancer dans",
+      "reponses_texte": [
+        "to embark upon",
+        "embark upon"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "commencer",
+      "reponses_texte": [
+        "to start",
+        "start",
+        "to begin",
+        "begin"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "faire appliquer",
+      "reponses_texte": [
+        "to enforce",
+        "enforce"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "s'intensifier",
+      "reponses_texte": [
+        "to escalate",
+        "escalate"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "s'aggraver",
+      "reponses_texte": [
+        "to worsen",
+        "worsen",
+        "to escalate",
+        "escalate"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "augmenter",
+      "reponses_texte": [
+        "to increase",
+        "increase"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "aggraver",
+      "reponses_texte": [
+        "to aggravate",
+        "aggravate"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "réaliser",
+      "reponses_texte": [
+        "to fulfil",
+        "fulfil",
+        "to realize",
+        "realize"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "aller de succès en succès",
+      "reponses_texte": [
+        "to go from strength to strength",
+        "go from strength to strength"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "souligner",
+      "reponses_texte": [
+        "to highlight",
+        "highlight",
+        "to underline",
+        "underline"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "y arriver",
+      "reponses_texte": [
+        "to make it",
+        "make it"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "réussir",
+      "reponses_texte": [
+        "to make it",
+        "make it",
+        "to succeed",
+        "succeed"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "maintenir",
+      "reponses_texte": [
+        "to maintain",
+        "maintain"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "préserver",
+      "reponses_texte": [
+        "to maintain",
+        "maintain",
+        "to preserve",
+        "preserve"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "préserver la paix",
+      "reponses_texte": [
+        "to preserve peace",
+        "preserve peace"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "atténuer",
+      "reponses_texte": [
+        "to mitigate",
+        "mitigate",
+        "to alleviate",
+        "alleviate"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "soulager",
+      "reponses_texte": [
+        "to alleviate",
+        "alleviate"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "surmonter",
+      "reponses_texte": [
+        "to overcome",
+        "overcome"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "gérer",
+      "reponses_texte": [
+        "to deal with",
+        "deal with"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "respecter",
+      "reponses_texte": [
+        "to respect",
+        "respect"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "obéir à",
+      "reponses_texte": [
+        "to obey",
+        "obey"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "revenir sur",
+      "reponses_texte": [
+        "to go back on",
+        "go back on",
+        "to reverse",
+        "reverse"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "régler",
+      "reponses_texte": [
+        "to settle",
+        "settle"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "se débarrasser de",
+      "reponses_texte": [
+        "to shed",
+        "shed",
+        "to discard",
+        "discard"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "jeter",
+      "reponses_texte": [
+        "to discard",
+        "discard"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "rejeter",
+      "reponses_texte": [
+        "to cast off",
+        "cast off"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "laisser tomber",
+      "reponses_texte": [
+        "to drop",
+        "drop"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "libérer",
+      "reponses_texte": [
+        "to release",
+        "release"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "larguer",
+      "reponses_texte": [
+        "to jettison",
+        "jettison"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "s'attaquer à",
+      "reponses_texte": [
+        "to take on",
+        "take on",
+        "to tackle",
+        "tackle",
+        "to grapple with",
+        "grapple with"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "aborder",
+      "reponses_texte": [
+        "to address",
+        "address",
+        "to tackle",
+        "tackle"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "affronter",
+      "reponses_texte": [
+        "to face off against",
+        "face off against",
+        "to confront",
+        "confront"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "se débattre avec",
+      "reponses_texte": [
+        "to grapple with",
+        "grapple with"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "s'embraser",
+      "reponses_texte": [
+        "to flare up",
+        "flare up",
+        "to flare",
+        "flare"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "flamber",
+      "reponses_texte": [
+        "to flare",
+        "flare",
+        "to blaze",
+        "blaze"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "éclater",
+      "reponses_texte": [
+        "to erupt",
+        "erupt",
+        "to flare up",
+        "flare up"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "enflammer",
+      "reponses_texte": [
+        "to ignite",
+        "ignite"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "survivre à",
+      "reponses_texte": [
+        "to outlast",
+        "outlast",
+        "to outlive",
+        "outlive",
+        "to survive",
+        "survive"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "survivre",
+      "reponses_texte": [
+        "to survive",
+        "survive"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "endurer",
+      "reponses_texte": [
+        "to endure",
+        "endure"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "résister à",
+      "reponses_texte": [
+        "to withstand",
+        "withstand"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "persister",
+      "reponses_texte": [
+        "to persist",
+        "persist"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "entraver",
+      "reponses_texte": [
+        "to stall",
+        "stall",
+        "to hamper",
+        "hamper",
+        "to hinder",
+        "hinder"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "renforcer",
+      "reponses_texte": [
+        "to reinforce",
+        "reinforce",
+        "to strengthen",
+        "strengthen"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "menacer",
+      "reponses_texte": [
+        "to threaten",
+        "threaten"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "faire confiance à",
+      "reponses_texte": [
+        "to trust",
+        "trust"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "avoir foi en",
+      "reponses_texte": [
+        "to have faith in",
+        "have faith in"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "se retirer",
+      "reponses_texte": [
+        "to withdraw",
+        "withdraw",
+        "to pull out",
+        "pull out"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "s'éloigner",
+      "reponses_texte": [
+        "to move away",
+        "move away"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "une crise humanitaire",
+      "reponses_texte": [
+        "a humanitarian crisis",
+        "humanitarian crisis"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "un État membre",
+      "reponses_texte": [
+        "a member state",
+        "member state"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "une réponse multilatérale",
+      "reponses_texte": [
+        "a multilateral response",
+        "multilateral response"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "un réfugié",
+      "reponses_texte": [
+        "a refugee",
+        "refugee"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "la diplomatie",
+      "reponses_texte": [
+        "diplomacy"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "des coupes budgétaires",
+      "reponses_texte": [
+        "funding cuts"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "l'Assemblée générale",
+      "reponses_texte": [
+        "the General Assembly",
+        "General Assembly"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "la gouvernance mondiale",
+      "reponses_texte": [
+        "global governance"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "les droits de l'homme",
+      "reponses_texte": [
+        "human rights"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "l'aide humanitaire",
+      "reponses_texte": [
+        "humanitarian aid"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "le droit international",
+      "reponses_texte": [
+        "international law"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "une ONG",
+      "reponses_texte": [
+        "an NGO",
+        "NGO"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "le maintien de la paix",
+      "reponses_texte": [
+        "peacekeeping"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "une résolution",
+      "reponses_texte": [
+        "a resolution",
+        "resolution"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "des sanctions",
+      "reponses_texte": [
+        "sanctions"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "le Secrétaire général",
+      "reponses_texte": [
+        "the Secretary-General",
+        "Secretary-General"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "le Conseil de sécurité",
+      "reponses_texte": [
+        "the Security Council",
+        "Security Council"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "les ODD",
+      "reponses_texte": [
+        "the SDGs",
+        "SDGs"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "le développement durable",
+      "reponses_texte": [
+        "sustainable development"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "la Charte des Nations unies",
+      "reponses_texte": [
+        "the Charter",
+        "Charter"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "la scène internationale",
+      "reponses_texte": [
+        "the world stage",
+        "world stage"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "il est grand temps",
+      "reponses_texte": [
+        "it is high time"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "être en suspens",
+      "reponses_texte": [
+        "to be in limbo",
+        "be in limbo"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "se tarir",
+      "reponses_texte": [
+        "to run dry",
+        "run dry"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "se gripper",
+      "reponses_texte": [
+        "to seize up",
+        "seize up"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "monter à la tribune",
+      "reponses_texte": [
+        "to take to the rostrum",
+        "take to the rostrum"
+      ]
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "les puissances dotées du droit de veto",
+      "reponses_texte": [
+        "veto-wielding powers"
+      ]
+    }
+  ]
+}

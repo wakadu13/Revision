@@ -1,0 +1,1325 @@
+{
+  "titre": "TOEIC Grammar 9 — Les modaux et le futur",
+  "description": "Can, could, may, might, must, have to, will, shall, should, would, conditionnel. 10 exercices du livret + 77 questions de cours.",
+  "questions": [
+    {
+      "id": "g09e001",
+      "type": "QCM",
+      "question": "Had you warned us, we ____ the whole process to you.",
+      "choix": [
+        "would explain",
+        "would have been explaining",
+        "would be explaining",
+        "will have been explaining"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Pluperfect dans la subordonnée : il faut un conditionnel passé dans la principale."
+    },
+    {
+      "id": "g09e002",
+      "type": "QCM",
+      "question": "You ____ enter the workshop unless the supervisor tells you to.",
+      "choix": [
+        "hadn't to",
+        "shall not have",
+        "shan't",
+        "couldn't"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Présent dans la subordonnée : futur (shan't) dans la principale."
+    },
+    {
+      "id": "g09e003",
+      "type": "QCM",
+      "question": "____ with 24 hours or more notice, your payment is fully refundable.",
+      "choix": [
+        "You should cancel",
+        "Should you cancel",
+        "You ought to cancel",
+        "If you had cancelled"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Should you cancel = if you cancelled : condition."
+    },
+    {
+      "id": "g09e004",
+      "type": "QCM",
+      "question": "He said he ____ visit his Asian competitors in their factories at the end of the month.",
+      "choix": [
+        "must",
+        "had",
+        "had had to",
+        "shall"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Après le prétérit said, must a valeur de prétérit (seul cas : style indirect)."
+    },
+    {
+      "id": "g09e005",
+      "type": "QCM",
+      "question": "____ need further details, please call 405-8596.",
+      "choix": [
+        "You should",
+        "Should you",
+        "Had you",
+        "If you had"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Should you need = if you needed."
+    },
+    {
+      "id": "g09e006",
+      "type": "QCM",
+      "question": "When the workshop ____ over, you will create and take home your very own canvas artwork.",
+      "choix": [
+        "is",
+        "will be",
+        "be",
+        "shall be"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Dans une subordonnée de temps déclarative, pas de futur : présent."
+    },
+    {
+      "id": "g09e007",
+      "type": "QCM",
+      "question": "The conference room ____ be cleaned before tomorrow's meeting.",
+      "choix": [
+        "had to",
+        "ought to",
+        "must have",
+        "might have"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "La réunion n'a pas encore eu lieu : modal de conseil fort au conditionnel présent."
+    },
+    {
+      "id": "g09e008",
+      "type": "QCM",
+      "question": "Feedback on how the system operates ____ throughout the year but will form the basis of the annual reporting.",
+      "choix": [
+        "must have been collected",
+        "will be collected",
+        "ought to be collecting",
+        "should have been collected"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Voix passive au futur, en cohérence avec will de la 2e partie."
+    },
+    {
+      "id": "g09e009",
+      "type": "QCM",
+      "question": "If you fill in this form and send it by April 2, you ____ a premium gift.",
+      "choix": [
+        "might have received",
+        "might be receiving",
+        "may have received",
+        "may receive"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Présent simple : généralité / condition réelle ; les autres sont au passé ou en -ING."
+    },
+    {
+      "id": "g09e010",
+      "type": "QCM",
+      "question": "In the past few months, the average employee absenteeism ____ thanks to the new measures taken by the management.",
+      "choix": [
+        "can be decreasing",
+        "must have decreased",
+        "ought to decrease",
+        "should be decreasing"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Modal exprimant une déduction au passé : must have + participe passé."
+    },
+    {
+      "id": "g09c001",
+      "type": "QCR",
+      "question": "Quels sont les modaux cités dans le livret ?",
+      "choix": [
+        "can, could",
+        "may, might",
+        "must, will, shall",
+        "would, should",
+        "have to, ought to",
+        "do, did"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "explication": "Parmi eux : can, could, may, might, must, will, shall, would, should et les semi-modaux have to et ought to."
+    },
+    {
+      "id": "g09c002",
+      "type": "QCM",
+      "question": "Les modaux se construisent avec :",
+      "choix": [
+        "l'infinitif sans to (sauf ought to et have to)",
+        "l'infinitif avec to",
+        "le participe passé",
+        "le gérondif"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c003",
+      "type": "QCM",
+      "question": "Les modaux ont-ils un participe présent / passé ?",
+      "choix": [
+        "Non",
+        "Oui, tous",
+        "Uniquement can",
+        "Uniquement must"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Ils n'ont ni participe présent ni participe passé."
+    },
+    {
+      "id": "g09c004",
+      "type": "QCM",
+      "question": "Degré de certitude (selon le livret) : will / shall :",
+      "choix": [
+        "99 %",
+        "80 %",
+        "50 %",
+        "30 %"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c005",
+      "type": "QCM",
+      "question": "Degré de certitude : must / has to :",
+      "choix": [
+        "99 %",
+        "80 %",
+        "50 %",
+        "30 %"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c006",
+      "type": "QCM",
+      "question": "Degré de certitude : should / ought to :",
+      "choix": [
+        "70 %",
+        "99 %",
+        "50 %",
+        "30 %"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c007",
+      "type": "QCM",
+      "question": "Degré de certitude : can / may :",
+      "choix": [
+        "50 %",
+        "80 %",
+        "70 %",
+        "30 %"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c008",
+      "type": "QCM",
+      "question": "Degré de certitude : would :",
+      "choix": [
+        "45 %",
+        "30 %",
+        "70 %",
+        "99 %"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c009",
+      "type": "QCM",
+      "question": "Degré de certitude : could / might :",
+      "choix": [
+        "30 %",
+        "50 %",
+        "70 %",
+        "80 %"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c010",
+      "type": "QCM",
+      "question": "Le modal le plus faible (30 %) :",
+      "choix": [
+        "could / might",
+        "should",
+        "would",
+        "must"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c011",
+      "type": "QCR",
+      "question": "Quels sens peut avoir can ?",
+      "choix": [
+        "possibilité",
+        "capacité (savoir)",
+        "permission / politesse",
+        "obligation forte",
+        "conseil rétrospectif",
+        "déduction négative avec can't"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        5
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c012",
+      "type": "QCM",
+      "question": "« I can't play the violin » signifie :",
+      "choix": [
+        "Je ne sais pas jouer du violon",
+        "Je ne peux pas jouer du violon (interdit)",
+        "Je ne dois pas jouer",
+        "Je ne jouerai pas"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Capacité / incapacité : « savoir »."
+    },
+    {
+      "id": "g09c013",
+      "type": "QCM",
+      "question": "« Can you handle this? » exprime :",
+      "choix": [
+        "politesse / demande",
+        "obligation",
+        "interdiction",
+        "déduction"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c014",
+      "type": "QCM",
+      "question": "« Can't you taste the chocolate layer? » illustre l'emploi de can avec :",
+      "choix": [
+        "un verbe de perception",
+        "un verbe d'état",
+        "un verbe d'action",
+        "un verbe performatif"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c015",
+      "type": "QCM",
+      "question": "Déduction négative au présent progressif :",
+      "choix": [
+        "can't be + -ing",
+        "can't have + participe passé",
+        "can't + verbe",
+        "couldn't + verbe"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "He can't be working on it now."
+    },
+    {
+      "id": "g09c016",
+      "type": "QCM",
+      "question": "Déduction négative au passé :",
+      "choix": [
+        "can't have + participe passé",
+        "can't be + -ing",
+        "can't + verbe",
+        "couldn't be"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "He can't have sold this painting."
+    },
+    {
+      "id": "g09c017",
+      "type": "QCM",
+      "question": "Could, à l'origine, est :",
+      "choix": [
+        "le passé de can",
+        "le passé de may",
+        "le passé de must",
+        "le passé de will"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c018",
+      "type": "QCM",
+      "question": "« I could not see anything » : could exprime :",
+      "choix": [
+        "une capacité / perception passée",
+        "une obligation",
+        "un futur",
+        "un ordre"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c019",
+      "type": "QCM",
+      "question": "« They could be more quiet » exprime :",
+      "choix": [
+        "un reproche",
+        "une capacité passée",
+        "une obligation",
+        "un futur"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Could peut exprimer la condition et le reproche."
+    },
+    {
+      "id": "g09c020",
+      "type": "QCM",
+      "question": "« If he were here, he could show her our warehouse » : could exprime :",
+      "choix": [
+        "la condition",
+        "le reproche",
+        "l'ordre",
+        "le futur"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c021",
+      "type": "QCM",
+      "question": "May exprime notamment :",
+      "choix": [
+        "l'éventualité, l'autorisation, la politesse",
+        "l'obligation stricte uniquement",
+        "la capacité uniquement",
+        "le futur certain"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c022",
+      "type": "QCM",
+      "question": "Quelle forme est la plus polie ?",
+      "choix": [
+        "May I bring you anything?",
+        "Can I bring you anything?",
+        "Do I bring you anything?",
+        "Will I bring you anything?"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "May marque une plus grande politesse que can."
+    },
+    {
+      "id": "g09c023",
+      "type": "QCM",
+      "question": "Might est :",
+      "choix": [
+        "le passé de may",
+        "le passé de can",
+        "le passé de must",
+        "le passé de will"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c024",
+      "type": "QCM",
+      "question": "Might est utilisé pour :",
+      "choix": [
+        "la concordance des temps, la supposition plus forte que may, le conseil",
+        "l'obligation stricte",
+        "la capacité",
+        "le futur certain"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c025",
+      "type": "QCM",
+      "question": "He said the flight ____ be delayed. (concordance)",
+      "choix": [
+        "may",
+        "might",
+        "must",
+        "shall"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Principale au passé : might dans la subordonnée."
+    },
+    {
+      "id": "g09c026",
+      "type": "QCM",
+      "question": "« She might rework her paper » exprime :",
+      "choix": [
+        "un conseil (elle ferait peut-être bien de...)",
+        "une obligation",
+        "une capacité",
+        "un futur certain"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c027",
+      "type": "QCM",
+      "question": "Must exprime :",
+      "choix": [
+        "l'obligation (émise par l'énonciateur), l'ordre, la déduction",
+        "une obligation extérieure",
+        "une politesse",
+        "un futur"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c028",
+      "type": "QCM",
+      "question": "Must a une forme au passé ?",
+      "choix": [
+        "Non, sauf au style indirect",
+        "Oui : musted",
+        "Oui : must had",
+        "Oui : had must"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Le seul cas d'emploi au passé : style indirect."
+    },
+    {
+      "id": "g09c029",
+      "type": "QCM",
+      "question": "« Must you speak that loud? » a une connotation :",
+      "choix": [
+        "polémique",
+        "polie",
+        "formelle",
+        "neutre"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c030",
+      "type": "QCM",
+      "question": "Interdiction forte :",
+      "choix": [
+        "must not / mustn't",
+        "don't have to",
+        "needn't",
+        "shan't"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "De plus en plus remplacé par shouldn't, moins radical."
+    },
+    {
+      "id": "g09c031",
+      "type": "QCM",
+      "question": "Must not n'a pas de forme passée : on utilise :",
+      "choix": [
+        "not to be supposed to / not to be allowed to",
+        "mustn't had",
+        "musted not",
+        "must have not"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c032",
+      "type": "QCM",
+      "question": "Annulation de l'obligation (3 façons) :",
+      "choix": [
+        "don't need to / needn't / don't have to",
+        "mustn't / shouldn't / can't",
+        "won't / shan't / couldn't",
+        "might not / may not / ought not"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "You don't need to worry / You needn't worry / You don't have to worry."
+    },
+    {
+      "id": "g09c033",
+      "type": "QCM",
+      "question": "« You needn't worry » signifie :",
+      "choix": [
+        "Vous n'avez pas besoin de vous inquiéter",
+        "Vous ne devez pas vous inquiéter (interdit)",
+        "Vous n'avez pas le droit de vous inquiéter",
+        "Vous ne pouvez pas vous inquiéter"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c034",
+      "type": "QCM",
+      "question": "Déduction avec must au présent simple :",
+      "choix": [
+        "must + verbe",
+        "must have + participe passé",
+        "must be + -ing",
+        "must be able to"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c035",
+      "type": "QCM",
+      "question": "Déduction avec must au passé :",
+      "choix": [
+        "must have + participe passé",
+        "must + verbe",
+        "must be + -ing",
+        "must had"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "He must have forgotten his password."
+    },
+    {
+      "id": "g09c036",
+      "type": "QCM",
+      "question": "Déduction avec must au présent progressif :",
+      "choix": [
+        "must be + -ing",
+        "must have + participe passé",
+        "must + verbe",
+        "will be + -ing"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c037",
+      "type": "QCM",
+      "question": "Have to remplace must :",
+      "choix": [
+        "à tous les temps (passé, futur...)",
+        "uniquement au présent",
+        "uniquement au passé",
+        "jamais"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Have had to, had to, will have to, would have to."
+    },
+    {
+      "id": "g09c038",
+      "type": "QCM",
+      "question": "Passé de « I must see the physician » :",
+      "choix": [
+        "I had to see the physician",
+        "I musted see",
+        "I must have seen",
+        "I have must seen"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c039",
+      "type": "QCM",
+      "question": "Futur de must :",
+      "choix": [
+        "will have to",
+        "will must",
+        "will be must",
+        "must will"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c040",
+      "type": "QCM",
+      "question": "Futur de can :",
+      "choix": [
+        "will be able to",
+        "will can",
+        "can will",
+        "will could"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c041",
+      "type": "QCM",
+      "question": "Quelle différence entre must et have to ?",
+      "choix": [
+        "Must = obligation émise par l'énonciateur ; have to = source extérieure",
+        "Have to est plus fort",
+        "Aucune",
+        "Must est plus poli"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« I must join them » (c'est moi qui m'en donne l'ordre) / « I have to go » (quelqu'un d'autre l'impose)."
+    },
+    {
+      "id": "g09c042",
+      "type": "QCM",
+      "question": "To be to exprime :",
+      "choix": [
+        "l'obligation et un projet (« être censé »)",
+        "le passé",
+        "la capacité",
+        "la politesse"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "You are to answer promptly."
+    },
+    {
+      "id": "g09c043",
+      "type": "QCM",
+      "question": "« You're not to challenge the election results » signifie :",
+      "choix": [
+        "Vous n'avez pas le droit de contester",
+        "Vous n'êtes pas obligé de contester",
+        "Vous devriez contester",
+        "Vous pouvez contester"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c044",
+      "type": "QCM",
+      "question": "« We are to finish the model by Tuesday » signifie :",
+      "choix": [
+        "Nous sommes censés finir la maquette pour mardi",
+        "Nous avons fini la maquette",
+        "Nous finirions la maquette",
+        "Nous pourrions finir"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c045",
+      "type": "QCM",
+      "question": "Will exprime à l'origine :",
+      "choix": [
+        "la volonté",
+        "la capacité",
+        "l'obligation",
+        "la probabilité"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Will = vouloir."
+    },
+    {
+      "id": "g09c046",
+      "type": "QCM",
+      "question": "« No, I won't » signifie :",
+      "choix": [
+        "Non, je refuse",
+        "Non, je ne peux pas",
+        "Non, je ne dois pas",
+        "Non, je n'ai pas"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c047",
+      "type": "QCM",
+      "question": "Futur simple :",
+      "choix": [
+        "will + infinitif sans to",
+        "will be + -ing",
+        "will have + participe passé",
+        "would + infinitif"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c048",
+      "type": "QCM",
+      "question": "Futur en -ING :",
+      "choix": [
+        "will be + -ing",
+        "will + infinitif",
+        "will have + participe passé",
+        "will have been + -ing"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« sera en train de »."
+    },
+    {
+      "id": "g09c049",
+      "type": "QCM",
+      "question": "Futur antérieur simple (future perfect) :",
+      "choix": [
+        "will have + participe passé",
+        "will be + -ing",
+        "will have been + -ing",
+        "would have + participe passé"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c050",
+      "type": "QCM",
+      "question": "Futur antérieur en -ING :",
+      "choix": [
+        "will have been + -ing",
+        "will have + participe passé",
+        "will be + -ing",
+        "would have been + -ing"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Insiste sur la durée."
+    },
+    {
+      "id": "g09c051",
+      "type": "QCM",
+      "question": "The guests ____ their rooms before noon. (auront payé)",
+      "choix": [
+        "will have paid",
+        "will pay",
+        "would have paid",
+        "have paid"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c052",
+      "type": "QCM",
+      "question": "In August, we ____ three years in this area. (auront passé, durée)",
+      "choix": [
+        "will have been spending",
+        "will spend",
+        "would spend",
+        "spend"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c053",
+      "type": "QCM",
+      "question": "Shall est utilisé pour :",
+      "choix": [
+        "une proposition / offre de service ou une contrainte",
+        "le passé",
+        "la capacité",
+        "la déduction"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c054",
+      "type": "QCM",
+      "question": "« Shall I download the file? » est :",
+      "choix": [
+        "une offre de service",
+        "un ordre",
+        "une obligation",
+        "un reproche"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c055",
+      "type": "QCM",
+      "question": "« All trainees shall carry a badge » exprime :",
+      "choix": [
+        "une contrainte hors de l'énonciateur (ordre non négociable)",
+        "une offre de service",
+        "une proposition",
+        "une capacité"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c056",
+      "type": "QCM",
+      "question": "Forme contractée négative de shall not :",
+      "choix": [
+        "shan't",
+        "shallnt",
+        "shalln't",
+        "won't"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c057",
+      "type": "QCM",
+      "question": "Forme contractée négative de will not :",
+      "choix": [
+        "won't",
+        "willn't",
+        "wo'nt",
+        "wouldn't"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c058",
+      "type": "QCM",
+      "question": "Dans une subordonnée de temps déclarative (when, as soon as, once, until...), on utilise :",
+      "choix": [
+        "le présent ou le present perfect (pas de will)",
+        "will",
+        "would",
+        "shall"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Le futur est exprimé uniquement dans la principale."
+    },
+    {
+      "id": "g09c059",
+      "type": "QCM",
+      "question": "Once you ____ gathered all the paperwork, you shall go to the embassy.",
+      "choix": [
+        "have",
+        "will have",
+        "would have",
+        "are having"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c060",
+      "type": "QCM",
+      "question": "Dans une interrogation (directe ou indirecte), will est possible dans une subordonnée de temps :",
+      "choix": [
+        "Oui : « I wonder when the frigate race will start »",
+        "Non, jamais",
+        "Uniquement shall",
+        "Uniquement would"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c061",
+      "type": "QCM",
+      "question": "Should / ought to se traduisent par :",
+      "choix": [
+        "devrait, il faudrait",
+        "doit absolument",
+        "peut",
+        "pourrait"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c062",
+      "type": "QCM",
+      "question": "Should est :",
+      "choix": [
+        "plus fort que ought to",
+        "plus faible que ought to",
+        "identique à must",
+        "un semi-modal"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Should est un modal ; ought to est un semi-modal, moins fort."
+    },
+    {
+      "id": "g09c063",
+      "type": "QCM",
+      "question": "Ought to, forme négative :",
+      "choix": [
+        "oughtn't / ought not to",
+        "ought no to",
+        "not ought",
+        "don't ought to"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c064",
+      "type": "QCR",
+      "question": "Should exprime :",
+      "choix": [
+        "un conseil",
+        "une contrainte (dans une subordonnée)",
+        "une forte probabilité",
+        "la capacité passée",
+        "la volonté"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c065",
+      "type": "QCM",
+      "question": "« The reams should be in the storage room » exprime :",
+      "choix": [
+        "une forte probabilité",
+        "un conseil",
+        "une interdiction",
+        "une capacité"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c066",
+      "type": "QCM",
+      "question": "Would + infinitif sans to = :",
+      "choix": [
+        "conditionnel présent",
+        "conditionnel passé",
+        "futur",
+        "passé simple"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c067",
+      "type": "QCM",
+      "question": "Conditionnel présent (proposition principale), la subordonnée est au :",
+      "choix": [
+        "prétérit modal",
+        "présent",
+        "pluperfect",
+        "futur"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "If you purchased this bike, you would gain much time."
+    },
+    {
+      "id": "g09c068",
+      "type": "QCM",
+      "question": "Conditionnel passé :",
+      "choix": [
+        "would have + participe passé",
+        "would + infinitif",
+        "would be + -ing",
+        "would had + participe"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c069",
+      "type": "QCM",
+      "question": "Conditionnel passé, la subordonnée est au :",
+      "choix": [
+        "pluperfect",
+        "prétérit",
+        "présent",
+        "futur"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c070",
+      "type": "QCM",
+      "question": "Conditionnel présent en -ING :",
+      "choix": [
+        "would be + -ing",
+        "would have + -ing",
+        "would + infinitif",
+        "would have been + -ing"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c071",
+      "type": "QCM",
+      "question": "Conditionnel passé en -ING :",
+      "choix": [
+        "would have been + -ing",
+        "would be + -ing",
+        "would have + participe",
+        "would + -ing"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c072",
+      "type": "QCM",
+      "question": "« Had I + participe passé » équivaut à :",
+      "choix": [
+        "If I had + participe passé",
+        "If I have + participe passé",
+        "If I would have",
+        "If I was"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Très fréquent en langue commerciale et au TOEIC."
+    },
+    {
+      "id": "g09c073",
+      "type": "QCM",
+      "question": "« Should you + infinitif » équivaut à :",
+      "choix": [
+        "If you + verbe au présent",
+        "If you had",
+        "If you would",
+        "If you were"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Should you need = if you needed."
+    },
+    {
+      "id": "g09c074",
+      "type": "QCM",
+      "question": "If you watch this film, we ____ about it. (présent)",
+      "choix": [
+        "will talk",
+        "would talk",
+        "would have talked",
+        "talked"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c075",
+      "type": "QCM",
+      "question": "If you watched this film, we ____ about it. (prétérit)",
+      "choix": [
+        "would talk",
+        "will talk",
+        "would have talked",
+        "talked"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c076",
+      "type": "QCM",
+      "question": "If you had watched this film, we ____ about it. (pluperfect)",
+      "choix": [
+        "would have talked",
+        "would talk",
+        "will talk",
+        "talked"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "g09c077",
+      "type": "QCM",
+      "question": "Would peut aussi exprimer :",
+      "choix": [
+        "un souhait",
+        "une capacité",
+        "une déduction",
+        "une obligation"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "I would like to rent this mansion for the summer."
+    }
+  ]
+}

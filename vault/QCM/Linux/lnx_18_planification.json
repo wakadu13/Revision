@@ -1,0 +1,101 @@
+{
+  "titre": "Linux 18 — Planification de tâches",
+  "description": "Timers et services systemd, Cron et sa structure",
+  "questions": [
+    {
+      "id": "pln01",
+      "type": "QCR",
+      "question": "Quelles étapes sont nécessaires pour planifier une tâche avec systemd selon le cours ?",
+      "choix": [
+        "Créer un timer",
+        "Créer un service",
+        "Activer le timer",
+        "Créer un crontab"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": "Le crontab est utilisé par Cron, pas par systemd."
+    },
+    {
+      "id": "pln02",
+      "type": "QCM",
+      "question": "Dans un fichier .timer systemd, quelle option lance le script une seule fois après le démarrage du système ?",
+      "choix": ["OnUnitActiveSec", "OnBootSec", "OnStartupSec", "OnCalendar"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "pln03",
+      "type": "QCM",
+      "question": "Quelle option permet d'exécuter un script à intervalles réguliers avec systemd timer ?",
+      "choix": ["OnBootSec", "OnUnitActiveSec", "OnceSec", "RepeatSec"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "pln04",
+      "type": "QCM",
+      "question": "Quelle commande faut-il exécuter après avoir créé/modifié des fichiers .timer/.service pour que systemd les prenne en compte ?",
+      "choix": ["systemctl reload", "systemctl daemon-reload", "systemctl refresh", "systemctl update"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "pln05",
+      "type": "QCM",
+      "question": "Quelle unité système est activée lors d'un démarrage normal en mode multi-utilisateur ?",
+      "choix": ["single-user.target", "multi-user.target", "graphical.target", "rescue.target"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "pln06",
+      "type": "QCM",
+      "question": "Dans la structure Cron, combien de champs de temps composent une entrée (hors commande) ?",
+      "choix": ["3", "4", "5", "6"],
+      "reponses": [2],
+      "explication": "Minutes, heures, jour du mois, mois, jour de la semaine."
+    },
+    {
+      "id": "pln07",
+      "type": "QCM",
+      "question": "Quelle entrée crontab exécute une tâche toutes les 6 heures ?",
+      "choix": ["0 6 * * *", "0 */6 * * *", "*/6 0 * * *", "6 0 * * *"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "pln08",
+      "type": "QCM",
+      "question": "Quelle entrée crontab exécute une tâche le premier jour de chaque mois à minuit ?",
+      "choix": ["0 0 1 * *", "1 0 0 * *", "0 0 * 1 *", "0 1 * * 1"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "pln09",
+      "type": "QCM",
+      "question": "Quelle est la principale différence de configuration entre systemd et Cron pour planifier des tâches ?",
+      "choix": [
+        "systemd utilise un fichier crontab, Cron utilise des timers",
+        "systemd nécessite des fichiers timer/service, Cron utilise un fichier crontab",
+        "Les deux utilisent exactement la même syntaxe",
+        "Cron ne peut pas planifier de tâches répétées"
+      ],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "pln10",
+      "type": "QCM",
+      "question": "Pourquoi la planification de tâches est-elle importante en cybersécurité selon le cours ?",
+      "choix": [
+        "Elle peut cacher des tâches Cron malveillantes ou des backdoors persistantes",
+        "Elle empêche toute attaque automatiquement",
+        "Elle ne concerne que les administrateurs système",
+        "Elle chiffre automatiquement les données"
+      ],
+      "reponses": [0],
+      "explication": ""
+    }
+  ]
+}

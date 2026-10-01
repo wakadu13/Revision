@@ -1,0 +1,156 @@
+{
+  "titre": "TOEIC Grammar — 08 Les temps du passé",
+  "description": "Present perfect, prétérit et past perfect, simples et en -ING.",
+  "questions": [
+    {
+      "id": "toeic-g08-q01",
+      "type": "QCM",
+      "question": "The town's first purpose-built central library …… by Kirk Kendall and dates back from 1952.",
+      "choix": [
+        "was designed",
+        "was designing",
+        "designed",
+        "were designing"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "*Back from 1952* indique un passé révolu ; la bibliothèque subit l'action, donc voix passive : `was designed`."
+    },
+    {
+      "id": "toeic-g08-q02",
+      "type": "QCM",
+      "question": "Given that Tyson & Brickell …… afternoon tea in London for more than 300 years, Dubai's new branch of the historic store has a lot to live up to.",
+      "choix": [
+        "serves",
+        "is serving",
+        "has been serving",
+        "have served"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "*For more than 300 years* (durée très longue) + *has to live up to* (jusqu'au présent) : `has been serving` (present perfect en -ING)."
+    },
+    {
+      "id": "toeic-g08-q03",
+      "type": "QCM",
+      "question": "As Marlington …… as a trading center, the market spilled down the hill from the Parish Church.",
+      "choix": [
+        "grew",
+        "grow",
+        "grown",
+        "was growing"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "*Spilled down* est un passé révolu et *as* indique la concomitance : prétérit `grew`."
+    },
+    {
+      "id": "toeic-g08-q04",
+      "type": "QCM",
+      "question": "These organic multi-cereal buns …… by McCain since 1978.",
+      "choix": [
+        "have produced",
+        "have been produced",
+        "were produced",
+        "have been producing"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "`Since 1978` → present perfect ; les petits pains ne peuvent pas être acteurs : passif `have been produced`."
+    },
+    {
+      "id": "toeic-g08-q05",
+      "type": "QCM",
+      "question": "If my team and I …… so busy with the Xen project, we would have loved to support your venture.",
+      "choix": [
+        "has not been",
+        "had not been",
+        "was not",
+        "not"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le conditionnel passé (*would have loved*) implique un past perfect dans la subordonnée : `had not been`."
+    },
+    {
+      "id": "toeic-g08-q06",
+      "type": "QCM",
+      "question": "These tasteful and colorful dishes which …… for Mr. and Mrs. Hayne's wedding will be served on golden plates.",
+      "choix": [
+        "have been specially created",
+        "have specially created",
+        "had been specially created",
+        "had specially created"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "*Will be served* indique que l'action n'est pas encore faite : present perfect passif `have been specially created`."
+    },
+    {
+      "id": "toeic-g08-q07",
+      "type": "QCM",
+      "question": "Appleton is a huge canvas for hundreds of street artists, who little by little …… it their artistic showcase.",
+      "choix": [
+        "made",
+        "were making",
+        "have made",
+        "had made"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "*Is* indique le contexte présent et *little by little* la progression : present perfect `have made`."
+    },
+    {
+      "id": "toeic-g08-q08",
+      "type": "QCM",
+      "question": "With my job I can use the technical and creative knowledge and experience I …… in industry when I worked for Barnes Inc.",
+      "choix": [
+        "was gained",
+        "gained",
+        "was gaining",
+        "had been gained"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "*Worked* place l'action dans un passé révolu, l'expérience acquise en même temps : prétérit `gained`."
+    },
+    {
+      "id": "toeic-g08-q09",
+      "type": "QCM",
+      "question": "I heard Gaile & Softy Inc. …… the boundaries of innovation by producing ground-breaking games.",
+      "choix": [
+        "pushed",
+        "was pushing",
+        "was pushed",
+        "has been pushing"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "*Heard* indique que l'action est passée mais continue de se produire : prétérit en -ING `was pushing`."
+    },
+    {
+      "id": "toeic-g08-q10",
+      "type": "QCM",
+      "question": "Our Thank You Awards …… since 2002 and this year we are pleased to congratulate Davis Dreedy for his commitment to our firm and huge achievement.",
+      "choix": [
+        "have been running",
+        "had run",
+        "were running",
+        "were run"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "*Since 2002* avec un contexte présent : present perfect en -ING `have been running`."
+    }
+  ]
+}

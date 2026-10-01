@@ -1,0 +1,156 @@
+{
+  "titre": "TOEIC Grammar — 06 Les comparatifs et les superlatifs",
+  "description": "Comparatifs de supériorité, d'infériorité, d'égalité et superlatifs.",
+  "questions": [
+    {
+      "id": "toeic-g06-q01",
+      "type": "QCM",
+      "question": "These two wonderful koalas are by far the …… in the zoo.",
+      "choix": [
+        "oldest",
+        "eldest",
+        "older",
+        "elder"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Un superlatif de supériorité est nécessaire (mise en avant parmi tous ceux du zoo) : `oldest`."
+    },
+    {
+      "id": "toeic-g06-q02",
+      "type": "QCM",
+      "question": "This play is probably the …… I have ever seen in this theater.",
+      "choix": [
+        "least",
+        "better",
+        "more",
+        "best"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Superlatif de supériorité : `the best`."
+    },
+    {
+      "id": "toeic-g06-q03",
+      "type": "QCM",
+      "question": "Indian cuisine is reputed to be one of the …… in the world.",
+      "choix": [
+        "hotter",
+        "hot",
+        "hottest",
+        "least"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Après *one of the*, un superlatif de supériorité : `hottest`."
+    },
+    {
+      "id": "toeic-g06-q04",
+      "type": "QCM",
+      "question": "Of these two experts, Steve Stoneseifer is definitely …….",
+      "choix": [
+        "the most competent",
+        "the more competent",
+        "the least competent",
+        "the worst"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Comparaison entre **deux** éléments : comparatif `the more competent`."
+    },
+    {
+      "id": "toeic-g06-q05",
+      "type": "QCM",
+      "question": "According to John, between Tarzan and Jane and Romeo and Juliet, the …… moving plot is the second one.",
+      "choix": [
+        "more",
+        "most",
+        "least",
+        "darkest"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Deux éléments comparés : comparatif de supériorité `more`."
+    },
+    {
+      "id": "toeic-g06-q06",
+      "type": "QCM",
+      "question": "Between the secretary and the CEO's assistant, the first one is …….",
+      "choix": [
+        "the more efficient",
+        "more efficient",
+        "the most efficient",
+        "most efficient"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Deux éléments : comparatif ; ici avec l'article défini pour signifier « la plus efficace des deux » : `the more efficient`."
+    },
+    {
+      "id": "toeic-g06-q07",
+      "type": "QCM",
+      "question": "Our plan is to break up with an older supplier because he is no …… competitive.",
+      "choix": [
+        "less long",
+        "long",
+        "longer",
+        "longest"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "`No longer` (« ne plus ») : comparatif de supériorité *longer*."
+    },
+    {
+      "id": "toeic-g06-q08",
+      "type": "QCM",
+      "question": "This device is …… economic than the other one.",
+      "choix": [
+        "much more",
+        "as",
+        "the more",
+        "many more"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Comparatif de supériorité de deux éléments : `much more economic than`."
+    },
+    {
+      "id": "toeic-g06-q09",
+      "type": "QCM",
+      "question": "If you need …… details, please give us a call.",
+      "choix": [
+        "others",
+        "further",
+        "as many",
+        "as much"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "`Further` signifie ici « de plus amples »."
+    },
+    {
+      "id": "toeic-g06-q10",
+      "type": "QCM",
+      "question": "This dish is probably the …… edible that our customers have ever eaten and we have been particularly embarrassed by this unusual situation.",
+      "choix": [
+        "most",
+        "least",
+        "more",
+        "less"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Superlatif d'infériorité, à cause de *particularly embarrassed* (sens négatif) et de *ever* : `the least edible`."
+    }
+  ]
+}

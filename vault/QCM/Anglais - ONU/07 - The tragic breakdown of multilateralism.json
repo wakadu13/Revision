@@ -1,0 +1,499 @@
+{
+  "titre": "The tragic breakdown of multilateralism (Le Monde)",
+  "description": "Compréhension de l'éditorial, synonymes, expressions soulignées et vocabulaire.",
+  "questions": [
+    {
+      "type": "QCM",
+      "question": "According to the editorial, what does the escalation between Israel and Hezbollah highlight?",
+      "choix": [
+        "the end of the General Assembly",
+        "the success of UN peacekeeping in Lebanon",
+        "the strength of the Security Council",
+        "the impotence of the United Nations"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« highlights the impotence of the United Nations »."
+    },
+    {
+      "type": "QCR",
+      "question": "Which two major conflicts have highlighted the paralysis of the Security Council? (plusieurs réponses)",
+      "choix": [
+        "the Gulf War of 1991",
+        "the war in Korea",
+        "the destruction of Gaza after the massacres of October 7",
+        "the civil war in Spain",
+        "Russia's invasion of Ukraine (since February 2022)"
+      ],
+      "reponses": [
+        2,
+        4
+      ],
+      "explication": "Ukraine et Gaza."
+    },
+    {
+      "type": "QCR",
+      "question": "By whose vetoes has the Security Council been blocked? (plusieurs réponses)",
+      "choix": [
+        "France",
+        "the United States",
+        "Russia",
+        "Germany",
+        "the United Kingdom"
+      ],
+      "reponses": [
+        1,
+        2
+      ],
+      "explication": "« blocked by Russian and American vetoes »."
+    },
+    {
+      "type": "QCM",
+      "question": "What did the General Assembly vote for on September 18 (2024)?",
+      "choix": [
+        "a new Secretary-General",
+        "an end « within 12 months » to the Israeli occupation of the Palestinian territories",
+        "the enlargement of the Security Council",
+        "new sanctions against Russia"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Une décision symbolique que l'Assemblée est incapable de faire appliquer."
+    },
+    {
+      "type": "QCM",
+      "question": "Why does the UN look « like a shadow theater »?",
+      "choix": [
+        "because it has no headquarters",
+        "because the General Assembly's symbolic decisions are never translated into reality",
+        "because the Secretary-General is unknown",
+        "because its meetings take place at night"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "a shadow theater = un théâtre d'ombres : une apparence d'action sans effet réel."
+    },
+    {
+      "type": "QCR",
+      "question": "For which countries did Russia use its veto in 2023? (plusieurs réponses)",
+      "choix": [
+        "Haiti",
+        "Ukraine",
+        "Syria",
+        "Sudan",
+        "Mali"
+      ],
+      "reponses": [
+        2,
+        4
+      ],
+      "explication": "« to the benefit of its customers »."
+    },
+    {
+      "type": "QCM",
+      "question": "What did Moscow block in March (2024)?",
+      "choix": [
+        "the admission of Palestine",
+        "the budget of UNICEF",
+        "a resolution on climate change",
+        "the renewal of the UN sanctions monitoring mandate against North Korea (Pyongyang)"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "La Corée du Nord était devenue l'un de ses fournisseurs d'armes."
+    },
+    {
+      "type": "QCM",
+      "question": "Why did Russia protect the Pyongyang regime?",
+      "choix": [
+        "it is a permanent member",
+        "it hosts UN headquarters",
+        "it is a founding member of the UN",
+        "it had become one of Russia's arms suppliers"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« which had become one of its arms suppliers »."
+    },
+    {
+      "type": "QCM",
+      "question": "Which UN bodies still play an indispensable role, according to experts?",
+      "choix": [
+        "the Trusteeship Council",
+        "the Security Council",
+        "the veto-wielding powers",
+        "UN agencies dealing with world hunger or the plight of refugees"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Les agences (PAM, HCR…) aident « those left behind »."
+    },
+    {
+      "type": "QCM",
+      "question": "How has the Security Council changed since its creation?",
+      "choix": [
+        "only a slight modification: four non-permanent seats were added",
+        "it has doubled in size",
+        "the veto was abolished",
+        "Germany and Japan became permanent members"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Passage de 11 à 15 membres (1965) : composition devenue « une caricature de l'état du monde »."
+    },
+    {
+      "type": "QCR",
+      "question": "What did the United States propose on September 12 (2024)? (plusieurs réponses)",
+      "choix": [
+        "a seat for the small island states on the front line of global warming",
+        "removing Russia from the Council",
+        "a rotating seat for Latin America",
+        "abolishing the veto",
+        "two permanent seats for Africa",
+        "giving the new African seats a veto"
+      ],
+      "reponses": [
+        0,
+        2,
+        4
+      ],
+      "explication": "Mais « with no question of these seats being vetoed » → « shaky position »."
+    },
+    {
+      "type": "QCR",
+      "question": "Which « imploding nations » are mentioned? (plusieurs réponses)",
+      "choix": [
+        "Sudan",
+        "Lebanon",
+        "Syria",
+        "Mali",
+        "Haiti",
+        "Myanmar"
+      ],
+      "reponses": [
+        0,
+        4,
+        5
+      ],
+      "explication": "« from Sudan to Haiti via Myanmar »."
+    },
+    {
+      "type": "QCR",
+      "question": "Which crises call for multilateral responses, according to the text? (plusieurs réponses)",
+      "choix": [
+        "elections in the USA",
+        "waves of migration",
+        "climate crises",
+        "the Olympic Games",
+        "imploding nations",
+        "pandemics"
+      ],
+      "reponses": [
+        1,
+        2,
+        4,
+        5
+      ],
+      "explication": "Le paradoxe : l'ONU est abandonnée alors que les crises se multiplient."
+    },
+    {
+      "type": "QCM",
+      "question": "What is « the paradox » mentioned at the end?",
+      "choix": [
+        "the veto protects small countries",
+        "the UN has more members but fewer resolutions",
+        "the UN is being abandoned just when crises that need multilateral responses are multiplying",
+        "the UN is richer but less useful"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "abandonment + growing number of crises."
+    },
+    {
+      "type": "QCM",
+      "question": "What is the political echelon of the UN, according to the text?",
+      "choix": [
+        "the Secretariat",
+        "UNICEF",
+        "the General Assembly",
+        "the Security Council"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« its political echelon, the Security Council »."
+    },
+    {
+      "type": "QCM",
+      "question": "Which newspaper published this editorial?",
+      "choix": [
+        "The Economist, 2025",
+        "The New York Times, 2020",
+        "Le Monde (lemonde.fr), 24 September 2024",
+        "The Guardian, 2022"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Éditorial du Monde."
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "a shadow theater",
+      "verso": "un théâtre d'ombres — an illusion: actions that look important but have no real effect. Dans le texte : « make the UN look even more like a shadow theater »"
+    },
+    {
+      "type": "QCM",
+      "question": "Explain « a shadow theater ».",
+      "choix": [
+        "a collective reaction coordinated between several countries",
+        "to be in an uncertain situation where nothing is decided",
+        "to become empty, exhausted; to lose its substance",
+        "an illusion: actions that look important but have no real effect"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "a shadow theater = un théâtre d'ombres."
+    },
+    {
+      "type": "TROU",
+      "question": "It's high time to revive the mechanisms that have ___ up. (se gripper)",
+      "reponses_texte": [
+        "seized"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "Heads of state and government are due to take to the ___ in the last week of September.",
+      "reponses_texte": [
+        "rostrum"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "…in a ritual that has long since run ___.",
+      "reponses_texte": [
+        "dry"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "The deadly escalation between Israel and Hezbollah once again ___ the impotence of the United Nations.",
+      "reponses_texte": [
+        "highlights"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "…the destruction of Gaza in ___ for the unprecedented massacres of Israeli civilians by Hamas.",
+      "reponses_texte": [
+        "retaliation"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "This ___ multilateralism has no alternatives. (enlisé)",
+      "reponses_texte": [
+        "stalled"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "Russia's ___ use of its veto to the benefit of its customers shows this. (vaste)",
+      "reponses_texte": [
+        "extensive"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "UN agencies dealing with world hunger or the ___ of refugees continue to play an indispensable role.",
+      "reponses_texte": [
+        "plight"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "The much-needed reform of the Security Council is, alas, in ___.",
+      "reponses_texte": [
+        "limbo"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "This shaky position explains the ___ of response to this proposal.",
+      "reponses_texte": [
+        "lack"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "…which would change absolutely nothing in the current ___. (impasse)",
+      "reponses_texte": [
+        "deadlock",
+        "stalemate"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "The abandonment of the UN coincides with a growing number of crises: ___ nations, from Sudan to Haiti.",
+      "reponses_texte": [
+        "imploding"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "All call for ___ responses.",
+      "reponses_texte": [
+        "multilateral"
+      ]
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "What is multilateralism in the context of the UN?",
+      "verso": "Multilateralism means that many countries work together through common institutions to solve shared problems. At the UN it relies on inclusivity (all 193 states have a voice), equality (one state, one vote in the General Assembly) and cooperation (collective responses to wars, pandemics, climate change)."
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "Do you share the writer's pessimism? (arguments)",
+      "verso": "YES: Security Council paralysed by vetoes (Ukraine, Gaza), symbolic GA resolutions, reform in limbo, Russia protecting allies. BUT: UN agencies (WFP, UNHCR) remain indispensable, the GA still expresses world opinion, crises (pandemics, climate, migration) make multilateralism more necessary than ever, UN80 reform."
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "l'impuissance",
+      "reponses_texte": [
+        "impotence",
+        "powerlessness"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "raviver, relancer",
+      "reponses_texte": [
+        "to revive",
+        "revive"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "l'échelon politique",
+      "reponses_texte": [
+        "the political echelon",
+        "political echelon"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "la sécurité collective",
+      "reponses_texte": [
+        "collective security"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "des arrière-pensées géostratégiques",
+      "reponses_texte": [
+        "geostrategic ulterior motives",
+        "ulterior motives"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "un siège tournant",
+      "reponses_texte": [
+        "a rotating seat",
+        "rotating seat"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "l'élargissement (du Conseil)",
+      "reponses_texte": [
+        "enlargement",
+        "the enlargement"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "des vagues migratoires",
+      "reponses_texte": [
+        "waves of migration"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "un fournisseur d'armes",
+      "reponses_texte": [
+        "an arms supplier",
+        "arms supplier"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "une position fragile, incertaine",
+      "reponses_texte": [
+        "a shaky position",
+        "shaky position"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "les laissés-pour-compte",
+      "reponses_texte": [
+        "those left behind"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "la corrosion",
+      "reponses_texte": [
+        "corrosion",
+        "the corrosion"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    }
+  ]
+}

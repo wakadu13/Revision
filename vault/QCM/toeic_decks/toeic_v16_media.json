@@ -1,0 +1,366 @@
+{
+  "titre": "TOEIC Vocabulary 16 — Media",
+  "description": "Thème « Media » du livret Vocabulary (d'après les corrigés).",
+  "questions": [
+    {
+      "id": "v16001",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « special report » ?",
+      "choix": [
+        "Media",
+        "Marketing & Advertising",
+        "Idioms & Expressions",
+        "Products"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« special report » figure dans les corrigés du thème Media."
+    },
+    {
+      "id": "v16002",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « columnist » ?",
+      "choix": [
+        "Corporate Property",
+        "Banking & Personal Finance",
+        "Media",
+        "Human Resources"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« columnist » figure dans les corrigés du thème Media."
+    },
+    {
+      "id": "v16003",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « troll » ?",
+      "choix": [
+        "Human Resources",
+        "Communicating",
+        "Media",
+        "Complaining & Apologizing"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« troll » figure dans les corrigés du thème Media."
+    },
+    {
+      "id": "v16004",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « editorial » ?",
+      "choix": [
+        "Investments",
+        "Idioms & Expressions",
+        "Sustainable Development",
+        "Media"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« editorial » figure dans les corrigés du thème Media."
+    },
+    {
+      "id": "v16005",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « trending » ?",
+      "choix": [
+        "Banking & Personal Finance",
+        "Media",
+        "Weather",
+        "Products"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« trending » figure dans les corrigés du thème Media."
+    },
+    {
+      "id": "v16006",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « host » ?",
+      "choix": [
+        "Media",
+        "Dining Out",
+        "Weather",
+        "Phrasal Verbs"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« host » figure dans les corrigés du thème Media."
+    },
+    {
+      "id": "v16007",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « blogs » ?",
+      "choix": [
+        "Media",
+        "Products",
+        "Corporate Property",
+        "Communicating"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« blogs » figure dans les corrigés du thème Media."
+    },
+    {
+      "id": "v16008",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « vlogs » ?",
+      "choix": [
+        "Life in the Office",
+        "Logistics",
+        "Communicating",
+        "Media"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« vlogs » figure dans les corrigés du thème Media."
+    },
+    {
+      "id": "v16009",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « trade journal » ?",
+      "choix": [
+        "Media",
+        "Complaining & Apologizing",
+        "Travel",
+        "Communicating"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« trade journal » figure dans les corrigés du thème Media."
+    },
+    {
+      "id": "v16010",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « tabloid » ?",
+      "choix": [
+        "R&D & Industrialization",
+        "Health & Healthcare",
+        "Media",
+        "Presentations"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« tabloid » figure dans les corrigés du thème Media."
+    },
+    {
+      "id": "v16011",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « to file the story » ?",
+      "choix": [
+        "Investments",
+        "Media",
+        "Meetings",
+        "Human Resources"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« to file the story » figure dans les corrigés du thème Media."
+    },
+    {
+      "id": "v16012",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « crowdfunding » ?",
+      "choix": [
+        "Investments",
+        "Media",
+        "Phrasal Verbs",
+        "Sustainable Development"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« crowdfunding » figure dans les corrigés du thème Media."
+    },
+    {
+      "id": "v16013",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « anchor » ?",
+      "choix": [
+        "Commerce",
+        "Products",
+        "Media",
+        "Presentations"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« anchor » figure dans les corrigés du thème Media."
+    },
+    {
+      "id": "v16014",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « columns » ?",
+      "choix": [
+        "Banking & Personal Finance",
+        "Phrasal Verbs",
+        "Media",
+        "Complaining & Apologizing"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« columns » figure dans les corrigés du thème Media."
+    },
+    {
+      "id": "v16015",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « breaking news » ?",
+      "choix": [
+        "High-Tech",
+        "Media",
+        "Presentations",
+        "Commerce"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« breaking news » figure dans les corrigés du thème Media."
+    },
+    {
+      "id": "v16016",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « feed » ?",
+      "choix": [
+        "Human Resources",
+        "Media",
+        "Health & Healthcare",
+        "Marketing & Advertising"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« feed » figure dans les corrigés du thème Media."
+    },
+    {
+      "id": "v16017",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « crowdsourcing » ?",
+      "choix": [
+        "Media",
+        "Commerce",
+        "Marketing & Advertising",
+        "Meetings"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« crowdsourcing » figure dans les corrigés du thème Media."
+    },
+    {
+      "id": "v16018",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « broadcast » ?",
+      "choix": [
+        "Media",
+        "Graphs",
+        "Meetings",
+        "Presentations"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« broadcast » figure dans les corrigés du thème Media."
+    },
+    {
+      "id": "v16019",
+      "type": "QCM",
+      "question": "À quel thème du livret Vocabulary appartient le terme « subscribe » ?",
+      "choix": [
+        "R&D & Industrialization",
+        "Complaining & Apologizing",
+        "Media",
+        "Investments"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "« subscribe » figure dans les corrigés du thème Media."
+    },
+    {
+      "id": "v16020",
+      "type": "QCM",
+      "question": "The ____ apologised during the broadcast about reporting a false story.",
+      "choix": [
+        "host's feed",
+        "columnist",
+        "anchor",
+        "troll"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Phrase-corrigé du livret : « The anchor apologised during the broadcast about reporting a false story. »"
+    },
+    {
+      "id": "v16021",
+      "type": "QCM",
+      "question": "The TV network will ____ an online network for millennials at the beginning of next year.",
+      "choix": [
+        "shred",
+        "scan",
+        "file",
+        "launch"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Phrase-corrigé du livret : « The TV network will launch an online network for millennials at the beginning of next year. »"
+    },
+    {
+      "id": "v16022",
+      "type": "QCM",
+      "question": "I had no idea the article I posted online would bring on so much ____.",
+      "choix": [
+        "crowdfunding",
+        "criticism",
+        "feed",
+        "editorial"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Phrase-corrigé du livret : « I had no idea the article I posted online would bring on so much criticism. »"
+    },
+    {
+      "id": "v16023",
+      "type": "QCM",
+      "question": "____ has changed the way people start companies and fund projects.",
+      "choix": [
+        "Overtime",
+        "Signposting",
+        "Flexitime",
+        "Crowdsourcing"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Phrase-corrigé du livret : « Crowdsourcing has changed the way people start companies and fund projects. »"
+    },
+    {
+      "id": "v16024",
+      "type": "QCM",
+      "question": "Maria decided to cut back and only ____ to five magazines.",
+      "choix": [
+        "subscribe",
+        "trend",
+        "file",
+        "broadcast"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Phrase-corrigé du livret : « Maria decided to cut back and only subscribe to five magazines. »"
+    }
+  ]
+}

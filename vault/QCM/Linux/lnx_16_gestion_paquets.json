@@ -1,0 +1,104 @@
+{
+  "titre": "Linux 16 — Gestion de paquets",
+  "description": "dpkg, apt, aptitude, snap, gem, pip, git et APT",
+  "questions": [
+    {
+      "id": "pkg01",
+      "type": "QCR",
+      "question": "Quelles fonctionnalités communes offrent les systèmes de gestion de paquets ?",
+      "choix": [
+        "Le téléchargement de paquets",
+        "La résolution des dépendances",
+        "Un format de paquet binaire standard",
+        "La compilation automatique du noyau"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": ""
+    },
+    {
+      "id": "pkg02",
+      "type": "QCM",
+      "question": "Quel outil bas niveau installe, construit et supprime les paquets Debian (.deb) ?",
+      "choix": ["apt", "dpkg", "snap", "pip"],
+      "reponses": [1],
+      "explication": "apt est l'interface haut niveau utilisant dpkg en interne."
+    },
+    {
+      "id": "pkg03",
+      "type": "QCM",
+      "question": "Quel gestionnaire est recommandé pour les paquets Python non disponibles dans l'archive Debian ?",
+      "choix": ["gem", "pip", "snap", "apt"],
+      "reponses": [1],
+      "explication": ""
+    },
+    {
+      "id": "pkg04",
+      "type": "QCM",
+      "question": "Quel gestionnaire de paquets est le front-end standard pour Ruby ?",
+      "choix": ["gem", "pip", "npm", "cargo"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "pkg05",
+      "type": "QCM",
+      "question": "Quel système permet une distribution sécurisée de paquets pour le cloud, les serveurs et l'IoT ?",
+      "choix": ["snap", "dpkg", "aptitude", "gem"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "pkg06",
+      "type": "QCM",
+      "question": "Quel fichier liste les dépôts APT utilisés par une distribution basée sur Debian ?",
+      "choix": ["/etc/apt/sources.list", "/etc/repos.conf", "/etc/dpkg.list", "/etc/packages.conf"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "pkg07",
+      "type": "QCM",
+      "question": "Quelle commande recherche des paquets liés à un mot-clé dans le cache APT ?",
+      "choix": ["apt-cache search", "apt find", "dpkg search", "apt list search"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "pkg08",
+      "type": "QCM",
+      "question": "Quelle commande liste tous les paquets installés ?",
+      "choix": ["apt list --installed", "dpkg --list-all", "apt-cache installed", "apt show all"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "pkg09",
+      "type": "QCM",
+      "question": "Quelle commande installe un paquet .deb téléchargé manuellement avec dpkg ?",
+      "choix": ["dpkg -i paquet.deb", "dpkg install paquet.deb", "apt-get local paquet.deb", "dpkg --add paquet.deb"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "pkg10",
+      "type": "QCM",
+      "question": "Quel outil est un système de contrôle de version distribué utilisé pour cloner des dépôts de code ?",
+      "choix": ["git", "pip", "snap", "aptitude"],
+      "reponses": [0],
+      "explication": ""
+    },
+    {
+      "id": "pkg11",
+      "type": "QCM",
+      "question": "Que fait `sudo apt install <paquet> -y` ?",
+      "choix": [
+        "Supprime le paquet sans confirmation",
+        "Installe le paquet en confirmant automatiquement l'opération",
+        "Met à jour uniquement la liste des paquets",
+        "Vérifie les dépendances sans installer"
+      ],
+      "reponses": [1],
+      "explication": ""
+    }
+  ]
+}

@@ -1,0 +1,860 @@
+{
+  "titre": "The 17 Sustainable Development Goals (SDGs)",
+  "description": "Les 17 objectifs de développement durable : noms en anglais et en français, numéros et icônes.",
+  "questions": [
+    {
+      "type": "FLASHCARD",
+      "question": "SDG 1",
+      "verso": "No Poverty — Pas de pauvreté. Icône : une famille (adultes et enfants)."
+    },
+    {
+      "type": "QCM",
+      "question": "What is SDG 1?",
+      "choix": [
+        "Decent Work and Economic Growth",
+        "Good Health and Well-being",
+        "Life on Land",
+        "No Poverty"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "SDG 1 = No Poverty (Pas de pauvreté)."
+    },
+    {
+      "type": "QCM",
+      "question": "Which SDG is represented by this icon: une famille (adultes et enfants)?",
+      "choix": [
+        "SDG 13 – Climate Action",
+        "SDG 12 – Responsible Consumption and Production",
+        "SDG 1 – No Poverty",
+        "SDG 2 – Zero Hunger"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "SDG 1 : No Poverty."
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "Pas de pauvreté",
+      "reponses_texte": [
+        "No Poverty",
+        "no poverty"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "SDG 2",
+      "verso": "Zero Hunger — Faim « zéro ». Icône : un bol fumant."
+    },
+    {
+      "type": "QCM",
+      "question": "What is SDG 2?",
+      "choix": [
+        "Zero Hunger",
+        "Quality Education",
+        "Partnerships for the Goals",
+        "Good Health and Well-being"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "SDG 2 = Zero Hunger (Faim « zéro »)."
+    },
+    {
+      "type": "QCM",
+      "question": "Which SDG is represented by this icon: un bol fumant?",
+      "choix": [
+        "SDG 15 – Life on Land",
+        "SDG 5 – Gender Equality",
+        "SDG 2 – Zero Hunger",
+        "SDG 11 – Sustainable Cities and Communities"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "SDG 2 : Zero Hunger."
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "Faim « zéro »",
+      "reponses_texte": [
+        "Zero Hunger",
+        "zero hunger"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "SDG 3",
+      "verso": "Good Health and Well-being — Bonne santé et bien-être. Icône : une courbe de pouls et un cœur."
+    },
+    {
+      "type": "QCM",
+      "question": "What is SDG 3?",
+      "choix": [
+        "Quality Education",
+        "Gender Equality",
+        "Zero Hunger",
+        "Good Health and Well-being"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "SDG 3 = Good Health and Well-being (Bonne santé et bien-être)."
+    },
+    {
+      "type": "QCM",
+      "question": "Which SDG is represented by this icon: une courbe de pouls et un cœur?",
+      "choix": [
+        "SDG 10 – Reduced Inequalities",
+        "SDG 11 – Sustainable Cities and Communities",
+        "SDG 16 – Peace, Justice and Strong Institutions",
+        "SDG 3 – Good Health and Well-being"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "SDG 3 : Good Health and Well-being."
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "Bonne santé et bien-être",
+      "reponses_texte": [
+        "Good Health and Well-being",
+        "good health and well-being"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "SDG 4",
+      "verso": "Quality Education — Éducation de qualité. Icône : un livre ouvert et un crayon."
+    },
+    {
+      "type": "QCM",
+      "question": "What is SDG 4?",
+      "choix": [
+        "Affordable and Clean Energy",
+        "Quality Education",
+        "Gender Equality",
+        "Reduced Inequalities"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "SDG 4 = Quality Education (Éducation de qualité)."
+    },
+    {
+      "type": "QCM",
+      "question": "Which SDG is represented by this icon: un livre ouvert et un crayon?",
+      "choix": [
+        "SDG 7 – Affordable and Clean Energy",
+        "SDG 9 – Industry, Innovation and Infrastructure",
+        "SDG 17 – Partnerships for the Goals",
+        "SDG 4 – Quality Education"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "SDG 4 : Quality Education."
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "Éducation de qualité",
+      "reponses_texte": [
+        "Quality Education",
+        "quality education"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "SDG 5",
+      "verso": "Gender Equality — Égalité entre les sexes. Icône : les symboles féminin/masculin avec un signe =."
+    },
+    {
+      "type": "QCM",
+      "question": "What is SDG 5?",
+      "choix": [
+        "Climate Action",
+        "No Poverty",
+        "Life Below Water",
+        "Gender Equality"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "SDG 5 = Gender Equality (Égalité entre les sexes)."
+    },
+    {
+      "type": "QCM",
+      "question": "Which SDG is represented by this icon: les symboles féminin/masculin avec un signe =?",
+      "choix": [
+        "SDG 1 – No Poverty",
+        "SDG 2 – Zero Hunger",
+        "SDG 5 – Gender Equality",
+        "SDG 6 – Clean Water and Sanitation"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "SDG 5 : Gender Equality."
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "Égalité entre les sexes",
+      "reponses_texte": [
+        "Gender Equality",
+        "gender equality"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "SDG 6",
+      "verso": "Clean Water and Sanitation — Eau propre et assainissement. Icône : un verre d'eau avec une goutte et une flèche."
+    },
+    {
+      "type": "QCM",
+      "question": "What is SDG 6?",
+      "choix": [
+        "Gender Equality",
+        "Responsible Consumption and Production",
+        "Life on Land",
+        "Clean Water and Sanitation"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "SDG 6 = Clean Water and Sanitation (Eau propre et assainissement)."
+    },
+    {
+      "type": "QCM",
+      "question": "Which SDG is represented by this icon: un verre d'eau avec une goutte et une flèche?",
+      "choix": [
+        "SDG 5 – Gender Equality",
+        "SDG 6 – Clean Water and Sanitation",
+        "SDG 11 – Sustainable Cities and Communities",
+        "SDG 12 – Responsible Consumption and Production"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "SDG 6 : Clean Water and Sanitation."
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "Eau propre et assainissement",
+      "reponses_texte": [
+        "Clean Water and Sanitation",
+        "clean water and sanitation"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "SDG 7",
+      "verso": "Affordable and Clean Energy — Énergie propre et d'un coût abordable. Icône : un soleil avec un bouton marche/arrêt."
+    },
+    {
+      "type": "QCM",
+      "question": "What is SDG 7?",
+      "choix": [
+        "Responsible Consumption and Production",
+        "Decent Work and Economic Growth",
+        "Peace, Justice and Strong Institutions",
+        "Affordable and Clean Energy"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "SDG 7 = Affordable and Clean Energy (Énergie propre et d'un coût abordable)."
+    },
+    {
+      "type": "QCM",
+      "question": "Which SDG is represented by this icon: un soleil avec un bouton marche/arrêt?",
+      "choix": [
+        "SDG 7 – Affordable and Clean Energy",
+        "SDG 4 – Quality Education",
+        "SDG 13 – Climate Action",
+        "SDG 1 – No Poverty"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "SDG 7 : Affordable and Clean Energy."
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "Énergie propre et d'un coût abordable",
+      "reponses_texte": [
+        "Affordable and Clean Energy",
+        "affordable and clean energy"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "SDG 8",
+      "verso": "Decent Work and Economic Growth — Travail décent et croissance économique. Icône : un graphique en barres avec une flèche qui monte."
+    },
+    {
+      "type": "QCM",
+      "question": "What is SDG 8?",
+      "choix": [
+        "Clean Water and Sanitation",
+        "Gender Equality",
+        "Reduced Inequalities",
+        "Decent Work and Economic Growth"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "SDG 8 = Decent Work and Economic Growth (Travail décent et croissance économique)."
+    },
+    {
+      "type": "QCM",
+      "question": "Which SDG is represented by this icon: un graphique en barres avec une flèche qui monte?",
+      "choix": [
+        "SDG 14 – Life Below Water",
+        "SDG 8 – Decent Work and Economic Growth",
+        "SDG 16 – Peace, Justice and Strong Institutions",
+        "SDG 11 – Sustainable Cities and Communities"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "SDG 8 : Decent Work and Economic Growth."
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "Travail décent et croissance économique",
+      "reponses_texte": [
+        "Decent Work and Economic Growth",
+        "decent work and economic growth"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "SDG 9",
+      "verso": "Industry, Innovation and Infrastructure — Industrie, innovation et infrastructure. Icône : des cubes empilés."
+    },
+    {
+      "type": "QCM",
+      "question": "What is SDG 9?",
+      "choix": [
+        "Gender Equality",
+        "Zero Hunger",
+        "Life on Land",
+        "Industry, Innovation and Infrastructure"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "SDG 9 = Industry, Innovation and Infrastructure (Industrie, innovation et infrastructure)."
+    },
+    {
+      "type": "QCM",
+      "question": "Which SDG is represented by this icon: des cubes empilés?",
+      "choix": [
+        "SDG 4 – Quality Education",
+        "SDG 2 – Zero Hunger",
+        "SDG 8 – Decent Work and Economic Growth",
+        "SDG 9 – Industry, Innovation and Infrastructure"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "SDG 9 : Industry, Innovation and Infrastructure."
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "Industrie, innovation et infrastructure",
+      "reponses_texte": [
+        "Industry, Innovation and Infrastructure",
+        "industry, innovation and infrastructure"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "SDG 10",
+      "verso": "Reduced Inequalities — Inégalités réduites. Icône : un signe = entouré de flèches."
+    },
+    {
+      "type": "QCM",
+      "question": "What is SDG 10?",
+      "choix": [
+        "Zero Hunger",
+        "Good Health and Well-being",
+        "Reduced Inequalities",
+        "Sustainable Cities and Communities"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "SDG 10 = Reduced Inequalities (Inégalités réduites)."
+    },
+    {
+      "type": "QCM",
+      "question": "Which SDG is represented by this icon: un signe = entouré de flèches?",
+      "choix": [
+        "SDG 10 – Reduced Inequalities",
+        "SDG 7 – Affordable and Clean Energy",
+        "SDG 16 – Peace, Justice and Strong Institutions",
+        "SDG 13 – Climate Action"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "SDG 10 : Reduced Inequalities."
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "Inégalités réduites",
+      "reponses_texte": [
+        "Reduced Inequalities",
+        "reduced inequalities"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "SDG 11",
+      "verso": "Sustainable Cities and Communities — Villes et communautés durables. Icône : des immeubles et une maison."
+    },
+    {
+      "type": "QCM",
+      "question": "What is SDG 11?",
+      "choix": [
+        "Quality Education",
+        "Sustainable Cities and Communities",
+        "No Poverty",
+        "Decent Work and Economic Growth"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "SDG 11 = Sustainable Cities and Communities (Villes et communautés durables)."
+    },
+    {
+      "type": "QCM",
+      "question": "Which SDG is represented by this icon: des immeubles et une maison?",
+      "choix": [
+        "SDG 13 – Climate Action",
+        "SDG 11 – Sustainable Cities and Communities",
+        "SDG 4 – Quality Education",
+        "SDG 6 – Clean Water and Sanitation"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "SDG 11 : Sustainable Cities and Communities."
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "Villes et communautés durables",
+      "reponses_texte": [
+        "Sustainable Cities and Communities",
+        "sustainable cities and communities"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "SDG 12",
+      "verso": "Responsible Consumption and Production — Consommation et production responsables. Icône : un symbole infini avec une flèche."
+    },
+    {
+      "type": "QCM",
+      "question": "What is SDG 12?",
+      "choix": [
+        "Clean Water and Sanitation",
+        "Responsible Consumption and Production",
+        "Life Below Water",
+        "Sustainable Cities and Communities"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "SDG 12 = Responsible Consumption and Production (Consommation et production responsables)."
+    },
+    {
+      "type": "QCM",
+      "question": "Which SDG is represented by this icon: un symbole infini avec une flèche?",
+      "choix": [
+        "SDG 7 – Affordable and Clean Energy",
+        "SDG 8 – Decent Work and Economic Growth",
+        "SDG 13 – Climate Action",
+        "SDG 12 – Responsible Consumption and Production"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "SDG 12 : Responsible Consumption and Production."
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "Consommation et production responsables",
+      "reponses_texte": [
+        "Responsible Consumption and Production",
+        "responsible consumption and production"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "SDG 13",
+      "verso": "Climate Action — Mesures relatives à la lutte contre les changements climatiques. Icône : un œil avec la Terre."
+    },
+    {
+      "type": "QCM",
+      "question": "What is SDG 13?",
+      "choix": [
+        "Peace, Justice and Strong Institutions",
+        "Climate Action",
+        "Industry, Innovation and Infrastructure",
+        "Good Health and Well-being"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "SDG 13 = Climate Action (Mesures relatives à la lutte contre les changements climatiques)."
+    },
+    {
+      "type": "QCM",
+      "question": "Which SDG is represented by this icon: un œil avec la Terre?",
+      "choix": [
+        "SDG 13 – Climate Action",
+        "SDG 6 – Clean Water and Sanitation",
+        "SDG 2 – Zero Hunger",
+        "SDG 1 – No Poverty"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "SDG 13 : Climate Action."
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "Mesures relatives à la lutte contre les changements climatiques",
+      "reponses_texte": [
+        "Climate Action",
+        "climate action"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "SDG 14",
+      "verso": "Life Below Water — Vie aquatique. Icône : un poisson sous des vagues."
+    },
+    {
+      "type": "QCM",
+      "question": "What is SDG 14?",
+      "choix": [
+        "Responsible Consumption and Production",
+        "Life Below Water",
+        "Industry, Innovation and Infrastructure",
+        "Quality Education"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "SDG 14 = Life Below Water (Vie aquatique)."
+    },
+    {
+      "type": "QCM",
+      "question": "Which SDG is represented by this icon: un poisson sous des vagues?",
+      "choix": [
+        "SDG 10 – Reduced Inequalities",
+        "SDG 14 – Life Below Water",
+        "SDG 6 – Clean Water and Sanitation",
+        "SDG 12 – Responsible Consumption and Production"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "SDG 14 : Life Below Water."
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "Vie aquatique",
+      "reponses_texte": [
+        "Life Below Water",
+        "life below water"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "SDG 15",
+      "verso": "Life on Land — Vie terrestre. Icône : un arbre et des oiseaux au-dessus du sol."
+    },
+    {
+      "type": "QCM",
+      "question": "What is SDG 15?",
+      "choix": [
+        "Clean Water and Sanitation",
+        "Life on Land",
+        "Zero Hunger",
+        "Partnerships for the Goals"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "SDG 15 = Life on Land (Vie terrestre)."
+    },
+    {
+      "type": "QCM",
+      "question": "Which SDG is represented by this icon: un arbre et des oiseaux au-dessus du sol?",
+      "choix": [
+        "SDG 12 – Responsible Consumption and Production",
+        "SDG 6 – Clean Water and Sanitation",
+        "SDG 1 – No Poverty",
+        "SDG 15 – Life on Land"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "SDG 15 : Life on Land."
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "Vie terrestre",
+      "reponses_texte": [
+        "Life on Land",
+        "life on land"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "SDG 16",
+      "verso": "Peace, Justice and Strong Institutions — Paix, justice et institutions efficaces. Icône : une colombe avec un rameau d'olivier sur un marteau de juge."
+    },
+    {
+      "type": "QCM",
+      "question": "What is SDG 16?",
+      "choix": [
+        "Peace, Justice and Strong Institutions",
+        "Sustainable Cities and Communities",
+        "Clean Water and Sanitation",
+        "Partnerships for the Goals"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "SDG 16 = Peace, Justice and Strong Institutions (Paix, justice et institutions efficaces)."
+    },
+    {
+      "type": "QCM",
+      "question": "Which SDG is represented by this icon: une colombe avec un rameau d'olivier sur un marteau de juge?",
+      "choix": [
+        "SDG 9 – Industry, Innovation and Infrastructure",
+        "SDG 6 – Clean Water and Sanitation",
+        "SDG 16 – Peace, Justice and Strong Institutions",
+        "SDG 12 – Responsible Consumption and Production"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "SDG 16 : Peace, Justice and Strong Institutions."
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "Paix, justice et institutions efficaces",
+      "reponses_texte": [
+        "Peace, Justice and Strong Institutions",
+        "peace, justice and strong institutions"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "SDG 17",
+      "verso": "Partnerships for the Goals — Partenariats pour la réalisation des objectifs. Icône : des anneaux entrelacés."
+    },
+    {
+      "type": "QCM",
+      "question": "What is SDG 17?",
+      "choix": [
+        "Partnerships for the Goals",
+        "Life on Land",
+        "Gender Equality",
+        "Climate Action"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "SDG 17 = Partnerships for the Goals (Partenariats pour la réalisation des objectifs)."
+    },
+    {
+      "type": "QCM",
+      "question": "Which SDG is represented by this icon: des anneaux entrelacés?",
+      "choix": [
+        "SDG 15 – Life on Land",
+        "SDG 17 – Partnerships for the Goals",
+        "SDG 11 – Sustainable Cities and Communities",
+        "SDG 1 – No Poverty"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "SDG 17 : Partnerships for the Goals."
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "Partenariats pour la réalisation des objectifs",
+      "reponses_texte": [
+        "Partnerships for the Goals",
+        "partnerships for the goals"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    },
+    {
+      "type": "QCM",
+      "question": "How many Sustainable Development Goals are there?",
+      "choix": [
+        "10",
+        "8",
+        "20",
+        "17"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "17 ODD."
+    },
+    {
+      "type": "QCM",
+      "question": "When were the SDGs adopted, and for which deadline?",
+      "choix": [
+        "in 1945, by 2000",
+        "in 2015, to be achieved by 2030",
+        "in 2020, by 2050",
+        "in 2000, by 2015"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Adoptés en 2015 (Agenda 2030)."
+    },
+    {
+      "type": "QCM",
+      "question": "What do the SDGs replace?",
+      "choix": [
+        "the UN Charter",
+        "the Millennium Development Goals (2000-2015)",
+        "the Kyoto Protocol",
+        "the League of Nations"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Les ODD ont succédé aux Objectifs du millénaire pour le développement (OMD)."
+    },
+    {
+      "type": "QCR",
+      "question": "Which SDGs are directly about the environment? (plusieurs réponses)",
+      "choix": [
+        "Quality Education",
+        "Climate Action",
+        "Life on Land",
+        "No Poverty",
+        "Life Below Water",
+        "Gender Equality"
+      ],
+      "reponses": [
+        1,
+        2,
+        4
+      ],
+      "explication": "SDG 13, 14 et 15 (et dans une large mesure 6, 7 et 12)."
+    },
+    {
+      "type": "QCR",
+      "question": "Which SDGs are about fighting inequalities? (plusieurs réponses)",
+      "choix": [
+        "Reduced Inequalities",
+        "Gender Equality",
+        "Industry, Innovation and Infrastructure",
+        "Climate Action",
+        "Life Below Water"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "SDG 5 et SDG 10."
+    },
+    {
+      "type": "TROU",
+      "question": "The SDGs are the ___ Development Goals.",
+      "reponses_texte": [
+        "Sustainable"
+      ]
+    },
+    {
+      "type": "TROU",
+      "question": "The SDGs form the 2030 ___ for Sustainable Development.",
+      "reponses_texte": [
+        "Agenda"
+      ]
+    },
+    {
+      "type": "FLASHCARD",
+      "question": "The Global Goals for Sustainable Development",
+      "verso": "Les 17 ODD, adoptés par les 193 États membres en 2015 : « a shared blueprint for peace and prosperity for people and the planet » d'ici 2030. Principe : « leave no one behind » (ne laisser personne de côté)."
+    },
+    {
+      "type": "QRC",
+      "consigne": "Traduire en anglais",
+      "question": "ne laisser personne de côté",
+      "reponses_texte": [
+        "leave no one behind",
+        "to leave no one behind"
+      ],
+      "inverse": true,
+      "consigne_inverse": "Traduire en français"
+    }
+  ]
+}
