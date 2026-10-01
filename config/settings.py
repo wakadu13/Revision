@@ -10,22 +10,45 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.1/ref/settings/
 """
 
+import os
+import secrets
 from pathlib import Path
+
+from django.utils.csp import CSP
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
+def env_bool(name, default):
+    return os.environ.get(name, str(default)).strip().lower() in {'1', 'true', 'yes', 'on'}
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-zj3=t-lxc)6pur=uv!ok6tf+eu^ayq+mo72f6v#=m&mkte&lha'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+def env_list(name, default=''):
+    return [v.strip() for v in os.environ.get(name, default).split(',') if v.strip()]
 
-ALLOWED_HOSTS = []
+
+# Sécurité : configuration par variables d'environnement (voir README, « Sécurité »).
+# Par défaut, le serveur démarre en mode production (DEBUG désactivé).
+# En développement : DJANGO_DEBUG=1 uv run python manage.py runserver
+
+DEBUG = env_bool('DJANGO_DEBUG', False)
+
+# Clé secrète : DJANGO_SECRET_KEY, sinon une clé aléatoire générée au premier
+# lancement et gardée dans .secret_key (hors Git). Ne jamais la committer.
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '')
+if not SECRET_KEY:
+    _key_file = BASE_DIR / '.secret_key'
+    if not _key_file.exists():
+        _key_file.write_text(secrets.token_urlsafe(64), encoding='utf-8')
+        try:
+            _key_file.chmod(0o600)
+        except OSError:
+            pass
+    SECRET_KEY = _key_file.read_text(encoding='utf-8').strip()
+
+ALLOWED_HOSTS = env_list('DJANGO_ALLOWED_HOSTS', 'localhost,127.0.0.1,[::1]')
+CSRF_TRUSTED_ORIGINS = env_list('DJANGO_CSRF_TRUSTED_ORIGINS')
 
 
 # Application definition
@@ -37,18 +60,31 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'axes',
     'core',
+    'accounts',
     'wiki',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.middleware.csp.ContentSecurityPolicyMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    # Site privé : toutes les pages demandent d'être connecté, sauf la connexion.
+    'django.contrib.auth.middleware.LoginRequiredMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # Anti-force brute : doit rester en dernier.
+    'axes.middleware.AxesMiddleware',
+]
+
+AUTHENTICATION_BACKENDS = [
+    'axes.backends.AxesStandaloneBackend',
+    'django.contrib.auth.backends.ModelBackend',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -61,8 +97,11 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.request',
+                'django.template.context_processors.csp',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'accounts.context_processors.roles',
+                'wiki.context_processors.wiki',
             ],
         },
     },
@@ -91,6 +130,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {'min_length': 12},
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
@@ -117,14 +157,21 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# WhiteNoise sert les fichiers statiques même sans DEBUG ; sans collectstatic,
+# il les lit directement dans les applications.
+WHITENOISE_USE_FINDERS = True
 
 
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
 
+# Le wiki n'envoie pas d'e-mail pour l'instant ; en production, SMTP local par défaut.
 MAILERS = {
     'default': {
-        'BACKEND': 'django.core.mail.backends.console.EmailBackend',
+        'BACKEND': 'django.core.mail.backends.console.EmailBackend' if DEBUG
+        else 'django.core.mail.backends.smtp.EmailBackend',
     },
 }
 
@@ -138,9 +185,85 @@ WIKI_DIR = BASE_DIR / 'vault'
 # Note affichée sur la page d'accueil (nom de fichier sans .md).
 WIKI_HOME = 'Accueil'
 
-# Modification des pages depuis le navigateur. Par défaut, tout le monde peut
-# modifier en développement (DEBUG = True) ; en production, il faut se
-# connecter (compte créé avec « manage.py createsuperuser »).
-WIKI_EDIT_LOGIN_REQUIRED = not DEBUG
+# Comptes et sessions
+# Rôles : « admin » (is_staff) modifie le wiki et gère les comptes ;
+# « utilisateur » lit le wiki et fait les QCM avec sa propre progression.
+# Tout le site demande d'être connecté (LoginRequiredMiddleware).
+# Premier admin : « uv run python manage.py createsuperuser ».
 
-LOGIN_URL = 'admin:login'
+LOGIN_URL = 'accounts:login'
+LOGIN_REDIRECT_URL = 'wiki:home'
+LOGOUT_REDIRECT_URL = 'accounts:login'
+
+# Site privé : pas d'inscription libre, les comptes sont créés par un admin
+# (page /utilisateurs/). Mettre True pour autoriser l'inscription.
+ACCOUNTS_REGISTRATION_OPEN = False
+
+# Session : 2 semaines si « Rester connecté », sinon jusqu'à la fermeture du navigateur.
+SESSION_COOKIE_AGE = 60 * 60 * 24 * 14
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SAMESITE = 'Lax'
+CSRF_COOKIE_HTTPONLY = True
+CSRF_COOKIE_SAMESITE = 'Lax'
+
+# Anti-force brute (django-axes) : 5 échecs pour un même compte depuis une même
+# IP → blocage 30 minutes. Débloquer : uv run python manage.py axes_reset
+AXES_FAILURE_LIMIT = 5
+AXES_COOLOFF_TIME = 0.5  # heures
+AXES_LOCKOUT_PARAMETERS = [['username', 'ip_address']]
+AXES_RESET_ON_SUCCESS = True
+AXES_LOCKOUT_TEMPLATE = 'accounts/lockout.html'
+
+# Derrière un proxy inverse (nginx...) : DJANGO_BEHIND_PROXY=1 pour lire l'IP
+# réelle du client et le protocole HTTPS transmis par le proxy.
+BEHIND_PROXY = env_bool('DJANGO_BEHIND_PROXY', False)
+AXES_IPWARE_META_PRECEDENCE_ORDER = ['HTTP_X_FORWARDED_FOR', 'REMOTE_ADDR'] if BEHIND_PROXY else ['REMOTE_ADDR']
+if BEHIND_PROXY:
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# HTTPS : forcé dès que le site est servi sous un vrai nom de domaine
+# (DJANGO_ALLOWED_HOSTS). En local (localhost, 127.0.0.1), runserver ne parle
+# pas HTTPS et le site n'est pas joignable depuis le réseau : HTTPS non forcé.
+# DJANGO_HTTPS=0/1 impose le choix.
+LOCAL_HOSTS = {'localhost', '127.0.0.1', '[::1]'}
+HTTPS = env_bool('DJANGO_HTTPS', not DEBUG and not set(ALLOWED_HOSTS) <= LOCAL_HOSTS)
+SESSION_COOKIE_SECURE = HTTPS
+CSRF_COOKIE_SECURE = HTTPS
+SECURE_SSL_REDIRECT = HTTPS
+SECURE_HSTS_SECONDS = 60 * 60 * 24 * 365 if HTTPS else 0
+SECURE_HSTS_INCLUDE_SUBDOMAINS = HTTPS
+
+# En-têtes de sécurité.
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_REFERRER_POLICY = 'same-origin'
+SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin'
+X_FRAME_OPTIONS = 'DENY'
+
+# Content Security Policy : seuls les scripts du site et du CDN jsdelivr
+# (KaTeX, Mermaid, highlight.js : versions figées + contrôle d'intégrité) s'exécutent.
+CDN = 'https://cdn.jsdelivr.net'
+SECURE_CSP = {
+    'default-src': [CSP.SELF],
+    'script-src': [CSP.SELF, CDN, CSP.NONCE],
+    'style-src': [CSP.SELF, CDN, CSP.UNSAFE_INLINE],
+    'font-src': [CSP.SELF, CDN, 'data:'],
+    'img-src': [CSP.SELF, 'data:'],
+    'media-src': [CSP.SELF],
+    'frame-src': [CSP.SELF],
+    'connect-src': [CSP.SELF],
+    'object-src': [CSP.NONE],
+    'base-uri': [CSP.NONE],
+    'form-action': [CSP.SELF],
+    'frame-ancestors': [CSP.SELF],
+}
+
+# Connexions refusées, blocages et erreurs de sécurité journalisés dans la console.
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {'console': {'class': 'logging.StreamHandler'}},
+    'loggers': {
+        'django.security': {'handlers': ['console'], 'level': 'WARNING'},
+        'axes': {'handlers': ['console'], 'level': 'WARNING'},
+    },
+}

@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}Wiki{% endblock %} · ProjetPluri</title>
   <link rel="stylesheet" href="{% static 'wiki/wiki.css' %}">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11/styles/github.min.css" media="(prefers-color-scheme: light)">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11/styles/github-dark.min.css" media="(prefers-color-scheme: dark)">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.12.0/styles/github.min.css" integrity="sha384-eFTL69TLRZTkNfYZOLM+G04821K1qZao/4QLJbet1pP4tcF+fdXq/9CdqAbWRl/L" crossorigin="anonymous" media="(prefers-color-scheme: light)">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.12.0/styles/github-dark.min.css" integrity="sha384-wH75j6z1lH97ZOpMOInqhgKzFkAInZPPSPlZpYKYTOqsaizPvhQZmAtLcPKXpLyH" crossorigin="anonymous" media="(prefers-color-scheme: dark)">
   <script src="{% static 'wiki/wiki.js' %}" defer></script>
 </head>
 <body>
@@ -18,6 +18,7 @@
   <div class="layout">
     <nav class="sidebar">
       <a class="brand" href="{% url 'wiki:home' %}">ProjetPluri</a>
+      {% if user.is_authenticated %}
       <form class="search" action="{% url 'wiki:search' %}" method="get" role="search">
         <input type="search" name="q" value="{{ query|default:'' }}" placeholder="Rechercher…" aria-label="Rechercher">
       </form>
@@ -26,14 +27,43 @@
         <li><a href="{% url 'wiki:sommaire' %}">Sommaire</a></li>
         <li><a href="{% url 'wiki:tags' %}">Tags</a></li>
         <li><a href="{% url 'wiki:quiz_index' %}">QCM</a></li>
+        <li><a href="{% url 'wiki:documentation' %}">Documentation</a></li>
         {% if can_edit %}<li><a href="{% url 'wiki:new' %}">+ Nouvelle page</a></li>{% endif %}
       </ul>
+      {% endif %}
+      <div class="account">
+        {% if user.is_authenticated %}
+        <a class="account-name" href="{% url 'accounts:profile' %}">{{ user.get_username }}</a>
+        <span class="role-badge{% if is_admin %} admin{% endif %}">{{ user_role }}</span>
+        <ul class="nav-links">
+          {% if is_admin %}
+          <li><a href="{% url 'accounts:users' %}">Utilisateurs</a></li>
+          <li><a href="{% url 'admin:index' %}">Administration</a></li>
+          {% endif %}
+          <li>
+            <form action="{% url 'accounts:logout' %}" method="post">{% csrf_token %}
+              <button type="submit" class="link-button">Se déconnecter</button>
+            </form>
+          </li>
+        </ul>
+        {% else %}
+        <ul class="nav-links">
+          <li><a href="{% url 'accounts:login' %}">Se connecter</a></li>
+          {% if registration_open %}<li><a href="{% url 'accounts:register' %}">Créer un compte</a></li>{% endif %}
+        </ul>
+        {% endif %}
+      </div>
+      {% if user.is_authenticated %}
       <div class="tree">
         {% include "wiki/tree.html" with node=tree %}
       </div>
       <p class="vault-count">{{ vault.notes|length }} note{{ vault.notes|length|pluralize }}</p>
+      {% endif %}
     </nav>
     <main class="content">
+      {% for message in messages %}
+      <div class="callout" data-callout="{% if message.level_tag == 'error' %}danger{% else %}{{ message.level_tag }}{% endif %}"><div class="callout-title">{{ message }}</div></div>
+      {% endfor %}
       {% block content %}{% endblock %}
     </main>
     <aside class="aside">

@@ -1,18 +1,31 @@
+import re
 from pathlib import PurePosixPath
 
 from django.conf import settings
 from django.contrib.auth.views import redirect_to_login
+from django.core.exceptions import PermissionDenied
 from django.http import FileResponse, Http404, HttpResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse
+from django.views.decorators.clickjacking import xframe_options_sameorigin
 from django.views.decorators.http import require_POST
 
-from .render import Renderer
-from .vault import Note, clean_key, get_vault, split_frontmatter
+from accounts.roles import is_admin
+
+from .render import Renderer, render_note
+from .vault import CODE_RE, Note, clean_key, get_vault, split_frontmatter
 
 
 def can_edit(request):
-    return request.user.is_authenticated or not settings.WIKI_EDIT_LOGIN_REQUIRED
+    """Seuls les admins modifient le wiki."""
+    return is_admin(request.user)
+
+
+def _deny(request):
+    """Anonyme → page de connexion ; utilisateur simple → 403."""
+    if request.user.is_authenticated:
+        raise PermissionDenied
+    return redirect_to_login(request.get_full_path())
 
 
 def _render(request, vault, template, context, status=200):
@@ -60,7 +73,7 @@ def page(request, path):
 def edit(request, path):
     """Création ou modification d'une note depuis le navigateur."""
     if not can_edit(request):
-        return redirect_to_login(request.get_full_path())
+        return _deny(request)
     vault = get_vault()
     key = clean_key(path)
     if key is None:
@@ -117,7 +130,7 @@ def preview(request, path):
 def new(request):
     """Formulaire « Nouvelle page » : choisit un nom et un dossier."""
     if not can_edit(request):
-        return redirect_to_login(request.get_full_path())
+        return _deny(request)
     vault = get_vault()
     name = request.GET.get("name", "").strip()
     folder = request.GET.get("folder", "").strip()
@@ -138,12 +151,35 @@ def new(request):
     })
 
 
+# Pièces jointes affichées dans la page ; tout le reste (HTML, SVG, JS...) est
+# téléchargé, pour qu'un fichier déposé dans le coffre ne puisse pas exécuter
+# de script au nom du site.
+INLINE_TYPES = {
+    ".png", ".jpg", ".jpeg", ".gif", ".webp", ".bmp", ".avif", ".pdf",
+    ".mp3", ".wav", ".ogg", ".m4a", ".flac", ".webm", ".3gp", ".mp4", ".ogv", ".mov", ".mkv",
+}
+
+
+@xframe_options_sameorigin  # PDF intégrés dans les notes (iframe du même site)
 def file(request, path):
     vault = get_vault()
     attachment = vault.attachments.get(path.lower())
     if attachment is None:
         raise Http404("Fichier introuvable")
-    return FileResponse(open(vault.root / attachment.path, "rb"))
+    full = (vault.root / attachment.path).resolve()
+    # Lien symbolique pointant hors du coffre : refusé.
+    if not full.is_relative_to(vault.root.resolve()):
+        raise Http404("Fichier introuvable")
+    inline = attachment.suffix in INLINE_TYPES
+    response = FileResponse(open(full, "rb"), as_attachment=not inline, filename=attachment.name)
+    if attachment.suffix == ".pdf":
+        # Le lecteur PDF des navigateurs ne s'affiche pas sous « sandbox » ; il
+        # tourne de toute façon isolé du site.
+        response._csp_config = {}
+    else:
+        # Même ouvert directement, le fichier ne peut rien exécuter.
+        response.headers["Content-Security-Policy"] = "default-src 'none'; img-src 'self'; media-src 'self'; sandbox"
+    return response
 
 
 def sommaire(request):
@@ -175,3 +211,57 @@ def search(request):
     if len(results) == 1 and results[0][0].title.lower() == query.lower():
         return redirect(results[0][0].url)
     return _render(request, vault, "wiki/search.html", {"query": query, "results": results})
+
+
+# Documentation du projet : les README à la racine du dépôt (hors du coffre),
+# affichés avec le moteur du wiki. Clé d'URL → (fichier, titre de l'onglet).
+DOCS = {
+    "": ("README.md", "Le wiki"),
+    "ia": ("README-IA.md", "Guide IA (pages et QCM)"),
+}
+# Lien Markdown, ou bloc/segment de code (laissé tel quel) : un lien dont le
+# libellé est du code (« [`vault/`](vault/) ») commence avant lui et l'emporte.
+LIEN_MD_RE = re.compile(r"(?<!!)\[(?P<label>[^\]\n]*)\]\((?P<cible>[^)\s]+)\)|" + CODE_RE.pattern, CODE_RE.flags)
+
+
+def _adapter_liens(text):
+    """Les liens relatifs des README visent des fichiers du dépôt : on les
+    redirige vers le wiki quand c'est possible, sinon on garde le texte seul."""
+    docs = {fichier: cle for cle, (fichier, _) in DOCS.items()}
+
+    def lien(m):
+        if m.group("label") is None:
+            return m.group(0)
+        label, cible = m.group("label"), m.group("cible")
+        if cible.startswith(("http://", "https://", "mailto:", "/", "#")):
+            return m.group(0)
+        if cible in docs:
+            return f"[{label}](/documentation/{docs[cible] + '/' if docs[cible] else ''})"
+        if cible.startswith("vault/"):
+            reste = cible.removeprefix("vault/")
+            if reste.endswith(".md"):
+                return f"[{label}](/wiki/{reste.removesuffix('.md')})"
+            if not reste:
+                return f"[{label}](/sommaire/)"
+        return label
+
+    return LIEN_MD_RE.sub(lien, text)
+
+
+def documentation(request, doc=""):
+    if doc not in DOCS:
+        raise Http404("Documentation inconnue")
+    fichier, _ = DOCS[doc]
+    chemin = settings.BASE_DIR / fichier
+    if not chemin.is_file():
+        raise Http404("Documentation introuvable")
+    vault = get_vault()
+    meta, body = split_frontmatter(chemin.read_text(encoding="utf-8").lstrip("\ufeff"))
+    note = Note(PurePosixPath(fichier), chemin.stat().st_mtime, meta, _adapter_liens(body))
+    content, toc = render_note(vault, note)
+    return _render(request, vault, "wiki/documentation.html", {
+        "note": note,
+        "content": content,
+        "toc": toc,
+        "onglets": [(cle, titre, cle == doc) for cle, (_, titre) in DOCS.items()],
+    })

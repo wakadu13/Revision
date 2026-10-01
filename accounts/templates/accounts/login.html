@@ -1,0 +1,22 @@
+{% extends "wiki/base.html" %}
+{% block title %}Connexion{% endblock %}
+{% block content %}
+<article class="note">
+  <h1 class="note-title">Connexion</h1>
+  {% if form.non_field_errors %}
+  <div class="callout" data-callout="danger"><div class="callout-title">{{ form.non_field_errors|join:" " }}</div></div>
+  {% endif %}
+  <form method="post" class="form">{% csrf_token %}
+    <input type="hidden" name="next" value="{{ next }}">
+    {% include "accounts/_field.html" with field=form.username %}
+    {% include "accounts/_field.html" with field=form.password %}
+    <label class="checkbox">{{ form.remember }} {{ form.remember.label }}</label>
+    <div class="editor-actions">
+      <button type="submit" class="button primary">Se connecter</button>
+    </div>
+  </form>
+  {% if registration_open %}
+  <p class="muted">Pas encore de compte ? <a href="{% url 'accounts:register' %}">Créer un compte</a></p>
+  {% endif %}
+</article>
+{% endblock %}

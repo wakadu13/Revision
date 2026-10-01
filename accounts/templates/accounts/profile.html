@@ -1,0 +1,18 @@
+{% extends "wiki/base.html" %}
+{% block title %}Mon compte{% endblock %}
+{% block content %}
+<article class="note">
+  <h1 class="note-title">Mon compte</h1>
+  <ul>
+    <li>Nom d'utilisateur : <strong>{{ user.get_username }}</strong></li>
+    {% if user.email %}<li>E-mail : {{ user.email }}</li>{% endif %}
+    <li>Rôle : <span class="role-badge{% if is_admin %} admin{% endif %}">{{ user_role }}</span></li>
+    <li>Inscrit le {{ user.date_joined|date:"j F Y" }}</li>
+    {% if user.last_login %}<li>Dernière connexion : {{ user.last_login|date:"j F Y à H:i" }}</li>{% endif %}
+  </ul>
+  <div class="quiz-actions">
+    <a class="button" href="{% url 'accounts:password_change' %}">Changer le mot de passe</a>
+    <a class="button" href="{% url 'wiki:quiz_stats' %}">Mes statistiques QCM</a>
+  </div>
+</article>
+{% endblock %}

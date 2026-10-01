@@ -17,6 +17,7 @@ import threading
 import unicodedata
 from dataclasses import dataclass, field
 from datetime import timedelta
+from functools import cached_property
 from pathlib import Path, PurePosixPath
 
 from django.conf import settings
@@ -25,7 +26,8 @@ from django.conf import settings
 # Intervalle (en jours) avant qu'une question d'une boîte donnée soit « à réviser ».
 INTERVALLES_JOURS = {0: 0, 1: 1, 2: 3, 3: 7, 4: 14, 5: 30}
 BOITE_MAX = 5
-TYPES_VALIDES = {"QCM", "QCR", "TROU", "FLASHCARD"}
+TYPES_VALIDES = {"QCM", "QCR", "TROU", "QRC", "FLASHCARD"}
+TYPES_TEXTE = {"TROU", "QRC"}  # réponse tapée au clavier, comparée à reponses_texte
 CATEGORIE_DEFAUT = "Général"
 
 
@@ -34,6 +36,13 @@ def normaliser_texte(s: str) -> str:
     s = unicodedata.normalize("NFKD", str(s).strip().casefold())
     s = "".join(c for c in s if not unicodedata.combining(c))
     return " ".join(s.split())
+
+
+def normaliser_reponse(s: str) -> str:
+    """Comme normaliser_texte, en ignorant aussi les apostrophes typographiques et
+    la ponctuation finale (. ! ? ; :) — utile pour les réponses tapées (TROU, QRC)."""
+    s = normaliser_texte(str(s).replace("\u2019", "'").replace("\u2018", "'"))
+    return s.rstrip(".!?;: ")
 
 
 def intervalle_ecoule(boite: int, last_review, now) -> bool:
@@ -59,7 +68,8 @@ class Question:
     enonce: str
     choix: list[str] = field(default_factory=list)
     reponses: list[int] = field(default_factory=list)        # indices 0-based, QCM/QCR
-    reponses_texte: list[str] = field(default_factory=list)  # réponses acceptées, TROU
+    reponses_texte: list[str] = field(default_factory=list)  # réponses acceptées, TROU/QRC
+    consigne: str = ""                                       # ex. « Traduire en anglais », QRC
     verso: str = ""                                          # dos de carte, FLASHCARD
     explication: str = ""
 
@@ -72,6 +82,10 @@ class Question:
         return self.type == "TROU"
 
     @property
+    def est_qrc(self) -> bool:
+        return self.type == "QRC"
+
+    @property
     def est_flashcard(self) -> bool:
         return self.type == "FLASHCARD"
 
@@ -79,8 +93,8 @@ class Question:
         return set(selection) == set(self.reponses)
 
     def est_correcte_texte(self, reponse: str) -> bool:
-        cible = normaliser_texte(reponse)
-        return any(cible == normaliser_texte(r) for r in self.reponses_texte)
+        cible = normaliser_reponse(reponse)
+        return any(cible == normaliser_reponse(r) for r in self.reponses_texte)
 
 
 @dataclass
@@ -94,6 +108,17 @@ class QuestionSet:
 
     def __len__(self) -> int:
         return len(self.questions)
+
+    @cached_property
+    def texte_recherche(self) -> str:
+        """Titre, description, catégorie et énoncés, normalisés pour la recherche."""
+        parts = [self.titre, self.description, self.categorie]
+        parts += [q.enonce for q in self.questions]
+        return normaliser_texte(" ".join(parts))
+
+    def correspond(self, requete: str) -> bool:
+        """Vrai si tous les mots de la requête figurent dans le set (accents ignorés)."""
+        return all(mot in self.texte_recherche for mot in normaliser_texte(requete).split())
 
 
 # ---------------------------------------------------------------------------
@@ -119,9 +144,9 @@ def charger_set(chemin, racine) -> QuestionSet:
             raise ValueError(f"{contexte} : clé 'question' manquante.")
         type_q = str(q.get("type", "QCM")).upper()
         if type_q not in TYPES_VALIDES:
-            raise ValueError(f"{contexte} : type '{type_q}' inconnu (QCM, QCR, TROU, FLASHCARD).")
+            raise ValueError(f"{contexte} : type '{type_q}' inconnu (QCM, QCR, TROU, QRC, FLASHCARD).")
 
-        choix, reponses, reponses_texte, verso = [], [], [], ""
+        choix, reponses, reponses_texte, verso, consigne = [], [], [], "", ""
         if type_q in ("QCM", "QCR"):
             for clef in ("choix", "reponses"):
                 if clef not in q:
@@ -137,25 +162,39 @@ def charger_set(chemin, racine) -> QuestionSet:
                     raise ValueError(f"{contexte} : indice de réponse {r} hors limites.")
             if type_q == "QCM" and len(reponses) != 1:
                 raise ValueError(f"{contexte} : un QCM doit avoir exactement 1 réponse.")
-        elif type_q == "TROU":
-            reponses_texte = [str(r) for r in q.get("reponses_texte", [])]
-            if not any(r.strip() for r in reponses_texte):
+        elif type_q in TYPES_TEXTE:
+            reponses_texte = [str(r) for r in q.get("reponses_texte", []) if str(r).strip()]
+            if not reponses_texte:
                 raise ValueError(f"{contexte} : 'reponses_texte' doit contenir une réponse.")
+            consigne = str(q.get("consigne", "")) if type_q == "QRC" else ""
         elif type_q == "FLASHCARD":
             verso = str(q.get("verso", ""))
             if not verso.strip():
                 raise ValueError(f"{contexte} : clé 'verso' manquante (dos de la carte).")
 
-        questions.append(Question(
+        question = Question(
             id=str(q.get("id", f"q{i}")),
             type=type_q,
             enonce=str(q["question"]),
             choix=choix,
             reponses=reponses,
             reponses_texte=reponses_texte,
+            consigne=consigne,
             verso=verso,
             explication=str(q.get("explication", "")),
-        ))
+        )
+        questions.append(question)
+        # QRC « inverse » : on pose aussi la question dans l'autre sens
+        # (ex. chien → dog, puis dog → chien), suivie séparément dans Leitner.
+        if type_q == "QRC" and q.get("inverse"):
+            questions.append(Question(
+                id=f"{question.id}~inverse",
+                type="QRC",
+                enonce=reponses_texte[0],
+                reponses_texte=[question.enonce],
+                consigne=str(q.get("consigne_inverse", "")),
+                explication=question.explication,
+            ))
     if not questions:
         raise ValueError(f"{rel} : aucune question.")
 

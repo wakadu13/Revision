@@ -1,0 +1,48 @@
+{# Planning d'un set : limite journalière, date d'examen et estimation de la durée. #}
+<details class="quiz-plan">
+  <summary>Planning{% if deck.limite_jour %} · {{ deck.limite_jour }}/jour{% endif %}{% if deck.date_objectif %} · examen le {{ deck.date_objectif|date:"j F" }}{% endif %}
+    {% if e.statut == "ok" %}<span class="quiz-plan-badge{% if e.commencer_maintenant %} urgent{% endif %}">{% if e.commencer_maintenant %}à commencer maintenant{% else %}commencer le {{ e.debut|date:"j F" }} au plus tard{% endif %}</span>
+    {% elif e.statut == "retard" or e.statut == "impossible" %}<span class="quiz-plan-badge urgent">en retard</span>{% endif %}
+  </summary>
+  <form class="quiz-plan-form" method="post" action="{% url 'wiki:quiz_plan' %}">
+    {% csrf_token %}
+    <input type="hidden" name="set" value="{{ set.id }}">
+    <label>Limite par jour
+      <input type="number" name="limite_jour" min="1" max="9999" value="{{ deck.limite_jour|default_if_none:'' }}" placeholder="aucune">
+    </label>
+    <label>Date d'examen
+      <input type="date" name="date_objectif" value="{{ deck.date_objectif|date:'Y-m-d' }}">
+    </label>
+    <button class="button small primary" type="submit">Enregistrer</button>
+  </form>
+
+  {% if not e %}
+  <p class="muted">Renseignez une limite ou une date d'examen pour estimer la durée des révisions et savoir quand commencer.</p>
+  {% elif e.su %}
+  <p>Au moins {{ e.part_objectif }} % des questions sont déjà sues ✓ (boîte {{ e.boite_objectif }} ou plus). Il ne reste qu'à suivre les révisions du jour.</p>
+  {% else %}
+  <p>
+    {% if e.jours %}Au rythme de {% if e.sans_limite %}toutes les questions dues chaque jour{% else %}{{ e.limite }} questions par jour{% endif %} :
+    environ <b>{{ e.jours }} jour{{ e.jours|pluralize }}</b> pour savoir {{ e.part_objectif }} % des questions (vers le {{ e.fin|date:"j F" }}),
+    soit ~{{ e.minutes_jour }} min par jour.
+    {% else %}À {{ e.limite }} questions par jour, il faudrait plus d'un an : augmentez la limite.{% endif %}
+  </p>
+  {% if e.statut == "ok" %}
+    <p>Pour être prêt le {{ e.objectif|date:"j F" }} :
+    {% if e.commencer_maintenant %}<b>commencez dès aujourd'hui</b>{% if e.marge %} ({{ e.marge }} jour{{ e.marge|pluralize }} de marge){% endif %}.
+    {% else %}commencez <b>au plus tard le {{ e.debut|date:"l j F" }}</b> ({{ e.marge }} jours de marge si vous commencez aujourd'hui).{% endif %}</p>
+  {% elif e.statut == "retard" %}
+    <p class="quiz-plan-alert">Il ne reste que {{ e.jours_dispo }} jour{{ e.jours_dispo|pluralize }} avant le {{ e.objectif|date:"j F" }} :
+    passez à <b>{{ e.limite_conseillee }} questions par jour</b> (~{{ e.minutes_conseillees }} min par jour) pour être prêt à temps.</p>
+  {% elif e.statut == "impossible" %}
+    <p class="quiz-plan-alert">Il ne reste que {{ e.jours_dispo }} jour{{ e.jours_dispo|pluralize }} avant le {{ e.objectif|date:"j F" }} :
+    même sans limite, la révision espacée demande {% if e.jours_min %}au moins {{ e.jours_min }} jours{% else %}plus d'un an{% endif %}.
+    Le mode « Intensif » permet de rattraper une partie du retard.</p>
+  {% elif e.statut == "passee" %}
+    <p class="muted">La date d'examen est passée.</p>
+  {% endif %}
+  <p class="muted quiz-plan-note">Hypothèses : {{ e.precision }} % de bonnes réponses{% if not e.precision_mesuree %} (valeur par défaut){% endif %},
+    {{ e.secondes }} s par question{% if not e.secondes_mesurees %} (valeur par défaut, mesurée au fil des réponses){% endif %} ;
+    une question est « sue » quand elle atteint la boîte {{ e.boite_objectif }} (réussie 3 fois, à 1, 3 puis 7 jours d'intervalle).</p>
+  {% endif %}
+</details>

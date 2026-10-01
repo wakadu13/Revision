@@ -61,6 +61,9 @@ cover/
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
+db.sqlite3-wal
+db.sqlite3-shm
+db.sqlite3.bak*
 
 # Flask stuff:
 instance/
@@ -184,3 +187,9 @@ vault/.obsidian/workspace*.json
 vault/.obsidian/cache
 vault/.trash/
 
+
+# Secrets locaux (clé Django générée, configuration de synchronisation Obsidian)
+.secret_key
+.env
+vault/.obsidian/plugins/*/data.json
+staticfiles/

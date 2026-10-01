@@ -1,4 +1,5 @@
 {% extends "wiki/base.html" %}
+{% load static %}
 {% block title %}QCM{% endblock %}
 {% block content %}
 <article class="note">
@@ -10,6 +11,24 @@
     <a class="button" href="{% url 'wiki:quiz_stats' %}">Statistiques</a>
   </div>
 
+  {% if can_edit %}
+  <form class="quiz-import" method="post" action="{% url 'wiki:quiz_import' %}" enctype="multipart/form-data" data-quiz-import>
+    {% csrf_token %}
+    <label class="quiz-dropzone" data-dropzone>
+      <input type="file" name="fichiers" accept=".json,application/json" multiple hidden data-import-files>
+      <b>Glissez-déposez vos fichiers .json ici</b>
+      <span class="muted">ou cliquez pour les choisir · ils sont vérifiés avant d'être ajoutés</span>
+    </label>
+    <div class="quiz-import-options">
+      <label>Catégorie
+        <input type="text" name="categorie" list="quiz-categories" placeholder="Importés" autocomplete="off">
+      </label>
+      <datalist id="quiz-categories">{% for c in categories_import %}<option value="{{ c }}">{% endfor %}</datalist>
+      <label class="quiz-import-check"><input type="checkbox" name="remplacer" value="1"> Remplacer les sets existants</label>
+    </div>
+  </form>
+  {% endif %}
+
   {% if errors %}
   <div class="callout" data-callout="warning">
     <div class="callout-title">Sets ignorés (JSON invalide)</div>
@@ -17,12 +36,27 @@
   </div>
   {% endif %}
 
+  {% if total_sets %}
+  <form class="quiz-search" method="get" role="search">
+    <input type="search" name="q" value="{{ q }}" placeholder="Rechercher un QCM (titre, catégorie, question)…" aria-label="Rechercher un QCM" autocomplete="off" data-quiz-search>
+    <button type="button" class="button small" data-fold="open">Tout déplier</button>
+    <button type="button" class="button small" data-fold="close">Tout replier</button>
+  </form>
+  <p class="muted quiz-search-empty" data-quiz-empty{% if not q or matches %} hidden{% endif %}>Aucun QCM ne correspond à cette recherche.</p>
+  {% endif %}
+
   {% for cat in categories %}
-  <section class="quiz-category">
-    <h2>{{ cat.nom }}</h2>
+  <details class="quiz-category"{% if q %} open{% endif %}{% if not cat.shown %} hidden{% endif %}>
+    <summary>
+      <span class="quiz-category-name">{{ cat.nom }}</span>
+      <span class="muted quiz-category-meta"><span data-quiz-count>{{ cat.shown }} set{{ cat.shown|pluralize }}</span>{% if cat.a_reviser %} · <b>{{ cat.a_reviser }}</b> à réviser{% endif %}</span>
+    </summary>
+    <p class="quiz-category-actions">
+      <a class="button small" href="{% url 'wiki:quiz_play' %}?categorie={{ cat.nom|urlencode }}&mode=intensif" title="Répéter les questions ratées jusqu'à tout savoir">Révision intensive de la catégorie</a>
+    </p>
     <ul class="quiz-sets">
       {% for entry in cat.sets %}
-      <li class="quiz-set">
+      <li id="{{ entry.ancre }}" class="quiz-set" data-search="{{ entry.set.texte_recherche }}"{% if not entry.match %} hidden{% endif %}>
         <div class="quiz-set-head">
           <span class="quiz-set-title">{{ entry.set.titre }}</span>
           <span class="muted">{{ entry.summary.total }} question{{ entry.summary.total|pluralize }}</span>
@@ -33,16 +67,20 @@
         </div>
         <div class="quiz-set-foot">
           <span class="muted">Maîtrise {{ entry.summary.pct_maitrise|floatformat:0 }} %
-            {% if entry.summary.a_reviser %}· <b>{{ entry.summary.a_reviser }}</b> à réviser{% else %}· à jour ✓{% endif %}</span>
+            {% if entry.summary.a_reviser %}· <b>{{ entry.summary.a_reviser }}</b> à réviser{% if entry.summary.dues > entry.summary.a_reviser %} aujourd'hui (sur {{ entry.summary.dues }} dues){% endif %}
+            {% elif entry.summary.quota_atteint %}· quota du jour atteint ✓ ({{ entry.summary.dues }} dues)
+            {% else %}· à jour ✓{% endif %}</span>
           <span class="quiz-set-buttons">
-            {% if entry.summary.a_reviser %}<a class="button small primary" href="{% url 'wiki:quiz_play' %}?set={{ entry.set.id|urlencode }}&mode=review">Réviser</a>{% endif %}
+            {% if entry.summary.a_reviser %}<a class="button small primary" href="{% url 'wiki:quiz_play' %}?set={{ entry.set.id|urlencode }}&mode=review">Réviser ({{ entry.summary.a_reviser }})</a>{% endif %}
             <a class="button small" href="{% url 'wiki:quiz_play' %}?set={{ entry.set.id|urlencode }}&mode=all">Tout ({{ entry.summary.total }})</a>
+            <a class="button small" href="{% url 'wiki:quiz_play' %}?set={{ entry.set.id|urlencode }}&mode=intensif" title="Répéter les questions ratées jusqu'à tout savoir">Intensif</a>
           </span>
         </div>
+        {% include "wiki/_quiz_plan.html" with deck=entry.deck e=entry.estimation set=entry.set %}
       </li>
       {% endfor %}
     </ul>
-  </section>
+  </details>
   {% empty %}
   <div class="callout" data-callout="info">
     <div class="callout-title">Aucun set de QCM pour l'instant</div>
@@ -56,9 +94,12 @@
   ]
 }</code></pre>
       <p>Types disponibles : <code>QCM</code>, <code>QCR</code> (plusieurs bonnes réponses),
-      <code>TROU</code> (texte à trous) et <code>FLASHCARD</code> (recto/verso).</p>
+      <code>TROU</code> (texte à trous), <code>QRC</code> (réponse courte : traduction, synonyme)
+      et <code>FLASHCARD</code> (recto/verso).</p>
     </div>
   </div>
   {% endfor %}
 </article>
+<script src="{% static 'wiki/quiz_index.js' %}" defer></script>
+{% if can_edit %}<script src="{% static 'wiki/quiz_import.js' %}" defer></script>{% endif %}
 {% endblock %}

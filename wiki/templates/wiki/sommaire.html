@@ -19,14 +19,6 @@
     {% include "wiki/sommaire_tree.html" with node=root %}
   </div>
 </article>
-<script>
-  document.querySelectorAll("[data-fold]").forEach(function (button) {
-    button.addEventListener("click", function () {
-      var open = button.dataset.fold === "open";
-      document.querySelectorAll(".sommaire details").forEach(function (d) { d.open = open; });
-    });
-  });
-</script>
 {% endblock %}
 {% block aside %}
 {% if recent %}

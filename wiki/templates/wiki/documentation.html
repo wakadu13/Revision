@@ -1,0 +1,23 @@
+{% extends "wiki/base.html" %}
+{% block title %}Documentation{% endblock %}
+{% block content %}
+<article class="note">
+  <nav class="doc-tabs">
+    {% for cle, titre, actif in onglets %}
+    <a class="button small{% if actif %} primary{% endif %}" href="{% if cle %}{% url 'wiki:documentation_doc' cle %}{% else %}{% url 'wiki:documentation' %}{% endif %}"{% if actif %} aria-current="page"{% endif %}>{{ titre }}</a>
+    {% endfor %}
+  </nav>
+  <div class="markdown">
+    {{ content|safe }}
+  </div>
+  <footer class="note-footer">Modifié le {{ note.modified|date:"d/m/Y à H:i" }} · <code>{{ note.path }}</code> (racine du projet)</footer>
+</article>
+{% endblock %}
+{% block aside %}
+  {% if toc %}
+  <section class="panel">
+    <h2>Sommaire</h2>
+    {{ toc|safe }}
+  </section>
+  {% endif %}
+{% endblock %}

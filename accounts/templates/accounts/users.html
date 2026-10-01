@@ -1,0 +1,46 @@
+{% extends "wiki/base.html" %}
+{% block title %}Utilisateurs{% endblock %}
+{% block content %}
+<article class="note">
+  <h1 class="note-title">Utilisateurs</h1>
+  <p class="muted">{{ users|length }} compte{{ users|length|pluralize }}. Les admins modifient le wiki et gèrent les comptes ; les utilisateurs lisent le wiki et font les QCM.</p>
+  <table class="users-table">
+    <thead><tr><th>Nom</th><th>Rôle</th><th>État</th><th>Dernière connexion</th><th></th></tr></thead>
+    <tbody>
+    {% for u in users %}
+      <tr>
+        <td>{{ u.get_username }}{% if u.is_superuser %} <span class="muted">(super)</span>{% endif %}</td>
+        <td><span class="role-badge{% if u.is_staff %} admin{% endif %}">{% if u.is_staff %}admin{% else %}utilisateur{% endif %}</span></td>
+        <td>{% if u.is_active %}actif{% else %}<span class="muted">désactivé</span>{% endif %}</td>
+        <td class="muted">{{ u.last_login|date:"d/m/Y H:i"|default:"jamais" }}</td>
+        <td>
+          {% if u != user %}{% if user.is_superuser or not u.is_superuser %}
+          <form method="post" action="{% url 'accounts:user_action' u.pk %}">{% csrf_token %}
+            {% if u.is_staff %}
+            <button class="button small" name="action" value="demote">Rétrograder</button>
+            {% else %}
+            <button class="button small" name="action" value="promote">Promouvoir admin</button>
+            {% endif %}
+            {% if u.is_active %}
+            <button class="button small" name="action" value="deactivate">Désactiver</button>
+            {% else %}
+            <button class="button small" name="action" value="activate">Réactiver</button>
+            {% endif %}
+          </form>
+          {% endif %}{% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+  <h2>Créer un compte</h2>
+  <form method="post" class="form">{% csrf_token %}
+    {{ form.non_field_errors }}
+    {% for field in form %}{% include "accounts/_field.html" %}{% endfor %}
+    <div class="editor-actions">
+      <button type="submit" class="button primary">Créer le compte</button>
+    </div>
+  </form>
+</article>
+{% endblock %}

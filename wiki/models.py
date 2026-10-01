@@ -2,7 +2,7 @@
 
 Remplace le fichier progression.json de l'application d'origine par la base de
 données Django. Une ligne = une question suivie, pour un « joueur » (le nom
-d'utilisateur connecté, ou une chaîne vide si les modifications sont ouvertes).
+d'utilisateur connecté ; les QCM demandent d'être connecté).
 """
 
 from datetime import datetime, timezone as dt_timezone
@@ -49,3 +49,38 @@ class QuizProgress(models.Model):
     def map_for(cls, player: str, set_id: str) -> dict:
         """{question_id: QuizProgress} pour un set et un joueur donnés."""
         return {p.question_id: p for p in cls.objects.filter(player=player, set_id=set_id)}
+
+
+class QuizDeck(models.Model):
+    """Réglages d'un set pour un joueur (quota journalier, date d'examen) et temps
+    de réponse mesuré, qui sert à estimer la durée des révisions."""
+
+    player = models.CharField(max_length=150, blank=True, default="")
+    set_id = models.CharField(max_length=500)
+    limite_jour = models.PositiveIntegerField(null=True, blank=True)   # questions max par jour
+    date_objectif = models.DateField(null=True, blank=True)            # date d'examen
+    temps_ms = models.PositiveBigIntegerField(default=0)               # cumul des temps de réponse
+    reponses_chronometrees = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        unique_together = ("player", "set_id")
+
+    @property
+    def configure(self) -> bool:
+        return bool(self.limite_jour or self.date_objectif)
+
+    def secondes_par_carte(self, defaut, minimum):
+        """(secondes moyennes par réponse, mesurée ?) ; `defaut` s'il y a moins de `minimum` mesures."""
+        if self.reponses_chronometrees < minimum:
+            return defaut, False
+        return self.temps_ms / self.reponses_chronometrees / 1000, True
+
+    @classmethod
+    def map_for(cls, player: str) -> dict:
+        """{set_id: QuizDeck} pour un joueur."""
+        return {d.set_id: d for d in cls.objects.filter(player=player)}
+
+    @classmethod
+    def pour(cls, decks: dict, player: str, set_id: str):
+        """Réglages du set, ou réglages vides (non enregistrés) s'il n'en a pas."""
+        return decks.get(set_id) or cls(player=player, set_id=set_id)

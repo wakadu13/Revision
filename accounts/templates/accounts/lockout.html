@@ -1,0 +1,11 @@
+{% extends "wiki/base.html" %}
+{% block title %}Compte bloqué{% endblock %}
+{% block content %}
+<article class="note">
+  <h1 class="note-title">Trop de tentatives</h1>
+  <div class="callout" data-callout="danger">
+    <div class="callout-title">Connexion temporairement bloquée</div>
+    <div class="callout-content"><p>Trop d'essais de mot de passe incorrects. Réessayez dans 30 minutes, ou demandez à un admin de débloquer le compte.</p></div>
+  </div>
+</article>
+{% endblock %}

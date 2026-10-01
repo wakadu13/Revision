@@ -5,12 +5,17 @@
 <article class="note quiz" id="quiz"
          data-record-url="{{ record_url }}"
          data-back-url="{{ back_url }}"
+         data-mode="{% if intensif %}intensif{% else %}normal{% endif %}"
          data-csrf="{{ csrf_token }}">
   <div class="quiz-topbar">
     <a class="button small" href="{{ back_url }}">← Sets</a>
     <span class="quiz-progress-text" id="quiz-progress"></span>
   </div>
   <div class="quiz-bar"><div class="quiz-bar-fill" id="quiz-bar-fill"></div></div>
+  {% if intensif and count %}
+  <p class="muted quiz-intensif-info">Révision intensive : chaque question ratée revient plus loin dans la session,
+    jusqu'à être réussie <b>2 fois de suite</b>. Seule la première réponse compte pour la révision espacée.</p>
+  {% endif %}
 
   {% if count %}
   <div id="quiz-stage" class="quiz-stage"></div>

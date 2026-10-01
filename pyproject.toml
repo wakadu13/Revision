@@ -5,7 +5,10 @@ description = "Add your description here"
 requires-python = ">=3.14"
 dependencies = [
     "django>=6.1.1",
+    "django-axes>=8.3.1",
     "markdown>=3.11",
+    "nh3>=0.3.7",
     "pymdown-extensions>=12.1",
     "pyyaml>=6.0.3",
+    "whitenoise>=6.12.0",
 ]

@@ -18,6 +18,7 @@ import re
 from urllib.parse import unquote
 
 import markdown
+import nh3
 from django.urls import reverse
 from markdown.extensions.toc import slugify_unicode
 
@@ -54,6 +55,55 @@ MARKDOWN_CONFIG = {
     "toc": {"slugify": slugify_unicode},
     "pymdownx.tilde": {"subscript": False},
 }
+
+
+# Nettoyage du HTML final (anti-XSS) : le Markdown laisse passer le HTML brut, donc
+# une note ou un QCM pourrait contenir <script>, onerror=..., javascript:...
+# Seuls les balises et attributs produits par le wiki sont conservés.
+ALLOWED_TAGS = {
+    "a", "abbr", "audio", "b", "blockquote", "br", "caption", "code", "col", "colgroup", "dd", "del",
+    "details", "div", "dl", "dt", "em", "figcaption", "figure", "h1", "h2", "h3", "h4", "h5", "h6", "hr",
+    "i", "iframe", "img", "input", "ins", "kbd", "label", "li", "mark", "ol", "p", "pre", "s", "small",
+    "source", "span", "strong", "sub", "summary", "sup", "table", "tbody", "td", "tfoot", "th", "thead",
+    "tr", "u", "ul", "video",
+}
+ALLOWED_ATTRIBUTES = {
+    "*": {"class", "id", "title"},
+    "a": {"href"},
+    "img": {"src", "alt", "width", "height", "loading"},
+    "audio": {"src", "controls"},
+    "video": {"src", "controls", "width", "height"},
+    "source": {"src", "type"},
+    "iframe": {"src"},
+    "input": {"type", "checked", "disabled"},
+    "details": {"open", "data-callout"},
+    "div": {"data-callout"},
+    "ol": {"start"},
+    "th": {"align", "style", "colspan", "rowspan"},
+    "td": {"align", "style", "colspan", "rowspan"},
+}
+LOCAL_ONLY = {("iframe", "src"), ("img", "src"), ("audio", "src"), ("video", "src"), ("source", "src")}
+
+
+def _filter_attribute(tag, attr, value):
+    # Médias et cadres : uniquement les fichiers du wiki (pas de ressource externe).
+    if (tag, attr) in LOCAL_ONLY and not (value.startswith("/") and not value.startswith("//")):
+        return None
+    if tag == "input" and attr == "type" and value != "checkbox":
+        return None
+    return value
+
+
+def sanitize(fragment):
+    return nh3.clean(
+        fragment,
+        tags=ALLOWED_TAGS,
+        attributes=ALLOWED_ATTRIBUTES,
+        attribute_filter=_filter_attribute,
+        url_schemes={"http", "https", "mailto"},
+        filter_style_properties={"text-align"},
+        link_rel=None,
+    )
 
 
 def heading_anchor(fragment):
@@ -95,6 +145,7 @@ class Renderer:
         self.depth = depth
         self.stash = parent.stash if parent else []
         self.chain = (parent.chain if parent else ()) + (note,)
+        self.is_root = parent is None
         self.toc = ""
 
     def child(self, note=None, depth=None):
@@ -109,11 +160,14 @@ class Renderer:
         if md.toc_tokens:
             self.toc = md.toc
         out = URL_ATTR_RE.sub(self._rewrite_url, out)
-        return self._unstash(out)
+        out = self._unstash(out)
+        # Nettoyé une seule fois, sur le HTML final (les intégrations en font partie).
+        return sanitize(out) if self.is_root else out
 
     def convert_inline(self, text):
         out = self.child().convert(text)
-        return re.sub(r"^<p>(.*)</p>$", r"\1", out, flags=re.S)
+        out = re.sub(r"^<p>(.*)</p>$", r"\1", out, flags=re.S)
+        return sanitize(out) if self.is_root else out
 
     # -- Espaces réservés : protège le HTML généré du moteur Markdown ----------
 
@@ -259,4 +313,4 @@ class Renderer:
 def render_note(vault, note):
     """Renvoie ``(html, table_des_matières)`` pour une note du coffre."""
     renderer = Renderer(vault, note)
-    return renderer.convert(note.body), renderer.toc
+    return renderer.convert(note.body), sanitize(renderer.toc)
