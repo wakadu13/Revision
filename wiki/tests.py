@@ -296,11 +296,31 @@ class QuizTests(TestCase):
         self.assertEqual(p.box, 2)
         self.assertEqual(p.seen, 2)
         self.assertEqual(p.correct, 2)
-        # Une mauvaise réponse fait redescendre d'une boîte.
+        # Une mauvaise réponse renvoie en boîte 0 (question oubliée).
         self.client.post("/qcm/reponse/", data={"set_id": "reseaux/test_set", "question_id": "q-qcm", "correct": False},
                          content_type="application/json")
         p.refresh_from_db()
-        self.assertEqual(p.box, 1)
+        self.assertEqual(p.box, 0)
+
+    def test_flashcard_grades(self):
+        from wiki import quiz
+        from wiki.models import QuizProgress
+        self.assertEqual([quiz.nouvelle_boite(3, n) for n in quiz.NOTES], [0, 3, 4, 5])
+        self.assertEqual([quiz.nouvelle_boite(0, n) for n in quiz.NOTES], [0, 1, 1, 2])
+        self.assertEqual(quiz.nouvelle_boite(5, quiz.FACILE), 5)
+
+        def noter(note):
+            self.client.post("/qcm/reponse/", data={"set_id": "reseaux/test_set", "question_id": "q-flash",
+                                                    "correct": note != "a_revoir", "note": note},
+                             content_type="application/json")
+            return QuizProgress.objects.get(question_id="q-flash")
+
+        self.assertEqual(noter("facile").box, 2)
+        self.assertEqual(noter("difficile").box, 2)
+        p = noter("a_revoir")
+        self.assertEqual((p.box, p.seen, p.correct, p.last_correct), (0, 3, 2, False))
+        # Note inconnue : on se rabat sur « correct ».
+        self.assertEqual(noter("parfait").box, 1)
 
     def test_review_mode_only_due(self):
         from wiki.models import QuizProgress

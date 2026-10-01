@@ -65,9 +65,20 @@ Dans le JSON, doublez les backslash LaTeX : `$\\pi$`, `$\\frac{a}{b}$`.
 
 ## Révision espacée (Leitner)
 
-Chaque question monte d'une boîte (0→5) à une bonne réponse, redescend à une
-mauvaise. Plus la boîte est haute, plus l'intervalle avant la prochaine révision
-est long (1, 3, 7, 14, 30 jours). La **Révision intelligente** ne propose que les
+Chaque question monte d'une boîte (0→5) à une bonne réponse. Une mauvaise
+réponse la renvoie en boîte 0 : elle est reproposée le jour même (hors quota)
+puis repart du début. Plus la boîte est haute, plus l'intervalle avant la
+prochaine révision est long (1, 3, 7, 14, 30 jours).
+
+Les **flashcards** s'auto-évaluent avec 4 boutons (touches 1 à 4) :
+**À revoir** (retour en boîte 0), **Difficile** (reste dans sa boîte, même
+intervalle), **Bien** (boîte suivante) et **Facile** (saute une boîte).
+
+Le panneau **Planning** de chaque set fixe deux quotas par jour : les
+**nouvelles** questions et les **révisions** (questions déjà vues revenues à
+échéance). Limitez surtout les nouvelles et laissez les révisions libres. Avec
+une **date d'examen**, il estime la durée nécessaire et la date à laquelle
+commencer. La **Révision intelligente** ne propose que les
 questions dues, les moins maîtrisées d'abord. La progression est enregistrée
 automatiquement ; les [statistiques](/qcm/stats/) montrent la maîtrise par set.
 

@@ -19,6 +19,15 @@
   const barFill = document.getElementById("quiz-bar-fill");
 
   const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  // Notes des flashcards : [note, libellé, classe du bouton].
+  const NOTES = [
+    ["a_revoir", "À revoir (1)", "danger"],
+    ["difficile", "Difficile (2)", ""],
+    ["bien", "Bien (3)", "primary"],
+    ["facile", "Facile (4)", ""],
+  ];
+  // C (je savais) et I (à revoir) restent acceptés.
+  const TOUCHES_NOTES = { 1: "a_revoir", 2: "difficile", 3: "bien", 4: "facile", c: "bien", i: "a_revoir" };
   // File des questions à poser (indices dans `questions`) ; en mode intensif,
   // une question ratée y est réinsérée un peu plus loin.
   const queue = questions.map((_, i) => i);
@@ -97,14 +106,15 @@
 
   // Une réponse vient d'être donnée : score, enregistrement, et en mode
   // intensif, remise en file de la question tant qu'elle n'est pas sue.
-  function answered(q, correct) {
+  // `note` : auto-évaluation d'une flashcard (à revoir, difficile, bien, facile).
+  function answered(q, correct, note) {
     const t = track[queue[pos]];
     t.attempts++;
     // Seule la 1re réponse compte pour le score et la révision espacée : les
     // répétitions de la session ne doivent pas gonfler les boîtes de Leitner.
     if (t.attempts === 1) {
       if (correct) score++;
-      record(q, correct, Math.round(performance.now() - state.shownAt));
+      record(q, correct, note, Math.round(performance.now() - state.shownAt));
     }
     if (intensif) {
       if (correct) t.streak++;
@@ -129,12 +139,12 @@
     return e;
   }
 
-  async function record(q, correct, dureeMs) {
+  async function record(q, correct, note, dureeMs) {
     try {
       await fetch(recordUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json", "X-CSRFToken": csrf },
-        body: JSON.stringify({ set_id: q.set_id, question_id: q.id, correct: correct, duree_ms: dureeMs }),
+        body: JSON.stringify({ set_id: q.set_id, question_id: q.id, correct: correct, note: note, duree_ms: dureeMs }),
       });
     } catch (e) { /* progression enregistrée au mieux ; l'échec n'interrompt pas la session */ }
   }
@@ -286,14 +296,14 @@
     verso.style.display = "";
     flip.style.display = "none";
     renderMath(verso);
-    // Auto-évaluation : boutons « je savais » / « à revoir ».
+    // Auto-évaluation : à revoir (repart de zéro), difficile (même intervalle),
+    // bien (intervalle suivant) ou facile (saute un intervalle).
     const self = el("div", "quiz-selfeval");
-    const knew = el("button", "button primary", "Je savais (C)");
-    const missed = el("button", "button", "À revoir (I)");
-    knew.addEventListener("click", () => gradeCard(true));
-    missed.addEventListener("click", () => gradeCard(false));
-    self.appendChild(knew);
-    self.appendChild(missed);
+    for (const [note, label, cls] of NOTES) {
+      const b = el("button", "button " + cls, label);
+      b.addEventListener("click", () => gradeCard(note));
+      self.appendChild(b);
+    }
     state._els.actions.insertBefore(self, state._els.nextBtn);
     state._selfeval = self;
     if (q.explication) {
@@ -303,13 +313,13 @@
     }
   }
 
-  function gradeCard(known) {
+  function gradeCard(note) {
     const { q, nextBtn } = state._els;
     if (state._selfeval) state._selfeval.remove();
     state._selfeval = null;
     nextBtn.style.display = "";
     nextBtn.focus();
-    answered(q, known);
+    answered(q, note !== "a_revoir", note);
   }
 
   function next() {
@@ -376,8 +386,8 @@
 
     if (state.answered) {
       if (q.type === "FLASHCARD" && state._selfeval) {
-        if (key === "c") { e.preventDefault(); gradeCard(true); return; }
-        if (key === "i") { e.preventDefault(); gradeCard(false); return; }
+        const note = TOUCHES_NOTES[key];
+        if (note) { e.preventDefault(); gradeCard(note); return; }
       }
       if (e.key === "Enter" || e.key === " ") { e.preventDefault(); if (state._els.nextBtn.style.display !== "none") next(); }
       return;

@@ -263,7 +263,8 @@ def record(request):
         data = json.loads(request.body)
         set_id = str(data["set_id"])
         question_id = str(data["question_id"])
-        correcte = bool(data["correct"])
+        # Flashcards : note d'auto-évaluation ; autres types : juste/faux.
+        reponse = data["note"] if data.get("note") in quiz.NOTES else bool(data["correct"])
     except (KeyError, ValueError, TypeError):
         return JsonResponse({"error": "requête invalide"}, status=400)
 
@@ -275,7 +276,7 @@ def record(request):
     obj, _ = QuizProgress.objects.get_or_create(
         player=player_id(request), set_id=set_id, question_id=question_id
     )
-    obj.record(correcte)
+    obj.record(reponse)
     obj.save()
 
     # Temps de réponse : sert à estimer la durée quotidienne des révisions.

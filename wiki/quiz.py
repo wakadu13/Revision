@@ -53,9 +53,32 @@ def intervalle_ecoule(boite: int, last_review, now) -> bool:
     return now >= last_review + timedelta(days=jours)
 
 
-def nouvelle_boite(boite: int, correcte: bool) -> int:
-    """Bonne réponse → monte d'une boîte ; mauvaise → redescend d'une boîte."""
-    return min(BOITE_MAX, boite + 1) if correcte else max(0, boite - 1)
+# Note d'une réponse : auto-évaluation des flashcards ; les autres types sont
+# notés « bien » (juste) ou « à revoir » (faux).
+A_REVOIR, DIFFICILE, BIEN, FACILE = "a_revoir", "difficile", "bien", "facile"
+NOTES = (A_REVOIR, DIFFICILE, BIEN, FACILE)
+
+
+def note_de(reponse) -> str:
+    """Note d'une réponse donnée comme note ou comme booléen (juste/faux)."""
+    if reponse in NOTES:
+        return reponse
+    return BIEN if reponse else A_REVOIR
+
+
+def nouvelle_boite(boite: int, reponse) -> int:
+    """Boîte après une réponse (note ou booléen juste/faux).
+
+    À revoir → retour en boîte 0 : la question est oubliée, elle est réapprise
+    le jour même puis repart du début ; difficile → reste dans sa boîte (au
+    moins la 1) ; bien → monte d'une boîte ; facile → monte de deux.
+    """
+    note = note_de(reponse)
+    if note == A_REVOIR:
+        return 0
+    if note == DIFFICILE:
+        return max(1, boite)
+    return min(BOITE_MAX, boite + (2 if note == FACILE else 1))
 
 
 # ---------------------------------------------------------------------------

@@ -31,11 +31,13 @@ class QuizProgress(models.Model):
         unique_together = ("player", "set_id", "question_id")
         indexes = [models.Index(fields=["player", "set_id"])]
 
-    def record(self, correcte: bool) -> None:
+    def record(self, reponse) -> None:
+        """Enregistre une réponse : note (quiz.NOTES) ou booléen juste/faux."""
+        correcte = quiz.note_de(reponse) != quiz.A_REVOIR
         self.seen += 1
         if correcte:
             self.correct += 1
-        self.box = quiz.nouvelle_boite(self.box, correcte)
+        self.box = quiz.nouvelle_boite(self.box, reponse)
         self.last_correct = correcte
         self.last_review = timezone.now()
         if self.premiere_revue is None:

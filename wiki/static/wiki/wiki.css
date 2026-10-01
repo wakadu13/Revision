@@ -215,7 +215,9 @@ details.quiz-category .quiz-sets { padding: .75rem; margin: 0; }
 .quiz-input.is-correct { border-color: #16a34a; }
 .quiz-input.is-wrong { border-color: #dc2626; }
 .quiz-verso { font-size: 1.15rem; padding: .8rem 1rem; border-left: 3px solid var(--accent); background: var(--accent-soft); border-radius: 6px; margin: 1rem 0; }
-.quiz-selfeval { display: flex; gap: .5rem; }
+.quiz-selfeval { display: flex; flex-wrap: wrap; gap: .5rem; }
+.button.danger { border-color: #dc2626; color: #dc2626; }
+.button.danger:hover { background: rgba(220, 38, 38, .1); }
 .quiz-feedback { margin-top: 1rem; }
 .quiz-verdict { font-weight: 700; font-size: 1.1rem; }
 .quiz-verdict.ok { color: #16a34a; }

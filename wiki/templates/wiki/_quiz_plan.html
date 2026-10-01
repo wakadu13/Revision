@@ -48,6 +48,6 @@
   {% endif %}
   <p class="muted quiz-plan-note">Hypothèses : {{ e.precision }} % de bonnes réponses{% if not e.precision_mesuree %} (valeur par défaut){% endif %},
     {{ e.secondes }} s par question{% if not e.secondes_mesurees %} (valeur par défaut, mesurée au fil des réponses){% endif %} ;
-    une question est « sue » quand elle atteint la boîte {{ e.boite_objectif }} (réussie 3 fois, à 1, 3 puis 7 jours d'intervalle).</p>
+    une question est « sue » quand elle atteint la boîte {{ e.boite_objectif }} (réussie 3 fois de suite : à la découverte, puis 1 et 3 jours plus tard).</p>
   {% endif %}
 </details>

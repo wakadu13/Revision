@@ -6,9 +6,11 @@ les révisions (questions déjà vues, revenues à échéance).
 L'estimation simule la révision espacée (Leitner) jour après jour : chaque jour,
 les questions dues sont révisées dans la limite des quotas, avec un taux de bonnes
 réponses égal à la précision du joueur sur ce set. Une question est « sue »
-lorsqu'elle atteint la boîte BOITE_OBJECTIF ; le set est prêt quand une part
-PART_OBJECTIF des questions l'est (viser 100 % ferait dépendre l'estimation de
-la question la plus malchanceuse).
+dès qu'elle a atteint la boîte BOITE_OBJECTIF, même si elle retombe ensuite
+(une erreur renvoie en boîte 0 : compter les questions actuellement en boîte
+haute ne convergerait pas toujours). Le set est prêt quand une part
+PART_OBJECTIF des questions est sue (viser 100 % ferait dépendre l'estimation
+de la question la plus malchanceuse).
 
 Comme quiz.py, ce module ne dépend ni des modèles ni des vues.
 """
@@ -63,7 +65,8 @@ def simuler(cartes, quota_nouvelles, quota_revisions, precision, deja=(0, 0)):
     dues = [d for _, d, _ in cartes]
     nouvelles = [i for i, (_, _, n) in enumerate(cartes) if n]
     vues = [i for i, (_, _, n) in enumerate(cartes) if not n]
-    restantes = math.ceil(PART_OBJECTIF * len(boites)) - sum(b >= BOITE_OBJECTIF for b in boites)
+    sues = {i for i, b in enumerate(boites) if b >= BOITE_OBJECTIF}
+    restantes = math.ceil(PART_OBJECTIF * len(boites)) - len(sues)
     if restantes <= 0:
         return 0, 0
     hasard = random.Random(0)  # graine fixe : même estimation à chaque affichage
@@ -76,10 +79,11 @@ def simuler(cartes, quota_nouvelles, quota_revisions, precision, deja=(0, 0)):
         decouvertes, nouvelles = nouvelles[:places_n], nouvelles[places_n:]
         for i in a_revoir + decouvertes:
             reponses += 1
-            avant = boites[i] >= BOITE_OBJECTIF
             boites[i] = quiz.nouvelle_boite(boites[i], hasard.random() < precision)
             dues[i] = jour + max(1, quiz.INTERVALLES_JOURS[boites[i]])
-            restantes += avant - (boites[i] >= BOITE_OBJECTIF)
+            if boites[i] >= BOITE_OBJECTIF and i not in sues:
+                sues.add(i)
+                restantes -= 1
         vues += decouvertes
         if restantes <= 0:
             return jour + 1, reponses
