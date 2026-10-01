@@ -380,52 +380,67 @@ class QuizTests(TestCase):
         self.assertContains(self.client.get("/qcm/", {"q": "introuvable"}), "Aucun QCM ne correspond")
 
 
-    def test_daily_limit_caps_review(self):
+    def test_daily_quotas(self):
         from datetime import timedelta
         from django.utils import timezone
         from wiki.models import QuizDeck, QuizProgress
-        QuizDeck.objects.create(player="alice", set_id="reseaux/test_set", limite_jour=2)
-        response = self.client.get("/qcm/jouer/?set=reseaux/test_set&mode=review")
-        self.assertEqual(len(response.context["questions"]), 2)
-        # Une question déjà révisée aujourd'hui consomme le quota, même si elle est à nouveau due.
-        QuizProgress.objects.create(player="alice", set_id="reseaux/test_set", question_id="q-qcm", box=0,
-                                    last_review=timezone.now(), seen=1)
-        response = self.client.get("/qcm/jouer/?set=reseaux/test_set&mode=review")
-        self.assertEqual(len(response.context["questions"]), 1)
-        # Les questions déjà vues passent avant les nouvelles.
-        QuizProgress.objects.filter(question_id="q-qcm").update(last_review=timezone.now() - timedelta(days=2))
+        hier = timezone.now() - timedelta(days=2)
+        # q-qcm et q-qcr déjà vues et dues ; q-trou et q-flash jamais vues.
+        for qid in ("q-qcm", "q-qcr"):
+            QuizProgress.objects.create(player="alice", set_id="reseaux/test_set", question_id=qid, box=1,
+                                        last_review=hier, premiere_revue=hier, seen=1, correct=1)
+        deck = QuizDeck.objects.create(player="alice", set_id="reseaux/test_set", nouvelles_jour=1)
         ids = [q["id"] for q in self.client.get("/qcm/jouer/?set=reseaux/test_set&mode=review").context["questions"]]
-        self.assertIn("q-qcm", ids)
+        self.assertEqual(len(ids), 3)  # 2 révisions + 1 nouvelle
+        self.assertTrue({"q-qcm", "q-qcr"} <= set(ids))
+        deck.revisions_jour = 1
+        deck.save()
+        summary = self.client.get("/qcm/").context["categories"][0]["sets"][0]["summary"]
+        self.assertEqual((summary["a_reviser"], summary["revisions"], summary["nouvelles"], summary["dues"]), (2, 1, 1, 4))
         # Le quota s'applique aussi à la révision intelligente, pas aux modes « Tout » et « Intensif ».
         self.assertEqual(len(self.client.get("/qcm/jouer/?revision=1").context["questions"]), 2)
         self.assertEqual(len(self.client.get("/qcm/jouer/?set=reseaux/test_set&mode=all").context["questions"]), 4)
-        summary = self.client.get("/qcm/").context["categories"][0]["sets"][0]["summary"]
-        self.assertEqual((summary["a_reviser"], summary["dues"]), (2, 4))
 
-    def test_quota_reached(self):
+        # Une nouvelle découverte aujourd'hui consomme le quota de nouvelles.
+        self.client.post("/qcm/reponse/", data={"set_id": "reseaux/test_set", "question_id": "q-trou", "correct": True},
+                         content_type="application/json")
+        summary = self.client.get("/qcm/").context["categories"][0]["sets"][0]["summary"]
+        self.assertEqual((summary["revisions"], summary["nouvelles"]), (1, 0))
+        # Une révision faite aujourd'hui consomme le quota de révisions.
+        self.client.post("/qcm/reponse/", data={"set_id": "reseaux/test_set", "question_id": "q-qcm", "correct": True},
+                         content_type="application/json")
+        summary = self.client.get("/qcm/").context["categories"][0]["sets"][0]["summary"]
+        self.assertEqual((summary["a_reviser"], summary["dues"]), (0, 2))
+        self.assertTrue(summary["quota_atteint"])
+        self.assertContains(self.client.get("/qcm/"), "quota du jour atteint")
+
+    def test_relearning_outside_quota(self):
         from django.utils import timezone
         from wiki.models import QuizDeck, QuizProgress
-        QuizDeck.objects.create(player="alice", set_id="reseaux/test_set", limite_jour=1)
-        QuizProgress.objects.create(player="alice", set_id="reseaux/test_set", question_id="q-qcm", box=1,
-                                    last_review=timezone.now(), seen=1, correct=1)
-        self.assertEqual(self.client.get("/qcm/jouer/?set=reseaux/test_set&mode=review").context["count"], 0)
-        self.assertContains(self.client.get("/qcm/"), "quota du jour atteint")
+        # Ratée aujourd'hui et de nouveau due : proposée même quand les quotas sont épuisés.
+        QuizProgress.objects.create(player="alice", set_id="reseaux/test_set", question_id="q-qcm", box=0,
+                                    last_review=timezone.now(), premiere_revue=timezone.now(), seen=1)
+        QuizDeck.objects.create(player="alice", set_id="reseaux/test_set", nouvelles_jour=1, revisions_jour=1)
+        ids = [q["id"] for q in self.client.get("/qcm/jouer/?set=reseaux/test_set&mode=review").context["questions"]]
+        self.assertEqual(ids, ["q-qcm"])
 
     def test_plan_settings(self):
         from wiki.models import QuizDeck
-        r = self.client.post("/qcm/planning/", {"set": "reseaux/test_set", "limite_jour": "40", "date_objectif": "2030-06-01"})
+        r = self.client.post("/qcm/planning/", {"set": "reseaux/test_set", "nouvelles_jour": "20",
+                                                "revisions_jour": "", "date_objectif": "2030-06-01"})
         self.assertEqual(r.status_code, 302)
         self.assertIn("#set-reseaux-test_set", r["Location"])
         deck = QuizDeck.objects.get(player="alice", set_id="reseaux/test_set")
-        self.assertEqual((deck.limite_jour, str(deck.date_objectif)), (40, "2030-06-01"))
+        self.assertEqual((deck.nouvelles_jour, deck.revisions_jour, str(deck.date_objectif)), (20, None, "2030-06-01"))
         # Champs vidés → réglages supprimés ; valeurs invalides refusées.
-        self.client.post("/qcm/planning/", {"set": "reseaux/test_set", "limite_jour": "", "date_objectif": ""})
+        self.client.post("/qcm/planning/", {"set": "reseaux/test_set", "nouvelles_jour": "", "date_objectif": ""})
         deck.refresh_from_db()
-        self.assertEqual((deck.limite_jour, deck.date_objectif), (None, None))
-        self.client.post("/qcm/planning/", {"set": "reseaux/test_set", "limite_jour": "0"})
+        self.assertEqual((deck.nouvelles_jour, deck.date_objectif), (None, None))
+        self.client.post("/qcm/planning/", {"set": "reseaux/test_set", "revisions_jour": "0"})
+        self.client.post("/qcm/planning/", {"set": "reseaux/test_set", "nouvelles_jour": "abc"})
         self.client.post("/qcm/planning/", {"set": "reseaux/test_set", "date_objectif": "demain"})
         deck.refresh_from_db()
-        self.assertEqual((deck.limite_jour, deck.date_objectif), (None, None))
+        self.assertEqual((deck.nouvelles_jour, deck.revisions_jour, deck.date_objectif), (None, None, None))
         self.assertEqual(self.client.post("/qcm/planning/", {"set": "inconnu"}).status_code, 404)
 
     def test_record_measures_answer_time(self):
@@ -440,29 +455,31 @@ class QuizTests(TestCase):
         from datetime import timedelta
         from django.utils import timezone
         from wiki import planning
-        # 4 questions neuves, réponses toujours justes : boîte 3 au bout de 0+1+3 jours → 5 jours.
-        self.assertEqual(planning.simuler([(0, 0, True)] * 4, 4, 1.0, 4), (5, 12))
-        # Un quota plus faible rallonge la durée ; un quota nul aujourd'hui décale d'un jour.
-        self.assertGreater(planning.simuler([(0, 0, True)] * 4, 1, 1.0, 1)[0], 5)
-        self.assertEqual(planning.simuler([(0, 0, True)] * 4, 4, 1.0, 0)[0], 6)
-        self.assertEqual(planning.simuler([(3, 0, False)], 1, 1.0, 1), (0, 0))
+        neuves = [(0, 0, True)] * 4
+        # Réponses toujours justes : boîte 3 au bout de 0+1+3 jours → 5 jours, 12 réponses.
+        self.assertEqual(planning.simuler(neuves, 4, 4, 1.0), (5, 12))
+        # Un quota de nouvelles plus faible rallonge la durée ; un quota épuisé aujourd'hui décale d'un jour.
+        self.assertGreater(planning.simuler(neuves, 1, 4, 1.0)[0], 5)
+        self.assertEqual(planning.simuler(neuves, 4, 4, 1.0, deja=(4, 0))[0], 6)
+        # Des révisions plafonnées ralentissent aussi.
+        self.assertGreater(planning.simuler(neuves, 4, 1, 1.0)[0], 5)
+        self.assertEqual(planning.simuler([(3, 0, False)], 1, 1, 1.0), (0, 0))
 
         aujourdhui = timezone.localdate()
-        self.client.post("/qcm/planning/", {"set": "reseaux/test_set", "limite_jour": "1",
+        self.client.post("/qcm/planning/", {"set": "reseaux/test_set", "nouvelles_jour": "1",
                                             "date_objectif": str(aujourdhui + timedelta(days=60))})
         e = self.client.get("/qcm/").context["categories"][0]["sets"][0]["estimation"]
         self.assertEqual(e["statut"], "ok")
         self.assertEqual(e["debut"], aujourdhui + timedelta(days=60 - e["jours"]))
-        # Examen trop proche : limite conseillée plus élevée.
-        self.client.post("/qcm/planning/", {"set": "reseaux/test_set", "limite_jour": "1",
+        # Examen trop proche : plus de nouvelles par jour conseillées.
+        self.client.post("/qcm/planning/", {"set": "reseaux/test_set", "nouvelles_jour": "1",
                                             "date_objectif": str(aujourdhui + timedelta(days=e["jours"] - 2))})
         response = self.client.get("/qcm/")
         e = response.context["categories"][0]["sets"][0]["estimation"]
         self.assertIn(e["statut"], ("retard", "impossible"))
         if e["statut"] == "retard":
-            self.assertGreater(e["limite_conseillee"], 1)
+            self.assertGreater(e["nouvelles_conseillees"], 1)
         self.assertContains(response, "en retard")
-
 
 class QuizImportTests(QuizTests):
     """Import de sets JSON par glisser-déposer (formulaire multipart)."""

@@ -68,6 +68,7 @@
         <div class="quiz-set-foot">
           <span class="muted">Maîtrise {{ entry.summary.pct_maitrise|floatformat:0 }} %
             {% if entry.summary.a_reviser %}· <b>{{ entry.summary.a_reviser }}</b> à réviser{% if entry.summary.dues > entry.summary.a_reviser %} aujourd'hui (sur {{ entry.summary.dues }} dues){% endif %}
+              {% if entry.summary.nouvelles and entry.summary.a_reviser > entry.summary.nouvelles %}· dont {{ entry.summary.nouvelles }} nouvelle{{ entry.summary.nouvelles|pluralize }}{% endif %}
             {% elif entry.summary.quota_atteint %}· quota du jour atteint ✓ ({{ entry.summary.dues }} dues)
             {% else %}· à jour ✓{% endif %}</span>
           <span class="quiz-set-buttons">

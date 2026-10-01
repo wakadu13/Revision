@@ -1,31 +1,35 @@
-{# Planning d'un set : limite journalière, date d'examen et estimation de la durée. #}
+{# Planning d'un set : quotas journaliers, date d'examen et estimation de la durée. #}
 <details class="quiz-plan">
-  <summary>Planning{% if deck.limite_jour %} · {{ deck.limite_jour }}/jour{% endif %}{% if deck.date_objectif %} · examen le {{ deck.date_objectif|date:"j F" }}{% endif %}
+  <summary>Planning{% if deck.nouvelles_jour %} · {{ deck.nouvelles_jour }} nouvelle{{ deck.nouvelles_jour|pluralize }}/jour{% endif %}{% if deck.revisions_jour %} · {{ deck.revisions_jour }} révision{{ deck.revisions_jour|pluralize }}/jour{% endif %}{% if deck.date_objectif %} · examen le {{ deck.date_objectif|date:"j F" }}{% endif %}
     {% if e.statut == "ok" %}<span class="quiz-plan-badge{% if e.commencer_maintenant %} urgent{% endif %}">{% if e.commencer_maintenant %}à commencer maintenant{% else %}commencer le {{ e.debut|date:"j F" }} au plus tard{% endif %}</span>
     {% elif e.statut == "retard" or e.statut == "impossible" %}<span class="quiz-plan-badge urgent">en retard</span>{% endif %}
   </summary>
   <form class="quiz-plan-form" method="post" action="{% url 'wiki:quiz_plan' %}">
     {% csrf_token %}
     <input type="hidden" name="set" value="{{ set.id }}">
-    <label>Limite par jour
-      <input type="number" name="limite_jour" min="1" max="9999" value="{{ deck.limite_jour|default_if_none:'' }}" placeholder="aucune">
+    <label title="Questions jamais vues découvertes chaque jour">Nouvelles / jour
+      <input type="number" name="nouvelles_jour" min="1" max="9999" value="{{ deck.nouvelles_jour|default_if_none:'' }}" placeholder="aucune limite">
+    </label>
+    <label title="Questions déjà vues revenues à échéance, revues chaque jour">Révisions / jour
+      <input type="number" name="revisions_jour" min="1" max="9999" value="{{ deck.revisions_jour|default_if_none:'' }}" placeholder="aucune limite">
     </label>
     <label>Date d'examen
       <input type="date" name="date_objectif" value="{{ deck.date_objectif|date:'Y-m-d' }}">
     </label>
     <button class="button small primary" type="submit">Enregistrer</button>
   </form>
+  <p class="muted quiz-plan-note">Conseil : limitez surtout les <b>nouvelles</b> questions (10 à 30 par jour) et laissez les révisions sans limite,
+    sinon elles s'accumulent et ralentissent tout le set.</p>
 
   {% if not e %}
-  <p class="muted">Renseignez une limite ou une date d'examen pour estimer la durée des révisions et savoir quand commencer.</p>
+  <p class="muted">Renseignez un quota ou une date d'examen pour estimer la durée des révisions et savoir quand commencer.</p>
   {% elif e.su %}
-  <p>Au moins {{ e.part_objectif }} % des questions sont déjà sues ✓ (boîte {{ e.boite_objectif }} ou plus). Il ne reste qu'à suivre les révisions du jour.</p>
+  <p>Au moins {{ e.part_objectif }} % des questions sont déjà sues ✓. Il ne reste qu'à suivre les révisions du jour.</p>
   {% else %}
   <p>
-    {% if e.jours %}Au rythme de {% if e.sans_limite %}toutes les questions dues chaque jour{% else %}{{ e.limite }} questions par jour{% endif %} :
-    environ <b>{{ e.jours }} jour{{ e.jours|pluralize }}</b> pour savoir {{ e.part_objectif }} % des questions (vers le {{ e.fin|date:"j F" }}),
-    soit ~{{ e.minutes_jour }} min par jour.
-    {% else %}À {{ e.limite }} questions par jour, il faudrait plus d'un an : augmentez la limite.{% endif %}
+    {% if e.jours %}Avec ces réglages : environ <b>{{ e.jours }} jour{{ e.jours|pluralize }}</b> pour savoir {{ e.part_objectif }} % des questions
+    (vers le {{ e.fin|date:"j F" }}), soit ~{{ e.questions_jour }} question{{ e.questions_jour|pluralize }} et ~{{ e.minutes_jour }} min par jour.
+    {% else %}Avec ces réglages, il faudrait plus d'un an : augmentez les quotas.{% endif %}
   </p>
   {% if e.statut == "ok" %}
     <p>Pour être prêt le {{ e.objectif|date:"j F" }} :
@@ -33,7 +37,8 @@
     {% else %}commencez <b>au plus tard le {{ e.debut|date:"l j F" }}</b> ({{ e.marge }} jours de marge si vous commencez aujourd'hui).{% endif %}</p>
   {% elif e.statut == "retard" %}
     <p class="quiz-plan-alert">Il ne reste que {{ e.jours_dispo }} jour{{ e.jours_dispo|pluralize }} avant le {{ e.objectif|date:"j F" }} :
-    passez à <b>{{ e.limite_conseillee }} questions par jour</b> (~{{ e.minutes_conseillees }} min par jour) pour être prêt à temps.</p>
+    passez à <b>{{ e.nouvelles_conseillees }} nouvelle{{ e.nouvelles_conseillees|pluralize }} par jour</b>{% if e.revisions_limitees %}, <b>sans limite de révisions</b>{% endif %}
+    (~{{ e.questions_conseillees }} questions et ~{{ e.minutes_conseillees }} min par jour) pour être prêt à temps.</p>
   {% elif e.statut == "impossible" %}
     <p class="quiz-plan-alert">Il ne reste que {{ e.jours_dispo }} jour{{ e.jours_dispo|pluralize }} avant le {{ e.objectif|date:"j F" }} :
     même sans limite, la révision espacée demande {% if e.jours_min %}au moins {{ e.jours_min }} jours{% else %}plus d'un an{% endif %}.

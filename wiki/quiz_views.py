@@ -31,7 +31,7 @@ from .vault import Note, clean_key, get_vault
 DOSSIER_QCM = "QCM"
 CATEGORIE_IMPORT = "Importés"
 TAILLE_MAX_IMPORT = 2 * 1024 * 1024  # 2 Mo par fichier
-LIMITE_JOUR_MAX = 9999
+QUOTA_MAX = 9999
 DUREE_MAX_MS = 120_000  # au-delà, le joueur s'est sans doute absenté
 
 
@@ -78,25 +78,35 @@ def _question_payload(vault, qset, question, progress):
 
 
 def _file_du_jour(qset, progress, deck, now):
-    """Questions à réviser aujourd'hui et nombre total de questions dues.
+    """Questions à réviser aujourd'hui, et leur répartition.
 
-    Les questions déjà vues passent d'abord (boîtes basses, puis les plus
-    anciennes), puis les nouvelles ; la limite journalière du set s'applique en
-    tenant compte des questions déjà révisées aujourd'hui.
+    Ordre : questions ratées aujourd'hui (réapprentissage, hors quota), puis
+    révisions (boîtes basses, puis les plus anciennes), puis nouvelles. Les
+    quotas du set tiennent compte de ce qui a déjà été fait aujourd'hui.
+    Renvoie (file, {"dues", "nouvelles", "revisions", "reapprendre"}).
     """
-    vues, nouvelles = [], []
+    aujourdhui = timezone.localdate(now)
+    reapprendre, vues, nouvelles = [], [], []
     for q in qset.questions:
         st = progress.get(q.id)
         if st is None:
             nouvelles.append(q)
         elif st.is_due(now):
-            vues.append((st, q))
+            if st.last_review and timezone.localdate(st.last_review) == aujourdhui:
+                reapprendre.append(q)
+            else:
+                vues.append((st, q))
     vues.sort(key=lambda t: (t[0].box, t[0].last_review or _JAMAIS))
-    file = [q for _, q in vues] + nouvelles
-    dues = len(file)
-    if deck is not None and deck.limite_jour:
-        file = file[:max(0, deck.limite_jour - planning.revues_aujourdhui(progress, now))]
-    return file, dues
+    vues = [q for _, q in vues]
+    dues = len(reapprendre) + len(vues) + len(nouvelles)
+    if deck is not None:
+        deja_n, deja_r = planning.faites_aujourdhui(progress, now)
+        places_r = planning.restant(deck.revisions_jour, deja_r)
+        places_n = planning.restant(deck.nouvelles_jour, deja_n)
+        vues = vues[:places_r] if places_r is not None else vues
+        nouvelles = nouvelles[:places_n] if places_n is not None else nouvelles
+    detail = {"dues": dues, "nouvelles": len(nouvelles), "revisions": len(vues), "reapprendre": len(reapprendre)}
+    return reapprendre + vues + nouvelles, detail
 
 
 def _set_summary(qset, progress, now, deck=None):
@@ -112,15 +122,15 @@ def _set_summary(qset, progress, now, deck=None):
             repartition[st.box] += 1
         else:
             repartition[0] += 1
-    file, dues = _file_du_jour(qset, progress, deck, now)
+    file, detail = _file_du_jour(qset, progress, deck, now)
     maitrise = sum(b * n for b, n in repartition.items())
     maitrise_max = quiz.BOITE_MAX * len(qset) or 1
     return {
         "total": len(qset),
         "rencontrees": seen,
         "a_reviser": len(file),
-        "dues": dues,
-        "quota_atteint": dues > 0 and not file,
+        **detail,
+        "quota_atteint": detail["dues"] > 0 and not file,
         "precision": (corrects / total_rep * 100) if total_rep else 0.0,
         "repartition": repartition,
         "pct_maitrise": maitrise / maitrise_max * 100,
@@ -300,19 +310,21 @@ def _ancre(set_id):
 @require_POST
 @login_required
 def plan(request):
-    """Enregistre la limite journalière et la date d'examen d'un set."""
+    """Enregistre les quotas journaliers et la date d'examen d'un set."""
     set_id = request.POST.get("set", "")
     if quiz.get_library().get(set_id) is None:
         raise Http404("Set inconnu")
-    limite = request.POST.get("limite_jour", "").strip()
+    quotas = {}
+    for champ, nom in (("nouvelles_jour", "nouvelles questions"), ("revisions_jour", "révisions")):
+        valeur = request.POST.get(champ, "").strip()
+        try:
+            quotas[champ] = int(valeur) if valeur else None
+            if valeur and not 1 <= quotas[champ] <= QUOTA_MAX:
+                raise ValueError
+        except ValueError:
+            messages.error(request, f"Nombre de {nom} par jour invalide : entre 1 et {QUOTA_MAX}, ou vide.")
+            return redirect(reverse("wiki:quiz_index") + "#" + _ancre(set_id))
     objectif = request.POST.get("date_objectif", "").strip()
-    try:
-        limite = int(limite) if limite else None
-        if limite is not None and not 1 <= limite <= LIMITE_JOUR_MAX:
-            raise ValueError
-    except ValueError:
-        messages.error(request, f"Limite journalière invalide : un nombre entre 1 et {LIMITE_JOUR_MAX}, ou vide.")
-        return redirect(reverse("wiki:quiz_index") + "#" + _ancre(set_id))
     try:
         objectif = date.fromisoformat(objectif) if objectif else None
     except ValueError:
@@ -320,7 +332,7 @@ def plan(request):
         return redirect(reverse("wiki:quiz_index") + "#" + _ancre(set_id))
     QuizDeck.objects.update_or_create(
         player=player_id(request), set_id=set_id,
-        defaults={"limite_jour": limite, "date_objectif": objectif},
+        defaults={**quotas, "date_objectif": objectif},
     )
     return redirect(reverse("wiki:quiz_index") + "#" + _ancre(set_id))
 

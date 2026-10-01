@@ -24,6 +24,7 @@ class QuizProgress(models.Model):
     seen = models.PositiveIntegerField(default=0)          # nombre de passages
     correct = models.PositiveIntegerField(default=0)       # réponses correctes
     last_review = models.DateTimeField(null=True, blank=True)
+    premiere_revue = models.DateTimeField(null=True, blank=True)  # 1re réponse : compte les nouvelles du jour
     last_correct = models.BooleanField(null=True, blank=True)
 
     class Meta:
@@ -37,6 +38,8 @@ class QuizProgress(models.Model):
         self.box = quiz.nouvelle_boite(self.box, correcte)
         self.last_correct = correcte
         self.last_review = timezone.now()
+        if self.premiere_revue is None:
+            self.premiere_revue = self.last_review
 
     def is_due(self, now=None) -> bool:
         return quiz.intervalle_ecoule(self.box, self.last_review, now or timezone.now())
@@ -52,12 +55,13 @@ class QuizProgress(models.Model):
 
 
 class QuizDeck(models.Model):
-    """Réglages d'un set pour un joueur (quota journalier, date d'examen) et temps
+    """Réglages d'un set pour un joueur (quotas journaliers, date d'examen) et temps
     de réponse mesuré, qui sert à estimer la durée des révisions."""
 
     player = models.CharField(max_length=150, blank=True, default="")
     set_id = models.CharField(max_length=500)
-    limite_jour = models.PositiveIntegerField(null=True, blank=True)   # questions max par jour
+    nouvelles_jour = models.PositiveIntegerField(null=True, blank=True)  # questions jamais vues, max par jour
+    revisions_jour = models.PositiveIntegerField(null=True, blank=True)  # questions déjà vues, max par jour
     date_objectif = models.DateField(null=True, blank=True)            # date d'examen
     temps_ms = models.PositiveBigIntegerField(default=0)               # cumul des temps de réponse
     reponses_chronometrees = models.PositiveIntegerField(default=0)
@@ -67,7 +71,7 @@ class QuizDeck(models.Model):
 
     @property
     def configure(self) -> bool:
-        return bool(self.limite_jour or self.date_objectif)
+        return bool(self.nouvelles_jour or self.revisions_jour or self.date_objectif)
 
     def secondes_par_carte(self, defaut, minimum):
         """(secondes moyennes par réponse, mesurée ?) ; `defaut` s'il y a moins de `minimum` mesures."""
