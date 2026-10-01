@@ -34,11 +34,15 @@ def env_list(name, default=''):
 
 DEBUG = env_bool('DJANGO_DEBUG', False)
 
+# Données hors du dépôt : en production, DJANGO_DATA_DIR place la base et la clé
+# secrète ailleurs que dans le projet (qui est partagé par Samba).
+DATA_DIR = Path(os.environ.get('DJANGO_DATA_DIR', BASE_DIR))
+
 # Clé secrète : DJANGO_SECRET_KEY, sinon une clé aléatoire générée au premier
-# lancement et gardée dans .secret_key (hors Git). Ne jamais la committer.
+# lancement et gardée dans DATA_DIR/.secret_key (hors Git). Ne jamais la committer.
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '')
 if not SECRET_KEY:
-    _key_file = BASE_DIR / '.secret_key'
+    _key_file = DATA_DIR / '.secret_key'
     if not _key_file.exists():
         _key_file.write_text(secrets.token_urlsafe(64), encoding='utf-8')
         try:
@@ -116,7 +120,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': DATA_DIR / 'db.sqlite3',
     }
 }
 
