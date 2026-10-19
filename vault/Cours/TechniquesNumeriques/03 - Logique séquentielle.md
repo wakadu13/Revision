@@ -44,6 +44,20 @@ s'appelle une **table d'implication**.
   entrée du bloc combinatoire. **Un système séquentiel a une structure
   bouclée.**
 
+```mermaid
+flowchart TB
+    subgraph COMB["Système combinatoire"]
+        direction LR
+        E1["E (N bits)"] --> B1["Bloc combinatoire"] --> S1["S (M bits)"]
+    end
+    subgraph SEQ["Système séquentiel"]
+        direction LR
+        E2["E (N bits)"] --> B2["Bloc combinatoire"] --> S2["S (M bits)"]
+        B2 -- "état futur" --> MEM["Mémoire<br/>(bascules)"]
+        MEM -- "état présent P (P bits)" --> B2
+    end
+```
+
 ### 1.3. Systèmes asynchrones et synchrones
 
 - **Asynchrone** : la sortie répond « immédiatement » (au temps de
@@ -57,6 +71,12 @@ s'appelle une **table d'implication**.
   - sur **front** (montant ↑ ou descendant ↓, *edge-triggered*) : les
     entrées ne sont prises en compte que pendant la transition, ce qui
     permet un contrôle très précis des instants de commutation.
+
+```text
+H     ‾‾‾‾____‾‾‾‾____‾‾‾‾____
+      ↑       ↑       ↑          front montant : seuls instants de prise en compte
+      ‾‾‾‾    ‾‾‾‾    ‾‾‾‾       niveau haut : entrées actives pendant tout le palier
+```
 
 > [!tip] À retenir
 > On privilégie le plus souvent les systèmes **synchrones sur front
@@ -94,6 +114,17 @@ Deux structures possibles : à base de portes **NAND** (entrées actives à 0,
 notées `S̄`, `R̄`) ou de portes **NOR** (entrées actives à 1). Équation de la
 structure à NAND :
 
+```mermaid
+flowchart LR
+    S(("S̄")) --> N1["NAND 1"]
+    R(("R̄")) --> N2["NAND 2"]
+    N1 --> Q(("Q"))
+    N2 --> QB(("Q̄"))
+    N1 -- "rétroaction Q" --> N2
+    N2 -- "rétroaction Q̄" --> N1
+```
+
+
 $$Q_{t+1} = \bar R \cdot (Q_t + S) = \bar R \cdot S + \bar R \cdot Q_t$$
 
 La commande `S = R = 1` (ou `S̄ = R̄ = 0` sur la version NAND) pose problème
@@ -119,6 +150,14 @@ bascule RS synchrone. Si `H=0` : mode mémorisation quel que soient `R, S`. Si
 Dérivée de la RSH en ajoutant un inverseur entre les entrées `S` et `R` :
 une seule entrée `D`, avec `D = S` et `D̄ = R`. La combinaison interdite
 devient **impossible** puisque `S` et `R` sont toujours complémentaires.
+
+```mermaid
+flowchart LR
+    D(("D")) -- "S = D" --> RSH["Bascule RSH"]
+    D --> INV["NON"] -- "R = D̄" --> RSH
+    H(("H")) --> RSH
+    RSH --> Q(("Q"))
+```
 
 - Si `H` est actif : `Q` recopie `D`.
 - Si `H` est inactif : `Q` ne change pas (mémoire).
@@ -158,6 +197,21 @@ D'où : $Q_{t+1} = J \bar Q_t + \bar K Q_t$
 | 1 | 0 | x | 1 |
 | 1 | 1 | x | 0 |
 
+Le même comportement sous forme de **graphe d'états** (chaque flèche = un
+front d'horloge) :
+
+```mermaid
+stateDiagram-v2
+    direction LR
+    Q0: Q = 0
+    Q1: Q = 1
+    [*] --> Q0
+    Q0 --> Q0: J = 0, K = x
+    Q0 --> Q1: J = 1, K = x
+    Q1 --> Q1: J = x, K = 0
+    Q1 --> Q0: J = x, K = 1
+```
+
 > [!tip] Lien RS ↔ JK
 > On peut fabriquer une bascule JK à partir d'une bascule RS avec `R = K·Qt`
 > et `S = J·Q̄t`.
@@ -166,6 +220,16 @@ D'où : $Q_{t+1} = J \bar Q_t + \bar K Q_t$
 série. L'information est chargée dans le *maître* puis transférée à
 l'*esclave*. Variante « *data lock out* » (ex. `74LS110`) : chargement sur le
 front descendant de l'horloge, transfert sur le front montant.
+
+```mermaid
+flowchart LR
+    J(("J")) --> MA["Maître"]
+    K(("K")) --> MA
+    MA --> ES["Esclave"] --> Q(("Q"))
+    H(("H")) --> MA
+    H --> INV["NON"] -- "H̄" --> ES
+    Q -. "rebouclage" .-> MA
+```
 
 ## 3. Les compteurs
 
@@ -194,6 +258,28 @@ bascules en cascade (dans le pire cas, la sortie n'est stabilisée qu'après
 
 - **Séquence complète** (ex. modulo 16) : `n` bascules D (ou JK/T) en
   cascade, chacune déclenchée par la précédente.
+
+```mermaid
+flowchart LR
+    H(("H")) --> B0["Bascule 0<br/>J = K = 1"]
+    B0 -- "Q0" --> B1["Bascule 1<br/>J = K = 1"]
+    B1 -- "Q1" --> B2["Bascule 2<br/>J = K = 1"]
+    B0 --> O0(["Q0 (LSB)"])
+    B1 --> O1(["Q1"])
+    B2 --> O2(["Q2 (MSB)"])
+```
+
+Chronogramme d'un compteur modulo 8 (bascules sur **front descendant**) :
+chaque sortie change d'état quand la précédente passe de 1 à 0, ce qui
+divise la fréquence par 2 à chaque étage.
+
+```text
+H    ‾‾__‾‾__‾‾__‾‾__‾‾__‾‾__‾‾__‾‾__‾‾__
+Q0   __‾‾‾‾____‾‾‾‾____‾‾‾‾____‾‾‾‾____‾‾
+Q1   ______‾‾‾‾‾‾‾‾________‾‾‾‾‾‾‾‾______
+Q2   ______________‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾______
+N      0   1   2   3   4   5   6   7   0
+```
 - **Séquence incomplète** (ex. décade DCB modulo 10) : il faut décoder
   l'état `M` pour forcer une remise à zéro (RAZ) du compteur.
 - **Décompteur** : on utilise les sorties `Q̄ᵢ` au lieu de `Qᵢ`, ou on
@@ -205,6 +291,14 @@ Objectif : éliminer les états transitoires en utilisant des bascules
 identiques recevant toutes le même signal d'horloge, précédées d'un circuit
 combinatoire qui calcule les entrées de chaque bascule.
 
+
+```mermaid
+flowchart LR
+    A["Séquence voulue<br/>(graphe d'états)"] --> B["Tableau état présent<br/>→ état futur"]
+    B --> C["Table d'excitation<br/>de la bascule"] --> D["Conditionnement<br/>des entrées"]
+    D --> K["Un Karnaugh<br/>par entrée"] --> W["Câblage"]
+```
+
 **Méthode :**
 1. Dresser un tableau **état présent → état futur** pour la séquence
    voulue.
@@ -214,17 +308,75 @@ combinatoire qui calcule les entrées de chaque bascule.
    des états indifférents `x` pour les états hors séquence).
 4. Câbler le circuit combinatoire obtenu en entrée de chaque bascule.
 
+```mermaid
+flowchart LR
+    COMB["Circuit combinatoire<br/>(équations des J, K ou D)"] --> B0["Bascule 0"]
+    COMB --> B1["Bascule 1"]
+    COMB --> B2["Bascule 2"]
+    H(("H commune")) -.-> B0
+    H -.-> B1
+    H -.-> B2
+    B0 -- "Q0" --> COMB
+    B1 -- "Q1" --> COMB
+    B2 -- "Q2" --> COMB
+```
+
 > [!example] Exemple — compteur modulo 5 (séquence 0,1,2,3,4,0,...)
 > Avec des bascules JK, on établit le tableau état présent / état futur /
 > conditionnement, puis on extrait de chaque tableau de Karnaugh :
-> `J2=Q1Q0`, `K2=1`, `J1=Q0`, `K1=Q0`, `J0=Q2`, `K0=1`.
-> Avec des bascules D : `D2=Q1Q0`, `D1=Q1Q0+Q1Q0` *(XOR)*, `D0=Q0Q2` *(complément appliqué selon le tableau)*.
+> `J2=Q1Q0`, `K2=1`, `J1=Q0`, `K1=Q0`, `J0=Q̄2`, `K0=1`.
+> Avec des bascules D : `D2=Q1Q0`, `D1=Q̄1Q0+Q1Q̄0 = Q1⊕Q0`, `D0=Q̄2·Q̄0`.
+>
+> ```mermaid
+> stateDiagram-v2
+>     direction LR
+>     s0: 000
+>     s1: 001
+>     s2: 010
+>     s3: 011
+>     s4: 100
+>     s5: 101 (hors séquence)
+>     s6: 110 (hors séquence)
+>     s7: 111 (hors séquence)
+>     [*] --> s0
+>     s0 --> s1
+>     s1 --> s2
+>     s2 --> s3
+>     s3 --> s4
+>     s4 --> s0
+>     s5 --> s2
+>     s6 --> s2
+>     s7 --> s0
+> ```
+> Les états hors séquence rejoignent le cycle en un coup d'horloge (ici
+> avec les équations JK) : le compteur **ne peut pas se bloquer**.
 
 > [!example] Exemple — séquence 7→6→5→4→3→2→7→6...
 > Synthèse avec des bascules JK : après remplissage des tableaux de
 > Karnaugh de chaque entrée en exploitant les états indifférents (états
 > 0 et 1, hors séquence), on obtient :
 > `J2 = Q̄0`, `K2 = Q̄1·Q̄0`, `J1 = Q̄0`, `K1 = Q2·Q̄0`, `J0 = 1`, `K0 = 1`.
+>
+> ```mermaid
+> stateDiagram-v2
+>     direction LR
+>     s7: 111 (7)
+>     s6: 110 (6)
+>     s5: 101 (5)
+>     s4: 100 (4)
+>     s3: 011 (3)
+>     s2: 010 (2)
+>     s1: 001 (1, hors séquence)
+>     s0: 000 (0, hors séquence)
+>     s7 --> s6
+>     s6 --> s5
+>     s5 --> s4
+>     s4 --> s3
+>     s3 --> s2
+>     s2 --> s7
+>     s1 --> s0
+>     s0 --> s7
+> ```
 
 > [!tip] À retenir
 > La méthode de Marcus se résume toujours en 3 tableaux côte à côte :
@@ -243,6 +395,32 @@ combinatoire qui calcule les entrées de chaque bascule.
 La sortie de la bascule de rang `i` est connectée à l'entrée de la bascule
 de rang `i+1`. Le sens de décalage (gauche/droite) permet de réaliser très
 rapidement une opération de **×2** ou **/2**.
+
+```mermaid
+flowchart LR
+    IN(("Entrée série")) --> D0["Bascule D 0"] --> D1["Bascule D 1"] --> D2["Bascule D 2"] --> D3["Bascule D 3"] --> OUT(("Sortie série"))
+    H(("H")) -.-> D0
+    H -.-> D1
+    H -.-> D2
+    H -.-> D3
+    D0 --> P0(["Q0"])
+    D1 --> P1(["Q1"])
+    D2 --> P2(["Q2"])
+    D3 --> P3(["Q3"])
+```
+
+Exemple : chargement série du mot `1011` (bit de poids faible en premier),
+registre initialement à 0.
+
+| Front d'horloge | Bit entrant | Q0 | Q1 | Q2 | Q3 |
+|---|---|---|---|---|---|
+| — | — | 0 | 0 | 0 | 0 |
+| 1 | 1 | 1 | 0 | 0 | 0 |
+| 2 | 1 | 1 | 1 | 0 | 0 |
+| 3 | 0 | 0 | 1 | 1 | 0 |
+| 4 | 1 | 1 | 0 | 1 | 1 |
+
+Après 4 fronts, le mot est disponible en parallèle : `Q0 Q1 Q2 Q3 = 1011` (le dernier bit entré, le MSB, est dans Q0).
 
 ### Modes de fonctionnement
 

@@ -66,6 +66,15 @@ Deux méthodes :
 → (542)₁₀ = (4132)₅
 ```
 
+```mermaid
+flowchart LR
+    A["542"] -- "÷ 5, reste 2" --> B["108"]
+    B -- "÷ 5, reste 3" --> C["21"]
+    C -- "÷ 5, reste 1" --> D["4"]
+    D -- "÷ 5, reste 4" --> Z["0 : arrêt"]
+    Z -. "restes lus du dernier<br/>au premier" .-> R["(4132)₅"]
+```
+
 ## 2. Bases particulières
 
 ### 2.1. Le binaire
@@ -94,6 +103,17 @@ paquets de 4.
 (10101011100011)₂ → 10│1010│1110│0011
                      2   A    E    3   → (2AE3)₁₆
 ```
+
+```mermaid
+flowchart TB
+    g1["0010"] --> h1["2"]
+    g2["1010"] --> h2["A"]
+    g3["1110"] --> h3["E"]
+    g4["0011"] --> h4["3"]
+```
+
+On complète le groupe de gauche avec des 0 (`10` → `0010`) : les paquets se
+forment toujours **à partir de la virgule** (ici, depuis la droite).
 
 ### 2.3. Le binaire naturel
 
@@ -189,6 +209,12 @@ inversé), on a `N̄ = -N - 1`, donc :
 > Pour obtenir l'opposé d'un nombre `N` codé en complément à 2 : on
 > **complémente chaque bit** puis on **ajoute 1**.
 
+```mermaid
+flowchart LR
+    N["N = +5<br/>0101"] -- "complémenter<br/>chaque bit" --> C["N̄ = 1010<br/>(vaut −6)"]
+    C -- "+ 1" --> O["−N = 1011<br/>(vaut −5)"]
+```
+
 ## 4. Les nombres fractionnaires ou à virgule
 
 ### 4.1. Virgule fixe
@@ -230,6 +256,11 @@ Codage IEEE 754 simple précision (32 bits, type `REAL`) :
 | 30 à 23 | exposant `e` |
 | 22 à 0 | mantisse `f` (partie fractionnaire) |
 
+```mermaid
+flowchart LR
+    S["bit 31<br/>signe s<br/>(1 bit)"] --- EX["bits 30 … 23<br/>exposant e<br/>(8 bits)"] --- F["bits 22 … 0<br/>mantisse f<br/>(23 bits)"]
+```
+
 $$N = (-1)^s \times 2^{e-127} \times 1,f \quad \text{avec } 0 < e < 255$$
 
 - `s = 0` → positif, `s = 1` → négatif.
@@ -241,6 +272,12 @@ $$N = (-1)^s \times 2^{e-127} \times 1,f \quad \text{avec } 0 < e < 255$$
 > [!warning] Piège
 > Le bit le plus à gauche de la mantisse (`f`) est son bit de poids fort,
 > mais ce n'est **pas** le même bit que le signe global du nombre.
+
+> [!example] Exemple : coder −6,5
+> 1. `6,5 = (110,1)₂ = 1,101 × 2²`
+> 2. Signe : `s = 1` ; exposant : `e = 2 + 127 = 129 = (10000001)₂` ;
+>    mantisse (sans le 1 implicite) : `f = 101 0000…0`
+> 3. Mot de 32 bits : `1 │ 10000001 │ 10100000000000000000000` → `(C0D00000)₁₆`
 
 ## Exercices
 

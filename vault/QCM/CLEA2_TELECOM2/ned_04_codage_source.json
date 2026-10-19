@@ -1,0 +1,444 @@
+{
+  "titre": "NED 4 — Codage de source",
+  "description": "Compression, quantité d'information, entropie, codes de longueur fixe, extension, théorèmes de Shannon, codes préfixes, Huffman",
+  "questions": [
+    {
+      "id": "ned4_01",
+      "type": "QCM",
+      "question": "Rôle du codage de source :",
+      "choix": [
+        "éliminer la redondance inutile (compression)",
+        "associer une onde physique aux bits",
+        "ajouter de la redondance utile",
+        "transposer le signal en fréquence"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned4_02",
+      "type": "QCM",
+      "question": "Éliminer la redondance (aspect statistique de la source) conduit à un codage :",
+      "choix": [
+        "en ligne",
+        "correcteur d'erreurs",
+        "exact (sans perte)",
+        "approximatif (avec pertes)"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Éliminer l'information non pertinente conduit au codage avec pertes."
+    },
+    {
+      "id": "ned4_03",
+      "type": "QCR",
+      "question": "Codages de source avec pertes :",
+      "choix": [
+        ".zip",
+        "MP3",
+        "Huffman",
+        "JPEG"
+      ],
+      "reponses": [
+        1,
+        3
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned4_04",
+      "type": "QCM",
+      "question": "La corrélation entre images successives d'une vidéo est dite :",
+      "choix": [
+        "temporelle",
+        "statistique",
+        "spatiale",
+        "spectrale"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned4_05",
+      "type": "QCM",
+      "question": "Quantité d'information apportée par un événement $A$ :",
+      "choix": [
+        "$h(A) = p(A)\\log_2 p(A)$",
+        "$h(A) = -\\log_2 p(A)$",
+        "$h(A) = \\log_2 p(A)$",
+        "$h(A) = 1/p(A)$"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned4_06",
+      "type": "QCM",
+      "question": "Un message certain ($p = 1$) apporte :",
+      "choix": [
+        "log₂(M) bits",
+        "0 bit d'information",
+        "une information infinie",
+        "1 bit"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned4_07",
+      "type": "QCM",
+      "question": "Entropie d'une source :",
+      "choix": [
+        "$H = -\\sum_i \\log_2 p_i$",
+        "$H = \\log_2 \\sum_i p_i$",
+        "$H = -\\sum_i p_i \\log_2 p_i$",
+        "$H = \\sum_i p_i \\log_2 p_i$"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "C'est la quantité moyenne d'information par symbole."
+    },
+    {
+      "id": "ned4_08",
+      "type": "QCM",
+      "question": "L'entropie d'une source à $M$ symboles est maximale quand :",
+      "choix": [
+        "les symboles sont équiprobables, et vaut alors $M$",
+        "un symbole a une probabilité 1, et vaut alors $M$",
+        "les symboles sont équiprobables, et vaut alors $\\log_2 M$",
+        "la source a de la mémoire"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned4_09",
+      "type": "QCM",
+      "question": "Source binaire avec $p('0') = p('1') = 0.5$. Entropie :",
+      "choix": [
+        "0 bit/symbole",
+        "2 bits/symbole",
+        "1 bit/symbole",
+        "0,5 bit/symbole"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned4_10",
+      "type": "QCM",
+      "question": "Efficacité d'un codage à longueur fixe de $n$ bits :",
+      "choix": [
+        "$\\eta = H / n$",
+        "$\\eta = D / B$",
+        "$\\eta = n / H$",
+        "$\\eta = H \\times n$"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned4_11",
+      "type": "QCM",
+      "question": "Débit d'information d'une source d'entropie $H$ émettant $R_m$ symboles/s :",
+      "choix": [
+        "$n \\times R_m$ (en bit/s)",
+        "$R_m / H$",
+        "$H \\times R_m$ (en Sh/s)",
+        "$H / R_m$"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Le débit binaire, lui, vaut $D = n \\times R_m$ et est toujours $\\geq$ au débit d'information."
+    },
+    {
+      "id": "ned4_12",
+      "type": "QCM",
+      "question": "24 symboles équiprobables, code à longueur fixe. Nombre de bits et efficacité :",
+      "choix": [
+        "24 bits, η ≈ 19 %",
+        "5 bits, η = 100 %",
+        "5 bits, η ≈ 91,7 %",
+        "4 bits, η = 100 %"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "$H = \\log_2 24 \\approx 4.585$ ; $2^4 < 24 \\leq 2^5$ ; 8 combinaisons inutilisées."
+    },
+    {
+      "id": "ned4_13",
+      "type": "QCM",
+      "question": "Comment améliorer l'efficacité pour des symboles équiprobables avec $M$ non puissance de 2 ?",
+      "choix": [
+        "augmenter le nombre de bits par symbole",
+        "codage en bloc (extension de la source)",
+        "ajouter un bit de parité",
+        "codage de Huffman"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned4_14",
+      "type": "QCM",
+      "question": "Entropie de l'extension d'ordre $j$ d'une source sans mémoire :",
+      "choix": [
+        "$H(X^j) = H(X)$",
+        "$H(X^j) = j\\,H(X)$",
+        "$H(X^j) = H(X)/j$",
+        "$H(X^j) = H(X)^j$"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned4_15",
+      "type": "QCM",
+      "question": "Extension d'ordre 3 de la source à 24 symboles. Nombre de bits $N$ par bloc :",
+      "choix": [
+        "14",
+        "15",
+        "13",
+        "12"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "$24^3 = 13\\,824$ ; $2^{13} = 8192 < 13\\,824 \\leq 2^{14} = 16\\,384$."
+    },
+    {
+      "id": "ned4_16",
+      "type": "QCM",
+      "question": "Efficacité obtenue avec cette extension d'ordre 3 :",
+      "choix": [
+        "≈ 95 %",
+        "100 %",
+        "≈ 91,7 %",
+        "≈ 98,2 %"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "$\\eta = 3\\log_2 24 / 14 \\approx 13.75/14$ ; soit $n' = 14/3 \\approx 4.67$ bits par symbole primaire."
+    },
+    {
+      "id": "ned4_17",
+      "type": "QCM",
+      "question": "6 symboles équiprobables, extension d'ordre 5. $N$ et efficacité :",
+      "choix": [
+        "N = 13, η ≈ 99,4 %",
+        "N = 12, η = 100 %",
+        "N = 15, η ≈ 86,2 %",
+        "N = 13, η ≈ 86,2 %"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "$6^5 = 7776$, $2^{12} < 7776 \\leq 2^{13}$ ; $\\eta = 5 \\times 2.585/13$. Sans extension : 3 bits, 86,2 %."
+    },
+    {
+      "id": "ned4_18",
+      "type": "QCM",
+      "question": "Source à 6 symboles équiprobables, 5000 symboles/s. Débit d'information :",
+      "choix": [
+        "30 000 Sh/s",
+        "≈ 12 925 Sh/s",
+        "5000 Sh/s",
+        "15 000 Sh/s"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "$\\log_2 6 \\times 5000 \\approx 2.585 \\times 5000$."
+    },
+    {
+      "id": "ned4_19",
+      "type": "QCM",
+      "question": "Premier théorème de Shannon (longueur fixe) :",
+      "choix": [
+        "$n' = \\log_2 M$ obligatoirement",
+        "$n' \\leq H(X)$",
+        "une source doit être codée avec au moins $H(X)$ bits par symbole : $n' \\geq H(X)$",
+        "$H \\times R_m \\leq C$"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned4_20",
+      "type": "QCM",
+      "question": "Code instantané (code préfixe) :",
+      "choix": [
+        "deux symboles différents ont deux mots différents",
+        "les mots les plus longs sont les plus fréquents",
+        "tous les mots ont la même longueur",
+        "aucun mot de code n'est le début d'un autre mot de code"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "« Deux symboles → deux mots différents » définit seulement un code non singulier."
+    },
+    {
+      "id": "ned4_21",
+      "type": "QCM",
+      "question": "Longueur moyenne d'un code de longueur variable :",
+      "choix": [
+        "$L = \\sum_i l_i / M$",
+        "$L = -\\sum_i l_i \\log_2 p_i$",
+        "$L = \\max_i l_i$",
+        "$L = \\sum_i p_i\\, l_i$"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned4_22",
+      "type": "QCM",
+      "question": "Premier théorème de Shannon (longueur variable) :",
+      "choix": [
+        "$H(X) \\leq L < H(X) + 1$",
+        "$H(X) - 1 \\leq L \\leq H(X)$",
+        "$L = \\log_2 M$",
+        "$L \\leq H(X)$"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "L'égalité $L = H$ n'est atteinte que si tous les $-\\log_2 p_i$ sont entiers."
+    },
+    {
+      "id": "ned4_23",
+      "type": "QCM",
+      "question": "Source A(0,81), B(0,09), C(0,01), D(0,09) codée 0 / 10 / 110 / 111. Longueur moyenne et efficacité :",
+      "choix": [
+        "L = 2 ; η ≈ 47 %",
+        "L = 1,29 ; η ≈ 47 %",
+        "L = 1,29 ; η ≈ 73 %",
+        "L = 0,94 ; η = 100 %"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "$H \\approx 0.94$. En longueur fixe (2 bits) : $\\eta \\approx 47\\%$."
+    },
+    {
+      "id": "ned4_24",
+      "type": "QCM",
+      "question": "Principe du codage de Huffman :",
+      "choix": [
+        "coder chaque symbole sur le même nombre de bits",
+        "trier les symboles par ordre alphabétique",
+        "regrouper itérativement les 2 symboles les moins probables jusqu'à la racine",
+        "regrouper les 2 symboles les plus probables"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned4_25",
+      "type": "QCR",
+      "question": "Propriétés du code de Huffman :",
+      "choix": [
+        "mots de longueur fixe",
+        "mots courts pour les symboles fréquents",
+        "code préfixe (instantané)",
+        "code entropique, sans pertes"
+      ],
+      "reponses": [
+        1,
+        2,
+        3
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned4_26",
+      "type": "QCM",
+      "question": "Exercice résolu (A 0,36 … I 0,01) : longueurs 1,3,3,4,4,4,5,6,6. Longueur moyenne :",
+      "choix": [
+        "L = 4 bits",
+        "L ≈ 2,77 bits",
+        "L ≈ 3,56 bits",
+        "L ≈ 2,69 bits"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "$H \\approx 2.69$ bits, donc $\\eta \\approx 97\\%$."
+    },
+    {
+      "id": "ned4_27",
+      "type": "QCM",
+      "question": "Source P = {0,3 ; 0,25 ; 0,15 ; 0,15 ; 0,1 ; 0,05}. Information portée par le symbole le plus probable :",
+      "choix": [
+        "≈ 2,39 bits",
+        "≈ 0,52 bit",
+        "0,3 bit",
+        "≈ 1,74 bit"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "$-\\log_2 0.3 \\approx 1.74$. L'entropie de la source vaut ≈ 2,39 bits (< $\\log_2 6$)."
+    },
+    {
+      "id": "ned4_28",
+      "type": "QCM",
+      "question": "Pour cette même source, Huffman donne des longueurs 2,2,3,3,3,3. Efficacité :",
+      "choix": [
+        "≈ 97,6 % (L = 2,45)",
+        "≈ 79,7 % (L = 3)",
+        "≈ 86,2 % (L = 2,77)",
+        "100 %"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "$L = 0.55 \\times 2 + 0.45 \\times 3 = 2.45$, $\\eta = 2.39/2.45$. En longueur fixe (3 bits) : ≈ 80 %."
+    },
+    {
+      "id": "ned4_29",
+      "type": "QCM",
+      "question": "Compromis fondamental du codage de source :",
+      "choix": [
+        "plus le code est proche de l'entropie, plus le message est sensible au bruit",
+        "la compression augmente toujours le débit binaire",
+        "plus le code est efficace, plus il résiste au bruit",
+        "un code optimal n'a pas besoin de codage canal"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Perdre un bit fait perdre plus d'information : il faut durcir le message (codage canal)."
+    }
+  ]
+}

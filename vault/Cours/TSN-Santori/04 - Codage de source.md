@@ -24,6 +24,13 @@ Retour : [[00 - Sommaire TSN-CLEAE2-NED]] · Précédent : [[03 - Modulations nu
 > - **Codage canal** : augmenter la fiabilité par ajout de redondance utile (voir [[05 - Codage de canal]]).
 > - **Codage en ligne** (mise en forme + modulation) : associe un support physique aux éléments binaires.
 
+```mermaid
+flowchart LR
+    S["Source<br/>(redondante)"] -->|"− redondance inutile"| CS["Codage source<br/>compression"] -->|"+ redondance utile"| CC["Codage canal<br/>protection"] --> CL["Codage en ligne<br/>mise en forme + modulation"] --> CH(["Canal"])
+    classDef here fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+    class CS here
+```
+
 ## Introduction sur la compression
 
 Dans une image naturelle (par opposition à une mire artificielle), la corrélation entre pixels voisins est très élevée. Idée de base de la compression : **décorréler** l'information pour éviter de coder deux fois la même chose.
@@ -40,6 +47,18 @@ Dans une image naturelle (par opposition à une mire artificielle), la corrélat
 
 - **Redondance** : liée à l'aspect statistique de la source, éliminée au codage et restituée au décodage ⇒ **codage exact** (sans perte).
 - **Pertinence** : dépend de l'application, mesurée par un critère de fidélité/qualité ; les informations non pertinentes sont éliminées au codage ⇒ **codage approximatif** (avec pertes).
+
+```mermaid
+flowchart TB
+    C["Compression"] --> R["Supprimer la redondance<br/>(statistique de la source)"]
+    C --> P["Supprimer l'information non pertinente<br/>(ce que l'utilisateur ne perçoit pas)"]
+    R --> SP["Sans pertes / réversible<br/>Huffman, .zip"]
+    P --> AP["Avec pertes / irréversible<br/>JPEG, MP3"]
+    classDef ok fill:#dcfce7,stroke:#16a34a,color:#14532d
+    classDef ko fill:#ffedd5,stroke:#ea580c,color:#7c2d12
+    class SP ok
+    class AP ko
+```
 
 ### Critères de choix d'un algorithme de compression
 
@@ -94,10 +113,15 @@ Pour une source binaire : $H = -p('0')\log_2 p('0') - p('1')\log_2 p('1')$.
 > L'entropie d'une source est **maximale** lorsque tous les symboles sont équiprobables. Pour un alphabet de taille $M$ :
 > $$H_{max} = -\sum_{i=1}^{M} \frac{1}{M}\log_2\left(\frac{1}{M}\right) = \log_2(M)$$
 
+![[ned-entropie.svg]]
+
+*À gauche : moins un événement est probable, plus il apporte d'information (une probabilité divisée par 2 = 1 bit de plus). À droite : une source binaire déséquilibrée (p proche de 0 ou 1) est prévisible, donc compressible ; elle ne l'est plus du tout pour p = 0,5.*
+
 ## Codage de source sans pertes
 
-```
-Source (Rm, H) → Codeur → sortie
+```mermaid
+flowchart LR
+    S["Source<br/>Rm symboles/s<br/>H bits d'info/symbole"] -->|"symboles"| C["Codeur<br/>de source"] -->|"mots de code<br/>(bits)"| O["Train binaire<br/>débit D"]
 ```
 
 **Principe** : traduire en trains binaires (mots de code) les symboles émis par la source, en minimisant le nombre de bits utilisés (augmentation de l'efficacité, suppression de la redondance).
@@ -108,8 +132,9 @@ Deux types de codage de source :
 
 ### Mots de code de longueur fixe (sans extension)
 
-```
-Source (Rm, H) → Codeur (D, H') avec D = n × Rm, H' = H/n
+```mermaid
+flowchart LR
+    S["Source<br/>Rm, H"] --> C["Codeur à longueur fixe<br/>n bits par symbole"] -->|"D = n × Rm<br/>H' = H / n"| O["Train binaire"]
 ```
 
 On code chaque symbole de l'alphabet par un mot de $n$ bits, tel que $2^{n-1} < M \leq 2^n$ :
@@ -147,8 +172,9 @@ Soit $X$ une source à valeurs dans $\Omega = \{a_0, \dots, a_{M-1}\}$ de cardin
 
 **Codage en bloc** : on regroupe $J$ symboles pour former un symbole secondaire (bloc), parmi $M^J$ blocs possibles, chacun codé par un mot de $N$ bits tel que $2^{N-1} < M^J \leq 2^N$.
 
-```
-Source (Rm, H) → Codeur en bloc (D, H') avec D = n × Rm, H' = H×J/n
+```mermaid
+flowchart LR
+    S["Source<br/>Rm, H"] --> G["Regroupement<br/>par blocs de J symboles"] -->|"M^J blocs possibles"| C["Codeur à longueur fixe<br/>N bits par bloc"] -->|"n' = N / J bits par symbole<br/>η = J·H / N"| O["Train binaire"]
 ```
 
 - On en déduit que le nombre de bits nécessaires pour coder un symbole primaire est $n' = N/J$.
@@ -178,6 +204,10 @@ Source (Rm, H) → Codeur en bloc (D, H') avec D = n × Rm, H' = H×J/n
 >
 > Si les symboles sont équiprobables, on peut toujours trouver un code permettant d'avoir $n'$ aussi proche de $H$ qu'on le souhaite.
 
+![[ned-efficacite-extension.svg]]
+
+*L'efficacité n'augmente pas régulièrement avec J (elle dépend de la façon dont $M^J$ « remplit » la puissance de 2 suivante), mais elle tend vers 100 % : on retrouve les valeurs des exemples (J = 3 pour M = 24, J = 5 pour M = 6).*
+
 ### Mots de code de longueur variable
 
 **Conséquence** : si les symboles ne sont **pas équiprobables**, il n'est pas possible d'avoir $n'$ aussi proche de $H$ qu'on le souhaite avec un codage en bloc à mots de longueur fixe. On utilise alors des **mots de code de longueur variable** : mots courts pour les symboles fréquents, mots longs pour les symboles rares.
@@ -185,6 +215,17 @@ Source (Rm, H) → Codeur en bloc (D, H') avec D = n × Rm, H' = H×J/n
 **Définitions** :
 - **Code non singulier** : deux mots de code différents correspondent à deux symboles différents.
 - **Code instantané (code préfixe)** : satisfait la condition du préfixe — aucun mot de code n'est le début d'un autre mot de code.
+
+```mermaid
+flowchart TB
+    subgraph TOUS["Tous les codes"]
+        subgraph NS["Non singuliers"]
+            subgraph UD["Décodables de manière unique"]
+                INST["Instantanés<br/>(codes préfixes, ex : Huffman)"]
+            end
+        end
+    end
+```
 
 > [!example]- Illustration : codage de « BOF »
 > - Code I : `001001` — non décodable de manière unique.
@@ -208,6 +249,18 @@ où $l_i$ est la longueur du mot de code $i$.
 > $H(X) = 0{,}94$ bits d'information, $L = 1{,}29$, $\eta = 0{,}73$ (73 %).
 >
 > Comparaison avec un codage à longueur fixe ($M=4 \Rightarrow n'=2$) : $\eta = H/n' = 0{,}47$ (47 %). Le codage à longueur variable est ici bien plus performant.
+
+Le code de cet exemple se lit sur un arbre binaire : chaque symbole est une **feuille**, aucun n'est sur le chemin d'un autre, d'où la condition du préfixe.
+
+```mermaid
+flowchart TB
+    R(("racine")) -->|"0"| A["A (0,81)<br/>0"]
+    R -->|"1"| N1(("•"))
+    N1 -->|"0"| B["B (0,09)<br/>10"]
+    N1 -->|"1"| N2(("•"))
+    N2 -->|"0"| C["C (0,01)<br/>110"]
+    N2 -->|"1"| D["D (0,09)<br/>111"]
+```
 
 ### Premier théorème de Shannon (codes de longueur variable)
 
@@ -238,11 +291,11 @@ Codage de longueur variable **sans pertes**, dit **code entropique** : les symbo
 > **Regroupements successifs :**
 > - H(0,03) + I(0,01) → 0,04
 > - G(0,05) + [H,I](0,04) → 0,09
-> - E(0,09) + F(0,07) → 0,16
-> - D(0,11) + [G,H,I](0,09) → 0,20
+> - [G,H,I](0,09) + F(0,07) → 0,16 — à égalité avec E (0,09), le nouveau symbole [G,H,I] est placé **en dessous** de E : ce sont donc lui et F les deux moins probables
+> - D(0,11) + E(0,09) → 0,20
 > - B(0,15) + C(0,13) → 0,28
-> - [E,F](0,16) + [D,G,H,I](0,20) → 0,36
-> - [B,C](0,28) + [E,F,D,G,H,I](0,36) → 0,64
+> - [D,E](0,20) + [F,G,H,I](0,16) → 0,36
+> - [D,E,F,G,H,I](0,36) + [B,C](0,28) → 0,64
 > - A(0,36) + [tout le reste](0,64) → 1
 >
 > **Codes obtenus :**
@@ -260,6 +313,30 @@ Codage de longueur variable **sans pertes**, dit **code entropique** : les symbo
 > | I | 0,01 | 001011 | 6 |
 >
 > Longueur moyenne du code : $L = \sum p_i l_i$ (à calculer avec le tableau ci-dessus).
+
+**Arbre de Huffman de l'exercice résolu** (déplier l'exercice pour les étapes ; on lit le code d'un symbole en descendant de la racine jusqu'à sa feuille) :
+
+```mermaid
+flowchart TB
+    R(("1,00")) -->|"1"| A["A 0,36<br/>1"]
+    R -->|"0"| N64(("0,64"))
+    N64 -->|"0"| N36(("0,36"))
+    N64 -->|"1"| N28(("0,28"))
+    N28 -->|"0"| B["B 0,15<br/>010"]
+    N28 -->|"1"| C["C 0,13<br/>011"]
+    N36 -->|"0"| N20(("0,20"))
+    N36 -->|"1"| N16(("0,16"))
+    N20 -->|"0"| D["D 0,11<br/>0000"]
+    N20 -->|"1"| E["E 0,09<br/>0001"]
+    N16 -->|"0"| N09(("0,09"))
+    N16 -->|"1"| F["F 0,07<br/>0011"]
+    N09 -->|"0"| G["G 0,05<br/>00100"]
+    N09 -->|"1"| N04(("0,04"))
+    N04 -->|"0"| H["H 0,03<br/>001010"]
+    N04 -->|"1"| I["I 0,01<br/>001011"]
+    classDef leaf fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+    class A,B,C,D,E,F,G,H,I leaf
+```
 
 ## Codage de source : conclusion
 

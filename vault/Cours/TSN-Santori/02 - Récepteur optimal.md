@@ -21,8 +21,10 @@ Retour : [[00 - Sommaire TSN-CLEAE2-NED]] · Précédent : [[01 - Numérisation 
 
 On admet la structure optimale du récepteur suivante :
 
-```
-u(t) → [Filtre gr(t)] → z(t) → [Échantillonnage à 1/Ts] → z̃(n) → [Détecteur à seuils] → symboles estimés
+```mermaid
+flowchart LR
+    U["u(t)<br/>signal reçu<br/>(déformé + bruité)"] --> GR["Filtre de réception<br/>g_r(t)"] -->|"z(t)"| E["Échantillonnage<br/>à t = kTs"] -->|"z̃(n)"| DS["Détecteur<br/>à seuils"] --> AK["â_k<br/>symboles estimés"]
+    H(["Horloge récupérée<br/>(rythme 1/Ts)"]) -.-> E
 ```
 
 avec $z(t) = u(t) \ast g_r(t) = s'(t) \ast g_r(t) + b_e(t) \ast g_r(t)$ (terme signal + terme bruit), où $s'(t)$ est le signal déformé par son passage dans le canal.
@@ -40,10 +42,22 @@ Deux phénomènes compliquent la prise de décision :
 
 On modélise la chaîne à l'aide de filtres :
 
+```mermaid
+flowchart LR
+    A["a_k"] --> GE["Filtre d'émission<br/>g_e(t)"] -->|"s(t)"| CH["Canal<br/>passe-bas → IES"] --> PLUS(("+")) -->|"u(t)"| GR["Filtre adapté<br/>g_r(t) = g*(−t)"] --> Z["z(t) → échantillonneur"]
+    B["Bruit b_e(t)"] --> PLUS
+    subgraph G["Filtre global g̃ = g_e ∗ canal ∗ g_r : doit vérifier le critère de Nyquist (pas d'IES)"]
+        GE
+        CH
+        GR
+    end
+    classDef ch fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
+    class CH,B ch
 ```
-Émetteur [filtre ge(t)] → s(t) → Canal [addition de bruit, filtre passe-bas (IES)] → u(t) → Récepteur [filtre gr(t)]
-                                        (filtre global g(t))
-```
+
+> [!tip] Deux filtres, deux rôles
+> - Le **filtre adapté** (à la réception) répond au problème du **bruit** : il maximise le RSB à l'instant d'échantillonnage.
+> - Le **filtre global de Nyquist** (émission + canal + réception) répond au problème de l'**IES** : il annule la contribution des autres symboles aux instants $kT_s$.
 
 Afin d'optimiser les performances du détecteur, on cherche à **maximiser le rapport signal à bruit (RSB) en réception**, en utilisant un **filtre adapté** (*matched filter*) $g_r$ tel que :
 
@@ -54,6 +68,8 @@ $$g_r(t) = g^*(-t)$$
 Vidéo : [IES et Nyquist](https://youtu.be/Z-CJVTfMjZ4)
 
 Le canal (modélisé en filtre passe-bas) déforme une impulsion rectangulaire : plus la fréquence de coupure $f_c$ du canal est basse (par rapport à $1/T$), plus l'impulsion s'étale dans le temps, débordant sur les symboles voisins.
+
+![[ned-filtrage-canal-ies.svg]]
 
 ### Interférences entre symboles (IES)
 
@@ -80,6 +96,10 @@ On affiche $u(t)$ sur un oscilloscope avec une base de temps réglée sur $T_s$ 
 - Plus l'**ouverture verticale** est grande, plus facile est la distinction entre symboles ('0' et '1') ⇒ meilleure résistance au bruit.
 - Plus l'**ouverture horizontale** est large, plus simple est le système de récupération de rythme ⇒ relâchement de la contrainte sur l'instant d'échantillonnage.
 
+![[ned-diagramme-oeil.svg]]
+
+*Le récepteur « lit » le signal une fois par symbole (pointillé orange) et compare la valeur lue à un seuil (ici 0). À gauche, les valeurs lues sont bien groupées autour de ±1 : la décision est sûre. À droite, l'IES les disperse : le bruit fera plus facilement franchir le seuil.*
+
 Vidéo : [Diagramme de l'œil](https://youtu.be/3OezVhSq8mg) (signal optique, mais valable pour des signaux électriques).
 
 ## Élimination des IES
@@ -89,6 +109,10 @@ Les IES modifient la valeur des symboles envoyés, ce qui entraîne une mauvaise
 $$\tilde z(n) = \sum_k \tilde g(k)\, a_{n-k} + \tilde b_n = \tilde g(0)\, a_n + \tilde b_n \quad \text{(cas idéal sans IES)}$$
 
 Pour minimiser les IES, il faut trouver un filtre tel que $\tilde g(k) = 0$ pour tout $k \neq 0$, c'est-à-dire que les effets des symboles précédemment transmis soient annulés à tous les instants d'échantillonnage. Un tel filtre est appelé **filtre de Nyquist**.
+
+![[ned-nyquist-temporel.svg]]
+
+*À gauche : la réponse d'un filtre de Nyquist s'annule à tous les instants $kT_s$ sauf en 0. À droite : les impulsions des symboles se chevauchent bien dans le temps, mais aux instants d'échantillonnage chacune « passe par zéro » sauf la sienne — on lit donc exactement $a_k$.*
 
 ## Filtres de Nyquist
 
@@ -108,7 +132,7 @@ $$
 G(f) =
 \begin{cases}
 T_s & \text{si } |f| \leq \dfrac{1-\alpha}{2T_s} \\[4pt]
-\dfrac{T_s}{2}\left[1 + \cos\left(\pi T_s \left(|f| - \dfrac{1-\alpha}{2T_s}\right)\right)\right] & \text{si } \dfrac{1-\alpha}{2T_s} \leq |f| \leq \dfrac{1+\alpha}{2T_s} \\[4pt]
+\dfrac{T_s}{2}\left[1 + \cos\left(\dfrac{\pi T_s}{\alpha} \left(|f| - \dfrac{1-\alpha}{2T_s}\right)\right)\right] & \text{si } \dfrac{1-\alpha}{2T_s} \leq |f| \leq \dfrac{1+\alpha}{2T_s} \\[4pt]
 0 & \text{si } |f| > \dfrac{1+\alpha}{2T_s}
 \end{cases}
 $$
@@ -116,6 +140,14 @@ $$
 - $\alpha$ est appelé **facteur d'excès de bande**, *facteur d'arrondi*, ou encore *facteur de retombée* (**roll-off factor**).
 - On prend en général un $\alpha$ faible pour minimiser la bande occupée.
 - Le point $\left(\dfrac{1}{2T_s}, \dfrac{G(0)}{2}\right)$ est bien un centre de symétrie.
+
+![[ned-cosinus-sureleve.svg]]
+
+| $\alpha$ | Bande occupée (bande de base) | Réponse temporelle |
+|---|---|---|
+| 0 (filtre rectangulaire « idéal ») | $\dfrac{1}{2T_s}$ (minimum) | sinus cardinal, décroît lentement → sensible à une erreur d'instant d'échantillonnage |
+| 0,35 | $\dfrac{1{,}35}{2T_s}$ | compromis courant |
+| 1 | $\dfrac{1}{T_s}$ (double) | oscillations très vite amorties |
 
 ## Entraînement
 

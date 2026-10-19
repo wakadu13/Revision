@@ -40,6 +40,15 @@ Le principe général consiste à coder le signal au moyen d'un alphabet contena
 > [!tip] À retenir
 > Le codage de canal permet de **durcir** le message d'information transmis sur le canal.
 
+```mermaid
+flowchart LR
+    M["Message<br/>k bits"] --> COD["Codeur de canal<br/>+ (n − k) bits de redondance"] -->|"mot de code<br/>n bits"| CH(["Canal<br/>(erreurs)"]) -->|"mot reçu"| DEC{"Mot reçu<br/>valide ?"}
+    DEC -->|"oui"| OK["Message accepté"]
+    DEC -->|"non"| ERR["Erreur détectée"]
+    ERR --> ARQ["ARQ : redemander<br/>l'envoi"]
+    ERR --> FEC["FEC : corriger vers le<br/>mot valide le plus proche"]
+```
+
 ### Codage détecteur d'erreur
 
 **Exemple** : message à transmettre `0 1 0 0`. On double les bits à transmettre : alphabet $\{00, 01, 10, 11\}$ où seuls `00` et `11` sont des états possibles en émission.
@@ -64,6 +73,13 @@ Reçu  : 000 110 000 010   → détection de 2 erreurs, puis correction par déc
 **Cas d'utilisation** : canaux unidirectionnels (diffusion), fort trafic, retransmission impossible.
 ➜ **FEC** (*Forward Error Correction*) : TNT (DVB), CD.
 
+| | ARQ (détection + retransmission) | FEC (correction directe) |
+|---|---|---|
+| Voie de retour | nécessaire | inutile |
+| Redondance | faible | plus importante |
+| Latence | variable (retransmissions) | constante |
+| Exemples | Ethernet | TNT, CD, liaisons spatiales |
+
 ### Deuxième théorème de Shannon
 
 > [!tip] Théorème
@@ -78,6 +94,15 @@ Codes en bloc et codes convolutifs sont souvent imbriqués pour améliorer les p
 
 - **Codes cycliques** : représentation des mots de code par des polynômes, utilisation des propriétés des polynômes dans un corps fini (**CRC** : Contrôle de Redondance Cyclique). Codes linéaires en bloc stables pour la multiplication.
 - **Turbo-codes** : association de deux codeurs consécutifs en entrelaçant la trame entre les deux codeurs.
+
+```mermaid
+flowchart TB
+    CC["Codes correcteurs"] --> BL["Codes en bloc C(n, k)<br/>blocs indépendants, sans mémoire"]
+    CC --> CV["Codes convolutifs C(n, k, m)<br/>fenêtre glissante, avec mémoire"]
+    BL --> LIN["Codes linéaires"]
+    LIN --> CYC["Codes cycliques<br/>(CRC)"]
+    BL & CV --> CAT["Concaténation / turbo-codes<br/>(codeurs combinés + entrelacement)"]
+```
 
 > [!info] Code cyclique
 > Un code linéaire en bloc est cyclique si tout décalage circulaire d'un mot-code est un autre mot-code.
@@ -99,6 +124,10 @@ $$t = E\left[\frac{d_{min}-1}{2}\right] = E\left[\frac{d}{2}\right] \quad \text{
 > $d = 2 \Rightarrow$ détection possible de 2 erreurs
 > $t = 1 \Rightarrow$ correction possible de 1 erreur
 
+![[ned-hamming-cube.svg]]
+
+*Les 8 mots de 3 bits sont les sommets d'un cube ; deux sommets reliés diffèrent d'un bit. Il faut parcourir 3 arêtes pour aller de 000 à 111 ($d_{min} = 3$). Un mot reçu avec 1 erreur (ex : 010) reste plus proche de son mot d'origine (000) : on corrige. Avec 2 erreurs (ex : 110), il devient plus proche de 111 : la correction se trompe, mais l'erreur est quand même **détectée** (110 n'est pas un mot de code).*
+
 ### Codes en bloc C(n, k)
 
 - Codage de blocs disjoints de longueur $k$ par des mots de code de longueur $n > k$.
@@ -108,6 +137,13 @@ $$t = E\left[\frac{d_{min}-1}{2}\right] = E\left[\frac{d}{2}\right] \quad \text{
 **Taux de codage (rendement)** : $\eta = k/n$
 
 **Exemple** : code en bloc systématique $C(4,3)$ avec bit de parité.
+
+```mermaid
+flowchart LR
+    K["k = 3 bits d'information<br/>1 0 1"] --> P["Calcul de la parité<br/>1 ⊕ 0 ⊕ 1 = 0"] --> N["n = 4 bits émis<br/>1 0 1 | 0"]
+```
+
+*Rendement $\eta = 3/4$. Un nombre pair de 1 dans le mot reçu : pas d'erreur détectée ; impair : erreur détectée ($d_{min} = 2$, donc détection d'une erreur, aucune correction).*
 
 ## Codes convolutifs
 
@@ -128,25 +164,58 @@ Codes convolutifs $C(n, k, m)$ :
 $$C_{1,t} = s_t \oplus s_{t-1} \oplus s_{t-2}$$
 $$C_{2,t} = s_t \oplus s_{t-2}$$
 
+![[ned-codeur-convolutif.svg]]
+
 ### Représentation par diagramme d'état
 
 - **Nœuds** = états du code (des bascules) : $2^{m-1}$ états.
 - **Arcs** = transitions (bit en entrée) : $2^k$ entrées possibles, $2^n$ sorties associées, notées « entrée/sortie ».
 
+Pour $C(2,1,3)$, l'état est le contenu des bascules $(s_{t-1}, s_{t-2})$ ; quand le bit $u$ entre, le nouvel état est $(u, s_{t-1})$ :
+
+```mermaid
+stateDiagram-v2
+    direction LR
+    state "a = 00" as a
+    state "b = 01" as b
+    state "c = 10" as c
+    state "d = 11" as d
+    [*] --> a
+    a --> a : 0/00
+    a --> c : 1/11
+    b --> a : 0/11
+    b --> c : 1/00
+    c --> b : 0/10
+    c --> d : 1/01
+    d --> b : 0/01
+    d --> d : 1/10
+```
+
+| État actuel | Entrée 0 → état suivant / sortie | Entrée 1 → état suivant / sortie |
+|---|---|---|
+| a = 00 | a / `00` | c / `11` |
+| b = 01 | a / `11` | c / `00` |
+| c = 10 | b / `10` | d / `01` |
+| d = 11 | b / `01` | d / `10` |
+
 ### Représentation en treillis
 
 C'est la représentation la plus utilisée car elle tient compte du **temps** et de la périodicité du codeur. Pour $C(2,1,3)$, 4 états $a=00, b=01, c=10, d=11$, chaque transition étant étiquetée `entrée/sortie`.
+
+![[ned-treillis-codage.svg]]
+
+*À gauche, une section du treillis (identique à chaque instant). À droite, le treillis déroulé dans le temps : en gris tous les chemins possibles en partant de a, en vert le chemin suivi pour coder `1011` puis les deux bits de queue.*
 
 > [!example]- Exemple de codage de la séquence `1011`
 > En partant de l'état `a=00` :
 > - `1` : $a \to c$, sortie `11`
 > - `0` : $c \to b$, sortie `10`
-> - `1` : $b \to d$, sortie `00`
-> - `1` : $d \to d$, sortie `01`
+> - `1` : $b \to c$, sortie `00`
+> - `1` : $c \to d$, sortie `01`
 >
 > Séquence codée : `11 10 00 01`
 >
-> On ajoute ensuite des **bits de queue** (des 0) pour ramener le codeur à l'état `00` et « vider la mémoire » : séquence codée complète `11 10 00 01 01 11`.
+> On ajoute ensuite des **bits de queue** (des 0) pour ramener le codeur à l'état `00` et « vider la mémoire » ($d \to b$ sortie `01`, puis $b \to a$ sortie `11`) : séquence codée complète `11 10 00 01 01 11`.
 
 ### Décodage : algorithme de Viterbi
 
@@ -161,6 +230,10 @@ C'est la représentation la plus utilisée car elle tient compte du **temps** et
 
 > [!example]- Décodage de la séquence reçue `111100010111`
 > On parcourt le treillis en calculant, pour chaque transition possible depuis chaque état, la distance de Hamming $X$ entre la sortie théorique de la transition et les bits effectivement reçus, puis on cumule ($Y$). Par exemple, en partant de `a=00` avec le premier couple reçu `11` : la transition `1/11` ($a \to c$) donne $X=0$ (aucune différence), tandis que rester en `a` via `0/00` donnerait $X=2$. On conserve, à chaque étape et pour chaque état, le chemin de métrique cumulée $Y$ minimale (élagage des chemins moins probables). Le chemin final de $Y$ minimale donne la séquence décodée.
+>
+> ![[ned-viterbi.svg]]
+>
+> **Résultat** : grâce aux bits de queue, on termine dans l'état `a` ; sa métrique vaut $Y = 1$. En remontant le chemin survivant (vert) : $a \to c \to b \to c \to d \to b \to a$, soit les bits `1 0 1 1` (+ `0 0` de queue). Le chemin attendait `10` au 2ᵉ couple alors qu'on a reçu `11` : **une erreur de transmission a été corrigée**, et on retrouve bien le message `1011` de l'exemple de codage.
 
 ### Notion de distance libre
 
@@ -170,6 +243,16 @@ Pour un code convolutif, il n'existe pas de « mots de code » à proprement par
 > C'est la distance minimale entre deux séquences codées distinctes quelconques. C'est aussi le **poids** (nombre de « 1 ») du chemin de poids minimal qui diverge du chemin nul (tout à zéro) et y revient.
 >
 > Elle rend compte de la performance du code convolutif en termes de détection et de correction d'erreur. Pour l'exemple $C(2,1,3)$ étudié, la distance libre vaut **5**.
+
+Sur le treillis, le chemin le plus « léger » qui quitte le chemin tout à zéro et y revient est $a \to c \to b \to a$ : sorties `11`, `10`, `11`, soit un poids de $2 + 1 + 2 = 5$.
+
+```mermaid
+flowchart LR
+    A0(("a")) -->|"0/00 (poids 0)"| A1(("a")) -->|"0/00"| A2(("a")) -->|"0/00"| A3(("a"))
+    A0 -->|"1/11 (poids 2)"| C1(("c")) -->|"0/10 (poids 1)"| B2(("b")) -->|"0/11 (poids 2)"| A3
+    classDef dev fill:#dcfce7,stroke:#16a34a,color:#14532d
+    class C1,B2 dev
+```
 
 ## Conclusion
 

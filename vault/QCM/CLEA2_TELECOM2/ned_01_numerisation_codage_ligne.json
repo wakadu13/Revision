@@ -1,0 +1,507 @@
+{
+  "titre": "NED 1 — Numérisation et codage en ligne",
+  "description": "Chaîne de communication numérique, échantillonnage, quantification, pré-codage, formants, familles de codes en ligne, débit et rapidité de modulation",
+  "questions": [
+    {
+      "id": "ned1_01",
+      "type": "QCM",
+      "question": "Ordre des blocs côté émission dans la chaîne de communication numérique :",
+      "choix": [
+        "Numérisation → codage canal → codage source → mise en forme → modulation",
+        "Numérisation → mise en forme → codage source → codage canal → modulation",
+        "Numérisation → codage source → codage canal → mise en forme → modulation",
+        "Codage source → numérisation → codage canal → modulation → mise en forme"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "On compresse d'abord (codage source), puis on ajoute de la redondance utile (codage canal), enfin on associe une onde physique."
+    },
+    {
+      "id": "ned1_02",
+      "type": "QCM",
+      "question": "On parle de communication en « bande de base » lorsque :",
+      "choix": [
+        "le canal est une fibre optique",
+        "le signal est uniquement analogique",
+        "le signal est transposé autour d'une porteuse",
+        "le signal est émis directement, sans transposition en fréquence"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned1_03",
+      "type": "QCR",
+      "question": "Avantages du numérique par rapport à l'analogique :",
+      "choix": [
+        "régénération parfaite du signal",
+        "bande passante plus étroite",
+        "meilleure résistance au bruit",
+        "compression et chiffrement facilités"
+      ],
+      "reponses": [
+        0,
+        2,
+        3
+      ],
+      "explication": "La bande passante plus large est au contraire un inconvénient du numérique (avec le délai de traitement et la consommation)."
+    },
+    {
+      "id": "ned1_04",
+      "type": "QCM",
+      "question": "Les 3 étapes de la numérisation, dans l'ordre :",
+      "choix": [
+        "Échantillonnage, pré-codage, quantification",
+        "Échantillonnage, quantification, pré-codage",
+        "Pré-codage, échantillonnage, quantification",
+        "Quantification, échantillonnage, pré-codage"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned1_05",
+      "type": "QCM",
+      "question": "Théorème de Nyquist-Shannon :",
+      "choix": [
+        "$F_e \\leq 2 f_{max}$",
+        "$F_e \\geq 2 f_{max}$",
+        "$F_e \\geq f_{max}$",
+        "$F_e \\geq f_{max}/2$"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned1_06",
+      "type": "QCM",
+      "question": "Si la condition de Nyquist-Shannon n'est pas respectée :",
+      "choix": [
+        "il y a du bruit de quantification",
+        "le spectre n'est plus périodisé",
+        "le signal est simplement atténué",
+        "il y a repliement de spectre (mélange d'information autour de $F_e/2$)"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned1_07",
+      "type": "QCM",
+      "question": "Pourquoi un filtre anti-repliement est-il obligatoire avant l'échantillonnage ?",
+      "choix": [
+        "Pour supprimer le bruit de quantification",
+        "Pour réaliser le pré-codage",
+        "Pour augmenter la fréquence d'échantillonnage",
+        "Un signal de durée finie ne peut pas être à bande limitée"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned1_08",
+      "type": "QCM",
+      "question": "Le CD audio est échantillonné à 44,1 kHz car :",
+      "choix": [
+        "le signal est stéréo",
+        "l'oreille entend jusqu'à ~20 kHz, donc $F_e \\geq 40$ kHz",
+        "l'oreille entend jusqu'à 44,1 kHz",
+        "le signal est codé sur 16 bits"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned1_09",
+      "type": "QCM",
+      "question": "Débit d'un CD audio (16 bits, 44,1 kHz, stéréo) :",
+      "choix": [
+        "705,6 kbit/s",
+        "44,1 kbit/s",
+        "1,41 Mbit/s",
+        "2,82 Mbit/s"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "$D = 2 \\times 16 \\times 44100 \\approx 1.41$ Mbit/s."
+    },
+    {
+      "id": "ned1_10",
+      "type": "QCM",
+      "question": "L'erreur (bruit) de quantification est :",
+      "choix": [
+        "la différence entre la valeur échantillonnée et sa valeur quantifiée, inhérente au procédé",
+        "due au repliement de spectre",
+        "nulle en quantification uniforme",
+        "évitable avec un filtre anti-repliement"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Elle diminue quand le pas de quantification diminue, mais ne disparaît jamais."
+    },
+    {
+      "id": "ned1_11",
+      "type": "QCM",
+      "question": "Exemple typique de quantification non uniforme :",
+      "choix": [
+        "la vidéo HD",
+        "le codage Manchester",
+        "la numérisation de la parole",
+        "le CD audio"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned1_12",
+      "type": "QCM",
+      "question": "En pré-codage binaire, le « moment » $m$ et la « valence » $M$ désignent :",
+      "choix": [
+        "$m$ : pas de quantification ; $M$ : nombre de niveaux",
+        "$m$ : nombre de bits par mot ; $M = 2^m$ : nombre d'états (taille de l'alphabet)",
+        "$m$ : nombre d'états ; $M$ : nombre de bits",
+        "$m$ : fréquence d'échantillonnage ; $M$ : débit"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned1_13",
+      "type": "QCM",
+      "question": "Combien de bits $m$ faut-il pour coder $M = 9$ niveaux ?",
+      "choix": [
+        "9",
+        "3",
+        "5",
+        "4"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "$2^3 = 8 < 9 \\leq 2^4 = 16$ : 4 bits, avec des combinaisons inutilisées."
+    },
+    {
+      "id": "ned1_14",
+      "type": "QCM",
+      "question": "Un symbole M-aire véhicule :",
+      "choix": [
+        "$2^M$ bits",
+        "$M$ bits",
+        "$n = \\log_2(M)$ bits",
+        "$M/2$ bits"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned1_15",
+      "type": "QCM",
+      "question": "Le codage en ligne est :",
+      "choix": [
+        "la transposition du signal autour d'une porteuse",
+        "une convention d'association (bijection) entre symboles logiques et formes d'ondes",
+        "l'ajout de redondance pour corriger les erreurs",
+        "une technique de compression"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned1_16",
+      "type": "QCM",
+      "question": "Expression du message en sortie de la mise en forme :",
+      "choix": [
+        "$m(t) = h(t) \\ast \\cos(2\\pi f_0 t)$",
+        "$m(t) = \\sum_k a_k\\, h(t - kT_s)$",
+        "$m(t) = \\sum_k h(t)\\, a_{k}(t)$",
+        "$m(t) = \\sum_k a_k\\, h(kT_s)$"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "$a_k$ : symboles, $h(t)$ : formant, $T_s$ : temps symbole."
+    },
+    {
+      "id": "ned1_17",
+      "type": "QCM",
+      "question": "Formant RZ (Return to Zero) :",
+      "choix": [
+        "le signal occupe toute la durée $T_s$",
+        "le signal revient à 0 après une demi-période $T_s/2$",
+        "transition obligatoire au milieu du temps symbole entre +V et −V",
+        "3 niveaux −V / 0 / +V"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned1_18",
+      "type": "QCM",
+      "question": "Codage Manchester (convention du cours) :",
+      "choix": [
+        "'0' : niveau bas constant ; '1' : niveau haut constant",
+        "'0' : 0 V ; '1' : alternativement +V et −V",
+        "'0' : pas de transition ; '1' : transition en fin de bit",
+        "'0' : transition bas → haut ; '1' : transition haut → bas"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Utilisé en Ethernet 10BASE-X."
+    },
+    {
+      "id": "ned1_19",
+      "type": "QCR",
+      "question": "Propriétés du codage Manchester (biphase) :",
+      "choix": [
+        "une transition au milieu de chaque bit, ce qui facilite la synchronisation",
+        "premier lobe de largeur $4/T_s$",
+        "bande plus étroite que le NRZ",
+        "pas de composante continue"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "Contrepartie : la bande ($4/T_s$) est double de celle du NRZ ($2/T_s$)."
+    },
+    {
+      "id": "ned1_20",
+      "type": "QCM",
+      "question": "NRZ 4-aire avec étiquetage de Gray du cours : le couple $(1,1)$ donne :",
+      "choix": [
+        "$-\\alpha$",
+        "$+\\alpha$",
+        "$-3\\alpha$",
+        "$+3\\alpha$"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "(0,0)→$-3\\alpha$, (0,1)→$-\\alpha$, (1,1)→$+\\alpha$, (1,0)→$+3\\alpha$ : un seul bit change entre niveaux voisins."
+    },
+    {
+      "id": "ned1_21",
+      "type": "QCM",
+      "question": "Code bipolaire simple (AMI) :",
+      "choix": [
+        "bit 0 → +V ; bit 1 → 0 V",
+        "bit 0 → −V ; bit 1 → +V",
+        "bit 0 → 0 V ; bit 1 → alternativement +V et −V",
+        "transition au milieu de chaque bit"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned1_22",
+      "type": "QCM",
+      "question": "Rôle des codes HDBn :",
+      "choix": [
+        "limiter le nombre de 0 consécutifs (bits de viol et de bourrage)",
+        "réduire la bande à $1/T_s$",
+        "corriger les erreurs de transmission",
+        "supprimer la composante continue du NRZ"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned1_23",
+      "type": "QCM",
+      "question": "Le codage de Miller (Delay Mode), comparé au Manchester :",
+      "choix": [
+        "a une DSP plus large",
+        "utilise 3 niveaux de tension",
+        "possède une forte composante continue",
+        "a une DSP plus étroite, donc permet un débit plus élevé"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned1_24",
+      "type": "QCM",
+      "question": "Largeur du premier lobe de la DSP d'un NRZ bipolaire :",
+      "choix": [
+        "$1/(2T_s)$",
+        "$4/T_s$",
+        "$2/T_s$",
+        "$T_s/2$"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "RZ unipolaire et Manchester : $4/T_s$."
+    },
+    {
+      "id": "ned1_25",
+      "type": "QCR",
+      "question": "Critères de choix d'un codage en ligne :",
+      "choix": [
+        "largeur de bande occupée",
+        "présence ou non d'une composante continue",
+        "entropie de la source",
+        "capacité de synchronisation (nombre de transitions)"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned1_26",
+      "type": "QCM",
+      "question": "Une longue suite de 0 en étiquetage unipolaire / formant RZ pose problème car :",
+      "choix": [
+        "l'énergie par bit augmente",
+        "aucune transition n'est générée : perte de synchronisation",
+        "la bande occupée devient infinie",
+        "le signal devient bipolaire"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned1_27",
+      "type": "QCM",
+      "question": "Relation entre débit binaire $D$ et rapidité de modulation $R$ :",
+      "choix": [
+        "$D = R$ quel que soit $M$",
+        "$D = R / n$",
+        "$D = n \\cdot R$, avec $n = \\log_2(M)$",
+        "$R = n \\cdot D$"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "$R = 1/T_s$ en bauds, $D = 1/T_b$ en bit/s, $T_s = n T_b$."
+    },
+    {
+      "id": "ned1_28",
+      "type": "QCM",
+      "question": "Transmission 16-aire à $D = 8$ kbit/s. Rapidité de modulation :",
+      "choix": [
+        "2 kBd",
+        "32 kBd",
+        "8 kBd",
+        "0,5 kBd"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "$n = \\log_2 16 = 4$, $R = D/n = 2$ kBd."
+    },
+    {
+      "id": "ned1_29",
+      "type": "QCM",
+      "question": "L'efficacité spectrale est définie par :",
+      "choix": [
+        "$\\eta = B/D$",
+        "$\\eta = D/B$ (bit/s/Hz)",
+        "$\\eta = R/D$",
+        "$\\eta = H/n$"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned1_30",
+      "type": "QCM",
+      "question": "Signal PCM de bande 200 Hz – 4 kHz. Fréquence d'échantillonnage minimale :",
+      "choix": [
+        "8 kHz",
+        "4 kHz",
+        "400 Hz",
+        "7,6 kHz"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "$F_e = 2 f_{max} = 8$ kHz (c'est $f_{max}$ qui compte, pas la largeur de bande)."
+    },
+    {
+      "id": "ned1_31",
+      "type": "QCM",
+      "question": "Ce signal PCM (−1 V à +1 V) est codé sur 8 bits. Pas de quantification :",
+      "choix": [
+        "≈ 7,84 mV",
+        "≈ 3,92 mV",
+        "≈ 7,81 mV",
+        "≈ 250 mV"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "256 niveaux → 255 intervalles : 2/255 ≈ 7,84 mV."
+    },
+    {
+      "id": "ned1_32",
+      "type": "QCM",
+      "question": "Débit binaire de ce signal PCM (8 kHz, 8 bits) :",
+      "choix": [
+        "8 kbit/s",
+        "128 kbit/s",
+        "32 kbit/s",
+        "64 kbit/s"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Durée d'un bit : 125 µs / 8 = 15,625 µs."
+    },
+    {
+      "id": "ned1_33",
+      "type": "QCM",
+      "question": "Pour doubler le débit en doublant $n$ (bits/symbole) à $T_s$ constant :",
+      "choix": [
+        "la bande reste la même mais la probabilité d'erreur augmente à puissance égale",
+        "rien ne change",
+        "la bande est divisée par deux",
+        "la bande double et la probabilité d'erreur reste la même"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "L'autre option (diviser $T_s$ par 2) double la bande. Compromis débit / bande / puissance / $P_e$."
+    }
+  ]
+}

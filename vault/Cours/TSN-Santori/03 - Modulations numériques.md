@@ -51,6 +51,10 @@ Réaliser une modulation consiste à faire varier les caractéristiques (amplitu
 > $$p(t)\, m(t) = \tfrac{1}{2}\big(\cos(2\pi(f_0+f)t + \varphi_0+\varphi) + \cos(2\pi(f_0-f)t + \varphi_0-\varphi)\big)$$
 > Le produit de deux sinusoïdes de fréquences $f_0$ et $f$ transpose le spectre autour de $f_0 \pm f$.
 
+![[ned-transposition-spectre.svg]]
+
+*Multiplier $m(t)$ par la porteuse déplace son spectre de 0 vers $\pm f_0$ : l'information est intacte, elle occupe simplement une autre bande de fréquences (au prix d'une bande doublée, $2B$, pour une modulation d'amplitude simple).*
+
 ## Choix d'une modulation
 
 Le choix de la porteuse dépend :
@@ -71,6 +75,22 @@ Il existe plusieurs types de modulations : bande étroite / ultra large bande (U
 - **Modulation à bande étroite** : $B \ll f_0$, transmission dans la bande de cohérence du canal (bande sur laquelle le module de la fonction de transfert du canal est considéré constant).
 - **Modulation linéaire** : modulation d'amplitude et de phase (modulateur/démodulateur « simples »).
 - **Modulation sur porteuse unique** : simple (amplitude) ou composite (phase et amplitude en quadrature).
+
+```mermaid
+flowchart TB
+    M["Modulations"] --> BE["À bande étroite (B ≪ f₀)"]
+    M --> UWB["Ultra large bande (UWB)"]
+    BE --> LIN["Linéaires"]
+    BE --> NL["Non linéaires (ex : FSK)"]
+    LIN --> PU["Porteuse unique"]
+    LIN --> MP["Multi-porteuses (ex : OFDM)"]
+    PU --> SIM["Simple : M-ASK"]
+    PU --> COMP["Composite I/Q : M-PSK, M-QAM"]
+    classDef cours fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+    class BE,LIN,PU,SIM,COMP cours
+```
+
+*En bleu : le périmètre de ce cours.*
 
 ## Modulation numérique — principe général
 
@@ -98,8 +118,10 @@ $$A = \{-(M-1)\alpha; -(M-3)\alpha; \dots; -\alpha; \alpha; \dots; (M-1)\alpha\}
 
 Schéma du modulateur :
 
-```
-ik → [Étiquetage] → ak → [Mise en forme] → m(t) → [× cos(2πf0t)] → s(t) → Canal
+```mermaid
+flowchart LR
+    I["i_k<br/>bits"] --> ET["Étiquetage<br/>n bits → a_k"] -->|"a_k"| MF["Mise en forme<br/>h(t)"] -->|"m(t)"| X(("×")) -->|"s(t)"| C(["Canal"])
+    P["Porteuse<br/>cos(2πf₀t)"] --> X
 ```
 
 ### 2-ASK
@@ -116,10 +138,19 @@ ik → [Étiquetage] → ak → [Mise en forme] → m(t) → [× cos(2πf0t)] �
 | 11 | +1 |
 | 10 | +3 |
 
+> [!info] Codage de Gray
+> Deux amplitudes voisines ne diffèrent que d'**un seul bit** (`01` ↔ `11`). Comme les erreurs de décision se font presque toujours vers un symbole voisin, une erreur symbole ne coûte alors qu'un bit erroné.
+
+Allure des signaux modulés pour la même suite de bits :
+
+![[ned-signaux-modules.svg]]
+
 ### Démodulation d'une M-ASK
 
-```
-r(t) → [Filtre passe-bande] → d(t) → [× 2cos(2πf0t)] → [Filtre passe-bas] → u(t) → Récepteur optimal → symboles estimés
+```mermaid
+flowchart LR
+    R["r(t)"] --> PBd["Filtre<br/>passe-bande"] --> X(("×")) -->|"d(t)"| PBs["Filtre<br/>passe-bas"] -->|"u(t)"| RO["Récepteur optimal<br/>(chapitre 2)"] --> AK["â_k"]
+    OL["Oscillateur local<br/>2cos(2πf₀t)<br/>synchronisé"] --> X
 ```
 
 Le filtre passe-bande élimine le bruit en dehors de la bande du signal. En canal à bruit AWGN et affaiblissement nul :
@@ -127,6 +158,8 @@ Le filtre passe-bande élimine le bruit en dehors de la bande du signal. En cana
 $$d(t) = r(t) \times 2\cos(2\pi f_0 t) = m(t) + m(t)\cos(4\pi f_0 t) + 2b(t)\cos(2\pi f_0 t)$$
 
 Le filtre passe-bas élimine ensuite la composante en $\cos(4\pi f_0 t)$ pour ne garder que $m(t)$ (bande de base).
+
+![[ned-demodulation-spectres.svg]]
 
 ## Modulations en phase et en quadrature (porteuse composite)
 
@@ -138,9 +171,16 @@ On parle de **modulation vectorielle complexe** ou **modulation I/Q** (*In-phase
 
 ### Schéma du modulateur I/Q
 
-```
-ik → [Étiquetage/Mappage] → ak → [Mise en forme] → i(t) → [× cos(2πf0t)] ─┐
-                          → bk → [Mise en forme] → q(t) → [× -sin(2πf0t)] ─┴→ s(t) → Canal
+```mermaid
+flowchart LR
+    I["i_k<br/>bits"] --> MAP["Étiquetage /<br/>mappage"]
+    MAP -->|"a_k (voie I)"| MFI["Mise en forme<br/>h(t)"] -->|"i(t)"| XI(("×"))
+    MAP -->|"b_k (voie Q)"| MFQ["Mise en forme<br/>h(t)"] -->|"q(t)"| XQ(("×"))
+    OL["Oscillateur<br/>cos(2πf₀t)"] --> XI
+    OL --> D90["Déphaseur<br/>−π/2"] -->|"−sin(2πf₀t)"| XQ
+    XI --> S(("Σ"))
+    XQ --> S
+    S -->|"s(t)"| C(["Canal"])
 ```
 
 $$s(t) = i(t)\cos(2\pi f_0 t + \varphi_0) - q(t)\sin(2\pi f_0 t + \varphi_0)$$
@@ -152,6 +192,16 @@ On définit l'**enveloppe complexe** du signal : $\underline{s}(t) = i(t) + j q(
 $$s(t) = \text{Re}\big(\underline{s}(t)\, e^{j2\pi f_0 t}\big)$$
 
 Si $i(t) = \sum_k a_k h(t-kT_s)$ et $q(t) = \sum_k b_k h(t-kT_s)$ alors $\underline{s}(t) = \sum_k c_k h(t-kT_s)$ avec $c_k = a_k + j b_k$.
+
+Le démodulateur I/Q fait l'opération inverse : grâce à l'orthogonalité de $\cos$ et $\sin$, chaque voie ne récupère que son propre signal (démonstration dans le [[TD1 - Modulations numériques#Exercice 2 : Le système UMTS|TD1, exercice 2]]).
+
+```mermaid
+flowchart LR
+    R["r(t)"] --> XI(("×")) --> LPI["Passe-bas"] -->|"i(t)"| DI["Récepteur optimal → â_k"]
+    R --> XQ(("×")) --> LPQ["Passe-bas"] -->|"q(t)"| DQ["Récepteur optimal → b̂_k"]
+    OL["2cos(2πf₀t)"] --> XI
+    OL2["−2sin(2πf₀t)"] --> XQ
+```
 
 Un **diagramme de constellation** est la représentation dans le plan complexe des différents symboles de l'alphabet utilisé lors de l'étiquetage : $a_k$ symbole M-aire réel, $b_k$ symbole N-aire réel, $c_k = a_k + jb_k$ symbole P-aire complexe avec $P = M \times N$ (en général $M=N$).
 
@@ -170,6 +220,10 @@ Le module des $c_k$ est constant pour tout $k$ : dans le diagramme de constellat
 ### M-QAM (modulation d'amplitude en quadrature)
 
 L'information est codée à la fois sur l'amplitude et la phase, avec une répartition homogène des points dans le plan complexe (exemple : la 16-QAM, grille régulière de points).
+
+![[ned-constellations.svg]]
+
+*Étiquettes en code de Gray : deux points voisins ne diffèrent que d'un bit. Pour la 16-QAM, les deux premiers bits donnent la position sur l'axe I, les deux derniers sur l'axe Q.*
 
 ## Utilisation pratique
 
@@ -192,6 +246,10 @@ Sans IES, la valeur échantillonnée correspond à la valeur du symbole envoyé 
 $$\tilde z(n) = \tilde g(0)\, a_n + \tilde b_n \quad (\tilde g(0)=1 \text{ en général})$$
 
 Décision : si $\tilde z(n) > 0$ alors $a_k = +\alpha$ ; si $\tilde z(n) < 0$ alors $a_k = -\alpha$.
+
+![[ned-decision-2ask.svg]]
+
+*La valeur échantillonnée est $\pm\alpha$ plus un bruit gaussien : il y a erreur quand le bruit fait passer la valeur de l'autre côté du seuil (zones colorées). Ces zones sont exactement l'intégrale calculée ci-dessous.*
 
 **Calcul de la probabilité d'erreur symbole $P_e$** (bruit gaussien, blanc, centré, de variance $N_0$) :
 
@@ -232,7 +290,7 @@ où $N_{min}$ est le nombre moyen de points à distance $d_{min}$.
 
 Expressions détaillées :
 
-$$P_{e(MDP)} = 2\, Q\left(\sqrt{2\log_2(M)\left(1-\cos\frac{\pi}{M}\right)\frac{E_b}{N_0}}\right) \quad \text{(M-PSK)}$$
+$$P_{e(MDP)} = 2\, Q\left(\sqrt{2\log_2(M)\sin^2\left(\frac{\pi}{M}\right)\frac{E_b}{N_0}}\right) \quad \text{(M-PSK, } M > 2\text{)}$$
 
 $$P_{e(MAQ)} = 4\left(1-\frac{1}{\sqrt M}\right) Q\left(\sqrt{\frac{3\log_2(M)}{M-1}\cdot \frac{E_b}{N_0}}\right) \quad \text{(M-QAM)}$$
 
@@ -242,6 +300,12 @@ $$P_{e(MDA)} = 2\,\frac{M-1}{M}\, Q\left(\sqrt{\frac{6\log_2(M)}{M^2-1}\cdot \fr
 > $P_e$ décroît de façon exponentielle avec le RSB : une petite augmentation du RSB entraîne une grande diminution de $P_e$.
 >
 > On parle aussi de **taux d'erreur binaire (TEB)** : avec un codage de Gray, $\text{TEB} = P_e / \log_2(M)$.
+
+Les trois formules tracées (axe vertical logarithmique) :
+
+![[ned-teb-modulations.svg]]
+
+*Lecture : pour $P_e = 10^{-5}$ (pointillé), la 16-QAM demande environ 14 dB, la 16-PSK environ 18 dB et la 16-ASK environ 23 dB. À droite, chaque doublement de la taille de la QAM (2 bits de plus par symbole) coûte environ 4 à 5 dB.*
 
 ### Comparaison des modulations linéaires
 
@@ -257,5 +321,7 @@ $$P_{e(MDA)} = 2\,\frac{M-1}{M}\, Q\left(\sqrt{\frac{6\log_2(M)}{M^2-1}\cdot \fr
 
 > [!question]- Exercice
 > Dans un diagramme représentant le TEB en fonction de $E_b/N_0$, les modulations MDA-16, MDP-32 et MAQ-256 semblent avoir les mêmes performances. À débit binaire constant, est-ce vrai en termes d'efficacité spectrale ?
+>
+> ![[ned-teb-exercice.svg]]
 >
 > Non : à TEB comparable, ces modulations véhiculent des nombres de bits par symbole différents ($n=4$ pour MDA-16, $n=5$ pour MDP-32, $n=8$ pour MAQ-256). Pour un même débit binaire, elles n'occupent donc pas la même bande passante : $B = D/\eta = D/n$ (approximativement). La MAQ-256 est bien plus efficace spectralement (bande occupée plus faible) que la MDA-16, à débit et TEB comparables, bien qu'exigeant un RSB plus élevé en absolu.

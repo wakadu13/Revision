@@ -56,6 +56,15 @@ Un **mot** est un groupe de bits (ex. un octet = 8 bits).
   multiplication...
 
 ## 3. Méthodes d'étude
+```mermaid
+flowchart LR
+    P["Cahier des charges"] --> T["Table de vérité"]
+    T --> K["Tableau de Karnaugh"] --> EQ["Équation simplifiée"]
+    T -. "développement<br/>par les 1 ou les 0" .-> B["Équation brute"]
+    B -. "algèbre de Boole" .-> EQ
+    EQ --> L["Logigramme<br/>(portes, circuits intégrés)"]
+```
+
 
 ### 3.1. Algèbre de Boole
 
@@ -171,9 +180,73 @@ On obtient un groupe de 2 « 1 » (terme `ĀC`) et un groupe de 4 « 1 » (terme
 | **Comparateur binaire** | `S = 1` si deux mots binaires sont identiques |
 | **Additionneur** | Additionneur *demi* (2 entrées `a,b` → somme `S` et retenue `r`) ou *complet* (3 entrées `a, b, retenue rᵢ` → `S`, `rᵢ₊₁`) |
 
+**Multiplexeur / démultiplexeur** : un seul fil transporte tour à tour les
+données de 4 sources ; le même code de sélection `s1 s0` aiguille chaque
+donnée vers la bonne destination.
+
+```mermaid
+flowchart LR
+    E0(("E0")) --> MUX
+    E1(("E1")) --> MUX
+    E2(("E2")) --> MUX
+    E3(("E3")) --> MUX
+    MUX["MUX 4 → 1"] -- "un seul fil" --> DMX["DEMUX 1 → 4"]
+    DMX --> S0(("S0"))
+    DMX --> S1(("S1"))
+    DMX --> S2(("S2"))
+    DMX --> S3(("S3"))
+    SEL["sélection s1 s0"] -.-> MUX
+    SEL -.-> DMX
+```
+
+**Contrôle de parité** (parité paire) :
+
+```mermaid
+flowchart LR
+    D["Données<br/>d3 d2 d1 d0"] --> G["Générateur<br/>p = d3 ⊕ d2 ⊕ d1 ⊕ d0"]
+    D --> L["Transmission<br/>d3 d2 d1 d0 p"]
+    G --> L
+    L --> C["Comparateur<br/>e = d3 ⊕ d2 ⊕ d1 ⊕ d0 ⊕ p"]
+    C --> T{"e = 0 ?"}
+    T -- "oui" --> OK["Nombre de 1 pair :<br/>pas d'erreur détectée"]
+    T -- "non" --> KO["Erreur de transmission"]
+```
+
 Équations de l'additionneur complet :
 
 $$S = a \oplus b \oplus r_i \qquad r_{i+1} = ab + ar_i + r_i b$$
+
+On le construit avec deux demi-additionneurs et un OU, en remarquant que
+$r_{i+1} = ab + r_i\,(a \oplus b)$ :
+
+```mermaid
+flowchart LR
+    a(("a")) --> X1["XOR"]
+    b(("b")) --> X1
+    a --> A1["ET"]
+    b --> A1
+    X1 -- "a ⊕ b" --> X2["XOR"]
+    ri(("rᵢ")) --> X2
+    X1 --> A2["ET"]
+    ri --> A2
+    X2 --> S(("S"))
+    A1 -- "ab" --> O["OU"]
+    A2 -- "rᵢ(a ⊕ b)" --> O
+    O --> R(("rᵢ₊₁"))
+```
+
+Pour additionner deux mots de `n` bits, on chaîne `n` additionneurs complets :
+la retenue sortante de l'étage `i` entre dans l'étage `i+1`.
+
+```mermaid
+flowchart RL
+    F0["Additionneur 0<br/>a0, b0"] -- "r1" --> F1["Additionneur 1<br/>a1, b1"] -- "r2" --> F2["Additionneur 2<br/>a2, b2"] -- "r3" --> F3["Additionneur 3<br/>a3, b3"]
+    F0 --> S0(("S0"))
+    F1 --> S1(("S1"))
+    F2 --> S2(("S2"))
+    F3 --> S3(("S3"))
+    F3 --> R4(("r4"))
+```
 
 > [!example] Exemple de codeur (clavier 7 touches → 3 bits)
 > `A = B4+B5+B6+B7`, `B = B2+B3+B6+B7`, `C = B1+B3+B5+B7`
@@ -202,6 +275,26 @@ $$S = a \oplus b \oplus r_i \qquad r_{i+1} = ab + ar_i + r_i b$$
 > Le NON-ET (NAND) est un opérateur **universel** : on peut réaliser
 > n'importe quelle fonction logique en ne combinant que des portes NAND
 > (utile pour réduire le nombre de boîtiers différents dans une carte).
+
+```mermaid
+flowchart TB
+    subgraph NON["NON : 1 porte"]
+        direction LR
+        a1(("A")) -- "entrées reliées" --> n1["NAND"] --> s1(("Ā"))
+    end
+    subgraph ET["ET : 2 portes"]
+        direction LR
+        a2(("A")) --> n2["NAND"]
+        b2(("B")) --> n2
+        n2 -- "A·B barre" --> n3["NAND<br/>(inverseur)"] --> s2(("A·B"))
+    end
+    subgraph OU["OU : 3 portes (De Morgan)"]
+        direction LR
+        a3(("A")) --> n4["NAND<br/>(inverseur)"] -- "Ā" --> n6["NAND"]
+        b3(("B")) --> n5["NAND<br/>(inverseur)"] -- "B̄" --> n6
+        n6 --> s3(("A + B"))
+    end
+```
 
 ## Exercices
 

@@ -21,13 +21,36 @@ tags: [telecom, NED, CLEAE2, MOC]
 
 ## Vue d'ensemble de la chaîne de communication numérique
 
+Chaque bloc de l'émission a son « miroir » à la réception ; le numéro du chapitre qui le traite est indiqué entre crochets.
+
+```mermaid
+flowchart TB
+    subgraph EM["Émission"]
+        direction LR
+        S["Source"] --> N["Numérisation [1]"] --> CS["Codage source [4]"] --> CC["Codage canal [5]"] --> MF["Mise en forme [1]"] --> MOD["Modulation [3]"]
+    end
+    CAN(["Canal : filtrage + bruit n(t)"])
+    subgraph RE["Réception"]
+        direction RL
+        DEM["Démodulation [3]"] --> DEC["Filtrage adapté + décision [2]"] --> DCC["Décodage canal [5]"] --> DCS["Décodage source [4]"] --> RES["Restitution"] --> D["Destinataire"]
+    end
+    EM -->|"s(t)"| CAN
+    CAN -->|"u(t)"| RE
+    classDef em fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+    classDef re fill:#dcfce7,stroke:#16a34a,color:#14532d
+    classDef ch fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
+    class S,N,CS,CC,MF,MOD em
+    class DEM,DEC,DCC,DCS,RES,D re
+    class CAN ch
 ```
-Source → Numérisation → Codage source → Codage canal → Mise en forme → Modulation/émission BdB → s(t)
-                                                                                                      ↓
-                                                                                                    Canal (+ bruit n(t))
-                                                                                                      ↓
-Destinataire ← Restitution ← Décodage source ← Décodage canal ← Décision ← Démodulation/réception BdB ← u(t)
-```
+
+| Chapitre | Question à laquelle il répond |
+|---|---|
+| 1 | Comment transformer un signal en bits, puis les bits en onde ? |
+| 2 | Comment retrouver les symboles malgré le bruit et l'IES ? |
+| 3 | Comment placer le signal sur une porteuse adaptée au canal ? |
+| 4 | Comment enlever la redondance inutile (compresser) ? |
+| 5 | Comment ajouter de la redondance utile pour corriger les erreurs ? |
 
 > [!tip] À retenir
 > - **Codage source** : élimine la redondance inutile (compression).

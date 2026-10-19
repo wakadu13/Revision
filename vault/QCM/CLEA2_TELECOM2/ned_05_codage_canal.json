@@ -1,0 +1,414 @@
+{
+  "titre": "NED 5 — Codage de canal",
+  "description": "Détection/correction, ARQ/FEC, 2e théorème de Shannon, distance de Hamming, codes en bloc, codes convolutifs, treillis, Viterbi, distance libre",
+  "questions": [
+    {
+      "id": "ned5_01",
+      "type": "QCM",
+      "question": "Principe général du codage de canal :",
+      "choix": [
+        "supprimer la redondance du message",
+        "réduire le nombre de bits transmis",
+        "utiliser un alphabet contenant plus de mots de code que de symboles à coder",
+        "transposer le signal en hautes fréquences"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Une erreur produit un mot « impossible », ce qui permet de la détecter, voire de la corriger."
+    },
+    {
+      "id": "ned5_02",
+      "type": "QCR",
+      "question": "Sources de perturbations du canal :",
+      "choix": [
+        "artificielles volontaires : brouillage",
+        "le codage de source",
+        "naturelles : multi-trajet radio, étalement d'impulsion en optique",
+        "artificielles involontaires : émetteurs voisins"
+      ],
+      "reponses": [
+        0,
+        2,
+        3
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned5_03",
+      "type": "QCM",
+      "question": "Doubler chaque bit (0 → 00, 1 → 11) permet :",
+      "choix": [
+        "de corriger 2 erreurs par mot",
+        "de corriger 1 erreur par mot",
+        "ni de détecter ni de corriger",
+        "de détecter des erreurs, mais pas de les corriger"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned5_04",
+      "type": "QCM",
+      "question": "Tripler chaque bit (0 → 000, 1 → 111) permet de corriger 1 erreur par :",
+      "choix": [
+        "algorithme de Huffman",
+        "retransmission",
+        "contrôle de parité",
+        "décision majoritaire"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned5_05",
+      "type": "QCM",
+      "question": "La stratégie ARQ (Automatic Repeat Request) convient :",
+      "choix": [
+        "aux canaux bidirectionnels à faible trafic où la retransmission est possible",
+        "à la diffusion (TNT)",
+        "au CD audio",
+        "aux canaux unidirectionnels"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Exemple : Ethernet."
+    },
+    {
+      "id": "ned5_06",
+      "type": "QCR",
+      "question": "Exemples d'utilisation de la correction FEC (Forward Error Correction) :",
+      "choix": [
+        "TNT (DVB)",
+        "CD",
+        "Ethernet",
+        "RIB"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned5_07",
+      "type": "QCM",
+      "question": "Deuxième théorème de Shannon :",
+      "choix": [
+        "$H \\leq L < H + 1$",
+        "si $H \\times R_m \\leq C$, il existe un codeur rendant $P_e$ aussi petite que voulu",
+        "une source doit être codée avec au moins $H$ bits par symbole",
+        "si $H \\times R_m \\geq C$, la transmission est sans erreur"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned5_08",
+      "type": "QCM",
+      "question": "Différence entre codes en bloc et codes convolutifs :",
+      "choix": [
+        "les codes en bloc ont une mémoire, pas les convolutifs",
+        "les convolutifs ne sont pas linéaires",
+        "les convolutifs codent une fenêtre glissante (avec mémoire), les codes en bloc des blocs disjoints",
+        "il n'y en a pas"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned5_09",
+      "type": "QCM",
+      "question": "Un code linéaire en bloc est cyclique si :",
+      "choix": [
+        "tout décalage circulaire d'un mot de code est un mot de code",
+        "il contient le mot tout à zéro",
+        "sa distance minimale vaut 1",
+        "il est systématique"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Les CRC reposent sur les codes cycliques (représentation polynomiale)."
+    },
+    {
+      "id": "ned5_10",
+      "type": "QCM",
+      "question": "Les turbo-codes :",
+      "choix": [
+        "associent deux codeurs avec un entrelacement de la trame entre les deux",
+        "sont des codes de source",
+        "n'utilisent pas de redondance",
+        "utilisent un seul codeur à très grande mémoire"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned5_11",
+      "type": "QCM",
+      "question": "Un code systématique est :",
+      "choix": [
+        "un code de longueur variable",
+        "un code séparable où les bits d'information sont au début du mot de code",
+        "un code cyclique",
+        "un code où les bits d'information n'apparaissent pas en clair"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned5_12",
+      "type": "QCM",
+      "question": "Distance de Hamming entre 10110 et 11011 :",
+      "choix": [
+        "2",
+        "3",
+        "4",
+        "1"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Positions 2, 4 et 5 différentes."
+    },
+    {
+      "id": "ned5_13",
+      "type": "QCM",
+      "question": "Pouvoir détecteur $d$ et correcteur $t$ d'un code en bloc :",
+      "choix": [
+        "$d = d_{min}$ ; $t = d_{min}/2$",
+        "$d = d_{min} + 1$ ; $t = d_{min} - 1$",
+        "$d = 2 d_{min}$ ; $t = d_{min}$",
+        "$d = d_{min} - 1$ ; $t = \\lfloor (d_{min} - 1)/2 \\rfloor$"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned5_14",
+      "type": "QCM",
+      "question": "Code de distance minimale $d_{min} = 5$ :",
+      "choix": [
+        "détecte 4 erreurs, en corrige 2",
+        "détecte 2 erreurs, en corrige 1",
+        "détecte 5 erreurs, en corrige 2",
+        "détecte 4 erreurs, en corrige 4"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned5_15",
+      "type": "QCM",
+      "question": "Rendement d'un code en bloc $C(4,3)$ avec bit de parité :",
+      "choix": [
+        "1/2",
+        "3/4",
+        "1/4",
+        "4/3"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "$\\eta = k/n$."
+    },
+    {
+      "id": "ned5_16",
+      "type": "QCM",
+      "question": "Dans un code convolutif $C(n,k,m)$, $m$ est :",
+      "choix": [
+        "la distance libre",
+        "le nombre de bits de sortie",
+        "la longueur de contrainte (le code est de mémoire $m-1$)",
+        "le nombre de bits d'entrée"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned5_17",
+      "type": "QCM",
+      "question": "Nombre d'états du diagramme d'état de $C(2,1,3)$ :",
+      "choix": [
+        "4 ($2^{m-1}$)",
+        "2",
+        "3",
+        "8"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned5_18",
+      "type": "QCM",
+      "question": "Rendement du code $C(2,1,3)$ :",
+      "choix": [
+        "1/2",
+        "2/3",
+        "3/2",
+        "1/3"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned5_19",
+      "type": "QCM",
+      "question": "Codeur $C(2,1,3)$ : $C_1 = s_t \\oplus s_{t-1} \\oplus s_{t-2}$, $C_2 = s_t \\oplus s_{t-2}$. Depuis l'état 00, l'entrée 1 produit :",
+      "choix": [
+        "10 (état b = 01)",
+        "01 (état d = 11)",
+        "11 (passage à l'état c = 10)",
+        "00 (reste en a = 00)"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned5_20",
+      "type": "QCM",
+      "question": "Avec ce codeur, la séquence 1011 (depuis l'état 00) est codée :",
+      "choix": [
+        "11 11 00 01",
+        "10 11 01 00",
+        "11 10 00 01",
+        "11 01 00 10"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "a→c (11), c→b (10), b→d (00), d→d (01)."
+    },
+    {
+      "id": "ned5_21",
+      "type": "QCM",
+      "question": "Rôle des bits de queue (des 0 ajoutés en fin de séquence) :",
+      "choix": [
+        "synchroniser l'horloge",
+        "détecter les erreurs en rafale",
+        "ramener le codeur à l'état 00 (« vider la mémoire »)",
+        "augmenter le rendement"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "1011 + 00 → 11 10 00 01 01 11."
+    },
+    {
+      "id": "ned5_22",
+      "type": "QCM",
+      "question": "Représentation la plus utilisée pour un code convolutif, car elle tient compte du temps :",
+      "choix": [
+        "la matrice génératrice",
+        "le treillis",
+        "le diagramme d'état",
+        "l'arbre de Huffman"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned5_23",
+      "type": "QCM",
+      "question": "L'algorithme de Viterbi :",
+      "choix": [
+        "décode au maximum de vraisemblance en minimisant la métrique cumulée (distance de Hamming)",
+        "teste exhaustivement toutes les séquences possibles",
+        "code la source par longueur variable",
+        "maximise la distance de Hamming cumulée"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "À chaque étape, seul le chemin de métrique minimale arrivant dans chaque état est conservé."
+    },
+    {
+      "id": "ned5_24",
+      "type": "QCM",
+      "question": "Séquence reçue 11 11 00 01 01 11 (code $C(2,1,3)$, 2 bits de queue). Séquence décodée par Viterbi :",
+      "choix": [
+        "1011",
+        "1001",
+        "1101",
+        "1111"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Le chemin 1011+00 donne 11 10 00 01 01 11 : une seule erreur (2e couple), métrique cumulée minimale = 1."
+    },
+    {
+      "id": "ned5_25",
+      "type": "QCM",
+      "question": "La distance libre d'un code convolutif est :",
+      "choix": [
+        "la distance minimale entre deux mots de code en bloc",
+        "le poids du chemin de poids minimal qui diverge du chemin nul puis y revient",
+        "le nombre d'états du treillis",
+        "la longueur de contrainte"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned5_26",
+      "type": "QCM",
+      "question": "Distance libre du code $C(2,1,3)$ étudié :",
+      "choix": [
+        "2",
+        "4",
+        "3",
+        "5"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": ""
+    },
+    {
+      "id": "ned5_27",
+      "type": "QCM",
+      "question": "Pourquoi effectuer un codage de canal après un codage de source ?",
+      "choix": [
+        "pour supprimer la redondance laissée par le codage de source",
+        "pour compresser davantage",
+        "le message compressé est plus sensible au bruit : on réintroduit une redondance utile",
+        "pour réduire la bande occupée"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": ""
+    }
+  ]
+}

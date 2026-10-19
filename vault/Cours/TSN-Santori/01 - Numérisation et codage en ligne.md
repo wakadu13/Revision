@@ -14,7 +14,13 @@ Retour : [[00 - Sommaire TSN-CLEAE2-NED]] · Suite : [[02 - Récepteur optimal]]
 
 Une chaîne de télécommunications classique se compose des blocs suivants :
 
-`Source d'information → Émetteur → Canal de transmission (+ bruit) → Récepteur → Destinataire`
+```mermaid
+flowchart LR
+    S["Source d'information<br/>(ex : micro)"] --> E["Émetteur<br/>(modulation, puissance)"] --> C(["Canal de transmission"]) --> R["Récepteur<br/>(réduit le bruit, compense)"] --> D["Destinataire<br/>(ex : haut-parleur)"]
+    B["Bruit"] -.-> C
+    classDef ch fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
+    class C,B ch
+```
 
 | Bloc | Rôle | Exemple |
 |---|---|---|
@@ -26,11 +32,27 @@ Une chaîne de télécommunications classique se compose des blocs suivants :
 
 ### Chaîne de communication numérique détaillée
 
-```
-Source → Numérisation → Codage source → Codage canal → Mise en forme → Modulation/émission BdB → s(t)
-   [monde analogique ou numérique] | [monde numérique]          [monde analogique]
-                                                                                      Canal (bruit n(t))
-Destinataire ← Restitution ← Décodage source ← Décodage canal ← Décision ← Démodulation/réception BdB ← u(t)
+Les couleurs indiquent dans quel « monde » se trouve l'information : **analogique** (orange), **numérique** (bleu), ou les deux selon la source (gris).
+
+```mermaid
+flowchart LR
+    subgraph EM["Émission"]
+        direction LR
+        S["Source"] --> N["Numérisation"] --> CS["Codage source"] --> CC["Codage canal"] --> MF["Mise en forme"] --> MOD["Modulation /<br/>émission BdB"]
+    end
+    CAN(["Canal<br/>+ bruit n(t)"])
+    subgraph RE["Réception"]
+        direction RL
+        DEM["Démodulation /<br/>réception BdB"] --> DEC["Décision"] --> DCC["Décodage canal"] --> DCS["Décodage source"] --> RES["Restitution"] --> D["Destinataire"]
+    end
+    EM -->|"s(t)"| CAN
+    CAN -->|"u(t)"| RE
+    classDef ana fill:#ffedd5,stroke:#ea580c,color:#7c2d12
+    classDef num fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+    classDef mix fill:#f3f4f6,stroke:#6b7280,color:#111827
+    class S,D mix
+    class N,CS,CC,DEC,DCC,DCS,RES num
+    class MF,MOD,DEM,CAN ana
 ```
 
 On parle de communication en **« bande de base » (BdB)** lorsque le signal est émis directement, sans transposition en fréquence.
@@ -65,6 +87,15 @@ On parle de communication en **« bande de base » (BdB)** lorsque le signal est
 2. **Quantification** : représentation des valeurs du signal dans un ensemble fini.
 3. **Pré-codage** : transformation des valeurs dans le format désiré pour de futurs traitements numériques.
 
+```mermaid
+flowchart LR
+    X["x(t)<br/>temps continu<br/>valeurs continues"] -->|"échantillonnage<br/>(tous les Te)"| XN["x(nTe)<br/>temps discret<br/>valeurs continues"] -->|"quantification<br/>(arrondi au niveau)"| XQ["x_q(nTe)<br/>temps discret<br/>valeurs finies"] -->|"pré-codage<br/>(mot de m bits)"| B["… 101 110 110 …<br/>train binaire"]
+```
+
+Les trois étapes sur un même signal (quantification sur 3 bits, soit 8 niveaux) :
+
+![[ned-numerisation-etapes.svg]]
+
 ### Échantillonnage
 
 L'échantillonnage consiste à discrétiser un signal à temps continu (analogique) en prélevant une suite de valeurs aux instants $t_n = nT_e$ ($n$ entier relatif).
@@ -78,6 +109,10 @@ $$F_e = \frac{1}{T_e} \quad \text{(fréquence d'échantillonnage)}$$
 - L'opération d'échantillonnage en temps a pour effet, en fréquence, de **périodiser le spectre** du signal à la période $F_e$.
 - Si la condition du théorème n'est pas vérifiée, il y a **repliement de spectre** (*aliasing*) et donc perte d'information (mélange d'information autour de $F_e/2$).
 - Un signal d'énergie finie ne peut être à la fois de durée finie et à bande limitée : un **filtrage anti-repliement (anti-aliasing)** est donc obligatoire avant échantillonnage.
+
+![[ned-repliement-spectre.svg]]
+
+*En haut, les copies du spectre (décalées de Fe) restent séparées : un filtre passe-bas de coupure Fe/2 récupère le spectre d'origine. En bas, elles se recouvrent : les fréquences « se replient » autour de Fe/2 et ne peuvent plus être séparées.*
 
 > [!example]- Exercice : fréquence d'échantillonnage d'un CD audio
 > La bande passante de l'oreille est comprise entre 20 Hz et 20 kHz environ ⇒ on filtre tout ce qui dépasse 20 kHz. $f_{max}$ = 20 kHz, donc $F_e$ doit être au moins égale à 40 kHz. Le standard choisi est **$F_e$ = 44,1 kHz**.
@@ -142,8 +177,9 @@ Deux possibilités :
 
 ### Étiquetage et mise en forme
 
-```
-ik → [Étiquetage] → ak → [Formant h(t)] → m(t)
+```mermaid
+flowchart LR
+    I["i_k<br/>bits"] --> ET["Étiquetage<br/>(n bits → 1 symbole)"] --> A["a_k<br/>symboles M-aires"] --> H["Formant h(t)<br/>(durée Ts)"] --> M["m(t) = Σ a_k h(t − kTs)<br/>onde transmissible"]
 ```
 
 - $i_k$ : suite binaire d'information issue du pré-codage, d'un codage de source/canal, ou directement d'une source numérique.
@@ -186,6 +222,16 @@ Le message est alors : $m(t) = \sum_k a_k \, h(t - kT_s)$
 
 ### Familles de codes en ligne
 
+```mermaid
+flowchart TB
+    CL["Codes en ligne"] --> F1["Famille NRZ<br/>(2 niveaux, composante continue)"]
+    CL --> F2["Famille biphase<br/>(transition au milieu du bit)"]
+    CL --> F3["Famille bipolaire<br/>(3 niveaux −V / 0 / +V)"]
+    F1 --> NRZ["NRZ"] & NRZI["NRZI"] & RZ["RZ"]
+    F2 --> MAN["Manchester"] & DME["Manchester différentiel"] & MIL["Miller"]
+    F3 --> AMI["Bipolaire simple (AMI)"] & BIP2["Bipolaire d'ordre 2"] & HDB["HDBn"]
+```
+
 **Famille NRZ**
 - Code « tout ou rien » avec une composante continue non négligeable ; transcription des bits 0/1 en tension positive/négative.
 - **NRZ** : n'utilise pas le 0 ; pas adapté aux signaux constants (perte de synchronisation).
@@ -204,6 +250,17 @@ Le message est alors : $m(t) = \sum_k a_k \, h(t - kT_s)$
 - **Bipolaire d'ordre 2** : les bits sont regroupés par suite identique (un 1 codé $+V/-V$ selon la dernière impulsion, une suite de deux 1 codée $+V\,-V$ ou $-V\,+V$, une suite de trois 1 codée $+V\,+V\,-V$ ou $-V\,-V\,+V$).
 - **Bipolaire à haute densité HDBn** : limite le nombre de 0 consécutifs en intégrant des suites de remplissage avec bits de « viol » et de « bourrage ».
 
+La même séquence `01101001` codée avec cinq codes différents :
+
+![[ned-codes-en-ligne.svg]]
+
+> [!example] Ce qu'il faut observer sur la figure
+> - **NRZ** : longues plages constantes pour `11` ou `00` → peu de transitions, synchronisation difficile, composante continue.
+> - **RZ** : une suite de 0 donne un signal nul → aucune transition pour se synchroniser.
+> - **Manchester** : une transition au milieu de *chaque* bit → horloge facile à récupérer, moyenne nulle, mais deux fois plus de transitions (bande plus large).
+> - **Miller** : moins de transitions que Manchester → spectre plus étroit.
+> - **AMI** : les 1 alternent +V/−V → moyenne nulle, mais une suite de 0 reste sans transition (d'où HDBn).
+
 > [!tip] À retenir
 > Pas de puissance à la fréquence nulle pour le codage Manchester (et globalement les codes biphase) : pas de composante continue et peu d'énergie en basses fréquences, car la valeur moyenne du signal est nulle.
 
@@ -214,6 +271,10 @@ Le message est alors : $m(t) = \sum_k a_k \, h(t - kT_s)$
 | NRZ bipolaire | $h(t) = A \cdot \text{rect}_{T_s}(t)$ | $B_{NRZ} = 2/T_S$ |
 | RZ unipolaire | $h(t) = A \cdot \text{rect}_{T_s/2}(t)$ | $B_{RZ} = 4/T_S$ |
 | Manchester | $h(t) = A \cdot \text{rect}_{T_s/2}(t) - A \cdot \text{rect}_{T_s/2}(t-T_s/2)$ | $B_{Man} = 4/T_S$ |
+
+![[ned-dsp-codes.svg]]
+
+*DSP normalisées : plus le formant est court (RZ, Manchester : impulsions de durée $T_s/2$), plus le spectre est large. Le Manchester n'a aucune puissance en $f = 0$.*
 
 > [!info] Pour aller plus loin
 > La formule de Bennett permet de calculer analytiquement la DSP d'un signal codé en ligne à partir de son formant et de la statistique des symboles.
@@ -233,6 +294,11 @@ C'est un **compromis** entre :
 - **Débit binaire** : $D = \dfrac{1}{T_b}$, en bit/s. C'est le nombre de bits transmis par seconde.
 - $T_s = n T_b$ car un symbole véhicule $n$ bits, avec $n = \log_2(M)$.
 - $R = D/n$ : le débit binaire va $n$ fois plus vite que $R$.
+
+```mermaid
+flowchart LR
+    B["8 bits<br/>1 0 1 1 0 0 1 0<br/>durée 8 Tb"] -->|"regroupement par n = 2<br/>(M = 4)"| S["4 symboles<br/>10 · 11 · 00 · 10<br/>durée 4 Ts = 8 Tb"]
+```
 
 > [!tip] Efficacité spectrale
 > $$\eta = \frac{D}{B} \quad \text{(en bits/s/Hz)}$$
@@ -267,6 +333,8 @@ C'est un **compromis** entre :
 >
 > **Tracer le signal émis pour la séquence binaire 01101.**
 > Codage unipolaire (binaire non symétrique) : $i_k=0 \to a_k=0$ et $i_k=1 \to a_k=1$. Le signal prend la valeur 1 pendant la première moitié de $T_s$ pour chaque bit à 1, et 0 sinon.
+>
+> ![[ned-exo-rz-01101.svg]]
 
 > [!question]- Exercice 2 : Codage en ligne et formant NRZ
 > Système de transmission M-aire ($M=2^n$) symétrique en bande de base, débit binaire $D=1/T_b$. Formant NRZ : fonction porte de durée $T_s$ et d'amplitude 1.
