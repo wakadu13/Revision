@@ -565,6 +565,66 @@ class QuizImportTests(QuizTests):
         self.assertFalse((self.root.parent / "hors").exists())
 
 
+class QuizRangementTests(QuizTests):
+    """Dossiers dans les langues, déplacement et suppression de sets (admins)."""
+
+    def setUp(self):
+        super().setUp()
+        self.admin = get_user_model().objects.create_user("admin", password="x", is_staff=True)
+
+    def _langue(self):
+        """Fichier de langue (Roumain) rangé dans vault/QCM/Importés."""
+        import json
+        langue = {"langue": "Roumain", "titre": "Verbes roumains",
+                  "vocabulaire": [{"id": "v1", "mot": "a fi", "traductions": ["être"]}]}
+        (self.root / "QCM" / "Importés").mkdir(parents=True)
+        (self.root / "QCM" / "Importés" / "ro.json").write_text(json.dumps(langue), encoding="utf-8")
+
+    def test_dossiers_de_langue(self):
+        self._langue()
+        response = self.client.get("/qcm/")
+        self.assertContains(response, "Session du jour du dossier")
+        self.assertContains(response, "/qcm/langues/Roumain/?dossier=Import%C3%A9s")
+        self.assertNotContains(response, "Supprimer ce set")  # réservé aux admins
+        self.assertContains(self.client.get("/qcm/langues/Roumain/?dossier=Importés"), "Dossier « Importés »")
+        self.assertEqual(self.client.get("/qcm/langues/Roumain/?dossier=Autre").status_code, 404)
+        self.assertEqual(self.client.get("/qcm/langues/Roumain/jouer/?dossier=Importés").status_code, 200)
+
+    def test_deplacer_cree_le_dossier_et_garde_la_progression(self):
+        from wiki.models import QuizProgress
+        from wiki.quiz import get_library
+        self._langue()
+        QuizProgress.objects.create(player="alice", set_id="QCM/Importés/ro", question_id="v1")
+        self.assertEqual(self.client.post("/qcm/deplacer/", {"set": "QCM/Importés/ro", "dossier": "Verbes"}).status_code, 403)
+        self.client.force_login(self.admin)
+        self.client.post("/qcm/deplacer/", {"set": "QCM/Importés/ro", "dossier": "Verbes"})
+        self.assertTrue((self.root / "QCM" / "Roumain" / "Verbes" / "ro.json").is_file())
+        self.assertFalse((self.root / "QCM" / "Importés").exists())  # dossier vide retiré
+        self.assertIn("QCM/Roumain/Verbes/ro", get_library().langues)
+        self.assertEqual(QuizProgress.objects.get().set_id, "QCM/Roumain/Verbes/ro")
+        self.assertContains(self.client.post("/qcm/deplacer/", {"set": "QCM/Roumain/Verbes/ro", "dossier": "a/b"}, follow=True),
+                            "Dossier invalide")
+        # Un set de cours va dans vault/QCM/<dossier>.
+        self.client.post("/qcm/deplacer/", {"set": "reseaux/test_set", "dossier": "Réseaux"})
+        self.assertIn("QCM/Réseaux/test_set", get_library().sets)
+
+    def test_supprimer_set_et_dossier(self):
+        from wiki.models import QuizProgress
+        from wiki.quiz import get_library
+        self._langue()
+        QuizProgress.objects.create(player="alice", set_id="reseaux/test_set", question_id="q-qcm")
+        self.assertEqual(self.client.post("/qcm/supprimer/", {"set": "reseaux/test_set"}).status_code, 403)
+        self.client.force_login(self.admin)
+        self.assertContains(self.client.get("/qcm/"), "Supprimer le dossier")
+        self.client.post("/qcm/supprimer/", {"set": "reseaux/test_set"})
+        self.assertFalse((self.root / "reseaux" / "test_set.json").exists())
+        self.assertFalse(QuizProgress.objects.exists())
+        self.assertEqual(self.client.post("/qcm/supprimer/", {"set": "reseaux/test_set"}).status_code, 404)
+        self.client.post("/qcm/supprimer/", {"categorie": "Importés", "langue": "Roumain"})
+        self.assertEqual(get_library().langues, {})
+        self.assertTrue((self.root / "QCM").is_dir())  # vault/QCM est conservé
+
+
 class DocumentationTests(QuizTests):
     def test_readmes_affiches(self):
         response = self.client.get("/documentation/")

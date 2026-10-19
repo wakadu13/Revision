@@ -1,0 +1,7 @@
+{# Suppression d'un dossier entier (admins) : tous ses sets et leur progression. #}
+<form class="quiz-supprimer-dossier" method="post" action="{% url 'wiki:quiz_delete' %}" onsubmit="return confirm('Supprimer le dossier « {{ cat.nom|escapejs }} » : tous ses sets ({{ cat.sets|length }}) et leur progression ? Les fichiers seront effacés du coffre.');">
+  {% csrf_token %}
+  <input type="hidden" name="categorie" value="{{ cat.nom }}">
+  <input type="hidden" name="langue" value="{{ cat.langue }}">
+  <button type="submit" class="button small danger">Supprimer le dossier</button>
+</form>

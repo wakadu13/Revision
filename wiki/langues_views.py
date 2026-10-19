@@ -8,6 +8,7 @@ langues.corriger, et la révision est enregistrée quand on quitte l'exercice
 """
 
 import json
+from urllib.parse import urlencode
 
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -25,11 +26,24 @@ from .vault import get_vault
 TAILLE_MAX_SESSION = 200
 
 
-def _sets(langue):
+def dossier_de(set_langue):
+    """Dossier d'un fichier de langue : le nom du dossier qui le contient."""
+    return (set_langue.path.parent.name if set_langue.path else "") or quiz.CATEGORIE_DEFAUT
+
+
+def _sets(langue, dossier=""):
+    """Fichiers d'une langue, restreints à un dossier si `dossier` est donné."""
     sets = quiz.get_library().sets_langue(langue)
+    if dossier:
+        sets = [s for s in sets if dossier_de(s) == dossier]
     if not sets:
         raise Http404("Langue introuvable")
     return sets
+
+
+def _url_menu(langue, dossier=""):
+    url = reverse("wiki:langue_menu", args=[langue])
+    return f"{url}?{urlencode({'dossier': dossier})}" if dossier else url
 
 
 def resume_langue(player, langue, sets, now):
@@ -39,13 +53,14 @@ def resume_langue(player, langue, sets, now):
 
 @login_required
 def menu(request, langue):
-    sets = _sets(langue)
+    dossier = request.GET.get("dossier", "")
+    sets = _sets(langue, dossier)
     now = timezone.now()
     r = langues.resume(sets, QuizProgress.map_langue(player_id(request), sets), now)
     modes = [(cle, nom) for cle, nom in langues.MODES.items()
              if cle not in langues.GENRES or any(g["nom"] == nom for g in r["genres"])]
     return render(request, "wiki/langue_menu.html", _ctx(
-        request, langue=langue, sets=sets, resume=r, modes=modes,
+        request, langue=langue, dossier=dossier, sets=sets, resume=r, modes=modes,
         taille=langues.TAILLE_SESSION,
     ))
 
@@ -84,7 +99,8 @@ def _payload(vault, item, st, now):
 
 @login_required
 def play(request, langue):
-    sets = _sets(langue)
+    dossier = request.GET.get("dossier", "")
+    sets = _sets(langue, dossier)
     mode = request.GET.get("mode", langues.QUOTIDIEN)
     if mode not in langues.MODES:
         raise Http404("Mode inconnu")
@@ -95,9 +111,10 @@ def play(request, langue):
     session = langues.construire_session(sets, prog, mode, n, now)
     vault = get_vault()
     payload = [_payload(vault, e, prog.get((e.set.id, e.exo.id)), now) for e in session]
-    menu_url = reverse("wiki:langue_menu", args=[langue])
+    menu_url = _url_menu(langue, dossier)
+    titre = f"{langues.MODES[mode]} · {langue}" + (f" · {dossier}" if dossier else "")
     return render(request, "wiki/langue_play.html", _ctx(
-        request, langue=langue, titre=f"{langues.MODES[mode]} · {langue}", mode=mode,
+        request, langue=langue, titre=titre, mode=mode,
         exercices=payload, count=len(payload),
         corriger_url=reverse("wiki:langue_corriger"), record_url=reverse("wiki:langue_record"),
         back_url=menu_url,
@@ -165,7 +182,8 @@ def record(request):
 @require_POST
 @login_required
 def reset(request, langue):
-    sets = _sets(langue)
+    dossier = request.POST.get("dossier", "")
+    sets = _sets(langue, dossier)
     QuizProgress.objects.filter(player=player_id(request), set_id__in=[s.id for s in sets]).delete()
-    messages.success(request, f"Progression en {langue} réinitialisée.")
-    return redirect("wiki:langue_menu", langue=langue)
+    messages.success(request, f"Progression en {langue}{f' ({dossier})' if dossier else ''} réinitialisée.")
+    return redirect(_url_menu(langue, dossier))

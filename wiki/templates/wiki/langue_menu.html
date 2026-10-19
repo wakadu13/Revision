@@ -1,12 +1,14 @@
 {% extends "wiki/base.html" %}
-{% block title %}{{ langue }} · Langues{% endblock %}
+{% block title %}{{ langue }}{% if dossier %} · {{ dossier }}{% endif %} · Langues{% endblock %}
 {% block content %}
 <article class="note">
   <p><a class="button small" href="{% url 'wiki:quiz_index' %}">← QCM</a></p>
-  <h1 class="note-title">Langues — {{ langue }}</h1>
+  <h1 class="note-title">Langues — {{ langue }}{% if dossier %} · {{ dossier }}{% endif %}</h1>
+  {% if dossier %}<p class="muted">Dossier « {{ dossier }} » seulement · <a href="{% url 'wiki:langue_menu' langue %}">toute la langue</a></p>{% endif %}
   <p class="muted">{{ resume.a_revoir }} à revoir · {{ resume.nouveaux_disponibles }} nouveau{{ resume.nouveaux_disponibles|pluralize:"x" }} disponible{{ resume.nouveaux_disponibles|pluralize }} aujourd'hui</p>
 
   <form class="quiz-langue-modes" method="get" action="{% url 'wiki:langue_play' langue %}">
+    {% if dossier %}<input type="hidden" name="dossier" value="{{ dossier }}">{% endif %}
     <div class="quiz-actions">
       {% for cle, nom in modes %}
       <button class="button{% if forloop.first %} primary{% endif %}" type="submit" name="mode" value="{{ cle }}">{{ nom }}{% if forloop.first %} (recommandé : tout mélangé){% endif %}</button>
@@ -40,9 +42,10 @@
   {% endif %}
   <p class="muted">Contenu : {% for s in sets %}{{ s.titre }} ({{ s|length }} exercices){% if not forloop.last %} · {% endif %}{% endfor %}</p>
 
-  <form method="post" action="{% url 'wiki:langue_reset' langue %}" onsubmit="return confirm('Effacer toute la progression en {{ langue|escapejs }} ?');">
+  <form method="post" action="{% url 'wiki:langue_reset' langue %}" onsubmit="return confirm('Effacer toute la progression en {{ langue|escapejs }}{% if dossier %} ({{ dossier|escapejs }}){% endif %} ?');">
     {% csrf_token %}
-    <button type="submit" class="button small danger">Réinitialiser la progression de cette langue</button>
+    {% if dossier %}<input type="hidden" name="dossier" value="{{ dossier }}">{% endif %}
+    <button type="submit" class="button small danger">Réinitialiser la progression {% if dossier %}de ce dossier{% else %}de cette langue{% endif %}</button>
   </form>
 
   <details class="quiz-plan">

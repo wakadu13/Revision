@@ -50,7 +50,8 @@
     <h2>Langues</h2>
     <p class="muted">Vocabulaire, conjugaison et grammaire avec répétition espacée FSRS, rappel actif et exercices entrelacés.</p>
     {% for l in langues %}
-    {% if l.categories %}<h3>{{ l.nom }}</h3>{% endif %}
+    <h3>{{ l.nom }}</h3>
+    {% if can_edit %}<datalist id="{{ l.liste }}">{% for d in l.noms_dossiers %}<option value="{{ d }}">{% endfor %}</datalist>{% endif %}
     {% if l.sets %}
     <ul class="quiz-sets">
       <li class="quiz-set">
@@ -66,9 +67,14 @@
       </li>
     </ul>
     {% endif %}
+    {% with liste=l.liste %}
+    {% for cat in l.dossiers %}
+    {% include "wiki/_langue_dossier.html" %}
+    {% endfor %}
     {% for cat in l.categories %}
     {% include "wiki/_quiz_categorie.html" %}
     {% endfor %}
+    {% endwith %}
     {% endfor %}
   </section>
   {% endif %}
@@ -78,7 +84,7 @@
     <h2>Cours</h2>
     <p class="muted">QCM de révision des cours, avec répétition espacée (boîtes de Leitner).</p>
     {% for cat in categories %}
-    {% include "wiki/_quiz_categorie.html" %}
+    {% include "wiki/_quiz_categorie.html" with liste="quiz-categories" %}
     {% endfor %}
   </section>
   {% elif not total_sets %}

@@ -1,0 +1,24 @@
+{# Dossier repliable de fichiers de langue (page /qcm/), révisable séparément. #}
+<details class="quiz-category" data-cle="{{ cat.langue }} · fichiers · {{ cat.nom }}"{% if q %} open{% endif %}{% if not cat.shown %} hidden{% endif %}>
+  <summary>
+    <span class="quiz-category-name">{{ cat.nom }}</span>
+    <span class="muted quiz-category-meta"><span data-quiz-count>{{ cat.shown }} set{{ cat.shown|pluralize }}</span>{% if cat.resume.a_revoir %} · <b>{{ cat.resume.a_revoir }}</b> à revoir{% endif %}</span>
+  </summary>
+  <div class="quiz-category-actions">
+    <a class="button small primary" href="{% url 'wiki:langue_play' cat.langue %}?mode=quotidien&dossier={{ cat.nom|urlencode }}">Session du jour du dossier</a>
+    <a class="button small" href="{% url 'wiki:langue_menu' cat.langue %}?dossier={{ cat.nom|urlencode }}">Modes et statistiques</a>
+    {% if can_edit %}{% include "wiki/_quiz_supprimer_dossier.html" %}{% endif %}
+  </div>
+  <ul class="quiz-sets">
+    {% for entry in cat.sets %}
+    <li id="{{ entry.ancre }}" class="quiz-set" data-search="{{ entry.search }}"{% if not entry.match %} hidden{% endif %}>
+      <div class="quiz-set-head">
+        <span class="quiz-set-title">{{ entry.set.titre }}</span>
+        <span class="muted">{{ entry.set|length }} exercice{{ entry.set|length|pluralize }}</span>
+      </div>
+      {% if entry.set.description %}<p class="muted quiz-set-desc">{{ entry.set.description }}</p>{% endif %}
+      {% if can_edit %}{% include "wiki/_quiz_gerer.html" with set=entry.set %}{% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</details>

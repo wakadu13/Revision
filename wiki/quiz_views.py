@@ -7,6 +7,7 @@ JSON, et chaque réponse est enregistrée via une petite requête POST.
 
 import json
 import random
+import shutil
 import tempfile
 from datetime import date
 from pathlib import Path, PurePosixPath
@@ -175,13 +176,31 @@ def index(request):
             "a_reviser": sum(e["summary"]["a_reviser"] for e in entries),
         })
     categories = par_langue.pop("", [])
-    from .langues_views import resume_langue
+    from .langues_views import dossier_de, resume_langue
 
     langues = []
     for nom in library.noms_langues():
         fichiers = library.sets_langue(nom)
+        # Fichiers de langue regroupés par dossier, chacun révisable séparément.
+        par_dossier = {}
+        for f in fichiers:
+            par_dossier.setdefault(dossier_de(f), []).append(f)
+        dossiers = []
+        for dossier, fs in sorted(par_dossier.items(), key=lambda t: t[0].lower()):
+            entries = []
+            for f in fs:
+                texte = quiz.normaliser_texte(" ".join((f.titre, f.description, dossier, nom)))
+                match = not q or all(mot in texte for mot in quiz.normaliser_texte(q).split())
+                entries.append({"set": f, "search": texte, "match": match, "ancre": _ancre(f.id)})
+            shown = sum(e["match"] for e in entries)
+            matches += shown
+            dossiers.append({"nom": dossier, "langue": nom, "sets": entries, "shown": shown,
+                             "resume": resume_langue(player, nom, fs, now)})
         langues.append({"nom": nom, "sets": fichiers,
                         "resume": resume_langue(player, nom, fichiers, now) if fichiers else None,
+                        "dossiers": dossiers,
+                        "liste": "dossiers-" + slugify(nom),
+                        "noms_dossiers": sorted({d["nom"] for d in dossiers} | {c["nom"] for c in par_langue.get(nom, [])}, key=str.lower),
                         "categories": par_langue.get(nom, [])})
     context = _ctx(
         request,
@@ -426,4 +445,101 @@ def importer(request):
         for fichier in fichiers:
             ok, message = _importer_fichier(fichier, cle, remplacer)
             (messages.success if ok else messages.error)(request, message)
+    return redirect("wiki:quiz_index")
+
+
+# ---------------------------------------------------------------------------
+# Rangement : déplacer un set dans un dossier, supprimer un set ou un dossier
+# ---------------------------------------------------------------------------
+def _element(library, set_id):
+    """Set de QCM ou fichier de langue désigné par son identifiant."""
+    return library.get(set_id) or library.langues.get(set_id)
+
+
+def _dossier(element):
+    return element.path.parent.name or quiz.CATEGORIE_DEFAUT
+
+
+def _retirer_dossiers_vides(dossier, racine):
+    """Supprime les dossiers devenus vides, en remontant jusqu'à vault/QCM (exclu)."""
+    arret = {racine, racine / DOSSIER_QCM}
+    while dossier not in arret and racine in dossier.parents and dossier.is_dir() and not any(dossier.iterdir()):
+        dossier.rmdir()
+        dossier = dossier.parent
+
+
+def _oublier(set_ids):
+    """Efface la progression et les réglages de sets (pour tous les joueurs)."""
+    QuizProgress.objects.filter(set_id__in=set_ids).delete()
+    QuizDeck.objects.filter(set_id__in=set_ids).delete()
+
+
+@require_POST
+def deplacer(request):
+    """Range un set (QCM ou fichier de langue) dans un dossier, créé au besoin.
+
+    Les sets d'une langue vont dans vault/QCM/<langue>/<dossier>, les autres dans
+    vault/QCM/<dossier>. La progression suit le set (son identifiant change)."""
+    if not _can_edit(request):
+        raise PermissionDenied
+    library = quiz.get_library()
+    element = _element(library, request.POST.get("set", ""))
+    if element is None:
+        raise Http404("Set inconnu")
+    dossier = clean_key(request.POST.get("dossier", ""))
+    if dossier is None or "/" in dossier:
+        messages.error(request, 'Dossier invalide : un seul nom de dossier, sans / \\ : * ? " < > | # ^ [ ].')
+        return redirect(reverse("wiki:quiz_index") + "#" + _ancre(element.id))
+
+    langue = clean_key(element.langue) if element.langue else None
+    parties = [DOSSIER_QCM] + ([langue] if langue and "/" not in langue and langue != dossier else []) + [dossier]
+    rel = PurePosixPath(*parties, element.path.name)
+    racine = Path(get_vault().root)
+    if rel == element.path:
+        messages.info(request, f"« {element.titre} » est déjà dans le dossier {dossier}.")
+        return redirect(reverse("wiki:quiz_index") + "#" + _ancre(element.id))
+    if (racine / rel).exists():
+        messages.error(request, f"{rel} existe déjà : renommez ou supprimez d'abord ce fichier.")
+        return redirect(reverse("wiki:quiz_index") + "#" + _ancre(element.id))
+
+    source = racine / element.path
+    (racine / rel).parent.mkdir(parents=True, exist_ok=True)
+    shutil.move(source, racine / rel)
+    _retirer_dossiers_vides(source.parent, racine)
+    nouvel_id = rel.with_suffix("").as_posix()
+    _oublier([nouvel_id])  # restes éventuels d'un ancien set du même nom
+    QuizProgress.objects.filter(set_id=element.id).update(set_id=nouvel_id)
+    QuizDeck.objects.filter(set_id=element.id).update(set_id=nouvel_id)
+    messages.success(request, f"« {element.titre} » rangé dans le dossier {dossier} ({rel}).")
+    return redirect(reverse("wiki:quiz_index") + "#" + _ancre(nouvel_id))
+
+
+@require_POST
+def supprimer(request):
+    """Supprime un set, ou tout un dossier (catégorie) d'une langue ou des cours,
+    avec la progression associée."""
+    if not _can_edit(request):
+        raise PermissionDenied
+    library = quiz.get_library()
+    set_id = request.POST.get("set", "")
+    if set_id:
+        element = _element(library, set_id)
+        cibles = [element] if element else []
+        libelle = f"« {element.titre} »" if element else ""
+    else:
+        categorie = request.POST.get("categorie", "")
+        langue = request.POST.get("langue", "")
+        cibles = [e for e in (*library.sets.values(), *library.langues.values())
+                  if e.langue == langue and _dossier(e) == categorie]
+        libelle = f"Le dossier {categorie} ({len(cibles)} set{'s' if len(cibles) > 1 else ''})"
+    if not cibles:
+        raise Http404("Set inconnu")
+
+    racine = Path(get_vault().root)
+    for element in cibles:
+        chemin = racine / element.path
+        chemin.unlink(missing_ok=True)
+        _retirer_dossiers_vides(chemin.parent, racine)
+    _oublier([e.id for e in cibles])
+    messages.success(request, f"{libelle} supprimé.")
     return redirect("wiki:quiz_index")

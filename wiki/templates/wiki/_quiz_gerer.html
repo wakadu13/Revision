@@ -1,0 +1,15 @@
+{# Rangement d'un set (admins) : déplacer dans un dossier (créé au besoin) ou supprimer. #}
+<details class="quiz-gerer">
+  <summary class="muted">Gérer</summary>
+  <form class="quiz-gerer-form" method="post" action="{% url 'wiki:quiz_move' %}">
+    {% csrf_token %}
+    <input type="hidden" name="set" value="{{ set.id }}">
+    <input type="text" name="dossier" list="{{ liste }}" placeholder="Dossier (nouveau ou existant)" aria-label="Dossier de destination" autocomplete="off" required>
+    <button type="submit" class="button small">Déplacer</button>
+  </form>
+  <form method="post" action="{% url 'wiki:quiz_delete' %}" onsubmit="return confirm('Supprimer « {{ set.titre|escapejs }} » et sa progression ? Le fichier sera effacé du coffre.');">
+    {% csrf_token %}
+    <input type="hidden" name="set" value="{{ set.id }}">
+    <button type="submit" class="button small danger">Supprimer ce set</button>
+  </form>
+</details>

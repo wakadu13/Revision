@@ -339,3 +339,9 @@ table.quiz-stats form { margin: 0; }
 .quiz-mot small { color: var(--muted); margin-right: .3rem; }
 .quiz-aide { font-size: .8rem; margin-top: 1.5rem; }
 .quiz-facile { color: var(--accent); font-size: .9rem; }
+.quiz-category-actions { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; }
+.quiz-category-actions form { margin: 0; }
+.quiz-gerer { margin-top: .5rem; font-size: .85rem; }
+.quiz-gerer > summary { cursor: pointer; }
+.quiz-gerer form { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .4rem; }
+.quiz-gerer input[type="text"] { flex: 1 1 10rem; min-width: 0; padding: .3rem .5rem; border: 1px solid var(--border); border-radius: 6px; background: var(--bg); color: var(--text); font: inherit; }

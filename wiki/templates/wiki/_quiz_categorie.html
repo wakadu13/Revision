@@ -4,9 +4,10 @@
     <span class="quiz-category-name">{{ cat.nom }}</span>
     <span class="muted quiz-category-meta"><span data-quiz-count>{{ cat.shown }} set{{ cat.shown|pluralize }}</span>{% if cat.a_reviser %} · <b>{{ cat.a_reviser }}</b> à réviser{% endif %}</span>
   </summary>
-  <p class="quiz-category-actions">
+  <div class="quiz-category-actions">
     <a class="button small" href="{% url 'wiki:quiz_play' %}?categorie={{ cat.nom|urlencode }}{% if cat.langue %}&langue={{ cat.langue|urlencode }}{% endif %}&mode=intensif" title="Répéter les questions ratées jusqu'à tout savoir">Révision intensive de la catégorie</a>
-  </p>
+    {% if can_edit %}{% include "wiki/_quiz_supprimer_dossier.html" %}{% endif %}
+  </div>
   <ul class="quiz-sets">
     {% for entry in cat.sets %}
     <li id="{{ entry.ancre }}" class="quiz-set" data-search="{{ entry.set.texte_recherche }}"{% if not entry.match %} hidden{% endif %}>
@@ -31,6 +32,7 @@
         </span>
       </div>
       {% include "wiki/_quiz_plan.html" with deck=entry.deck e=entry.estimation set=entry.set %}
+      {% if can_edit %}{% include "wiki/_quiz_gerer.html" with set=entry.set %}{% endif %}
     </li>
     {% endfor %}
   </ul>
