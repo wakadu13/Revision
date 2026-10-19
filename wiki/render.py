@@ -15,6 +15,7 @@ de page, listes de tâches...) :
 
 import html
 import re
+import threading
 from urllib.parse import unquote
 
 import markdown
@@ -106,6 +107,25 @@ def sanitize(fragment):
     )
 
 
+# Créer un ``markdown.Markdown`` (chargement des extensions) coûte plus cher que la
+# conversion d'une petite note : les instances sont réutilisées, une par fil d'exécution.
+_parsers = threading.local()
+
+
+def _markdown_parser():
+    pool = getattr(_parsers, "pool", None)
+    if pool is None:
+        pool = _parsers.pool = []
+    if pool:
+        return pool.pop()
+    return markdown.Markdown(extensions=MARKDOWN_EXTENSIONS, extension_configs=MARKDOWN_CONFIG)
+
+
+def _release_markdown_parser(md):
+    md.reset()
+    _parsers.pool.append(md)
+
+
 def heading_anchor(fragment):
     """Ancre HTML d'un titre (``Titre``) ou d'un bloc (``^id``)."""
     fragment = unquote(fragment).split("#")[-1].strip()
@@ -155,10 +175,13 @@ class Renderer:
         text = map_outside_code(text, lambda s: COMMENT_RE.sub("", s))
         text = self._callouts(text)
         text = map_outside_code(text, self._inline)
-        md = markdown.Markdown(extensions=MARKDOWN_EXTENSIONS, extension_configs=MARKDOWN_CONFIG)
-        out = md.convert(text)
-        if md.toc_tokens:
-            self.toc = md.toc
+        md = _markdown_parser()
+        try:
+            out = md.convert(text)
+            if md.toc_tokens:
+                self.toc = md.toc
+        finally:
+            _release_markdown_parser(md)
         out = URL_ATTR_RE.sub(self._rewrite_url, out)
         out = self._unstash(out)
         # Nettoyé une seule fois, sur le HTML final (les intégrations en font partie).

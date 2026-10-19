@@ -42,16 +42,27 @@ def escape(text):
     return html.escape(str(text))
 
 
+class _FoldTable(dict):
+    """Table de ``str.translate`` remplie à la demande : chaque caractère n'est calculé qu'une fois."""
+
+    def __missing__(self, code):
+        ch = chr(code)
+        base = "".join(c for c in unicodedata.normalize("NFD", ch) if not unicodedata.combining(c))
+        folded = (base if len(base) == 1 else ch).lower()
+        # Garde la longueur (« İ ».lower() donne 2 caractères) pour que les positions concordent.
+        self[code] = folded = folded if len(folded) == 1 else ch
+        return folded
+
+
+_FOLD_TABLE = _FoldTable()
+
+
 def fold(text):
     """Minuscules sans accents, en gardant la longueur (é→e) pour repérer les extraits.
 
     Permet de chercher « reseau » et de trouver « Réseau ».
     """
-    out = []
-    for ch in text:
-        base = "".join(c for c in unicodedata.normalize("NFD", ch) if not unicodedata.combining(c))
-        out.append((base if len(base) == 1 else ch).lower())
-    return "".join(out)
+    return text.translate(_FOLD_TABLE)
 
 
 def map_outside_code(text, fn):
@@ -172,22 +183,36 @@ class Note:
         return map_outside_code(self.body, lambda s: COMMENT_RE.sub("", s))
 
     @cached_property
+    def folded_title(self):
+        """Titre, chemin et alias repliés, pour la recherche."""
+        return fold(f"{self.title} {self.key} {' '.join(self.aliases)}")
+
+    @cached_property
+    def folded_body(self):
+        """Corps replié (même longueur que ``clean_body``), pour la recherche."""
+        return fold(self.clean_body)
+
+    @cached_property
+    def _text_outside_code(self):
+        """Portions de ``clean_body`` hors blocs de code, découpées une seule fois."""
+        segments = []
+        map_outside_code(self.clean_body, lambda s: segments.append(s) or s)
+        return segments
+
+    @cached_property
     def tags(self):
         tags = {t.lstrip("#") for t in as_list(self.meta.get("tags") or self.meta.get("tag"))}
-        map_outside_code(self.clean_body, lambda s: tags.update(TAG_RE.findall(s)) or s)
+        for segment in self._text_outside_code:
+            tags.update(TAG_RE.findall(segment))
         return sorted(t for t in tags if t)
 
     @cached_property
     def link_targets(self):
         """Pages ciblées par les liens [[...]] et [texte](page.md) de la note."""
         targets = []
-
-        def collect(segment):
+        for segment in self._text_outside_code:
             targets.extend(parse_link_target(m.group(2))[0] for m in WIKILINK_RE.finditer(segment))
             targets.extend(m.group(1) for m in MDLINK_RE.finditer(segment))
-            return segment
-
-        map_outside_code(self.clean_body, collect)
         return [t for t in targets if t]
 
     @cached_property
@@ -202,19 +227,25 @@ class Note:
 
 
 class Vault:
-    def __init__(self, root, files):
+    def __init__(self, root, files, previous=None):
         self.root = Path(root)
         self.notes = {}  # chemin sans .md, en minuscules -> Note
         self.attachments = {}  # chemin en minuscules -> Attachment
         self._by_name = defaultdict(list)  # nom, alias ou nom de fichier en minuscules
         self._rendered = {}
+        # (chemin, date, taille) -> Note : seules les notes modifiées depuis ``previous`` sont relues.
+        self._parsed = {}
+        reusable = previous._parsed if previous is not None and previous.root == self.root else {}
 
-        for rel, mtime, _size in files:
+        for rel, mtime, size in files:
             path = PurePosixPath(rel)
             if path.suffix.lower() == ".md":
-                text = (self.root / path).read_text(encoding="utf-8", errors="replace")
-                meta, body = split_frontmatter(text.lstrip("﻿").replace("\r\n", "\n"))
-                note = Note(path, mtime / 1e9, meta, body)
+                note = reusable.get((rel, mtime, size))
+                if note is None:
+                    text = (self.root / path).read_text(encoding="utf-8", errors="replace")
+                    meta, body = split_frontmatter(text.lstrip("﻿").replace("\r\n", "\n"))
+                    note = Note(path, mtime / 1e9, meta, body)
+                self._parsed[(rel, mtime, size)] = note
                 self.notes[note.key.lower()] = note
                 self._by_name[note.name.lower()].append(note)
                 for alias in note.aliases:
@@ -353,8 +384,7 @@ class Vault:
             return []
         results = []
         for note in self.notes.values():
-            title = fold(f"{note.title} {note.key} {' '.join(note.aliases)}")
-            body = fold(note.clean_body)
+            title, body = note.folded_title, note.folded_body
             in_title = [w for w in words if w in title]
             if not all(w in title or w in body for w in words):
                 continue
@@ -415,5 +445,5 @@ def get_vault():
     signature = scan(root) if root.is_dir() else ()
     with _lock:
         if _cache["vault"] is None or _cache["root"] != root or _cache["signature"] != signature:
-            _cache.update(root=root, signature=signature, vault=Vault(root, signature))
+            _cache.update(root=root, signature=signature, vault=Vault(root, signature, previous=_cache["vault"]))
         return _cache["vault"]
