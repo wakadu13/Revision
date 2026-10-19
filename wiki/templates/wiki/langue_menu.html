@@ -1,0 +1,60 @@
+{% extends "wiki/base.html" %}
+{% block title %}{{ langue }} · Langues{% endblock %}
+{% block content %}
+<article class="note">
+  <p><a class="button small" href="{% url 'wiki:quiz_index' %}">← QCM</a></p>
+  <h1 class="note-title">Langues — {{ langue }}</h1>
+  <p class="muted">{{ resume.a_revoir }} à revoir · {{ resume.nouveaux_disponibles }} nouveau{{ resume.nouveaux_disponibles|pluralize:"x" }} disponible{{ resume.nouveaux_disponibles|pluralize }} aujourd'hui</p>
+
+  <form class="quiz-langue-modes" method="get" action="{% url 'wiki:langue_play' langue %}">
+    <div class="quiz-actions">
+      {% for cle, nom in modes %}
+      <button class="button{% if forloop.first %} primary{% endif %}" type="submit" name="mode" value="{{ cle }}">{{ nom }}{% if forloop.first %} (recommandé : tout mélangé){% endif %}</button>
+      {% endfor %}
+    </div>
+    <label class="muted quiz-langue-taille">Exercices par session
+      <input type="number" name="n" min="1" max="200" value="{{ taille }}">
+    </label>
+  </form>
+
+  <h2>Statistiques</h2>
+  <table class="quiz-stats">
+    <thead><tr><th></th><th>Appris</th><th>Maîtrisés (≥ 3 semaines)</th><th>À revoir</th><th>Rétention estimée</th></tr></thead>
+    <tbody>
+      {% for g in resume.genres %}
+      <tr>
+        <td><b>{{ g.nom }}</b></td>
+        <td>{{ g.appris }}/{{ g.total }}</td>
+        <td>{{ g.maitrises }}</td>
+        <td>{{ g.a_revoir }}</td>
+        <td>{% if g.retention is not None %}<div class="mastery"><div class="mastery-fill" style="width: {{ g.retention|floatformat:0 }}%"></div></div>
+          <span class="muted">{{ g.retention|floatformat:0 }} %</span>{% else %}<span class="muted">—</span>{% endif %}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <p>À revoir dans les 7 prochains jours : <b>{{ resume.sept_jours }}</b></p>
+  {% if resume.difficiles %}
+  <h3>Éléments les plus souvent oubliés</h3>
+  <ul>{% for texte, n in resume.difficiles %}<li><span class="quiz-oublis">×{{ n }}</span> {{ texte }}</li>{% endfor %}</ul>
+  {% endif %}
+  <p class="muted">Contenu : {% for s in sets %}{{ s.titre }} ({{ s|length }} exercices){% if not forloop.last %} · {% endif %}{% endfor %}</p>
+
+  <form method="post" action="{% url 'wiki:langue_reset' langue %}" onsubmit="return confirm('Effacer toute la progression en {{ langue|escapejs }} ?');">
+    {% csrf_token %}
+    <button type="submit" class="button small danger">Réinitialiser la progression de cette langue</button>
+  </form>
+
+  <details class="quiz-plan">
+    <summary>Comment ça marche ?</summary>
+    <ul>
+      <li><b>Répétition espacée FSRS</b> : chaque élément revient quand la probabilité de s'en souvenir tombe à 90 %.</li>
+      <li><b>Rappel actif</b> : un mot est d'abord découvert en reconnaissance (carte), puis revient en production (on tape le mot) et en contexte (phrase à compléter) — jamais deux facettes d'un même mot dans la même session.</li>
+      <li><b>Conjugaison</b> personne par personne, avec le tableau complet à la correction ; <b>grammaire</b> par phrases à trous, remise en ordre et correction d'erreurs.</li>
+      <li><b>Entrelacement</b> : vocabulaire, conjugaison et grammaire sont mélangés ; un exercice raté revient quelques questions plus tard.</li>
+      <li><b>Tolérance</b> : en vocabulaire, un accent oublié ou une faute de frappe compte comme « presque » ; en conjugaison et en grammaire, la réponse doit être exacte.</li>
+      <li>Au plus {{ resume.nouveaux_disponibles }} nouveaux éléments restent à découvrir aujourd'hui (quota journalier) ; les révisions dues passent toujours en premier.</li>
+    </ul>
+  </details>
+</article>
+{% endblock %}

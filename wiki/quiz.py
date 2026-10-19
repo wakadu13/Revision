@@ -147,73 +147,81 @@ class QuestionSet:
 # ---------------------------------------------------------------------------
 # Chargement et validation
 # ---------------------------------------------------------------------------
-def charger_set(chemin, racine) -> QuestionSet:
-    """Charge et valide un set depuis un fichier JSON. Lève ValueError si malformé."""
+def lire_json(chemin, racine):
+    """Lit un fichier JSON du coffre. Renvoie (chemin relatif, données) ; ValueError si invalide."""
     chemin = Path(chemin)
     rel = PurePosixPath(chemin.relative_to(racine).as_posix())
-    categorie = rel.parent.name or CATEGORIE_DEFAUT
-
     try:
-        data = json.loads(chemin.read_text(encoding="utf-8"))
+        return rel, json.loads(chemin.read_text(encoding="utf-8"))
     except json.JSONDecodeError as e:
         raise ValueError(f"JSON invalide dans {rel} : {e}")
+
+
+def question_depuis_json(q, i: int, contexte: str) -> Question:
+    """Valide une question (QCM, QCR, TROU, QRC ou FLASHCARD). `i` est son rang (à
+    partir de 1), utilisé pour l'identifiant par défaut `q{i}`. Réutilisé par le
+    module Langues pour ses exercices de grammaire."""
+    if not isinstance(q, dict) or "question" not in q:
+        raise ValueError(f"{contexte} : clé 'question' manquante.")
+    type_q = str(q.get("type", "QCM")).upper()
+    if type_q not in TYPES_VALIDES:
+        raise ValueError(f"{contexte} : type '{type_q}' inconnu (QCM, QCR, TROU, QRC, FLASHCARD).")
+
+    choix, reponses, reponses_texte, verso, consigne = [], [], [], "", ""
+    if type_q in ("QCM", "QCR"):
+        for clef in ("choix", "reponses"):
+            if clef not in q:
+                raise ValueError(f"{contexte} : clé '{clef}' manquante.")
+        choix = [str(c) for c in q["choix"]]
+        reponses = sorted(q["reponses"]) if isinstance(q["reponses"], list) else []
+        if not choix:
+            raise ValueError(f"{contexte} : la liste 'choix' est vide.")
+        if not reponses:
+            raise ValueError(f"{contexte} : aucune bonne réponse fournie.")
+        for r in reponses:
+            if not isinstance(r, int) or isinstance(r, bool) or not (0 <= r < len(choix)):
+                raise ValueError(f"{contexte} : indice de réponse {r} hors limites.")
+        if type_q == "QCM" and len(reponses) != 1:
+            raise ValueError(f"{contexte} : un QCM doit avoir exactement 1 réponse.")
+    elif type_q in TYPES_TEXTE:
+        reponses_texte = [str(r) for r in q.get("reponses_texte", []) if str(r).strip()]
+        if not reponses_texte:
+            raise ValueError(f"{contexte} : 'reponses_texte' doit contenir une réponse.")
+        consigne = str(q.get("consigne", "")) if type_q == "QRC" else ""
+    elif type_q == "FLASHCARD":
+        verso = str(q.get("verso", ""))
+        if not verso.strip():
+            raise ValueError(f"{contexte} : clé 'verso' manquante (dos de la carte).")
+
+    return Question(
+        id=str(q.get("id", f"q{i}")),
+        type=type_q,
+        enonce=str(q["question"]),
+        choix=choix,
+        reponses=reponses,
+        reponses_texte=reponses_texte,
+        consigne=consigne,
+        verso=verso,
+        explication=str(q.get("explication", "")),
+    )
+
+
+def set_depuis_json(data, rel: PurePosixPath) -> QuestionSet:
+    """Construit un set à partir du JSON lu dans `rel`. Lève ValueError si malformé."""
     if not isinstance(data, dict) or not isinstance(data.get("questions"), list):
         raise ValueError(f"{rel} : clé 'questions' (liste) manquante.")
 
     questions: list[Question] = []
     for i, q in enumerate(data["questions"], start=1):
-        contexte = f"{rel} » question #{i}"
-        if not isinstance(q, dict) or "question" not in q:
-            raise ValueError(f"{contexte} : clé 'question' manquante.")
-        type_q = str(q.get("type", "QCM")).upper()
-        if type_q not in TYPES_VALIDES:
-            raise ValueError(f"{contexte} : type '{type_q}' inconnu (QCM, QCR, TROU, QRC, FLASHCARD).")
-
-        choix, reponses, reponses_texte, verso, consigne = [], [], [], "", ""
-        if type_q in ("QCM", "QCR"):
-            for clef in ("choix", "reponses"):
-                if clef not in q:
-                    raise ValueError(f"{contexte} : clé '{clef}' manquante.")
-            choix = [str(c) for c in q["choix"]]
-            reponses = list(q["reponses"])
-            if not choix:
-                raise ValueError(f"{contexte} : la liste 'choix' est vide.")
-            if not reponses:
-                raise ValueError(f"{contexte} : aucune bonne réponse fournie.")
-            for r in reponses:
-                if not isinstance(r, int) or not (0 <= r < len(choix)):
-                    raise ValueError(f"{contexte} : indice de réponse {r} hors limites.")
-            if type_q == "QCM" and len(reponses) != 1:
-                raise ValueError(f"{contexte} : un QCM doit avoir exactement 1 réponse.")
-        elif type_q in TYPES_TEXTE:
-            reponses_texte = [str(r) for r in q.get("reponses_texte", []) if str(r).strip()]
-            if not reponses_texte:
-                raise ValueError(f"{contexte} : 'reponses_texte' doit contenir une réponse.")
-            consigne = str(q.get("consigne", "")) if type_q == "QRC" else ""
-        elif type_q == "FLASHCARD":
-            verso = str(q.get("verso", ""))
-            if not verso.strip():
-                raise ValueError(f"{contexte} : clé 'verso' manquante (dos de la carte).")
-
-        question = Question(
-            id=str(q.get("id", f"q{i}")),
-            type=type_q,
-            enonce=str(q["question"]),
-            choix=choix,
-            reponses=reponses,
-            reponses_texte=reponses_texte,
-            consigne=consigne,
-            verso=verso,
-            explication=str(q.get("explication", "")),
-        )
+        question = question_depuis_json(q, i, f"{rel} » question #{i}")
         questions.append(question)
         # QRC « inverse » : on pose aussi la question dans l'autre sens
         # (ex. chien → dog, puis dog → chien), suivie séparément dans Leitner.
-        if type_q == "QRC" and q.get("inverse"):
+        if question.est_qrc and q.get("inverse"):
             questions.append(Question(
                 id=f"{question.id}~inverse",
                 type="QRC",
-                enonce=reponses_texte[0],
+                enonce=question.reponses_texte[0],
                 reponses_texte=[question.enonce],
                 consigne=str(q.get("consigne_inverse", "")),
                 explication=question.explication,
@@ -226,30 +234,52 @@ def charger_set(chemin, racine) -> QuestionSet:
         titre=str(data.get("titre") or rel.stem),
         description=str(data.get("description", "")),
         questions=questions,
-        categorie=categorie,
+        categorie=rel.parent.name or CATEGORIE_DEFAUT,
         path=rel,
     )
 
 
+def charger_set(chemin, racine) -> QuestionSet:
+    """Charge et valide un set depuis un fichier JSON. Lève ValueError si malformé."""
+    rel, data = lire_json(chemin, racine)
+    return set_depuis_json(data, rel)
+
+
+def charger(chemin, racine):
+    """Charge un set de questions ou un fichier de langue (clé « langue »)."""
+    from . import langues
+
+    rel, data = lire_json(chemin, racine)
+    if langues.est_fichier_langue(data):
+        return langues.set_depuis_json(data, rel)
+    return set_depuis_json(data, rel)
+
+
 class Library:
-    """Ensemble des sets de questions trouvés dans le coffre."""
+    """Ensemble des sets de questions et des fichiers de langue trouvés dans le coffre."""
 
     def __init__(self, root, files):
+        from .langues import SetLangue
+
         self.root = Path(root)
         self.sets: dict[str, QuestionSet] = {}
+        self.langues: dict[str, SetLangue] = {}
         self.errors: list[str] = []
         for rel, _mtime, _size in files:
             if not rel.lower().endswith(".json"):
                 continue
             try:
-                qset = charger_set(self.root / rel, self.root)
+                charge = charger(self.root / rel, self.root)
             except ValueError as e:
                 # On distingue « pas un set » (JSON sans 'questions', ex. .canvas)
                 # d'un vrai set malformé, qu'on signale.
                 if "questions' (liste) manquante" not in str(e):
                     self.errors.append(str(e))
                 continue
-            self.sets[qset.id] = qset
+            if isinstance(charge, SetLangue):
+                self.langues[charge.id] = charge
+            else:
+                self.sets[charge.id] = charge
 
     def get(self, set_id):
         return self.sets.get(set_id)
@@ -263,6 +293,14 @@ class Library:
         for qset in self.sorted_sets():
             cats.setdefault(qset.categorie, []).append(qset)
         return cats
+
+    def noms_langues(self):
+        """Langues distinctes (plusieurs fichiers d'une même langue sont regroupés), triées."""
+        return sorted({s.langue for s in self.langues.values()}, key=str.lower)
+
+    def sets_langue(self, langue):
+        """Fichiers d'une langue, dans l'ordre des chemins."""
+        return [s for _, s in sorted(self.langues.items()) if s.langue == langue]
 
     def all_questions(self):
         """Toutes les paires (set, question) de la bibliothèque."""

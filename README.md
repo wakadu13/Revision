@@ -68,6 +68,18 @@ dans la barre latérale ou sur `/qcm/`.
   Leitner) avec statistiques de maîtrise par set.
 - **Révision intensive** (par set ou par catégorie) : les questions ratées
   reviennent dans la session jusqu'à être réussies 2 fois de suite.
+- **Module Langues** (comme dans revision_qcm) : un fichier `.json` avec une clé
+  `"langue"` décrit du vocabulaire, des tableaux de conjugaison et de la
+  grammaire. Répétition espacée **FSRS**, mot découvert en reconnaissance puis
+  revu en production (on le tape) et en contexte, conjugaison personne par
+  personne, remise en ordre de mots, correction d'erreurs, exercices entrelacés,
+  réessai des erreurs dans la session, quota de 20 nouveautés par jour,
+  tolérance aux accents/fautes de frappe en vocabulaire. Pages `/qcm/langues/<langue>/`.
+- **Prompts IA** : `prompts_ia/` contient un prompt prêt à copier-coller par
+  type de carte (QCM, QCR, TROU, FLASHCARD, set mixte, vocabulaire, conjugaison,
+  grammaire). Vérifier ensuite le fichier produit :
+  `uv run python manage.py verifier_qcm vault/QCM/<catégorie>/<fichier>.json`
+  (sans argument : tout `vault/QCM`).
 - La progression est enregistrée en base de données, par utilisateur (il faut
   être connecté pour faire les QCM). Après un `git pull` qui ajoute
   le module, lancer `uv run python manage.py migrate`.
@@ -153,6 +165,7 @@ en-têtes) sont dans [`core/tests.py`](core/tests.py) :
 - `/recherche/?q=...` : recherche plein texte (insensible aux accents)
 - `/qcm/` : QCM de révision (`/qcm/stats/` pour les statistiques, `/qcm/importer/`
   pour l'import de sets JSON par glisser-déposer, admins)
+- `/qcm/langues/<langue>/` : module Langues (session du jour, modes, statistiques)
 - `/documentation/` et `/documentation/ia/` : ce README et `README-IA.md`, lisibles dans le wiki
 - `/fichiers/<chemin>` : pièces jointes du coffre
 - `/connexion/`, `/deconnexion/`, `/inscription/` : session

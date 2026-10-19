@@ -217,6 +217,50 @@ Doc utilisateur : `vault/Guide/QCM.md`.
 - Varie la position de la bonne réponse et fais des distracteurs plausibles.
 - Un set invalide n'apparaît pas et son erreur est affichée en haut de `/qcm/`.
 
+### 5.1 Fichier de langue (module Langues)
+
+Pour du vocabulaire, de la conjugaison ou de la grammaire de langue, préfère un
+**fichier de langue** : il se reconnaît à sa clé `"langue"` (et l'absence de
+`"questions"`). Fichier : `vault/QCM/langues/<nom>.json`. Plusieurs fichiers
+d'une même langue sont regroupés. Exemples complets :
+`vault/QCM/langues/langues_anglais.json`, `vault/QCM/langues/espagnol_debutant.json`.
+
+```json
+{
+  "langue": "Anglais",
+  "titre": "Anglais — vocabulaire du travail",
+  "particules_optionnelles": ["to", "a", "an", "the"],
+  "caracteres_speciaux": [],
+  "vocabulaire": [
+    {"id": "voc-001", "mot": "to achieve", "traductions": ["réussir", "accomplir"],
+     "exemple": "She finally [achieved] her goal.", "exemple_traduction": "Elle a enfin atteint son objectif.",
+     "note": "achievement (n.) = une réussite"}
+  ],
+  "conjugaison": [
+    {"id": "irr-go", "verbe": "to go", "traduction": "aller", "temps": "verbe irrégulier",
+     "formes": {"prétérit": "went", "participe passé": "gone"}}
+  ],
+  "grammaire": [
+    {"id": "g1", "type": "TROU", "question": "She ___ (go) to school every day.", "reponses_texte": ["goes"]},
+    {"id": "g2", "type": "ORDRE", "phrase": "She has never been to London.", "traduction": "Elle n'est jamais allée à Londres."},
+    {"id": "g3", "type": "CORRECTION", "phrase": "He don't like coffee.", "corrections": ["He doesn't like coffee."]}
+  ]
+}
+```
+
+| Champ | Détail |
+|---|---|
+| `langue` | **obligatoire** ; regroupe les fichiers d'une même langue |
+| `vocabulaire[]` | `mot` et `traductions` obligatoires ; `exemple` avec le mot **entre crochets** (crée l'exercice en contexte), `exemple_traduction`, `note`, `prononciation`, `variantes` facultatifs |
+| `conjugaison[]` | `verbe`, `temps`, `formes` (personne → forme, ou liste de formes acceptées) |
+| `grammaire[]` | `TROU`, `QCM`, `QCR`, `FLASHCARD` (format des sets), `ORDRE` (`phrase`, `variantes`, `traduction`) ou `CORRECTION` (`phrase` fautive, `corrections`) |
+| `particules_optionnelles` | mots facultatifs en tête de réponse (« achieve » accepté pour « to achieve ») |
+| `caracteres_speciaux` | boutons d'insertion sous le champ (ex. `["á", "ñ", "¿"]`) |
+| `nouveaux_par_jour` | quota de nouveautés par jour (défaut 20) |
+
+Les `id` servent au suivi : garde-les **stables** et uniques. Des prompts prêts
+à l'emploi pour chaque type sont dans `prompts_ia/` (à la racine du projet).
+
 ---
 
 ## 6. Qualité du contenu
@@ -252,7 +296,13 @@ for e in lib.errors: print('ERREUR QCM:', e)
 "
 ```
 
-Attendu : aucune ligne `ERREUR QCM` et aucun `LIEN CASSÉ` provenant de **tes**
+Puis vérifie les QCM et fichiers de langue (avertissements compris) :
+
+```bash
+docker compose exec -T web python manage.py verifier_qcm vault/QCM
+```
+
+Attendu : aucune ligne `ERREUR QCM` ni `✗`, et aucun `LIEN CASSÉ` provenant de **tes**
 fichiers (des liens cassés préexistants peuvent exister, ne les « corrige » pas
 en masse sans qu'on te le demande).
 

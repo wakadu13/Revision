@@ -1,8 +1,9 @@
-"""Persistance de la progression aux QCM (système de Leitner).
+"""Persistance de la progression aux QCM (Leitner) et au module Langues (FSRS).
 
 Remplace le fichier progression.json de l'application d'origine par la base de
-données Django. Une ligne = une question suivie, pour un « joueur » (le nom
-d'utilisateur connecté ; les QCM demandent d'être connecté).
+données Django. Une ligne = une question (ou une facette d'exercice de langue)
+suivie, pour un « joueur » (le nom d'utilisateur connecté ; les QCM demandent
+d'être connecté).
 """
 
 from datetime import datetime, timezone as dt_timezone
@@ -10,7 +11,7 @@ from datetime import datetime, timezone as dt_timezone
 from django.db import models
 from django.utils import timezone
 
-from . import quiz
+from . import fsrs, langues, quiz
 
 # Date « aware » très ancienne, pour trier les questions jamais révisées en premier.
 _JAMAIS = datetime.min.replace(tzinfo=dt_timezone.utc)
@@ -26,6 +27,12 @@ class QuizProgress(models.Model):
     last_review = models.DateTimeField(null=True, blank=True)
     premiere_revue = models.DateTimeField(null=True, blank=True)  # 1re réponse : compte les nouvelles du jour
     last_correct = models.BooleanField(null=True, blank=True)
+    # Module Langues uniquement (vides pour les QCM) : état FSRS de la facette.
+    stabilite = models.FloatField(null=True, blank=True)     # jours avant 90 % de rappel
+    difficulte = models.FloatField(null=True, blank=True)    # 1 à 10
+    echeance = models.DateTimeField(null=True, blank=True)   # prochaine révision
+    decouverte = models.DateTimeField(null=True, blank=True)  # 1re révision : quota de nouveautés
+    oublis = models.PositiveIntegerField(default=0)           # échecs après avoir été appris
 
     class Meta:
         unique_together = ("player", "set_id", "question_id")
@@ -43,6 +50,22 @@ class QuizProgress(models.Model):
         if self.premiere_revue is None:
             self.premiere_revue = self.last_review
 
+    def record_langue(self, note: int) -> None:
+        """Enregistre une révision du module Langues (note FSRS 1 à 4) : statistiques,
+        boîte de Leitner et état FSRS."""
+        now = timezone.now()
+        deja_appris = not langues.est_nouveau(self)
+        etat = langues.etat_suivant(self, note, now)  # avant record(), qui change last_review
+        self.record(quiz.NOTES[note - 1])
+        self.last_review = now
+        self.stabilite = round(etat.stabilite, 3)
+        self.difficulte = round(etat.difficulte, 3)
+        self.echeance = now + langues.delai(etat, note)
+        if self.decouverte is None and not deja_appris:
+            self.decouverte = now
+        if deja_appris and note == fsrs.A_REVOIR:
+            self.oublis += 1
+
     def is_due(self, now=None) -> bool:
         return quiz.intervalle_ecoule(self.box, self.last_review, now or timezone.now())
 
@@ -54,6 +77,12 @@ class QuizProgress(models.Model):
     def map_for(cls, player: str, set_id: str) -> dict:
         """{question_id: QuizProgress} pour un set et un joueur donnés."""
         return {p.question_id: p for p in cls.objects.filter(player=player, set_id=set_id)}
+
+    @classmethod
+    def map_langue(cls, player: str, sets) -> dict:
+        """{(set_id, exercice_id): QuizProgress} pour des fichiers de langue."""
+        rows = cls.objects.filter(player=player, set_id__in=[s.id for s in sets])
+        return {(p.set_id, p.question_id): p for p in rows}
 
 
 class QuizDeck(models.Model):

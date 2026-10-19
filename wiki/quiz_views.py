@@ -170,8 +170,14 @@ def index(request):
             "shown": shown,
             "a_reviser": sum(e["summary"]["a_reviser"] for e in entries),
         })
+    from .langues_views import resume_langue
+
+    langues = [{"nom": nom, "sets": library.sets_langue(nom),
+                "resume": resume_langue(player, nom, library.sets_langue(nom), now)}
+               for nom in library.noms_langues()]
     context = _ctx(
         request,
+        langues=langues,
         categories=categories,
         categories_import=_categories_import(),
         total_sets=len(library.sets),
@@ -379,7 +385,7 @@ def _importer_fichier(fichier, categorie, remplacer):
         essai.parent.mkdir(parents=True)
         essai.write_text(texte, encoding="utf-8")
         try:
-            qset = quiz.charger_set(essai, tmp)
+            qset = quiz.charger(essai, tmp)
         except ValueError as e:
             return False, str(e)
 
@@ -390,7 +396,8 @@ def _importer_fichier(fichier, categorie, remplacer):
     destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_text(texte, encoding="utf-8", newline="\n")
     n = len(qset)
-    return True, f"« {qset.titre} » importé dans {rel} ({n} question{'s' if n > 1 else ''})."
+    unite = "exercice" if hasattr(qset, "langue") else "question"
+    return True, f"« {qset.titre} » importé dans {rel} ({n} {unite}{'s' if n > 1 else ''})."
 
 
 @require_POST

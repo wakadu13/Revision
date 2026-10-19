@@ -193,3 +193,7 @@ vault/.trash/
 .env
 vault/.obsidian/plugins/*/data.json
 staticfiles/
+
+# Fichiers système macOS (Finder, AppleDouble)
+.DS_Store
+._*

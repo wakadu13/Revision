@@ -95,3 +95,34 @@ est su, avec la liste des questions les plus difficiles.
 Seule la **première réponse** à chaque question est enregistrée pour la révision
 espacée : les répétitions ne gonflent pas les boîtes. Les questions ratées restent
 donc « à réviser » et reviennent le lendemain dans la Révision intelligente.
+
+## Langues
+
+La section **Langues** en haut de la [page des QCM](/qcm/) regroupe les
+fichiers de langue (vocabulaire, conjugaison, grammaire). Elle applique les
+techniques les mieux établies pour apprendre une langue :
+
+- **Répétition espacée FSRS** (l'algorithme d'Anki) : chaque élément revient
+  quand la probabilité de s'en souvenir tombe à 90 %. Les cartes ont 4 boutons
+  (touches 1 à 4) qui indiquent quand la carte reviendra.
+- **Rappel actif** : un mot est d'abord découvert en **reconnaissance**
+  (anglais → français), puis revient en **production** (on tape le mot) et
+  **en contexte** (phrase à compléter) — jamais deux facettes d'un même mot
+  dans la même session.
+- **Conjugaison** personne par personne, avec le tableau complet à la
+  correction ; **grammaire** par phrases à trous, **remise en ordre** de mots
+  (clic ou numéro, ⌫ pour retirer) et **correction d'erreurs**.
+- **Entrelacement** : la **Session du jour** mélange vocabulaire, conjugaison
+  et grammaire. Un exercice raté revient quelques questions plus tard.
+- **Tolérance** : en vocabulaire, un accent oublié ou une faute de frappe
+  compte comme « presque » ; en conjugaison et en grammaire, la réponse doit
+  être exacte. Les lettres fausses sont surlignées dans la réponse attendue.
+- Après une bonne réponse, **F** signale qu'elle était trop facile : elle
+  reviendra plus tard. Au plus 20 nouveautés par jour ; les révisions dues
+  passent toujours en premier.
+
+Autres modes : **Vocabulaire**, **Conjugaison**, **Grammaire** et **Points
+faibles** (éléments souvent oubliés), avec des statistiques par langue.
+Format d'un fichier de langue : voir `README-IA.md` (§ 5.1) et les prompts du
+dossier `prompts_ia/`.
+

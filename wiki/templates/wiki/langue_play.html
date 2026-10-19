@@ -1,0 +1,30 @@
+{% extends "wiki/base.html" %}
+{% load static %}
+{% block title %}{{ titre }}{% endblock %}
+{% block content %}
+<article class="note quiz" id="quiz-langue"
+         data-corriger-url="{{ corriger_url }}"
+         data-record-url="{{ record_url }}"
+         data-back-url="{{ back_url }}"
+         data-csrf="{{ csrf_token }}">
+  <div class="quiz-topbar">
+    <a class="button small" href="{{ back_url }}">← {{ langue }}</a>
+    <span class="quiz-progress-text" id="quiz-progress"></span>
+  </div>
+  <div class="quiz-bar"><div class="quiz-bar-fill" id="quiz-bar-fill"></div></div>
+
+  {% if count %}
+  <div id="quiz-stage" class="quiz-stage"></div>
+  <p class="muted quiz-aide" id="quiz-aide"></p>
+  {% else %}
+  <div class="callout" data-callout="success">
+    <div class="callout-title">{% if mode == "faibles" %}Aucun point faible pour l'instant ✓{% else %}Rien à réviser ni à découvrir pour l'instant ✓{% endif %}</div>
+    <div class="callout-content"><p>Reviens plus tard : les éléments reviennent juste avant d'être oubliés. <a href="{{ back_url }}">Retour au menu</a></p></div>
+  </div>
+  {% endif %}
+</article>
+
+{{ exercices|json_script:"quiz-data" }}
+<script src="{% static 'wiki/quiz_langue.js' %}" defer></script>
+{% endblock %}
+{% block aside %}{% endblock %}

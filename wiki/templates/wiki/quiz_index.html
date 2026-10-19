@@ -36,6 +36,28 @@
   </div>
   {% endif %}
 
+  {% if langues %}
+  <section class="quiz-langues">
+    <h2>Langues</h2>
+    <p class="muted">Vocabulaire, conjugaison et grammaire avec répétition espacée FSRS, rappel actif et exercices entrelacés.</p>
+    <ul class="quiz-sets">
+      {% for l in langues %}
+      <li class="quiz-set">
+        <div class="quiz-set-head">
+          <span class="quiz-set-title">{{ l.nom }}</span>
+          <span class="muted">{{ l.sets|length }} fichier{{ l.sets|length|pluralize }}</span>
+        </div>
+        <p class="muted quiz-set-desc">{{ l.resume.a_revoir }} à revoir · {{ l.resume.nouveaux_disponibles }} nouveau{{ l.resume.nouveaux_disponibles|pluralize:"x" }} disponible{{ l.resume.nouveaux_disponibles|pluralize }}</p>
+        <span class="quiz-set-buttons">
+          <a class="button small primary" href="{% url 'wiki:langue_play' l.nom %}?mode=quotidien">Session du jour</a>
+          <a class="button small" href="{% url 'wiki:langue_menu' l.nom %}">Modes et statistiques</a>
+        </span>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
   {% if total_sets %}
   <form class="quiz-search" method="get" role="search">
     <input type="search" name="q" value="{{ q }}" placeholder="Rechercher un QCM (titre, catégorie, question)…" aria-label="Rechercher un QCM" autocomplete="off" data-quiz-search>
