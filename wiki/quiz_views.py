@@ -143,18 +143,19 @@ def index(request):
     player = player_id(request)
     now = timezone.now()
     q = request.GET.get("q", "").strip()
-    categories = []
     total_due = matches = 0
     decks = QuizDeck.map_for(player)
+    # (langue, catégorie) → sets : les sets rattachés à une langue sont affichés
+    # dans la section Langues, les autres dans les catégories habituelles.
+    groupes = {}
     for cat, sets in library.categories().items():
-        entries = []
         for qset in sets:
             progress = QuizProgress.map_for(player, qset.id)
             deck = QuizDeck.pour(decks, player, qset.id)
             summary = _set_summary(qset, progress, now, deck)
             total_due += summary["a_reviser"]
             # Les sets hors recherche restent dans la page (masqués) pour le filtre en direct.
-            entries.append({
+            groupes.setdefault((qset.langue, cat), []).append({
                 "set": qset,
                 "summary": summary,
                 "deck": deck,
@@ -162,19 +163,26 @@ def index(request):
                 "estimation": planning.estimer(qset, progress, deck, now) if deck.configure else None,
                 "match": not q or qset.correspond(q),
             })
+    par_langue = {}
+    for (langue, cat), entries in groupes.items():
         shown = sum(e["match"] for e in entries)
         matches += shown
-        categories.append({
+        par_langue.setdefault(langue, []).append({
             "nom": cat,
+            "langue": langue,
             "sets": entries,
             "shown": shown,
             "a_reviser": sum(e["summary"]["a_reviser"] for e in entries),
         })
+    categories = par_langue.pop("", [])
     from .langues_views import resume_langue
 
-    langues = [{"nom": nom, "sets": library.sets_langue(nom),
-                "resume": resume_langue(player, nom, library.sets_langue(nom), now)}
-               for nom in library.noms_langues()]
+    langues = []
+    for nom in library.noms_langues():
+        fichiers = library.sets_langue(nom)
+        langues.append({"nom": nom, "sets": fichiers,
+                        "resume": resume_langue(player, nom, fichiers, now) if fichiers else None,
+                        "categories": par_langue.get(nom, [])})
     context = _ctx(
         request,
         langues=langues,
@@ -222,7 +230,8 @@ def play(request):
     elif mode == "intensif" and request.GET.get("categorie"):
         # Révision intensive de toute une catégorie : toutes ses questions.
         categorie = request.GET["categorie"]
-        sets = library.categories().get(categorie)
+        langue = request.GET.get("langue", "")
+        sets = [s for s in library.categories().get(categorie, []) if s.langue == langue]
         if not sets:
             raise Http404("Catégorie de QCM introuvable")
         titre = f"Révision intensive · {categorie}"

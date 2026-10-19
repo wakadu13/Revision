@@ -300,8 +300,8 @@ table.quiz-stats form { margin: 0; }
 .quiz-plan-form input[type=number] { width: 7rem; }
 
 /* Module Langues */
-.quiz-langues { margin: 1.5rem 0; }
-.quiz-langues h2 { font-size: 1.2rem; border-bottom: 1px solid var(--border); padding-bottom: .3rem; margin-bottom: .3rem; }
+.quiz-langues, .quiz-cours { margin: 1.5rem 0; }
+.quiz-langues h2, .quiz-cours h2 { font-size: 1.2rem; border-bottom: 1px solid var(--border); padding-bottom: .3rem; margin-bottom: .3rem; }
 .quiz-langue-taille { display: flex; align-items: center; gap: .5rem; font-size: .9rem; margin: -.8rem 0 1.5rem; }
 .quiz-langue-taille input { width: 5rem; padding: .25rem .5rem; border: 1px solid var(--border); border-radius: 6px; background: var(--bg); color: var(--text); font: inherit; }
 .quiz-oublis { color: #dc2626; font-weight: 700; margin-right: .3rem; }

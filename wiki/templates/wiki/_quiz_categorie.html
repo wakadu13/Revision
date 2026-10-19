@@ -1,0 +1,37 @@
+{# Catégorie repliable de sets de QCM (page /qcm/). #}
+<details class="quiz-category" data-cle="{% if cat.langue %}{{ cat.langue }} · {% endif %}{{ cat.nom }}"{% if q %} open{% endif %}{% if not cat.shown %} hidden{% endif %}>
+  <summary>
+    <span class="quiz-category-name">{{ cat.nom }}</span>
+    <span class="muted quiz-category-meta"><span data-quiz-count>{{ cat.shown }} set{{ cat.shown|pluralize }}</span>{% if cat.a_reviser %} · <b>{{ cat.a_reviser }}</b> à réviser{% endif %}</span>
+  </summary>
+  <p class="quiz-category-actions">
+    <a class="button small" href="{% url 'wiki:quiz_play' %}?categorie={{ cat.nom|urlencode }}{% if cat.langue %}&langue={{ cat.langue|urlencode }}{% endif %}&mode=intensif" title="Répéter les questions ratées jusqu'à tout savoir">Révision intensive de la catégorie</a>
+  </p>
+  <ul class="quiz-sets">
+    {% for entry in cat.sets %}
+    <li id="{{ entry.ancre }}" class="quiz-set" data-search="{{ entry.set.texte_recherche }}"{% if not entry.match %} hidden{% endif %}>
+      <div class="quiz-set-head">
+        <span class="quiz-set-title">{{ entry.set.titre }}</span>
+        <span class="muted">{{ entry.summary.total }} question{{ entry.summary.total|pluralize }}</span>
+      </div>
+      {% if entry.set.description %}<p class="muted quiz-set-desc">{{ entry.set.description }}</p>{% endif %}
+      <div class="mastery" title="Maîtrise {{ entry.summary.pct_maitrise|floatformat:0 }} %">
+        <div class="mastery-fill" style="width: {{ entry.summary.pct_maitrise|floatformat:0 }}%"></div>
+      </div>
+      <div class="quiz-set-foot">
+        <span class="muted">Maîtrise {{ entry.summary.pct_maitrise|floatformat:0 }} %
+          {% if entry.summary.a_reviser %}· <b>{{ entry.summary.a_reviser }}</b> à réviser{% if entry.summary.dues > entry.summary.a_reviser %} aujourd'hui (sur {{ entry.summary.dues }} dues){% endif %}
+            {% if entry.summary.nouvelles and entry.summary.a_reviser > entry.summary.nouvelles %}· dont {{ entry.summary.nouvelles }} nouvelle{{ entry.summary.nouvelles|pluralize }}{% endif %}
+          {% elif entry.summary.quota_atteint %}· quota du jour atteint ✓ ({{ entry.summary.dues }} dues)
+          {% else %}· à jour ✓{% endif %}</span>
+        <span class="quiz-set-buttons">
+          {% if entry.summary.a_reviser %}<a class="button small primary" href="{% url 'wiki:quiz_play' %}?set={{ entry.set.id|urlencode }}&mode=review">Réviser ({{ entry.summary.a_reviser }})</a>{% endif %}
+          <a class="button small" href="{% url 'wiki:quiz_play' %}?set={{ entry.set.id|urlencode }}&mode=all">Tout ({{ entry.summary.total }})</a>
+          <a class="button small" href="{% url 'wiki:quiz_play' %}?set={{ entry.set.id|urlencode }}&mode=intensif" title="Répéter les questions ratées jusqu'à tout savoir">Intensif</a>
+        </span>
+      </div>
+      {% include "wiki/_quiz_plan.html" with deck=entry.deck e=entry.estimation set=entry.set %}
+    </li>
+    {% endfor %}
+  </ul>
+</details>

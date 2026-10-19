@@ -36,12 +36,23 @@
   </div>
   {% endif %}
 
+  {% if total_sets %}
+  <form class="quiz-search" method="get" role="search">
+    <input type="search" name="q" value="{{ q }}" placeholder="Rechercher un QCM (titre, catégorie, question)…" aria-label="Rechercher un QCM" autocomplete="off" data-quiz-search>
+    <button type="button" class="button small" data-fold="open">Tout déplier</button>
+    <button type="button" class="button small" data-fold="close">Tout replier</button>
+  </form>
+  <p class="muted quiz-search-empty" data-quiz-empty{% if not q or matches %} hidden{% endif %}>Aucun QCM ne correspond à cette recherche.</p>
+  {% endif %}
+
   {% if langues %}
   <section class="quiz-langues">
     <h2>Langues</h2>
     <p class="muted">Vocabulaire, conjugaison et grammaire avec répétition espacée FSRS, rappel actif et exercices entrelacés.</p>
+    {% for l in langues %}
+    {% if l.categories %}<h3>{{ l.nom }}</h3>{% endif %}
+    {% if l.sets %}
     <ul class="quiz-sets">
-      {% for l in langues %}
       <li class="quiz-set">
         <div class="quiz-set-head">
           <span class="quiz-set-title">{{ l.nom }}</span>
@@ -53,58 +64,24 @@
           <a class="button small" href="{% url 'wiki:langue_menu' l.nom %}">Modes et statistiques</a>
         </span>
       </li>
-      {% endfor %}
     </ul>
+    {% endif %}
+    {% for cat in l.categories %}
+    {% include "wiki/_quiz_categorie.html" %}
+    {% endfor %}
+    {% endfor %}
   </section>
   {% endif %}
 
-  {% if total_sets %}
-  <form class="quiz-search" method="get" role="search">
-    <input type="search" name="q" value="{{ q }}" placeholder="Rechercher un QCM (titre, catégorie, question)…" aria-label="Rechercher un QCM" autocomplete="off" data-quiz-search>
-    <button type="button" class="button small" data-fold="open">Tout déplier</button>
-    <button type="button" class="button small" data-fold="close">Tout replier</button>
-  </form>
-  <p class="muted quiz-search-empty" data-quiz-empty{% if not q or matches %} hidden{% endif %}>Aucun QCM ne correspond à cette recherche.</p>
-  {% endif %}
-
-  {% for cat in categories %}
-  <details class="quiz-category"{% if q %} open{% endif %}{% if not cat.shown %} hidden{% endif %}>
-    <summary>
-      <span class="quiz-category-name">{{ cat.nom }}</span>
-      <span class="muted quiz-category-meta"><span data-quiz-count>{{ cat.shown }} set{{ cat.shown|pluralize }}</span>{% if cat.a_reviser %} · <b>{{ cat.a_reviser }}</b> à réviser{% endif %}</span>
-    </summary>
-    <p class="quiz-category-actions">
-      <a class="button small" href="{% url 'wiki:quiz_play' %}?categorie={{ cat.nom|urlencode }}&mode=intensif" title="Répéter les questions ratées jusqu'à tout savoir">Révision intensive de la catégorie</a>
-    </p>
-    <ul class="quiz-sets">
-      {% for entry in cat.sets %}
-      <li id="{{ entry.ancre }}" class="quiz-set" data-search="{{ entry.set.texte_recherche }}"{% if not entry.match %} hidden{% endif %}>
-        <div class="quiz-set-head">
-          <span class="quiz-set-title">{{ entry.set.titre }}</span>
-          <span class="muted">{{ entry.summary.total }} question{{ entry.summary.total|pluralize }}</span>
-        </div>
-        {% if entry.set.description %}<p class="muted quiz-set-desc">{{ entry.set.description }}</p>{% endif %}
-        <div class="mastery" title="Maîtrise {{ entry.summary.pct_maitrise|floatformat:0 }} %">
-          <div class="mastery-fill" style="width: {{ entry.summary.pct_maitrise|floatformat:0 }}%"></div>
-        </div>
-        <div class="quiz-set-foot">
-          <span class="muted">Maîtrise {{ entry.summary.pct_maitrise|floatformat:0 }} %
-            {% if entry.summary.a_reviser %}· <b>{{ entry.summary.a_reviser }}</b> à réviser{% if entry.summary.dues > entry.summary.a_reviser %} aujourd'hui (sur {{ entry.summary.dues }} dues){% endif %}
-              {% if entry.summary.nouvelles and entry.summary.a_reviser > entry.summary.nouvelles %}· dont {{ entry.summary.nouvelles }} nouvelle{{ entry.summary.nouvelles|pluralize }}{% endif %}
-            {% elif entry.summary.quota_atteint %}· quota du jour atteint ✓ ({{ entry.summary.dues }} dues)
-            {% else %}· à jour ✓{% endif %}</span>
-          <span class="quiz-set-buttons">
-            {% if entry.summary.a_reviser %}<a class="button small primary" href="{% url 'wiki:quiz_play' %}?set={{ entry.set.id|urlencode }}&mode=review">Réviser ({{ entry.summary.a_reviser }})</a>{% endif %}
-            <a class="button small" href="{% url 'wiki:quiz_play' %}?set={{ entry.set.id|urlencode }}&mode=all">Tout ({{ entry.summary.total }})</a>
-            <a class="button small" href="{% url 'wiki:quiz_play' %}?set={{ entry.set.id|urlencode }}&mode=intensif" title="Répéter les questions ratées jusqu'à tout savoir">Intensif</a>
-          </span>
-        </div>
-        {% include "wiki/_quiz_plan.html" with deck=entry.deck e=entry.estimation set=entry.set %}
-      </li>
-      {% endfor %}
-    </ul>
-  </details>
-  {% empty %}
+  {% if categories %}
+  <section class="quiz-cours">
+    <h2>Cours</h2>
+    <p class="muted">QCM de révision des cours, avec répétition espacée (boîtes de Leitner).</p>
+    {% for cat in categories %}
+    {% include "wiki/_quiz_categorie.html" %}
+    {% endfor %}
+  </section>
+  {% elif not total_sets %}
   <div class="callout" data-callout="info">
     <div class="callout-title">Aucun set de QCM pour l'instant</div>
     <div class="callout-content">
@@ -121,7 +98,7 @@
       et <code>FLASHCARD</code> (recto/verso).</p>
     </div>
   </div>
-  {% endfor %}
+  {% endif %}
 </article>
 <script src="{% static 'wiki/quiz_index.js' %}" defer></script>
 {% if can_edit %}<script src="{% static 'wiki/quiz_import.js' %}" defer></script>{% endif %}

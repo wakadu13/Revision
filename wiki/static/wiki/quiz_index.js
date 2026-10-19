@@ -12,7 +12,8 @@
   }
 
   function nameOf(details) {
-    return details.querySelector(".quiz-category-name").textContent;
+    // Clé de mémorisation : préfixée par la langue pour les catégories de la section Langues.
+    return details.dataset.cle;
   }
 
   function loadOpen() {

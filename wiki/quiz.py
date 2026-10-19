@@ -3,7 +3,8 @@
 Porté depuis l'application « revision_qcm » (https://github.com/wakadu13/revision_qcm).
 Les sets sont des fichiers JSON déposés dans le coffre (même format que l'appli
 d'origine). Un fichier JSON est considéré comme un set s'il contient une liste
-« questions ». La catégorie est le nom du dossier qui contient le fichier.
+« questions ». La catégorie est le nom du dossier qui contient le fichier ; une
+clé « langue » facultative (ex. "Anglais") range le set dans la section Langues.
 
 Ce module reste « pur » (aucun import de Django ni du rendu) : la persistance de
 la progression est gérée par le modèle QuizProgress, et le rendu LaTeX/Markdown
@@ -128,6 +129,7 @@ class QuestionSet:
     questions: list[Question]
     categorie: str = CATEGORIE_DEFAUT
     path: PurePosixPath | None = None
+    langue: str = ""   # set rangé dans la section Langues (ex. "Anglais")
 
     def __len__(self) -> int:
         return len(self.questions)
@@ -236,6 +238,7 @@ def set_depuis_json(data, rel: PurePosixPath) -> QuestionSet:
         questions=questions,
         categorie=rel.parent.name or CATEGORIE_DEFAUT,
         path=rel,
+        langue=str(data.get("langue", "")).strip(),
     )
 
 
@@ -295,8 +298,9 @@ class Library:
         return cats
 
     def noms_langues(self):
-        """Langues distinctes (plusieurs fichiers d'une même langue sont regroupés), triées."""
-        return sorted({s.langue for s in self.langues.values()}, key=str.lower)
+        """Langues distinctes (fichiers de langue et sets rattachés à une langue), triées."""
+        noms = {s.langue for s in self.langues.values()} | {s.langue for s in self.sets.values() if s.langue}
+        return sorted(noms, key=str.lower)
 
     def sets_langue(self, langue):
         """Fichiers d'une langue, dans l'ordre des chemins."""
