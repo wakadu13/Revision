@@ -9,7 +9,8 @@ que le site : la progression est la même partout.
 ## Installer
 
 1. Télécharger le fichier `.apk` de la dernière release :
-   <https://github.com/wakadu13/Revision/releases> (tags `apk-v…`).
+   <https://github.com/wakadu13/Revision/releases> (tags `apk-v…`), ou sur
+   le téléphone directement depuis cette page.
 2. L'ouvrir sur le téléphone et autoriser l'installation depuis cette source.
 3. Au premier lancement : adresse du serveur, identifiant et mot de passe du wiki.
    - Pi en HTTP sur le réseau local : `http://192.168.1.20:8000` (IP du Pi et port publié par Docker).
@@ -42,12 +43,13 @@ WireGuard…) ; sans lui, on révise quand même et tout part au retour.
 
 ## Construire l'APK
 
-Automatique : pousser un tag `apk-vX.Y` crée la release
-(workflow [`.github/workflows/apk.yml`](../.github/workflows/apk.yml)).
+Automatique (workflow [`.github/workflows/apk.yml`](../.github/workflows/apk.yml)) :
 
-```bash
-git tag apk-v1.1 && git push origin apk-v1.1
-```
+- chaque push sur `main` qui modifie `android/` ou le moteur des QCM
+  (`wiki/static/wiki/quiz.js`, `qcm_*.js`, `wiki.css`) publie une release `apk-v1.<n°>` ;
+- pousser un tag `apk-vX.Y` publie la release `apk-vX.Y` :
+  `git tag apk-v2.0 && git push origin apk-v2.0` ;
+- sur les autres branches, l'APK est disponible en artefact du run (onglet Actions).
 
 En local (JDK 17+, SDK Android avec la plateforme 35) :
 
