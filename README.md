@@ -80,6 +80,11 @@ dans la barre latérale ou sur `/qcm/`.
   grammaire). Vérifier ensuite le fichier produit :
   `uv run python manage.py verifier_qcm vault/QCM/<catégorie>/<fichier>.json`
   (sans argument : tout `vault/QCM`).
+- **Hors ligne** : `/qcm/hors-ligne/` (installable depuis Chrome, HTTPS requis), ou
+  l'**application Android** (APK dans les
+  [releases](https://github.com/wakadu13/Revision/releases), marche aussi avec un
+  serveur en HTTP) : sets téléchargés sur le téléphone, révision sans réseau,
+  réponses synchronisées au retour de la connexion. Voir [`android/README.md`](android/README.md).
 - La progression est enregistrée en base de données, par utilisateur (il faut
   être connecté pour faire les QCM). Après un `git pull` qui ajoute
   le module, lancer `uv run python manage.py migrate`.
@@ -172,6 +177,8 @@ en-têtes) sont dans [`core/tests.py`](core/tests.py) :
 - `/compte/` : mon compte (`/compte/mot-de-passe/` pour changer de mot de passe)
 - `/utilisateurs/` : gestion des comptes (admins)
 - `/api/status/` : statut du serveur en JSON
+- `/api/appareil/connexion/` et `/api/appareil/deconnexion/` : jeton de l'application Android
+- `/qcm/hors-ligne/` : QCM hors ligne (PWA)
 - `/admin/` : administration Django (créer un compte avec `uv run python manage.py createsuperuser`)
 
 ## Tests

@@ -8,6 +8,7 @@ from django.urls import reverse_lazy
 from django.views.decorators.http import require_POST
 
 from .forms import AdminCreateUserForm, LoginForm, RegisterForm
+from .models import JetonAppareil
 from .roles import admin_required
 
 
@@ -33,6 +34,8 @@ class PasswordChangeView(auth_views.PasswordChangeView):
     success_url = reverse_lazy("accounts:profile")
 
     def form_valid(self, form):
+        # Comme les autres sessions, les applications Android doivent se reconnecter.
+        JetonAppareil.objects.filter(user=self.request.user).delete()
         messages.success(self.request, "Mot de passe modifié.")
         return super().form_valid(form)
 
@@ -55,7 +58,16 @@ def register(request):
 
 @login_required
 def profile(request):
-    return render(request, "accounts/profile.html")
+    return render(request, "accounts/profile.html", {"appareils": request.user.jetons.all()})
+
+
+@require_POST
+@login_required
+def revoquer_appareil(request, pk):
+    """Déconnecte une application Android (son jeton ne marche plus)."""
+    get_object_or_404(JetonAppareil, pk=pk, user=request.user).delete()
+    messages.success(request, "Appareil déconnecté.")
+    return redirect("accounts:profile")
 
 
 @admin_required

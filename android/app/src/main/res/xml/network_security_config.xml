@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Le serveur Pi peut être en HTTP sur le réseau local, ou en HTTPS avec une
+     autorité installée à la main sur le téléphone (ex. autorité locale de Caddy). -->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system" />
+            <certificates src="user" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>

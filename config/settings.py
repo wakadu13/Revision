@@ -78,6 +78,8 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    # Application Android : « Authorization: Bearer <jeton> » sur l'API hors ligne.
+    'accounts.middleware.JetonAppareilMiddleware',
     # Site privé : toutes les pages demandent d'être connecté, sauf la connexion.
     'django.contrib.auth.middleware.LoginRequiredMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',

@@ -14,5 +14,21 @@
     <a class="button" href="{% url 'accounts:password_change' %}">Changer le mot de passe</a>
     <a class="button" href="{% url 'wiki:quiz_stats' %}">Mes statistiques QCM</a>
   </div>
+
+  <h2>Applications Android</h2>
+  {% if appareils %}
+  <ul>
+    {% for a in appareils %}
+    <li>{{ a.nom|default:"Appareil" }} · connecté le {{ a.cree|date:"j F Y" }}{% if a.utilise %}, vu le {{ a.utilise|date:"j F Y à H:i" }}{% endif %}
+      <form method="post" action="{% url 'accounts:revoquer_appareil' a.pk %}" class="inline-form">{% csrf_token %}
+        <button type="submit" class="button small">Déconnecter</button>
+      </form>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p class="muted">Aucune application connectée. L'APK « QCM » se télécharge dans les
+    <a href="https://github.com/wakadu13/Revision/releases">releases GitHub</a> du projet.</p>
+  {% endif %}
 </article>
 {% endblock %}

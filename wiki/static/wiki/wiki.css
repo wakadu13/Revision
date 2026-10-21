@@ -66,7 +66,7 @@ a:hover { text-decoration: underline; }
 .form .helptext, .form .helptext ul { color: var(--muted); font-size: .8rem; }
 .users-table { width: 100%; border-collapse: collapse; font-size: .9rem; }
 .users-table th, .users-table td { text-align: left; padding: .45rem .5rem; border-bottom: 1px solid var(--border); vertical-align: middle; }
-.users-table form { display: inline; }
+.users-table form, .inline-form { display: inline; }
 .vault-count { color: var(--muted); font-size: .8rem; margin: 1rem .4rem 0; }
 
 /* Contenu */

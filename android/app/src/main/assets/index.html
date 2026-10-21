@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#7852ee">
+  <title>QCM hors ligne</title>
+  <!-- Même page que /qcm/hors-ligne/ du wiki (quiz_hors_ligne.html), scripts embarqués dans l'APK. -->
+  <link rel="stylesheet" href="web/wiki.css">
+  <link rel="stylesheet" href="appli.css">
+  <script src="appli.js"></script>
+  <script src="web/qcm_attente.js" defer></script>
+  <script src="web/quiz.js" defer></script>
+  <script src="web/qcm_hors_ligne.js" defer></script>
+</head>
+<body class="hl-body">
+  <main class="content hl" id="hl"
+        data-sw-url=""
+        data-sets-url="/qcm/hors-ligne/sets/"
+        data-login-url="connexion.html"
+        data-home-url="index.html">
+    <header class="hl-entete">
+      <a class="button small" href="connexion.html" id="appli-compte">⚙ Compte</a>
+      <span class="hl-reseau" id="hl-reseau"></span>
+    </header>
+
+    <section id="hl-accueil">
+      <h1 class="note-title">QCM hors ligne</h1>
+      <div class="hl-synchro">
+        <p id="hl-etat" class="muted">Chargement…</p>
+        <button type="button" class="button small" id="hl-synchroniser">Synchroniser</button>
+      </div>
+      <div class="callout" data-callout="warning" id="hl-alerte" hidden>
+        <div class="callout-title" id="hl-alerte-texte"></div>
+      </div>
+
+      <div id="hl-telecharges"></div>
+
+      <details class="quiz-category hl-catalogue" id="hl-catalogue">
+        <summary><span class="quiz-category-name">Télécharger des sets</span><span class="muted quiz-category-meta" id="hl-catalogue-meta"></span></summary>
+        <div class="hl-catalogue-corps">
+          <p class="muted">Cochez les sets à garder sur ce téléphone, puis téléchargez-les. Les QCM du module Langues (FSRS) restent disponibles en ligne seulement.</p>
+          <div class="quiz-actions">
+            <button type="button" class="button primary" id="hl-telecharger">Télécharger la sélection</button>
+            <button type="button" class="button small" id="hl-tout-cocher">Tout cocher</button>
+          </div>
+          <div id="hl-liste"></div>
+        </div>
+      </details>
+    </section>
+
+    <article class="note quiz" id="quiz" hidden>
+      <div class="quiz-topbar">
+        <a class="button small" href="#">← Sets</a>
+        <span class="quiz-progress-text" id="quiz-progress"></span>
+      </div>
+      <div class="quiz-bar"><div class="quiz-bar-fill" id="quiz-bar-fill"></div></div>
+      <p class="muted quiz-intensif-info" id="hl-intensif-info" hidden>Révision intensive : chaque question ratée revient plus loin dans la session,
+        jusqu'à être réussie <b>2 fois de suite</b>. Seule la première réponse compte pour la révision espacée.</p>
+      <div id="quiz-stage" class="quiz-stage"></div>
+    </article>
+  </main>
+</body>
+</html>
