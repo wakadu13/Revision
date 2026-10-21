@@ -1,6 +1,6 @@
 from django.urls import path
 
-from . import langues_views, quiz_views, views
+from . import hors_ligne_views, langues_views, quiz_views, views
 
 app_name = "wiki"
 
@@ -26,6 +26,12 @@ urlpatterns = [
     path("qcm/planning/", quiz_views.plan, name="quiz_plan"),
     path("qcm/stats/", quiz_views.stats, name="quiz_stats"),
     path("qcm/reinitialiser/", quiz_views.reset, name="quiz_reset"),
+    path("qcm/hors-ligne/", hors_ligne_views.page, name="quiz_offline"),
+    path("qcm/hors-ligne/catalogue/", hors_ligne_views.catalogue, name="quiz_offline_catalogue"),
+    path("qcm/hors-ligne/sets/", hors_ligne_views.telecharger, name="quiz_offline_sets"),
+    path("qcm/hors-ligne/synchro/", hors_ligne_views.synchro, name="quiz_offline_sync"),
+    path("qcm/sw.js", hors_ligne_views.service_worker, name="quiz_sw"),
+    path("qcm/manifest.webmanifest", hors_ligne_views.manifest, name="quiz_manifest"),
     path("qcm/langue/corriger/", langues_views.corriger, name="langue_corriger"),
     path("qcm/langue/reponse/", langues_views.record, name="langue_record"),
     path("qcm/langues/<str:langue>/", langues_views.menu, name="langue_menu"),

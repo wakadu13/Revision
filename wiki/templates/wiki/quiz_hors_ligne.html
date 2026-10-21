@@ -1,0 +1,72 @@
+{% load static %}<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#7852ee">
+  <title>QCM hors ligne · ProjetPluri</title>
+  <link rel="manifest" href="{% url 'wiki:quiz_manifest' %}">
+  <link rel="icon" href="{% static 'wiki/icone-192.png' %}">
+  <link rel="apple-touch-icon" href="{% static 'wiki/icone-192.png' %}">
+  <link rel="stylesheet" href="{% static 'wiki/wiki.css' %}">
+  <script src="{% static 'wiki/qcm_attente.js' %}" defer></script>
+  <script src="{% static 'wiki/quiz.js' %}" defer></script>
+  <script src="{% static 'wiki/qcm_hors_ligne.js' %}" defer></script>
+</head>
+<body class="hl-body">
+  <main class="content hl" id="hl"
+        data-sw-url="{% url 'wiki:quiz_sw' %}"
+        data-scope="{% url 'wiki:quiz_index' %}"
+        data-sets-url="{% url 'wiki:quiz_offline_sets' %}"
+        data-login-url="{% url 'accounts:login' %}?next={% url 'wiki:quiz_offline' %}"
+        data-home-url="{% url 'wiki:quiz_offline' %}">
+    <header class="hl-entete">
+      <a class="button small" href="{% url 'wiki:quiz_index' %}" data-en-ligne>← QCM en ligne</a>
+      <span class="hl-reseau" id="hl-reseau"></span>
+    </header>
+
+    <section id="hl-accueil">
+      <h1 class="note-title">QCM hors ligne</h1>
+      <div class="hl-synchro">
+        <p id="hl-etat" class="muted">Chargement…</p>
+        <button type="button" class="button small" id="hl-synchroniser">Synchroniser</button>
+      </div>
+      <div class="callout" data-callout="warning" id="hl-alerte" hidden>
+        <div class="callout-title" id="hl-alerte-texte"></div>
+      </div>
+
+      <div id="hl-telecharges"></div>
+
+      <details class="quiz-category hl-catalogue" id="hl-catalogue">
+        <summary><span class="quiz-category-name">Télécharger des sets</span><span class="muted quiz-category-meta" id="hl-catalogue-meta"></span></summary>
+        <div class="hl-catalogue-corps">
+          <p class="muted">Cochez les sets à garder sur cet appareil, puis téléchargez-les. Les QCM du module Langues (FSRS) restent disponibles en ligne seulement.</p>
+          <div class="quiz-actions">
+            <button type="button" class="button primary" id="hl-telecharger">Télécharger la sélection</button>
+            <button type="button" class="button small" id="hl-tout-cocher">Tout cocher</button>
+          </div>
+          <div id="hl-liste"></div>
+        </div>
+      </details>
+
+      <details class="hl-aide">
+        <summary>Installer sur Android</summary>
+        <p>Dans Chrome : menu <b>⋮</b> → <b>Ajouter à l'écran d'accueil</b> (ou <b>Installer l'application</b>).
+          L'icône « QCM » ouvre alors cette page, même sans réseau. Vos réponses sont gardées sur le téléphone
+          et envoyées automatiquement au serveur dès que la connexion revient.</p>
+      </details>
+    </section>
+
+    <article class="note quiz" id="quiz" hidden>
+      <div class="quiz-topbar">
+        <a class="button small" href="#">← Sets</a>
+        <span class="quiz-progress-text" id="quiz-progress"></span>
+      </div>
+      <div class="quiz-bar"><div class="quiz-bar-fill" id="quiz-bar-fill"></div></div>
+      <p class="muted quiz-intensif-info" id="hl-intensif-info" hidden>Révision intensive : chaque question ratée revient plus loin dans la session,
+        jusqu'à être réussie <b>2 fois de suite</b>. Seule la première réponse compte pour la révision espacée.</p>
+      <div id="quiz-stage" class="quiz-stage"></div>
+    </article>
+  </main>
+</body>
+</html>

@@ -38,15 +38,18 @@ class QuizProgress(models.Model):
         unique_together = ("player", "set_id", "question_id")
         indexes = [models.Index(fields=["player", "set_id"])]
 
-    def record(self, reponse) -> None:
-        """Enregistre une réponse : note (quiz.NOTES) ou booléen juste/faux."""
+    def record(self, reponse, quand=None) -> None:
+        """Enregistre une réponse : note (quiz.NOTES) ou booléen juste/faux.
+
+        `quand` : date de la réponse si elle n'est pas immédiate (réponses faites
+        hors ligne puis synchronisées) ; maintenant par défaut."""
         correcte = quiz.note_de(reponse) != quiz.A_REVOIR
         self.seen += 1
         if correcte:
             self.correct += 1
         self.box = quiz.nouvelle_boite(self.box, reponse)
         self.last_correct = correcte
-        self.last_review = timezone.now()
+        self.last_review = quand or timezone.now()
         if self.premiere_revue is None:
             self.premiere_revue = self.last_review
 

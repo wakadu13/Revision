@@ -9,6 +9,7 @@
   <div class="quiz-actions">
     <a class="button primary" href="{% url 'wiki:quiz_play' %}?revision=1">Révision intelligente</a>
     <a class="button" href="{% url 'wiki:quiz_stats' %}">Statistiques</a>
+    <a class="button" href="{% url 'wiki:quiz_offline' %}">Hors ligne (téléphone)</a>
   </div>
 
   {% if can_edit %}

@@ -639,3 +639,90 @@ class DocumentationTests(QuizTests):
     def test_connexion_requise(self):
         self.client.logout()
         self.assertEqual(self.client.get("/documentation/").status_code, 302)
+
+
+class QuizHorsLigneTests(QuizTests):
+    """Mode hors ligne : téléchargement des sets et synchronisation des réponses."""
+
+    SET = "reseaux/test_set"
+
+    def _synchro(self, *reponses):
+        import json
+        return self.client.post("/qcm/hors-ligne/synchro/", data=json.dumps({"reponses": list(reponses)}),
+                                content_type="application/json")
+
+    def _rep(self, uid, date, correct=True, question="q-qcm", **extra):
+        return {"uid": uid, "set_id": self.SET, "question_id": question, "correct": correct, "date": date, **extra}
+
+    def test_page_et_catalogue(self):
+        self.assertContains(self.client.get("/qcm/hors-ligne/"), "qcm_hors_ligne.js")
+        data = self.client.get("/qcm/hors-ligne/catalogue/").json()
+        self.assertEqual(data["joueur"], "alice")
+        self.assertTrue(data["csrf"])
+        self.assertEqual([(s["id"], s["total"]) for s in data["sets"]], [(self.SET, 4)])
+
+    def test_telechargement_avec_progression(self):
+        self.client.post("/qcm/reponse/", data={"set_id": self.SET, "question_id": "q-qcm", "correct": True},
+                         content_type="application/json")
+        data = self.client.get("/qcm/hors-ligne/sets/", {"id": [self.SET, "inconnu"]}).json()
+        self.assertEqual(data["manquants"], ["inconnu"])
+        (s,) = data["sets"]
+        self.assertEqual(len(s["questions"]), 4)
+        self.assertEqual(s["progression"]["q-qcm"]["box"], 1)
+        self.assertIsNotNone(s["progression"]["q-qcm"]["last_review"])
+        self.assertEqual(s["quotas"], {"nouvelles_jour": None, "revisions_jour": None})
+
+    def test_synchro_rejoue_dans_l_ordre(self):
+        from wiki.models import QuizDeck, QuizProgress
+        # Envoyées dans le désordre : la dernière réponse (fausse) doit gagner.
+        r = self._synchro(
+            self._rep("c", "2026-10-03T08:00:00Z", correct=False, duree_ms=3000),
+            self._rep("a", "2026-10-01T08:00:00Z"),
+            self._rep("b", "2026-10-02T08:00:00+02:00"),
+        )
+        self.assertEqual(r.json(), {"traitees": ["c", "a", "b"], "enregistrees": 3})
+        p = QuizProgress.objects.get(player="alice", set_id=self.SET, question_id="q-qcm")
+        self.assertEqual((p.box, p.seen, p.correct, p.last_correct), (0, 3, 2, False))
+        self.assertEqual(p.premiere_revue.isoformat(), "2026-10-01T08:00:00+00:00")
+        self.assertEqual(QuizDeck.objects.get(player="alice", set_id=self.SET).temps_ms, 3000)
+        # Renvoi après une coupure : déjà reçues, ignorées mais retirées de la file.
+        r = self._synchro(self._rep("a", "2026-10-01T08:00:00Z"), self._rep("c", "2026-10-03T08:00:00Z", correct=False))
+        self.assertEqual(r.json()["enregistrees"], 0)
+        self.assertEqual(QuizProgress.objects.get(question_id="q-qcm").seen, 3)
+
+    def test_synchro_ignore_les_reponses_depassees_et_invalides(self):
+        from django.utils import timezone
+        from wiki.models import QuizProgress
+        # Question revue en ligne après la réponse hors ligne : la réponse hors ligne est ignorée.
+        self.client.post("/qcm/reponse/", data={"set_id": self.SET, "question_id": "q-qcm", "correct": True},
+                         content_type="application/json")
+        r = self._synchro(
+            self._rep("vieille", "2020-01-01T00:00:00Z", correct=False),
+            self._rep("inconnue", "2026-10-01T00:00:00Z", question="nope"),
+            self._rep("sans-date", None),
+            self._rep("flash", "2099-01-01T00:00:00Z", question="q-flash", note="facile"),
+        )
+        self.assertEqual(r.json(), {"traitees": ["vieille", "inconnue", "sans-date", "flash"], "enregistrees": 1})
+        self.assertEqual(QuizProgress.objects.get(question_id="q-qcm").box, 1)
+        flash = QuizProgress.objects.get(question_id="q-flash")
+        self.assertEqual(flash.box, 2)
+        self.assertLessEqual(flash.last_review, timezone.now())  # date du futur ramenée à maintenant
+        self.assertEqual(self.client.post("/qcm/hors-ligne/synchro/", data="{}", content_type="application/json").status_code, 400)
+
+    def test_synchro_par_joueur_et_connexion_requise(self):
+        from wiki.models import QuizProgress
+        self._synchro(self._rep("a", "2026-10-01T08:00:00Z"))
+        self.client.logout()
+        self.assertEqual(self.client.get("/qcm/hors-ligne/catalogue/").status_code, 302)
+        self.assertEqual(self._synchro(self._rep("b", "2026-10-02T08:00:00Z")).status_code, 302)
+        self.assertEqual(list(QuizProgress.objects.values_list("player", "seen")), [("alice", 1)])
+
+    def test_service_worker_et_manifeste_publics(self):
+        self.client.logout()
+        sw = self.client.get("/qcm/sw.js")
+        self.assertEqual(sw.status_code, 200)
+        self.assertIn("javascript", sw["Content-Type"])
+        self.assertContains(sw, 'importScripts("/static/wiki/qcm_attente.js")')
+        self.assertIn("connect-src 'self' https://cdn.jsdelivr.net", sw["Content-Security-Policy"])
+        manifest = self.client.get("/qcm/manifest.webmanifest").json()
+        self.assertEqual((manifest["start_url"], manifest["scope"]), ("/qcm/hors-ligne/", "/qcm/"))

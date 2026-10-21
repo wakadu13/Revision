@@ -313,15 +313,18 @@ def record(request):
     obj.record(reponse)
     obj.save()
 
-    # Temps de réponse : sert à estimer la durée quotidienne des révisions.
-    duree = data.get("duree_ms")
-    if isinstance(duree, (int, float)) and duree > 0:
-        deck, _ = QuizDeck.objects.get_or_create(player=obj.player, set_id=set_id)
+    chronometrer(obj.player, set_id, data.get("duree_ms"))
+    return JsonResponse({"box": obj.box, "seen": obj.seen, "correct": obj.correct})
+
+
+def chronometrer(player, set_id, duree):
+    """Cumule un temps de réponse : sert à estimer la durée quotidienne des révisions."""
+    if isinstance(duree, (int, float)) and not isinstance(duree, bool) and duree > 0:
+        deck, _ = QuizDeck.objects.get_or_create(player=player, set_id=set_id)
         QuizDeck.objects.filter(pk=deck.pk).update(
             temps_ms=F("temps_ms") + int(min(duree, DUREE_MAX_MS)),
             reponses_chronometrees=F("reponses_chronometrees") + 1,
         )
-    return JsonResponse({"box": obj.box, "seen": obj.seen, "correct": obj.correct})
 
 
 @login_required

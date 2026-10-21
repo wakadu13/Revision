@@ -6,7 +6,8 @@
          data-record-url="{{ record_url }}"
          data-back-url="{{ back_url }}"
          data-mode="{% if intensif %}intensif{% else %}normal{% endif %}"
-         data-csrf="{{ csrf_token }}">
+         data-csrf="{{ csrf_token }}"
+         data-joueur="{{ user.get_username }}">
   <div class="quiz-topbar">
     <a class="button small" href="{{ back_url }}">← Sets</a>
     <span class="quiz-progress-text" id="quiz-progress"></span>
@@ -28,6 +29,7 @@
 </article>
 
 {{ questions|json_script:"quiz-data" }}
+<script src="{% static 'wiki/qcm_attente.js' %}" defer></script>
 <script src="{% static 'wiki/quiz.js' %}" defer></script>
 {% endblock %}
 {% block aside %}{% endblock %}

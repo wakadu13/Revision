@@ -227,6 +227,21 @@ details.quiz-category .quiz-sets { padding: .75rem; margin: 0; }
 .quiz-score { font-size: 3rem; font-weight: 700; }
 .quiz-results .mastery { max-width: 20rem; margin: 1rem auto; height: 10px; }
 .quiz-results .quiz-actions { justify-content: center; }
+
+/* QCM hors ligne (application installable, sans barre latérale) */
+.hl { max-width: 52rem; margin: 0 auto; }
+.hl [hidden] { display: none !important; }
+.hl-entete { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: .5rem; }
+.hl-reseau { font-size: .85rem; color: #16a34a; }
+.hl-reseau.hors-ligne { color: var(--muted); }
+.hl-synchro { display: flex; flex-wrap: wrap; gap: .5rem 1rem; align-items: center; margin-bottom: 1rem; }
+.hl-synchro p { margin: 0; }
+.hl-catalogue { margin-top: 2rem; }
+.hl-catalogue-corps { padding: .25rem 1rem .75rem; }
+.hl-categorie { border: 1px solid var(--border); border-radius: 8px; margin: 0 0 .75rem; padding: .4rem .8rem .6rem; }
+.hl-categorie legend { font-weight: 600; padding: 0 .3rem; }
+.hl-choix { display: flex; gap: .4rem; align-items: baseline; padding: .2rem 0; }
+.hl-aide { margin-top: 1.5rem; font-size: .9rem; color: var(--muted); }
 table.quiz-stats { width: 100%; border-collapse: collapse; }
 table.quiz-stats th, table.quiz-stats td { border-bottom: 1px solid var(--border); padding: .5rem .6rem; text-align: left; vertical-align: middle; }
 table.quiz-stats .mastery { width: 100px; display: inline-block; vertical-align: middle; margin: 0 .5rem 0 0; }
