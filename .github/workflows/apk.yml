@@ -1,0 +1,95 @@
+# APK Android des QCM hors ligne (dossier android/).
+# - Push sur main qui touche l'appli ou le moteur des QCM : release GitHub
+#   « apk-v1.<n° de run> » avec l'APK signé.
+# - Tag « apk-vX.Y » poussé à la main : release « apk-vX.Y ».
+# - Autres branches, lancement manuel : APK en artefact du run (pas de release).
+#
+# Signature : si les secrets QCM_KEYSTORE_BASE64, QCM_KEYSTORE_PASSWORD,
+# QCM_KEY_ALIAS et QCM_KEY_PASSWORD existent, ils sont utilisés ; sinon la clé
+# du dépôt (android/signature/qcm.jks). Garder la même clé d'une release à
+# l'autre : Android refuse sinon la mise à jour (il faudrait désinstaller).
+name: APK Android
+
+on:
+  push:
+    branches: ["**"]
+    tags: ["apk-v*"]
+    paths:
+      - "android/**"
+      - "wiki/static/wiki/quiz.js"
+      - "wiki/static/wiki/qcm_attente.js"
+      - "wiki/static/wiki/qcm_hors_ligne.js"
+      - "wiki/static/wiki/wiki.css"
+      - ".github/workflows/apk.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Version
+        run: |
+          release=""
+          if [[ "$GITHUB_REF" == refs/tags/apk-v* ]]; then
+            nom="${GITHUB_REF_NAME#apk-v}"; release="$GITHUB_REF_NAME"
+          elif [[ "$GITHUB_REF" == refs/heads/main ]]; then
+            nom="1.$GITHUB_RUN_NUMBER"; release="apk-v$nom"
+          else
+            nom="dev-${GITHUB_SHA::7}"
+          fi
+          echo "QCM_VERSION_NAME=$nom" >> "$GITHUB_ENV"
+          echo "QCM_RELEASE=$release" >> "$GITHUB_ENV"
+          echo "QCM_VERSION_CODE=$GITHUB_RUN_NUMBER" >> "$GITHUB_ENV"
+
+      - name: Clé de signature privée (secrets)
+        env:
+          KEYSTORE_B64: ${{ secrets.QCM_KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.QCM_KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.QCM_KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.QCM_KEY_PASSWORD }}
+        if: env.KEYSTORE_B64 != ''
+        run: |
+          echo "$KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/qcm.jks"
+          {
+            echo "QCM_KEYSTORE=$RUNNER_TEMP/qcm.jks"
+            echo "QCM_KEYSTORE_PASSWORD=$KEYSTORE_PASSWORD"
+            echo "QCM_KEY_ALIAS=$KEY_ALIAS"
+            echo "QCM_KEY_PASSWORD=$KEY_PASSWORD"
+          } >> "$GITHUB_ENV"
+
+      - name: Build
+        working-directory: android
+        run: ./gradlew assembleRelease --no-daemon
+
+      - name: Renommer
+        run: cp android/app/build/outputs/apk/release/app-release.apk "qcm-projetpluri-${QCM_VERSION_NAME}.apk"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: qcm-projetpluri-${{ env.QCM_VERSION_NAME }}
+          path: qcm-projetpluri-*.apk
+
+      - name: Release
+        if: env.QCM_RELEASE != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$QCM_RELEASE" qcm-projetpluri-*.apk --target "$GITHUB_SHA" --latest \
+            --title "QCM Android $QCM_VERSION_NAME" \
+            --notes "Application Android des QCM : révision hors ligne, synchronisée avec le serveur du wiki.
+
+          Installation : télécharger l'APK sur le téléphone, l'ouvrir et autoriser l'installation depuis cette source.
+          Au premier lancement : adresse du serveur (ex. http://192.168.1.20:8000), identifiant et mot de passe du wiki.
+          Le serveur doit être à jour (git pull + migrate) : voir android/README.md."

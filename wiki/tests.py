@@ -726,3 +726,72 @@ class QuizHorsLigneTests(QuizTests):
         self.assertIn("connect-src 'self' https://cdn.jsdelivr.net", sw["Content-Security-Policy"])
         manifest = self.client.get("/qcm/manifest.webmanifest").json()
         self.assertEqual((manifest["start_url"], manifest["scope"]), ("/qcm/hors-ligne/", "/qcm/"))
+
+
+class AppareilTests(TestCase):
+    """Application Android : jeton d'appareil à la place de la session."""
+
+    SET = "reseaux/test_set"
+
+    def setUp(self):
+        QuizTests.setUp(self)  # même set de test, sans hériter de ses tests
+        self.client.logout()
+
+    def _connexion(self, password="x"):
+        import json
+        return self.client.post("/api/appareil/connexion/", data=json.dumps(
+            {"username": "alice", "password": password, "appareil": "Pixel"}), content_type="application/json")
+
+    def _auth(self, jeton):
+        return {"HTTP_AUTHORIZATION": "Bearer " + jeton}
+
+    def test_connexion_et_api_avec_jeton(self):
+        import json
+        from accounts.models import JetonAppareil
+        from wiki.models import QuizProgress
+        data = self._connexion().json()
+        self.assertEqual(data["joueur"], "alice")
+        jeton = data["jeton"]
+        self.assertEqual(JetonAppareil.objects.get().nom, "Pixel")
+        self.assertFalse(JetonAppareil.objects.filter(empreinte=jeton).exists())  # seule l'empreinte est gardée
+        self.assertEqual(self.client.get("/qcm/hors-ligne/catalogue/", **self._auth(jeton)).json()["joueur"], "alice")
+        sets = self.client.get("/qcm/hors-ligne/sets/", {"id": self.SET}, **self._auth(jeton)).json()
+        self.assertEqual(len(sets["sets"][0]["questions"]), 4)
+        # POST sans jeton CSRF : accepté avec un jeton d'appareil.
+        client = self.client_class(enforce_csrf_checks=True)
+        r = client.post("/qcm/hors-ligne/synchro/", data=json.dumps({"reponses": [
+            {"uid": "a", "set_id": self.SET, "question_id": "q-qcm", "correct": True, "date": "2026-10-01T08:00:00Z"}]}),
+            content_type="application/json", **self._auth(jeton))
+        self.assertEqual(r.json()["enregistrees"], 1)
+        self.assertEqual(QuizProgress.objects.get().player, "alice")
+        self.assertIsNotNone(JetonAppareil.objects.get().utilise)
+
+    def test_jeton_limite_a_l_api_hors_ligne(self):
+        jeton = self._connexion().json()["jeton"]
+        self.assertEqual(self.client.get("/qcm/", **self._auth(jeton)).status_code, 403)
+        self.assertEqual(self.client.get("/compte/", **self._auth(jeton)).status_code, 403)
+        self.assertEqual(self.client.get("/qcm/hors-ligne/catalogue/", **self._auth("faux")).status_code, 401)
+
+    def test_mauvais_mot_de_passe_et_compte_desactive(self):
+        self.assertEqual(self._connexion("faux").status_code, 401)
+        self.assertEqual(self.client.post("/api/appareil/connexion/", data="{}", content_type="application/json").status_code, 400)
+        jeton = self._connexion().json()["jeton"]
+        self.user.is_active = False
+        self.user.save()
+        self.assertEqual(self.client.get("/qcm/hors-ligne/catalogue/", **self._auth(jeton)).status_code, 401)
+
+    def test_deconnexion_et_revocation(self):
+        from accounts.models import JetonAppareil
+        jeton = self._connexion().json()["jeton"]
+        self.assertEqual(self.client.post("/api/appareil/deconnexion/", **self._auth(jeton)).json(), {"ok": True})
+        self.assertEqual(self.client.get("/qcm/hors-ligne/catalogue/", **self._auth(jeton)).status_code, 401)
+        # Depuis « Mon compte » sur le wiki.
+        self._connexion()
+        self.client.force_login(self.user)
+        self.assertContains(self.client.get("/compte/"), "Pixel")
+        self.client.post(f"/compte/appareils/{JetonAppareil.objects.get().pk}/revoquer/")
+        self.assertFalse(JetonAppareil.objects.exists())
+        # Le jeton d'un autre compte ne se révoque pas.
+        autre = get_user_model().objects.create_user("bob", password="y")
+        a, _ = JetonAppareil.creer(autre)
+        self.assertEqual(self.client.post(f"/compte/appareils/{a.pk}/revoquer/").status_code, 404)

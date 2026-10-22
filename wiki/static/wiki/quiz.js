@@ -10,7 +10,8 @@
   let sessionPrecedente = null; // arrête les raccourcis clavier de la session précédente
 
   // -- LaTeX : rendu des $...$ (déjà transformés en spans .math par le serveur) --
-  const CDN = "https://cdn.jsdelivr.net/npm/";
+  // L'application Android embarque KaTeX (window.QUIZ_CDN = "lib/").
+  const CDN = window.QUIZ_CDN || "https://cdn.jsdelivr.net/npm/";
   let katexReady = null;
 
   function loadScript(src, integrity) {

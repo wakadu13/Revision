@@ -319,12 +319,6 @@
     }, 1500);
   }
 
-  async function lireJson(r) {
-    if (r.redirected || !(r.headers.get("Content-Type") || "").includes("json")) throw new A.Deconnecte("Session expirée");
-    if (!r.ok) throw new Error("Serveur indisponible (" + r.status + ")");
-    return r.json();
-  }
-
   // Télécharge des sets (questions, progression du serveur, quotas) ; les réponses
   // encore en attente sont ré-appliquées par-dessus la progression reçue.
   async function telecharger(ids) {
@@ -333,15 +327,16 @@
     for (let i = 0; i < ids.length; i += 40) {
       const params = new URLSearchParams();
       ids.slice(i, i + 40).forEach((id) => params.append("id", id));
-      const data = await lireJson(await fetch(app.dataset.setsUrl + "?" + params, { credentials: "same-origin", cache: "no-store" }));
+      const data = await A.lireJson(await A.requete(app.dataset.setsUrl + "?" + params, { credentials: "same-origin", cache: "no-store" }));
       for (const set of data.sets) {
         attente.filter((r) => r.set_id === set.id && (!r.joueur || r.joueur === data.joueur))
           .sort((a, b) => Date.parse(a.date) - Date.parse(b.date))
           .forEach((r) => appliquer(set, r));
         set.telecharge = new Date().toISOString();
+        if (window.QcmReseau) await integrerImages(set);
         await A.ecrire("sets", set);
         etat.sets.set(set.id, set);
-        mettreImagesEnCache(set);
+        if (!window.QcmReseau) mettreImagesEnCache(set);
       }
       for (const id of data.manquants) {
         const set = etat.sets.get(id);
@@ -367,6 +362,38 @@
     const cache = await caches.open(A.CACHE);
     for (const url of urls) {
       try { if (!(await cache.match(url))) await cache.add(url); } catch (e) { /* image indisponible */ }
+    }
+  }
+
+  // Application Android : pas de service worker, les images du serveur sont
+  // copiées dans les questions (data: URI) pour s'afficher sans connexion.
+  async function integrerImages(set) {
+    const images = new Map();
+    const enDataUrl = (blob) => new Promise((res) => {
+      const lecteur = new FileReader();
+      lecteur.onload = () => res(lecteur.result);
+      lecteur.onerror = () => res(null);
+      lecteur.readAsDataURL(blob);
+    });
+    async function remplacer(html) {
+      if (!html || !html.includes("<img")) return html;
+      const doc = new DOMParser().parseFromString(html, "text/html");
+      let change = false;
+      for (const img of doc.querySelectorAll("img[src^='/']")) {
+        const src = img.getAttribute("src");
+        if (!images.has(src)) {
+          images.set(src, A.requete(src).then((r) => (r.ok ? r.blob().then(enDataUrl) : null)).catch(() => null));
+        }
+        const data = await images.get(src);
+        if (data) { img.setAttribute("src", data); change = true; }
+      }
+      return change ? doc.body.innerHTML : html;
+    }
+    for (const q of set.questions) {
+      q.enonce = await remplacer(q.enonce);
+      q.verso = await remplacer(q.verso);
+      q.explication = await remplacer(q.explication);
+      q.choix = await Promise.all(q.choix.map(remplacer));
     }
   }
 
@@ -446,7 +473,7 @@
     if (document.visibilityState === "visible" && navigator.onLine && etat.attente) synchroniser();
   });
 
-  if ("serviceWorker" in navigator) {
+  if ("serviceWorker" in navigator && app.dataset.swUrl) {
     navigator.serviceWorker.register(app.dataset.swUrl, { scope: app.dataset.scope }).catch(() => {
       alerte("Mode hors ligne indisponible : ce navigateur refuse le service worker (HTTPS requis).");
     });

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#7852ee">
+  <title>Compte · QCM</title>
+  <link rel="stylesheet" href="web/wiki.css">
+  <link rel="stylesheet" href="appli.css">
+  <script src="appli.js"></script>
+  <script src="connexion.js" defer></script>
+</head>
+<body class="hl-body">
+  <main class="content hl">
+    <header class="hl-entete">
+      <a class="button small" href="index.html" id="cx-retour" hidden>← Mes QCM</a>
+    </header>
+    <h1 class="note-title">Serveur du wiki</h1>
+
+    <section id="cx-connecte" hidden>
+      <p>Connecté à <b id="cx-serveur"></b> en tant que <b id="cx-joueur"></b>.</p>
+      <p class="muted">Les réponses faites sans réseau restent sur le téléphone et sont envoyées au serveur à la
+        prochaine synchronisation.</p>
+      <div class="quiz-actions">
+        <a class="button primary" href="index.html">Mes QCM</a>
+        <button type="button" class="button" id="cx-deconnecter">Se déconnecter</button>
+      </div>
+    </section>
+
+    <form id="cx-formulaire" class="appli-formulaire" hidden>
+      <label>Adresse du serveur
+        <input type="text" id="cx-adresse" required inputmode="url" autocapitalize="off" spellcheck="false"
+               placeholder="http://192.168.1.20:8000">
+      </label>
+      <label>Nom d'utilisateur
+        <input type="text" id="cx-utilisateur" required autocapitalize="off" autocomplete="username">
+      </label>
+      <label>Mot de passe
+        <input type="password" id="cx-mdp" required autocomplete="current-password">
+      </label>
+      <div class="callout" data-callout="warning" id="cx-erreur" hidden>
+        <div class="callout-title" id="cx-erreur-texte"></div>
+      </div>
+      <button type="submit" class="button primary" id="cx-valider">Se connecter</button>
+      <p class="muted">Même compte que sur le wiki. Le mot de passe n'est pas gardé : le téléphone reçoit un jeton,
+        révocable depuis la page « Mon compte » du wiki.</p>
+    </form>
+  </main>
+</body>
+</html>

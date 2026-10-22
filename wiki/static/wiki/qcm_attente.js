@@ -4,6 +4,8 @@
 // - « attente » : réponses pas encore reçues par le serveur, avec leur date.
 // envoyer() transmet la file d'attente au serveur, qui rejoue les réponses dans
 // l'ordre chronologique ; les réponses traitées sont retirées de la file.
+// Dans l'application Android, les requêtes passent par le pont natif
+// (global.QcmReseau, même interface que fetch) qui ajoute le jeton d'appareil.
 (function (global) {
   const BASE = "qcm-hors-ligne";
   const VERSION = 1;
@@ -11,6 +13,8 @@
   const URL_SYNCHRO = "/qcm/hors-ligne/synchro/";
   const PAQUET = 500; // réponses par requête
   let base = null;
+
+  const requete = (url, options) => (global.QcmReseau ? global.QcmReseau.fetch(url, options) : fetch(url, options));
 
   function ouvrir() {
     if (!base) {
@@ -69,14 +73,18 @@
   // Erreur levée quand la session a expiré : il faut se reconnecter.
   class Deconnecte extends Error {}
 
-  // Joueur connecté et jeton CSRF ; Deconnecte si la session a expiré
-  // (le serveur redirige alors vers la page de connexion).
-  async function catalogue() {
-    const r = await fetch(URL_CATALOGUE, { credentials: "same-origin", cache: "no-store" });
+  // Réponse JSON de l'API ; Deconnecte si la session a expiré (le serveur
+  // redirige vers la page de connexion) ou si le jeton d'appareil est révoqué (401).
+  async function lireJson(r) {
     const type = r.headers.get("Content-Type") || "";
-    if (r.redirected || !type.includes("json")) throw new Deconnecte("Session expirée");
+    if (r.redirected || r.status === 401 || !type.includes("json")) throw new Deconnecte("Session expirée");
     if (!r.ok) throw new Error("Serveur indisponible (" + r.status + ")");
     return r.json();
+  }
+
+  // Joueur connecté et jeton CSRF.
+  async function catalogue() {
+    return lireJson(await requete(URL_CATALOGUE, { credentials: "same-origin", cache: "no-store" }));
   }
 
   let envoiEnCours = null;
@@ -94,13 +102,13 @@
         let envoyees = 0, enregistrees = 0;
         for (let i = 0; i < miennes.length; i += PAQUET) {
           const paquet = miennes.slice(i, i + PAQUET);
-          const r = await fetch(URL_SYNCHRO, {
+          const r = await requete(URL_SYNCHRO, {
             method: "POST",
             credentials: "same-origin",
             headers: { "Content-Type": "application/json", "X-CSRFToken": cat.csrf },
             body: JSON.stringify({ reponses: paquet }),
           });
-          if (r.redirected) throw new Deconnecte("Session expirée");
+          if (r.redirected || r.status === 401) throw new Deconnecte("Session expirée");
           if (!r.ok) throw new Error("Synchronisation refusée (" + r.status + ")");
           const res = await r.json();
           await transaction("attente", "readwrite", (s) => { res.traitees.forEach((u) => s.delete(u)); });
@@ -115,7 +123,7 @@
 
   global.QcmAttente = {
     CACHE: "qcm-hors-ligne-v1",
-    Deconnecte, ajouter, envoyer, catalogue,
+    Deconnecte, ajouter, envoyer, catalogue, requete, lireJson,
     tous, lire, ecrire, effacer,
   };
 })(self);
