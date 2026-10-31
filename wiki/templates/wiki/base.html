@@ -10,7 +10,7 @@
   <script src="{% static 'wiki/wiki.js' %}" defer></script>
   {% block head %}{% endblock %}
 </head>
-<body>
+<body class="{% if in_app %}app {% endif %}{% block body_class %}{% endblock %}">
   <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden>
   <header class="topbar">
     <label for="nav-toggle" class="nav-button" aria-label="Afficher le menu">☰</label>
@@ -31,6 +31,10 @@
         <li><a href="{% url 'wiki:documentation' %}">Documentation</a></li>
         {% if can_edit %}<li><a href="{% url 'wiki:new' %}">+ Nouvelle page</a></li>
         <li><a href="{% url 'wiki:import' %}">↥ Importer (.md, PDF)</a></li>{% endif %}
+        {% if in_app %}
+        <li><a href="https://appassets.androidplatform.net/index.html">⤓ QCM hors ligne</a></li>
+        <li><a href="https://appassets.androidplatform.net/connexion.html">⚙ Réglages de l'appli</a></li>
+        {% endif %}
       </ul>
       {% endif %}
       <div class="account">
@@ -42,11 +46,15 @@
           <li><a href="{% url 'accounts:users' %}">Utilisateurs</a></li>
           <li><a href="{% url 'admin:index' %}">Administration</a></li>
           {% endif %}
+          {% if in_app %}
+          <li><a href="https://appassets.androidplatform.net/connexion.html">Se déconnecter…</a></li>
+          {% else %}
           <li>
             <form action="{% url 'accounts:logout' %}" method="post">{% csrf_token %}
               <button type="submit" class="link-button">Se déconnecter</button>
             </form>
           </li>
+          {% endif %}
         </ul>
         {% else %}
         <ul class="nav-links">
@@ -72,5 +80,31 @@
       {% block aside %}{% endblock %}
     </aside>
   </div>
+  {% if in_app and user.is_authenticated %}
+  {# Application Android : navigation au pouce, menu latéral en tiroir. #}
+  <label for="nav-toggle" class="app-backdrop" aria-hidden="true"></label>
+  <nav class="app-nav" aria-label="Navigation principale">
+    <a class="app-nav-item{% if request.path == '/' %} active{% endif %}" href="{% url 'wiki:home' %}">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11 12 4l9 7"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5h4v5"/></svg>
+      <span>Accueil</span>
+    </a>
+    <label class="app-nav-item app-nav-browse" for="nav-toggle">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+      <span>Parcourir</span>
+    </label>
+    <a class="app-nav-item{% if request.resolver_match.url_name == 'search' %} active{% endif %}" href="{% url 'wiki:search' %}">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
+      <span>Rechercher</span>
+    </a>
+    <a class="app-nav-item{% if request.path|slice:':5' == '/qcm/' %} active{% endif %}" href="{% url 'wiki:quiz_index' %}">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>
+      <span>QCM</span>
+    </a>
+    <a class="app-nav-item" href="https://appassets.androidplatform.net/index.html">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11"/><path d="m7.5 10.5 4.5 4.5 4.5-4.5"/><path d="M5 19h14"/></svg>
+      <span>Hors ligne</span>
+    </a>
+  </nav>
+  {% endif %}
 </body>
 </html>

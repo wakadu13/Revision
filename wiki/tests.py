@@ -1156,3 +1156,50 @@ class LatexTests(WikiTestCase):
 
         self.assertTrue(looks_like_latex(LATEX_COURSE))
         self.assertFalse(looks_like_latex(r"$$\frac{a}{b}$$"))
+
+
+class ApplicationTests(TestCase):
+    """Application Android : wiki complet dans la WebView, session ouverte avec le jeton."""
+
+    setUp = AppareilTests.setUp
+    _connexion = AppareilTests._connexion
+    _auth = AppareilTests._auth
+    APP = {"HTTP_USER_AGENT": "Mozilla/5.0 (Linux; Android 15) Chrome/140 Mobile ProjetPluriApp/2.0"}
+
+    def test_jeton_ouvre_une_session(self):
+        from accounts.models import JetonAppareil
+        jeton = self._connexion().json()["jeton"]
+        anonyme = self.client_class()
+        self.assertEqual(anonyme.get("/").status_code, 302)  # site privé
+        # L'appli (sans cookie, sans jeton CSRF) échange son jeton contre une session.
+        appli = self.client_class(enforce_csrf_checks=True)
+        r = appli.post("/api/appareil/session/", **self._auth(jeton))
+        self.assertEqual(r.json(), {"ok": True, "joueur": "alice"})
+        self.assertIn("sessionid", r.cookies)
+        self.assertEqual(r.cookies["sessionid"]["max-age"], 60 * 60 * 24 * 14)
+        session = self.client_class()
+        session.cookies["sessionid"] = r.cookies["sessionid"].value
+        self.assertEqual(session.get("/qcm/").status_code, 200)
+        # Révoquer le jeton (page « Mon compte ») ferme aussi cette session.
+        JetonAppareil.objects.all().delete()
+        self.assertEqual(session.get("/qcm/").status_code, 302)
+        self.assertEqual(appli.post("/api/appareil/session/", **self._auth(jeton)).status_code, 401)
+
+    def test_session_demande_un_jeton(self):
+        self.assertEqual(self.client.post("/api/appareil/session/").status_code, 302)  # anonyme : connexion
+        self.client.force_login(get_user_model().objects.get(username="alice"))
+        self.assertEqual(self.client.post("/api/appareil/session/").status_code, 400)
+
+    def test_navigation_de_l_application(self):
+        self.client.force_login(get_user_model().objects.get(username="alice"))
+        page = self.client.get("/qcm/", **self.APP)
+        self.assertContains(page, '<body class="app ')
+        self.assertContains(page, 'class="app-nav"')
+        self.assertContains(page, 'href="https://appassets.androidplatform.net/index.html"')
+        # Déconnexion par les réglages de l'appli (le jeton reconnecterait aussitôt).
+        self.assertContains(page, 'href="https://appassets.androidplatform.net/connexion.html">Se déconnecter')
+        self.assertNotContains(page, 'action="/deconnexion/"')
+        navigateur = self.client.get("/qcm/")
+        self.assertNotContains(navigateur, 'class="app-nav"')
+        self.assertNotContains(navigateur, "appassets")
+        self.assertContains(navigateur, 'action="/deconnexion/"')

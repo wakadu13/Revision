@@ -42,6 +42,40 @@
     if (el.tagName === "DETAILS") el.open = true;
   }
 
+  // Application Android : le menu latéral est un tiroir (téléphone), ouvert d'un
+  // glissement depuis le bord gauche et refermé d'un glissement vers la gauche ;
+  // le bouton « retour » d'Android le referme d'abord (window.appliRetour).
+  if (document.body.classList.contains("app")) {
+    const toggle = document.getElementById("nav-toggle");
+    const drawer = () => window.matchMedia("(max-width: 760px)").matches;
+    window.addEventListener("pageshow", () => { toggle.checked = false; });
+    let start = null;
+    document.addEventListener("touchstart", (e) => {
+      const t = e.touches[0];
+      // Bord gauche élargi : les 20 premiers pixels servent au geste « retour » d'Android.
+      start = drawer() && (toggle.checked || t.clientX < 48) ? { x: t.clientX, y: t.clientY } : null;
+    }, { passive: true });
+    document.addEventListener("touchend", (e) => {
+      if (!start) return;
+      const t = e.changedTouches[0];
+      const dx = t.clientX - start.x;
+      if (Math.abs(dx) > 60 && Math.abs(dx) > 1.5 * Math.abs(t.clientY - start.y)) toggle.checked = dx > 0;
+      start = null;
+    }, { passive: true });
+    window.appliRetour = () => {
+      const dialog = document.querySelector("dialog[open]");
+      if (dialog) {
+        dialog.close();
+        return true;
+      }
+      if (toggle.checked) {
+        toggle.checked = false;
+        return true;
+      }
+      return false;
+    };
+  }
+
   // Ctrl+E sur une page : ouvre l'éditeur (comme Obsidian passe de la lecture à l'édition).
   const editLink = document.querySelector("[data-edit-shortcut]");
   if (editLink) {

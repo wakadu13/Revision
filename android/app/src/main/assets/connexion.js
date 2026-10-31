@@ -58,7 +58,8 @@
       if (!r.ok) { erreur(await lireErreur(r)); return; }
       const data = await r.json();
       window.QcmNatif.enregistrerCompte(serveur, data.jeton, data.joueur);
-      location.replace("index.html");
+      if (window.AppliNatif) window.AppliNatif.ouvrirWiki();
+      else location.replace("index.html");
     } catch (e) {
       erreur(e.message + ". Le téléphone doit être sur le même réseau que le serveur.");
     } finally {
@@ -75,5 +76,6 @@
     afficher();
   });
 
+  $("cx-revoque").hidden = !/[?&]revoque=1/.test(location.search) || R.connecte();
   afficher();
 })();

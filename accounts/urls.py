@@ -15,4 +15,5 @@ urlpatterns = [
     path("utilisateurs/<int:pk>/", views.user_action, name="user_action"),
     path("api/appareil/connexion/", api.connexion, name="appareil_connexion"),
     path("api/appareil/deconnexion/", api.deconnexion, name="appareil_deconnexion"),
+    path("api/appareil/session/", api.session, name="appareil_session"),
 ]

@@ -48,6 +48,14 @@
     },
   };
 
+  // Boutons « Wiki » : rouvrent le wiki (session ouverte avec le jeton).
+  document.addEventListener("click", (e) => {
+    const lien = e.target.closest && e.target.closest("[data-ouvrir-wiki]");
+    if (!lien || !window.AppliNatif) return;
+    e.preventDefault();
+    window.AppliNatif.ouvrirWiki();
+  });
+
   // Pas encore de compte : écran de connexion.
   if (!natif.connecte() && !/connexion\.html$/.test(location.pathname)) location.replace("connexion.html");
 })();

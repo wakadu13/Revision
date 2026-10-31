@@ -1,6 +1,7 @@
-# APK Android des QCM hors ligne (dossier android/).
+# APK Android « ProjetPluri » (dossier android/) : le wiki complet sur téléphone
+# et tablette, et les QCM hors ligne.
 # - Push sur main qui touche l'appli ou le moteur des QCM : release GitHub
-#   « apk-v1.<n° de run> » avec l'APK signé.
+#   « apk-v2.<n° de run> » avec l'APK signé.
 # - Tag « apk-vX.Y » poussé à la main : release « apk-vX.Y ».
 # - Autres branches, lancement manuel : APK en artefact du run (pas de release).
 #
@@ -45,7 +46,7 @@ jobs:
           if [[ "$GITHUB_REF" == refs/tags/apk-v* ]]; then
             nom="${GITHUB_REF_NAME#apk-v}"; release="$GITHUB_REF_NAME"
           elif [[ "$GITHUB_REF" == refs/heads/main ]]; then
-            nom="1.$GITHUB_RUN_NUMBER"; release="apk-v$nom"
+            nom="2.$GITHUB_RUN_NUMBER"; release="apk-v$nom"
           else
             nom="dev-${GITHUB_SHA::7}"
           fi
@@ -74,22 +75,22 @@ jobs:
         run: ./gradlew assembleRelease --no-daemon
 
       - name: Renommer
-        run: cp android/app/build/outputs/apk/release/app-release.apk "qcm-projetpluri-${QCM_VERSION_NAME}.apk"
+        run: cp android/app/build/outputs/apk/release/app-release.apk "projetpluri-${QCM_VERSION_NAME}.apk"
 
       - uses: actions/upload-artifact@v4
         with:
-          name: qcm-projetpluri-${{ env.QCM_VERSION_NAME }}
-          path: qcm-projetpluri-*.apk
+          name: projetpluri-${{ env.QCM_VERSION_NAME }}
+          path: projetpluri-*.apk
 
       - name: Release
         if: env.QCM_RELEASE != ''
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "$QCM_RELEASE" qcm-projetpluri-*.apk --target "$GITHUB_SHA" --latest \
-            --title "QCM Android $QCM_VERSION_NAME" \
-            --notes "Application Android des QCM : révision hors ligne, synchronisée avec le serveur du wiki.
+          gh release create "$QCM_RELEASE" projetpluri-*.apk --target "$GITHUB_SHA" --latest \
+            --title "ProjetPluri Android $QCM_VERSION_NAME" \
+            --notes "Application Android du wiki ProjetPluri, pour téléphone et tablette : le wiki complet (pages, éditeur, PDF, QCM) avec une navigation tactile, et les QCM hors ligne synchronisés avec le serveur.
 
-          Installation : télécharger l'APK sur le téléphone, l'ouvrir et autoriser l'installation depuis cette source.
-          Au premier lancement : adresse du serveur (ex. http://192.168.1.20:8000), identifiant et mot de passe du wiki.
-          Le serveur doit être à jour (git pull + migrate) : voir android/README.md."
+          Installation : télécharger l'APK sur l'appareil, l'ouvrir et autoriser l'installation depuis cette source (elle se met à jour par-dessus l'appli QCM déjà installée, sans perdre les réponses gardées).
+          Au premier lancement : adresse du serveur (ex. https://192.168.1.20 avec Caddy, ou http://192.168.1.20:8000), identifiant et mot de passe du wiki. Le wiki s'ouvre ensuite sans redemander le mot de passe.
+          Le serveur doit être à jour (git pull, puis redémarrer) : voir android/README.md."

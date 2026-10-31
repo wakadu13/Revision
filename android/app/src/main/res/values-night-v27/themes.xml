@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Qcm" parent="android:Theme.Material.NoActionBar">
+        <item name="android:colorPrimary">#7852ee</item>
+        <item name="android:colorAccent">#a88bfa</item>
+        <item name="android:statusBarColor">#1e1e1e</item>
+        <item name="android:navigationBarColor">#1e1e1e</item>
+        <item name="android:windowBackground">#1e1e1e</item>
+    </style>
+</resources>

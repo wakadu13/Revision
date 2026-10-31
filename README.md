@@ -157,13 +157,22 @@ dans la barre latérale ou sur `/qcm/`.
   `uv run python manage.py verifier_qcm vault/QCM/<catégorie>/<fichier>.json`
   (sans argument : tout `vault/QCM`).
 - **Hors ligne** : `/qcm/hors-ligne/` (installable depuis Chrome, HTTPS requis), ou
-  l'**application Android** (APK dans les
-  [releases](https://github.com/wakadu13/Revision/releases), marche aussi avec un
-  serveur en HTTP) : sets téléchargés sur le téléphone, révision sans réseau,
-  réponses synchronisées au retour de la connexion. Voir [`android/README.md`](android/README.md).
+  l'**application Android** : sets téléchargés sur le téléphone, révision sans
+  réseau, réponses synchronisées au retour de la connexion.
 - La progression est enregistrée en base de données, par utilisateur (il faut
   être connecté pour faire les QCM). Après un `git pull` qui ajoute
   le module, lancer `uv run python manage.py migrate`.
+
+## Application Android (téléphone, tablette)
+
+L'APK **ProjetPluri** ([releases](https://github.com/wakadu13/Revision/releases),
+tags `apk-v2.…`) affiche le wiki complet avec une navigation tactile : barre en
+bas de l'écran (Accueil, Parcourir, Rechercher, QCM, Hors ligne), menu latéral
+en tiroir, import et téléchargement de fichiers, PDF en plein écran, zoom au
+pincement. On se connecte une fois (adresse du serveur, identifiant, mot de
+passe) ; le wiki s'ouvre ensuite directement. Les QCM restent disponibles sans
+réseau. Marche avec un serveur en HTTP ou en HTTPS (Caddy). Détails :
+[`android/README.md`](android/README.md).
 
 ## Comptes et rôles
 
@@ -261,7 +270,7 @@ en-têtes) sont dans [`core/tests.py`](core/tests.py) :
 - `/compte/` : mon compte (`/compte/mot-de-passe/` pour changer de mot de passe)
 - `/utilisateurs/` : gestion des comptes (admins)
 - `/api/status/` : statut du serveur en JSON
-- `/api/appareil/connexion/` et `/api/appareil/deconnexion/` : jeton de l'application Android
+- `/api/appareil/connexion/`, `/api/appareil/deconnexion/` et `/api/appareil/session/` : jeton de l'application Android
 - `/qcm/hors-ligne/` : QCM hors ligne (PWA)
 - `/admin/` : administration Django (créer un compte avec `uv run python manage.py createsuperuser`)
 
