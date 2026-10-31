@@ -510,3 +510,15 @@ body.pdf-embedded-body { margin: 0; height: 100vh; overflow: hidden; background:
   .pdf-frame { height: calc(100vh - 11rem); }
   .pdf-toolbar select { min-width: 0; max-width: 7.5rem; }
 }
+
+/* Encadrés issus des cours LaTeX (théorèmes, définitions...) et bandeau de conversion */
+[data-callout="definition"] { --callout: 8, 109, 221; }
+[data-callout="theoreme"] { --callout: 183, 65, 52; }
+[data-callout="remarque"] { --callout: 100, 116, 139; }
+[data-callout="exemple"] { --callout: 120, 82, 238; }
+[data-callout="methode"] { --callout: 8, 150, 78; }
+[data-callout="exercice"] { --callout: 236, 117, 0; }
+[data-callout="demonstration"] { --callout: 120, 120, 120; }
+[data-callout="retenir"] { --callout: 0, 150, 160; }
+[data-callout="figure"] { --callout: 100, 116, 139; }
+.editor-notice { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1rem; margin: .5rem 0 0; padding: .55rem .8rem; border: 1px solid rgba(236, 117, 0, .5); border-radius: 8px; background: rgba(236, 117, 0, .08); font-size: .9rem; }

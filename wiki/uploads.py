@@ -13,10 +13,12 @@ from pathlib import PurePosixPath
 
 from django.urls import reverse
 
+from . import latex
 from .render import AUDIO_EXTS, IMAGE_EXTS, VIDEO_EXTS
 from .vault import IGNORED_DIRS, INVALID_NAME_RE
 
 NOTE_EXTS = {".md", ".markdown"}
+LATEX_EXTS = {".tex", ".latex"}
 ATTACHMENT_EXTS = IMAGE_EXTS | AUDIO_EXTS | VIDEO_EXTS | {".pdf"}
 MAX_NOTE_SIZE = 5 * 1024 * 1024
 MAX_ATTACHMENT_SIZE = 100 * 1024 * 1024  # PDF scannés compris
@@ -82,13 +84,13 @@ def import_file(vault, upload, relative, folder="", replace=False, rename=False)
         return Result(shown, False, f"nom invalide : caractères interdits {FORBIDDEN_CHARS}")
 
     suffix = PurePosixPath(parts[-1]).suffix.lower()
-    if suffix in NOTE_EXTS:
+    if suffix in NOTE_EXTS or suffix in LATEX_EXTS:
         is_note, limit = True, MAX_NOTE_SIZE
         parts[-1] = PurePosixPath(parts[-1]).stem + ".md"
     elif suffix in ATTACHMENT_EXTS:
         is_note, limit = False, MAX_ATTACHMENT_SIZE
     else:
-        return Result(shown, False, "type de fichier non accepté (notes .md, images, PDF, audio ou vidéo)")
+        return Result(shown, False, "type de fichier non accepté (notes .md ou .tex, images, PDF, audio ou vidéo)")
     if upload.size > limit:
         return Result(shown, False, f"trop volumineux (maximum {limit // 1024 // 1024} Mo)")
 
@@ -98,12 +100,17 @@ def import_file(vault, upload, relative, folder="", replace=False, rename=False)
         except UnicodeDecodeError:
             return Result(shown, False, "ce n'est pas un fichier texte UTF-8")
         text = text.replace("\r\n", "\n")
+        if suffix in LATEX_EXTS:
+            try:
+                text = latex.convert(text)
+            except (RecursionError, ValueError, IndexError):
+                return Result(shown, False, "ce LaTeX n'a pas pu être converti")
 
     path = PurePosixPath(*_parts(folder), *parts)
     existing = (
         vault.notes.get(str(path.with_suffix("")).lower()) if is_note else vault.attachments.get(str(path).lower())
     )
-    message = "importé"
+    message = "converti depuis LaTeX" if suffix in LATEX_EXTS else "importé"
     if existing is not None or (root / path).exists():
         if rename:
             path = _free_path(root, vault, path, is_note)

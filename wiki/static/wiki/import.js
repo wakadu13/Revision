@@ -19,7 +19,7 @@
   const resultsList = document.querySelector("[data-results-list]");
   const csrf = form.querySelector("[name=csrfmiddlewaretoken]").value;
 
-  const NOTE = /\.(md|markdown)$/i;
+  const NOTE = /\.(md|markdown|tex|latex)$/i;
   const ATTACHMENT = /\.(png|jpe?g|gif|svg|webp|bmp|avif|pdf|mp3|wav|ogg|m4a|flac|webm|3gp|mp4|ogv|mov|mkv)$/i;
   const BATCH_FILES = 20;
   const BATCH_BYTES = 40 * 1024 * 1024;
@@ -62,7 +62,7 @@
       + (skipped ? ` ${plural(skipped, "fichier")} d'un autre type ${skipped > 1 ? "seront ignorés" : "sera ignoré"}.` : "");
     pendingList.replaceChildren(...pending.slice(0, 200).map((p) => {
       const li = document.createElement("li");
-      li.textContent = (dest ? dest + "/" : "") + p.path.replace(/\.markdown$/i, ".md");
+      li.textContent = (dest ? dest + "/" : "") + p.path.replace(/\.(markdown|tex|latex)$/i, ".md");
       return li;
     }));
     if (pending.length > 200) {

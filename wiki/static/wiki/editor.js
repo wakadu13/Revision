@@ -33,7 +33,7 @@
   const countLabel = form.querySelector("[data-count]");
   const autosaveBox = form.querySelector("[data-autosave]");
   const closeLink = form.querySelector(".editor-actions a");
-  const { previewUrl, importUrl, noteKey, noteName } = form.dataset;
+  const { previewUrl, importUrl, latexUrl, noteKey, noteName } = form.dataset;
   const choices = JSON.parse(document.getElementById("link-choices").textContent);
   const attachments = JSON.parse(document.getElementById("attachment-choices").textContent);
 
@@ -645,7 +645,7 @@
         if (node.name !== "BlockMath") return CONTAINERS.has(node.name);
         if (!ranges.some((r) => r.from <= node.to && r.to >= node.from)) {
           const tex = mathSource(state.sliceDoc(node.from, node.to));
-          if (tex) out.push(Decoration.replace({ widget: new MathWidget(tex, true) }).range(node.from, node.to));
+          if (tex && !looksLikeLatex(tex)) out.push(Decoration.replace({ widget: new MathWidget(tex, true) }).range(node.from, node.to));
         }
         return false;
       },
@@ -924,11 +924,57 @@
       errors.length ? "error" : "ok");
   }
 
-  const isMarkdown = (file) => /\.(md|markdown|txt)$/i.test(file.name);
+  // -- LaTeX : un cours .tex est converti en page (chapitres, formules, encadrés, tableaux) --------
+
+  function looksLikeLatex(text) {
+    return /\\documentclass|\\begin\s*\{document\}/.test(text)
+      || (text.match(/\\(chapter|section|subsection)\*?\{|\\begin\{(itemize|enumerate|tabular|figure|theorem|definition)\}/g) || []).length >= 3;
+  }
+
+  async function convertLatex(source) {
+    const data = new FormData();
+    data.append("csrfmiddlewaretoken", csrf);
+    data.append("source", source);
+    status("Conversion du LaTeX…");
+    const response = await fetch(latexUrl, { method: "POST", body: data, headers: { Accept: "application/json" } });
+    const json = await response.json().catch(() => ({}));
+    if (!response.ok || typeof json.markdown !== "string") {
+      throw new Error(json.error || "Conversion impossible (session expirée ?).");
+    }
+    return json.markdown;
+  }
+
+  async function convertDocument() {
+    const { from, to } = view.state.selection.main;
+    const whole = from === to;
+    const source = whole ? view.state.doc.toString() : view.state.sliceDoc(from, to);
+    if (!source.trim()) return status("Rien à convertir : collez d'abord le LaTeX.", "error");
+    try {
+      const markdown = await convertLatex(source);
+      view.dispatch({
+        changes: whole ? { from: 0, to: view.state.doc.length, insert: markdown } : { from, to, insert: markdown },
+        selection: { anchor: whole ? 0 : from },
+        scrollIntoView: true,
+        userEvent: "input",
+      });
+      status("LaTeX converti : vérifiez puis enregistrez (Ctrl+Z pour annuler).", "dirty");
+      view.focus();
+    } catch (e) {
+      status(e.message, "error");
+    }
+  }
+
+  const isLatexFile = (file) => /\.(tex|latex)$/i.test(file.name);
+  const isMarkdown = (file) => /\.(md|markdown|txt|tex|latex)$/i.test(file.name);
   const readText = (file) => file.text().then((t) => t.replace(/^﻿/, "").replace(/\r\n?/g, "\n"));
 
   async function insertMarkdownFiles(view, list, pos) {
-    const texts = await Promise.all(list.map(readText));
+    let texts;
+    try {
+      texts = await Promise.all(list.map(async (file) => (isLatexFile(file) ? convertLatex(await readText(file)) : readText(file))));
+    } catch (e) {
+      return status(e.message, "error");
+    }
     const at = Math.min(pos, view.state.doc.length);
     const text = texts.join("\n\n");
     view.dispatch({ changes: { from: at, insert: text }, selection: { anchor: at + text.length }, userEvent: "input" });
@@ -945,7 +991,14 @@
   const fileEvents = EditorView.domEventHandlers({
     paste(e, view) {
       const list = [...(e.clipboardData ? e.clipboardData.files : [])];
-      if (!list.length) return false;
+      if (!list.length) {
+        const text = e.clipboardData ? e.clipboardData.getData("text/plain") : "";
+        if (!text || !looksLikeLatex(text)) return false;
+        e.preventDefault();
+        pastedLatex = text;
+        latexDialog.showModal();
+        return true;
+      }
       e.preventDefault();
       uploadFiles(view, list.map((f) => (f.type.startsWith("image/") ? new File([f], pastedName(f), { type: f.type }) : f)));
       return true;
@@ -1170,7 +1223,10 @@
           refreshState();
           scheduleAutosave();
           clearTimeout(infoTimer);
-          infoTimer = setTimeout(refreshInfo, 300);
+          infoTimer = setTimeout(() => {
+            refreshInfo();
+            refreshLatexNotice();
+          }, 300);
         }),
       ],
     }),
@@ -1353,6 +1409,32 @@
     }
   }));
 
+  // -- Collage de LaTeX : convertir ou coller tel quel -----------------------------------------------
+
+  const latexDialog = document.getElementById("latex-paste-dialog");
+  let pastedLatex = "";
+  latexDialog.querySelectorAll("[data-paste-choice]").forEach((button) => button.addEventListener("click", async () => {
+    latexDialog.close();
+    let text = pastedLatex;
+    if (button.dataset.pasteChoice === "convert") {
+      try {
+        text = await convertLatex(pastedLatex);
+        status("LaTeX converti : vérifiez puis enregistrez (Ctrl+Z pour annuler).", "dirty");
+      } catch (e) {
+        return status(e.message, "error");
+      }
+    }
+    replaceSelection(view, text);
+  }));
+
+  // Page qui contient du LaTeX brut (collé avant cette fonction) : proposer la conversion.
+  const latexNotice = form.querySelector("[data-latex-notice]");
+  function refreshLatexNotice() {
+    latexNotice.hidden = !looksLikeLatex(view.state.doc.toString());
+  }
+  latexNotice.querySelector("[data-action=latex]").addEventListener("click", () => convertDocument());
+  refreshLatexNotice();
+
   // -- Fenêtre « Ouvrir un .md » ---------------------------------------------------------------------
 
   const mdInput = form.querySelector("[data-md-input]");
@@ -1363,7 +1445,11 @@
     const file = mdInput.files[0];
     mdInput.value = "";
     if (!file) return;
-    mdText = await readText(file);
+    try {
+      mdText = isLatexFile(file) ? await convertLatex(await readText(file)) : await readText(file);
+    } catch (e) {
+      return status(e.message, "error");
+    }
     if (!view.state.doc.toString().trim()) return useMarkdown("replace");
     mdDialog.querySelector("[data-md-name]").textContent = `« ${file.name} »`;
     mdDialog.showModal();
@@ -1434,6 +1520,7 @@
       return insertBlock(view, "```bash\n" + code + "\n```", [3, 7]);
     },
     "open-md": () => mdInput.click(),
+    latex: () => convertDocument(),
     "download-md": download,
     save: () => save(),
     focus: () => setFocus(!document.body.classList.contains("editor-focus")),
@@ -1451,7 +1538,7 @@
       const keepsMode = ["focus", "download-md", "open-md"].includes(action);
       if (mode === "reading" && !keepsMode) setMode(editMode);
       actions[action]();
-      if (!["page-link", "web-link", "attach", "open-md", "download-md", "focus"].includes(action)) view.focus();
+      if (!["page-link", "web-link", "attach", "open-md", "download-md", "focus", "latex"].includes(action)) view.focus();
     });
   });
   form.querySelector("[data-action=save]").addEventListener("click", () => save());

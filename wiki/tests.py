@@ -996,3 +996,163 @@ class PdfReaderTests(WikiTestCase):
         self.assertEqual([f.name for f in reseau["files"]], ["Poly réseau.pdf"])
         self.assertEqual(reseau["count"], 2)
         self.assertContains(self.client.get("/sommaire/"), 'href="/pdf/Cours/R%C3%A9seau/Poly%20r%C3%A9seau.pdf"')
+
+
+LATEX_COURSE = r"""$$
+% Préambule d'un cours
+\documentclass{report}
+\usepackage{amsmath}
+\newtheorem{definition}{Définition}[chapter]
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{exercice}{Exercice}[chapter]
+\renewcommand{\proofname}{Démonstration}
+\newtcolorbox{retenir}[1][À retenir]{colback=white}
+\newcommand{\cpl}[1]{\overline{#1}}
+\newcommand{\nQ}{\overline{Q}}
+\begin{document}
+\begin{titlepage}
+{\Large Logique séquentielle\par}
+\end{titlepage}
+\tableofcontents
+\chapter*{Notations}
+On note $\cpl{A}$ le complément. % commentaire
+\chapter{Les bascules}
+\label{ch:bascules}
+\section{Généralités}
+\begin{definition}[Bascule]
+Une \emph{bascule} stocke un \textbf{bit}.
+\end{definition}
+\begin{proposition}
+\label{prop:rs}
+On a
+\begin{equation}
+  Q_{t+1} = S + \cpl{R}\,Q_t \label{eq:rs}
+\end{equation}
+\end{proposition}
+\begin{proof}
+D'après \eqref{eq:rs} et la proposition~\ref{prop:rs}.
+\end{proof}
+\begin{enumerate}[(i)]
+  \item premier ;
+  \item second.
+\end{enumerate}
+\begin{enumerate}[\textbf{Phase \arabic*.}, leftmargin=*]
+  \item mise à 1.
+\end{enumerate}
+\begin{center}
+\begin{tabular}{|cc|c|}
+\hline
+\multicolumn{2}{|c|}{Entrées} & Sortie \\ \hline
+\rowcolor{bleu!10} $S$ & $R$ & $|Q|$ \\
+\multirow{2}{*}{0} & 1 & $\nQ_t$ \\ \hline
+\end{tabular}
+\end{center}
+\begin{figure}[htbp]
+\centering
+\begin{circuitikz}
+  \node[nand port] (G1) at (0,0) {};
+\end{circuitikz}
+\caption{La bascule RS.}
+\label{fig:rs}
+\end{figure}
+Voir la figure~\ref{fig:rs}, le chapitre~\ref{ch:bascules}\footnote{Note de bas de page.}.
+\begin{retenir}
+\begin{itemize}
+  \item Une bascule mémorise un bit.
+\end{itemize}
+\end{retenir}
+\begin{verbatim}
+$ ne_pas_toucher % ici
+\end{verbatim}
+\appendix
+\titleformat{\chapter}[display]{\bfseries}{Annexe~\thechapter}{0.5em}{\Huge}
+\chapter{Corrigés}
+\begin{exercice}
+Prix : 5 \$ et 10 \$.
+\end{exercice}
+\end{document}
+$$"""
+
+
+class LatexTests(WikiTestCase):
+    """Conversion d'un cours LaTeX en page du wiki."""
+
+    def setUp(self):
+        super().setUp()
+        self.admin = get_user_model().objects.create_user("admin", password="x", is_staff=True)
+
+    def test_course_structure(self):
+        from .latex import convert
+
+        md = convert(LATEX_COURSE)
+        # $$ autour du document, préambule et commentaires retirés ; titres numérotés comme LaTeX.
+        self.assertNotIn("documentclass", md)
+        self.assertNotIn("commentaire", md)
+        self.assertIn("> [!info] Page de titre\n> Logique séquentielle", md)
+        self.assertIn("# Notations\n", md)
+        self.assertIn("# Chapitre 1 — Les bascules", md)
+        self.assertIn("## 1.1 Généralités", md)
+        self.assertIn("# Annexe A — Corrigés", md)
+        self.assertNotIn("display", md)  # \titleformat ignoré
+        # Macros développées pour KaTeX.
+        self.assertIn(r"On note $\overline{A}$ le complément.", md)
+        # Théorèmes en encadrés, compteur partagé, démonstration repliée, équation numérotée.
+        self.assertIn("> [!definition] Définition 1.1 (Bascule)\n> Une *bascule* stocke un **bit**.", md)
+        self.assertIn("> [!theoreme] Proposition 1.2", md)
+        self.assertIn(r"> Q_{t+1} = S + \overline{R}\,Q_t \tag{1.1}", md)
+        self.assertIn("> [!demonstration]- Démonstration\n> D'après (1.1) et la proposition 1.2.", md)
+        self.assertIn("> [!exercice] Exercice A.1", md)
+        self.assertIn(r"Prix : 5 \$ et 10 \$.", md)
+        # Listes à étiquettes.
+        self.assertIn("- **(i)** premier ;\n- **(ii)** second.", md)
+        self.assertIn("- **Phase 1.** mise à 1.", md)
+        # Tableau : colonnes fusionnées, couleurs retirées, | dans une formule protégé.
+        self.assertIn("| Entrées |  | Sortie |\n| --- | --- | --- |\n| $S$ | $R$ | $\\vert Q\\vert$ |", md)
+        self.assertIn("| 0 | 1 | $\\overline{Q}_t$ |", md)
+        # Figure TikZ : légende numérotée, code source replié, avertissement en tête.
+        self.assertTrue(md.startswith("> [!info] Converti depuis LaTeX"))
+        self.assertIn("> [!figure]- Figure 1.1 — La bascule RS.", md)
+        self.assertIn("> \\begin{circuitikz}", md)
+        # Renvois : numéros, liens vers les titres ; note de bas de page.
+        self.assertIn("Voir la figure 1.1, le chapitre [[#Chapitre 1 — Les bascules|1]][^1].", md)
+        self.assertIn("[^1]: Note de bas de page.", md)
+        self.assertIn("> [!retenir] À retenir\n> - Une bascule mémorise un bit.", md)
+        self.assertIn("```\n$ ne_pas_toucher % ici\n```", md)
+
+    def test_converted_page_renders(self):
+        from .latex import convert
+
+        self.write("Cours.md", convert(LATEX_COURSE))
+        html = self.html("Cours")
+        self.assertIn('data-callout="definition"', html)
+        self.assertIn('<details class="callout" data-callout="demonstration">', html)
+        self.assertIn('<details class="callout" data-callout="figure">', html)
+        self.assertIn('class="math math-block"', html)
+        self.assertIn("<table>", html)
+        self.assertIn('href="#chapitre-1-les-bascules"', html)
+
+    def test_editor_conversion_endpoint(self):
+        self.client.force_login(self.admin)
+        response = self.client.post("/latex/", {"source": r"\section{Titre} Texte $\alpha$."})
+        self.assertEqual(response.json(), {"markdown": "## 1 Titre\n\nTexte $\\alpha$.\n"})
+        self.assertEqual(self.client.post("/latex/", {"source": " "}).status_code, 400)
+        self.assertContains(self.client.get("/modifier/Note"), 'data-latex-url="/latex/"')
+        self.client.force_login(self.reader)
+        self.assertEqual(self.client.post("/latex/", {"source": "x"}).status_code, 403)
+
+    def test_import_tex_file(self):
+        self.client.force_login(self.admin)
+        upload = SimpleUploadedFile("Logique.tex", LATEX_COURSE.encode("utf-8"))
+        result = self.client.post("/importer/", {"fichiers": [upload], "chemins": ["Logique.tex"], "dossier": "Cours"},
+                                  HTTP_ACCEPT="application/json").json()["results"][0]
+        self.assertTrue(result["ok"])
+        self.assertEqual(result["path"], "Cours/Logique.md")
+        self.assertEqual(result["message"], "converti depuis LaTeX")
+        self.assertIn("# Chapitre 1 — Les bascules", (self.root / "Cours/Logique.md").read_text(encoding="utf-8"))
+        self.assertFalse((self.root / "Cours/Logique.tex").exists())
+
+    def test_looks_like_latex(self):
+        from .latex import looks_like_latex
+
+        self.assertTrue(looks_like_latex(LATEX_COURSE))
+        self.assertFalse(looks_like_latex(r"$$\frac{a}{b}$$"))

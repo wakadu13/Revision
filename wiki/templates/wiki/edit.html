@@ -8,7 +8,7 @@
   {% if error %}
   <div class="callout" data-callout="danger"><div class="callout-title">{{ error }}</div></div>
   {% endif %}
-  <form method="post" id="editor-form" data-preview-url="{{ preview_url }}" data-import-url="{{ import_url }}" data-note-key="{{ key }}" data-note-name="{{ name }}">
+  <form method="post" id="editor-form" data-preview-url="{{ preview_url }}" data-import-url="{{ import_url }}" data-latex-url="{{ latex_url }}" data-note-key="{{ key }}" data-note-name="{{ name }}">
     {% csrf_token %}
     <input type="hidden" name="version" value="{{ version }}">
     <div class="toolbar" role="toolbar" aria-label="Mise en forme" hidden>
@@ -44,12 +44,17 @@
       <details class="toolbar-menu">
         <summary class="button" title="Ouvrir, télécharger ou importer des fichiers .md">Fichier ▾</summary>
         <div class="menu" role="menu">
-          <button type="button" role="menuitem" data-action="open-md">Ouvrir un fichier .md…</button>
+          <button type="button" role="menuitem" data-action="open-md">Ouvrir un fichier .md ou .tex…</button>
+          <button type="button" role="menuitem" data-action="latex">Convertir du LaTeX en Markdown</button>
           <button type="button" role="menuitem" data-action="download-md">Télécharger la page en .md</button>
           <a role="menuitem" href="{{ import_url }}">Importer des fichiers .md…</a>
         </div>
       </details>
       <button type="button" class="button" data-action="focus" aria-pressed="false" title="Masquer les panneaux latéraux">⤢</button>
+    </div>
+    <div class="editor-notice" data-latex-notice hidden>
+      <span>Ce texte est un document <b>LaTeX</b> : le wiki ne peut pas l'afficher tel quel.</span>
+      <button type="button" class="button primary small" data-action="latex">Le convertir en page</button>
     </div>
     <div class="editor-area">
       <textarea name="content" id="editor" rows="22" spellcheck="true" autofocus
@@ -69,7 +74,7 @@
         <span class="editor-state" data-state aria-live="polite"></span>
       </div>
     </div>
-    <input type="file" accept=".md,.markdown,.txt,text/markdown,text/plain" hidden data-md-input>
+    <input type="file" accept=".md,.markdown,.txt,.tex,.latex,text/markdown,text/plain" hidden data-md-input>
     <input type="file" accept="image/*,.pdf,audio/*,video/*" multiple hidden data-attach-input>
   </form>
 </article>
@@ -96,6 +101,15 @@
   <div class="dialog-actions">
     <button type="button" class="button" data-close>Annuler</button>
     <button type="button" class="button primary" id="web-ok">Insérer le lien</button>
+  </div>
+</dialog>
+
+<dialog id="latex-paste-dialog" class="dialog">
+  <h2>Coller du LaTeX</h2>
+  <p>Le texte collé est un document LaTeX. Le convertir en page du wiki (chapitres, formules, théorèmes en encadrés, tableaux) ?</p>
+  <div class="dialog-actions">
+    <button type="button" class="button" data-paste-choice="raw">Coller tel quel</button>
+    <button type="button" class="button primary" data-paste-choice="convert">Convertir</button>
   </div>
 </dialog>
 
@@ -128,6 +142,7 @@
     <li><kbd>Ctrl</kbd>+<kbd>B</kbd> / <kbd>I</kbd> gras, italique · <kbd>Ctrl</kbd>+<kbd>K</kbd> lien · <kbd>Ctrl</kbd>+<kbd>Entrée</kbd> coche une tâche.</li>
     <li><kbd>Ctrl</kbd>+<kbd>F</kbd> rechercher et remplacer · <kbd>Tab</kbd> indente une liste.</li>
     <li>Formules LaTeX : <code>$…$</code> dans le texte, <code>$$…$$</code> en bloc (bouton ∑ ou <kbd>Ctrl</kbd>+<kbd>Maj</kbd>+<kbd>M</kbd>). Elles s'affichent rendues ; cliquez dessus pour modifier le LaTeX.</li>
+    <li>Un cours en LaTeX ? Collez-le ou ouvrez le <code>.tex</code> (menu Fichier) : il est converti en page.</li>
     <li>Collez ou glissez une image ou un PDF dans le texte : il est ajouté au coffre (<code>![[cours.pdf]]</code> affiche le lecteur PDF dans la page). Glissez un <code>.md</code> pour insérer son contenu.</li>
   </ul>
   <p><a href="{% url 'wiki:import' %}">Importer des fichiers .md →</a></p>

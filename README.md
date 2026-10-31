@@ -78,6 +78,27 @@ Obsidian lui-même :
 - plan de la page cliquable, compteur de mots, recherche et remplacement
   (<kbd>Ctrl</kbd>+<kbd>F</kbd>), mode plein écran (⤢).
 
+### Cours écrits en LaTeX
+
+Un cours LaTeX (document `.tex` complet ou extrait) est **converti en page** du
+wiki : chapitres et sections numérotés comme dans le PDF, formules (macros
+`\newcommand` développées, équations numérotées), théorèmes, définitions,
+remarques… (`\newtheorem`) et encadrés `tcolorbox` en callouts colorés,
+démonstrations repliées, listes (étiquettes `(i)`, `(a)` comprises), tableaux,
+renvois `\ref` et notes de bas de page. Trois façons :
+
+- importer le fichier `.tex` sur `/importer/` (il devient `nom.md`) ;
+- dans l'éditeur, coller le LaTeX (la conversion est proposée), ou menu
+  **Fichier ▸ Ouvrir un fichier .md ou .tex** ;
+- une page qui contient déjà du LaTeX brut affiche un bandeau « Le convertir en
+  page » (aussi : **Fichier ▸ Convertir du LaTeX en Markdown**, sur la sélection
+  ou toute la page).
+
+Les figures dessinées en LaTeX (TikZ, circuitikz, chronogrammes, tableaux de
+Karnaugh) ne peuvent pas être affichées sans LaTeX : leur légende est gardée et
+leur code source rangé dans un encadré replié. Pour les voir, importer aussi le
+PDF compilé et l'intégrer avec `![[cours.pdf]]`.
+
 ### Importer des fichiers .md et des PDF (admins)
 
 **↥ Importer (.md, PDF)** dans la barre latérale (`/importer/`) : glisser-déposer
