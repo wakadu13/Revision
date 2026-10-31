@@ -263,13 +263,16 @@ SECURE_CSP = {
     'frame-ancestors': [CSP.SELF],
 }
 
-# Connexions refusées, blocages et erreurs de sécurité journalisés dans la console.
+# Connexions refusées, blocages, erreurs de sécurité et erreurs serveur (500,
+# avec leur trace) journalisés dans la console : sans DEBUG, le navigateur
+# n'affiche que « Server Error (500) ».
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'handlers': {'console': {'class': 'logging.StreamHandler'}},
     'loggers': {
         'django.security': {'handlers': ['console'], 'level': 'WARNING'},
+        'django.request': {'handlers': ['console'], 'level': 'ERROR', 'propagate': False},
         'axes': {'handlers': ['console'], 'level': 'WARNING'},
     },
 }

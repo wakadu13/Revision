@@ -201,6 +201,10 @@ Pour ouvrir le wiki depuis un autre appareil du même Wi‑Fi, en HTTPS :
    comme autorité de confiance. Ne jamais partager `root.key` (même dossier).
 4. Le réseau Wi‑Fi doit être en profil « Privé » dans Windows, et un VPN doit
    autoriser l'accès au réseau local.
+5. Après une mise à jour du code (`git pull`, changement de branche), arrêter le
+   script (<kbd>Ctrl</kbd>+<kbd>C</kbd>) et le relancer : le serveur ne relit pas
+   le code à chaud, et les pages modifiées renverraient « Server Error (500) ».
+   Le détail d'une erreur 500 s'affiche dans la fenêtre du script.
 
 Mise en production : définir `DJANGO_ALLOWED_HOSTS` et `DJANGO_CSRF_TRUSTED_ORIGINS`,
 servir le site en HTTPS derrière un proxy (`DJANGO_BEHIND_PROXY=1`) avec un
