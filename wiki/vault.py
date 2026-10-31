@@ -6,6 +6,7 @@ nouvelle page.
 """
 
 import html
+import json
 import os
 import posixpath
 import re
@@ -355,19 +356,47 @@ class Vault:
             found.update(Path(dirpath, d).relative_to(self.root).as_posix() for d in dirnames)
         return sorted(found, key=str.lower)
 
+    def link_for(self, item):
+        """Texte à mettre entre [[ ]] : le nom seul suffit, sauf si un autre
+        fichier du même genre porte le même nom (on donne alors le chemin)."""
+        if isinstance(item, Note):
+            same = [n for n in self._by_name[item.name.lower()] if isinstance(n, Note)]
+            return item.name if len(same) == 1 else item.key
+        same = [a for a in self._by_name[item.name.lower()] if isinstance(a, Attachment)]
+        return item.name if len(same) == 1 else str(item.path)
+
     def link_choices(self):
         """Notes proposées dans l'éditeur, avec le texte à insérer entre [[ ]]."""
-        choices = []
-        for note in self.sorted_notes():
-            # Le nom seul suffit, sauf si plusieurs notes portent le même nom.
-            unique = len([n for n in self._by_name[note.name.lower()] if isinstance(n, Note)]) == 1
-            choices.append({
-                "link": note.name if unique else note.key,
-                "title": note.title,
-                "folder": note.folder,
-                "aliases": note.aliases,
-            })
-        return choices
+        return [
+            {"link": self.link_for(note), "title": note.title, "folder": note.folder, "aliases": note.aliases}
+            for note in self.sorted_notes()
+        ]
+
+    def attachment_choices(self, suffixes):
+        """Pièces jointes intégrables (images, PDF...) proposées après ![[ dans l'éditeur."""
+        found = [a for a in self.attachments.values() if a.suffix in suffixes]
+        return [
+            {"link": self.link_for(a), "folder": str(a.path.parent) if a.path.parent.parts else "", "url": a.url}
+            for a in sorted(found, key=lambda a: str(a.path).lower())
+        ]
+
+    def attachment_folder(self, note_key):
+        """Dossier où ranger une image collée dans une note, réglé comme dans
+        Obsidian (``attachmentFolderPath`` de ``.obsidian/app.json``) : racine du
+        coffre par défaut, ``./`` pour le dossier de la note, ``./sous-dossier``
+        ou un chemin depuis la racine."""
+        try:
+            config = json.loads((self.root / ".obsidian" / "app.json").read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            config = {}
+        setting = config.get("attachmentFolderPath") if isinstance(config, dict) else None
+        setting = str(setting or "/").strip()
+        note_folder = note_key.rpartition("/")[0]
+        if setting == "." or setting.startswith("./"):
+            folder = f"{note_folder}/{setting[2:]}"
+        else:
+            folder = setting
+        return clean_key(folder) or ""
 
     def render(self, note):
         """HTML de la note (mis en cache jusqu'à la prochaine modification du coffre)."""

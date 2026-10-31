@@ -12,6 +12,7 @@ from pathlib import Path
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.contrib.sessions.models import Session
+from django.core.files.uploadedfile import SimpleUploadedFile
 from django.core.management import call_command
 from django.test import Client, TestCase, override_settings
 
@@ -120,10 +121,10 @@ class AccessControlTests(SecurityTestCase):
     PRIVATE_URLS = [
         "/", "/wiki/Accueil", "/wiki/XSS", "/sommaire/", "/tags/", "/tags/tag", "/recherche/?q=secret",
         "/fichiers/image.png", "/fichiers/qcm/piege.json", "/qcm/", "/qcm/jouer/?set=qcm/piege",
-        "/qcm/stats/", "/nouvelle/", "/modifier/Accueil", "/compte/", "/compte/mot-de-passe/",
+        "/qcm/stats/", "/nouvelle/", "/importer/", "/modifier/Accueil", "/compte/", "/compte/mot-de-passe/",
         "/utilisateurs/", "/api/status/",
     ]
-    PRIVATE_POSTS = ["/apercu/X", "/qcm/reponse/", "/qcm/reinitialiser/", "/modifier/Accueil",
+    PRIVATE_POSTS = ["/apercu/X", "/qcm/reponse/", "/qcm/reinitialiser/", "/modifier/Accueil", "/importer/",
                      f"/utilisateurs/1/"]
 
     def test_anonymous_gets_nothing(self):
@@ -162,6 +163,10 @@ class PrivilegeEscalationTests(SecurityTestCase):
         self.assertEqual(c.post("/modifier/Nouvelle", {"content": "x", "version": ""}).status_code, 403)
         self.assertEqual(c.get("/nouvelle/").status_code, 403)
         self.assertEqual(c.post("/apercu/X", {"content": "x"}).status_code, 403)
+        self.assertEqual(c.get("/importer/").status_code, 403)
+        upload = SimpleUploadedFile("Pirate.md", b"pirate")
+        self.assertEqual(c.post("/importer/", {"fichiers": [upload]}).status_code, 403)
+        self.assertEqual(c.post("/importer/", {"fichiers": [upload], "pour_note": "Accueil"}).status_code, 403)
         self.assertEqual(c.get("/utilisateurs/").status_code, 403)
         self.assertEqual(c.post(f"/utilisateurs/{self.user.pk}/", {"action": "promote"}).status_code, 403)
         self.assertEqual(c.post("/utilisateurs/", {"username": "x", "role": "admin",
@@ -170,6 +175,7 @@ class PrivilegeEscalationTests(SecurityTestCase):
         self.assertFalse(self.user.is_staff)
         self.assertIn("CONFIDENTIEL", (self.root / "Accueil.md").read_text(encoding="utf-8"))
         self.assertFalse((self.root / "Nouvelle.md").exists())
+        self.assertFalse((self.root / "Pirate.md").exists())
 
     def test_profile_form_cannot_set_role(self):
         # Aucune vue ne permet à un utilisateur de modifier ses propres champs is_staff/is_superuser.
@@ -279,6 +285,54 @@ class PathTraversalTests(SecurityTestCase):
         self.assertEqual(written, set())
 
 
+class UploadTests(SecurityTestCase):
+    """L'import de fichiers n'écrit que des notes et des médias, et seulement dans le coffre."""
+
+    def upload(self, files, **extra):
+        c = self.as_user(self.admin)
+        data = {"fichiers": [SimpleUploadedFile(name.rsplit("/", 1)[-1], body) for name, body in files],
+                "chemins": [name for name, _ in files], **extra}
+        return c.post("/importer/", data, HTTP_ACCEPT="application/json").json()
+
+    def test_dangerous_files_refused(self):
+        results = self.upload([
+            ("page.html", b"<script>alert(1)</script>"), ("x.js", b"alert(1)"), ("qcm/piege.json", b"{}"),
+            ("x.py", b"import os"), ("x.svgz", b"x"), ("sans-extension", b"x"),
+        ])["results"]
+        self.assertEqual([r["ok"] for r in results], [False] * 6)
+        self.assertFalse((self.root / "page.html").exists())
+        self.assertEqual(json.loads((self.root / "qcm" / "piege.json").read_text(encoding="utf-8")), QUIZ)
+
+    def test_write_outside_vault(self):
+        paths = ["../pirate.md", "a/../../pirate.md", "C:/pirate.md", "..\\pirate.md",
+                 ".obsidian/pirate.md", ".trash/pirate.md", "a/.git/pirate.md"]
+        results = self.upload([(p, b"x") for p in paths])["results"]
+        self.assertFalse(any(r["ok"] for r in results), results)
+        self.assertEqual({p.name for p in self.root.parent.rglob("pirate*")}, set())
+        for folder in ["../dehors", ".obsidian", "a/../..", "a:b"]:
+            with self.subTest(folder=folder):
+                response = self.as_user(self.admin).post(
+                    "/importer/", {"fichiers": [SimpleUploadedFile("n.md", b"x")], "dossier": folder}, HTTP_ACCEPT="application/json")
+                self.assertEqual(response.status_code, 400)
+        self.assertEqual({p.name for p in self.root.parent.rglob("n.md")}, set())
+
+    def test_symlinked_folder_outside_vault(self):
+        try:
+            os.symlink(self.root.parent, self.root / "lien")
+        except (OSError, NotImplementedError):
+            self.skipTest("liens symboliques non disponibles sur ce système")
+        results = self.upload([("lien/pirate.md", b"x")])["results"]
+        self.assertFalse(results[0]["ok"])
+        self.assertFalse((self.root.parent / "pirate.md").exists())
+
+    def test_uploaded_svg_not_executed(self):
+        svg = b'<svg xmlns="http://www.w3.org/2000/svg" onload="alert(1)"><script>alert(2)</script></svg>'
+        self.assertTrue(self.upload([("dessin.svg", svg)])["results"][0]["ok"])
+        response = self.as_user(self.user).get("/fichiers/dessin.svg")
+        self.assertIn("sandbox", response["Content-Security-Policy"])
+        self.assertIn("attachment", response["Content-Disposition"])
+
+
 class CSRFTests(SecurityTestCase):
     """Un site tiers ne peut pas faire agir un utilisateur connecté à son insu."""
 
@@ -288,6 +342,7 @@ class CSRFTests(SecurityTestCase):
         for url, data in [("/modifier/Accueil", {"content": "piraté", "version": ""}),
                           (f"/utilisateurs/{self.user.pk}/", {"action": "promote"}),
                           ("/qcm/reinitialiser/", {"set": "qcm/piege"}),
+                          ("/importer/", {"fichiers": [SimpleUploadedFile("Csrf.md", b"x")]}),
                           ("/deconnexion/", {})]:
             with self.subTest(url=url):
                 self.assertEqual(c.post(url, data).status_code, 403)

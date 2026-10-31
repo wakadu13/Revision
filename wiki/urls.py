@@ -15,6 +15,7 @@ urlpatterns = [
     path("documentation/", views.documentation, name="documentation"),
     path("documentation/<slug:doc>/", views.documentation, name="documentation_doc"),
     path("nouvelle/", views.new, name="new"),
+    path("importer/", views.import_files, name="import"),
     path("modifier/<path:path>", views.edit, name="edit"),
     path("apercu/<path:path>", views.preview, name="preview"),
     path("qcm/", quiz_views.index, name="quiz_index"),

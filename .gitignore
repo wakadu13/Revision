@@ -197,3 +197,6 @@ staticfiles/
 # Fichiers système macOS (Finder, AppleDouble)
 .DS_Store
 ._*
+
+# Dépendances de construction de l'éditeur (editeur/)
+node_modules/

@@ -3,38 +3,73 @@
 {% block title %}{% if is_new %}Nouvelle page{% else %}Modifier{% endif %} · {{ key }}{% endblock %}
 {% block content %}
 <article class="note editor">
-  <p class="breadcrumb">{% if is_new %}Nouvelle page{% else %}Modification{% endif %}</p>
-  <h1 class="note-title">{{ key }}</h1>
+  <p class="breadcrumb">{% if is_new %}Nouvelle page{% else %}Modification{% endif %}{% for part in folders %} · {{ part }}{% endfor %}</p>
+  <h1 class="note-title">{{ name }}</h1>
   {% if error %}
   <div class="callout" data-callout="danger"><div class="callout-title">{{ error }}</div></div>
   {% endif %}
-  <form method="post" id="editor-form" data-preview-url="{{ preview_url }}">
+  <form method="post" id="editor-form" data-preview-url="{{ preview_url }}" data-import-url="{{ import_url }}" data-note-key="{{ key }}" data-note-name="{{ name }}">
     {% csrf_token %}
     <input type="hidden" name="version" value="{{ version }}">
-    <div class="toolbar" role="toolbar" aria-label="Mise en forme">
-      <button type="button" class="button primary" data-action="page-link" title="Ctrl+K">Lien vers une page</button>
-      <button type="button" class="button" data-action="web-link">Lien web</button>
+    <div class="toolbar" role="toolbar" aria-label="Mise en forme" hidden>
+      <div class="toolbar-group">
+        <button type="button" class="button primary" data-action="page-link" title="Lien vers une page (Ctrl+K, ou tapez [[)">[[ Lien ]]</button>
+        <button type="button" class="button" data-action="web-link" title="Lien web">Lien web</button>
+        <button type="button" class="button" data-action="attach" title="Insérer une image ou un fichier (vous pouvez aussi la coller ou la glisser dans le texte)">Image</button>
+      </div>
       <span class="toolbar-sep"></span>
-      <button type="button" class="button" data-action="bold" title="Gras (Ctrl+B)"><b>G</b></button>
-      <button type="button" class="button" data-action="italic" title="Italique (Ctrl+I)"><i>I</i></button>
-      <button type="button" class="button" data-action="highlight" title="Surligner"><mark>S</mark></button>
-      <button type="button" class="button" data-action="heading" title="Titre de section">Titre</button>
-      <button type="button" class="button" data-action="list" title="Liste à puces">Liste</button>
-      <button type="button" class="button" data-action="task" title="Case à cocher">☐ Tâche</button>
-      <button type="button" class="button" data-action="callout" title="Encadré">Encadré</button>
+      <div class="toolbar-group">
+        <button type="button" class="button" data-action="bold" title="Gras (Ctrl+B)"><b>G</b></button>
+        <button type="button" class="button" data-action="italic" title="Italique (Ctrl+I)"><i>I</i></button>
+        <button type="button" class="button" data-action="strike" title="Barré"><s>B</s></button>
+        <button type="button" class="button" data-action="highlight" title="Surligner (Ctrl+Maj+H)"><mark>S</mark></button>
+        <button type="button" class="button" data-action="code" title="Code (Ctrl+Maj+C)"><code>&lt;/&gt;</code></button>
+      </div>
+      <span class="toolbar-sep"></span>
+      <div class="toolbar-group">
+        <button type="button" class="button" data-action="heading" title="Titre : un clic de plus pour descendre d'un niveau">Titre</button>
+        <button type="button" class="button" data-action="list" title="Liste à puces">Liste</button>
+        <button type="button" class="button" data-action="task" title="Case à cocher (Ctrl+Entrée pour la cocher)">☐</button>
+        <button type="button" class="button" data-action="callout" title="Encadré (callout)">Encadré</button>
+        <button type="button" class="button" data-action="table" title="Tableau">Tableau</button>
+        <button type="button" class="button" data-action="codeblock" title="Bloc de code">{ }</button>
+      </div>
       <span class="toolbar-fill"></span>
-      <button type="button" class="button" data-action="preview" aria-pressed="false">Aperçu</button>
+      <div class="segmented" role="radiogroup" aria-label="Mode d'affichage">
+        <button type="button" class="button" role="radio" data-mode="live" aria-checked="true" title="Aperçu en direct : la mise en forme s'affiche pendant la saisie, la syntaxe réapparaît sur la ligne en cours">Édition</button>
+        <button type="button" class="button" role="radio" data-mode="source" aria-checked="false" title="Source : le Markdown brut">Source</button>
+        <button type="button" class="button" role="radio" data-mode="reading" aria-checked="false" title="Lecture : la page telle qu'elle sera publiée (Ctrl+E)">Lecture</button>
+      </div>
+      <details class="toolbar-menu">
+        <summary class="button" title="Ouvrir, télécharger ou importer des fichiers .md">Fichier ▾</summary>
+        <div class="menu" role="menu">
+          <button type="button" role="menuitem" data-action="open-md">Ouvrir un fichier .md…</button>
+          <button type="button" role="menuitem" data-action="download-md">Télécharger la page en .md</button>
+          <a role="menuitem" href="{{ import_url }}">Importer des fichiers .md…</a>
+        </div>
+      </details>
+      <button type="button" class="button" data-action="focus" aria-pressed="false" title="Masquer les panneaux latéraux">⤢</button>
     </div>
     <div class="editor-area">
       <textarea name="content" id="editor" rows="22" spellcheck="true" autofocus
-        placeholder="Écrivez ici. Pour ajouter un lien, cliquez sur « Lien vers une page » ou tapez [[">{{ content }}</textarea>
-      <ul class="suggestions" role="listbox" hidden></ul>
+        placeholder="Écrivez ici en Markdown.">{{ content }}</textarea>
+      <div class="editor-cm" hidden></div>
       <div class="markdown preview" hidden></div>
     </div>
-    <div class="editor-actions">
-      <button type="submit" class="button primary">Enregistrer</button>
-      <a class="button" href="{% if note %}{{ note.url }}{% else %}{% url 'wiki:home' %}{% endif %}">Annuler</a>
+    <div class="editor-footer">
+      <div class="editor-actions">
+        <button type="button" class="button primary" data-action="save" title="Enregistrer sans quitter (Ctrl+S)" hidden>Enregistrer</button>
+        <button type="submit" class="button" data-submit>Enregistrer et fermer</button>
+        <a class="button" href="{% if note %}{{ note.url }}{% else %}{% url 'wiki:home' %}{% endif %}">Fermer</a>
+      </div>
+      <div class="editor-status" hidden>
+        <label class="editor-autosave" title="Enregistre tout seul quelques secondes après la dernière frappe, comme Obsidian"><input type="checkbox" data-autosave> Enregistrement auto</label>
+        <span class="editor-count" data-count></span>
+        <span class="editor-state" data-state aria-live="polite"></span>
+      </div>
     </div>
+    <input type="file" accept=".md,.markdown,.txt,text/markdown,text/plain" hidden data-md-input>
+    <input type="file" accept="image/*,.pdf,audio/*,video/*" multiple hidden data-attach-input>
   </form>
 </article>
 
@@ -63,17 +98,36 @@
   </div>
 </dialog>
 
+<dialog id="open-md-dialog" class="dialog">
+  <h2>Ouvrir <span data-md-name></span></h2>
+  <p>La page contient déjà du texte. Que faire du contenu de ce fichier ?</p>
+  <div class="dialog-actions">
+    <button type="button" class="button" data-close>Annuler</button>
+    <button type="button" class="button" data-md-choice="insert">Insérer au curseur</button>
+    <button type="button" class="button primary" data-md-choice="replace">Remplacer tout</button>
+  </div>
+</dialog>
+
 {{ link_choices|json_script:"link-choices" }}
+{{ attachment_choices|json_script:"attachment-choices" }}
+<script src="{% static 'wiki/vendor/codemirror.min.js' %}" defer></script>
 <script src="{% static 'wiki/editor.js' %}" defer></script>
 {% endblock %}
 {% block aside %}
 <section class="panel">
-  <h2>Mémo</h2>
+  <h2>Plan</h2>
+  <nav class="outline" data-outline><p class="muted">Les titres de la page apparaîtront ici.</p></nav>
+</section>
+<section class="panel">
+  <h2>Raccourcis</h2>
   <ul class="memo">
-    <li><b>Lien vers une page</b> : choisissez la page dans la liste. Si elle n'existe pas encore, le lien permettra de la créer.</li>
-    <li>Tapez <kbd>[[</kbd> dans le texte pour voir les pages proposées, puis <kbd>Entrée</kbd>.</li>
-    <li>Sélectionnez un mot avant de cliquer sur un bouton pour l'utiliser comme texte du lien.</li>
-    <li><kbd>Ctrl</kbd>+<kbd>S</kbd> enregistre la page.</li>
+    <li>Tapez <kbd>[[</kbd> pour lier une page, <kbd>![[</kbd> pour intégrer une image ou une note.</li>
+    <li><kbd>Ctrl</kbd>+clic sur un lien l'ouvre dans un nouvel onglet.</li>
+    <li><kbd>Ctrl</kbd>+<kbd>S</kbd> enregistre, <kbd>Ctrl</kbd>+<kbd>E</kbd> bascule en lecture.</li>
+    <li><kbd>Ctrl</kbd>+<kbd>B</kbd> / <kbd>I</kbd> gras, italique · <kbd>Ctrl</kbd>+<kbd>K</kbd> lien · <kbd>Ctrl</kbd>+<kbd>Entrée</kbd> coche une tâche.</li>
+    <li><kbd>Ctrl</kbd>+<kbd>F</kbd> rechercher et remplacer · <kbd>Tab</kbd> indente une liste.</li>
+    <li>Collez ou glissez une image dans le texte : elle est ajoutée au coffre. Glissez un <code>.md</code> pour insérer son contenu.</li>
   </ul>
+  <p><a href="{% url 'wiki:import' %}">Importer des fichiers .md →</a></p>
 </section>
 {% endblock %}

@@ -1,7 +1,10 @@
+import json
 import tempfile
 from pathlib import Path
+from unittest import mock
 
 from django.contrib.auth import get_user_model
+from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase, override_settings
 
 from .vault import get_vault
@@ -129,6 +132,35 @@ class EditorTests(WikiTestCase):
         response = self.client.post("/apercu/X", {"content": "[[Unique]] **gras**"})
         self.assertContains(response, 'href="/wiki/Unique"')
         self.assertContains(response, "<strong>gras</strong>")
+
+    def test_save_without_leaving_editor(self):
+        """Ctrl+S dans l'éditeur : réponse JSON avec la nouvelle version, sans redirection."""
+        json_post = lambda data: self.client.post("/modifier/Dossier/Note", data, HTTP_ACCEPT="application/json")
+        response = json_post({"content": "un\r\n", "version": ""})
+        self.assertEqual(response.status_code, 200)
+        file = self.root / "Dossier/Note.md"
+        self.assertEqual(file.read_text(encoding="utf-8"), "un\n")
+        self.assertEqual(response.json(), {"version": str(file.stat().st_mtime_ns), "url": "/wiki/Dossier/Note"})
+        response = json_post({"content": "deux", "version": response.json()["version"]})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(file.read_text(encoding="utf-8"), "deux")
+        # Version périmée (page modifiée ailleurs) : 409, fichier intact.
+        response = json_post({"content": "écrasé", "version": "0"})
+        self.assertEqual(response.status_code, 409)
+        self.assertIn("modifiée ailleurs", response.json()["error"])
+        self.assertEqual(file.read_text(encoding="utf-8"), "deux")
+
+    def test_editor_lists_attachments(self):
+        self.write("Note.md", "")
+        self.write("img/schéma.png", "")
+        self.write("autre/schéma.png", "")
+        self.write("doc.pdf", "")
+        self.write("qcm/set.json", "{}")
+        response = self.client.get("/modifier/Note")
+        self.assertContains(response, 'src="/static/wiki/vendor/codemirror.min.js"')
+        files = response.context["attachment_choices"]
+        self.assertEqual([f["link"] for f in files], ["autre/schéma.png", "doc.pdf", "img/schéma.png"])
+        self.assertEqual(files[1]["url"], "/fichiers/doc.pdf")
 
     def test_new_page_form(self):
         self.write("Dossier/Existante.md", "")
@@ -795,3 +827,116 @@ class AppareilTests(TestCase):
         autre = get_user_model().objects.create_user("bob", password="y")
         a, _ = JetonAppareil.creer(autre)
         self.assertEqual(self.client.post(f"/compte/appareils/{a.pk}/revoquer/").status_code, 404)
+
+
+class ImportTests(WikiTestCase):
+    """Import de notes .md et de pièces jointes depuis le navigateur."""
+
+    def setUp(self):
+        super().setUp()
+        self.admin = get_user_model().objects.create_user("admin", password="x", is_staff=True)
+        self.client.force_login(self.admin)
+
+    def upload(self, files, json_reply=True, follow=False, **extra):
+        data = {
+            "fichiers": [SimpleUploadedFile(name.rsplit("/", 1)[-1], body) for name, body in files],
+            "chemins": [name for name, _ in files],
+            **extra,
+        }
+        headers = {"HTTP_ACCEPT": "application/json"} if json_reply else {}
+        return self.client.post("/importer/", data, follow=follow, **headers)
+
+    def test_page_reserved_to_admins(self):
+        self.assertContains(self.client.get("/importer/"), "data-md-import")
+        self.assertContains(self.client.get("/sommaire/"), "Importer des .md")
+        self.client.force_login(self.reader)
+        self.assertEqual(self.client.get("/importer/").status_code, 403)
+        self.assertEqual(self.upload([("a.md", b"x")]).status_code, 403)
+        self.assertFalse((self.root / "a.md").exists())
+
+    def test_import_folder_keeps_structure(self):
+        response = self.upload([
+            ("Coffre/Cours.md", "# Cours\r\nVoir [[Annexe]] et ![[schéma.png]]".encode("utf-8-sig")),
+            ("Coffre/Sous/Annexe.markdown", b"Annexe"),
+            ("Coffre/Sous/schéma.png", b"PNG"),
+            ("Coffre/.obsidian/app.json", b"{}"),
+        ], dossier="Importés")
+        results = response.json()["results"]
+        self.assertEqual([r["ok"] for r in results], [True, True, True, False])
+        self.assertTrue(results[3]["ignored"])
+        self.assertEqual(results[0]["path"], "Importés/Coffre/Cours.md")
+        self.assertEqual(results[0]["url"], "/wiki/Import%C3%A9s/Coffre/Cours")
+        self.assertEqual(results[1]["path"], "Importés/Coffre/Sous/Annexe.md")
+        self.assertEqual(results[2]["link"], "schéma.png")
+        # BOM retiré, fins de ligne normalisées.
+        self.assertEqual((self.root / "Importés/Coffre/Cours.md").read_text(encoding="utf-8"),
+                         "# Cours\nVoir [[Annexe]] et ![[schéma.png]]")
+        self.assertFalse((self.root / "Importés/Coffre/.obsidian").exists())
+        html = self.html("Importés/Coffre/Cours")
+        self.assertIn('href="/wiki/Import%C3%A9s/Coffre/Sous/Annexe"', html)
+        self.assertIn('src="/fichiers/Import%C3%A9s/Coffre/Sous/sch%C3%A9ma.png"', html)
+
+    def test_refused_files(self):
+        with mock.patch("wiki.uploads.MAX_NOTE_SIZE", 10):
+            results = self.upload([
+                ("page.html", b"<script></script>"),
+                ("latin1.md", "é".encode("latin-1")),
+                ("gros.md", b"x" * 11),
+                ("a:b.md", b"x"),
+                ("../dehors.md", b"x"),
+            ]).json()["results"]
+        self.assertEqual([r["ok"] for r in results], [False] * 5)
+        self.assertIn("type de fichier", results[0]["message"])
+        self.assertIn("UTF-8", results[1]["message"])
+        self.assertIn("volumineux", results[2]["message"])
+        self.assertIn("interdits", results[3]["message"])
+        self.assertEqual(list(self.root.iterdir()), [])
+        # Un fichier porte le nom d'un dossier du chemin : refus, pas d'erreur serveur.
+        self.write("Fichier.md", "x")
+        result = self.upload([("Fichier.md/dedans.md", b"x")]).json()["results"][0]
+        self.assertFalse(result["ok"])
+        self.assertEqual(self.upload([]).status_code, 400)
+
+    def test_existing_file_kept_unless_replace(self):
+        self.write("Dossier/Note.md", "ancien")
+        result = self.upload([("note.md", b"nouveau")], dossier="dossier").json()["results"][0]
+        self.assertFalse(result["ok"])
+        self.assertIn("existe déjà", result["message"])
+        self.assertEqual((self.root / "Dossier/Note.md").read_text(encoding="utf-8"), "ancien")
+        # « Remplacer » : le fichier existant est écrasé, même à une casse près (pas de doublon).
+        result = self.upload([("note.md", b"nouveau")], dossier="dossier", remplacer="1").json()["results"][0]
+        self.assertTrue(result["ok"])
+        self.assertEqual(result["path"], "Dossier/Note.md")
+        self.assertEqual((self.root / "Dossier/Note.md").read_text(encoding="utf-8"), "nouveau")
+        self.assertEqual([p.name for p in self.root.rglob("*.md")], ["Note.md"])
+
+    def test_form_without_javascript(self):
+        response = self.upload([("Seule.md", b"x")], json_reply=False)
+        self.assertRedirects(response, "/wiki/Seule")
+        response = self.upload([("Une.md", b"x"), ("Deux.md", b"x"), ("x.exe", b"x")], json_reply=False, follow=True)
+        self.assertRedirects(response, "/importer/")
+        self.assertContains(response, "2 fichiers importés")
+        self.assertContains(response, "x.exe : type de fichier non accepté")
+
+    def test_pasted_image_goes_to_obsidian_attachment_folder(self):
+        self.write("Cours/Note.md", "")
+        self.write(".obsidian/app.json", json.dumps({"attachmentFolderPath": "./images"}))
+        first = self.upload([("Pasted image 1.png", b"1")], pour_note="Cours/Note").json()["results"][0]
+        second = self.upload([("Pasted image 1.png", b"2")], pour_note="Cours/Note").json()["results"][0]
+        self.assertEqual(first["path"], "Cours/images/Pasted image 1.png")
+        self.assertEqual(second["path"], "Cours/images/Pasted image 1 1.png")
+        self.assertIn("sous le nom", second["message"])
+        self.assertEqual(second["link"], "Pasted image 1 1.png")
+        self.assertEqual(second["url"], "/fichiers/Cours/images/Pasted%20image%201%201.png")
+        self.assertEqual((self.root / "Cours/images/Pasted image 1.png").read_bytes(), b"1")
+
+    def test_attachment_folder_setting(self):
+        vault = get_vault()
+        self.assertEqual(vault.attachment_folder("Cours/Note"), "")  # pas de réglage : racine, comme Obsidian
+        for setting, expected in [("/", ""), ("./", "Cours"), ("./img", "Cours/img"), ("Pièces jointes", "Pièces jointes"),
+                                  ("../hors", ""), (".cache", "")]:
+            with self.subTest(setting=setting):
+                self.write(".obsidian/app.json", json.dumps({"attachmentFolderPath": setting}))
+                self.assertEqual(vault.attachment_folder("Cours/Note"), expected)
+        self.write(".obsidian/app.json", "pas du JSON")
+        self.assertEqual(vault.attachment_folder("Note"), "")

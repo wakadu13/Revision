@@ -28,7 +28,8 @@
         <li><a href="{% url 'wiki:tags' %}">Tags</a></li>
         <li><a href="{% url 'wiki:quiz_index' %}">QCM</a></li>
         <li><a href="{% url 'wiki:documentation' %}">Documentation</a></li>
-        {% if can_edit %}<li><a href="{% url 'wiki:new' %}">+ Nouvelle page</a></li>{% endif %}
+        {% if can_edit %}<li><a href="{% url 'wiki:new' %}">+ Nouvelle page</a></li>
+        <li><a href="{% url 'wiki:import' %}">↥ Importer des .md</a></li>{% endif %}
       </ul>
       {% endif %}
       <div class="account">

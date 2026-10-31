@@ -1,0 +1,54 @@
+{% extends "wiki/base.html" %}
+{% load static %}
+{% block title %}Importer des fichiers{% endblock %}
+{% block content %}
+<article class="note">
+  <h1 class="note-title">Importer des fichiers .md</h1>
+  <p>Chaque note <code>.md</code> déposée devient une page du wiki. Déposez un dossier entier
+    (un coffre Obsidian, par exemple) pour garder ses sous-dossiers : les images, PDF, sons et
+    vidéos qu'il contient sont importés avec, et les liens <code>[[…]]</code> continuent de marcher.</p>
+  <form class="md-import" method="post" enctype="multipart/form-data" data-md-import>
+    {% csrf_token %}
+    <label class="quiz-dropzone" data-dropzone>
+      <input type="file" name="fichiers" accept=".md,.markdown,image/*,.pdf,audio/*,video/*" multiple hidden data-import-files>
+      <b>Glissez-déposez vos fichiers .md ou un dossier ici</b>
+      <span class="muted">ou cliquez pour choisir des fichiers</span>
+    </label>
+    <div class="md-import-options">
+      <button type="button" class="button small" data-pick-folder hidden>Choisir un dossier…</button>
+      <input type="file" multiple hidden webkitdirectory data-import-folder>
+      <label>Dossier de destination
+        <input type="text" name="dossier" list="import-folders" value="{{ folder }}" placeholder="(racine du wiki)" autocomplete="off">
+      </label>
+      <datalist id="import-folders">{% for f in folders %}<option value="{{ f }}">{% endfor %}</datalist>
+      <label class="quiz-import-check"><input type="checkbox" name="remplacer" value="1"> Remplacer les fichiers existants</label>
+    </div>
+    <div class="md-import-summary" data-summary hidden>
+      <p data-summary-text></p>
+      <ul class="md-import-list" data-pending></ul>
+      <div class="editor-actions">
+        <button type="submit" class="button primary" data-start>Importer</button>
+        <button type="button" class="button" data-clear>Annuler</button>
+      </div>
+    </div>
+    <noscript><div class="editor-actions"><button type="submit" class="button primary">Importer</button></div></noscript>
+  </form>
+  <section class="md-import-results" data-results hidden>
+    <h2>Résultat</h2>
+    <p data-results-text></p>
+    <ul class="md-import-list" data-results-list></ul>
+  </section>
+</article>
+<script src="{% static 'wiki/import.js' %}" defer></script>
+{% endblock %}
+{% block aside %}
+<section class="panel">
+  <h2>Bon à savoir</h2>
+  <ul class="memo">
+    <li>Un fichier qui existe déjà n'est pas écrasé, sauf si « Remplacer » est coché.</li>
+    <li>Les dossiers cachés (<code>.obsidian</code>, <code>.trash</code>) sont ignorés.</li>
+    <li>Acceptés : notes <code>.md</code> (jusqu'à {{ max_note }} Mo), images, PDF, audio et vidéo (jusqu'à {{ max_attachment }} Mo).</li>
+    <li>Pour remplacer le texte d'une seule page, ouvrez-la avec « Modifier » puis « Ouvrir un .md ».</li>
+  </ul>
+</section>
+{% endblock %}

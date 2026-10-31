@@ -50,6 +50,43 @@ Syntaxe prise en charge (voir la page d'exemple `vault/Guide/Syntaxe Obsidian.md
 Un lien vers une page inexistante s'affiche en pointillés ; il suffit de créer
 le fichier `.md` correspondant pour qu'il devienne actif.
 
+### Éditeur dans le navigateur (admins)
+
+Le bouton **Modifier** d'une page (ou <kbd>Ctrl</kbd>+<kbd>E</kbd>) ouvre un
+éditeur façon Obsidian, construit sur [CodeMirror 6](https://codemirror.net) comme
+Obsidian lui-même :
+
+- **Édition** (aperçu en direct) : la mise en forme s'affiche pendant la saisie
+  (titres, gras, liens, cases à cocher cliquables, images, encadrés colorés) et la
+  syntaxe Markdown ne réapparaît que sur la ligne en cours ; **Source** : le
+  Markdown brut ; **Lecture** : la page telle qu'elle sera publiée ;
+- `[[` propose les pages (alias compris), `![[` les images et fichiers du coffre ;
+  <kbd>Ctrl</kbd>+clic ouvre un lien dans un nouvel onglet ;
+- <kbd>Ctrl</kbd>+<kbd>S</kbd> enregistre sans quitter la page (enregistrement
+  automatique en option), avec détection des modifications faites ailleurs ;
+- une image **collée** ou **glissée** dans le texte est ajoutée au coffre et
+  intégrée (`![[Pasted image ….png]]`), rangée comme dans Obsidian (réglage
+  « Dossier des pièces jointes » de `.obsidian/app.json`, racine par défaut) ;
+- menu **Fichier** : ouvrir un `.md` de son ordinateur (remplace le texte ou
+  s'insère au curseur ; on peut aussi glisser le fichier dans le texte) et
+  télécharger la page en `.md` ;
+- plan de la page cliquable, compteur de mots, recherche et remplacement
+  (<kbd>Ctrl</kbd>+<kbd>F</kbd>), mode plein écran (⤢).
+
+Les bibliothèques de l'éditeur sont regroupées dans
+`wiki/static/wiki/vendor/codemirror.min.js` (servies par le site, sans CDN). Pour
+les mettre à jour : voir [`editeur/README.md`](editeur/README.md).
+
+### Importer des fichiers .md (admins)
+
+**↥ Importer des .md** dans la barre latérale (`/importer/`) : glisser-déposer
+des notes `.md`, ou un **dossier entier** (un coffre Obsidian par ex.) dont les
+sous-dossiers, images, PDF, sons et vidéos sont importés avec. On choisit le
+dossier de destination ; un fichier existant n'est remplacé que si « Remplacer »
+est coché. Les dossiers cachés (`.obsidian`, `.trash`) et les autres types de
+fichiers (HTML, scripts…) sont ignorés. Limites : 5 Mo par note, 50 Mo par
+pièce jointe (derrière nginx, augmenter `client_max_body_size`).
+
 ## QCM de révision
 
 Le wiki intègre un module de QCM (repris de
@@ -121,7 +158,8 @@ Mesures en place :
   avec contrôle d'intégrité (SRI) ; les fichiers HTML/SVG du coffre sont
   téléchargés, jamais exécutés.
 - **Fichiers** : impossible de lire ou d'écrire hors du coffre (`..`, liens
-  symboliques, chemins absolus).
+  symboliques, chemins absolus). L'import n'accepte que des notes `.md` (texte
+  UTF-8) et des médias (images, PDF, audio, vidéo), jamais dans `.obsidian`.
 - **CSRF, clickjacking, HTTPS** : jetons CSRF, `X-Frame-Options: DENY`, HTTPS
   forcé + HSTS 1 an, cookies `Secure`/`HttpOnly`/`SameSite` en production.
 - **Secrets hors de Git** : la clé secrète vient de `DJANGO_SECRET_KEY`, sinon
@@ -165,6 +203,8 @@ en-têtes) sont dans [`core/tests.py`](core/tests.py) :
 
 - `/` : page d'accueil du wiki
 - `/wiki/<chemin>` : une note
+- `/modifier/<chemin>` : éditeur d'une note (admins) ; `/nouvelle/` : nouvelle page
+- `/importer/` : import de fichiers `.md` et de leurs pièces jointes (admins)
 - `/sommaire/` : sommaire de toutes les notes
 - `/tags/` et `/tags/<tag>` : les tags
 - `/recherche/?q=...` : recherche plein texte (insensible aux accents)
