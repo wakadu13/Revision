@@ -10,4 +10,7 @@
   {% for n in node.notes %}
   <li class="sommaire-note"><a href="{{ n.url }}">{{ n.title }}</a></li>
   {% endfor %}
+  {% for f in node.files %}
+  <li class="sommaire-note"><a href="{{ f.view_url }}">{{ f.path.stem }}</a><span class="file-badge">PDF</span></li>
+  {% endfor %}
 </ul>

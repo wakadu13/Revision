@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.12.0/styles/github.min.css" integrity="sha384-eFTL69TLRZTkNfYZOLM+G04821K1qZao/4QLJbet1pP4tcF+fdXq/9CdqAbWRl/L" crossorigin="anonymous" media="(prefers-color-scheme: light)">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.12.0/styles/github-dark.min.css" integrity="sha384-wH75j6z1lH97ZOpMOInqhgKzFkAInZPPSPlZpYKYTOqsaizPvhQZmAtLcPKXpLyH" crossorigin="anonymous" media="(prefers-color-scheme: dark)">
   <script src="{% static 'wiki/wiki.js' %}" defer></script>
+  {% block head %}{% endblock %}
 </head>
 <body>
   <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden>
@@ -29,7 +30,7 @@
         <li><a href="{% url 'wiki:quiz_index' %}">QCM</a></li>
         <li><a href="{% url 'wiki:documentation' %}">Documentation</a></li>
         {% if can_edit %}<li><a href="{% url 'wiki:new' %}">+ Nouvelle page</a></li>
-        <li><a href="{% url 'wiki:import' %}">↥ Importer des .md</a></li>{% endif %}
+        <li><a href="{% url 'wiki:import' %}">↥ Importer (.md, PDF)</a></li>{% endif %}
       </ul>
       {% endif %}
       <div class="account">

@@ -19,7 +19,7 @@ from .vault import IGNORED_DIRS, INVALID_NAME_RE
 NOTE_EXTS = {".md", ".markdown"}
 ATTACHMENT_EXTS = IMAGE_EXTS | AUDIO_EXTS | VIDEO_EXTS | {".pdf"}
 MAX_NOTE_SIZE = 5 * 1024 * 1024
-MAX_ATTACHMENT_SIZE = 50 * 1024 * 1024
+MAX_ATTACHMENT_SIZE = 100 * 1024 * 1024  # PDF scannés compris
 FORBIDDEN_CHARS = '/ \\ : * ? " < > | # ^ [ ]'
 
 
@@ -147,7 +147,7 @@ def finish(vault, results):
         else:
             item = vault.attachments.get(result.path.lower())
             if item is not None:
-                result.url = item.url
+                result.url = item.view_url
         if item is not None:
             result.link = vault.link_for(item)
     return results

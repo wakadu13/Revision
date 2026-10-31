@@ -219,7 +219,7 @@ def import_files(request):
     for r in results:
         if not r.ok and not r.ignored:
             messages.error(request, f"{r.name} : {r.message}")
-    if len(done) == 1 and done[0].is_note and done[0].url:
+    if len(done) == 1 and done[0].url and (done[0].is_note or done[0].path.lower().endswith(".pdf")):
         return redirect(done[0].url)
     return redirect("wiki:import")
 
@@ -231,6 +231,26 @@ INLINE_TYPES = {
     ".png", ".jpg", ".jpeg", ".gif", ".webp", ".bmp", ".avif", ".pdf",
     ".mp3", ".wav", ".ogg", ".m4a", ".flac", ".webm", ".3gp", ".mp4", ".ogv", ".mov", ".mkv",
 }
+
+
+@xframe_options_sameorigin  # lecteur intégré dans les notes (iframe du même site)
+def pdf(request, path):
+    """Lecteur de PDF (PDF.js) : page complète, ou version compacte avec
+    ``?integre=1`` pour les ``![[cours.pdf]]`` des notes."""
+    vault = get_vault()
+    attachment = vault.attachments.get(path.lower())
+    if attachment is None or attachment.suffix != ".pdf":
+        raise Http404("PDF introuvable")
+    full = vault.root / attachment.path
+    context = {
+        "attachment": attachment,
+        "title": attachment.path.stem,
+        "size": full.stat().st_size if full.is_file() else 0,
+    }
+    if request.GET.get("integre") == "1":
+        return render(request, "wiki/pdf_integre.html", context)
+    backlinks = sorted(vault.attachment_backlinks.get(str(attachment.path).lower(), ()), key=lambda n: n.title.lower())
+    return _render(request, vault, "wiki/pdf.html", {**context, "backlinks": backlinks})
 
 
 @xframe_options_sameorigin  # PDF intégrés dans les notes (iframe du même site)

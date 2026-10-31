@@ -160,7 +160,7 @@ class EditorTests(WikiTestCase):
         self.assertContains(response, 'src="/static/wiki/vendor/codemirror.min.js"')
         files = response.context["attachment_choices"]
         self.assertEqual([f["link"] for f in files], ["autre/schéma.png", "doc.pdf", "img/schéma.png"])
-        self.assertEqual(files[1]["url"], "/fichiers/doc.pdf")
+        self.assertEqual(files[1]["url"], "/pdf/doc.pdf")  # un PDF s'ouvre dans le lecteur
 
     def test_new_page_form(self):
         self.write("Dossier/Existante.md", "")
@@ -848,7 +848,7 @@ class ImportTests(WikiTestCase):
 
     def test_page_reserved_to_admins(self):
         self.assertContains(self.client.get("/importer/"), "data-md-import")
-        self.assertContains(self.client.get("/sommaire/"), "Importer des .md")
+        self.assertContains(self.client.get("/sommaire/"), "Importer (.md, PDF)")
         self.client.force_login(self.reader)
         self.assertEqual(self.client.get("/importer/").status_code, 403)
         self.assertEqual(self.upload([("a.md", b"x")]).status_code, 403)
@@ -918,6 +918,11 @@ class ImportTests(WikiTestCase):
         self.assertContains(response, "2 fichiers importés")
         self.assertContains(response, "x.exe : type de fichier non accepté")
 
+    def test_imported_pdf_opens_in_reader(self):
+        result = self.upload([("Poly.pdf", b"%PDF-1.4")], dossier="Cours").json()["results"][0]
+        self.assertEqual(result["url"], "/pdf/Cours/Poly.pdf")
+        self.assertRedirects(self.upload([("Autre.pdf", b"%PDF")], json_reply=False), "/pdf/Autre.pdf")
+
     def test_pasted_image_goes_to_obsidian_attachment_folder(self):
         self.write("Cours/Note.md", "")
         self.write(".obsidian/app.json", json.dumps({"attachmentFolderPath": "./images"}))
@@ -940,3 +945,54 @@ class ImportTests(WikiTestCase):
                 self.assertEqual(vault.attachment_folder("Cours/Note"), expected)
         self.write(".obsidian/app.json", "pas du JSON")
         self.assertEqual(vault.attachment_folder("Note"), "")
+
+
+class PdfReaderTests(WikiTestCase):
+    """Lecteur de PDF intégré (PDF.js) : page complète, intégration dans les notes, arborescence."""
+
+    def setUp(self):
+        super().setUp()
+        self.write("Cours/Réseau/Poly réseau.pdf", "%PDF-1.4")
+        self.write("Cours/Réseau/Fiche.md", "Support : [[Poly réseau.pdf]]\n\n![[Poly réseau.pdf#page=3]]\n\n![[Poly réseau.pdf]]")
+
+    def test_reader_page(self):
+        response = self.client.get("/pdf/Cours/Réseau/Poly réseau.pdf")
+        self.assertContains(response, 'data-src="/fichiers/Cours/R%C3%A9seau/Poly%20r%C3%A9seau.pdf"')
+        self.assertContains(response, 'src="/static/wiki/lecteur_pdf.js"')
+        self.assertContains(response, "vendor/pdfjs/pdf.worker.min.js")
+        self.assertContains(response, "pdf_viewer.min.css")
+        self.assertContains(response, "<h1 class=\"note-title\">Poly réseau</h1>", html=False)
+        # Rétroliens : les notes qui citent le PDF ; arborescence : le PDF, marqué actif.
+        self.assertEqual([n.name for n in response.context["backlinks"]], ["Fiche"])
+        self.assertContains(response, 'class="tree-note tree-file active"')
+        # Insensible à la casse, comme les liens du wiki.
+        self.assertEqual(self.client.get("/pdf/cours/réseau/poly réseau.pdf").status_code, 200)
+
+    def test_embedded_reader(self):
+        response = self.client.get("/pdf/Cours/Réseau/Poly réseau.pdf?integre=1")
+        self.assertTemplateUsed(response, "wiki/pdf_integre.html")
+        self.assertContains(response, "is-embedded")
+        self.assertContains(response, 'target="_top"')
+        self.assertNotContains(response, 'class="sidebar"')
+        self.assertEqual(response["X-Frame-Options"], "SAMEORIGIN")
+
+    def test_not_a_pdf(self):
+        self.write("image.png", "x")
+        self.assertEqual(self.client.get("/pdf/image.png").status_code, 404)
+        self.assertEqual(self.client.get("/pdf/absent.pdf").status_code, 404)
+        self.assertEqual(self.client.get("/pdf/Cours/Réseau/Fiche.md").status_code, 404)
+
+    def test_links_and_embeds_in_notes(self):
+        html = self.html("Cours/Réseau/Fiche")
+        self.assertIn('<a class="internal-link" href="/pdf/Cours/R%C3%A9seau/Poly%20r%C3%A9seau.pdf">Poly réseau.pdf</a>', html)
+        self.assertIn('src="/pdf/Cours/R%C3%A9seau/Poly%20r%C3%A9seau.pdf?integre=1#page=3"', html)
+        self.assertIn('src="/pdf/Cours/R%C3%A9seau/Poly%20r%C3%A9seau.pdf?integre=1"', html)
+        self.assertIn("allowfullscreen", html)
+
+    def test_pdfs_listed_in_tree_and_sommaire(self):
+        tree = get_vault().tree
+        cours = next(f for f in tree["folders"] if f["name"] == "Cours")
+        reseau = cours["folders"][0]
+        self.assertEqual([f.name for f in reseau["files"]], ["Poly réseau.pdf"])
+        self.assertEqual(reseau["count"], 2)
+        self.assertContains(self.client.get("/sommaire/"), 'href="/pdf/Cours/R%C3%A9seau/Poly%20r%C3%A9seau.pdf"')

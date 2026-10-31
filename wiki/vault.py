@@ -137,6 +137,11 @@ class Attachment:
     def url(self):
         return reverse("wiki:file", args=[str(self.path)])
 
+    @cached_property
+    def view_url(self):
+        """Adresse pour consulter le fichier : le lecteur intégré pour un PDF."""
+        return reverse("wiki:pdf", args=[str(self.path)]) if self.suffix == ".pdf" else self.url
+
 
 @dataclass(eq=False)
 class Note:
@@ -257,6 +262,7 @@ class Vault:
                 self._by_name[path.name.lower()].append(attachment)
 
         self.backlinks = defaultdict(set)  # clé de note -> notes qui la citent
+        self.attachment_backlinks = defaultdict(set)  # chemin de pièce jointe -> notes qui la citent
         self.unresolved = defaultdict(set)  # cible inexistante -> notes qui la citent
         self.tags = defaultdict(set)  # tag (et ses parents) -> notes
         for note in self.notes.values():
@@ -265,6 +271,8 @@ class Vault:
                 if isinstance(found, Note):
                     if found is not note:
                         self.backlinks[found.key.lower()].add(note)
+                elif isinstance(found, Attachment):
+                    self.attachment_backlinks[str(found.path).lower()].add(note)
                 elif found is None:
                     self.unresolved[target.lower()].add(note)
             for tag in note.tags:
@@ -328,22 +336,31 @@ class Vault:
     def all_tags(self):
         return sorted(((tag, len(notes)) for tag, notes in self.tags.items()), key=lambda t: t[0])
 
+    def pdfs(self):
+        return sorted((a for a in self.attachments.values() if a.suffix == ".pdf"), key=lambda a: str(a.path).lower())
+
     @cached_property
     def tree(self):
-        """Arborescence des notes pour la barre latérale."""
-        root = {"name": "", "path": "", "folders": {}, "notes": []}
-        for note in self.sorted_notes():
+        """Arborescence des notes (et des PDF, lisibles dans le wiki) pour la barre latérale."""
+        root = {"name": "", "path": "", "folders": {}, "notes": [], "files": []}
+
+        def folder(parts):
             node = root
-            for part in note.folders:
+            for part in parts:
                 node = node["folders"].setdefault(
                     part,
-                    {"name": part, "path": f"{node['path']}{part}/", "folders": {}, "notes": []},
+                    {"name": part, "path": f"{node['path']}{part}/", "folders": {}, "notes": [], "files": []},
                 )
-            node["notes"].append(note)
+            return node
+
+        for note in self.sorted_notes():
+            folder(note.folders)["notes"].append(note)
+        for pdf in self.pdfs():
+            folder(pdf.path.parent.parts)["files"].append(pdf)
 
         def freeze(node):
             node["folders"] = [freeze(f) for _, f in sorted(node["folders"].items(), key=lambda i: i[0].lower())]
-            node["count"] = len(node["notes"]) + sum(f["count"] for f in node["folders"])
+            node["count"] = len(node["notes"]) + len(node["files"]) + sum(f["count"] for f in node["folders"])
             return node
 
         return freeze(root)
@@ -376,7 +393,7 @@ class Vault:
         """Pièces jointes intégrables (images, PDF...) proposées après ![[ dans l'éditeur."""
         found = [a for a in self.attachments.values() if a.suffix in suffixes]
         return [
-            {"link": self.link_for(a), "folder": str(a.path.parent) if a.path.parent.parts else "", "url": a.url}
+            {"link": self.link_for(a), "folder": str(a.path.parent) if a.path.parent.parts else "", "url": a.view_url}
             for a in sorted(found, key=lambda a: str(a.path).lower())
         ]
 

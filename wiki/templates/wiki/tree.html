@@ -10,4 +10,7 @@
   {% for n in node.notes %}
   <li><a class="tree-note{% if n == note %} active{% endif %}" href="{{ n.url }}">{{ n.name }}</a></li>
   {% endfor %}
+  {% for f in node.files %}
+  <li><a class="tree-note tree-file{% if f == attachment %} active{% endif %}" href="{{ f.view_url }}" title="{{ f.name }}">{{ f.path.stem }}<span class="file-badge">PDF</span></a></li>
+  {% endfor %}
 </ul>

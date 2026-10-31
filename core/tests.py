@@ -98,6 +98,7 @@ class SecurityTestCase(TestCase):
         (self.root / "piege.html").write_text("<script>alert(document.cookie)</script>", encoding="utf-8")
         (self.root / "piege.svg").write_text('<svg xmlns="http://www.w3.org/2000/svg" onload="alert(1)"/>', encoding="utf-8")
         (self.root / "image.png").write_bytes(b"\x89PNG\r\n\x1a\n")
+        (self.root / "cours.pdf").write_bytes(b"%PDF-1.4\n%%EOF\n")
         (self.root / "qcm").mkdir()
         (self.root / "qcm" / "piege.json").write_text(json.dumps(QUIZ), encoding="utf-8")
         (Path(tmp.name) / "secret.txt").write_text("HORS-DU-COFFRE", encoding="utf-8")
@@ -120,7 +121,8 @@ class AccessControlTests(SecurityTestCase):
 
     PRIVATE_URLS = [
         "/", "/wiki/Accueil", "/wiki/XSS", "/sommaire/", "/tags/", "/tags/tag", "/recherche/?q=secret",
-        "/fichiers/image.png", "/fichiers/qcm/piege.json", "/qcm/", "/qcm/jouer/?set=qcm/piege",
+        "/fichiers/image.png", "/fichiers/qcm/piege.json", "/pdf/cours.pdf", "/pdf/cours.pdf?integre=1",
+        "/qcm/", "/qcm/jouer/?set=qcm/piege",
         "/qcm/stats/", "/nouvelle/", "/importer/", "/modifier/Accueil", "/compte/", "/compte/mot-de-passe/",
         "/utilisateurs/", "/api/status/",
     ]
@@ -430,6 +432,18 @@ class ConfigurationTests(SecurityTestCase):
         self.assertNotIn("django-insecure", settings.SECRET_KEY)
         self.assertGreaterEqual(len(settings.SECRET_KEY), 50)
         self.assertNotIn("*", settings.ALLOWED_HOSTS)
+
+    def test_pdf_reader_only_framed_by_the_site(self):
+        c = self.as_user(self.user)
+        for url in ["/pdf/cours.pdf", "/pdf/cours.pdf?integre=1"]:
+            with self.subTest(url=url):
+                response = c.get(url)
+                self.assertEqual(response["X-Frame-Options"], "SAMEORIGIN")
+                self.assertIn("frame-ancestors 'self'", response["Content-Security-Policy"])
+        # Le lecteur n'ouvre que des PDF du coffre.
+        for path in ["piege.html", "piege.svg", "qcm/piege.json", "../secret.txt", "..%2fsecret.txt", "absent.pdf"]:
+            with self.subTest(path=path):
+                self.assertEqual(c.get(f"/pdf/{path}").status_code, 404)
 
     def test_security_headers(self):
         response = self.as_user(self.user).get("/wiki/Accueil")

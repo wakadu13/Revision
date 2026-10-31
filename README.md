@@ -73,19 +73,32 @@ Obsidian lui-même :
 - plan de la page cliquable, compteur de mots, recherche et remplacement
   (<kbd>Ctrl</kbd>+<kbd>F</kbd>), mode plein écran (⤢).
 
-Les bibliothèques de l'éditeur sont regroupées dans
-`wiki/static/wiki/vendor/codemirror.min.js` (servies par le site, sans CDN). Pour
-les mettre à jour : voir [`editeur/README.md`](editeur/README.md).
+### Importer des fichiers .md et des PDF (admins)
 
-### Importer des fichiers .md (admins)
+**↥ Importer (.md, PDF)** dans la barre latérale (`/importer/`) : glisser-déposer
+des notes `.md`, des PDF, ou un **dossier entier** (un coffre Obsidian par ex.)
+dont les sous-dossiers, images, PDF, sons et vidéos sont importés avec. On
+choisit le dossier de destination ; un fichier existant n'est remplacé que si
+« Remplacer » est coché. Les dossiers cachés (`.obsidian`, `.trash`) et les
+autres types de fichiers (HTML, scripts…) sont ignorés. Limites : 5 Mo par note,
+100 Mo par pièce jointe (derrière nginx, augmenter `client_max_body_size`).
 
-**↥ Importer des .md** dans la barre latérale (`/importer/`) : glisser-déposer
-des notes `.md`, ou un **dossier entier** (un coffre Obsidian par ex.) dont les
-sous-dossiers, images, PDF, sons et vidéos sont importés avec. On choisit le
-dossier de destination ; un fichier existant n'est remplacé que si « Remplacer »
-est coché. Les dossiers cachés (`.obsidian`, `.trash`) et les autres types de
-fichiers (HTML, scripts…) sont ignorés. Limites : 5 Mo par note, 50 Mo par
-pièce jointe (derrière nginx, augmenter `client_max_body_size`).
+### Lire les PDF dans le wiki
+
+Les PDF du coffre s'ouvrent dans un lecteur intégré (`/pdf/<chemin>`, construit
+sur [PDF.js](https://mozilla.github.io/pdf.js/) de Mozilla) qui marche aussi sur
+téléphone : défilement continu, zoom (aussi <kbd>Ctrl</kbd>+molette), recherche
+dans le texte sans tenir compte des accents, sommaire du document, plein écran,
+reprise à la dernière page lue, téléchargement.
+
+- Les PDF apparaissent dans l'arborescence de la barre latérale et dans le sommaire.
+- Dans une note : `[[cours.pdf]]` est un lien vers le lecteur, `![[cours.pdf]]`
+  affiche le lecteur dans la page et `![[cours.pdf#page=3]]` l'ouvre à la page 3.
+- La page d'un PDF liste les notes qui le citent (rétroliens).
+
+Les bibliothèques de l'éditeur et du lecteur sont regroupées dans
+`wiki/static/wiki/vendor/` (servies par le site, sans CDN). Pour les mettre à
+jour : voir [`bibliotheques/README.md`](bibliotheques/README.md).
 
 ## QCM de révision
 
@@ -204,7 +217,8 @@ en-têtes) sont dans [`core/tests.py`](core/tests.py) :
 - `/` : page d'accueil du wiki
 - `/wiki/<chemin>` : une note
 - `/modifier/<chemin>` : éditeur d'une note (admins) ; `/nouvelle/` : nouvelle page
-- `/importer/` : import de fichiers `.md` et de leurs pièces jointes (admins)
+- `/importer/` : import de fichiers `.md`, de PDF et de pièces jointes (admins)
+- `/pdf/<chemin>` : lecteur de PDF (`?integre=1` : version intégrée dans les notes)
 - `/sommaire/` : sommaire de toutes les notes
 - `/tags/` et `/tags/<tag>` : les tags
 - `/recherche/?q=...` : recherche plein texte (insensible aux accents)

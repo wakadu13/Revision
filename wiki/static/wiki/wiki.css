@@ -102,7 +102,7 @@ a:hover { text-decoration: underline; }
 .markdown .task-list-item input { margin: 0 .4rem 0 -1.3rem; }
 .markdown .footnote { font-size: .9rem; color: var(--muted); }
 .math-block { overflow-x: auto; margin: 1rem 0; text-align: center; }
-.embed-pdf { width: 100%; height: 70vh; border: 1px solid var(--border); border-radius: 6px; }
+.embed-pdf { width: 100%; height: 75vh; min-height: 24rem; border: 1px solid var(--border); border-radius: 6px; }
 
 .internal-link { text-decoration: underline; text-decoration-color: var(--accent-soft); text-underline-offset: 2px; }
 .internal-link.is-unresolved { color: var(--unresolved); text-decoration-style: dashed; }
@@ -471,3 +471,37 @@ table.quiz-stats form { margin: 0; }
 .md-import-list li { overflow-wrap: anywhere; }
 .md-import-list li.ok::marker { color: #16a34a; }
 .md-import-list li.ko { color: #dc2626; }
+
+/* Lecteur de PDF (PDF.js) */
+.pdf-page { max-width: 62rem; }
+.pdf-reader { display: flex; flex-direction: column; gap: .5rem; }
+.pdf-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .6rem; padding: .4rem; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-alt); font-size: .85rem; }
+.pdf-group { display: flex; flex-shrink: 0; align-items: center; gap: .25rem; }
+.pdf-toolbar .button { padding: .25rem .55rem; font-size: .85rem; }
+.pdf-toolbar .button:disabled { opacity: .45; cursor: default; }
+.pdf-toolbar input, .pdf-toolbar select { padding: .25rem .4rem; border: 1px solid var(--border); border-radius: 6px; background: var(--bg); color: var(--text); font: inherit; }
+.pdf-pagenum { display: flex; align-items: center; gap: .3rem; color: var(--muted); }
+.pdf-pagenum input { width: 3.6rem; text-align: right; }
+.pdf-find { flex: 1 1 12rem; flex-shrink: 1; }
+.pdf-toolbar select { min-width: 8.5rem; }
+.pdf-find input { flex: 1; min-width: 8rem; }
+.pdf-find-count { color: var(--muted); white-space: nowrap; font-size: .8rem; }
+.pdf-frame { position: relative; height: calc(100vh - 14rem); min-height: 22rem; }
+.pdf-scroll { --page-margin: 12px auto; --page-border: none; position: absolute; inset: 0; overflow: auto; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-alt); outline: none; }
+.pdf-scroll .pdfViewer .page { box-shadow: 0 1px 6px rgba(0, 0, 0, .18); }
+.pdf-status { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; margin: 0; padding: 1rem; color: var(--muted); text-align: center; pointer-events: none; }
+.pdf-status.is-error { color: #dc2626; pointer-events: auto; }
+.pdf-reader:fullscreen { padding: .5rem; background: var(--bg); }
+.pdf-reader:fullscreen .pdf-frame { flex: 1; height: auto; }
+.pdf-outline ul { list-style: none; margin: 0; padding: 0; }
+.pdf-outline ul ul { padding-left: .8rem; }
+.file-badge { display: inline-block; margin-left: .35rem; padding: 0 .35em; border-radius: 4px; background: var(--accent-soft); color: var(--accent); font-size: .65rem; font-weight: 700; letter-spacing: .03em; vertical-align: .1em; }
+.tree-file .file-badge { margin-left: .3rem; }
+body.pdf-embedded-body { margin: 0; height: 100vh; overflow: hidden; background: var(--bg); }
+.pdf-reader.is-embedded { height: 100vh; padding: .35rem; box-sizing: border-box; }
+.pdf-reader.is-embedded .pdf-frame { flex: 1; height: auto; min-height: 0; }
+.pdf-reader.is-embedded .pdf-find { flex-basis: 9rem; }
+@media (max-width: 760px) {
+  .pdf-frame { height: calc(100vh - 11rem); }
+  .pdf-toolbar select { min-width: 0; max-width: 7.5rem; }
+}

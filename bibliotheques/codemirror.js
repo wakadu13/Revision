@@ -2,7 +2,7 @@
 // globale « CM » et utilisées par wiki/static/wiki/editor.js.
 //
 // Après une modification de ce fichier ou une mise à jour des paquets :
-//   cd editeur && npm ci && npm run build
+//   cd bibliotheques && npm ci && npm run build
 // puis committer wiki/static/wiki/vendor/codemirror.min.js.
 
 import { StreamLanguage } from "@codemirror/language";

@@ -1,0 +1,13 @@
+{% load static %}<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }} · ProjetPluri</title>
+  <link rel="stylesheet" href="{% static 'wiki/wiki.css' %}">
+  <link rel="stylesheet" href="{% static 'wiki/vendor/pdfjs/pdf_viewer.min.css' %}">
+</head>
+<body class="pdf-embedded-body">
+  {% include "wiki/_pdf_lecteur.html" with integre=True %}
+</body>
+</html>

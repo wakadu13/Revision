@@ -8,6 +8,7 @@ urlpatterns = [
     path("", views.home, name="home"),
     path("wiki/<path:path>", views.page, name="page"),
     path("fichiers/<path:path>", views.file, name="file"),
+    path("pdf/<path:path>", views.pdf, name="pdf"),
     path("tags/", views.tags, name="tags"),
     path("tags/<path:tag>", views.tag, name="tag"),
     path("sommaire/", views.sommaire, name="sommaire"),

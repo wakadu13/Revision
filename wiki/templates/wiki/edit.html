@@ -15,7 +15,7 @@
       <div class="toolbar-group">
         <button type="button" class="button primary" data-action="page-link" title="Lien vers une page (Ctrl+K, ou tapez [[)">[[ Lien ]]</button>
         <button type="button" class="button" data-action="web-link" title="Lien web">Lien web</button>
-        <button type="button" class="button" data-action="attach" title="Insérer une image ou un fichier (vous pouvez aussi la coller ou la glisser dans le texte)">Image</button>
+        <button type="button" class="button" data-action="attach" title="Insérer une image ou un PDF, ajouté au coffre (vous pouvez aussi le coller ou le glisser dans le texte)">Image / PDF</button>
       </div>
       <span class="toolbar-sep"></span>
       <div class="toolbar-group">
@@ -126,7 +126,7 @@
     <li><kbd>Ctrl</kbd>+<kbd>S</kbd> enregistre, <kbd>Ctrl</kbd>+<kbd>E</kbd> bascule en lecture.</li>
     <li><kbd>Ctrl</kbd>+<kbd>B</kbd> / <kbd>I</kbd> gras, italique · <kbd>Ctrl</kbd>+<kbd>K</kbd> lien · <kbd>Ctrl</kbd>+<kbd>Entrée</kbd> coche une tâche.</li>
     <li><kbd>Ctrl</kbd>+<kbd>F</kbd> rechercher et remplacer · <kbd>Tab</kbd> indente une liste.</li>
-    <li>Collez ou glissez une image dans le texte : elle est ajoutée au coffre. Glissez un <code>.md</code> pour insérer son contenu.</li>
+    <li>Collez ou glissez une image ou un PDF dans le texte : il est ajouté au coffre (<code>![[cours.pdf]]</code> affiche le lecteur PDF dans la page). Glissez un <code>.md</code> pour insérer son contenu.</li>
   </ul>
   <p><a href="{% url 'wiki:import' %}">Importer des fichiers .md →</a></p>
 </section>
