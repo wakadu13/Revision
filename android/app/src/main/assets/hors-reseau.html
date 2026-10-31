@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#7852ee">
+  <title>Pas de connexion · ProjetPluri</title>
+  <link rel="stylesheet" href="web/wiki.css">
+  <link rel="stylesheet" href="appli.css">
+  <script src="hors-reseau.js" defer></script>
+</head>
+<body class="hl-body">
+  <main class="content hl appli-hors-reseau">
+    <h1 class="note-title" id="hr-titre">Le wiki ne répond pas</h1>
+    <p id="hr-message">Le serveur du wiki est injoignable. L'appareil doit être sur le même réseau que lui
+      (ou passer par un VPN). Les QCM téléchargés restent disponibles hors ligne.</p>
+    <div class="quiz-actions appli-actions">
+      <button type="button" class="button primary" id="hr-reessayer">Réessayer</button>
+      <a class="button" href="index.html">Réviser les QCM hors ligne</a>
+      <a class="button" href="connexion.html">Réglages</a>
+    </div>
+    <p class="muted" id="hr-adresse"></p>
+  </main>
+</body>
+</html>

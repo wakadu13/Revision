@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Base64;
+import android.webkit.CookieManager;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 
@@ -17,8 +18,12 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.function.IntConsumer;
 
 /**
  * Pont entre la page (window.QcmNatif) et le réseau.
@@ -27,6 +32,9 @@ import java.util.concurrent.Executors;
  * QcmReseau._fin(id, statut, type, location, corpsBase64) ; appli.js en fait une
  * Response, si bien que le code du wiki l'utilise comme fetch(). Le jeton
  * d'appareil (Authorization: Bearer) n'est ajouté que pour le serveur enregistré.
+ *
+ * L'objet est visible des pages locales seulement (QCM hors ligne, réglages) :
+ * quand la page affichée vient du serveur, ses méthodes ne font rien.
  */
 class Pont {
     private static final int DELAI_CONNEXION_MS = 8000;
@@ -36,6 +44,7 @@ class Pont {
     private final SharedPreferences prefs;
     private final ExecutorService reseau = Executors.newFixedThreadPool(4);
     private final Handler ui = new Handler(Looper.getMainLooper());
+    private volatile boolean locale = true;
 
     Pont(Context contexte, WebView vue) {
         this.vue = vue;
@@ -46,19 +55,86 @@ class Pont {
         reseau.shutdownNow();
     }
 
+    /** Appelé à chaque page : vrai pour les pages de l'application (assets). */
+    void pageLocale(boolean oui) {
+        locale = oui;
+    }
+
+    String adresse() {
+        return prefs.getString("serveur", "");
+    }
+
+    boolean aUnCompte() {
+        return !adresse().isEmpty() && !prefs.getString("jeton", "").isEmpty();
+    }
+
+    /**
+     * Échange le jeton contre une session du wiki (cookie mis dans la WebView).
+     * ``fin`` reçoit le statut HTTP sur le fil de l'interface (0 : serveur injoignable,
+     * 401 : jeton révoqué, alors oublié).
+     */
+    void ouvrirSession(IntConsumer fin) {
+        String serveur = adresse();
+        String jeton = prefs.getString("jeton", "");
+        reseau.execute(() -> {
+            int statut = 0;
+            List<String> recus = new ArrayList<>();
+            HttpURLConnection cnx = null;
+            try {
+                cnx = (HttpURLConnection) new URL(serveur + "/api/appareil/session/").openConnection();
+                cnx.setConnectTimeout(DELAI_CONNEXION_MS);
+                cnx.setReadTimeout(DELAI_LECTURE_MS);
+                cnx.setInstanceFollowRedirects(false);
+                cnx.setUseCaches(false);
+                cnx.setRequestMethod("POST");
+                cnx.setRequestProperty("Accept", "application/json");
+                cnx.setRequestProperty("Authorization", "Bearer " + jeton);
+                cnx.setDoOutput(true);
+                cnx.setFixedLengthStreamingMode(0);
+                cnx.getOutputStream().close();
+                statut = cnx.getResponseCode();
+                for (Map.Entry<String, List<String>> entete : cnx.getHeaderFields().entrySet()) {
+                    if (entete.getKey() != null && entete.getKey().equalsIgnoreCase("Set-Cookie")) recus.addAll(entete.getValue());
+                }
+                lire(statut >= 400 ? cnx.getErrorStream() : cnx.getInputStream());
+            } catch (Exception e) {
+                statut = 0;
+            } finally {
+                if (cnx != null) cnx.disconnect();
+            }
+            int resultat = statut;
+            ui.post(() -> {
+                if (resultat == 200) {
+                    CookieManager cookies = CookieManager.getInstance();
+                    for (String cookie : recus) cookies.setCookie(serveur, cookie);
+                    cookies.flush();
+                } else if (resultat == 401) {
+                    effacer();
+                }
+                fin.accept(resultat);
+            });
+        });
+    }
+
+    private void effacer() {
+        prefs.edit().remove("jeton").remove("joueur").apply();
+        CookieManager.getInstance().removeAllCookies(null);
+        CookieManager.getInstance().flush();
+    }
+
     @JavascriptInterface
     public String serveur() {
-        return prefs.getString("serveur", "");
+        return locale ? adresse() : "";
     }
 
     @JavascriptInterface
     public String joueur() {
-        return prefs.getString("joueur", "");
+        return locale ? prefs.getString("joueur", "") : "";
     }
 
     @JavascriptInterface
     public boolean connecte() {
-        return !prefs.getString("jeton", "").isEmpty();
+        return locale && !prefs.getString("jeton", "").isEmpty();
     }
 
     @JavascriptInterface
@@ -68,18 +144,24 @@ class Pont {
 
     @JavascriptInterface
     public void enregistrerCompte(String serveur, String jeton, String joueur) {
+        if (!locale) return;
         prefs.edit().putString("serveur", serveur).putString("jeton", jeton).putString("joueur", joueur).apply();
     }
 
-    /** Oublie le jeton ; l'adresse du serveur reste proposée à la prochaine connexion. */
+    /** Oublie le jeton et la session du wiki ; l'adresse du serveur reste proposée. */
     @JavascriptInterface
     public void oublierCompte() {
-        prefs.edit().remove("jeton").remove("joueur").apply();
+        if (!locale) return;
+        ui.post(this::effacer);
     }
 
     /** url : chemin du serveur (« /qcm/… ») ou adresse complète ; corps : JSON ou null. */
     @JavascriptInterface
     public void requete(String id, String methode, String url, String corps) {
+        if (!locale) {
+            rendre("QcmReseau._echec(" + JSONObject.quote(id) + ",\"réservé aux pages de l'application\")");
+            return;
+        }
         reseau.execute(() -> {
             HttpURLConnection cnx = null;
             try {

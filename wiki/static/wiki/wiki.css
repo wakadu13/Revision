@@ -522,3 +522,45 @@ body.pdf-embedded-body { margin: 0; height: 100vh; overflow: hidden; background:
 [data-callout="retenir"] { --callout: 0, 150, 160; }
 [data-callout="figure"] { --callout: 100, 116, 139; }
 .editor-notice { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1rem; margin: .5rem 0 0; padding: .55rem .8rem; border: 1px solid rgba(236, 117, 0, .5); border-radius: 8px; background: rgba(236, 117, 0, .08); font-size: .9rem; }
+
+/* Application Android (WebView, User-Agent « ProjetPluriApp/ ») : navigation tactile */
+.app-nav, .app-backdrop { display: none; }
+.app { -webkit-tap-highlight-color: rgba(120, 82, 238, .15); }
+.app .tree-note, .app .tree summary { padding: .42rem .5rem; }
+.app .nav-links a, .app .link-button { padding: .45rem .5rem; }
+.app .button { min-height: 2.5rem; }
+.app .button.small { min-height: 2.1rem; }
+.app .search input { padding: .6rem .7rem; font-size: 1rem; }
+.app [data-pick-folder] { display: none; }
+@media (max-width: 1099px) {
+  .app .app-nav { display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; align-items: stretch; height: 3.75rem; background: var(--bg); border-top: 1px solid var(--border); box-shadow: 0 -2px 12px rgba(0, 0, 0, .07); }
+  .app.editing .app-nav { display: none; }
+  .app:not(.editing) .content { padding-bottom: 5.5rem; }
+  .app:not(.editing) .aside { padding-bottom: 5.5rem; }
+}
+.app-nav-item { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .18rem; color: var(--muted); font-size: .72rem; line-height: 1.1; cursor: pointer; user-select: none; }
+.app-nav-item:hover { text-decoration: none; }
+.app-nav-item svg { width: 1.45rem; height: 1.45rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.app-nav-item.active, .app-nav-item:active { color: var(--accent); }
+.app-nav-item.active svg { stroke-width: 2.2; }
+@media (min-width: 761px) { .app .app-nav-browse { display: none; } }
+@media (max-width: 760px) {
+  .app .topbar .nav-button { display: none; }
+  .app .topbar { justify-content: center; }
+  .app .sidebar { display: block; position: fixed; top: 0; left: 0; bottom: 0; z-index: 30; width: min(85vw, 20rem); height: 100%; padding-bottom: 2rem; overflow-y: auto; border-right: 1px solid var(--border); box-shadow: 4px 0 20px rgba(0, 0, 0, .2); transform: translateX(-105%); transition: transform .22s ease; }
+  .app .sidebar > .brand { display: block; }
+  .app .nav-toggle:checked ~ .layout .sidebar { transform: none; }
+  .app .app-backdrop { display: block; position: fixed; inset: 0; z-index: 25; background: rgba(0, 0, 0, .35); opacity: 0; pointer-events: none; transition: opacity .2s; }
+  .app .nav-toggle:checked ~ .app-backdrop { opacity: 1; pointer-events: auto; }
+  .app:has(.nav-toggle:checked) { overflow: hidden; }
+  .app .pdf-frame { height: calc(100vh - 15rem); }
+}
+
+/* Téléphone : rien ne dépasse de l'écran (sinon le navigateur dézoome la page) */
+.search-big input, .quiz-search input { min-width: 0; }
+.quiz-category-name { min-width: 0; overflow-wrap: anywhere; }
+@media (max-width: 760px) {
+  .quiz-category > summary { gap: .5rem; }
+  .quiz-category-meta { white-space: normal; text-align: right; }
+  table.quiz-stats { display: block; overflow-x: auto; }
+}

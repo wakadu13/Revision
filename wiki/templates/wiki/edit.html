@@ -1,5 +1,6 @@
 {% extends "wiki/base.html" %}
 {% load static %}
+{% block body_class %}editing{% endblock %}
 {% block title %}{% if is_new %}Nouvelle page{% else %}Modifier{% endif %} · {{ key }}{% endblock %}
 {% block content %}
 <article class="note editor">

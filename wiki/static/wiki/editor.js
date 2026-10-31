@@ -1023,6 +1023,14 @@
   });
 
   function download() {
+    // Application Android : « Enregistrer sous » natif (la WebView ne télécharge pas les blob:).
+    if (window.AppliNatif && window.AppliNatif.enregistrer) {
+      const octets = new TextEncoder().encode(view.state.doc.toString());
+      let binaire = "";
+      for (let i = 0; i < octets.length; i += 0x8000) binaire += String.fromCharCode(...octets.subarray(i, i + 0x8000));
+      window.AppliNatif.enregistrer(`${noteName}.md`, "text/markdown", btoa(binaire));
+      return;
+    }
     const blob = new Blob([view.state.doc.toString()], { type: "text/markdown;charset=utf-8" });
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
