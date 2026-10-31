@@ -1,0 +1,515 @@
+{
+  "langue": "Italien",
+  "caracteres_speciaux": [
+    "à",
+    "è",
+    "é",
+    "ì",
+    "ò",
+    "ù"
+  ],
+  "titre": "Italien — grammaire : temps et modes",
+  "description": "Auxiliaire et accord, passato prossimo / imperfetto, futur, conditionnel, congiuntivo, gérondif, si impersonnel.",
+  "grammaire": [
+    {
+      "id": "it-temps-001",
+      "type": "TROU",
+      "question": "Ieri ___ (andare, io) al cinema con Luca.",
+      "reponses_texte": [
+        "sono andato",
+        "sono andata"
+      ],
+      "explication": "Verbes de mouvement / changement d'état → essere : sono andato / andata.",
+      "traduction": "Hier je suis allé au cinéma avec Luca."
+    },
+    {
+      "id": "it-temps-002",
+      "type": "TROU",
+      "question": "Abbiamo ___ (mangiare) benissimo in quella trattoria.",
+      "reponses_texte": [
+        "mangiato"
+      ],
+      "explication": "avere : participe invariable.",
+      "traduction": "Nous avons très bien mangé dans cette trattoria."
+    },
+    {
+      "id": "it-temps-003",
+      "type": "TROU",
+      "question": "Maria è ___ (partire) stamattina.",
+      "reponses_texte": [
+        "partita"
+      ],
+      "explication": "essere : accord avec le sujet (Maria → partita).",
+      "traduction": "Maria est partie ce matin."
+    },
+    {
+      "id": "it-temps-004",
+      "type": "TROU",
+      "question": "I ragazzi sono ___ (uscire) alle dieci.",
+      "reponses_texte": [
+        "usciti"
+      ],
+      "explication": "essere : masc. plur. → usciti.",
+      "traduction": "Les garçons sont sortis à dix heures."
+    },
+    {
+      "id": "it-temps-005",
+      "type": "TROU",
+      "question": "Stamattina Anna si è ___ (svegliare) tardi.",
+      "reponses_texte": [
+        "svegliata"
+      ],
+      "explication": "Pronominal → essere + accord : si è svegliata.",
+      "traduction": "Ce matin Anna s'est réveillée tard."
+    },
+    {
+      "id": "it-temps-006",
+      "type": "CORRECTION",
+      "phrase": "Ho andato al mare.",
+      "corrections": [
+        "Sono andato al mare.",
+        "Sono andata al mare."
+      ],
+      "explication": "andare → essere.",
+      "traduction": "Je suis allé à la mer."
+    },
+    {
+      "id": "it-temps-007",
+      "type": "CORRECTION",
+      "phrase": "Ieri ho stato malato.",
+      "corrections": [
+        "Ieri sono stato malato.",
+        "Ieri sono stata malata."
+      ],
+      "explication": "essere se conjugue avec essere : sono stato.",
+      "traduction": "Hier j'ai été malade."
+    },
+    {
+      "id": "it-temps-008",
+      "type": "TROU",
+      "question": "Il film ___ (finire, passato prossimo) alle undici.",
+      "reponses_texte": [
+        "è finito"
+      ],
+      "explication": "finire / cominciare : essere sans COD (il film è finito), avere avec COD (ho finito il libro).",
+      "traduction": "Le film s'est terminé à onze heures."
+    },
+    {
+      "id": "it-temps-009",
+      "type": "TROU",
+      "question": "Quanto ___ (costare, passato prossimo) la cena?",
+      "reponses_texte": [
+        "è costata"
+      ],
+      "explication": "costare → essere, accord avec le sujet (la cena).",
+      "traduction": "Combien a coûté le dîner ?"
+    },
+    {
+      "id": "it-temps-010",
+      "type": "TROU",
+      "question": "Mi ___ (piacere, passato prossimo) molto Venezia.",
+      "reponses_texte": [
+        "è piaciuta"
+      ],
+      "explication": "piacere → essere, accord avec Venezia (fém.).",
+      "traduction": "J'ai beaucoup aimé Venise."
+    },
+    {
+      "id": "it-temps-011",
+      "type": "TROU",
+      "question": "Quando ero piccolo, ___ (andare, io) al mare ogni estate.",
+      "reponses_texte": [
+        "andavo"
+      ],
+      "explication": "Habitude passée → imperfetto.",
+      "traduction": "Quand j'étais petit, j'allais à la mer chaque été."
+    },
+    {
+      "id": "it-temps-012",
+      "type": "TROU",
+      "question": "Mentre ___ (guardare, io) la TV, è suonato il telefono.",
+      "reponses_texte": [
+        "guardavo"
+      ],
+      "explication": "Action en cours (décor) → imperfetto ; événement ponctuel → passato prossimo.",
+      "traduction": "Pendant que je regardais la télé, le téléphone a sonné."
+    },
+    {
+      "id": "it-temps-013",
+      "type": "TROU",
+      "question": "Da bambina Giulia ___ (avere) i capelli lunghi.",
+      "reponses_texte": [
+        "aveva"
+      ],
+      "explication": "Description dans le passé → imperfetto.",
+      "traduction": "Petite, Giulia avait les cheveux longs."
+    },
+    {
+      "id": "it-temps-014",
+      "type": "TROU",
+      "question": "Ieri sera ___ (incontrare, io) Paolo per caso.",
+      "reponses_texte": [
+        "ho incontrato"
+      ],
+      "explication": "Événement ponctuel et terminé → passato prossimo.",
+      "traduction": "Hier soir j'ai rencontré Paolo par hasard."
+    },
+    {
+      "id": "it-temps-015",
+      "type": "QCM",
+      "question": "« Quand j'étais jeune, je jouais au foot » :",
+      "choix": [
+        "Quando sono stato giovane, ho giocato a calcio.",
+        "Quando ero giovane, giocavo a calcio.",
+        "Quando ero giovane, ho giocato a calcio ogni giorno.",
+        "Quando fui giovane, giocavo a calcio."
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Description + habitude → imperfetto, comme en français."
+    },
+    {
+      "id": "it-temps-016",
+      "type": "TROU",
+      "question": "Non ___ (potere, io, passato prossimo) venire alla festa.",
+      "reponses_texte": [
+        "sono potuto",
+        "sono potuta",
+        "ho potuto"
+      ],
+      "explication": "Modal + verbe à essere : on préfère essere (sono potuto venire), avere est admis.",
+      "traduction": "Je n'ai pas pu venir à la fête."
+    },
+    {
+      "id": "it-temps-017",
+      "type": "CORRECTION",
+      "phrase": "Ieri sera ho uscito con gli amici.",
+      "corrections": [
+        "Ieri sera sono uscito con gli amici.",
+        "Ieri sera sono uscita con gli amici."
+      ],
+      "explication": "uscire → essere.",
+      "traduction": "Hier soir je suis sorti avec des amis."
+    },
+    {
+      "id": "it-temps-018",
+      "type": "TROU",
+      "question": "Domani ___ (partire, noi) presto.",
+      "reponses_texte": [
+        "partiamo",
+        "partiremo"
+      ],
+      "explication": "Futur proche et sûr : le présent suffit souvent.",
+      "traduction": "Demain nous partons tôt."
+    },
+    {
+      "id": "it-temps-019",
+      "type": "TROU",
+      "question": "Non so dov'è Luca… ___ (essere) a casa.",
+      "reponses_texte": [
+        "sarà"
+      ],
+      "explication": "Futur de probabilité : sarà a casa = il doit être à la maison.",
+      "traduction": "Je ne sais pas où est Luca… il doit être chez lui."
+    },
+    {
+      "id": "it-temps-020",
+      "type": "TROU",
+      "question": "Che ore sono? Mah, ___ (essere) le tre.",
+      "reponses_texte": [
+        "saranno"
+      ],
+      "explication": "Supposition → futur : saranno le tre = il doit être trois heures.",
+      "traduction": "Quelle heure est-il ? Bof, il doit être trois heures."
+    },
+    {
+      "id": "it-temps-021",
+      "type": "TROU",
+      "question": "Quando ___ (arrivare, tu) a Roma, chiamami!",
+      "reponses_texte": [
+        "arriverai"
+      ],
+      "explication": "Après quando pour un moment futur → futur, comme en français.",
+      "traduction": "Quand tu arriveras à Rome, appelle-moi !"
+    },
+    {
+      "id": "it-temps-022",
+      "type": "TROU",
+      "question": "___ (volere, io) un caffè, per favore.",
+      "reponses_texte": [
+        "vorrei"
+      ],
+      "explication": "Politesse → condizionale : vorrei.",
+      "traduction": "Je voudrais un café, s'il vous plaît."
+    },
+    {
+      "id": "it-temps-023",
+      "type": "TROU",
+      "question": "Mi ___ (piacere, condizionale) visitare la Sicilia.",
+      "reponses_texte": [
+        "piacerebbe"
+      ],
+      "explication": "J'aimerais = mi piacerebbe.",
+      "traduction": "J'aimerais visiter la Sicile."
+    },
+    {
+      "id": "it-temps-024",
+      "type": "TROU",
+      "question": "___ (potere, Lei, condizionale) ripetere, per favore?",
+      "reponses_texte": [
+        "potrebbe"
+      ],
+      "explication": "Demande polie à Lei : potrebbe…?",
+      "traduction": "Pourriez-vous répéter, s'il vous plaît ?"
+    },
+    {
+      "id": "it-temps-025",
+      "type": "TROU",
+      "question": "Al tuo posto, ___ (andare, io) dal medico.",
+      "reponses_texte": [
+        "andrei"
+      ],
+      "explication": "Conseil → condizionale : andrei.",
+      "traduction": "À ta place, j'irais chez le médecin."
+    },
+    {
+      "id": "it-temps-026",
+      "type": "TROU",
+      "question": "Penso che Marco ___ (essere) stanco.",
+      "reponses_texte": [
+        "sia"
+      ],
+      "explication": "Penso / credo / mi sembra che + congiuntivo (opinion), contrairement au français.",
+      "traduction": "Je pense que Marco est fatigué."
+    },
+    {
+      "id": "it-temps-027",
+      "type": "TROU",
+      "question": "Spero che tu ___ (stare) meglio.",
+      "reponses_texte": [
+        "stia"
+      ],
+      "explication": "Sperare che + congiuntivo.",
+      "traduction": "J'espère que tu vas mieux."
+    },
+    {
+      "id": "it-temps-028",
+      "type": "TROU",
+      "question": "Voglio che voi ___ (venire) alla festa.",
+      "reponses_texte": [
+        "veniate"
+      ],
+      "explication": "Volere che + congiuntivo.",
+      "traduction": "Je veux que vous veniez à la fête."
+    },
+    {
+      "id": "it-temps-029",
+      "type": "TROU",
+      "question": "Bisogna che io ___ (andare) in banca.",
+      "reponses_texte": [
+        "vada"
+      ],
+      "explication": "Bisogna che / è necessario che + congiuntivo.",
+      "traduction": "Il faut que j'aille à la banque."
+    },
+    {
+      "id": "it-temps-030",
+      "type": "TROU",
+      "question": "Credo che ___ (avere, loro) ragione.",
+      "reponses_texte": [
+        "abbiano"
+      ],
+      "explication": "Credere che + congiuntivo.",
+      "traduction": "Je crois qu'ils ont raison."
+    },
+    {
+      "id": "it-temps-031",
+      "type": "TROU",
+      "question": "Benché ___ (piovere), usciamo lo stesso.",
+      "reponses_texte": [
+        "piova"
+      ],
+      "explication": "Benché / sebbene + congiuntivo.",
+      "traduction": "Bien qu'il pleuve, nous sortons quand même."
+    },
+    {
+      "id": "it-temps-032",
+      "type": "TROU",
+      "question": "È meglio che tu ___ (fare) attenzione.",
+      "reponses_texte": [
+        "faccia"
+      ],
+      "explication": "È meglio che + congiuntivo.",
+      "traduction": "Il vaut mieux que tu fasses attention."
+    },
+    {
+      "id": "it-temps-033",
+      "type": "CORRECTION",
+      "phrase": "Penso che è una buona idea.",
+      "corrections": [
+        "Penso che sia una buona idea."
+      ],
+      "explication": "Opinion → congiuntivo (piège du français « je pense que c'est »).",
+      "traduction": "Je pense que c'est une bonne idée."
+    },
+    {
+      "id": "it-temps-034",
+      "type": "CORRECTION",
+      "phrase": "Spero che vieni stasera.",
+      "corrections": [
+        "Spero che tu venga stasera.",
+        "Spero che venga stasera."
+      ],
+      "explication": "Sperare che + congiuntivo : tu venga.",
+      "traduction": "J'espère que tu viens ce soir."
+    },
+    {
+      "id": "it-temps-035",
+      "type": "TROU",
+      "question": "Se ___ (avere, io) più tempo, studierei di più.",
+      "reponses_texte": [
+        "avessi"
+      ],
+      "explication": "Hypothèse irréelle : se + congiuntivo imperfetto, puis condizionale.",
+      "traduction": "Si j'avais plus de temps, j'étudierais davantage."
+    },
+    {
+      "id": "it-temps-036",
+      "type": "CORRECTION",
+      "phrase": "Se avrei soldi, comprerei una casa.",
+      "corrections": [
+        "Se avessi soldi, comprerei una casa."
+      ],
+      "explication": "Jamais de conditionnel après se : se avessi.",
+      "traduction": "Si j'avais de l'argent, j'achèterais une maison."
+    },
+    {
+      "id": "it-temps-037",
+      "type": "TROU",
+      "question": "Se ___ (essere, io) in te, accetterei.",
+      "reponses_texte": [
+        "fossi"
+      ],
+      "explication": "Se fossi in te = si j'étais toi.",
+      "traduction": "Si j'étais toi, j'accepterais."
+    },
+    {
+      "id": "it-temps-038",
+      "type": "TROU",
+      "question": "Non disturbare, sto ___ (lavorare).",
+      "reponses_texte": [
+        "lavorando"
+      ],
+      "explication": "stare + gerundio = être en train de. -are → -ando, -ere / -ire → -endo.",
+      "traduction": "Ne dérange pas, je suis en train de travailler."
+    },
+    {
+      "id": "it-temps-039",
+      "type": "TROU",
+      "question": "Ragazzi, cosa state ___ (fare)?",
+      "reponses_texte": [
+        "facendo"
+      ],
+      "explication": "Gerundio de fare : facendo (radical fac-).",
+      "traduction": "Les gars, qu'est-ce que vous êtes en train de faire ?"
+    },
+    {
+      "id": "it-temps-040",
+      "type": "TROU",
+      "question": "Il treno sta ___ partire, sbrigati!",
+      "reponses_texte": [
+        "per"
+      ],
+      "explication": "stare per + infinitif = être sur le point de.",
+      "traduction": "Le train est sur le point de partir, dépêche-toi !"
+    },
+    {
+      "id": "it-temps-041",
+      "type": "TROU",
+      "question": "In Italia ___ (mangiare, si impersonale) molto bene.",
+      "reponses_texte": [
+        "si mangia"
+      ],
+      "explication": "Si impersonnel = « on » : si mangia bene.",
+      "traduction": "En Italie on mange très bien."
+    },
+    {
+      "id": "it-temps-042",
+      "type": "TROU",
+      "question": "Qui ___ (vendere, si) giornali stranieri?",
+      "reponses_texte": [
+        "si vendono"
+      ],
+      "explication": "Si + nom pluriel → verbe au pluriel : si vendono giornali.",
+      "traduction": "Ici, on vend des journaux étrangers ?"
+    },
+    {
+      "id": "it-temps-043",
+      "type": "TROU",
+      "question": "___ (sbagliare) s'impara.",
+      "reponses_texte": [
+        "sbagliando"
+      ],
+      "explication": "Gerundio = en …-ant : sbagliando = en se trompant.",
+      "traduction": "C'est en se trompant qu'on apprend."
+    },
+    {
+      "id": "it-temps-044",
+      "type": "QCM",
+      "question": "« Je viens de manger » :",
+      "choix": [
+        "Vengo di mangiare.",
+        "Ho appena mangiato.",
+        "Vengo a mangiare.",
+        "Sono venuto di mangiare."
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Passé récent : appena + passato prossimo. Vengo a mangiare = je viens (pour) manger."
+    },
+    {
+      "id": "it-temps-045",
+      "type": "QCM",
+      "question": "« Je suis en train de lire » :",
+      "choix": [
+        "Sono in treno di leggere.",
+        "Sto leggendo.",
+        "Sono leggendo.",
+        "Sto di leggere."
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "stare + gerundio. (Sono in treno = je suis dans le train !)"
+    },
+    {
+      "id": "it-temps-046",
+      "type": "ORDRE",
+      "phrase": "Non sono mai stato in Sicilia.",
+      "traduction": "Je ne suis jamais allé en Sicile.",
+      "explication": "mai se place entre l'auxiliaire et le participe."
+    },
+    {
+      "id": "it-temps-047",
+      "type": "ORDRE",
+      "phrase": "Se avessi tempo verrei con voi.",
+      "traduction": "Si j'avais le temps, je viendrais avec vous.",
+      "explication": "se + congiuntivo imperfetto, puis condizionale.",
+      "variantes": [
+        "Verrei con voi se avessi tempo."
+      ]
+    },
+    {
+      "id": "it-temps-048",
+      "type": "ORDRE",
+      "phrase": "Penso che abbia ragione lui.",
+      "traduction": "Je pense que c'est lui qui a raison.",
+      "explication": "Penso che + congiuntivo ; le sujet mis en relief va à la fin.",
+      "variantes": [
+        "Penso che lui abbia ragione."
+      ]
+    }
+  ]
+}

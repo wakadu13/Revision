@@ -1,0 +1,868 @@
+{
+  "titre": "Horizon — La France et ses Armées : institutions et statut",
+  "description": "Constitution, responsabilités de défense, LPM, organisation du ministère et droits et devoirs du militaire (Horizon 2026, ch. 1).",
+  "questions": [
+    {
+      "id": "hz-inst-001",
+      "type": "TROU",
+      "question": "Le SCA compte ___ ancrages : Terre, Mer, Air, Santé et DGA.",
+      "reponses_texte": [
+        "cinq",
+        "5"
+      ]
+    },
+    {
+      "id": "hz-inst-002",
+      "type": "TROU",
+      "question": "Selon l’Horizon, l’objectif de budget de défense fixé par la LPM a été atteint en 2025 avec ___ % du PIB.",
+      "reponses_texte": [
+        "2,5",
+        "2.5"
+      ]
+    },
+    {
+      "id": "hz-inst-003",
+      "type": "QCM",
+      "question": "Au-delà de quelle durée la prolongation d’une intervention des forces en opérations extérieures doit-elle être autorisée par le Parlement ?",
+      "choix": [
+        "2 mois",
+        "6 mois",
+        "4 mois",
+        "1 an"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-inst-004",
+      "type": "TROU",
+      "question": "Selon l’article 5, le Président de la République est le garant de l’indépendance nationale, de l’___ du territoire et du respect des traités.",
+      "reponses_texte": [
+        "intégrité"
+      ]
+    },
+    {
+      "id": "hz-inst-005",
+      "type": "QCM",
+      "question": "Quel article prévoit une nomination posthume ou exceptionnelle d’un militaire blessé ou mort en service ?",
+      "choix": [
+        "L4123-12",
+        "L4123-4",
+        "L4123-10",
+        "L4123-9"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-inst-006",
+      "type": "TROU",
+      "question": "Le Statut général des militaires actuel date de la loi n° 2005-270 du 24 ___ 2005.",
+      "reponses_texte": [
+        "mars"
+      ]
+    },
+    {
+      "id": "hz-inst-007",
+      "type": "QCR",
+      "question": "Quelles sont les missions de la Direction générale de l’armement (DGA) ?",
+      "choix": [
+        "Gérer la restauration des armées",
+        "Promouvoir les exportations de l’industrie militaire",
+        "Commander les opérations militaires",
+        "Préparer l’avenir des systèmes militaires français",
+        "Équiper les forces armées"
+      ],
+      "reponses": [
+        1,
+        3,
+        4
+      ],
+      "explication": "Vrai : B, D, E. Faux : A, C."
+    },
+    {
+      "id": "hz-inst-008",
+      "type": "QCR",
+      "question": "À quoi la rémunération du militaire est-elle liée (L4123-1) ?",
+      "choix": [
+        "Au lieu de naissance",
+        "À l’emploi",
+        "Au grade",
+        "À l’ancienneté du parent",
+        "Aux sujétions"
+      ],
+      "reponses": [
+        1,
+        2,
+        4
+      ],
+      "explication": "Vrai : B, C, E. Faux : A, D."
+    },
+    {
+      "id": "hz-inst-009",
+      "type": "QCM",
+      "question": "De quand date le Statut général des militaires actuel ?",
+      "choix": [
+        "Loi du 7 juin 2023",
+        "Ordonnance du 4 octobre 1958",
+        "Loi du 13 juillet 1972",
+        "Loi du 24 mars 2005"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Loi n° 2005-270 du 24 mars 2005."
+    },
+    {
+      "id": "hz-inst-010",
+      "type": "QCR",
+      "question": "Quels éléments caractérisent le contexte stratégique décrit par la RNS ?",
+      "choix": [
+        "La disparition des puissances émergentes",
+        "La simultanéité des crises",
+        "L’affaiblissement des cadres multilatéraux",
+        "L’accélération des bouleversements technologiques",
+        "Une menace terroriste durablement élevée"
+      ],
+      "reponses": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "explication": "Vrai : B, C, D, E. Faux : A. La RNS évoque au contraire l’affirmation militaire de puissances établies ou émergentes."
+    },
+    {
+      "id": "hz-inst-011",
+      "type": "TROU",
+      "question": "La Revue nationale stratégique 2025 fixe le cadre de la prochaine LPM et vise un effort de défense entre 3,5 et ___ % du PIB à l’horizon 2030.",
+      "reponses_texte": [
+        "5",
+        "cinq"
+      ]
+    },
+    {
+      "id": "hz-inst-012",
+      "type": "FLASHCARD",
+      "question": "Quel est le texte fondateur de la Ve République ?",
+      "verso": "La Constitution du 4 octobre 1958"
+    },
+    {
+      "id": "hz-inst-013",
+      "type": "FLASHCARD",
+      "question": "Que prévoit l’article L4121-1 du Code de la défense ?",
+      "verso": "Les militaires jouissent des droits et libertés des citoyens, sauf restrictions justifiées par les exigences du service."
+    },
+    {
+      "id": "hz-inst-014",
+      "type": "QCR",
+      "question": "Quelles compétences le Parlement détient-il en matière de défense ?",
+      "choix": [
+        "Déclarer la guerre",
+        "Approuver la ratification des traités",
+        "Nommer le CEMA",
+        "Proroger l’état de siège",
+        "Prolonger au-delà de 4 mois une intervention en OPEX"
+      ],
+      "reponses": [
+        0,
+        1,
+        3,
+        4
+      ],
+      "explication": "Vrai : A, B, D, E. Faux : C. La nomination aux emplois militaires relève du Président (art. 13)."
+    },
+    {
+      "id": "hz-inst-015",
+      "type": "FLASHCARD",
+      "question": "Que dit l’article 20 de la Constitution ?",
+      "verso": "Le gouvernement détermine et conduit la politique de la nation ; il dispose de l’administration et de la force armée ; il est responsable devant le Parlement."
+    },
+    {
+      "id": "hz-inst-016",
+      "type": "TROU",
+      "question": "Le CEMA dispose de l’état-major des Armées, désigné par le sigle ___.",
+      "reponses_texte": [
+        "EMA"
+      ]
+    },
+    {
+      "id": "hz-inst-017",
+      "type": "QCR",
+      "question": "Quels services appartiennent au premier cercle du renseignement français ?",
+      "choix": [
+        "SGA",
+        "DGSI",
+        "DRM",
+        "DGSE",
+        "DRSD",
+        "DGA"
+      ],
+      "reponses": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "explication": "Vrai : B, C, D, E. Faux : A, F."
+    },
+    {
+      "id": "hz-inst-018",
+      "type": "QCM",
+      "question": "Combien de bases de défense (BdD) la France compte-t-elle en métropole ?",
+      "choix": [
+        "60",
+        "45",
+        "90",
+        "9"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "60 en métropole et 9 outre-mer."
+    },
+    {
+      "id": "hz-inst-019",
+      "type": "TROU",
+      "question": "Un militaire élu à une élection passe en position de ___.",
+      "reponses_texte": [
+        "détachement"
+      ],
+      "explication": "Article L4121-3."
+    },
+    {
+      "id": "hz-inst-020",
+      "type": "QCM",
+      "question": "Qui exerce la direction générale et la direction militaire de la Défense (directives générales, conduite supérieure des opérations, coordination interministérielle) ?",
+      "choix": [
+        "Le ministre des Armées",
+        "Le CEMA",
+        "Le Président de la République",
+        "Le Premier ministre"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-inst-021",
+      "type": "QCM",
+      "question": "Combien de Livres blancs de la défense et de la sécurité nationale (LBDSN) y a-t-il eu ?",
+      "choix": [
+        "4",
+        "5",
+        "3",
+        "6"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "1972, 1994, 2008 et 2013."
+    },
+    {
+      "id": "hz-inst-022",
+      "type": "QCR",
+      "question": "Quelles affirmations sur le devoir de réserve sont exactes ?",
+      "choix": [
+        "C’est le mode d’expression des opinions qui est encadré",
+        "Il s’applique pendant et en dehors du temps de service",
+        "Il impose d’éviter tout comportement nuisant à la considération du service public",
+        "Il supprime la liberté d’opinion",
+        "Il ne s’applique qu’en opération"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Vrai : A, B, C. Faux : D, E."
+    },
+    {
+      "id": "hz-inst-023",
+      "type": "TROU",
+      "question": "Le Service du commissariat des armées, service interarmées, a été créé en ___.",
+      "reponses_texte": [
+        "2010"
+      ]
+    },
+    {
+      "id": "hz-inst-024",
+      "type": "FLASHCARD",
+      "question": "Que prévoit l’article L4122-1 sur l’obéissance ?",
+      "verso": "Obligation d’obéir aux ordres, mais interdiction d’exécuter un ordre manifestement illégal ou contraire au droit international."
+    },
+    {
+      "id": "hz-inst-025",
+      "type": "FLASHCARD",
+      "question": "Quel est le rôle d’une base de défense (BdD) ?",
+      "verso": "Regrouper les formations du ministère des Armées d’une zone en mutualisant les soutiens communs et spécialisés."
+    },
+    {
+      "id": "hz-inst-026",
+      "type": "TROU",
+      "question": "La France dispose de 60 bases de défense en métropole et de ___ outre-mer.",
+      "reponses_texte": [
+        "9",
+        "neuf"
+      ]
+    },
+    {
+      "id": "hz-inst-027",
+      "type": "QCM",
+      "question": "Selon l’article 5 de la Constitution, le Président de la République est le garant :",
+      "choix": [
+        "de l’indépendance nationale, de l’intégrité du territoire et du respect des traités",
+        "de la défense nationale et de la coordination interministérielle",
+        "de la préparation et de la mise en œuvre de la politique de défense",
+        "de la conduite de la politique de la nation"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Conduire la politique de la nation relève du gouvernement (art. 20) ; la défense nationale, du Premier ministre (art. 21)."
+    },
+    {
+      "id": "hz-inst-028",
+      "type": "FLASHCARD",
+      "question": "Quel rôle de conseil le CEMA exerce-t-il ?",
+      "verso": "Il est le conseiller militaire du gouvernement.",
+      "explication": "Placé sous l’autorité du Président de la République et du gouvernement, il dispose de l’EMA."
+    },
+    {
+      "id": "hz-inst-029",
+      "type": "TROU",
+      "question": "La France possède ___ services de renseignement répartis en deux cercles.",
+      "reponses_texte": [
+        "dix",
+        "10"
+      ]
+    },
+    {
+      "id": "hz-inst-030",
+      "type": "TROU",
+      "question": "Il est interdit d’exécuter un ordre ___ illégal.",
+      "reponses_texte": [
+        "manifestement"
+      ]
+    },
+    {
+      "id": "hz-inst-031",
+      "type": "FLASHCARD",
+      "question": "Quand le militaire est-il pénalement responsable d’une faute non intentionnelle (L4123-11) ?",
+      "verso": "S’il a manqué à une obligation de prudence, compte tenu de ses moyens et de sa mission."
+    },
+    {
+      "id": "hz-inst-032",
+      "type": "QCM",
+      "question": "Quel organisme pilote les ressources humaines, financières, juridiques, patrimoniales, immobilières et sociales du ministère ?",
+      "choix": [
+        "Le SGA",
+        "La DGA",
+        "Le SCA",
+        "L’EMA"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-inst-033",
+      "type": "QCR",
+      "question": "En quelles années ont été publiés des Livres blancs de la défense ?",
+      "choix": [
+        "1958",
+        "2017",
+        "2013",
+        "2008",
+        "1972",
+        "1994"
+      ],
+      "reponses": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "explication": "Vrai : C, D, E, F. Faux : A, B."
+    },
+    {
+      "id": "hz-inst-034",
+      "type": "FLASHCARD",
+      "question": "Quels sont les trois objectifs de la politique de défense définie par le Livre blanc ?",
+      "verso": "Protéger les intérêts fondamentaux du pays, contribuer à la stabilité internationale, respecter nos engagements internationaux."
+    },
+    {
+      "id": "hz-inst-035",
+      "type": "FLASHCARD",
+      "question": "Qu’impose le devoir de réserve ?",
+      "verso": "Faire preuve de réserve et de mesure dans l’expression de ses opinions personnelles, à l’écrit comme à l’oral."
+    },
+    {
+      "id": "hz-inst-036",
+      "type": "TROU",
+      "question": "La LPM 2024-2030 prévoit ___ milliards d’euros de dépenses sur sept ans.",
+      "reponses_texte": [
+        "413",
+        "quatre cent treize"
+      ]
+    },
+    {
+      "id": "hz-inst-037",
+      "type": "QCM",
+      "question": "Qui définit les orientations et arrête les décisions en matière de Défense ?",
+      "choix": [
+        "Le Président de la République",
+        "Le ministre des Armées",
+        "Le Chef d’état-major des Armées",
+        "Le Premier ministre"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Le Premier ministre exerce la direction générale et militaire de la Défense, mais les orientations et décisions reviennent au Président."
+    },
+    {
+      "id": "hz-inst-038",
+      "type": "QCR",
+      "question": "Quels sont les ancrages du SCA ?",
+      "choix": [
+        "Gendarmerie",
+        "Santé",
+        "Terre",
+        "DGA",
+        "Air"
+      ],
+      "reponses": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "explication": "Vrai : B, C, D, E. Faux : A. Le SCA compte cinq ancrages : Terre, Mer, Air, Santé et DGA."
+    },
+    {
+      "id": "hz-inst-039",
+      "type": "FLASHCARD",
+      "question": "Que signifie CEMA ?",
+      "verso": "Chef d’état-major des Armées"
+    },
+    {
+      "id": "hz-inst-040",
+      "type": "QCR",
+      "question": "Quels objectifs sont mis en avant par la LPM 2024-2030 ?",
+      "choix": [
+        "Augmenter la réactivité des armées partout dans le monde",
+        "Réduire le format de la dissuasion",
+        "Assurer la sécurité du territoire et des ressortissants",
+        "Venir en aide aux partenaires et alliés",
+        "Garantir la crédibilité de la dissuasion nucléaire"
+      ],
+      "reponses": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "explication": "Vrai : A, C, D, E. Faux : B."
+    },
+    {
+      "id": "hz-inst-041",
+      "type": "QCM",
+      "question": "Selon L4122-1, la responsabilité en cas d’exécution d’un ordre est :",
+      "choix": [
+        "portée uniquement par l’exécutant",
+        "portée par le ministre",
+        "portée uniquement par le donneur d’ordre",
+        "partagée entre le donneur et le receveur d’ordre"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-inst-042",
+      "type": "QCM",
+      "question": "Quel article de la Constitution dispose que le gouvernement « dispose de l’administration et de la force armée » ?",
+      "choix": [
+        "Article 21",
+        "Article 35",
+        "Article 20",
+        "Article 15"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-inst-043",
+      "type": "TROU",
+      "question": "La Constitution de la Ve République date du 4 ___ 1958.",
+      "reponses_texte": [
+        "octobre"
+      ],
+      "explication": "Constitution du 4 octobre 1958."
+    },
+    {
+      "id": "hz-inst-044",
+      "type": "QCM",
+      "question": "Quand la loi de programmation militaire 2024-2030 a-t-elle été votée ?",
+      "choix": [
+        "Le 14 juillet 2022",
+        "Le 1er janvier 2024",
+        "Le 24 mars 2005",
+        "Le 7 juin 2023"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-inst-045",
+      "type": "QCM",
+      "question": "Que prévoit l’article L4121-5 ?",
+      "choix": [
+        "L’obligation d’être disponible à tout moment",
+        "La garantie de la liberté d’opinion religieuse",
+        "La promotion posthume du militaire",
+        "La protection juridique de la famille"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-inst-046",
+      "type": "FLASHCARD",
+      "question": "Que signifie SCA ?",
+      "verso": "Service du commissariat des armées"
+    },
+    {
+      "id": "hz-inst-047",
+      "type": "QCR",
+      "question": "Selon le Livre blanc, quels intérêts fondamentaux la politique de défense doit-elle protéger ?",
+      "choix": [
+        "Les intérêts vitaux",
+        "Les intérêts stratégiques",
+        "Les intérêts de puissance",
+        "Les intérêts partisans",
+        "Les intérêts commerciaux privés"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Vrai : A, B, C. Faux : D, E."
+    },
+    {
+      "id": "hz-inst-048",
+      "type": "QCM",
+      "question": "Sous l’autorité de qui le SCA est-il placé ?",
+      "choix": [
+        "Du ministre de l’Intérieur",
+        "Du CEMA",
+        "Du DGA",
+        "Du SGA"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-inst-049",
+      "type": "FLASHCARD",
+      "question": "Quel article de la Constitution prévoit que le Président nomme aux emplois civils et militaires de l’État ?",
+      "verso": "L’article 13",
+      "explication": "Il signe aussi les ordonnances et les décrets délibérés en Conseil des ministres."
+    },
+    {
+      "id": "hz-inst-050",
+      "type": "FLASHCARD",
+      "question": "Que prévoit l’article L4123-10 ?",
+      "verso": "La protection juridique du militaire attaqué, menacé ou insulté du fait de sa fonction, étendue à sa famille."
+    },
+    {
+      "id": "hz-inst-051",
+      "type": "TROU",
+      "question": "Selon l’article 21 de la Constitution, le Premier ministre est « responsable de la ___ nationale ».",
+      "reponses_texte": [
+        "défense"
+      ]
+    },
+    {
+      "id": "hz-inst-052",
+      "type": "QCR",
+      "question": "Associez correctement : quelles affirmations sur les ministres sont exactes ?",
+      "choix": [
+        "Le ministre des Armées est le chef des Armées",
+        "Le ministre de l’Intérieur est responsable des politiques de sécurité intérieure et de sécurité civile",
+        "Le ministre des Armées est responsable de la préparation et de la mise en œuvre de la politique de défense",
+        "Le ministre de l’Europe et des Affaires étrangères est chargé de l’action diplomatique",
+        "Le ministre de l’Intérieur dispose de la DGSE"
+      ],
+      "reponses": [
+        1,
+        2,
+        3
+      ],
+      "explication": "Vrai : B, C, D. Faux : A, E. Le chef des Armées est le Président (art. 15) ; la DGSE est rattachée au ministère des Armées."
+    },
+    {
+      "id": "hz-inst-053",
+      "type": "FLASHCARD",
+      "question": "Que dit l’article 15 de la Constitution ?",
+      "verso": "Le Président de la République est le chef des Armées ; il préside les conseils et comités supérieurs de la défense nationale."
+    },
+    {
+      "id": "hz-inst-054",
+      "type": "FLASHCARD",
+      "question": "Quelles crises marquent le contexte de la LPM 2024-2030 selon l’Horizon ?",
+      "verso": "La guerre en Ukraine et au Moyen-Orient (dégradation du contexte géopolitique)"
+    },
+    {
+      "id": "hz-inst-055",
+      "type": "TROU",
+      "question": "Le Parlement est compétent pour déclarer la guerre selon l’article ___ de la Constitution.",
+      "reponses_texte": [
+        "35",
+        "trente-cinq",
+        "trente cinq",
+        "trentecinq"
+      ]
+    },
+    {
+      "id": "hz-inst-056",
+      "type": "FLASHCARD",
+      "question": "Que signifie DRM ?",
+      "verso": "Direction du renseignement militaire"
+    },
+    {
+      "id": "hz-inst-057",
+      "type": "QCM",
+      "question": "Quel article de la Constitution dispose que « le Président de la République est le chef des Armées » ?",
+      "choix": [
+        "Article 5",
+        "Article 20",
+        "Article 15",
+        "Article 21"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Art. 15 : chef des Armées, il préside les conseils et comités supérieurs de la défense nationale."
+    },
+    {
+      "id": "hz-inst-058",
+      "type": "QCM",
+      "question": "Que prévoit l’article L4123-4 ?",
+      "choix": [
+        "L’interdiction de grève et de syndicat",
+        "La participation de l’État à la complémentaire santé",
+        "Le devoir de réserve hors service",
+        "Des droits renforcés pour les militaires en OPEX"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Reconnaissance des blessures, pensions spécifiques, délégation de solde…"
+    },
+    {
+      "id": "hz-inst-059",
+      "type": "FLASHCARD",
+      "question": "Qui peut accorder la protection particulière aux enfants mineurs de militaires décédés ou gravement blessés en service ?",
+      "verso": "Le tribunal judiciaire, à la demande du parent ou du tuteur",
+      "explication": "L4123-13 et L4123-14."
+    },
+    {
+      "id": "hz-inst-060",
+      "type": "QCM",
+      "question": "Quel article du Code de la défense interdit au militaire la grève et l’adhésion à un syndicat ?",
+      "choix": [
+        "L4121-2",
+        "L4121-5",
+        "L4121-4",
+        "L4122-1"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-inst-061",
+      "type": "QCR",
+      "question": "Quelles affirmations sur les droits du militaire (L4121-2 à L4121-5) sont exactes ?",
+      "choix": [
+        "Le militaire peut se présenter à une élection",
+        "Il est interdit d’adhérer à un syndicat",
+        "Le droit de grève est reconnu en dehors des opérations",
+        "La liberté d’opinion, y compris religieuse, est garantie",
+        "Le militaire peut être membre actif d’un parti politique"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "Vrai : A, B, D. Faux : C, E. L4121-3 interdit d’être membre actif d’un parti ; L4121-4 interdit la grève et le syndicat."
+    },
+    {
+      "id": "hz-inst-062",
+      "type": "FLASHCARD",
+      "question": "Que signifie le sigle RNS ?",
+      "verso": "Revue nationale stratégique"
+    },
+    {
+      "id": "hz-inst-063",
+      "type": "TROU",
+      "question": "Le devoir de réserve s’applique pendant et en ___ du temps de service.",
+      "reponses_texte": [
+        "dehors"
+      ]
+    },
+    {
+      "id": "hz-inst-064",
+      "type": "QCM",
+      "question": "Quel service, rattaché au ministère des Armées, agit hors du territoire pour prévenir l’espionnage contre les intérêts français ?",
+      "choix": [
+        "La DGA",
+        "La DGSI",
+        "La DRSD",
+        "La DGSE"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-inst-065",
+      "type": "QCM",
+      "question": "Qui est responsable de l’emploi opérationnel des forces armées et assure le commandement des opérations militaires ?",
+      "choix": [
+        "Le DGA",
+        "Le SGA",
+        "Le ministre de l’Intérieur",
+        "Le CEMA"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-inst-066",
+      "type": "FLASHCARD",
+      "question": "Quelles sont les deux chambres du Parlement ?",
+      "verso": "L’Assemblée nationale et le Sénat"
+    },
+    {
+      "id": "hz-inst-067",
+      "type": "QCR",
+      "question": "À quels textes le préambule de la Constitution de 1958 renvoie-t-il explicitement ?",
+      "choix": [
+        "La Déclaration des droits de l’homme de 1789",
+        "Le traité de l’Atlantique Nord de 1949",
+        "La Charte des Nations unies de 1945",
+        "Le préambule de la Constitution de 1946",
+        "La Constitution de 1875"
+      ],
+      "reponses": [
+        0,
+        3
+      ],
+      "explication": "Vrai : A, D. Faux : B, C, E. Le peuple français proclame son attachement aux Droits de l’Homme définis par la Déclaration de 1789, confirmée et complétée par le préambule de 1946."
+    },
+    {
+      "id": "hz-inst-068",
+      "type": "FLASHCARD",
+      "question": "Que signifie DGSE ?",
+      "verso": "Direction générale de la sécurité extérieure",
+      "explication": "Service secret français rattaché au ministère des Armées."
+    },
+    {
+      "id": "hz-inst-069",
+      "type": "QCM",
+      "question": "Quel organisme valide tous les contrats d’équipement des armées ?",
+      "choix": [
+        "La DGA",
+        "Le SCA",
+        "La DRSD",
+        "Le SGA"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "La DGA prépare l’avenir des systèmes militaires, équipe les forces et promeut les exportations."
+    },
+    {
+      "id": "hz-inst-070",
+      "type": "QCR",
+      "question": "Dans quels cadres l’article L4123-12 exonère-t-il de responsabilité pénale le militaire qui fait un usage strictement nécessaire de la force ?",
+      "choix": [
+        "La protection d’installations sensibles",
+        "Le maintien de l’ordre lors d’une grève",
+        "Les contrôles routiers",
+        "La lutte contre le terrorisme",
+        "Les opérations extérieures"
+      ],
+      "reponses": [
+        0,
+        3,
+        4
+      ],
+      "explication": "Vrai : A, D, E. Faux : B, C."
+    },
+    {
+      "id": "hz-inst-071",
+      "type": "FLASHCARD",
+      "question": "Qu’est-ce que le Statut général des militaires ?",
+      "verso": "Une loi votée par le Parlement qui régit les droits et devoirs de tous les militaires, quels que soient leur armée ou leur grade."
+    },
+    {
+      "id": "hz-inst-072",
+      "type": "FLASHCARD",
+      "question": "Par quel canal passe l’expression collective des militaires ?",
+      "verso": "Par la chaîne de commandement",
+      "explication": "L4121-4."
+    },
+    {
+      "id": "hz-inst-073",
+      "type": "QCR",
+      "question": "De quelles autorités le ministre des Armées dispose-t-il pour exécuter la politique militaire ?",
+      "choix": [
+        "Le Délégué général pour l’armement (DGA)",
+        "Le Secrétaire général pour l’administration (SGA)",
+        "Le Secrétaire général de la défense et de la sécurité nationale",
+        "Le Préfet de police",
+        "Le Chef d’état-major des Armées (CEMA)"
+      ],
+      "reponses": [
+        0,
+        1,
+        4
+      ],
+      "explication": "Vrai : A, B, E. Faux : C, D."
+    },
+    {
+      "id": "hz-inst-074",
+      "type": "QCM",
+      "question": "Quel montant de dépenses la LPM 2024-2030 prévoit-elle ?",
+      "choix": [
+        "413 milliards d’euros",
+        "295 milliards d’euros",
+        "47 milliards d’euros",
+        "500 milliards d’euros"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "413 Md€ sur sept ans pour « transformer » les armées. 47 Md€ correspond à l’ordre de grandeur du budget annuel de défense 2024."
+    },
+    {
+      "id": "hz-inst-075",
+      "type": "FLASHCARD",
+      "question": "Que signifie DRSD ?",
+      "verso": "Direction du renseignement et de la sécurité de la défense"
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "langue": "Anglais",
+  "titre": "Anglais — vocabulaire : université (B1)",
+  "particules_optionnelles": [
+    "to",
+    "a",
+    "an",
+    "the"
+  ],
+  "caracteres_speciaux": [],
+  "vocabulaire": [
+    {
+      "id": "en-universite-001",
+      "mot": "a semester",
+      "traductions": [
+        "un semestre"
+      ],
+      "exemple": "I am studying Maths 101 this [semester].",
+      "exemple_traduction": "J'étudie Maths 101 ce semestre."
+    },
+    {
+      "id": "en-universite-002",
+      "mot": "a lecturer",
+      "traductions": [
+        "un enseignant (à l'université)",
+        "un maître de conférences"
+      ],
+      "exemple": "Professor Dennis will be the [lecturer] for Biology.",
+      "exemple_traduction": "Le professeur Dennis sera l'enseignant du cours de biologie.",
+      "note": "a lecture = un cours magistral (faux ami : ≠ une lecture = a reading)."
+    },
+    {
+      "id": "en-universite-003",
+      "mot": "to attend",
+      "traductions": [
+        "assister à",
+        "suivre (des cours)"
+      ],
+      "exemple": "I must [attend] most of my lectures this week.",
+      "exemple_traduction": "Je dois assister à la plupart de mes cours cette semaine.",
+      "note": "Faux ami : to attend ≠ attendre (to wait). Pas de préposition : to attend a class."
+    },
+    {
+      "id": "en-universite-004",
+      "mot": "to enroll",
+      "traductions": [
+        "s'inscrire (à un cours)"
+      ],
+      "exemple": "I have [enrolled] in a bookkeeping course for next year!",
+      "exemple_traduction": "Je me suis inscrit à un cours de comptabilité pour l'an prochain !",
+      "note": "Américain : enroll ; britannique : enrol. to enroll in / on a course.",
+      "variantes": [
+        "to enrol"
+      ]
+    },
+    {
+      "id": "en-universite-005",
+      "mot": "to graduate",
+      "traductions": [
+        "obtenir son diplôme"
+      ],
+      "exemple": "I [graduated] with my teaching diploma in 2010.",
+      "exemple_traduction": "J'ai obtenu mon diplôme d'enseignant en 2010.",
+      "note": "Verbe /ˈɡrædʒueɪt/ ≠ nom a graduate /ˈɡrædʒuət/."
+    },
+    {
+      "id": "en-universite-006",
+      "mot": "a graduate",
+      "traductions": [
+        "un diplômé",
+        "une diplômée"
+      ],
+      "exemple": "I am a Computer Science [graduate].",
+      "exemple_traduction": "Je suis diplômé en informatique.",
+      "note": "Nom /ˈɡrædʒuət/ ; le verbe se prononce /ˈɡrædʒueɪt/."
+    },
+    {
+      "id": "en-universite-007",
+      "mot": "a major",
+      "traductions": [
+        "une matière principale",
+        "une spécialité"
+      ],
+      "exemple": "My [major] for this degree is Economics.",
+      "exemple_traduction": "Ma matière principale dans ce diplôme, c'est l'économie.",
+      "note": "Surtout américain."
+    },
+    {
+      "id": "en-universite-008",
+      "mot": "to major in",
+      "traductions": [
+        "se spécialiser en"
+      ],
+      "exemple": "I have decided to [major] in Botany.",
+      "exemple_traduction": "J'ai décidé de me spécialiser en botanique.",
+      "note": "Toujours avec « in » : to major in Economics."
+    },
+    {
+      "id": "en-universite-009",
+      "mot": "to sit an exam",
+      "traductions": [
+        "passer un examen"
+      ],
+      "exemple": "I don't know if I'll be ready to [sit] the exam.",
+      "exemple_traduction": "Je ne sais pas si je serai prêt à passer l'examen.",
+      "note": "Britannique. Synonyme : to take an exam. Attention : to pass an exam = réussir.",
+      "variantes": [
+        "to take an exam"
+      ]
+    },
+    {
+      "id": "en-universite-010",
+      "mot": "a campus",
+      "traductions": [
+        "un campus"
+      ],
+      "exemple": "Are you studying at the East [campus] this year?",
+      "exemple_traduction": "Tu étudies sur le campus Est cette année ?"
+    },
+    {
+      "id": "en-universite-011",
+      "mot": "a scholarship",
+      "traductions": [
+        "une bourse d'études"
+      ],
+      "exemple": "The government is offering a [scholarship] for the Politics degree.",
+      "exemple_traduction": "Le gouvernement propose une bourse d'études pour le diplôme de sciences politiques.",
+      "note": "to win / to get a scholarship."
+    },
+    {
+      "id": "en-universite-012",
+      "mot": "a curriculum",
+      "traductions": [
+        "un programme (d'études)"
+      ],
+      "exemple": "The Business [curriculum] includes a lot of accounting.",
+      "exemple_traduction": "Le programme du diplôme de commerce comprend beaucoup de comptabilité.",
+      "note": "Pluriel : curricula ou curriculums. Faux ami partiel : ≠ CV (a résumé / a CV)."
+    },
+    {
+      "id": "en-universite-013",
+      "mot": "a credit",
+      "traductions": [
+        "un crédit (ECTS)",
+        "une unité de valeur"
+      ],
+      "exemple": "I can use my Common Law [credit] towards my degree.",
+      "exemple_traduction": "Je peux compter mon crédit de common law pour mon diplôme."
+    },
+    {
+      "id": "en-universite-014",
+      "mot": "a prerequisite",
+      "traductions": [
+        "un prérequis"
+      ],
+      "exemple": "English is a [prerequisite] for the Journalism degree.",
+      "exemple_traduction": "L'anglais est un prérequis pour le diplôme de journalisme.",
+      "note": "/ˌpriːˈrekwəzɪt/"
+    },
+    {
+      "id": "en-universite-015",
+      "mot": "a thesis",
+      "traductions": [
+        "une thèse",
+        "un mémoire"
+      ],
+      "exemple": "I started my [thesis] for my master's degree yesterday.",
+      "exemple_traduction": "J'ai commencé mon mémoire de master hier.",
+      "note": "Pluriel irrégulier : theses /ˈθiːsiːz/.",
+      "prononciation": "/ˈθiːsɪs/"
+    },
+    {
+      "id": "en-universite-016",
+      "mot": "a transcript",
+      "traductions": [
+        "un relevé de notes"
+      ],
+      "exemple": "She is very proud of her [transcript].",
+      "exemple_traduction": "Elle est très fière de son relevé de notes."
+    },
+    {
+      "id": "en-universite-017",
+      "mot": "a tutorial",
+      "traductions": [
+        "un TD",
+        "un cours en petit groupe"
+      ],
+      "exemple": "Are you going to the Economics [tutorial] today?",
+      "exemple_traduction": "Tu vas au TD d'économie aujourd'hui ?",
+      "note": "Aussi : un tutoriel (en ligne)."
+    },
+    {
+      "id": "en-universite-018",
+      "mot": "a tutor",
+      "traductions": [
+        "un chargé de TD",
+        "un tuteur"
+      ],
+      "exemple": "Michelle is the [tutor] for the Economics class.",
+      "exemple_traduction": "Michelle est la chargée de TD du cours d'économie.",
+      "note": "Aussi : un professeur particulier."
+    }
+  ]
+}

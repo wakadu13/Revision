@@ -1,0 +1,220 @@
+{
+  "langue": "Anglais",
+  "titre": "Anglais — vocabulaire : débats et discussions (C1)",
+  "particules_optionnelles": [
+    "to",
+    "a",
+    "an",
+    "the"
+  ],
+  "caracteres_speciaux": [],
+  "vocabulaire": [
+    {
+      "id": "en-debats-001",
+      "mot": "in my opinion",
+      "traductions": [
+        "à mon avis"
+      ],
+      "exemple": "[In my opinion], the traffic gets worse every year.",
+      "exemple_traduction": "À mon avis, la circulation empire chaque année.",
+      "note": "Ne pas dire « according to me »."
+    },
+    {
+      "id": "en-debats-002",
+      "mot": "to agree",
+      "traductions": [
+        "être d'accord"
+      ],
+      "exemple": "I [agree] with you on the new budget.",
+      "exemple_traduction": "Je suis d'accord avec vous sur le nouveau budget.",
+      "note": "Pas de « be » : I agree (jamais « I am agree »). to agree with someone / on something."
+    },
+    {
+      "id": "en-debats-003",
+      "mot": "to disagree",
+      "traductions": [
+        "ne pas être d'accord"
+      ],
+      "exemple": "She [disagrees] with me on the quickest route.",
+      "exemple_traduction": "Elle n'est pas d'accord avec moi sur l'itinéraire le plus rapide.",
+      "note": "Même construction que to agree : to disagree with someone."
+    },
+    {
+      "id": "en-debats-004",
+      "mot": "a point of view",
+      "traductions": [
+        "un point de vue"
+      ],
+      "exemple": "What is your [point of view] on animal testing?",
+      "exemple_traduction": "Quel est votre point de vue sur les tests sur les animaux ?",
+      "note": "Pluriel : points of view."
+    },
+    {
+      "id": "en-debats-005",
+      "mot": "an argument",
+      "traductions": [
+        "un argument",
+        "une thèse défendue"
+      ],
+      "exemple": "My [argument] is that energy prices are too high.",
+      "exemple_traduction": "Mon argument, c'est que les prix de l'énergie sont trop élevés.",
+      "note": "Faux ami partiel : an argument = aussi une dispute (to have an argument = se disputer)."
+    },
+    {
+      "id": "en-debats-006",
+      "mot": "a flawed argument",
+      "traductions": [
+        "un argument bancal",
+        "un raisonnement erroné"
+      ],
+      "exemple": "I think you have a [flawed argument].",
+      "exemple_traduction": "Je pense que votre argument est bancal.",
+      "note": "a flaw = un défaut, une faille."
+    },
+    {
+      "id": "en-debats-007",
+      "mot": "firstly",
+      "traductions": [
+        "premièrement",
+        "tout d'abord"
+      ],
+      "exemple": "[Firstly], I'd like to thank you all for coming.",
+      "exemple_traduction": "Tout d'abord, je voudrais tous vous remercier d'être venus.",
+      "note": "Synonyme : first of all."
+    },
+    {
+      "id": "en-debats-008",
+      "mot": "furthermore",
+      "traductions": [
+        "de plus",
+        "en outre"
+      ],
+      "exemple": "[Furthermore], I don't agree with how this was handled.",
+      "exemple_traduction": "De plus, je ne suis pas d'accord avec la façon dont cela a été géré.",
+      "note": "Soutenu. Synonymes : moreover, in addition."
+    },
+    {
+      "id": "en-debats-009",
+      "mot": "finally",
+      "traductions": [
+        "enfin",
+        "pour finir"
+      ],
+      "exemple": "[Finally], I'm sure you will find this software helpful.",
+      "exemple_traduction": "Enfin, je suis sûr que ce logiciel vous sera utile.",
+      "note": "Sert à introduire le dernier point."
+    },
+    {
+      "id": "en-debats-010",
+      "mot": "a conclusion",
+      "traductions": [
+        "une conclusion"
+      ],
+      "exemple": "We came to the [conclusion] that growing old is part of life.",
+      "exemple_traduction": "Nous sommes arrivés à la conclusion que vieillir fait partie de la vie.",
+      "note": "in conclusion = en conclusion ; to come to / to reach a conclusion."
+    },
+    {
+      "id": "en-debats-011",
+      "mot": "a summary",
+      "traductions": [
+        "un résumé",
+        "une synthèse"
+      ],
+      "exemple": "This is a [summary] of the arguments for the new plant.",
+      "exemple_traduction": "Voici un résumé des arguments en faveur de la nouvelle centrale.",
+      "note": "Faux ami : a résumé (américain) = un CV."
+    },
+    {
+      "id": "en-debats-012",
+      "mot": "to summarize",
+      "traductions": [
+        "résumer"
+      ],
+      "exemple": "To [summarize], we think the project should go ahead.",
+      "exemple_traduction": "Pour résumer, nous pensons que le projet doit être lancé.",
+      "note": "Britannique : to summarise.",
+      "variantes": [
+        "to summarise"
+      ]
+    },
+    {
+      "id": "en-debats-013",
+      "mot": "to recap",
+      "traductions": [
+        "récapituler"
+      ],
+      "exemple": "Let me [recap] my argument.",
+      "exemple_traduction": "Laissez-moi récapituler mon argument.",
+      "note": "Familier/courant ; nom : a recap. Doublement du p : recapped."
+    },
+    {
+      "id": "en-debats-014",
+      "mot": "to focus on",
+      "traductions": [
+        "se concentrer sur",
+        "porter sur"
+      ],
+      "exemple": "Terry will be [focusing] on climate change.",
+      "exemple_traduction": "Terry va se concentrer sur le changement climatique.",
+      "note": "Toujours avec « on »."
+    },
+    {
+      "id": "en-debats-015",
+      "mot": "to respond",
+      "traductions": [
+        "répondre à (une question, une remarque)"
+      ],
+      "exemple": "I will [respond] to your questions at the end.",
+      "exemple_traduction": "Je répondrai à vos questions à la fin.",
+      "note": "Plus formel que to answer ; to respond TO something."
+    },
+    {
+      "id": "en-debats-016",
+      "mot": "to point out",
+      "traductions": [
+        "souligner",
+        "faire remarquer"
+      ],
+      "exemple": "I would like to [point out] that Jenny didn't stop.",
+      "exemple_traduction": "Je voudrais faire remarquer que Jenny ne s'est pas arrêtée.",
+      "note": "Verbe à particule : to point out that… / to point something out."
+    },
+    {
+      "id": "en-debats-017",
+      "mot": "to dispute",
+      "traductions": [
+        "contester"
+      ],
+      "exemple": "The price of bread is being [disputed].",
+      "exemple_traduction": "Le prix du pain est contesté.",
+      "note": "Aussi un nom : a dispute = un différend, un litige."
+    },
+    {
+      "id": "en-debats-018",
+      "mot": "I hear you, but I think…",
+      "traductions": [
+        "je vous entends, mais je pense que…"
+      ],
+      "exemple": "[I hear you, but I think] these burgers are too expensive.",
+      "exemple_traduction": "Je vous entends, mais je pense que ces burgers sont trop chers.",
+      "note": "Pour exprimer poliment son désaccord.",
+      "variantes": [
+        "I hear you but I think"
+      ]
+    },
+    {
+      "id": "en-debats-019",
+      "mot": "It goes without saying that…",
+      "traductions": [
+        "il va sans dire que…"
+      ],
+      "exemple": "[It goes without saying that] it's hot in summer.",
+      "exemple_traduction": "Il va sans dire qu'il fait chaud en été.",
+      "note": "Après « without » : verbe en -ing (saying).",
+      "variantes": [
+        "It goes without saying that"
+      ]
+    }
+  ]
+}

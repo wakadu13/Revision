@@ -1,0 +1,515 @@
+{
+  "titre": "Codage de canal",
+  "description": "CLEAE2, cours 4 : détection et correction d'erreurs, 2e théorème de Shannon, distance de Hamming, codes en bloc, codes convolutifs, treillis et algorithme de Viterbi.",
+  "questions": [
+    {
+      "id": "clea4-001",
+      "type": "QCR",
+      "question": "Lesquelles de ces perturbations du canal sont « naturelles » selon le cours ?",
+      "choix": [
+        "Les multi-trajets en radio",
+        "L'étalement d'impulsion en optique",
+        "Le rayonnement parasite d'émetteurs voisins",
+        "Le brouillage"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "A, B : vrais. C : faux, perturbation artificielle involontaire. D : faux, perturbation artificielle volontaire."
+    },
+    {
+      "id": "clea4-002",
+      "type": "TROU",
+      "question": "Une perturbation artificielle volontaire du canal s'appelle le ___.",
+      "reponses_texte": [
+        "brouillage"
+      ],
+      "explication": "Les perturbations artificielles involontaires sont, par exemple, les rayonnements parasites d'émetteurs ou récepteurs voisins."
+    },
+    {
+      "id": "clea4-003",
+      "type": "FLASHCARD",
+      "question": "Quel est le principe général du codage de canal ?",
+      "verso": "Coder avec un alphabet contenant plus de mots de code que de symboles à coder.",
+      "explication": "Une erreur de transmission produit alors un mot « impossible », ce qui permet de la détecter, voire de la corriger."
+    },
+    {
+      "id": "clea4-004",
+      "type": "QCM",
+      "question": "Pourquoi faut-il un codage de canal après le codage de source ?",
+      "choix": [
+        "Parce qu'un message compressé est plus sensible au bruit et doit être « durci »",
+        "Pour réduire la bande passante",
+        "Pour supprimer la composante continue",
+        "Pour compresser davantage"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Le codage de source retire la redondance ; le codage de canal ajoute une redondance utile pour détecter et corriger les erreurs."
+    },
+    {
+      "id": "clea4-005",
+      "type": "FLASHCARD",
+      "question": "Sous quelle forme les erreurs de décision peuvent-elles se présenter ?",
+      "verso": "Erreurs régulières (isolées) ou en rafale.",
+      "explication": "Elles surviennent quand le signal est trop déformé pour une bonne décision en réception."
+    },
+    {
+      "id": "clea4-006",
+      "type": "QCM",
+      "question": "On double chaque bit (0 → 00, 1 → 11). Que peut faire le récepteur s'il reçoit 10 ?",
+      "choix": [
+        "Corriger en 11",
+        "Détecter une erreur sans pouvoir la corriger",
+        "Corriger en 00",
+        "Ne rien remarquer"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "10 n'est pas un mot autorisé : l'erreur est détectée, mais 00 et 11 sont aussi proches l'un que l'autre, donc pas de correction."
+    },
+    {
+      "id": "clea4-007",
+      "type": "QCM",
+      "question": "On triple chaque bit (0 → 000, 1 → 111). Le récepteur reçoit 110. Que décode-t-il ?",
+      "choix": [
+        "Il ne détecte pas d'erreur",
+        "0, par décision majoritaire",
+        "1, par décision majoritaire",
+        "Rien, il demande une retransmission"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "110 contient deux 1 : la décision majoritaire donne 111, soit le bit 1."
+    },
+    {
+      "id": "clea4-008",
+      "type": "TROU",
+      "question": "Le mécanisme de retransmission utilisé avec les codes détecteurs d'erreur s'appelle ___ (Automatic Repeat Request).",
+      "reponses_texte": [
+        "ARQ"
+      ],
+      "explication": "Il suppose un canal bidirectionnel et peu de trafic. Exemple : Ethernet."
+    },
+    {
+      "id": "clea4-009",
+      "type": "TROU",
+      "question": "La correction d'erreur sans retransmission s'appelle ___ (Forward Error Correction).",
+      "reponses_texte": [
+        "FEC"
+      ],
+      "explication": "Utilisée sur des canaux unidirectionnels à fort trafic : TNT (DVB), CD."
+    },
+    {
+      "id": "clea4-010",
+      "type": "QCR",
+      "question": "Dans quels cas préfère-t-on un code correcteur plutôt qu'un code détecteur d'erreur ?",
+      "choix": [
+        "Canal unidirectionnel (diffusion)",
+        "Retransmission impossible",
+        "Canal bidirectionnel à faible trafic",
+        "Fort trafic",
+        "Retransmission possible"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "A, B, D : vrais (ex. TNT, CD). C et E : faux, ce sont les conditions des codes détecteurs avec ARQ (ex. Ethernet)."
+    },
+    {
+      "id": "clea4-011",
+      "type": "FLASHCARD",
+      "question": "Énonce le deuxième théorème de Shannon.",
+      "verso": "Si le débit d'information est inférieur ou égal à la capacité du canal (H × Rm ≤ C), il existe un codeur de canal qui permet de diminuer la probabilité d'erreur.",
+      "explication": "C est la capacité du canal."
+    },
+    {
+      "id": "clea4-012",
+      "type": "QCM",
+      "question": "Quelles sont les deux grandes familles de codage de canal ?",
+      "choix": [
+        "NRZ et Manchester",
+        "ASK et PSK",
+        "Huffman et Shannon",
+        "Codes en bloc et codes convolutifs"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Codes en bloc : blocs disjoints de k bits. Codes convolutifs : fenêtre glissante, codage linéaire avec mémoire. On les imbrique souvent."
+    },
+    {
+      "id": "clea4-013",
+      "type": "FLASHCARD",
+      "question": "Quelle est la différence entre un code en bloc et un code convolutif ?",
+      "verso": "Le code en bloc code des blocs disjoints de k symboles ; le code convolutif code une fenêtre glissante avec mémoire des symboles précédents.",
+      "explication": "Ne pas confondre les codes en bloc du codage de canal avec ceux du codage de source."
+    },
+    {
+      "id": "clea4-014",
+      "type": "TROU",
+      "question": "Le CRC (Contrôle de Redondance ___) représente les mots de code par des polynômes.",
+      "reponses_texte": [
+        "cyclique"
+      ],
+      "explication": "Un code linéaire en bloc est cyclique si tout décalage circulaire d'un mot de code est encore un mot de code."
+    },
+    {
+      "id": "clea4-015",
+      "type": "FLASHCARD",
+      "question": "Qu'est-ce qu'un turbo-code ?",
+      "verso": "L'association de deux codeurs consécutifs, avec un entrelacement de la trame entre les deux.",
+      "explication": "Codes en bloc et codes convolutifs sont souvent imbriqués de cette façon pour améliorer les performances."
+    },
+    {
+      "id": "clea4-016",
+      "type": "FLASHCARD",
+      "question": "Quand un code linéaire en bloc est-il cyclique ?",
+      "verso": "Quand tout décalage circulaire d'un mot de code est encore un mot de code.",
+      "explication": "Les codes cycliques (ex. CRC) utilisent les propriétés des polynômes dans un corps fini."
+    },
+    {
+      "id": "clea4-017",
+      "type": "QCM",
+      "question": "Qu'est-ce qu'un code systématique ?",
+      "choix": [
+        "Un code séparable où les bits d'information sont au début du mot de code",
+        "Un code dont tous les mots ont la même distance",
+        "Un code à longueur variable",
+        "Un code où les bits d'information n'apparaissent pas"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Séparable = bits d'information en clair dans le mot de code ; systématique = séparable avec ces bits au début."
+    },
+    {
+      "id": "clea4-018",
+      "type": "TROU",
+      "question": "Un code où les bits d'information apparaissent en clair dans le mot de code est dit ___.",
+      "reponses_texte": [
+        "separable",
+        "séparable"
+      ],
+      "explication": "S'ils sont placés au début du mot, le code est en plus systématique."
+    },
+    {
+      "id": "clea4-019",
+      "type": "FLASHCARD",
+      "question": "Qu'est-ce que la distance de Hamming entre deux mots de code ?",
+      "verso": "Le nombre de bits qui diffèrent entre ces deux mots.",
+      "explication": "Ex. dH(00000, 01010) = 2."
+    },
+    {
+      "id": "clea4-020",
+      "type": "QCM",
+      "question": "Que vaut la distance de Hamming entre 10110 et 11100 ?",
+      "choix": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Les mots diffèrent aux positions 2 et 4 : dH = 2."
+    },
+    {
+      "id": "clea4-021",
+      "type": "FLASHCARD",
+      "question": "Qu'est-ce que la distance minimale dmin d'un code ?",
+      "verso": "La plus petite distance de Hamming entre deux mots du code.",
+      "explication": "Elle détermine le pouvoir de détection (d = dmin − 1) et de correction (t = E[(dmin − 1)/2])."
+    },
+    {
+      "id": "clea4-022",
+      "type": "TROU",
+      "question": "Le pouvoir détecteur d'un code vaut d = dmin − ___.",
+      "reponses_texte": [
+        "1",
+        "un"
+      ],
+      "explication": "Ex. code à triplement : dmin = 3, donc 2 erreurs détectables."
+    },
+    {
+      "id": "clea4-023",
+      "type": "QCM",
+      "question": "Quel est le pouvoir correcteur t d'un code de distance minimale dmin ?",
+      "choix": [
+        "t = 2·dmin",
+        "t = dmin − 1",
+        "t = E[(dmin − 1)/2]",
+        "t = dmin/2"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "E est la partie entière. Le piège « dmin − 1 » est le pouvoir de détection."
+    },
+    {
+      "id": "clea4-024",
+      "type": "QCM",
+      "question": "Un code a dmin = 5. Combien d'erreurs peut-il détecter et corriger ?",
+      "choix": [
+        "Détecter 4, corriger 4",
+        "Détecter 2, corriger 1",
+        "Détecter 5, corriger 2",
+        "Détecter 4, corriger 2"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "d = 5 − 1 = 4 ; t = E[4/2] = 2."
+    },
+    {
+      "id": "clea4-025",
+      "type": "FLASHCARD",
+      "question": "Pour le code à triplement (0 → 000, 1 → 111), que valent dmin, d et t ?",
+      "verso": "dmin = 3 ; d = 2 erreurs détectables ; t = 1 erreur corrigible.",
+      "explication": "dmin = dH(000, 111) = 3."
+    },
+    {
+      "id": "clea4-026",
+      "type": "FLASHCARD",
+      "question": "Quel est l'inconvénient d'une grande distance de Hamming entre les mots de code ?",
+      "verso": "Il faut plus de bits pour coder.",
+      "explication": "Le code est plus performant, mais son rendement baisse."
+    },
+    {
+      "id": "clea4-027",
+      "type": "FLASHCARD",
+      "question": "Que désigne un code en bloc C(n, k) ?",
+      "verso": "Un code qui associe à chaque bloc disjoint de k bits un mot de code de n bits (n > k).",
+      "explication": "On choisit 2^k mots parmi les 2^n possibles ; une erreur est détectée si le mot reçu n'en fait pas partie."
+    },
+    {
+      "id": "clea4-028",
+      "type": "TROU",
+      "question": "Le rendement (taux de codage) d'un code C(n, k) vaut η = ___.",
+      "reponses_texte": [
+        "k/n",
+        "k / n"
+      ],
+      "explication": "Il est inférieur à 1 puisque n > k."
+    },
+    {
+      "id": "clea4-029",
+      "type": "QCM",
+      "question": "Quel est le rendement d'un code en bloc systématique C(4, 3) avec bit de parité ?",
+      "choix": [
+        "3/4",
+        "1/4",
+        "1/2",
+        "4/3"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "η = k/n = 3/4 : 3 bits d'information pour 4 bits transmis."
+    },
+    {
+      "id": "clea4-030",
+      "type": "QCM",
+      "question": "Dans un code C(n, k), combien de mots de code sont utilisés parmi les 2^n possibles ?",
+      "choix": [
+        "2^n",
+        "2^k",
+        "n − k",
+        "2^(n−k)"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Il y a 2^k blocs d'information possibles, donc 2^k mots de code valides."
+    },
+    {
+      "id": "clea4-031",
+      "type": "FLASHCARD",
+      "question": "Que signifient n, k et m dans un code convolutif C(n, k, m) ?",
+      "verso": "k bits d'information en entrée, n bits de code en sortie, m = longueur de contrainte.",
+      "explication": "Les n bits sont une combinaison linéaire des k bits d'entrée et des m − 1 symboles précédents : le code est de mémoire m − 1."
+    },
+    {
+      "id": "clea4-032",
+      "type": "QCM",
+      "question": "Quelle est la mémoire d'un code convolutif de longueur de contrainte m ?",
+      "choix": [
+        "m",
+        "m + 1",
+        "m − 1",
+        "2m"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Le code utilise les m − 1 symboles précédents. Pour C(2, 1, 3) : mémoire 2 (St−1, St−2)."
+    },
+    {
+      "id": "clea4-033",
+      "type": "QCM",
+      "question": "Quel est le rendement du code convolutif C(2, 1, 3) ?",
+      "choix": [
+        "3/2",
+        "1/3",
+        "2/3",
+        "1/2"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "η = k/n = 1/2 : 1 bit d'information produit 2 bits de code."
+    },
+    {
+      "id": "clea4-034",
+      "type": "TROU",
+      "question": "Combien d'états a le diagramme d'état du code C(2, 1, 3) ? ___",
+      "reponses_texte": [
+        "4",
+        "quatre"
+      ],
+      "explication": "2^(m−1) = 2² = 4 états : 00, 01, 10, 11."
+    },
+    {
+      "id": "clea4-035",
+      "type": "FLASHCARD",
+      "question": "Quelles sont les équations du codeur C(2, 1, 3) du cours ?",
+      "verso": "C1 = St ⊕ St−1 ⊕ St−2 et C2 = St ⊕ St−2.",
+      "explication": "⊕ est la somme binaire (ou exclusif)."
+    },
+    {
+      "id": "clea4-036",
+      "type": "QCM",
+      "question": "Quelle représentation d'un code convolutif est la plus utilisée, car elle tient compte du temps ?",
+      "choix": [
+        "Le treillis",
+        "Le tableau de Huffman",
+        "Le diagramme de l'œil",
+        "Le diagramme d'état"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Le treillis déroule le diagramme d'état dans le temps et montre la périodicité du codeur."
+    },
+    {
+      "id": "clea4-037",
+      "type": "QCM",
+      "question": "Avec le codeur C(2, 1, 3) du cours, partant de l'état 00, quelle est la séquence codée de 1011 (sans bits de queue) ?",
+      "choix": [
+        "10 11 00 01",
+        "11 10 00 01",
+        "11 01 00 10",
+        "11 10 01 00"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "On applique C1 = St ⊕ St−1 ⊕ St−2 et C2 = St ⊕ St−2 bit par bit : 11, 10, 00, 01. Avec les bits de queue on ajoute 01 11."
+    },
+    {
+      "id": "clea4-038",
+      "type": "FLASHCARD",
+      "question": "À quoi servent les « bits de queue » en codage convolutif ?",
+      "verso": "À vider la mémoire du codeur pour le ramener à l'état initial.",
+      "explication": "Pour 1011 avec C(2, 1, 3) : on ajoute deux 0 en entrée, ce qui produit 01 11."
+    },
+    {
+      "id": "clea4-039",
+      "type": "FLASHCARD",
+      "question": "Sur quel principe repose le décodage d'un code convolutif ?",
+      "verso": "Le maximum de vraisemblance : trouver la séquence d'information initiale la plus probable.",
+      "explication": "La recherche exhaustive étant fastidieuse, on utilise l'algorithme itératif de Viterbi."
+    },
+    {
+      "id": "clea4-040",
+      "type": "TROU",
+      "question": "L'algorithme itératif de décodage des codes convolutifs au maximum de vraisemblance est l'algorithme de ___.",
+      "reponses_texte": [
+        "Viterbi"
+      ],
+      "explication": "Il minimise une métrique cumulée sur le treillis."
+    },
+    {
+      "id": "clea4-041",
+      "type": "QCM",
+      "question": "Quelle métrique l'algorithme de Viterbi minimise-t-il ?",
+      "choix": [
+        "La distance libre",
+        "La probabilité d'erreur symbole",
+        "La somme cumulée des distances de Hamming depuis le début",
+        "L'entropie de la séquence"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Métrique X = distance de Hamming de chaque branche ; métrique cumulée Y = somme depuis le début. Le chemin de Y minimale donne la séquence décodée."
+    },
+    {
+      "id": "clea4-042",
+      "type": "FLASHCARD",
+      "question": "Pourquoi ne parle-t-on pas de distance minimale pour un code convolutif ?",
+      "verso": "Parce qu'il n'existe pas de mots de code à proprement parler.",
+      "explication": "On utilise à la place la distance libre."
+    },
+    {
+      "id": "clea4-043",
+      "type": "FLASHCARD",
+      "question": "Qu'est-ce que la distance libre d'un code convolutif ?",
+      "verso": "La distance minimale entre deux séquences codées distinctes, soit le poids du chemin de poids minimal qui quitte le chemin nul et y revient.",
+      "explication": "Elle mesure les performances de détection et de correction. Pour C(2, 1, 3) du cours, elle vaut 5."
+    },
+    {
+      "id": "clea4-044",
+      "type": "QCM",
+      "question": "Que vaut la distance libre du code C(2, 1, 3) du cours ?",
+      "choix": [
+        "6",
+        "3",
+        "4",
+        "5"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Chemin 00 → 10 → 01 → 00 : sorties 11, 10, 11, de poids 2 + 1 + 2 = 5."
+    },
+    {
+      "id": "clea4-045",
+      "type": "QCM",
+      "question": "Codeur c1 = st, c2 = st ⊕ st−1 : quelle est sa nomenclature C(n, k, m) ?",
+      "choix": [
+        "C(2, 1, 2)",
+        "C(1, 2, 2)",
+        "C(2, 1, 3)",
+        "C(2, 1, 1)"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "2 bits en sortie, 1 bit en entrée, mémoire 1 (une bascule st−1) donc longueur de contrainte m = 2."
+    },
+    {
+      "id": "clea4-046",
+      "type": "FLASHCARD",
+      "question": "Codeur c1 = st, c2 = st ⊕ st−1 : quelle est sa distance libre ?",
+      "verso": "3",
+      "explication": "Chemin 0 → 1 → 0 : sorties 11 puis 01, de poids 2 + 1 = 3. Le code a 2^(m−1) = 2 états et un rendement de 1/2."
+    },
+    {
+      "id": "clea4-047",
+      "type": "TROU",
+      "question": "Avec le codeur c1 = st, c2 = st ⊕ st−1 (état initial 0), la séquence 011101 donne 00 11 10 10 01 ___.",
+      "reponses_texte": [
+        "11"
+      ],
+      "explication": "Dernier bit : st = 1, st−1 = 0 donc c1 = 1, c2 = 1."
+    }
+  ]
+}

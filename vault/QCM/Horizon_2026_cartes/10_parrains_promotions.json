@@ -1,0 +1,558 @@
+{
+  "titre": "Horizon — Parrains de promotion (EA, EMA, EAE)",
+  "description": "Parrains des promotions de l’École de l’air, de l’École militaire de l’air et de l’École de l’air et de l’espace (Horizon 2026, ch. 3-IV).",
+  "questions": [
+    {
+      "id": "hz-parr-001",
+      "type": "QCM",
+      "question": "Quel est le parrain de la promotion 2015 ?",
+      "choix": [
+        "Colonel de La Poype",
+        "Lieutenant-colonel Dagnaux",
+        "Jean Moulin",
+        "Marcel Dassault"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-parr-002",
+      "type": "FLASHCARD",
+      "question": "Que signifie AFN ?",
+      "verso": "Afrique française du Nord"
+    },
+    {
+      "id": "hz-parr-003",
+      "type": "FLASHCARD",
+      "question": "En quelle année la promotion « Sous-lieutenant Pégoud » est-elle entrée à l’École ?",
+      "verso": "2014"
+    },
+    {
+      "id": "hz-parr-004",
+      "type": "QCR",
+      "question": "Quels parrains sont des figures non militaires de l’aviation (sans grade dans la liste EA/EAE) ?",
+      "choix": [
+        "Valin",
+        "Guynemer",
+        "Louis Blériot",
+        "Marcel Dassault",
+        "Clément Ader"
+      ],
+      "reponses": [
+        2,
+        3,
+        4
+      ],
+      "explication": "Vrai : C, D, E. Faux : A, B."
+    },
+    {
+      "id": "hz-parr-005",
+      "type": "FLASHCARD",
+      "question": "En quelle année la promotion « Général Pineau » est-elle entrée à l’École ?",
+      "verso": "1978"
+    },
+    {
+      "id": "hz-parr-006",
+      "type": "FLASHCARD",
+      "question": "Quel est le parrain de la promotion 1947 de l’École de l’air ?",
+      "verso": "Commandant Thollon"
+    },
+    {
+      "id": "hz-parr-007",
+      "type": "TROU",
+      "question": "La promotion 2023 de l’École de l’air et de l’espace a pour parrain Jean ___.",
+      "reponses_texte": [
+        "Moulin"
+      ]
+    },
+    {
+      "id": "hz-parr-008",
+      "type": "FLASHCARD",
+      "question": "En quelle année la promotion « Louis Blériot » est-elle entrée à l’École ?",
+      "verso": "1958"
+    },
+    {
+      "id": "hz-parr-009",
+      "type": "FLASHCARD",
+      "question": "Quel est le parrain de la promotion 1953 de l’École militaire de l’air ?",
+      "verso": "Général Georges Pelletier Doisy"
+    },
+    {
+      "id": "hz-parr-010",
+      "type": "QCM",
+      "question": "Quel est le parrain de la promotion 1937 ?",
+      "choix": [
+        "Commandant de Saint-Exupéry",
+        "Sous-lieutenant Pégoud",
+        "Lieutenant-colonel Mailloux",
+        "Commandant Mezergues"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-parr-011",
+      "type": "FLASHCARD",
+      "question": "Quel est le parrain de la promotion 1941 de l’École de l’air ?",
+      "verso": "Lieutenant-colonel Dagnaux"
+    },
+    {
+      "id": "hz-parr-012",
+      "type": "FLASHCARD",
+      "question": "Quel est le parrain de la promotion 1935 de l’École de l’air ?",
+      "verso": "Capitaine Guynemer"
+    },
+    {
+      "id": "hz-parr-013",
+      "type": "QCM",
+      "question": "Quel est le parrain de la promotion 1943 ?",
+      "choix": [
+        "Sous-lieutenant Pomier Layrargues",
+        "Général Brocard",
+        "Lieutenant-colonel Pijeaud",
+        "Lieutenant Pinczon du Sel"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-parr-014",
+      "type": "FLASHCARD",
+      "question": "En quelle année la promotion « Lieutenant-colonel Pijeaud » est-elle entrée à l’École ?",
+      "verso": "2020"
+    },
+    {
+      "id": "hz-parr-015",
+      "type": "FLASHCARD",
+      "question": "Quel est le parrain de la promotion 2019 de l’École de l’air ?",
+      "verso": "Lieutenant-colonel Pouliquen"
+    },
+    {
+      "id": "hz-parr-016",
+      "type": "TROU",
+      "question": "La promotion « Commandant René Mouchotte » de l’École militaire de l’air date de ___.",
+      "reponses_texte": [
+        "1951"
+      ]
+    },
+    {
+      "id": "hz-parr-017",
+      "type": "FLASHCARD",
+      "question": "Quel est le parrain de la promotion 1938 de l’École de l’air ?",
+      "verso": "Lieutenant-colonel Mailloux"
+    },
+    {
+      "id": "hz-parr-018",
+      "type": "QCM",
+      "question": "Quel est le parrain de la promotion 2012 ?",
+      "choix": [
+        "Louis Blériot",
+        "Capitaine Guynemer",
+        "Colonel de La Poype",
+        "Colonel Clostermann"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-parr-019",
+      "type": "FLASHCARD",
+      "question": "Quel est le parrain de la promotion 2006 de l’École de l’air ?",
+      "verso": "Colonel Clostermann"
+    },
+    {
+      "id": "hz-parr-020",
+      "type": "QCM",
+      "question": "Quel est le parrain de la promotion 1964 ?",
+      "choix": [
+        "Lieutenant-colonel Dagnaux",
+        "Lieutenant-colonel Carpentier",
+        "Capitaine Guynemer",
+        "Général Valin"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-parr-021",
+      "type": "QCM",
+      "question": "Quel est le parrain de la promotion 2024 ?",
+      "choix": [
+        "Lieutenant Steunou",
+        "Lieutenant Kessel",
+        "Général Valin",
+        "Général Madon"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-parr-022",
+      "type": "FLASHCARD",
+      "question": "En quelle année la promotion « Général Brocard » est-elle entrée à l’École ?",
+      "verso": "2007"
+    },
+    {
+      "id": "hz-parr-023",
+      "type": "FLASHCARD",
+      "question": "En quelle année la promotion « Capitaine Brachet » est-elle entrée à l’École ?",
+      "verso": "1948"
+    },
+    {
+      "id": "hz-parr-024",
+      "type": "TROU",
+      "question": "La promotion « Colonel Albert Chambonnet » de l’École militaire de l’air date de ___.",
+      "reponses_texte": [
+        "1955"
+      ]
+    },
+    {
+      "id": "hz-parr-025",
+      "type": "FLASHCARD",
+      "question": "Quel est le parrain de la promotion 1945 de l’École militaire de l’air ?",
+      "verso": "Commandant Raoul Ménard"
+    },
+    {
+      "id": "hz-parr-026",
+      "type": "FLASHCARD",
+      "question": "En quelle année la promotion « Commandant Marin la Meslée » est-elle entrée à l’École ?",
+      "verso": "1945"
+    },
+    {
+      "id": "hz-parr-027",
+      "type": "TROU",
+      "question": "La promotion « Maryse Hilsz » de l’École militaire de l’air date de ___.",
+      "reponses_texte": [
+        "2012"
+      ]
+    },
+    {
+      "id": "hz-parr-028",
+      "type": "FLASHCARD",
+      "question": "En quelle année la promotion « Lieutenant Pinczon du Sel » est-elle entrée à l’École ?",
+      "verso": "1939"
+    },
+    {
+      "id": "hz-parr-029",
+      "type": "FLASHCARD",
+      "question": "Quel est le parrain de la promotion 2013 de l’École de l’air ?",
+      "verso": "Général Valin"
+    },
+    {
+      "id": "hz-parr-030",
+      "type": "QCM",
+      "question": "Quel parrain a donné son nom à deux promotions consécutives de l’EMA (1945 et 1946) ?",
+      "choix": [
+        "Capitaine Alphonse Béraud",
+        "Commandant René Mouchotte",
+        "Capitaine Jean Maridor",
+        "Commandant Raoul Ménard"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-parr-031",
+      "type": "FLASHCARD",
+      "question": "Quel est le parrain de la promotion 1944 de l’École de l’air ?",
+      "verso": "Capitaine Preziosi"
+    },
+    {
+      "id": "hz-parr-032",
+      "type": "TROU",
+      "question": "La promotion « Capitaine Georges Madon » de l’École militaire de l’air date de ___.",
+      "reponses_texte": [
+        "1961"
+      ]
+    },
+    {
+      "id": "hz-parr-033",
+      "type": "QCM",
+      "question": "Quels sont les parrains des deux promotions formées en Afrique du Nord (AFN) pendant la guerre ?",
+      "choix": [
+        "Capitaine Thouvenin de Villaret (1943) et lieutenant de Tedesco (1944)",
+        "Commandant Mezergues (1937) et lieutenant Pinczon du Sel (1939)",
+        "Lieutenant Steunou (1940) et lieutenant-colonel Dagnaux (1941)",
+        "Commandant Tricaud (1942) et capitaine Preziosi (1944)"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-parr-034",
+      "type": "TROU",
+      "question": "La promotion 2024 de l’École de l’air et de l’espace a pour parrain le lieutenant ___.",
+      "reponses_texte": [
+        "Kessel"
+      ]
+    },
+    {
+      "id": "hz-parr-035",
+      "type": "FLASHCARD",
+      "question": "Quel est le parrain de la promotion 2004 de l’École militaire de l’air ?",
+      "verso": "Capitaine Maryse Bastié"
+    },
+    {
+      "id": "hz-parr-036",
+      "type": "FLASHCARD",
+      "question": "En quelle année la promotion « Général Aubinière » est-elle entrée à l’École ?",
+      "verso": "2017"
+    },
+    {
+      "id": "hz-parr-037",
+      "type": "QCM",
+      "question": "Quel est le parrain de la promotion 1946 ?",
+      "choix": [
+        "Capitaine Brachet",
+        "Commandant de Saint-Exupéry",
+        "Général Pineau",
+        "Général Brocard"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-parr-038",
+      "type": "QCM",
+      "question": "Quelle est la première promotion unique après la fusion de 2015 ?",
+      "choix": [
+        "Lieutenant-colonel Pijeaud",
+        "Général Glavany",
+        "Marcel Dassault",
+        "Sous-lieutenant Pégoud"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-parr-039",
+      "type": "TROU",
+      "question": "La promotion 2018 de l’École de l’air a pour parrain le commandant ___.",
+      "reponses_texte": [
+        "Aigle"
+      ]
+    },
+    {
+      "id": "hz-parr-040",
+      "type": "QCM",
+      "question": "Quel est le parrain de la promotion 2021 ?",
+      "choix": [
+        "Marcel Dassault",
+        "Commandant Marin la Meslée",
+        "Colonel Denis",
+        "Lieutenant Pinczon du Sel"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-parr-041",
+      "type": "FLASHCARD",
+      "question": "Quel est le parrain de la promotion 2014 de l’École militaire de l’air ?",
+      "verso": "Colonel Pierre Bourgoin"
+    },
+    {
+      "id": "hz-parr-042",
+      "type": "QCM",
+      "question": "Quel est le parrain de la promotion 2018 ?",
+      "choix": [
+        "Commandant Aigle",
+        "Colonel Denis",
+        "Clément Ader",
+        "Capitaine Gary"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-parr-043",
+      "type": "FLASHCARD",
+      "question": "Quel est le parrain de la promotion 2016 de l’École de l’air ?",
+      "verso": "Général Glavany"
+    },
+    {
+      "id": "hz-parr-044",
+      "type": "FLASHCARD",
+      "question": "En quelle année la promotion « Commandant Tricaud » est-elle entrée à l’École ?",
+      "verso": "1942"
+    },
+    {
+      "id": "hz-parr-045",
+      "type": "QCM",
+      "question": "Quel pilote de l’EFC1, parmi les six désignés en 1940, est devenu parrain de la promotion 1976 de l’EMA ?",
+      "choix": [
+        "Noël Castelain",
+        "Albert Littolff",
+        "Robert Guédon",
+        "James Denis"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-parr-046",
+      "type": "FLASHCARD",
+      "question": "En quelle année la promotion « Jean Moulin » est-elle entrée à l’École ?",
+      "verso": "2023"
+    },
+    {
+      "id": "hz-parr-047",
+      "type": "FLASHCARD",
+      "question": "Quel est le parrain de la promotion 1965 de l’École militaire de l’air ?",
+      "verso": "Lieutenant Roland Garros"
+    },
+    {
+      "id": "hz-parr-048",
+      "type": "QCR",
+      "question": "Quelles femmes ont été marraines de promotions de l’EMA ?",
+      "choix": [
+        "Maryse Bastié",
+        "Maryse Hilsz",
+        "Caroline Aigle",
+        "Sophie Adenot",
+        "Amelia Earhart"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "Vrai : A, B. Faux : C, D, E."
+    },
+    {
+      "id": "hz-parr-049",
+      "type": "FLASHCARD",
+      "question": "Quel est le parrain de la promotion 1956 de l’École militaire de l’air ?",
+      "verso": "Capitaine Charles Nungesser"
+    },
+    {
+      "id": "hz-parr-050",
+      "type": "FLASHCARD",
+      "question": "Quel est le parrain de la promotion 1976 de l’École militaire de l’air ?",
+      "verso": "Capitaine Albert Littolff"
+    },
+    {
+      "id": "hz-parr-051",
+      "type": "QCM",
+      "question": "Quel est le parrain de la promotion 1949 ?",
+      "choix": [
+        "Capitaine de Seynes",
+        "Capitaine Preziosi",
+        "Jean Moulin",
+        "Lieutenant Pinczon du Sel"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-parr-052",
+      "type": "FLASHCARD",
+      "question": "En quelle année la promotion « Capitaine Astier de Villatte » est-elle entrée à l’École ?",
+      "verso": "1936"
+    },
+    {
+      "id": "hz-parr-053",
+      "type": "FLASHCARD",
+      "question": "Quel est le parrain de la promotion 1951 de l’École de l’air ?",
+      "verso": "Commandant Jeandet"
+    },
+    {
+      "id": "hz-parr-054",
+      "type": "QCM",
+      "question": "Quelle est la dernière promotion de l’EMA avant la fusion de 2015 ?",
+      "choix": [
+        "Sous-lieutenant Pégoud (2014)",
+        "Maryse Hilsz (2012)",
+        "Colonel Amédée Passemard (2013)",
+        "Colonel Pierre Bourgoin (2014)"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Pégoud est la promotion 2014 de l’École de l’air, pas de l’EMA."
+    },
+    {
+      "id": "hz-parr-055",
+      "type": "FLASHCARD",
+      "question": "Quel est le parrain de la promotion 2022 de l’École de l’air ?",
+      "verso": "Capitaine Gary"
+    },
+    {
+      "id": "hz-parr-056",
+      "type": "FLASHCARD",
+      "question": "Quel est le parrain de la promotion 1972 de l’École de l’air ?",
+      "verso": "Général Madon"
+    },
+    {
+      "id": "hz-parr-057",
+      "type": "TROU",
+      "question": "La promotion « Commandant Jean Tulasne » de l’École militaire de l’air date de ___.",
+      "reponses_texte": [
+        "1972"
+      ]
+    },
+    {
+      "id": "hz-parr-058",
+      "type": "QCM",
+      "question": "Quel est le parrain de la promotion 1940 ?",
+      "choix": [
+        "Lieutenant-colonel Mailloux",
+        "Lieutenant Steunou",
+        "Colonel Denis",
+        "Capitaine Brachet"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-parr-059",
+      "type": "TROU",
+      "question": "La promotion « Lieutenant Henri Guillaumet » de l’École militaire de l’air date de ___.",
+      "reponses_texte": [
+        "1989"
+      ]
+    },
+    {
+      "id": "hz-parr-060",
+      "type": "QCM",
+      "question": "Quel est le parrain de la promotion 1989 ?",
+      "choix": [
+        "Clément Ader",
+        "Capitaine Preziosi",
+        "Lieutenant-colonel Mailloux",
+        "Lieutenant Kessel"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-parr-061",
+      "type": "QCM",
+      "question": "Quelle est la première promotion de l’École de l’air et de l’espace (nouvelle appellation, 2020) ?",
+      "choix": [
+        "Lieutenant-colonel Pijeaud",
+        "Colonel Denis",
+        "Lieutenant-colonel Pouliquen",
+        "Commandant Aigle"
+      ],
+      "reponses": [
+        0
+      ]
+    }
+  ]
+}

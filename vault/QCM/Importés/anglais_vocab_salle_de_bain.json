@@ -1,0 +1,143 @@
+{
+  "langue": "Anglais",
+  "titre": "Anglais — vocabulaire : la salle de bain (A1)",
+  "particules_optionnelles": [
+    "to",
+    "a",
+    "an",
+    "the"
+  ],
+  "caracteres_speciaux": [],
+  "vocabulaire": [
+    {
+      "id": "en-salle-de-bain-001",
+      "mot": "a bathroom",
+      "traductions": [
+        "une salle de bain"
+      ],
+      "exemple": "Our [bathroom] has a bath and a shower.",
+      "exemple_traduction": "Notre salle de bain a une baignoire et une douche.",
+      "note": "Américain : aussi « les toilettes » (Where is the bathroom?)."
+    },
+    {
+      "id": "en-salle-de-bain-002",
+      "mot": "a shower",
+      "traductions": [
+        "une douche"
+      ],
+      "exemple": "Nothing feels nicer than a hot [shower].",
+      "exemple_traduction": "Rien n'est plus agréable qu'une douche chaude.",
+      "note": "to take / to have a shower = prendre une douche."
+    },
+    {
+      "id": "en-salle-de-bain-003",
+      "mot": "a bath",
+      "traductions": [
+        "une baignoire",
+        "un bain"
+      ],
+      "exemple": "I like to relax in the [bath] after work.",
+      "exemple_traduction": "J'aime me détendre dans le bain après le travail.",
+      "note": "to have a bath = prendre un bain. Américain : a bathtub.",
+      "variantes": [
+        "a bathtub"
+      ]
+    },
+    {
+      "id": "en-salle-de-bain-004",
+      "mot": "a basin",
+      "traductions": [
+        "un lavabo"
+      ],
+      "exemple": "I brush my teeth at the [basin] every morning.",
+      "exemple_traduction": "Je me brosse les dents au lavabo chaque matin.",
+      "note": "Aussi : a wash basin, a sink.",
+      "variantes": [
+        "a wash basin",
+        "a washbasin"
+      ]
+    },
+    {
+      "id": "en-salle-de-bain-005",
+      "mot": "a toilet",
+      "traductions": [
+        "les toilettes",
+        "la cuvette des WC"
+      ],
+      "exemple": "The [toilet] in our hotel room was broken.",
+      "exemple_traduction": "Les toilettes de notre chambre d'hôtel étaient cassées.",
+      "note": "Au singulier en anglais : the toilet. Américain : the restroom (lieu public)."
+    },
+    {
+      "id": "en-salle-de-bain-006",
+      "mot": "to flush",
+      "traductions": [
+        "tirer la chasse d'eau"
+      ],
+      "exemple": "The toilet was broken and wouldn't [flush].",
+      "exemple_traduction": "Les toilettes étaient cassées et la chasse ne marchait pas.",
+      "note": "to flush the toilet."
+    },
+    {
+      "id": "en-salle-de-bain-007",
+      "mot": "to brush your teeth",
+      "traductions": [
+        "se brosser les dents"
+      ],
+      "exemple": "I [brush] my teeth with an electric toothbrush.",
+      "exemple_traduction": "Je me brosse les dents avec une brosse à dents électrique.",
+      "note": "Possessif obligatoire en anglais : I brush MY teeth."
+    },
+    {
+      "id": "en-salle-de-bain-008",
+      "mot": "to wash your face",
+      "traductions": [
+        "se laver le visage"
+      ],
+      "exemple": "I [wash] my face with water every day.",
+      "exemple_traduction": "Je me lave le visage à l'eau tous les jours.",
+      "note": "Possessif obligatoire : I wash MY face (pas « the face »)."
+    },
+    {
+      "id": "en-salle-de-bain-009",
+      "mot": "a toothbrush",
+      "traductions": [
+        "une brosse à dents"
+      ],
+      "exemple": "I have a yellow [toothbrush].",
+      "exemple_traduction": "J'ai une brosse à dents jaune.",
+      "note": "Pluriel : toothbrushes."
+    },
+    {
+      "id": "en-salle-de-bain-010",
+      "mot": "toothpaste",
+      "traductions": [
+        "le dentifrice"
+      ],
+      "exemple": "My favourite [toothpaste] has a blue stripe.",
+      "exemple_traduction": "Mon dentifrice préféré a une rayure bleue.",
+      "note": "Indénombrable : some toothpaste, a tube of toothpaste."
+    },
+    {
+      "id": "en-salle-de-bain-011",
+      "mot": "soap",
+      "traductions": [
+        "le savon"
+      ],
+      "exemple": "I use [soap] to wash my hands.",
+      "exemple_traduction": "J'utilise du savon pour me laver les mains.",
+      "note": "Indénombrable : some soap, a bar of soap (une savonnette)."
+    },
+    {
+      "id": "en-salle-de-bain-012",
+      "mot": "shampoo",
+      "traductions": [
+        "le shampoing"
+      ],
+      "exemple": "This [shampoo] makes my hair smell like coconut!",
+      "exemple_traduction": "Ce shampoing donne à mes cheveux une odeur de noix de coco !",
+      "note": "Accent sur la 2e syllabe.",
+      "prononciation": "/ʃæmˈpuː/"
+    }
+  ]
+}

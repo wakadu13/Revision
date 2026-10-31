@@ -1,0 +1,119 @@
+{
+  "langue": "Anglais",
+  "titre": "Anglais — vocabulaire : téléphone et SMS (A1)",
+  "particules_optionnelles": [
+    "to",
+    "a",
+    "an",
+    "the"
+  ],
+  "caracteres_speciaux": [],
+  "vocabulaire": [
+    {
+      "id": "en-telephone-001",
+      "mot": "to call",
+      "traductions": [
+        "appeler (au téléphone)"
+      ],
+      "exemple": "They said they would [call] me about the job.",
+      "exemple_traduction": "Ils ont dit qu'ils m'appelleraient pour le poste.",
+      "note": "Synonymes : to phone, to ring (britannique)."
+    },
+    {
+      "id": "en-telephone-002",
+      "mot": "to call back",
+      "traductions": [
+        "rappeler"
+      ],
+      "exemple": "He isn't here right now, but he'll [call] you back.",
+      "exemple_traduction": "Il n'est pas là pour l'instant, mais il vous rappellera.",
+      "note": "Verbe à particule : le pronom se place entre « call » et « back » (call you back)."
+    },
+    {
+      "id": "en-telephone-003",
+      "mot": "to text",
+      "traductions": [
+        "envoyer un SMS à",
+        "envoyer un texto à"
+      ],
+      "exemple": "I'll [text] you when I arrive home.",
+      "exemple_traduction": "Je t'enverrai un SMS quand j'arriverai chez moi.",
+      "note": "Aussi un nom : a text = un SMS. She sent him 20 texts."
+    },
+    {
+      "id": "en-telephone-004",
+      "mot": "to message",
+      "traductions": [
+        "envoyer un message à (appli, réseau social)"
+      ],
+      "exemple": "Please [message] me when you arrive home.",
+      "exemple_traduction": "Envoie-moi un message quand tu arrives chez toi, s'il te plaît.",
+      "note": "Plus général que « to text » : WhatsApp, Messenger, etc."
+    },
+    {
+      "id": "en-telephone-005",
+      "mot": "to send a message",
+      "traductions": [
+        "envoyer un message"
+      ],
+      "exemple": "I will [send] you a message in the morning.",
+      "exemple_traduction": "Je t'enverrai un message demain matin.",
+      "note": "Irrégulier : send – sent – sent. to send someone something."
+    },
+    {
+      "id": "en-telephone-006",
+      "mot": "to receive a message",
+      "traductions": [
+        "recevoir un message"
+      ],
+      "exemple": "Phone me back as soon as you [receive] this message.",
+      "exemple_traduction": "Rappelle-moi dès que tu reçois ce message.",
+      "note": "Plus formel que « to get a message »."
+    },
+    {
+      "id": "en-telephone-007",
+      "mot": "to press",
+      "traductions": [
+        "appuyer sur"
+      ],
+      "exemple": "Please [press] one for the sales department.",
+      "exemple_traduction": "Veuillez appuyer sur le un pour le service commercial.",
+      "note": "Pas de préposition en anglais : to press a button (appuyer SUR un bouton)."
+    },
+    {
+      "id": "en-telephone-008",
+      "mot": "a button",
+      "traductions": [
+        "une touche (de téléphone)",
+        "un bouton"
+      ],
+      "exemple": "My son started hitting the [buttons] on my phone.",
+      "exemple_traduction": "Mon fils s'est mis à appuyer sur les touches de mon téléphone.",
+      "note": "Synonyme : a key (une touche de clavier)."
+    },
+    {
+      "id": "en-telephone-009",
+      "mot": "a touch screen",
+      "traductions": [
+        "un écran tactile"
+      ],
+      "exemple": "I prefer phones with a [touch screen].",
+      "exemple_traduction": "Je préfère les téléphones à écran tactile.",
+      "note": "Aussi écrit « touchscreen ».",
+      "variantes": [
+        "a touchscreen"
+      ]
+    },
+    {
+      "id": "en-telephone-010",
+      "mot": "an emoji",
+      "traductions": [
+        "un émoji"
+      ],
+      "exemple": "I always use [emojis] in my messages.",
+      "exemple_traduction": "J'utilise toujours des émojis dans mes messages.",
+      "note": "Pluriel : emojis (ou emoji).",
+      "prononciation": "/ɪˈməʊdʒi/"
+    }
+  ]
+}

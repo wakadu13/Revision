@@ -1,0 +1,196 @@
+{
+  "langue": "Anglais",
+  "titre": "Anglais — vocabulaire : collègues et relations de travail (B1)",
+  "particules_optionnelles": [
+    "to",
+    "a",
+    "an",
+    "the"
+  ],
+  "caracteres_speciaux": [],
+  "vocabulaire": [
+    {
+      "id": "en-collegues-001",
+      "mot": "a colleague",
+      "traductions": [
+        "un collègue"
+      ],
+      "exemple": "I caught up with my [colleagues] from other branches.",
+      "exemple_traduction": "J'ai pris des nouvelles de mes collègues des autres agences.",
+      "note": "/ˈkɒliːɡ/"
+    },
+    {
+      "id": "en-collegues-002",
+      "mot": "a coworker",
+      "traductions": [
+        "un collègue de travail direct"
+      ],
+      "exemple": "My [coworkers] and I have an evening out once a month.",
+      "exemple_traduction": "Mes collègues et moi sortons une soirée par mois.",
+      "note": "Personnes avec qui on travaille au quotidien. Aussi : co-worker.",
+      "variantes": [
+        "a co-worker"
+      ]
+    },
+    {
+      "id": "en-collegues-003",
+      "mot": "a boss",
+      "traductions": [
+        "un patron",
+        "un chef"
+      ],
+      "exemple": "He isn't a very good [boss].",
+      "exemple_traduction": "Ce n'est pas un très bon patron.",
+      "note": "Familier ; plus formel : a manager."
+    },
+    {
+      "id": "en-collegues-004",
+      "mot": "a manager",
+      "traductions": [
+        "un responsable",
+        "un manager"
+      ],
+      "exemple": "The [manager] holds a team meeting every week.",
+      "exemple_traduction": "Le responsable organise une réunion d'équipe chaque semaine."
+    },
+    {
+      "id": "en-collegues-005",
+      "mot": "the office manager",
+      "traductions": [
+        "le responsable administratif"
+      ],
+      "exemple": "The [office manager] orders paper for the copier.",
+      "exemple_traduction": "Le responsable administratif commande le papier pour la photocopieuse."
+    },
+    {
+      "id": "en-collegues-006",
+      "mot": "an employee",
+      "traductions": [
+        "un employé",
+        "un salarié"
+      ],
+      "exemple": "Our company only has eight [employees].",
+      "exemple_traduction": "Notre entreprise n'a que huit salariés.",
+      "note": "-ee = celui qui reçoit l'action (employé) ; -er = celui qui agit (employeur)."
+    },
+    {
+      "id": "en-collegues-007",
+      "mot": "an employer",
+      "traductions": [
+        "un employeur"
+      ],
+      "exemple": "My [employer] gives us generous bonuses.",
+      "exemple_traduction": "Mon employeur nous verse des primes généreuses."
+    },
+    {
+      "id": "en-collegues-008",
+      "mot": "the staff",
+      "traductions": [
+        "le personnel"
+      ],
+      "exemple": "The [staff] threw a surprise party for their manager.",
+      "exemple_traduction": "Le personnel a organisé une fête surprise pour son responsable.",
+      "note": "Nom collectif. Un membre du personnel = a member of staff / a staff member."
+    },
+    {
+      "id": "en-collegues-009",
+      "mot": "a team",
+      "traductions": [
+        "une équipe"
+      ],
+      "exemple": "The sales [team] always hits its targets.",
+      "exemple_traduction": "L'équipe commerciale atteint toujours ses objectifs.",
+      "note": "to hit a target = atteindre un objectif."
+    },
+    {
+      "id": "en-collegues-010",
+      "mot": "a department",
+      "traductions": [
+        "un service",
+        "un département"
+      ],
+      "exemple": "I work in the marketing [department].",
+      "exemple_traduction": "Je travaille au service marketing."
+    },
+    {
+      "id": "en-collegues-011",
+      "mot": "an assistant",
+      "traductions": [
+        "un assistant"
+      ],
+      "exemple": "Bob's [assistant] confirmed Wednesday's meeting.",
+      "exemple_traduction": "L'assistant de Bob a confirmé la réunion de mercredi."
+    },
+    {
+      "id": "en-collegues-012",
+      "mot": "a supervisor",
+      "traductions": [
+        "un superviseur",
+        "un chef d'équipe"
+      ],
+      "exemple": "My [supervisor] told me off for not wearing my safety jacket.",
+      "exemple_traduction": "Mon chef d'équipe m'a reproché de ne pas porter mon gilet de sécurité.",
+      "note": "to tell someone off = réprimander quelqu'un."
+    },
+    {
+      "id": "en-collegues-013",
+      "mot": "a foreman",
+      "traductions": [
+        "un contremaître"
+      ],
+      "exemple": "The [foreman] made sure everyone worked safely.",
+      "exemple_traduction": "Le contremaître veillait à ce que tout le monde travaille en sécurité.",
+      "note": "Pluriel : foremen. Surtout usine et chantier."
+    },
+    {
+      "id": "en-collegues-014",
+      "mot": "a subordinate",
+      "traductions": [
+        "un subordonné"
+      ],
+      "exemple": "She always treats her [subordinates] well.",
+      "exemple_traduction": "Elle traite toujours bien ses subordonnés.",
+      "note": "Soutenu."
+    },
+    {
+      "id": "en-collegues-015",
+      "mot": "an intern",
+      "traductions": [
+        "un stagiaire"
+      ],
+      "exemple": "The [intern] spent the day photocopying documents.",
+      "exemple_traduction": "Le stagiaire a passé la journée à photocopier des documents.",
+      "note": "an internship = un stage. Britannique : aussi a trainee / a work placement."
+    },
+    {
+      "id": "en-collegues-016",
+      "mot": "to delegate",
+      "traductions": [
+        "déléguer"
+      ],
+      "exemple": "If only she [delegated] better!",
+      "exemple_traduction": "Si seulement elle déléguait mieux !",
+      "note": "Verbe /ˈdelɪɡeɪt/ ; nom (un délégué) /ˈdelɪɡət/."
+    },
+    {
+      "id": "en-collegues-017",
+      "mot": "to promote",
+      "traductions": [
+        "promouvoir"
+      ],
+      "exemple": "They [promoted] her to assistant manager.",
+      "exemple_traduction": "Ils l'ont promue directrice adjointe.",
+      "note": "a promotion = une promotion (avancement)."
+    },
+    {
+      "id": "en-collegues-018",
+      "mot": "to recruit",
+      "traductions": [
+        "recruter"
+      ],
+      "exemple": "The company needed to [recruit] more staff.",
+      "exemple_traduction": "L'entreprise devait recruter davantage de personnel.",
+      "note": "/rɪˈkruːt/"
+    }
+  ]
+}

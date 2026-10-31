@@ -1,0 +1,213 @@
+{
+  "langue": "Anglais",
+  "titre": "Anglais — vocabulaire : l'usine (C1)",
+  "particules_optionnelles": [
+    "to",
+    "a",
+    "an",
+    "the"
+  ],
+  "caracteres_speciaux": [],
+  "vocabulaire": [
+    {
+      "id": "en-usine-001",
+      "mot": "a factory",
+      "traductions": [
+        "une usine"
+      ],
+      "exemple": "My great-grandfather opened the [factory] in 1937.",
+      "exemple_traduction": "Mon arrière-grand-père a ouvert l'usine en 1937.",
+      "note": "Aussi : a manufacturing plant."
+    },
+    {
+      "id": "en-usine-002",
+      "mot": "the factory floor",
+      "traductions": [
+        "l'atelier de production"
+      ],
+      "exemple": "Five hundred people work on the [factory floor].",
+      "exemple_traduction": "Cinq cents personnes travaillent dans l'atelier de production.",
+      "note": "Désigne aussi les ouvriers par opposition à la direction."
+    },
+    {
+      "id": "en-usine-003",
+      "mot": "an assembly line",
+      "traductions": [
+        "une chaîne de montage"
+      ],
+      "exemple": "Bob hated his job on the [assembly line].",
+      "exemple_traduction": "Bob détestait son travail à la chaîne.",
+      "note": "to assemble = assembler, monter."
+    },
+    {
+      "id": "en-usine-004",
+      "mot": "a warehouse",
+      "traductions": [
+        "un entrepôt"
+      ],
+      "exemple": "The crates were moved to the [warehouse].",
+      "exemple_traduction": "Les caisses ont été déplacées dans l'entrepôt."
+    },
+    {
+      "id": "en-usine-005",
+      "mot": "a shift",
+      "traductions": [
+        "un poste (de travail)",
+        "une équipe (travail posté)"
+      ],
+      "exemple": "I do an eight-hour [shift] every day.",
+      "exemple_traduction": "Je fais un poste de huit heures chaque jour.",
+      "note": "a night shift = une équipe de nuit ; shift work = le travail posté."
+    },
+    {
+      "id": "en-usine-006",
+      "mot": "a machine",
+      "traductions": [
+        "une machine"
+      ],
+      "exemple": "The factory replaced most workers with [machines].",
+      "exemple_traduction": "L'usine a remplacé la plupart des ouvriers par des machines.",
+      "note": "/məˈʃiːn/"
+    },
+    {
+      "id": "en-usine-007",
+      "mot": "an operator",
+      "traductions": [
+        "un opérateur",
+        "un conducteur d'engin"
+      ],
+      "exemple": "He is a forklift truck [operator].",
+      "exemple_traduction": "Il est cariste.",
+      "note": "a forklift truck = un chariot élévateur."
+    },
+    {
+      "id": "en-usine-008",
+      "mot": "automation",
+      "traductions": [
+        "l'automatisation"
+      ],
+      "exemple": "Hundreds of people lost their jobs because of [automation].",
+      "exemple_traduction": "Des centaines de personnes ont perdu leur emploi à cause de l'automatisation."
+    },
+    {
+      "id": "en-usine-009",
+      "mot": "technology",
+      "traductions": [
+        "la technologie"
+      ],
+      "exemple": "Some of our [technology] is over 30 years old.",
+      "exemple_traduction": "Une partie de notre technologie a plus de 30 ans.",
+      "note": "/tekˈnɒlədʒi/"
+    },
+    {
+      "id": "en-usine-010",
+      "mot": "the raw materials",
+      "traductions": [
+        "les matières premières"
+      ],
+      "exemple": "The [raw materials] come from all over the world.",
+      "exemple_traduction": "Les matières premières viennent du monde entier.",
+      "note": "raw = brut, cru."
+    },
+    {
+      "id": "en-usine-011",
+      "mot": "to manufacture",
+      "traductions": [
+        "fabriquer (en série)"
+      ],
+      "exemple": "The factory [manufactures] ship parts.",
+      "exemple_traduction": "L'usine fabrique des pièces de navires."
+    },
+    {
+      "id": "en-usine-012",
+      "mot": "to produce",
+      "traductions": [
+        "produire"
+      ],
+      "exemple": "The factory [produced] very good shoes.",
+      "exemple_traduction": "L'usine produisait de très bonnes chaussures."
+    },
+    {
+      "id": "en-usine-013",
+      "mot": "to export",
+      "traductions": [
+        "exporter"
+      ],
+      "exemple": "We [export] all our products all over the world.",
+      "exemple_traduction": "Nous exportons tous nos produits dans le monde entier.",
+      "note": "Verbe : exPORT ; nom : EXport (for export = destiné à l'export)."
+    },
+    {
+      "id": "en-usine-014",
+      "mot": "to import",
+      "traductions": [
+        "importer"
+      ],
+      "exemple": "The raw materials were [imported] from abroad.",
+      "exemple_traduction": "Les matières premières étaient importées de l'étranger."
+    },
+    {
+      "id": "en-usine-015",
+      "mot": "an industry",
+      "traductions": [
+        "une industrie (filière)"
+      ],
+      "exemple": "He's been in the car [industry] since he was 14.",
+      "exemple_traduction": "Il travaille dans l'industrie automobile depuis ses 14 ans."
+    },
+    {
+      "id": "en-usine-016",
+      "mot": "a quality control inspector",
+      "traductions": [
+        "un contrôleur qualité"
+      ],
+      "exemple": "A [quality control inspector] was sent to the factory.",
+      "exemple_traduction": "Un contrôleur qualité a été envoyé à l'usine."
+    },
+    {
+      "id": "en-usine-017",
+      "mot": "a foundry",
+      "traductions": [
+        "une fonderie"
+      ],
+      "exemple": "The [foundry] was forced to close.",
+      "exemple_traduction": "La fonderie a été forcée de fermer.",
+      "note": "to melt = faire fondre ; a mould / mold = un moule."
+    },
+    {
+      "id": "en-usine-018",
+      "mot": "a mill",
+      "traductions": [
+        "un moulin",
+        "une filature"
+      ],
+      "exemple": "The baker buys his flour from the local [mill].",
+      "exemple_traduction": "Le boulanger achète sa farine au moulin du coin.",
+      "note": "a paper mill = une papeterie ; a steel mill = une aciérie."
+    },
+    {
+      "id": "en-usine-019",
+      "mot": "a sweatshop",
+      "traductions": [
+        "un atelier de misère"
+      ],
+      "exemple": "The products were made in [sweatshops].",
+      "exemple_traduction": "Les produits étaient fabriqués dans des ateliers de misère.",
+      "note": "to sweat = transpirer."
+    },
+    {
+      "id": "en-usine-020",
+      "mot": "a union",
+      "traductions": [
+        "un syndicat"
+      ],
+      "exemple": "The [union] advised the workers to go on strike.",
+      "exemple_traduction": "Le syndicat a conseillé aux ouvriers de faire grève.",
+      "note": "Aussi : a trade union (GB), a labor union (US). to go on strike = faire grève.",
+      "variantes": [
+        "a trade union",
+        "a labor union"
+      ]
+    }
+  ]
+}

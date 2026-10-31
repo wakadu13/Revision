@@ -1,0 +1,858 @@
+{
+  "langue": "Roumain",
+  "caracteres_speciaux": [
+    "ă",
+    "â",
+    "î",
+    "ș",
+    "ț",
+    "Ă",
+    "Â",
+    "Î",
+    "Ș",
+    "Ț"
+  ],
+  "titre": "Roumain — conjugaison : présent des 29 verbes clés",
+  "description": "Les verbes les plus fréquents au présent, avec leurs alternances (o/oa, e/ea, d/z…).",
+  "conjugaison": [
+    {
+      "id": "ro-conj-fi-pres",
+      "verbe": "a fi",
+      "traduction": "être",
+      "temps": "présent",
+      "formes": {
+        "eu": [
+          "sunt"
+        ],
+        "tu": [
+          "ești",
+          "eşti"
+        ],
+        "el / ea": [
+          "este",
+          "e"
+        ],
+        "noi": [
+          "suntem"
+        ],
+        "voi": [
+          "sunteți",
+          "sunteţi"
+        ],
+        "ei / ele": [
+          "sunt"
+        ]
+      },
+      "explication": "Très irrégulier. 3e sing. : este ou e (oral). Sunt sert pour eu ET ei / ele."
+    },
+    {
+      "id": "ro-conj-avea-pres",
+      "verbe": "a avea",
+      "traduction": "avoir",
+      "temps": "présent",
+      "formes": {
+        "eu": [
+          "am"
+        ],
+        "tu": [
+          "ai"
+        ],
+        "el / ea": [
+          "are"
+        ],
+        "noi": [
+          "avem"
+        ],
+        "voi": [
+          "aveți",
+          "aveţi"
+        ],
+        "ei / ele": [
+          "au"
+        ]
+      },
+      "explication": "Irrégulier. Ne pas confondre are (il a) avec l'auxiliaire a du passé composé (a făcut)."
+    },
+    {
+      "id": "ro-conj-face-pres",
+      "verbe": "a face",
+      "traduction": "faire",
+      "temps": "présent",
+      "formes": {
+        "eu": [
+          "fac"
+        ],
+        "tu": [
+          "faci"
+        ],
+        "el / ea": [
+          "face"
+        ],
+        "noi": [
+          "facem"
+        ],
+        "voi": [
+          "faceți",
+          "faceţi"
+        ],
+        "ei / ele": [
+          "fac"
+        ]
+      },
+      "explication": "Modèle en -e : -, -i, -e, -em, -eți, - (1re sing. = 3e plur.)."
+    },
+    {
+      "id": "ro-conj-putea-pres",
+      "verbe": "a putea",
+      "traduction": "pouvoir",
+      "temps": "présent",
+      "formes": {
+        "eu": [
+          "pot"
+        ],
+        "tu": [
+          "poți",
+          "poţi"
+        ],
+        "el / ea": [
+          "poate"
+        ],
+        "noi": [
+          "putem"
+        ],
+        "voi": [
+          "puteți",
+          "puteţi"
+        ],
+        "ei / ele": [
+          "pot"
+        ]
+      },
+      "explication": "Alternance o / oa : pot, poți, poate. Suivi de să + conjonctif (pot să vin)."
+    },
+    {
+      "id": "ro-conj-vrea-pres",
+      "verbe": "a vrea",
+      "traduction": "vouloir",
+      "temps": "présent",
+      "formes": {
+        "eu": [
+          "vreau"
+        ],
+        "tu": [
+          "vrei"
+        ],
+        "el / ea": [
+          "vrea"
+        ],
+        "noi": [
+          "vrem"
+        ],
+        "voi": [
+          "vreți",
+          "vreţi"
+        ],
+        "ei / ele": [
+          "vor"
+        ]
+      },
+      "explication": "Irrégulier : 3e plur. vor. Poli : aș vrea (je voudrais)."
+    },
+    {
+      "id": "ro-conj-sti-pres",
+      "verbe": "a ști",
+      "traduction": "savoir",
+      "temps": "présent",
+      "formes": {
+        "eu": [
+          "știu",
+          "ştiu"
+        ],
+        "tu": [
+          "știi",
+          "ştii"
+        ],
+        "el / ea": [
+          "știe",
+          "ştie"
+        ],
+        "noi": [
+          "știm",
+          "ştim"
+        ],
+        "voi": [
+          "știți",
+          "ştiţi"
+        ],
+        "ei / ele": [
+          "știu",
+          "ştiu"
+        ]
+      },
+      "explication": "știu (eu) = știu (ei). Nu știu = je ne sais pas."
+    },
+    {
+      "id": "ro-conj-merge-pres",
+      "verbe": "a merge",
+      "traduction": "aller",
+      "temps": "présent",
+      "formes": {
+        "eu": [
+          "merg"
+        ],
+        "tu": [
+          "mergi"
+        ],
+        "el / ea": [
+          "merge"
+        ],
+        "noi": [
+          "mergem"
+        ],
+        "voi": [
+          "mergeți",
+          "mergeţi"
+        ],
+        "ei / ele": [
+          "merg"
+        ]
+      },
+      "explication": "Régulier en -e. Synonyme courant : a se duce (mă duc)."
+    },
+    {
+      "id": "ro-conj-veni-pres",
+      "verbe": "a veni",
+      "traduction": "venir",
+      "temps": "présent",
+      "formes": {
+        "eu": [
+          "vin"
+        ],
+        "tu": [
+          "vii"
+        ],
+        "el / ea": [
+          "vine"
+        ],
+        "noi": [
+          "venim"
+        ],
+        "voi": [
+          "veniți",
+          "veniţi"
+        ],
+        "ei / ele": [
+          "vin"
+        ]
+      },
+      "explication": "Irrégulier : tu vii (pas *vini), el vine ; mais noi venim."
+    },
+    {
+      "id": "ro-conj-da-pres",
+      "verbe": "a da",
+      "traduction": "donner",
+      "temps": "présent",
+      "formes": {
+        "eu": [
+          "dau"
+        ],
+        "tu": [
+          "dai"
+        ],
+        "el / ea": [
+          "dă"
+        ],
+        "noi": [
+          "dăm"
+        ],
+        "voi": [
+          "dați",
+          "daţi"
+        ],
+        "ei / ele": [
+          "dau"
+        ]
+      },
+      "explication": "Petit verbe irrégulier : dau, dai, dă."
+    },
+    {
+      "id": "ro-conj-lua-pres",
+      "verbe": "a lua",
+      "traduction": "prendre",
+      "temps": "présent",
+      "formes": {
+        "eu": [
+          "iau"
+        ],
+        "tu": [
+          "iei"
+        ],
+        "el / ea": [
+          "ia"
+        ],
+        "noi": [
+          "luăm"
+        ],
+        "voi": [
+          "luați",
+          "luaţi"
+        ],
+        "ei / ele": [
+          "iau"
+        ]
+      },
+      "explication": "Radical i- au singulier et 3e plur. (iau, iei, ia), lu- à noi / voi."
+    },
+    {
+      "id": "ro-conj-spune-pres",
+      "verbe": "a spune",
+      "traduction": "dire",
+      "temps": "présent",
+      "formes": {
+        "eu": [
+          "spun"
+        ],
+        "tu": [
+          "spui"
+        ],
+        "el / ea": [
+          "spune"
+        ],
+        "noi": [
+          "spunem"
+        ],
+        "voi": [
+          "spuneți",
+          "spuneţi"
+        ],
+        "ei / ele": [
+          "spun"
+        ]
+      },
+      "explication": "Le n tombe à la 2e sing. : spui."
+    },
+    {
+      "id": "ro-conj-vedea-pres",
+      "verbe": "a vedea",
+      "traduction": "voir",
+      "temps": "présent",
+      "formes": {
+        "eu": [
+          "văd"
+        ],
+        "tu": [
+          "vezi"
+        ],
+        "el / ea": [
+          "vede"
+        ],
+        "noi": [
+          "vedem"
+        ],
+        "voi": [
+          "vedeți",
+          "vedeţi"
+        ],
+        "ei / ele": [
+          "văd"
+        ]
+      },
+      "explication": "Alternances ă / e et d / z : văd, vezi, vede."
+    },
+    {
+      "id": "ro-conj-sta-pres",
+      "verbe": "a sta",
+      "traduction": "rester, être (assis, debout), habiter",
+      "temps": "présent",
+      "formes": {
+        "eu": [
+          "stau"
+        ],
+        "tu": [
+          "stai"
+        ],
+        "el / ea": [
+          "stă"
+        ],
+        "noi": [
+          "stăm"
+        ],
+        "voi": [
+          "stați",
+          "staţi"
+        ],
+        "ei / ele": [
+          "stau"
+        ]
+      },
+      "explication": "Comme a da. Unde stai? = où habites-tu ?"
+    },
+    {
+      "id": "ro-conj-manca-pres",
+      "verbe": "a mânca",
+      "traduction": "manger",
+      "temps": "présent",
+      "formes": {
+        "eu": [
+          "mănânc"
+        ],
+        "tu": [
+          "mănânci"
+        ],
+        "el / ea": [
+          "mănâncă"
+        ],
+        "noi": [
+          "mâncăm"
+        ],
+        "voi": [
+          "mâncați",
+          "mâncaţi"
+        ],
+        "ei / ele": [
+          "mănâncă"
+        ]
+      },
+      "explication": "Radical mănânc- quand l'accent tombe dessus, mânc- à noi / voi. 3e sing. = 3e plur."
+    },
+    {
+      "id": "ro-conj-bea-pres",
+      "verbe": "a bea",
+      "traduction": "boire",
+      "temps": "présent",
+      "formes": {
+        "eu": [
+          "beau"
+        ],
+        "tu": [
+          "bei"
+        ],
+        "el / ea": [
+          "bea"
+        ],
+        "noi": [
+          "bem"
+        ],
+        "voi": [
+          "beți",
+          "beţi"
+        ],
+        "ei / ele": [
+          "beau"
+        ]
+      },
+      "explication": "Irrégulier : beau, bei, bea, bem."
+    },
+    {
+      "id": "ro-conj-pleca-pres",
+      "verbe": "a pleca",
+      "traduction": "partir",
+      "temps": "présent",
+      "formes": {
+        "eu": [
+          "plec"
+        ],
+        "tu": [
+          "pleci"
+        ],
+        "el / ea": [
+          "pleacă"
+        ],
+        "noi": [
+          "plecăm"
+        ],
+        "voi": [
+          "plecați",
+          "plecaţi"
+        ],
+        "ei / ele": [
+          "pleacă"
+        ]
+      },
+      "explication": "Alternance e / ea à la 3e personne : pleacă."
+    },
+    {
+      "id": "ro-conj-lucra-pres",
+      "verbe": "a lucra",
+      "traduction": "travailler",
+      "temps": "présent",
+      "formes": {
+        "eu": [
+          "lucrez"
+        ],
+        "tu": [
+          "lucrezi"
+        ],
+        "el / ea": [
+          "lucrează"
+        ],
+        "noi": [
+          "lucrăm"
+        ],
+        "voi": [
+          "lucrați",
+          "lucraţi"
+        ],
+        "ei / ele": [
+          "lucrează"
+        ]
+      },
+      "explication": "Verbe en -ez : le suffixe disparaît à noi / voi."
+    },
+    {
+      "id": "ro-conj-vorbi-pres",
+      "verbe": "a vorbi",
+      "traduction": "parler",
+      "temps": "présent",
+      "formes": {
+        "eu": [
+          "vorbesc"
+        ],
+        "tu": [
+          "vorbești",
+          "vorbeşti"
+        ],
+        "el / ea": [
+          "vorbește",
+          "vorbeşte"
+        ],
+        "noi": [
+          "vorbim"
+        ],
+        "voi": [
+          "vorbiți",
+          "vorbiţi"
+        ],
+        "ei / ele": [
+          "vorbesc"
+        ]
+      },
+      "explication": "Verbe en -esc : le suffixe disparaît à noi / voi."
+    },
+    {
+      "id": "ro-conj-gasi-pres",
+      "verbe": "a găsi",
+      "traduction": "trouver",
+      "temps": "présent",
+      "formes": {
+        "eu": [
+          "găsesc"
+        ],
+        "tu": [
+          "găsești",
+          "găseşti"
+        ],
+        "el / ea": [
+          "găsește",
+          "găseşte"
+        ],
+        "noi": [
+          "găsim"
+        ],
+        "voi": [
+          "găsiți",
+          "găsiţi"
+        ],
+        "ei / ele": [
+          "găsesc"
+        ]
+      },
+      "explication": "Verbe en -esc, comme a vorbi."
+    },
+    {
+      "id": "ro-conj-intelege-pres",
+      "verbe": "a înțelege",
+      "traduction": "comprendre",
+      "temps": "présent",
+      "formes": {
+        "eu": [
+          "înțeleg",
+          "înţeleg"
+        ],
+        "tu": [
+          "înțelegi",
+          "înţelegi"
+        ],
+        "el / ea": [
+          "înțelege",
+          "înţelege"
+        ],
+        "noi": [
+          "înțelegem",
+          "înţelegem"
+        ],
+        "voi": [
+          "înțelegeți",
+          "înţelegeţi"
+        ],
+        "ei / ele": [
+          "înțeleg",
+          "înţeleg"
+        ]
+      },
+      "explication": "Régulier en -e. Nu înțeleg = je ne comprends pas."
+    },
+    {
+      "id": "ro-conj-scrie-pres",
+      "verbe": "a scrie",
+      "traduction": "écrire",
+      "temps": "présent",
+      "formes": {
+        "eu": [
+          "scriu"
+        ],
+        "tu": [
+          "scrii"
+        ],
+        "el / ea": [
+          "scrie"
+        ],
+        "noi": [
+          "scriem"
+        ],
+        "voi": [
+          "scrieți",
+          "scrieţi"
+        ],
+        "ei / ele": [
+          "scriu"
+        ]
+      },
+      "explication": "scriu (eu) = scriu (ei) ; tu scrii avec deux i."
+    },
+    {
+      "id": "ro-conj-crede-pres",
+      "verbe": "a crede",
+      "traduction": "croire",
+      "temps": "présent",
+      "formes": {
+        "eu": [
+          "cred"
+        ],
+        "tu": [
+          "crezi"
+        ],
+        "el / ea": [
+          "crede"
+        ],
+        "noi": [
+          "credem"
+        ],
+        "voi": [
+          "credeți",
+          "credeţi"
+        ],
+        "ei / ele": [
+          "cred"
+        ]
+      },
+      "explication": "Alternance d / z à la 2e sing. : crezi."
+    },
+    {
+      "id": "ro-conj-ajunge-pres",
+      "verbe": "a ajunge",
+      "traduction": "arriver",
+      "temps": "présent",
+      "formes": {
+        "eu": [
+          "ajung"
+        ],
+        "tu": [
+          "ajungi"
+        ],
+        "el / ea": [
+          "ajunge"
+        ],
+        "noi": [
+          "ajungem"
+        ],
+        "voi": [
+          "ajungeți",
+          "ajungeţi"
+        ],
+        "ei / ele": [
+          "ajung"
+        ]
+      },
+      "explication": "Régulier en -e. Ajunge! = ça suffit !"
+    },
+    {
+      "id": "ro-conj-cumpara-pres",
+      "verbe": "a cumpăra",
+      "traduction": "acheter",
+      "temps": "présent",
+      "formes": {
+        "eu": [
+          "cumpăr"
+        ],
+        "tu": [
+          "cumperi"
+        ],
+        "el / ea": [
+          "cumpără"
+        ],
+        "noi": [
+          "cumpărăm"
+        ],
+        "voi": [
+          "cumpărați",
+          "cumpăraţi"
+        ],
+        "ei / ele": [
+          "cumpără"
+        ]
+      },
+      "explication": "Alternance ă / e : cumpăr, cumperi."
+    },
+    {
+      "id": "ro-conj-astepta-pres",
+      "verbe": "a aștepta",
+      "traduction": "attendre",
+      "temps": "présent",
+      "formes": {
+        "eu": [
+          "aștept",
+          "aştept"
+        ],
+        "tu": [
+          "aștepți",
+          "aştepţi"
+        ],
+        "el / ea": [
+          "așteaptă",
+          "aşteaptă"
+        ],
+        "noi": [
+          "așteptăm",
+          "aşteptăm"
+        ],
+        "voi": [
+          "așteptați",
+          "aşteptaţi"
+        ],
+        "ei / ele": [
+          "așteaptă",
+          "aşteaptă"
+        ]
+      },
+      "explication": "Alternances t / ț et e / ea : aștepți, așteaptă."
+    },
+    {
+      "id": "ro-conj-iesi-pres",
+      "verbe": "a ieși",
+      "traduction": "sortir",
+      "temps": "présent",
+      "formes": {
+        "eu": [
+          "ies"
+        ],
+        "tu": [
+          "ieși",
+          "ieşi"
+        ],
+        "el / ea": [
+          "iese"
+        ],
+        "noi": [
+          "ieșim",
+          "ieşim"
+        ],
+        "voi": [
+          "ieșiți",
+          "ieşiţi"
+        ],
+        "ei / ele": [
+          "ies"
+        ]
+      },
+      "explication": "ies, ieși, iese : attention à l'orthographe."
+    },
+    {
+      "id": "ro-conj-ramane-pres",
+      "verbe": "a rămâne",
+      "traduction": "rester",
+      "temps": "présent",
+      "formes": {
+        "eu": [
+          "rămân"
+        ],
+        "tu": [
+          "rămâi"
+        ],
+        "el / ea": [
+          "rămâne"
+        ],
+        "noi": [
+          "rămânem"
+        ],
+        "voi": [
+          "rămâneți",
+          "rămâneţi"
+        ],
+        "ei / ele": [
+          "rămân"
+        ]
+      },
+      "explication": "Le n tombe à la 2e sing. : rămâi."
+    },
+    {
+      "id": "ro-conj-cunoaste-pres",
+      "verbe": "a cunoaște",
+      "traduction": "connaître",
+      "temps": "présent",
+      "formes": {
+        "eu": [
+          "cunosc"
+        ],
+        "tu": [
+          "cunoști",
+          "cunoşti"
+        ],
+        "el / ea": [
+          "cunoaște",
+          "cunoaşte"
+        ],
+        "noi": [
+          "cunoaștem",
+          "cunoaştem"
+        ],
+        "voi": [
+          "cunoașteți",
+          "cunoaşteţi"
+        ],
+        "ei / ele": [
+          "cunosc"
+        ]
+      },
+      "explication": "Alternance sc / șt : cunosc, cunoști."
+    },
+    {
+      "id": "ro-conj-dormi-pres",
+      "verbe": "a dormi",
+      "traduction": "dormir",
+      "temps": "présent",
+      "formes": {
+        "eu": [
+          "dorm"
+        ],
+        "tu": [
+          "dormi"
+        ],
+        "el / ea": [
+          "doarme"
+        ],
+        "noi": [
+          "dormim"
+        ],
+        "voi": [
+          "dormiți",
+          "dormiţi"
+        ],
+        "ei / ele": [
+          "dorm"
+        ]
+      },
+      "explication": "Alternance o / oa : doarme."
+    }
+  ]
+}

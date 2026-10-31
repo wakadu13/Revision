@@ -1,0 +1,247 @@
+{
+  "langue": "Anglais",
+  "titre": "Anglais — vocabulaire : décrire une entreprise (C1)",
+  "particules_optionnelles": [
+    "to",
+    "a",
+    "an",
+    "the"
+  ],
+  "caracteres_speciaux": [],
+  "vocabulaire": [
+    {
+      "id": "en-entreprises-001",
+      "mot": "a company",
+      "traductions": [
+        "une entreprise",
+        "une société"
+      ],
+      "exemple": "My [company] is 50 years old this year!",
+      "exemple_traduction": "Mon entreprise fête ses 50 ans cette année !",
+      "note": "Faux ami partiel : company = aussi la compagnie (de quelqu'un)."
+    },
+    {
+      "id": "en-entreprises-002",
+      "mot": "to be founded",
+      "traductions": [
+        "être fondé"
+      ],
+      "exemple": "The company was [founded] in 1927.",
+      "exemple_traduction": "L'entreprise a été fondée en 1927.",
+      "note": "to found = fonder (found – founded – founded) ≠ to find – found – found."
+    },
+    {
+      "id": "en-entreprises-003",
+      "mot": "the headquarters",
+      "traductions": [
+        "le siège social"
+      ],
+      "exemple": "The director is based at the [headquarters].",
+      "exemple_traduction": "Le directeur travaille au siège social.",
+      "note": "Toujours avec un -s, même au singulier. Abréviation : HQ.",
+      "variantes": [
+        "the HQ"
+      ]
+    },
+    {
+      "id": "en-entreprises-004",
+      "mot": "a branch",
+      "traductions": [
+        "une agence",
+        "une succursale"
+      ],
+      "exemple": "I work in the East Boston [branch] of the bank.",
+      "exemple_traduction": "Je travaille à l'agence d'East Boston de la banque.",
+      "note": "a branch = aussi une branche (d'arbre)."
+    },
+    {
+      "id": "en-entreprises-005",
+      "mot": "a subsidiary",
+      "traductions": [
+        "une filiale"
+      ],
+      "exemple": "The parent company has [subsidiaries] across Europe.",
+      "exemple_traduction": "La maison mère a des filiales partout en Europe.",
+      "note": "the parent company = la maison mère."
+    },
+    {
+      "id": "en-entreprises-006",
+      "mot": "a chain",
+      "traductions": [
+        "une chaîne (de magasins, de restaurants)"
+      ],
+      "exemple": "I can't believe the whole [chain] is closing down.",
+      "exemple_traduction": "Je n'arrive pas à croire que toute la chaîne ferme."
+    },
+    {
+      "id": "en-entreprises-007",
+      "mot": "a franchise",
+      "traductions": [
+        "une franchise"
+      ],
+      "exemple": "The [franchise] I own is very successful.",
+      "exemple_traduction": "La franchise que je possède marche très bien.",
+      "note": "a franchisee = un franchisé."
+    },
+    {
+      "id": "en-entreprises-008",
+      "mot": "a corporation",
+      "traductions": [
+        "une grande société",
+        "une grande entreprise"
+      ],
+      "exemple": "Big [corporations] put small businesses out of business.",
+      "exemple_traduction": "Les grandes sociétés ont fait fermer les petits commerces.",
+      "note": "Faux ami : ≠ une corporation (de métier)."
+    },
+    {
+      "id": "en-entreprises-009",
+      "mot": "multinational",
+      "traductions": [
+        "multinational"
+      ],
+      "exemple": "They are a [multinational] coffee chain.",
+      "exemple_traduction": "C'est une chaîne de cafés multinationale.",
+      "note": "Aussi un nom : a multinational = une multinationale."
+    },
+    {
+      "id": "en-entreprises-010",
+      "mot": "a market leader",
+      "traductions": [
+        "un leader du marché"
+      ],
+      "exemple": "They are the [market leader] in their sector.",
+      "exemple_traduction": "C'est le leader du marché dans son secteur."
+    },
+    {
+      "id": "en-entreprises-011",
+      "mot": "a private company",
+      "traductions": [
+        "une société privée (non cotée)"
+      ],
+      "exemple": "She couldn't buy shares because it was a [private company].",
+      "exemple_traduction": "Elle ne pouvait pas acheter d'actions car c'était une société non cotée."
+    },
+    {
+      "id": "en-entreprises-012",
+      "mot": "a PLC",
+      "traductions": [
+        "une société anonyme cotée en bourse"
+      ],
+      "exemple": "He made his money trading shares in [PLCs].",
+      "exemple_traduction": "Il a fait fortune en achetant et vendant des actions de sociétés cotées.",
+      "note": "PLC = public limited company (GB). Américain : a publicly traded company.",
+      "variantes": [
+        "a public limited company"
+      ]
+    },
+    {
+      "id": "en-entreprises-013",
+      "mot": "an independent organization",
+      "traductions": [
+        "une organisation indépendante",
+        "une ONG"
+      ],
+      "exemple": "They are an [independent organization] that helps animals.",
+      "exemple_traduction": "C'est une organisation indépendante qui aide les animaux.",
+      "note": "NGO = non-governmental organization."
+    },
+    {
+      "id": "en-entreprises-014",
+      "mot": "a distributor",
+      "traductions": [
+        "un distributeur"
+      ],
+      "exemple": "They are the largest [distributor] in the country.",
+      "exemple_traduction": "C'est le plus grand distributeur du pays."
+    },
+    {
+      "id": "en-entreprises-015",
+      "mot": "a factory",
+      "traductions": [
+        "une usine"
+      ],
+      "exemple": "They are opening a new [factory] next week.",
+      "exemple_traduction": "Ils ouvrent une nouvelle usine la semaine prochaine."
+    },
+    {
+      "id": "en-entreprises-016",
+      "mot": "a plant",
+      "traductions": [
+        "une centrale",
+        "un site de production"
+      ],
+      "exemple": "The [plant] is closed during the investigation.",
+      "exemple_traduction": "La centrale est fermée pendant l'enquête.",
+      "note": "Surtout pour l'énergie et la chimie : a power plant = une centrale électrique."
+    },
+    {
+      "id": "en-entreprises-017",
+      "mot": "to manufacture",
+      "traductions": [
+        "fabriquer (en série)"
+      ],
+      "exemple": "They [manufacture] car parts.",
+      "exemple_traduction": "Ils fabriquent des pièces automobiles."
+    },
+    {
+      "id": "en-entreprises-018",
+      "mot": "to produce",
+      "traductions": [
+        "produire"
+      ],
+      "exemple": "They [produce] quality goods with local materials.",
+      "exemple_traduction": "Ils produisent des biens de qualité avec des matériaux locaux.",
+      "note": "Nom : a product (/ˈprɒdʌkt/) ; produce (nom) = les produits agricoles."
+    },
+    {
+      "id": "en-entreprises-019",
+      "mot": "to export",
+      "traductions": [
+        "exporter"
+      ],
+      "exemple": "India [exports] more rice than any other country.",
+      "exemple_traduction": "L'Inde exporte plus de riz que tout autre pays.",
+      "note": "Verbe : exPORT ; nom : EXport."
+    },
+    {
+      "id": "en-entreprises-020",
+      "mot": "to import",
+      "traductions": [
+        "importer"
+      ],
+      "exemple": "They [import] finished goods from China.",
+      "exemple_traduction": "Ils importent des produits finis de Chine.",
+      "note": "Verbe : imPORT ; nom : IMport."
+    },
+    {
+      "id": "en-entreprises-021",
+      "mot": "to lay off staff",
+      "traductions": [
+        "licencier du personnel"
+      ],
+      "exemple": "Every branch is being forced to [lay off staff].",
+      "exemple_traduction": "Chaque agence est obligée de licencier du personnel.",
+      "note": "Irrégulier : lay – laid – laid. Nom : a layoff."
+    },
+    {
+      "id": "en-entreprises-022",
+      "mot": "to go bankrupt",
+      "traductions": [
+        "faire faillite"
+      ],
+      "exemple": "My sister's company has [gone bankrupt].",
+      "exemple_traduction": "L'entreprise de ma sœur a fait faillite.",
+      "note": "bankruptcy = la faillite."
+    },
+    {
+      "id": "en-entreprises-023",
+      "mot": "a tertiary industry",
+      "traductions": [
+        "une entreprise de services"
+      ],
+      "exemple": "Banks and restaurants are [tertiary industries].",
+      "exemple_traduction": "Les banques et les restaurants sont des entreprises de services."
+    }
+  ]
+}

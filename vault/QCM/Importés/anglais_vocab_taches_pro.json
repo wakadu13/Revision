@@ -1,0 +1,232 @@
+{
+  "langue": "Anglais",
+  "titre": "Anglais — vocabulaire : les tâches au travail (B1)",
+  "particules_optionnelles": [
+    "to",
+    "a",
+    "an",
+    "the"
+  ],
+  "caracteres_speciaux": [],
+  "vocabulaire": [
+    {
+      "id": "en-taches-001",
+      "mot": "to make a phone call",
+      "traductions": [
+        "passer un coup de fil"
+      ],
+      "exemple": "I just need to [make a phone call].",
+      "exemple_traduction": "J'ai juste besoin de passer un coup de fil.",
+      "note": "On dit « make » (pas « do ») a phone call."
+    },
+    {
+      "id": "en-taches-002",
+      "mot": "to arrange a meeting",
+      "traductions": [
+        "organiser une réunion"
+      ],
+      "exemple": "The manager [arranged a meeting] for 5 p.m. on Friday.",
+      "exemple_traduction": "Le responsable a organisé une réunion le vendredi à 17 h."
+    },
+    {
+      "id": "en-taches-003",
+      "mot": "to hold a staff meeting",
+      "traductions": [
+        "tenir une réunion du personnel"
+      ],
+      "exemple": "We will [hold a staff meeting] on Thursday.",
+      "exemple_traduction": "Nous tiendrons une réunion du personnel jeudi.",
+      "note": "Irrégulier : hold – held – held."
+    },
+    {
+      "id": "en-taches-004",
+      "mot": "to type a letter",
+      "traductions": [
+        "taper une lettre"
+      ],
+      "exemple": "She spent all day [typing letters].",
+      "exemple_traduction": "Elle a passé la journée à taper des lettres."
+    },
+    {
+      "id": "en-taches-005",
+      "mot": "to input data",
+      "traductions": [
+        "saisir des données"
+      ],
+      "exemple": "I [input data] all day.",
+      "exemple_traduction": "Je saisis des données toute la journée.",
+      "note": "Irrégulier possible : input – input – input (ou inputted)."
+    },
+    {
+      "id": "en-taches-006",
+      "mot": "to maintain the database",
+      "traductions": [
+        "tenir à jour la base de données"
+      ],
+      "exemple": "I haven't had time to [maintain the database].",
+      "exemple_traduction": "Je n'ai pas eu le temps de tenir à jour la base de données."
+    },
+    {
+      "id": "en-taches-007",
+      "mot": "to call the IT helpdesk",
+      "traductions": [
+        "appeler le support informatique"
+      ],
+      "exemple": "My computer keeps crashing, so I [called the IT helpdesk].",
+      "exemple_traduction": "Mon ordinateur plante sans arrêt, alors j'ai appelé le support informatique."
+    },
+    {
+      "id": "en-taches-008",
+      "mot": "to order office supplies",
+      "traductions": [
+        "commander des fournitures de bureau"
+      ],
+      "exemple": "I will [order office supplies] tomorrow.",
+      "exemple_traduction": "Je commanderai des fournitures de bureau demain."
+    },
+    {
+      "id": "en-taches-009",
+      "mot": "to arrange travel",
+      "traductions": [
+        "organiser un déplacement"
+      ],
+      "exemple": "I have [arranged travel] for the whole team.",
+      "exemple_traduction": "J'ai organisé le déplacement de toute l'équipe.",
+      "note": "travel est indénombrable ici : pas de « a travel »."
+    },
+    {
+      "id": "en-taches-010",
+      "mot": "to contact a supplier",
+      "traductions": [
+        "contacter un fournisseur"
+      ],
+      "exemple": "The delivery is late, so I [contacted the supplier].",
+      "exemple_traduction": "La livraison est en retard, alors j'ai contacté le fournisseur.",
+      "note": "Pas de préposition : to contact someone.",
+      "variantes": [
+        "to contact the supplier"
+      ]
+    },
+    {
+      "id": "en-taches-011",
+      "mot": "to do a stock check",
+      "traductions": [
+        "faire l'inventaire"
+      ],
+      "exemple": "I have to [do a stock check] tonight.",
+      "exemple_traduction": "Je dois faire l'inventaire ce soir.",
+      "note": "stock = les stocks, la marchandise."
+    },
+    {
+      "id": "en-taches-012",
+      "mot": "to draft a contract",
+      "traductions": [
+        "rédiger un projet de contrat"
+      ],
+      "exemple": "I have [drafted the contract] for the new client.",
+      "exemple_traduction": "J'ai rédigé le projet de contrat pour le nouveau client.",
+      "note": "a draft = un brouillon, un projet.",
+      "variantes": [
+        "to draft the contract"
+      ]
+    },
+    {
+      "id": "en-taches-013",
+      "mot": "to establish goals",
+      "traductions": [
+        "fixer des objectifs"
+      ],
+      "exemple": "This meeting is to [establish goals] for the month.",
+      "exemple_traduction": "Cette réunion sert à fixer les objectifs du mois.",
+      "note": "Synonyme : to set goals."
+    },
+    {
+      "id": "en-taches-014",
+      "mot": "to liaise with other departments",
+      "traductions": [
+        "assurer la liaison avec les autres services"
+      ],
+      "exemple": "I will [liaise with other departments] to find a solution.",
+      "exemple_traduction": "Je vais me coordonner avec les autres services pour trouver une solution.",
+      "note": "/liˈeɪz/"
+    },
+    {
+      "id": "en-taches-015",
+      "mot": "to look into a problem",
+      "traductions": [
+        "examiner un problème"
+      ],
+      "exemple": "Human resources are [looking into the problem].",
+      "exemple_traduction": "Les ressources humaines examinent le problème.",
+      "note": "to look into = enquêter sur, étudier.",
+      "variantes": [
+        "to look into the problem"
+      ]
+    },
+    {
+      "id": "en-taches-016",
+      "mot": "to recruit staff",
+      "traductions": [
+        "recruter du personnel"
+      ],
+      "exemple": "We need to [recruit staff] for the new department.",
+      "exemple_traduction": "Nous devons recruter du personnel pour le nouveau service."
+    },
+    {
+      "id": "en-taches-017",
+      "mot": "to train staff",
+      "traductions": [
+        "former le personnel"
+      ],
+      "exemple": "We will be [training staff] on the new software.",
+      "exemple_traduction": "Nous allons former le personnel au nouveau logiciel.",
+      "note": "training = la formation."
+    },
+    {
+      "id": "en-taches-018",
+      "mot": "to pay salaries",
+      "traductions": [
+        "verser les salaires"
+      ],
+      "exemple": "My company [pays salaries] on the 17th.",
+      "exemple_traduction": "Mon entreprise verse les salaires le 17."
+    },
+    {
+      "id": "en-taches-019",
+      "mot": "to greet customers",
+      "traductions": [
+        "accueillir les clients"
+      ],
+      "exemple": "The chef walked around to [greet customers].",
+      "exemple_traduction": "Le chef faisait le tour de la salle pour accueillir les clients."
+    },
+    {
+      "id": "en-taches-020",
+      "mot": "to serve customers",
+      "traductions": [
+        "servir les clients"
+      ],
+      "exemple": "She always [served customers] with a huge smile.",
+      "exemple_traduction": "Elle servait toujours les clients avec un grand sourire."
+    },
+    {
+      "id": "en-taches-021",
+      "mot": "to book a crew",
+      "traductions": [
+        "réserver une équipe technique"
+      ],
+      "exemple": "I've [booked a crew] for the filming.",
+      "exemple_traduction": "J'ai réservé une équipe technique pour le tournage.",
+      "note": "a crew = une équipe (tournage, avion, bateau, chantier)."
+    },
+    {
+      "id": "en-taches-022",
+      "mot": "to make a lesson plan",
+      "traductions": [
+        "préparer un plan de cours"
+      ],
+      "exemple": "It took a whole day to [make a lesson plan].",
+      "exemple_traduction": "Il m'a fallu une journée entière pour préparer un plan de cours."
+    }
+  ]
+}

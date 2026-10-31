@@ -1,0 +1,595 @@
+{
+  "langue": "Italien",
+  "caracteres_speciaux": [
+    "à",
+    "è",
+    "é",
+    "ì",
+    "ò",
+    "ù"
+  ],
+  "titre": "Italien — vocabulaire : verbes du quotidien",
+  "description": "Verbes utiles à savoir produire, surtout pronominaux.",
+  "particules_optionnelles": [
+    "il",
+    "lo",
+    "la",
+    "i",
+    "gli",
+    "le",
+    "un",
+    "uno",
+    "una"
+  ],
+  "vocabulaire": [
+    {
+      "id": "it-verb-001",
+      "mot": "riuscire (a)",
+      "traductions": [
+        "réussir (à)",
+        "arriver (à faire)"
+      ],
+      "exemple": "Non [riesco] a dormire con questo caldo.",
+      "exemple_traduction": "Je n'arrive pas à dormir avec cette chaleur.",
+      "note": "riesco, riesci, riesce… (comme uscire). Auxiliaire essere : sono riuscito.",
+      "variantes": [
+        "riuscire"
+      ]
+    },
+    {
+      "id": "it-verb-002",
+      "mot": "sbrigarsi",
+      "traductions": [
+        "se dépêcher"
+      ],
+      "exemple": "[Sbrigati], il treno parte tra cinque minuti!",
+      "exemple_traduction": "Dépêche-toi, le train part dans cinq minutes !",
+      "note": "Sbrigati! (tu) / Si sbrighi! (Lei)."
+    },
+    {
+      "id": "it-verb-003",
+      "mot": "accorgersi (di)",
+      "traductions": [
+        "se rendre compte (de)"
+      ],
+      "exemple": "Non mi sono [accorto] dell'errore.",
+      "exemple_traduction": "Je ne me suis pas rendu compte de l'erreur.",
+      "note": "Participe : accorto. Synonyme : rendersi conto di.",
+      "variantes": [
+        "accorgersi"
+      ]
+    },
+    {
+      "id": "it-verb-004",
+      "mot": "succedere",
+      "traductions": [
+        "se passer (événement)"
+      ],
+      "exemple": "Che cosa è [successo]?",
+      "exemple_traduction": "Qu'est-ce qui s'est passé ?",
+      "note": "Auxiliaire essere ; participe successo."
+    },
+    {
+      "id": "it-verb-005",
+      "mot": "cercare",
+      "traductions": [
+        "chercher"
+      ],
+      "exemple": "[Cerco] una farmacia aperta.",
+      "exemple_traduction": "Je cherche une pharmacie ouverte.",
+      "note": "cerco, cerchi : h devant i et e pour garder le son [k]."
+    },
+    {
+      "id": "it-verb-006",
+      "mot": "trovare",
+      "traductions": [
+        "trouver"
+      ],
+      "exemple": "Non [trovo] più le chiavi.",
+      "exemple_traduction": "Je ne trouve plus mes clés."
+    },
+    {
+      "id": "it-verb-007",
+      "mot": "perdere",
+      "traductions": [
+        "perdre"
+      ],
+      "exemple": "Ho [perso] il treno delle otto.",
+      "exemple_traduction": "J'ai raté le train de huit heures.",
+      "note": "Participe perso (ou perduto). Perdere il treno = rater le train."
+    },
+    {
+      "id": "it-verb-008",
+      "mot": "dimenticare",
+      "traductions": [
+        "oublier"
+      ],
+      "exemple": "Ho [dimenticato] l'ombrello al ristorante.",
+      "exemple_traduction": "J'ai oublié mon parapluie au restaurant.",
+      "note": "Aussi dimenticarsi di : mi sono dimenticato di chiamarti."
+    },
+    {
+      "id": "it-verb-009",
+      "mot": "ricordarsi (di)",
+      "traductions": [
+        "se souvenir (de)"
+      ],
+      "exemple": "Non mi [ricordo] il suo nome.",
+      "exemple_traduction": "Je ne me souviens pas de son nom.",
+      "note": "Ricordati di… = n'oublie pas de…",
+      "variantes": [
+        "ricordarsi",
+        "ricordare"
+      ]
+    },
+    {
+      "id": "it-verb-010",
+      "mot": "sentirsi",
+      "traductions": [
+        "se sentir"
+      ],
+      "exemple": "Oggi non mi [sento] bene.",
+      "exemple_traduction": "Aujourd'hui je ne me sens pas bien."
+    },
+    {
+      "id": "it-verb-011",
+      "mot": "abituarsi (a)",
+      "traductions": [
+        "s'habituer (à)"
+      ],
+      "exemple": "Mi sono [abituato] al traffico di Roma.",
+      "exemple_traduction": "Je me suis habitué à la circulation de Rome.",
+      "variantes": [
+        "abituarsi"
+      ]
+    },
+    {
+      "id": "it-verb-012",
+      "mot": "lamentarsi (di)",
+      "traductions": [
+        "se plaindre (de)"
+      ],
+      "exemple": "Si [lamenta] sempre del lavoro.",
+      "exemple_traduction": "Il se plaint toujours de son travail.",
+      "variantes": [
+        "lamentarsi"
+      ]
+    },
+    {
+      "id": "it-verb-013",
+      "mot": "arrabbiarsi",
+      "traductions": [
+        "se fâcher"
+      ],
+      "exemple": "Non [arrabbiarti], stavo scherzando!",
+      "exemple_traduction": "Ne te fâche pas, je plaisantais !",
+      "note": "Impératif négatif (tu) = non + infinitif : non arrabbiarti / non ti arrabbiare."
+    },
+    {
+      "id": "it-verb-014",
+      "mot": "traslocare",
+      "traductions": [
+        "déménager"
+      ],
+      "exemple": "Abbiamo [traslocato] a Bologna l'anno scorso.",
+      "exemple_traduction": "Nous avons déménagé à Bologne l'an dernier.",
+      "note": "Il trasloco = le déménagement."
+    },
+    {
+      "id": "it-verb-015",
+      "mot": "affittare",
+      "traductions": [
+        "louer (un logement)"
+      ],
+      "exemple": "Vorremmo [affittare] un appartamento al mare.",
+      "exemple_traduction": "Nous voudrions louer un appartement à la mer.",
+      "note": "L'affitto = le loyer."
+    },
+    {
+      "id": "it-verb-016",
+      "mot": "noleggiare",
+      "traductions": [
+        "louer (un véhicule)"
+      ],
+      "exemple": "Abbiamo [noleggiato] una macchina all'aeroporto.",
+      "exemple_traduction": "Nous avons loué une voiture à l'aéroport.",
+      "note": "Il noleggio = la location (voiture, vélo, matériel)."
+    },
+    {
+      "id": "it-verb-017",
+      "mot": "pagare",
+      "traductions": [
+        "payer"
+      ],
+      "exemple": "Posso [pagare] con la carta?",
+      "exemple_traduction": "Je peux payer par carte ?",
+      "note": "pago, paghi : h devant i."
+    },
+    {
+      "id": "it-verb-018",
+      "mot": "costare",
+      "traductions": [
+        "coûter"
+      ],
+      "exemple": "Quanto [costa] un biglietto per Firenze?",
+      "exemple_traduction": "Combien coûte un billet pour Florence ?",
+      "note": "Auxiliaire essere : è costato molto."
+    },
+    {
+      "id": "it-verb-019",
+      "mot": "cambiare",
+      "traductions": [
+        "changer"
+      ],
+      "exemple": "Devo [cambiare] treno a Bologna?",
+      "exemple_traduction": "Je dois changer de train à Bologne ?",
+      "note": "Cambiare idea = changer d'avis ; cambiarsi = se changer."
+    },
+    {
+      "id": "it-verb-020",
+      "mot": "tornare",
+      "traductions": [
+        "rentrer",
+        "revenir"
+      ],
+      "exemple": "[Torno] a casa verso le sette.",
+      "exemple_traduction": "Je rentre à la maison vers sept heures.",
+      "note": "Auxiliaire essere : sono tornato."
+    },
+    {
+      "id": "it-verb-021",
+      "mot": "rimanere",
+      "traductions": [
+        "rester"
+      ],
+      "exemple": "[Rimaniamo] ancora una notte?",
+      "exemple_traduction": "On reste encore une nuit ?",
+      "note": "rimango, rimani… Participe rimasto (essere). Synonyme : restare."
+    },
+    {
+      "id": "it-verb-022",
+      "mot": "mandare",
+      "traductions": [
+        "envoyer"
+      ],
+      "exemple": "Ti [mando] l'indirizzo su WhatsApp.",
+      "exemple_traduction": "Je t'envoie l'adresse sur WhatsApp.",
+      "note": "Plus formel : inviare ; par la poste : spedire."
+    },
+    {
+      "id": "it-verb-023",
+      "mot": "chiamare",
+      "traductions": [
+        "appeler"
+      ],
+      "exemple": "Ti [chiamo] domani mattina.",
+      "exemple_traduction": "Je t'appelle demain matin.",
+      "note": "Chiamarsi = s'appeler : mi chiamo…"
+    },
+    {
+      "id": "it-verb-024",
+      "mot": "andare d'accordo (con)",
+      "traductions": [
+        "s'entendre (avec)"
+      ],
+      "exemple": "[Vado] d'accordo con i miei colleghi.",
+      "exemple_traduction": "Je m'entends bien avec mes collègues.",
+      "note": "Essere d'accordo = être d'accord.",
+      "variantes": [
+        "andare d'accordo"
+      ]
+    },
+    {
+      "id": "it-verb-025",
+      "mot": "occuparsi (di)",
+      "traductions": [
+        "s'occuper (de)"
+      ],
+      "exemple": "Mi [occupo] io dei biglietti.",
+      "exemple_traduction": "Je m'occupe des billets.",
+      "variantes": [
+        "occuparsi"
+      ]
+    },
+    {
+      "id": "it-verb-026",
+      "mot": "decidere",
+      "traductions": [
+        "décider"
+      ],
+      "exemple": "Hai [deciso] cosa prendi?",
+      "exemple_traduction": "Tu as décidé ce que tu prends ?",
+      "note": "Participe : deciso."
+    },
+    {
+      "id": "it-verb-027",
+      "mot": "consigliare",
+      "traductions": [
+        "conseiller",
+        "recommander"
+      ],
+      "exemple": "Che cosa ci [consiglia]?",
+      "exemple_traduction": "Que nous conseillez-vous ?",
+      "note": "Il consiglio = le conseil."
+    },
+    {
+      "id": "it-verb-028",
+      "mot": "ordinare",
+      "traductions": [
+        "commander"
+      ],
+      "exemple": "Possiamo [ordinare]?",
+      "exemple_traduction": "On peut commander ?",
+      "note": "Signifie aussi « ranger, mettre en ordre »."
+    },
+    {
+      "id": "it-verb-029",
+      "mot": "prestare",
+      "traductions": [
+        "prêter"
+      ],
+      "exemple": "Mi [presti] il tuo ombrello?",
+      "exemple_traduction": "Tu me prêtes ton parapluie ?",
+      "note": "Emprunter = prendere in prestito."
+    },
+    {
+      "id": "it-verb-030",
+      "mot": "dovere",
+      "traductions": [
+        "devoir"
+      ],
+      "exemple": "Quanto Le [devo]?",
+      "exemple_traduction": "Combien je vous dois ?",
+      "note": "Le = « vous » de politesse au datif. devo, devi, deve, dobbiamo, dovete, devono."
+    },
+    {
+      "id": "it-verb-031",
+      "mot": "piacere",
+      "traductions": [
+        "plaire"
+      ],
+      "exemple": "Mi [piace] molto questa città.",
+      "exemple_traduction": "J'aime beaucoup cette ville.",
+      "note": "Construction inversée : mi piace (sing.), mi piacciono (plur.). Auxiliaire essere : mi è piaciuto."
+    },
+    {
+      "id": "it-verb-032",
+      "mot": "mancare",
+      "traductions": [
+        "manquer"
+      ],
+      "exemple": "Mi [manchi] tanto.",
+      "exemple_traduction": "Tu me manques beaucoup.",
+      "note": "Même construction qu'en français : (tu) mi manchi = tu me manques."
+    },
+    {
+      "id": "it-verb-033",
+      "mot": "litigare",
+      "traductions": [
+        "se disputer"
+      ],
+      "exemple": "Hanno [litigato] di nuovo per i soldi.",
+      "exemple_traduction": "Ils se sont encore disputés pour l'argent.",
+      "note": "Pas de pronom réfléchi ! Il litigio = la dispute."
+    },
+    {
+      "id": "it-verb-034",
+      "mot": "contare su",
+      "traductions": [
+        "compter sur"
+      ],
+      "exemple": "[Conto] su di te!",
+      "exemple_traduction": "Je compte sur toi !",
+      "note": "Devant un pronom : su di te, su di me.",
+      "variantes": [
+        "contare"
+      ]
+    },
+    {
+      "id": "it-verb-035",
+      "mot": "valere la pena",
+      "traductions": [
+        "valoir la peine"
+      ],
+      "exemple": "[Vale] la pena visitare Matera.",
+      "exemple_traduction": "Ça vaut la peine de visiter Matera.",
+      "note": "Ne vale la pena = ça vaut le coup."
+    },
+    {
+      "id": "it-verb-036",
+      "mot": "intendersi di",
+      "traductions": [
+        "s'y connaître en"
+      ],
+      "exemple": "Ti [intendi] di macchine?",
+      "exemple_traduction": "Tu t'y connais en voitures ?",
+      "note": "Faux ami : intendere = avoir l'intention / vouloir dire ; entendre = sentire.",
+      "variantes": [
+        "intendersi"
+      ]
+    },
+    {
+      "id": "it-verb-037",
+      "mot": "aiutare",
+      "traductions": [
+        "aider"
+      ],
+      "exemple": "Mi può [aiutare], per favore?",
+      "exemple_traduction": "Vous pouvez m'aider, s'il vous plaît ?",
+      "note": "Aiuto! = au secours !"
+    },
+    {
+      "id": "it-verb-038",
+      "mot": "aspettare",
+      "traductions": [
+        "attendre"
+      ],
+      "exemple": "Ti [aspetto] davanti al bar.",
+      "exemple_traduction": "Je t'attends devant le bar.",
+      "note": "Aspettarsi = s'attendre à."
+    },
+    {
+      "id": "it-verb-039",
+      "mot": "sentire",
+      "traductions": [
+        "entendre",
+        "sentir"
+      ],
+      "exemple": "Scusi, non ho [sentito] bene.",
+      "exemple_traduction": "Pardon, je n'ai pas bien entendu.",
+      "note": "Sentire = entendre ET sentir ; écouter = ascoltare."
+    },
+    {
+      "id": "it-verb-040",
+      "mot": "portare",
+      "traductions": [
+        "apporter",
+        "porter"
+      ],
+      "exemple": "Ci [porta] il conto, per favore?",
+      "exemple_traduction": "Vous nous apportez l'addition, s'il vous plaît ?",
+      "note": "Signifie aussi « emmener » : ti porto a casa."
+    },
+    {
+      "id": "it-verb-041",
+      "mot": "prenotare",
+      "traductions": [
+        "réserver"
+      ],
+      "exemple": "Ho [prenotato] un tavolo per le otto.",
+      "exemple_traduction": "J'ai réservé une table pour huit heures.",
+      "note": "La prenotazione = la réservation."
+    },
+    {
+      "id": "it-verb-042",
+      "mot": "scendere",
+      "traductions": [
+        "descendre"
+      ],
+      "exemple": "[Scende] alla prossima?",
+      "exemple_traduction": "Vous descendez au prochain arrêt ?",
+      "note": "Participe sceso, auxiliaire essere (sono sceso)."
+    },
+    {
+      "id": "it-verb-043",
+      "mot": "salire",
+      "traductions": [
+        "monter"
+      ],
+      "exemple": "[Sali] in macchina, ti accompagno.",
+      "exemple_traduction": "Monte dans la voiture, je te ramène.",
+      "note": "Faux ami ! salire = monter ; salir = sporcare. salgo, sali, sale."
+    },
+    {
+      "id": "it-verb-044",
+      "mot": "fermarsi",
+      "traductions": [
+        "s'arrêter"
+      ],
+      "exemple": "Il treno si [ferma] a Orvieto?",
+      "exemple_traduction": "Le train s'arrête à Orvieto ?",
+      "note": "Faux ami : fermare = arrêter ; fermer = chiudere."
+    },
+    {
+      "id": "it-verb-045",
+      "mot": "chiudere",
+      "traductions": [
+        "fermer"
+      ],
+      "exemple": "A che ora [chiude] il museo?",
+      "exemple_traduction": "À quelle heure ferme le musée ?",
+      "note": "Participe : chiuso."
+    },
+    {
+      "id": "it-verb-046",
+      "mot": "spegnere",
+      "traductions": [
+        "éteindre"
+      ],
+      "exemple": "[Spegni] la luce, per favore.",
+      "exemple_traduction": "Éteins la lumière, s'il te plaît.",
+      "note": "spengo, spegni, spegne ; participe spento."
+    },
+    {
+      "id": "it-verb-047",
+      "mot": "accendere",
+      "traductions": [
+        "allumer"
+      ],
+      "exemple": "Puoi [accendere] il riscaldamento?",
+      "exemple_traduction": "Tu peux allumer le chauffage ?",
+      "note": "Participe : acceso."
+    },
+    {
+      "id": "it-verb-048",
+      "mot": "sbagliare",
+      "traductions": [
+        "se tromper"
+      ],
+      "exemple": "Scusi, ho [sbagliato] numero.",
+      "exemple_traduction": "Pardon, je me suis trompé de numéro.",
+      "note": "Aussi sbagliarsi : mi sono sbagliato. Lo sbaglio = l'erreur."
+    },
+    {
+      "id": "it-verb-049",
+      "mot": "annoiarsi",
+      "traductions": [
+        "s'ennuyer"
+      ],
+      "exemple": "Ci siamo [annoiati] a morte.",
+      "exemple_traduction": "On s'est ennuyés à mourir."
+    },
+    {
+      "id": "it-verb-050",
+      "mot": "divertirsi",
+      "traductions": [
+        "s'amuser"
+      ],
+      "exemple": "Vi siete [divertiti] alla festa?",
+      "exemple_traduction": "Vous vous êtes amusés à la fête ?"
+    },
+    {
+      "id": "it-verb-051",
+      "mot": "innamorarsi (di)",
+      "traductions": [
+        "tomber amoureux (de)"
+      ],
+      "exemple": "Si è [innamorato] di una ragazza di Napoli.",
+      "exemple_traduction": "Il est tombé amoureux d'une fille de Naples.",
+      "variantes": [
+        "innamorarsi"
+      ]
+    },
+    {
+      "id": "it-verb-052",
+      "mot": "riposarsi",
+      "traductions": [
+        "se reposer"
+      ],
+      "exemple": "Domenica voglio solo [riposarmi].",
+      "exemple_traduction": "Dimanche je veux juste me reposer.",
+      "note": "Le pronom se colle à l'infinitif : riposarmi, riposarti…"
+    },
+    {
+      "id": "it-verb-053",
+      "mot": "fidarsi (di)",
+      "traductions": [
+        "faire confiance (à)"
+      ],
+      "exemple": "Non mi [fido] di lui.",
+      "exemple_traduction": "Je ne lui fais pas confiance.",
+      "variantes": [
+        "fidarsi"
+      ]
+    },
+    {
+      "id": "it-verb-054",
+      "mot": "vergognarsi",
+      "traductions": [
+        "avoir honte"
+      ],
+      "exemple": "Mi [vergogno] del mio accento.",
+      "exemple_traduction": "J'ai honte de mon accent."
+    }
+  ]
+}

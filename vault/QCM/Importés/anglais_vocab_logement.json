@@ -1,0 +1,201 @@
+{
+  "langue": "Anglais",
+  "titre": "Anglais — vocabulaire : le logement (B1)",
+  "particules_optionnelles": [
+    "to",
+    "a",
+    "an",
+    "the"
+  ],
+  "caracteres_speciaux": [],
+  "vocabulaire": [
+    {
+      "id": "en-logement-001",
+      "mot": "an apartment",
+      "traductions": [
+        "un appartement"
+      ],
+      "exemple": "I live in a large [apartment] on the 47th floor.",
+      "exemple_traduction": "J'habite un grand appartement au 47e étage.",
+      "note": "Américain. Britannique : a flat.",
+      "variantes": [
+        "a flat"
+      ]
+    },
+    {
+      "id": "en-logement-002",
+      "mot": "a block of flats",
+      "traductions": [
+        "un immeuble (d'habitation)"
+      ],
+      "exemple": "The [block of flats] I live in is massive.",
+      "exemple_traduction": "L'immeuble où j'habite est immense.",
+      "note": "Britannique. Américain : an apartment building."
+    },
+    {
+      "id": "en-logement-003",
+      "mot": "to rent",
+      "traductions": [
+        "louer (en tant que locataire)"
+      ],
+      "exemple": "I [rent] a small flat in the city centre.",
+      "exemple_traduction": "Je loue un petit appartement en centre-ville.",
+      "note": "Aussi un nom : the rent = le loyer. to rent out = louer (en tant que propriétaire)."
+    },
+    {
+      "id": "en-logement-004",
+      "mot": "a landlord",
+      "traductions": [
+        "un propriétaire (bailleur)"
+      ],
+      "exemple": "My [landlord] wants to increase my rent.",
+      "exemple_traduction": "Mon propriétaire veut augmenter mon loyer.",
+      "note": "Féminin : a landlady.",
+      "variantes": [
+        "a landlady"
+      ]
+    },
+    {
+      "id": "en-logement-005",
+      "mot": "a tenant",
+      "traductions": [
+        "un locataire"
+      ],
+      "exemple": "My [tenant] is always late paying the rent.",
+      "exemple_traduction": "Mon locataire paie toujours son loyer en retard."
+    },
+    {
+      "id": "en-logement-006",
+      "mot": "a detached house",
+      "traductions": [
+        "une maison individuelle"
+      ],
+      "exemple": "I live in a [detached house], so I can't hear my neighbours.",
+      "exemple_traduction": "J'habite une maison individuelle, donc je n'entends pas mes voisins.",
+      "note": "Ne partage aucun mur avec une autre maison."
+    },
+    {
+      "id": "en-logement-007",
+      "mot": "a semi-detached house",
+      "traductions": [
+        "une maison jumelée"
+      ],
+      "exemple": "In my [semi-detached house], I can hear my neighbour's music.",
+      "exemple_traduction": "Dans ma maison jumelée, j'entends la musique de mon voisin.",
+      "note": "Partage un mur avec UNE autre maison. Familier : a semi.",
+      "variantes": [
+        "a semi"
+      ]
+    },
+    {
+      "id": "en-logement-008",
+      "mot": "a terraced house",
+      "traductions": [
+        "une maison mitoyenne (en rangée)"
+      ],
+      "exemple": "My aunt loves living in a [terraced house].",
+      "exemple_traduction": "Ma tante adore vivre dans une maison mitoyenne.",
+      "note": "Britannique. Américain : a row house / a townhouse."
+    },
+    {
+      "id": "en-logement-009",
+      "mot": "a bungalow",
+      "traductions": [
+        "une maison de plain-pied"
+      ],
+      "exemple": "My parents live in a [bungalow] because of the stairs.",
+      "exemple_traduction": "Mes parents vivent dans une maison de plain-pied à cause des escaliers.",
+      "note": "Une maison sans étage."
+    },
+    {
+      "id": "en-logement-010",
+      "mot": "a cottage",
+      "traductions": [
+        "un cottage",
+        "une petite maison de campagne"
+      ],
+      "exemple": "My sister owns a [cottage] in Switzerland.",
+      "exemple_traduction": "Ma sœur possède une petite maison de campagne en Suisse."
+    },
+    {
+      "id": "en-logement-011",
+      "mot": "a villa",
+      "traductions": [
+        "une villa",
+        "une grande demeure à la campagne"
+      ],
+      "exemple": "The [villa] was converted into four flats.",
+      "exemple_traduction": "La villa a été transformée en quatre appartements."
+    },
+    {
+      "id": "en-logement-012",
+      "mot": "a skyscraper",
+      "traductions": [
+        "un gratte-ciel"
+      ],
+      "exemple": "My uncle lives on the 100th floor of a [skyscraper]!",
+      "exemple_traduction": "Mon oncle habite au 100e étage d'un gratte-ciel !",
+      "note": "sky = le ciel ; to scrape = gratter."
+    },
+    {
+      "id": "en-logement-013",
+      "mot": "a palace",
+      "traductions": [
+        "un palais"
+      ],
+      "exemple": "We visited Buckingham [Palace] in London.",
+      "exemple_traduction": "Nous avons visité le palais de Buckingham à Londres.",
+      "note": "/ˈpæləs/"
+    },
+    {
+      "id": "en-logement-014",
+      "mot": "a mobile home",
+      "traductions": [
+        "un mobile home",
+        "une maison mobile"
+      ],
+      "exemple": "As a child, she lived in a [mobile home].",
+      "exemple_traduction": "Enfant, elle vivait dans un mobile home.",
+      "note": "Reste garé au même endroit, contrairement à un RV."
+    },
+    {
+      "id": "en-logement-015",
+      "mot": "a recreational vehicle",
+      "traductions": [
+        "un camping-car"
+      ],
+      "exemple": "They sold their house and bought a [recreational vehicle].",
+      "exemple_traduction": "Ils ont vendu leur maison et acheté un camping-car.",
+      "note": "Abréviation courante : an RV (américain). Britannique : a motorhome.",
+      "variantes": [
+        "an RV",
+        "a motorhome"
+      ]
+    },
+    {
+      "id": "en-logement-016",
+      "mot": "a houseboat",
+      "traductions": [
+        "une péniche aménagée",
+        "un bateau-logement"
+      ],
+      "exemple": "I love living on the river in my [houseboat].",
+      "exemple_traduction": "J'adore vivre sur la rivière dans ma péniche aménagée.",
+      "note": "Aussi écrit « house boat ».",
+      "variantes": [
+        "a house boat"
+      ]
+    },
+    {
+      "id": "en-logement-017",
+      "mot": "residential",
+      "traductions": [
+        "résidentiel",
+        "d'habitation"
+      ],
+      "exemple": "This building has offices and [residential] properties.",
+      "exemple_traduction": "Cet immeuble comprend des bureaux et des logements.",
+      "note": "a residential area = un quartier résidentiel."
+    }
+  ]
+}

@@ -1,0 +1,905 @@
+{
+  "langue": "Italien",
+  "caracteres_speciaux": [
+    "à",
+    "è",
+    "é",
+    "ì",
+    "ò",
+    "ù"
+  ],
+  "titre": "Italien — conjugaison : futuro, condizionale, congiuntivo, imperativo",
+  "description": "Futur, conditionnel, subjonctif présent et imparfait, impératif.",
+  "conjugaison": [
+    {
+      "id": "it-conj-essere-fut",
+      "verbe": "essere",
+      "traduction": "être",
+      "temps": "futuro",
+      "formes": {
+        "io": [
+          "sarò"
+        ],
+        "tu": [
+          "sarai"
+        ],
+        "lui / lei": [
+          "sarà"
+        ],
+        "noi": [
+          "saremo"
+        ],
+        "voi": [
+          "sarete"
+        ],
+        "loro": [
+          "saranno"
+        ]
+      },
+      "explication": "Radical sar-. Sert aussi pour la supposition : sarà vero = c'est sans doute vrai."
+    },
+    {
+      "id": "it-conj-avere-fut",
+      "verbe": "avere",
+      "traduction": "avoir",
+      "temps": "futuro",
+      "formes": {
+        "io": [
+          "avrò"
+        ],
+        "tu": [
+          "avrai"
+        ],
+        "lui / lei": [
+          "avrà"
+        ],
+        "noi": [
+          "avremo"
+        ],
+        "voi": [
+          "avrete"
+        ],
+        "loro": [
+          "avranno"
+        ]
+      },
+      "explication": "Radical contracté avr-. Avrà trent'anni = il doit avoir trente ans."
+    },
+    {
+      "id": "it-conj-parlare-fut",
+      "verbe": "parlare",
+      "traduction": "parler",
+      "temps": "futuro",
+      "formes": {
+        "io": [
+          "parlerò"
+        ],
+        "tu": [
+          "parlerai"
+        ],
+        "lui / lei": [
+          "parlerà"
+        ],
+        "noi": [
+          "parleremo"
+        ],
+        "voi": [
+          "parlerete"
+        ],
+        "loro": [
+          "parleranno"
+        ]
+      },
+      "explication": "-are → -er- : parlerò (pas *parlarò)."
+    },
+    {
+      "id": "it-conj-andare-fut",
+      "verbe": "andare",
+      "traduction": "aller",
+      "temps": "futuro",
+      "formes": {
+        "io": [
+          "andrò"
+        ],
+        "tu": [
+          "andrai"
+        ],
+        "lui / lei": [
+          "andrà"
+        ],
+        "noi": [
+          "andremo"
+        ],
+        "voi": [
+          "andrete"
+        ],
+        "loro": [
+          "andranno"
+        ]
+      },
+      "explication": "Radical contracté andr-."
+    },
+    {
+      "id": "it-conj-fare-fut",
+      "verbe": "fare",
+      "traduction": "faire",
+      "temps": "futuro",
+      "formes": {
+        "io": [
+          "farò"
+        ],
+        "tu": [
+          "farai"
+        ],
+        "lui / lei": [
+          "farà"
+        ],
+        "noi": [
+          "faremo"
+        ],
+        "voi": [
+          "farete"
+        ],
+        "loro": [
+          "faranno"
+        ]
+      },
+      "explication": "Radical far-."
+    },
+    {
+      "id": "it-conj-venire-fut",
+      "verbe": "venire",
+      "traduction": "venir",
+      "temps": "futuro",
+      "formes": {
+        "io": [
+          "verrò"
+        ],
+        "tu": [
+          "verrai"
+        ],
+        "lui / lei": [
+          "verrà"
+        ],
+        "noi": [
+          "verremo"
+        ],
+        "voi": [
+          "verrete"
+        ],
+        "loro": [
+          "verranno"
+        ]
+      },
+      "explication": "Radical verr- (comme tenere → terrò, volere → vorrò, rimanere → rimarrò)."
+    },
+    {
+      "id": "it-conj-potere-fut",
+      "verbe": "potere",
+      "traduction": "pouvoir",
+      "temps": "futuro",
+      "formes": {
+        "io": [
+          "potrò"
+        ],
+        "tu": [
+          "potrai"
+        ],
+        "lui / lei": [
+          "potrà"
+        ],
+        "noi": [
+          "potremo"
+        ],
+        "voi": [
+          "potrete"
+        ],
+        "loro": [
+          "potranno"
+        ]
+      },
+      "explication": "Radical contracté potr- (comme dovere → dovrò, sapere → saprò, vedere → vedrò)."
+    },
+    {
+      "id": "it-conj-volere-cond",
+      "verbe": "volere",
+      "traduction": "vouloir",
+      "temps": "condizionale",
+      "formes": {
+        "io": [
+          "vorrei"
+        ],
+        "tu": [
+          "vorresti"
+        ],
+        "lui / lei": [
+          "vorrebbe"
+        ],
+        "noi": [
+          "vorremmo"
+        ],
+        "voi": [
+          "vorreste"
+        ],
+        "loro": [
+          "vorrebbero"
+        ]
+      },
+      "explication": "Terminaisons : -ei, -esti, -ebbe, -emmo, -este, -ebbero. Vorrei… = je voudrais…"
+    },
+    {
+      "id": "it-conj-potere-cond",
+      "verbe": "potere",
+      "traduction": "pouvoir",
+      "temps": "condizionale",
+      "formes": {
+        "io": [
+          "potrei"
+        ],
+        "tu": [
+          "potresti"
+        ],
+        "lui / lei": [
+          "potrebbe"
+        ],
+        "noi": [
+          "potremmo"
+        ],
+        "voi": [
+          "potreste"
+        ],
+        "loro": [
+          "potrebbero"
+        ]
+      },
+      "explication": "Potrebbe…? = pourriez-vous… ? (Lei)"
+    },
+    {
+      "id": "it-conj-dovere-cond",
+      "verbe": "dovere",
+      "traduction": "devoir",
+      "temps": "condizionale",
+      "formes": {
+        "io": [
+          "dovrei"
+        ],
+        "tu": [
+          "dovresti"
+        ],
+        "lui / lei": [
+          "dovrebbe"
+        ],
+        "noi": [
+          "dovremmo"
+        ],
+        "voi": [
+          "dovreste"
+        ],
+        "loro": [
+          "dovrebbero"
+        ]
+      },
+      "explication": "Dovresti = tu devrais (conseil)."
+    },
+    {
+      "id": "it-conj-essere-cond",
+      "verbe": "essere",
+      "traduction": "être",
+      "temps": "condizionale",
+      "formes": {
+        "io": [
+          "sarei"
+        ],
+        "tu": [
+          "saresti"
+        ],
+        "lui / lei": [
+          "sarebbe"
+        ],
+        "noi": [
+          "saremmo"
+        ],
+        "voi": [
+          "sareste"
+        ],
+        "loro": [
+          "sarebbero"
+        ]
+      },
+      "explication": "Sarebbe bello… = ce serait bien…"
+    },
+    {
+      "id": "it-conj-parlare-cond",
+      "verbe": "parlare",
+      "traduction": "parler",
+      "temps": "condizionale",
+      "formes": {
+        "io": [
+          "parlerei"
+        ],
+        "tu": [
+          "parleresti"
+        ],
+        "lui / lei": [
+          "parlerebbe"
+        ],
+        "noi": [
+          "parleremmo"
+        ],
+        "voi": [
+          "parlereste"
+        ],
+        "loro": [
+          "parlerebbero"
+        ]
+      },
+      "explication": "Même radical que le futur : parler-. Attention : -emmo (cond.) ≠ -emo (futur)."
+    },
+    {
+      "id": "it-conj-piacere-cond",
+      "verbe": "piacere",
+      "traduction": "plaire",
+      "temps": "condizionale",
+      "formes": {
+        "io": [
+          "piacerei"
+        ],
+        "tu": [
+          "piaceresti"
+        ],
+        "lui / lei": [
+          "piacerebbe"
+        ],
+        "noi": [
+          "piaceremmo"
+        ],
+        "voi": [
+          "piacereste"
+        ],
+        "loro": [
+          "piacerebbero"
+        ]
+      },
+      "explication": "Surtout : mi piacerebbe… = j'aimerais…"
+    },
+    {
+      "id": "it-conj-essere-cong",
+      "verbe": "essere",
+      "traduction": "être",
+      "temps": "congiuntivo presente",
+      "formes": {
+        "io": [
+          "sia"
+        ],
+        "tu": [
+          "sia"
+        ],
+        "lui / lei": [
+          "sia"
+        ],
+        "noi": [
+          "siamo"
+        ],
+        "voi": [
+          "siate"
+        ],
+        "loro": [
+          "siano"
+        ]
+      },
+      "explication": "Les trois personnes du singulier sont identiques : on précise souvent le pronom (che io sia)."
+    },
+    {
+      "id": "it-conj-avere-cong",
+      "verbe": "avere",
+      "traduction": "avoir",
+      "temps": "congiuntivo presente",
+      "formes": {
+        "io": [
+          "abbia"
+        ],
+        "tu": [
+          "abbia"
+        ],
+        "lui / lei": [
+          "abbia"
+        ],
+        "noi": [
+          "abbiamo"
+        ],
+        "voi": [
+          "abbiate"
+        ],
+        "loro": [
+          "abbiano"
+        ]
+      },
+      "explication": "Singulier identique : abbia."
+    },
+    {
+      "id": "it-conj-parlare-cong",
+      "verbe": "parlare",
+      "traduction": "parler",
+      "temps": "congiuntivo presente",
+      "formes": {
+        "io": [
+          "parli"
+        ],
+        "tu": [
+          "parli"
+        ],
+        "lui / lei": [
+          "parli"
+        ],
+        "noi": [
+          "parliamo"
+        ],
+        "voi": [
+          "parliate"
+        ],
+        "loro": [
+          "parlino"
+        ]
+      },
+      "explication": "-are → -i ; loro -ino."
+    },
+    {
+      "id": "it-conj-prendere-cong",
+      "verbe": "prendere",
+      "traduction": "prendre",
+      "temps": "congiuntivo presente",
+      "formes": {
+        "io": [
+          "prenda"
+        ],
+        "tu": [
+          "prenda"
+        ],
+        "lui / lei": [
+          "prenda"
+        ],
+        "noi": [
+          "prendiamo"
+        ],
+        "voi": [
+          "prendiate"
+        ],
+        "loro": [
+          "prendano"
+        ]
+      },
+      "explication": "-ere / -ire → -a ; loro -ano."
+    },
+    {
+      "id": "it-conj-fare-cong",
+      "verbe": "fare",
+      "traduction": "faire",
+      "temps": "congiuntivo presente",
+      "formes": {
+        "io": [
+          "faccia"
+        ],
+        "tu": [
+          "faccia"
+        ],
+        "lui / lei": [
+          "faccia"
+        ],
+        "noi": [
+          "facciamo"
+        ],
+        "voi": [
+          "facciate"
+        ],
+        "loro": [
+          "facciano"
+        ]
+      },
+      "explication": "Radical facci-."
+    },
+    {
+      "id": "it-conj-andare-cong",
+      "verbe": "andare",
+      "traduction": "aller",
+      "temps": "congiuntivo presente",
+      "formes": {
+        "io": [
+          "vada"
+        ],
+        "tu": [
+          "vada"
+        ],
+        "lui / lei": [
+          "vada"
+        ],
+        "noi": [
+          "andiamo"
+        ],
+        "voi": [
+          "andiate"
+        ],
+        "loro": [
+          "vadano"
+        ]
+      },
+      "explication": "Radical vad- sauf noi / voi."
+    },
+    {
+      "id": "it-conj-venire-cong",
+      "verbe": "venire",
+      "traduction": "venir",
+      "temps": "congiuntivo presente",
+      "formes": {
+        "io": [
+          "venga"
+        ],
+        "tu": [
+          "venga"
+        ],
+        "lui / lei": [
+          "venga"
+        ],
+        "noi": [
+          "veniamo"
+        ],
+        "voi": [
+          "veniate"
+        ],
+        "loro": [
+          "vengano"
+        ]
+      },
+      "explication": "Radical du présent io (vengo) : venga."
+    },
+    {
+      "id": "it-conj-potere-cong",
+      "verbe": "potere",
+      "traduction": "pouvoir",
+      "temps": "congiuntivo presente",
+      "formes": {
+        "io": [
+          "possa"
+        ],
+        "tu": [
+          "possa"
+        ],
+        "lui / lei": [
+          "possa"
+        ],
+        "noi": [
+          "possiamo"
+        ],
+        "voi": [
+          "possiate"
+        ],
+        "loro": [
+          "possano"
+        ]
+      },
+      "explication": "Radical poss-."
+    },
+    {
+      "id": "it-conj-stare-cong",
+      "verbe": "stare",
+      "traduction": "rester, être",
+      "temps": "congiuntivo presente",
+      "formes": {
+        "io": [
+          "stia"
+        ],
+        "tu": [
+          "stia"
+        ],
+        "lui / lei": [
+          "stia"
+        ],
+        "noi": [
+          "stiamo"
+        ],
+        "voi": [
+          "stiate"
+        ],
+        "loro": [
+          "stiano"
+        ]
+      },
+      "explication": "Comme dare : dia, dia, dia…"
+    },
+    {
+      "id": "it-conj-essere-congimp",
+      "verbe": "essere",
+      "traduction": "être",
+      "temps": "congiuntivo imperfetto",
+      "formes": {
+        "io": [
+          "fossi"
+        ],
+        "tu": [
+          "fossi"
+        ],
+        "lui / lei": [
+          "fosse"
+        ],
+        "noi": [
+          "fossimo"
+        ],
+        "voi": [
+          "foste"
+        ],
+        "loro": [
+          "fossero"
+        ]
+      },
+      "explication": "Se fossi in te… = si j'étais toi…"
+    },
+    {
+      "id": "it-conj-avere-congimp",
+      "verbe": "avere",
+      "traduction": "avoir",
+      "temps": "congiuntivo imperfetto",
+      "formes": {
+        "io": [
+          "avessi"
+        ],
+        "tu": [
+          "avessi"
+        ],
+        "lui / lei": [
+          "avesse"
+        ],
+        "noi": [
+          "avessimo"
+        ],
+        "voi": [
+          "aveste"
+        ],
+        "loro": [
+          "avessero"
+        ]
+      },
+      "explication": "Se avessi tempo… = si j'avais le temps… (jamais de conditionnel après se)."
+    },
+    {
+      "id": "it-conj-fare-congimp",
+      "verbe": "fare",
+      "traduction": "faire",
+      "temps": "congiuntivo imperfetto",
+      "formes": {
+        "io": [
+          "facessi"
+        ],
+        "tu": [
+          "facessi"
+        ],
+        "lui / lei": [
+          "facesse"
+        ],
+        "noi": [
+          "facessimo"
+        ],
+        "voi": [
+          "faceste"
+        ],
+        "loro": [
+          "facessero"
+        ]
+      },
+      "explication": "Radical fac- : facessi."
+    },
+    {
+      "id": "it-conj-parlare-imper",
+      "verbe": "parlare",
+      "traduction": "parler",
+      "temps": "imperativo",
+      "formes": {
+        "tu": [
+          "parla"
+        ],
+        "Lei": [
+          "parli"
+        ],
+        "noi": [
+          "parliamo"
+        ],
+        "voi": [
+          "parlate"
+        ]
+      },
+      "explication": "-are : tu -a, Lei -i (le congiuntivo). Négatif tu : non + infinitif (non parlare)."
+    },
+    {
+      "id": "it-conj-prendere-imper",
+      "verbe": "prendere",
+      "traduction": "prendre",
+      "temps": "imperativo",
+      "formes": {
+        "tu": [
+          "prendi"
+        ],
+        "Lei": [
+          "prenda"
+        ],
+        "noi": [
+          "prendiamo"
+        ],
+        "voi": [
+          "prendete"
+        ]
+      },
+      "explication": "-ere / -ire : tu -i, Lei -a. Négatif tu : non + infinitif (non parlare)."
+    },
+    {
+      "id": "it-conj-scusare-imper",
+      "verbe": "scusare",
+      "traduction": "excuser",
+      "temps": "imperativo",
+      "formes": {
+        "tu": [
+          "scusa"
+        ],
+        "Lei": [
+          "scusi"
+        ],
+        "noi": [
+          "scusiamo"
+        ],
+        "voi": [
+          "scusate"
+        ]
+      },
+      "explication": "Scusa! (tu) / Scusi! (Lei). Négatif tu : non + infinitif (non parlare)."
+    },
+    {
+      "id": "it-conj-fare-imper",
+      "verbe": "fare",
+      "traduction": "faire",
+      "temps": "imperativo",
+      "formes": {
+        "tu": [
+          "fai",
+          "fa'"
+        ],
+        "Lei": [
+          "faccia"
+        ],
+        "noi": [
+          "facciamo"
+        ],
+        "voi": [
+          "fate"
+        ]
+      },
+      "explication": "Tu : fai ou fa' ; + pronom : fammi, fallo. Négatif tu : non + infinitif (non parlare)."
+    },
+    {
+      "id": "it-conj-andare-imper",
+      "verbe": "andare",
+      "traduction": "aller",
+      "temps": "imperativo",
+      "formes": {
+        "tu": [
+          "vai",
+          "va'"
+        ],
+        "Lei": [
+          "vada"
+        ],
+        "noi": [
+          "andiamo"
+        ],
+        "voi": [
+          "andate"
+        ]
+      },
+      "explication": "Tu : vai ou va' ; vattene = va-t'en. Négatif tu : non + infinitif (non parlare)."
+    },
+    {
+      "id": "it-conj-dire-imper",
+      "verbe": "dire",
+      "traduction": "dire",
+      "temps": "imperativo",
+      "formes": {
+        "tu": [
+          "di'",
+          "di"
+        ],
+        "Lei": [
+          "dica"
+        ],
+        "noi": [
+          "diciamo"
+        ],
+        "voi": [
+          "dite"
+        ]
+      },
+      "explication": "Tu : di' ; + pronom : dimmi. Dica! = je vous écoute. Négatif tu : non + infinitif (non parlare)."
+    },
+    {
+      "id": "it-conj-venire-imper",
+      "verbe": "venire",
+      "traduction": "venir",
+      "temps": "imperativo",
+      "formes": {
+        "tu": [
+          "vieni"
+        ],
+        "Lei": [
+          "venga"
+        ],
+        "noi": [
+          "veniamo"
+        ],
+        "voi": [
+          "venite"
+        ]
+      },
+      "explication": "Venga! (Lei) = venez ! Négatif tu : non + infinitif (non parlare)."
+    },
+    {
+      "id": "it-conj-stare-imper",
+      "verbe": "stare",
+      "traduction": "rester, être",
+      "temps": "imperativo",
+      "formes": {
+        "tu": [
+          "stai",
+          "sta'"
+        ],
+        "Lei": [
+          "stia"
+        ],
+        "noi": [
+          "stiamo"
+        ],
+        "voi": [
+          "state"
+        ]
+      },
+      "explication": "Stai zitto! = tais-toi ! Stia tranquillo = ne vous inquiétez pas. Négatif tu : non + infinitif (non parlare)."
+    },
+    {
+      "id": "it-conj-essere-imper",
+      "verbe": "essere",
+      "traduction": "être",
+      "temps": "imperativo",
+      "formes": {
+        "tu": [
+          "sii"
+        ],
+        "Lei": [
+          "sia"
+        ],
+        "noi": [
+          "siamo"
+        ],
+        "voi": [
+          "siate"
+        ]
+      },
+      "explication": "Sii gentile! = sois gentil ! Négatif tu : non + infinitif (non parlare)."
+    },
+    {
+      "id": "it-conj-dare-imper",
+      "verbe": "dare",
+      "traduction": "donner",
+      "temps": "imperativo",
+      "formes": {
+        "tu": [
+          "dai",
+          "da'"
+        ],
+        "Lei": [
+          "dia"
+        ],
+        "noi": [
+          "diamo"
+        ],
+        "voi": [
+          "date"
+        ]
+      },
+      "explication": "Tu + pronom : dammi = donne-moi. Négatif tu : non + infinitif (non parlare)."
+    }
+  ]
+}

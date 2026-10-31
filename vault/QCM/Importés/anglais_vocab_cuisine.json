@@ -1,0 +1,159 @@
+{
+  "langue": "Anglais",
+  "titre": "Anglais — vocabulaire : la cuisine (A1)",
+  "particules_optionnelles": [
+    "to",
+    "a",
+    "an",
+    "the"
+  ],
+  "caracteres_speciaux": [],
+  "vocabulaire": [
+    {
+      "id": "en-cuisine-001",
+      "mot": "a recipe",
+      "traductions": [
+        "une recette (de cuisine)"
+      ],
+      "exemple": "Could you give me the [recipe] for this cake?",
+      "exemple_traduction": "Pourrais-tu me donner la recette de ce gâteau ?",
+      "note": "Faux ami : a receipt = un ticket de caisse. Prononciation : /ˈresəpi/ (3 syllabes).",
+      "prononciation": "/ˈresəpi/"
+    },
+    {
+      "id": "en-cuisine-002",
+      "mot": "to cook",
+      "traductions": [
+        "cuisiner",
+        "faire cuire"
+      ],
+      "exemple": "Do you enjoy [cooking]?",
+      "exemple_traduction": "Tu aimes cuisiner ?",
+      "note": "a cook = un cuisinier ; a cooker = une cuisinière (l'appareil)."
+    },
+    {
+      "id": "en-cuisine-003",
+      "mot": "to boil",
+      "traductions": [
+        "faire bouillir"
+      ],
+      "exemple": "I put the water on to [boil] for my tea.",
+      "exemple_traduction": "Je mets l'eau à bouillir pour mon thé.",
+      "note": "a boiled egg = un œuf à la coque."
+    },
+    {
+      "id": "en-cuisine-004",
+      "mot": "to fry",
+      "traductions": [
+        "faire frire",
+        "faire revenir"
+      ],
+      "exemple": "[Fry] the onion with the garlic.",
+      "exemple_traduction": "Fais revenir l'oignon avec l'ail.",
+      "note": "Au passé : fried. a frying pan = une poêle."
+    },
+    {
+      "id": "en-cuisine-005",
+      "mot": "to bake",
+      "traductions": [
+        "cuire au four (pain, gâteau)"
+      ],
+      "exemple": "I love to [bake] fresh bread at home.",
+      "exemple_traduction": "J'adore faire cuire du pain frais à la maison.",
+      "note": "Pour le pain, les gâteaux. a baker = un boulanger."
+    },
+    {
+      "id": "en-cuisine-006",
+      "mot": "to roast",
+      "traductions": [
+        "rôtir",
+        "faire rôtir"
+      ],
+      "exemple": "I like to [roast] vegetables in the oven.",
+      "exemple_traduction": "J'aime faire rôtir des légumes au four.",
+      "note": "Pour la viande et les légumes, avec de la matière grasse. a roast chicken = un poulet rôti."
+    },
+    {
+      "id": "en-cuisine-007",
+      "mot": "to heat",
+      "traductions": [
+        "faire chauffer"
+      ],
+      "exemple": "I put the soup in a pan to [heat] it up.",
+      "exemple_traduction": "J'ai mis la soupe dans une casserole pour la faire chauffer.",
+      "note": "to heat up = faire chauffer."
+    },
+    {
+      "id": "en-cuisine-008",
+      "mot": "to reheat",
+      "traductions": [
+        "réchauffer"
+      ],
+      "exemple": "I'll put the pasta in the microwave to [reheat] it.",
+      "exemple_traduction": "Je vais mettre les pâtes au micro-ondes pour les réchauffer.",
+      "note": "re- = à nouveau."
+    },
+    {
+      "id": "en-cuisine-009",
+      "mot": "to chop",
+      "traductions": [
+        "hacher",
+        "couper en morceaux"
+      ],
+      "exemple": "[Chop] the tomatoes into small pieces.",
+      "exemple_traduction": "Coupe les tomates en petits morceaux.",
+      "note": "Au passé : chopped (doublement du p)."
+    },
+    {
+      "id": "en-cuisine-010",
+      "mot": "to slice",
+      "traductions": [
+        "couper en tranches"
+      ],
+      "exemple": "[Slice] the tomato and the cucumber.",
+      "exemple_traduction": "Coupe la tomate et le concombre en tranches.",
+      "note": "a slice = une tranche."
+    },
+    {
+      "id": "en-cuisine-011",
+      "mot": "to dice",
+      "traductions": [
+        "couper en dés"
+      ],
+      "exemple": "[Dice] the onion and fry it with the garlic.",
+      "exemple_traduction": "Coupe l'oignon en dés et fais-le revenir avec l'ail.",
+      "note": "a dice = un dé (à jouer) ; pluriel : dice."
+    },
+    {
+      "id": "en-cuisine-012",
+      "mot": "to stir",
+      "traductions": [
+        "remuer",
+        "mélanger"
+      ],
+      "exemple": "[Stir] the rice until all the liquid has gone.",
+      "exemple_traduction": "Remue le riz jusqu'à ce que tout le liquide soit absorbé.",
+      "note": "Au passé : stirred (doublement du r)."
+    },
+    {
+      "id": "en-cuisine-013",
+      "mot": "to season",
+      "traductions": [
+        "assaisonner"
+      ],
+      "exemple": "I always [season] my food with salt and pepper.",
+      "exemple_traduction": "J'assaisonne toujours mes plats avec du sel et du poivre.",
+      "note": "Aussi un nom : a season = une saison."
+    },
+    {
+      "id": "en-cuisine-014",
+      "mot": "to taste",
+      "traductions": [
+        "goûter"
+      ],
+      "exemple": "Always [taste] the food as you cook it.",
+      "exemple_traduction": "Goûte toujours les plats pendant la cuisson.",
+      "note": "Aussi : It tastes good = C'est bon (au goût)."
+    }
+  ]
+}

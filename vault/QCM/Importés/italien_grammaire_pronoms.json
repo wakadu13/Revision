@@ -1,0 +1,444 @@
+{
+  "langue": "Italien",
+  "caracteres_speciaux": [
+    "à",
+    "è",
+    "é",
+    "ì",
+    "ò",
+    "ù"
+  ],
+  "titre": "Italien — grammaire : pronoms",
+  "description": "COD / COI, pronoms combinés, ci et ne, piacere, impératif + pronom, relatifs.",
+  "grammaire": [
+    {
+      "id": "it-pron-001",
+      "type": "TROU",
+      "question": "Conosci Marta? Sì, ___ conosco bene.",
+      "reponses_texte": [
+        "la"
+      ],
+      "explication": "COD fém. sing. = la.",
+      "traduction": "Tu connais Marta ? Oui, je la connais bien."
+    },
+    {
+      "id": "it-pron-002",
+      "type": "TROU",
+      "question": "Hai visto i miei occhiali? No, non ___ ho visti.",
+      "reponses_texte": [
+        "li"
+      ],
+      "explication": "COD masc. plur. = li (jamais élidé).",
+      "traduction": "Tu as vu mes lunettes ? Non, je ne les ai pas vues."
+    },
+    {
+      "id": "it-pron-003",
+      "type": "TROU",
+      "question": "Telefoni a Paolo? Sì, ___ telefono stasera.",
+      "reponses_texte": [
+        "gli"
+      ],
+      "explication": "telefonare A qualcuno → COI : gli (à lui).",
+      "traduction": "Tu appelles Paolo ? Oui, je l'appelle ce soir."
+    },
+    {
+      "id": "it-pron-004",
+      "type": "TROU",
+      "question": "Hai scritto a tua madre? Sì, ___ ho scritto ieri.",
+      "reponses_texte": [
+        "le"
+      ],
+      "explication": "COI fém. = le (à elle).",
+      "traduction": "Tu as écrit à ta mère ? Oui, je lui ai écrit hier."
+    },
+    {
+      "id": "it-pron-005",
+      "type": "TROU",
+      "question": "Hai comprato le pesche? Sì, ___ ho comprate.",
+      "reponses_texte": [
+        "le"
+      ],
+      "explication": "COD fém. plur. = le ; le participe s'accorde (comprate).",
+      "traduction": "Tu as acheté les pêches ? Oui, je les ai achetées."
+    },
+    {
+      "id": "it-pron-006",
+      "type": "TROU",
+      "question": "Hai visto Giulia? Sì, l'ho ___ (vedere) ieri.",
+      "reponses_texte": [
+        "vista"
+      ],
+      "explication": "Pronom COD lo / la / li / le avant avere → le participe s'accorde : l'ho vista.",
+      "traduction": "Tu as vu Giulia ? Oui, je l'ai vue hier."
+    },
+    {
+      "id": "it-pron-007",
+      "type": "TROU",
+      "question": "I biglietti? Li ho ___ (prendere) io.",
+      "reponses_texte": [
+        "presi"
+      ],
+      "explication": "li → participe masc. plur. : presi.",
+      "traduction": "Les billets ? C'est moi qui les ai pris."
+    },
+    {
+      "id": "it-pron-008",
+      "type": "TROU",
+      "question": "Mi presti la penna? Sì, te ___ presto.",
+      "reponses_texte": [
+        "la"
+      ],
+      "explication": "Pronoms combinés : mi, ti, ci, vi deviennent me, te, ce, ve devant lo / la / li / le / ne.",
+      "traduction": "Tu me prêtes le stylo ? Oui, je te le prête."
+    },
+    {
+      "id": "it-pron-009",
+      "type": "TROU",
+      "question": "Dai il libro a Luca? Sì, ___ do domani.",
+      "reponses_texte": [
+        "glielo"
+      ],
+      "explication": "gli / le + lo = glielo (en un seul mot), pour lui ET pour elle.",
+      "traduction": "Tu donnes le livre à Luca ? Oui, je le lui donne demain."
+    },
+    {
+      "id": "it-pron-010",
+      "type": "TROU",
+      "question": "Porti le chiavi a Sara? Sì, ___ porto subito.",
+      "reponses_texte": [
+        "gliele"
+      ],
+      "explication": "gli / le + le = gliele.",
+      "traduction": "Tu apportes les clés à Sara ? Oui, je les lui apporte tout de suite."
+    },
+    {
+      "id": "it-pron-011",
+      "type": "TROU",
+      "question": "Mi mandi le foto? Sì, ___ mando stasera.",
+      "reponses_texte": [
+        "te le"
+      ],
+      "explication": "ti + le = te le (deux mots).",
+      "traduction": "Tu m'envoies les photos ? Oui, je te les envoie ce soir."
+    },
+    {
+      "id": "it-pron-012",
+      "type": "TROU",
+      "question": "Ci spieghi la regola? Sì, ___ spiego dopo.",
+      "reponses_texte": [
+        "ve la"
+      ],
+      "explication": "vi + la = ve la.",
+      "traduction": "Tu nous expliques la règle ? Oui, je vous l'explique après."
+    },
+    {
+      "id": "it-pron-013",
+      "type": "TROU",
+      "question": "Quante sigarette fumi? ___ fumo cinque al giorno.",
+      "reponses_texte": [
+        "ne"
+      ],
+      "explication": "ne reprend une quantité : ne fumo cinque (j'en fume cinq).",
+      "traduction": "Combien de cigarettes fumes-tu ? J'en fume cinq par jour."
+    },
+    {
+      "id": "it-pron-014",
+      "type": "TROU",
+      "question": "Hai mangiato delle ciliegie? Sì, ne ho ___ (mangiare) tante.",
+      "reponses_texte": [
+        "mangiate"
+      ],
+      "explication": "Avec ne, le participe s'accorde avec la quantité (ciliegie → mangiate).",
+      "traduction": "Tu as mangé des cerises ? Oui, j'en ai mangé beaucoup."
+    },
+    {
+      "id": "it-pron-015",
+      "type": "TROU",
+      "question": "Vai spesso a Napoli? Sì, ___ vado ogni estate.",
+      "reponses_texte": [
+        "ci"
+      ],
+      "explication": "ci = y (lieu) : ci vado.",
+      "traduction": "Tu vas souvent à Naples ? Oui, j'y vais chaque été."
+    },
+    {
+      "id": "it-pron-016",
+      "type": "TROU",
+      "question": "Hai il passaporto? Sì, ce ___ ho.",
+      "reponses_texte": [
+        "l'"
+      ],
+      "explication": "Avere + pronom COD à l'oral : ce l'ho, ce li ho.",
+      "traduction": "Tu as ton passeport ? Oui, je l'ai."
+    },
+    {
+      "id": "it-pron-017",
+      "type": "TROU",
+      "question": "Pensi ancora al viaggio? Sì, ___ penso sempre.",
+      "reponses_texte": [
+        "ci"
+      ],
+      "explication": "pensare a = penser à → ci.",
+      "traduction": "Tu penses encore au voyage ? Oui, j'y pense tout le temps."
+    },
+    {
+      "id": "it-pron-018",
+      "type": "TROU",
+      "question": "Che cosa ___ pensi di questo film?",
+      "reponses_texte": [
+        "ne"
+      ],
+      "explication": "pensare di = avoir une opinion sur → ne : che ne pensi?",
+      "traduction": "Qu'est-ce que tu penses de ce film ?"
+    },
+    {
+      "id": "it-pron-019",
+      "type": "TROU",
+      "question": "A Marco ___ (piacere) molto i dolci.",
+      "reponses_texte": [
+        "piacciono"
+      ],
+      "explication": "piacere s'accorde avec ce qui plaît : i dolci → piacciono.",
+      "traduction": "Marco aime beaucoup les gâteaux."
+    },
+    {
+      "id": "it-pron-020",
+      "type": "TROU",
+      "question": "A Laura non ___ piace il caffè.",
+      "reponses_texte": [
+        "le"
+      ],
+      "explication": "À elle = le : le piace.",
+      "traduction": "Laura n'aime pas le café."
+    },
+    {
+      "id": "it-pron-021",
+      "type": "TROU",
+      "question": "Mi è ___ (piacere) molto il film.",
+      "reponses_texte": [
+        "piaciuto"
+      ],
+      "explication": "piacere prend essere et s'accorde avec ce qui a plu : il film → piaciuto.",
+      "traduction": "J'ai beaucoup aimé le film."
+    },
+    {
+      "id": "it-pron-022",
+      "type": "TROU",
+      "question": "Le vacanze mi sono ___ (piacere) tanto.",
+      "reponses_texte": [
+        "piaciute"
+      ],
+      "explication": "le vacanze (fém. plur.) → piaciute.",
+      "traduction": "J'ai beaucoup aimé les vacances."
+    },
+    {
+      "id": "it-pron-023",
+      "type": "TROU",
+      "question": "___ (dire, tu + mi) la verità!",
+      "reponses_texte": [
+        "dimmi"
+      ],
+      "explication": "Impératif tu monosyllabique (di', fa', da', va', sta') + pronom → consonne doublée : dimmi, fallo, dammi.",
+      "traduction": "Dis-moi la vérité !"
+    },
+    {
+      "id": "it-pron-024",
+      "type": "TROU",
+      "question": "Il pane? ___ (comprare, tu + lo) tu, per favore.",
+      "reponses_texte": [
+        "compralo"
+      ],
+      "explication": "À l'impératif tu, le pronom se colle au verbe : compralo.",
+      "traduction": "Le pain ? Achète-le, toi, s'il te plaît."
+    },
+    {
+      "id": "it-pron-025",
+      "type": "TROU",
+      "question": "Signora, ___ (accomodarsi, Lei) pure!",
+      "reponses_texte": [
+        "si accomodi"
+      ],
+      "explication": "Impératif Lei = congiuntivo ; le pronom reste devant : si accomodi.",
+      "traduction": "Madame, installez-vous, je vous en prie !"
+    },
+    {
+      "id": "it-pron-026",
+      "type": "TROU",
+      "question": "Non ___ (preoccuparsi, tu)!",
+      "reponses_texte": [
+        "preoccuparti",
+        "ti preoccupare"
+      ],
+      "explication": "Impératif négatif tu = non + infinitif ; pronom collé ou devant.",
+      "traduction": "Ne t'inquiète pas !"
+    },
+    {
+      "id": "it-pron-027",
+      "type": "TROU",
+      "question": "Signore, posso ___ (aiutare + La)?",
+      "reponses_texte": [
+        "aiutarla",
+        "aiutarLa"
+      ],
+      "explication": "Lei → COD La, COI Le ; collé à l'infinitif.",
+      "traduction": "Monsieur, je peux vous aider ?"
+    },
+    {
+      "id": "it-pron-028",
+      "type": "TROU",
+      "question": "Ecco la ragazza ___ ti ho parlato.",
+      "reponses_texte": [
+        "di cui",
+        "della quale"
+      ],
+      "explication": "Après une préposition : cui (ou il / la quale). Parlare di → di cui.",
+      "traduction": "Voilà la fille dont je t'ai parlé."
+    },
+    {
+      "id": "it-pron-029",
+      "type": "TROU",
+      "question": "Il libro ___ sto leggendo è bellissimo.",
+      "reponses_texte": [
+        "che"
+      ],
+      "explication": "Sujet ou COD → che.",
+      "traduction": "Le livre que je lis est magnifique."
+    },
+    {
+      "id": "it-pron-030",
+      "type": "TROU",
+      "question": "La città ___ abito è piccola.",
+      "reponses_texte": [
+        "in cui",
+        "dove",
+        "nella quale"
+      ],
+      "explication": "Lieu : in cui / dove.",
+      "traduction": "La ville où j'habite est petite."
+    },
+    {
+      "id": "it-pron-031",
+      "type": "TROU",
+      "question": "Questa è la persona ___ ho dato le chiavi.",
+      "reponses_texte": [
+        "a cui",
+        "cui",
+        "alla quale"
+      ],
+      "explication": "dare a qualcuno → a cui.",
+      "traduction": "C'est la personne à qui j'ai donné les clés."
+    },
+    {
+      "id": "it-pron-032",
+      "type": "CORRECTION",
+      "phrase": "Mi piace i film italiani.",
+      "corrections": [
+        "Mi piacciono i film italiani."
+      ],
+      "explication": "Ce qui plaît est le sujet : i film (plur.) → piacciono.",
+      "traduction": "J'aime les films italiens."
+    },
+    {
+      "id": "it-pron-033",
+      "type": "CORRECTION",
+      "phrase": "Lo ho visto ieri.",
+      "corrections": [
+        "L'ho visto ieri."
+      ],
+      "explication": "lo / la s'élident devant avere : l'ho visto. li / le jamais : li ho visti.",
+      "traduction": "Je l'ai vu hier."
+    },
+    {
+      "id": "it-pron-034",
+      "type": "CORRECTION",
+      "phrase": "Ho visto Maria e l'ho salutato.",
+      "corrections": [
+        "Ho visto Maria e l'ho salutata."
+      ],
+      "explication": "COD la (Maria) avant avere → accord féminin : salutata.",
+      "traduction": "J'ai vu Maria et je l'ai saluée."
+    },
+    {
+      "id": "it-pron-035",
+      "type": "CORRECTION",
+      "phrase": "Lo telefono domani.",
+      "corrections": [
+        "Gli telefono domani."
+      ],
+      "explication": "telefonare a qualcuno → COI gli (calque du français « je l'appelle »).",
+      "traduction": "Je l'appelle demain."
+    },
+    {
+      "id": "it-pron-036",
+      "type": "CORRECTION",
+      "phrase": "Il ragazzo che ti ho parlato è mio cugino.",
+      "corrections": [
+        "Il ragazzo di cui ti ho parlato è mio cugino."
+      ],
+      "explication": "parlare di → di cui (« dont »).",
+      "traduction": "Le garçon dont je t'ai parlé est mon cousin."
+    },
+    {
+      "id": "it-pron-037",
+      "type": "QCM",
+      "question": "Au monsieur d'un magasin : « Je peux vous aider ? »",
+      "choix": [
+        "Posso aiutarLa?",
+        "Posso aiutarti?",
+        "Posso aiutarvi?",
+        "Posso aiutarLe?"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Vouvoiement d'une personne : Lei. COD = La, COI = Le."
+    },
+    {
+      "id": "it-pron-038",
+      "type": "QCM",
+      "question": "« J'en ai deux » (des frères) :",
+      "choix": [
+        "Ne ho due.",
+        "Li ho due.",
+        "Ho due ne.",
+        "Ci ho due."
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Quantité → ne, placé devant le verbe conjugué."
+    },
+    {
+      "id": "it-pron-039",
+      "type": "QCR",
+      "question": "Quelles phrases sont correctes ?",
+      "choix": [
+        "Me lo dai?",
+        "Mi lo dai?",
+        "Glielo dico.",
+        "Gli lo dico.",
+        "Te la porto."
+      ],
+      "reponses": [
+        0,
+        2,
+        4
+      ],
+      "explication": "mi / ti / ci / vi → me / te / ce / ve devant un autre pronom ; gli + lo = glielo."
+    },
+    {
+      "id": "it-pron-040",
+      "type": "ORDRE",
+      "phrase": "Te lo porto domani mattina.",
+      "traduction": "Je te l'apporte demain matin.",
+      "explication": "Ordre des pronoms combinés : COI (te) + COD (lo) + verbe."
+    },
+    {
+      "id": "it-pron-041",
+      "type": "ORDRE",
+      "phrase": "Gliel'ho già detto due volte.",
+      "traduction": "Je le lui ai déjà dit deux fois.",
+      "explication": "glielo s'élide devant avere : gliel'ho."
+    }
+  ]
+}

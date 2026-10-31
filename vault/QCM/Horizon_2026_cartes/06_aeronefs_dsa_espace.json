@@ -1,0 +1,1946 @@
+{
+  "titre": "Horizon — Aéronefs, défense sol-air, espace et ambassadeurs de l’AAE",
+  "description": "Chasse, hélicoptères, transport, avions spéciaux, drones, avions école, DSA, satellites, ambassadeurs et aéronefs réformés (Horizon 2026, ch. 2-IV à VI).",
+  "questions": [
+    {
+      "id": "hz-aero-001",
+      "type": "QCM",
+      "question": "Pendant combien de temps le Transall C-160 a-t-il été utilisé par l’AAE ?",
+      "choix": [
+        "Plus de 50 ans",
+        "Plus de 70 ans",
+        "30 ans",
+        "Environ 20 ans"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-aero-002",
+      "type": "QCM",
+      "question": "Quel drone le MQ-9 Reaper a-t-il remplacé en France en 2014 ?",
+      "choix": [
+        "Le SIDM",
+        "Le Neuron",
+        "Le Harfang",
+        "Le Patroller"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-aero-003",
+      "type": "TROU",
+      "question": "L’A400M Atlas peut emporter jusqu’à ___ tonnes de charge utile.",
+      "reponses_texte": [
+        "37",
+        "trente-sept",
+        "trente sept",
+        "trentesept"
+      ]
+    },
+    {
+      "id": "hz-aero-004",
+      "type": "QCM",
+      "question": "Quel est le plafond du Rafale ?",
+      "choix": [
+        "60 000 pieds (~18 000 m)",
+        "40 000 pieds (~12 000 m)",
+        "35 000 pieds (~10 700 m)",
+        "50 000 pieds (~15 000 m)"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-aero-005",
+      "type": "QCM",
+      "question": "Quel est le système sol-air courte portée de l’AAE ?",
+      "choix": [
+        "SAMP-T",
+        "VL MICA",
+        "Crotale NG",
+        "Patriot"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-aero-006",
+      "type": "FLASHCARD",
+      "question": "Que signifie ASMPA ?",
+      "verso": "Air-Sol Moyenne Portée Amélioré",
+      "explication": "Missile nucléaire embarqué, cœur de la dissuasion aéroportée."
+    },
+    {
+      "id": "hz-aero-007",
+      "type": "QCM",
+      "question": "Avec combien d’avions la Patrouille de France évolue-t-elle depuis l’accident de mars 2025 ?",
+      "choix": [
+        "10",
+        "9",
+        "8",
+        "12"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-aero-008",
+      "type": "QCM",
+      "question": "Avec quel standard le Rafale devient-il pleinement omnirôle (2009) ?",
+      "choix": [
+        "F2",
+        "F3",
+        "F1",
+        "F4"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-aero-009",
+      "type": "FLASHCARD",
+      "question": "Que signifie HALE ?",
+      "verso": "Haute altitude longue endurance"
+    },
+    {
+      "id": "hz-aero-010",
+      "type": "QCM",
+      "question": "En quelle année l’E-3F est-il mis en service en France ?",
+      "choix": [
+        "1986",
+        "2001",
+        "1978",
+        "1991"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-aero-011",
+      "type": "QCM",
+      "question": "Quel pod du Rafale assure la désignation laser et la surveillance ?",
+      "choix": [
+        "RECO NG",
+        "Astac",
+        "AGOMS",
+        "TALIOS"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-aero-012",
+      "type": "FLASHCARD",
+      "question": "Que signifie MALE ?",
+      "verso": "Moyenne altitude longue endurance"
+    },
+    {
+      "id": "hz-aero-013",
+      "type": "QCM",
+      "question": "Quel Cirrus est utilisé pour la formation des navigateurs ?",
+      "choix": [
+        "SR21",
+        "SR20",
+        "SR24",
+        "SR22"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Le SR20 sert à la formation des pilotes."
+    },
+    {
+      "id": "hz-aero-014",
+      "type": "QCR",
+      "question": "Quels moyens de lutte anti-drone sont cités ?",
+      "choix": [
+        "TALIOS",
+        "GRAVES",
+        "ARABEL",
+        "NEROD",
+        "BENELLI"
+      ],
+      "reponses": [
+        3,
+        4
+      ],
+      "explication": "Vrai : D, E. Faux : A, B, C."
+    },
+    {
+      "id": "hz-aero-015",
+      "type": "FLASHCARD",
+      "question": "Que signifie ALSR ?",
+      "verso": "Avion léger de surveillance et de reconnaissance"
+    },
+    {
+      "id": "hz-aero-016",
+      "type": "QCM",
+      "question": "Comment s’appelle le module de réanimation embarqué de l’A330 MRTT ?",
+      "choix": [
+        "MEDEVAC",
+        "PHÉNIX",
+        "MORPHÉE",
+        "SOLAR"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-aero-017",
+      "type": "FLASHCARD",
+      "question": "Que signifie BATS ?",
+      "verso": "Bi-national Air Transport Squadron"
+    },
+    {
+      "id": "hz-aero-018",
+      "type": "QCM",
+      "question": "Quel type d’hélicoptère est l’AS555 Fennec ?",
+      "choix": [
+        "Hélicoptère de combat",
+        "Hélicoptère de transport moyen",
+        "Hélicoptère lourd",
+        "Hélicoptère léger multi-rôles"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-aero-019",
+      "type": "QCM",
+      "question": "Quel armement air-mer (anti-navires) équipe le Rafale ?",
+      "choix": [
+        "GBU-24",
+        "SCALP-EG",
+        "Exocet",
+        "AASM"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-aero-020",
+      "type": "QCR",
+      "question": "Qu’apporte la rénovation mi-vie (RMV) du Mirage 2000D lancée en 2020 ?",
+      "choix": [
+        "Des missiles air-air MICA IR",
+        "La nacelle optronique TALIOS",
+        "Un pod canon DEFA 30 mm",
+        "Le missile METEOR",
+        "Un radar RBE2"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Vrai : A, B, C. Faux : D, E."
+    },
+    {
+      "id": "hz-aero-021",
+      "type": "QCM",
+      "question": "Quelle est la portée du VL MICA ?",
+      "choix": [
+        "Plus de 100 km",
+        "Jusqu’à 5 km",
+        "Jusqu’à 25 km",
+        "Jusqu’à 15 NM"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-aero-022",
+      "type": "QCM",
+      "question": "Quelle est la vitesse maximale du Mirage F1 ?",
+      "choix": [
+        "Mach 2,2",
+        "Mach 1,8",
+        "Mach 1,5",
+        "Mach 2,5"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-aero-023",
+      "type": "QCR",
+      "question": "Quelles missions assure le Fennec ?",
+      "choix": [
+        "Le ravitaillement en vol",
+        "La formation des élèves pilotes",
+        "L’appui feu léger (TEAFAS)",
+        "Le NTISR",
+        "La PPS-A"
+      ],
+      "reponses": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "explication": "Vrai : B, C, D, E. Faux : A."
+    },
+    {
+      "id": "hz-aero-024",
+      "type": "QCM",
+      "question": "Quelle est la vitesse maximale du missile ASTER 30 ?",
+      "choix": [
+        "Mach 6",
+        "Mach 3",
+        "Mach 4,5",
+        "Mach 2,3"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-aero-025",
+      "type": "QCM",
+      "question": "Quel avion devient, sous l’impulsion du général de Gaulle, le premier bombardier stratégique français porteur de l’arme atomique ?",
+      "choix": [
+        "Noratlas",
+        "Mirage IV",
+        "Vautour",
+        "Mirage III"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-aero-026",
+      "type": "QCR",
+      "question": "Quels éléments du standard F5 du Rafale sont cités ?",
+      "choix": [
+        "Les missiles ASN4G",
+        "Le radar RBE2-XG",
+        "Un moteur à poussée vectorielle",
+        "Des drones accompagnateurs UCAS",
+        "Le missile Exocet AM39 de 2e génération"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "Vrai : A, B, D. Faux : C, E."
+    },
+    {
+      "id": "hz-aero-027",
+      "type": "QCM",
+      "question": "Quel est le rayon d’action indicatif du Mirage 2000-5 en défense aérienne ?",
+      "choix": [
+        "800 NM",
+        "1 500 NM",
+        "450 NM",
+        "600 NM"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-aero-028",
+      "type": "QCM",
+      "question": "Quelle est la nouvelle génération de satellites d’observation optique ?",
+      "choix": [
+        "CSO",
+        "CERES",
+        "Helios 2",
+        "Syracuse IV"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-aero-029",
+      "type": "QCR",
+      "question": "Quel armement le MQ-9 Reaper peut-il emporter ?",
+      "choix": [
+        "Missiles MICA IR",
+        "Bombes GBU-12",
+        "Bombes GBU-49",
+        "Missiles AGM-114 Hellfire",
+        "Missiles SCALP-EG"
+      ],
+      "reponses": [
+        1,
+        2,
+        3
+      ],
+      "explication": "Vrai : B, C, D. Faux : A, E."
+    },
+    {
+      "id": "hz-aero-030",
+      "type": "QCM",
+      "question": "Quel trou capacitaire SOLAR comble-t-il ?",
+      "choix": [
+        "Entre le retrait du Transall Gabriel (2022) et l’arrivée du Falcon Archange",
+        "Entre le retrait du Harfang (2014) et l’armement du Reaper",
+        "Entre le retrait du C-135 FR (2025) et l’arrivée complète des A330 MRTT",
+        "Entre le retrait de l’E-3F et l’arrivée d’un nouvel AWACS"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-aero-031",
+      "type": "QCM",
+      "question": "En quelle année le Mirage 2000-5 est-il mis en service ?",
+      "choix": [
+        "1993",
+        "1984",
+        "1978",
+        "1997"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-aero-032",
+      "type": "FLASHCARD",
+      "question": "Qui développe le Rafale ?",
+      "verso": "Dassault Aviation"
+    },
+    {
+      "id": "hz-aero-033",
+      "type": "QCM",
+      "question": "En quelle année le SAMP-T a-t-il été mis en service ?",
+      "choix": [
+        "2015",
+        "2002",
+        "2010",
+        "1990"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-aero-034",
+      "type": "QCM",
+      "question": "Quel Falcon est doté d’équipements de communication protégés ?",
+      "choix": [
+        "Falcon 50",
+        "Falcon 900",
+        "Falcon 7X",
+        "Falcon 2000LX"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-aero-035",
+      "type": "FLASHCARD",
+      "question": "Grâce à quel système le Rafale peut-il être ravitaillé en vol ?",
+      "verso": "Une perche de ravitaillement"
+    },
+    {
+      "id": "hz-aero-036",
+      "type": "QCM",
+      "question": "Combien de passagers le Super Puma peut-il emporter ?",
+      "choix": [
+        "Jusqu’à 28",
+        "Jusqu’à 20",
+        "Jusqu’à 16",
+        "Jusqu’à 5"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-aero-037",
+      "type": "QCM",
+      "question": "Quel est l’équipage du Mirage 2000D ?",
+      "choix": [
+        "2 pilotes",
+        "1 pilote",
+        "2 : pilote et navigateur",
+        "3 : 2 pilotes et un mécanicien"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-aero-038",
+      "type": "TROU",
+      "question": "Lors de l’opération Pégase 2023, 10 Rafale parcourent ___ km en 30 h vers l’Indo-Pacifique.",
+      "reponses_texte": [
+        "11 000",
+        "11000",
+        "onze mille"
+      ]
+    },
+    {
+      "id": "hz-aero-039",
+      "type": "QCM",
+      "question": "Sur quel avion vole la Patrouille de France depuis 1981 ?",
+      "choix": [
+        "Mystère IV A",
+        "Fouga Magister",
+        "Alpha Jet",
+        "PC-21"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-aero-040",
+      "type": "QCM",
+      "question": "Quel est le rayon d’action indicatif du Rafale en bombardement ?",
+      "choix": [
+        "~250 NM",
+        "~900 NM",
+        "~750 NM (~1 390 km)",
+        "~450 NM (~830 km)"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-aero-041",
+      "type": "TROU",
+      "question": "L’Embraer 121 Xingu permet le transport de ___ personnes, équipage de 2 pilotes compris.",
+      "reponses_texte": [
+        "9",
+        "neuf"
+      ]
+    },
+    {
+      "id": "hz-aero-042",
+      "type": "QCM",
+      "question": "Depuis quand le Reaper est-il armé (Block 5) ?",
+      "choix": [
+        "2016",
+        "2022",
+        "2014",
+        "2019"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-aero-043",
+      "type": "QCM",
+      "question": "Quel est le missile de croisière à longue portée (~500 km) du Rafale ?",
+      "choix": [
+        "ASMPA",
+        "SCALP-EG",
+        "METEOR",
+        "Exocet"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-aero-044",
+      "type": "QCR",
+      "question": "Lors de quels événements la défense sol-air a-t-elle participé à des bulles de protection ?",
+      "choix": [
+        "Le Tour de France 2018",
+        "Le défilé du 14 Juillet",
+        "La Coupe du monde de rugby 2023",
+        "Les JO et JOP 2024"
+      ],
+      "reponses": [
+        1,
+        2,
+        3
+      ],
+      "explication": "Vrai : B, C, D. Faux : A."
+    },
+    {
+      "id": "hz-aero-045",
+      "type": "QCM",
+      "question": "Quel est le constructeur du C-130 Hercules ?",
+      "choix": [
+        "Boeing",
+        "Airbus Defence & Space",
+        "Lockheed Martin",
+        "Transall"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-aero-046",
+      "type": "QCM",
+      "question": "Quel radar équipe le SAMP-T ?",
+      "choix": [
+        "GM200",
+        "ARABEL",
+        "RBE2",
+        "GRAVES"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-aero-047",
+      "type": "FLASHCARD",
+      "question": "Qui sont les Peintres de l’Air et de l’Espace ?",
+      "verso": "Des artistes officiels, sélectionnés par un jury et nommés par arrêté ministériel, qui célèbrent l’AAE dans leurs œuvres."
+    },
+    {
+      "id": "hz-aero-048",
+      "type": "QCM",
+      "question": "Quel missile air-air du Rafale est à guidage infrarouge ?",
+      "choix": [
+        "SCALP-EG",
+        "METEOR",
+        "MICA EM",
+        "MICA IR"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-aero-049",
+      "type": "QCM",
+      "question": "Quand la Musique de l’Air et de l’Espace est-elle créée ?",
+      "choix": [
+        "1936",
+        "1968",
+        "1934",
+        "1946"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Implantée sur la BA 107 de Villacoublay."
+    },
+    {
+      "id": "hz-aero-050",
+      "type": "FLASHCARD",
+      "question": "Comment s’appelle l’équipe militaire de parachutisme de l’AAE ?",
+      "verso": "L’équipe Phoenix"
+    },
+    {
+      "id": "hz-aero-051",
+      "type": "QCM",
+      "question": "Quelle est la distance entre chaque avion de la Patrouille de France en présentation ?",
+      "choix": [
+        "10 mètres",
+        "5 mètres",
+        "1 mètre",
+        "3 mètres"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Vitesse moyenne de 550 km/h."
+    },
+    {
+      "id": "hz-aero-052",
+      "type": "QCM",
+      "question": "Quel est l’armement interne du Mirage 2000-5 ?",
+      "choix": [
+        "Canon 2 × 20 mm",
+        "Canon 2 × 30 mm",
+        "Aucun canon",
+        "Canon 20 mm"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-aero-053",
+      "type": "TROU",
+      "question": "Le Mirage 2000D est mis en service en ___.",
+      "reponses_texte": [
+        "1993"
+      ]
+    },
+    {
+      "id": "hz-aero-054",
+      "type": "QCM",
+      "question": "Quel avion de transport, premier vol en 1949, a fait ses armes pendant la guerre d’Algérie ?",
+      "choix": [
+        "Noratlas",
+        "Breguet Deux-Ponts",
+        "Transall",
+        "C-47"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-aero-055",
+      "type": "QCM",
+      "question": "Quel escadron met en œuvre l’E-3F ?",
+      "choix": [
+        "ET 60",
+        "EDCA 1/36 Berry",
+        "ERVTS 1/31 Bretagne",
+        "ER 4/33 Périgord"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-aero-056",
+      "type": "TROU",
+      "question": "En janvier 2025, l’AAE reçoit son ___e Rafale au standard F4.1 (commande de 39 avions).",
+      "reponses_texte": [
+        "26",
+        "vingt-six",
+        "vingt six",
+        "vingtsix"
+      ]
+    },
+    {
+      "id": "hz-aero-057",
+      "type": "QCM",
+      "question": "Où est basé l’escadron binational franco-allemand de C-130J ?",
+      "choix": [
+        "Orléans",
+        "Istres",
+        "Ramstein",
+        "Évreux"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-aero-058",
+      "type": "QCM",
+      "question": "De quel avion le C-135 FR est-il dérivé ?",
+      "choix": [
+        "Airbus A300",
+        "Boeing 707",
+        "Boeing 747",
+        "DC-8"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-aero-059",
+      "type": "QCR",
+      "question": "Quels escadrons mettent en œuvre le TBM 700 ?",
+      "choix": [
+        "L’ET 60",
+        "L’ET 43 Médoc",
+        "L’ET 3/61 Poitou",
+        "Le GAM 56 Vaucluse",
+        "L’ET 41 Verdun"
+      ],
+      "reponses": [
+        1,
+        4
+      ],
+      "explication": "Vrai : B, E. Faux : A, C, D."
+    },
+    {
+      "id": "hz-aero-060",
+      "type": "QCM",
+      "question": "Quel avion doit remplacer le Cirrus SR20 et le Grob 120 ?",
+      "choix": [
+        "Le PC-7",
+        "Le Xingu",
+        "Le TB-30 Epsilon",
+        "Le PC-21"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-aero-061",
+      "type": "TROU",
+      "question": "En 2019, 2 Rafale et un A330 MRTT Phénix réalisent une mission record de ___ heures de vol.",
+      "reponses_texte": [
+        "12",
+        "douze"
+      ]
+    },
+    {
+      "id": "hz-aero-062",
+      "type": "FLASHCARD",
+      "question": "Qu’est-ce qu’un avion « omnirôle » comme le Rafale ?",
+      "verso": "Un avion capable d’assurer toutes les missions (défense aérienne, bombardement, renseignement, dissuasion) et de passer de l’une à l’autre en cours de vol."
+    },
+    {
+      "id": "hz-aero-063",
+      "type": "FLASHCARD",
+      "question": "Que signifie SOLAR ?",
+      "verso": "Solution intérimaire de renseignement électromagnétique aéroportée"
+    },
+    {
+      "id": "hz-aero-064",
+      "type": "QCM",
+      "question": "Combien de soldats le Puma peut-il transporter ?",
+      "choix": [
+        "Jusqu’à 20",
+        "Jusqu’à 9",
+        "Jusqu’à 28",
+        "Jusqu’à 16"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Ou 2 t de charge."
+    },
+    {
+      "id": "hz-aero-065",
+      "type": "QCM",
+      "question": "Combien de soldats le H225M Caracal peut-il emporter ?",
+      "choix": [
+        "Jusqu’à 16",
+        "Jusqu’à 20",
+        "Jusqu’à 44",
+        "Jusqu’à 28"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Ou 5,5 t de charge."
+    },
+    {
+      "id": "hz-aero-066",
+      "type": "FLASHCARD",
+      "question": "Que signifie RESCO ?",
+      "verso": "Recherche et sauvetage au combat"
+    },
+    {
+      "id": "hz-aero-067",
+      "type": "QCM",
+      "question": "Quelle est la portée du missile du Crotale NG ?",
+      "choix": [
+        "100 km",
+        "55 NM",
+        "15 NM",
+        "25 km"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "55 NM est la détection maximale du radar."
+    },
+    {
+      "id": "hz-aero-068",
+      "type": "QCM",
+      "question": "Quel est le guidage du MICA EM ?",
+      "choix": [
+        "GPS",
+        "Laser",
+        "Infrarouge",
+        "Autoguidage actif (radar)"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-aero-069",
+      "type": "QCR",
+      "question": "Quels pays utilisent actuellement le Rafale selon l’Horizon ?",
+      "choix": [
+        "Serbie",
+        "Qatar",
+        "Indonésie",
+        "Grèce",
+        "Inde"
+      ],
+      "reponses": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "explication": "Vrai : B, C, D, E. Faux : A. Serbie, Ukraine et Émirats arabes unis sont cités comme projets d’achat."
+    },
+    {
+      "id": "hz-aero-070",
+      "type": "QCM",
+      "question": "Sur quelle plateforme l’E-3F AWACS est-il bâti ?",
+      "choix": [
+        "Boeing 707 modifié",
+        "Lockheed C-130",
+        "Airbus A330",
+        "Boeing 737"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-aero-071",
+      "type": "QCM",
+      "question": "Combien de passagers le CASA CN-235 peut-il transporter ?",
+      "choix": [
+        "20",
+        "28",
+        "37",
+        "44"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Fret : 6 t."
+    },
+    {
+      "id": "hz-aero-072",
+      "type": "FLASHCARD",
+      "question": "Que signifie « Vador » ?",
+      "verso": "Vecteur aéroporté de désignation, d’observation et de reconnaissance"
+    },
+    {
+      "id": "hz-aero-073",
+      "type": "QCM",
+      "question": "Quelles performances le prototype Rafale A atteint-il lors de son vol inaugural en 1986 ?",
+      "choix": [
+        "15 000 m et Mach 1,8",
+        "10 000 m et Mach 1,1",
+        "13 400 m et Mach 1,3",
+        "18 000 m et Mach 2"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-aero-074",
+      "type": "QCM",
+      "question": "Quel avion de transport léger, en service depuis 1978, est utilisé par le 3/61 Poitou et le GAM 56 ?",
+      "choix": [
+        "DHC-6 Twin Otter",
+        "TBM 700",
+        "CASA CN-235",
+        "Embraer Xingu"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-aero-075",
+      "type": "FLASHCARD",
+      "question": "Quel est le nom de baptême de l’A330 MRTT dans l’AAE ?",
+      "verso": "Phénix"
+    },
+    {
+      "id": "hz-aero-076",
+      "type": "QCM",
+      "question": "Quel avion est franco-britannique, conçu pour les frappes à basse altitude ?",
+      "choix": [
+        "Mirage F1",
+        "Transall",
+        "Jaguar",
+        "Alpha Jet"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-aero-077",
+      "type": "QCR",
+      "question": "Quelles EIVV (escadrons d’instruction en vol à voile) sont citées ?",
+      "choix": [
+        "« Ventoux » (Orange)",
+        "« Chambord » (Romorantin)",
+        "« Cordouan » (Saintes)",
+        "« Sainte-Victoire » (Salon)"
+      ],
+      "reponses": [
+        1,
+        2,
+        3
+      ],
+      "explication": "Vrai : B, C, D. Faux : A."
+    },
+    {
+      "id": "hz-aero-078",
+      "type": "QCM",
+      "question": "Quel avion de l’ET 60 assure l’alerte MEDEVAC ?",
+      "choix": [
+        "TBM 700",
+        "Falcon 2000LX",
+        "Falcon 7X",
+        "Falcon 900"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-aero-079",
+      "type": "TROU",
+      "question": "Le Mirage 2000N a été retiré du service en ___.",
+      "reponses_texte": [
+        "2018"
+      ]
+    },
+    {
+      "id": "hz-aero-080",
+      "type": "QCM",
+      "question": "Où sont basés depuis l’été 2023 les A330-200 de l’ERVTS 2/31 Esterel, auparavant à Creil ?",
+      "choix": [
+        "BA 107 Villacoublay",
+        "BA 123 Orléans",
+        "BA 125 Istres",
+        "BA 105 Évreux"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-aero-081",
+      "type": "QCM",
+      "question": "Quels avions le PC-21 remplace-t-il ?",
+      "choix": [
+        "Le Grob 120 et le Cirrus",
+        "Le Xingu et le TBM 700",
+        "Le Mirage 2000C",
+        "L’Epsilon et l’Alpha Jet"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-aero-082",
+      "type": "FLASHCARD",
+      "question": "Que signifie TEAFAS ?",
+      "verso": "Tireur d’élite appui feu air-sol"
+    },
+    {
+      "id": "hz-aero-083",
+      "type": "QCM",
+      "question": "Quelle est la vitesse maximale du Rafale ?",
+      "choix": [
+        "Mach 1,5",
+        "Mach 1,8",
+        "Mach 2,2",
+        "Mach 1,3"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-aero-084",
+      "type": "QCM",
+      "question": "Quel avion de transport tactique léger, mis en service en 1990, équipe notamment l’ET 82 Maine et l’ET 52 La Tontouta ?",
+      "choix": [
+        "C-130 Hercules",
+        "CASA CN-235",
+        "DHC-6 Twin Otter",
+        "Transall"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-aero-085",
+      "type": "TROU",
+      "question": "Le C-135 FR a servi l’AAE comme ravitailleur en vol depuis ___.",
+      "reponses_texte": [
+        "1964"
+      ]
+    },
+    {
+      "id": "hz-aero-086",
+      "type": "QCM",
+      "question": "Quel avion est employé à Cognac pour la phase « tronc commun » de formation initiale des pilotes ?",
+      "choix": [
+        "Grob 120",
+        "PC-21",
+        "Xingu",
+        "Alpha Jet"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-aero-087",
+      "type": "QCM",
+      "question": "Depuis quand la formation des élèves sur PC-21 a-t-elle débuté ?",
+      "choix": [
+        "2019",
+        "2012",
+        "2002",
+        "2023"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Premier vol de l’appareil en 2002."
+    },
+    {
+      "id": "hz-aero-088",
+      "type": "QCR",
+      "question": "Sur quelles bases hors métropole le Puma est-il présent ?",
+      "choix": [
+        "Cayenne",
+        "Nouméa",
+        "Djibouti",
+        "Solenzara",
+        "Al Dhafra"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explication": "Vrai : A, B, C, D. Faux : E."
+    },
+    {
+      "id": "hz-aero-089",
+      "type": "QCM",
+      "question": "En quelle année la Patrouille acrobatique de France prend-elle son nom ?",
+      "choix": [
+        "1964",
+        "1953",
+        "1981",
+        "1931"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Lors d’un meeting aérien en Algérie."
+    },
+    {
+      "id": "hz-aero-090",
+      "type": "QCM",
+      "question": "En quelle année le M2000C entre-t-il en service ?",
+      "choix": [
+        "1978",
+        "1972",
+        "1984",
+        "1997"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-aero-091",
+      "type": "QCR",
+      "question": "Quels escadrons mettent en œuvre le Mirage 2000-5 ?",
+      "choix": [
+        "L’EC 1/3 Navarre",
+        "L’EC 3/11 Corse",
+        "L’EC 2/4 La Fayette",
+        "Le GC 1/2 Cigognes",
+        "L’EC 2/3 Champagne"
+      ],
+      "reponses": [
+        1,
+        3
+      ],
+      "explication": "Vrai : B, D. Faux : A, C, E."
+    },
+    {
+      "id": "hz-aero-092",
+      "type": "QCM",
+      "question": "Où le Reaper est-il déployé depuis 2023 ?",
+      "choix": [
+        "Base aérienne 188 Djibouti",
+        "Base aérienne projetée de Niamey (Niger)",
+        "Base aérienne projetée H5 (Jordanie)",
+        "Base aérienne 104 Al Dhafra (EAU)"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-aero-093",
+      "type": "QCM",
+      "question": "Quel missile équipe le Crotale NG ?",
+      "choix": [
+        "Mistral",
+        "ASTER 30",
+        "MICA",
+        "R440"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-aero-094",
+      "type": "FLASHCARD",
+      "question": "Pour quel service le GAM 56 Vaucluse emploie-t-il le Twin Otter ?",
+      "verso": "La DGSE"
+    },
+    {
+      "id": "hz-aero-095",
+      "type": "QCM",
+      "question": "Depuis quand les Cirrus SR20/SR22 sont-ils en service ?",
+      "choix": [
+        "Été 2012",
+        "2006",
+        "2019",
+        "1999"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-aero-096",
+      "type": "QCM",
+      "question": "Quelle est l’autonomie du MQ-9 Reaper ?",
+      "choix": [
+        "Jusqu’à 32 heures",
+        "Jusqu’à 48 heures",
+        "Jusqu’à 20 heures",
+        "Jusqu’à 12 heures"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-aero-097",
+      "type": "FLASHCARD",
+      "question": "Que signifie EPAAE ?",
+      "verso": "Équipes de présentation de l’armée de l’Air et de l’Espace (Patrouille de France + EVAAE…)"
+    },
+    {
+      "id": "hz-aero-098",
+      "type": "QCM",
+      "question": "Quel missile air-air longue portée (> 100 km) équipe le Rafale ?",
+      "choix": [
+        "METEOR",
+        "MICA EM",
+        "AASM",
+        "MICA IR"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-aero-099",
+      "type": "FLASHCARD",
+      "question": "Que signifie le « D » de Mirage 2000D ?",
+      "verso": "Diversifié (version diversifiée)"
+    },
+    {
+      "id": "hz-aero-100",
+      "type": "QCM",
+      "question": "Combien de missiles porte chaque module de lancement du SAMP-T ?",
+      "choix": [
+        "8",
+        "4",
+        "12",
+        "6"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-aero-101",
+      "type": "QCM",
+      "question": "Dans quel pays la 4e escadre a-t-elle déployé 4 Rafale B pour l’Enhanced Air Policing de l’OTAN (déc. 2024 – janv. 2025) ?",
+      "choix": [
+        "La Roumanie",
+        "L’Estonie",
+        "La Pologne",
+        "La Lituanie"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-aero-102",
+      "type": "FLASHCARD",
+      "question": "Que signifie A330 AUG ?",
+      "verso": "Avion à usage gouvernemental",
+      "explication": "Mis à disposition du Président et des hautes autorités, basé à Villacoublay (ET 60)."
+    },
+    {
+      "id": "hz-aero-103",
+      "type": "QCM",
+      "question": "En quelle année CSO-1 a-t-il été lancé ?",
+      "choix": [
+        "2025",
+        "2004",
+        "2018",
+        "2020"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "CSO-2 en 2020, CSO-3 en 2025."
+    },
+    {
+      "id": "hz-aero-104",
+      "type": "QCM",
+      "question": "Quand le dernier vol du C-135 a-t-il eu lieu à Istres ?",
+      "choix": [
+        "31 décembre 2021",
+        "1er janvier 2025",
+        "14 juillet 2023",
+        "30 juin 2025"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-aero-105",
+      "type": "FLASHCARD",
+      "question": "Que signifie AASM ?",
+      "verso": "Armement air-sol modulaire (bombes guidées multi-capteurs)"
+    },
+    {
+      "id": "hz-aero-106",
+      "type": "QCM",
+      "question": "Quelle est la vitesse maximale du Mirage 2000D ?",
+      "choix": [
+        "Mach 1,5",
+        "Mach 1,8",
+        "Mach 2,2",
+        "Mach 1,2"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-aero-107",
+      "type": "TROU",
+      "question": "Le futur avion de renseignement électromagnétique qui succédera à SOLAR est le Falcon ___.",
+      "reponses_texte": [
+        "Archange"
+      ]
+    },
+    {
+      "id": "hz-aero-108",
+      "type": "QCM",
+      "question": "Quel est le rayon d’action indicatif du Rafale en défense aérienne ?",
+      "choix": [
+        "~300 NM",
+        "~1 500 NM",
+        "~450 NM (~830 km)",
+        "~750 NM (~1 390 km)"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-aero-109",
+      "type": "QCM",
+      "question": "Quelle est la première unité à recevoir le Rafale M (2002) ?",
+      "choix": [
+        "La flottille 11F à Hyères",
+        "L’EC 1/7 Provence à Saint-Dizier",
+        "La flottille 12F à Landivisiau",
+        "L’ETR 3/4 Aquitaine"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-aero-110",
+      "type": "QCR",
+      "question": "Quels pays sont cités comme ayant un projet d’achat de Rafale ?",
+      "choix": [
+        "Ukraine",
+        "Croatie",
+        "Égypte",
+        "Émirats arabes unis",
+        "Serbie"
+      ],
+      "reponses": [
+        0,
+        3,
+        4
+      ],
+      "explication": "Vrai : A, D, E. Faux : B, C. L’Égypte et la Croatie utilisent déjà le Rafale."
+    },
+    {
+      "id": "hz-aero-111",
+      "type": "QCM",
+      "question": "Quel avion sert à la formation des pilotes de transport à Avord ?",
+      "choix": [
+        "Cirrus SR22",
+        "Embraer 121 Xingu",
+        "Grob 120",
+        "PC-21"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-aero-112",
+      "type": "QCM",
+      "question": "Quel pod du Rafale est dédié à la reconnaissance photo/vidéo de nouvelle génération ?",
+      "choix": [
+        "TALIOS",
+        "Astac",
+        "RECO NG",
+        "DEFA"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-aero-113",
+      "type": "TROU",
+      "question": "La Patrouille de France compte normalement 12 Alpha Jet, dont ___ en démonstration.",
+      "reponses_texte": [
+        "8",
+        "huit"
+      ]
+    },
+    {
+      "id": "hz-aero-114",
+      "type": "QCM",
+      "question": "Quelle est la fin de service prévue du Mirage 2000D ?",
+      "choix": [
+        "2028",
+        "2040",
+        "2030",
+        "2035"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-aero-115",
+      "type": "QCM",
+      "question": "Sur quels avions vole l’EVAAE depuis 2008 ?",
+      "choix": [
+        "Cap 232",
+        "Cap 10",
+        "Alpha Jet",
+        "Extra 330 SC et LC"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-aero-116",
+      "type": "QCR",
+      "question": "Quelles affirmations sur l’escadron binational de C-130J sont exactes ?",
+      "choix": [
+        "Il est basé en Allemagne",
+        "Sa pleine capacité opérationnelle a été atteinte en 2024",
+        "Il compte 600 militaires",
+        "Il compte 6 appareils allemands",
+        "Il compte 4 appareils français"
+      ],
+      "reponses": [
+        1,
+        3,
+        4
+      ],
+      "explication": "Vrai : B, D, E. Faux : A, C. 260 militaires, moitié français, moitié allemands, à Évreux."
+    },
+    {
+      "id": "hz-aero-117",
+      "type": "QCM",
+      "question": "Quel accident entraîne en 2005 la fin des vols sur Cap 232 ?",
+      "choix": [
+        "L’accident mortel du capitaine Delorme",
+        "La collision de la Patrouille de France",
+        "Un crash à Salon",
+        "L’accident du capitaine Oddon"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-aero-118",
+      "type": "QCM",
+      "question": "Comment s’appelle le déploiement express de 3 Rafale à Tahiti en moins de 40 h (2021) ?",
+      "choix": [
+        "Bubo",
+        "Pégase",
+        "Heifara Wakea",
+        "Hamilton"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-aero-119",
+      "type": "QCR",
+      "question": "Quels escadrons de transport mettent en œuvre l’A400M ?",
+      "choix": [
+        "ET 4/61 Béarn",
+        "ET 60",
+        "ET 1/62 Vercors",
+        "ET 3/61 Poitou",
+        "ET 1/61 Touraine"
+      ],
+      "reponses": [
+        0,
+        3,
+        4
+      ],
+      "explication": "Vrai : A, D, E. Faux : B, C."
+    },
+    {
+      "id": "hz-aero-120",
+      "type": "QCM",
+      "question": "Quelle est la capacité d’emport du Falcon 900 ?",
+      "choix": [
+        "13 passagers",
+        "10 passagers",
+        "4-5 passagers",
+        "8 à 19 passagers"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-aero-121",
+      "type": "QCM",
+      "question": "Quand l’A400M Atlas est-il mis en service en France ?",
+      "choix": [
+        "29 décembre 2013",
+        "4 juillet 2016",
+        "1er juillet 2010",
+        "29 décembre 2018"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-aero-122",
+      "type": "QCR",
+      "question": "Quels pilotes de l’EVAAE ont été champions du monde ?",
+      "choix": [
+        "Le capitaine Delorme (2005)",
+        "Le capitaine Guynemer",
+        "Le capitaine Oddon (2022 et 2024)",
+        "Le capitaine Alexandre Orlowski (2015)"
+      ],
+      "reponses": [
+        2,
+        3
+      ],
+      "explication": "Vrai : C, D. Faux : A, B."
+    },
+    {
+      "id": "hz-aero-123",
+      "type": "QCM",
+      "question": "Où sont basés les ALSR Vador depuis l’été 2023 ?",
+      "choix": [
+        "BA 110 Creil",
+        "BA 709 Cognac",
+        "BA 118 Mont-de-Marsan",
+        "BA 105 Évreux"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-aero-124",
+      "type": "QCM",
+      "question": "Quels avions l’A330 MRTT remplace-t-il progressivement (ex-escadron 4/31 « Sologne ») ?",
+      "choix": [
+        "Les KC-135 RG",
+        "Les Transall Gabriel",
+        "Les A400M",
+        "Les E-3F"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-aero-125",
+      "type": "FLASHCARD",
+      "question": "Que signifie YODA ?",
+      "verso": "Yeux en orbite pour démonstrateur agile",
+      "explication": "Démonstrateurs de satellites patrouilleurs (2023-2025)."
+    },
+    {
+      "id": "hz-aero-126",
+      "type": "QCM",
+      "question": "Combien de Rafale l’opération Pégase 2023 a-t-elle projetés en Indo-Pacifique ?",
+      "choix": [
+        "4",
+        "6",
+        "3",
+        "10"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "11 000 km en 30 h."
+    },
+    {
+      "id": "hz-aero-127",
+      "type": "QCM",
+      "question": "Combien d’ALSR Vador la LPM 2024-2030 prévoit-elle en 2030 ?",
+      "choix": [
+        "2",
+        "8",
+        "4",
+        "12"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-aero-128",
+      "type": "FLASHCARD",
+      "question": "Que signifie AWACS ?",
+      "verso": "Airborne Warning And Control System"
+    },
+    {
+      "id": "hz-aero-129",
+      "type": "QCM",
+      "question": "En quelle année Syracuse IV-A a-t-il été lancé ?",
+      "choix": [
+        "2025",
+        "2018",
+        "2021",
+        "2009"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-aero-130",
+      "type": "QCM",
+      "question": "Sur quel avion le système SOLAR est-il installé ?",
+      "choix": [
+        "Un Transall C-160",
+        "Un King Air 350",
+        "Un SAAB 340 loué",
+        "Un Falcon 7X"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-aero-131",
+      "type": "QCR",
+      "question": "Quelles bombes guidées laser équipent le Rafale ?",
+      "choix": [
+        "GBU-24",
+        "GBU-12",
+        "GBU-49",
+        "AASM",
+        "MICA EM"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Vrai : A, B, C. Faux : D, E. L’AASM est guidé multi-capteurs ; le MICA est un missile air-air."
+    },
+    {
+      "id": "hz-aero-132",
+      "type": "QCM",
+      "question": "Combien de passagers l’A330 MRTT peut-il transporter ?",
+      "choix": [
+        "Jusqu’à 44",
+        "Jusqu’à 270",
+        "Jusqu’à 400",
+        "Jusqu’à 150"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Ou 45 tonnes de fret."
+    },
+    {
+      "id": "hz-aero-133",
+      "type": "QCM",
+      "question": "Quels satellites assurent les télécommunications militaires sécurisées ?",
+      "choix": [
+        "Syracuse",
+        "CERES",
+        "Helios",
+        "YODA"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-aero-134",
+      "type": "FLASHCARD",
+      "question": "Que signifie EVASAN ?",
+      "verso": "Évacuation sanitaire"
+    },
+    {
+      "id": "hz-aero-135",
+      "type": "QCM",
+      "question": "Quelle constellation de 3 satellites assure la reconnaissance électromagnétique ?",
+      "choix": [
+        "YODA",
+        "Helios",
+        "CSO",
+        "CERES"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-aero-136",
+      "type": "QCM",
+      "question": "En quelle année le Caracal est-il mis en service en France ?",
+      "choix": [
+        "1974",
+        "2014",
+        "1990",
+        "2006"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-aero-137",
+      "type": "FLASHCARD",
+      "question": "Quelle particularité technique distingue la Patrouille de France ?",
+      "verso": "Elle a sa propre équipe de mécaniciens (non intégrés à l’ESTA)."
+    },
+    {
+      "id": "hz-aero-138",
+      "type": "QCM",
+      "question": "En quelle année le SA330 Puma est-il mis en service ?",
+      "choix": [
+        "1974",
+        "1990",
+        "1980",
+        "1964"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-aero-139",
+      "type": "QCM",
+      "question": "Quel hélicoptère est spécialisé dans le transport d’autorités gouvernementales à l’ET 60 ?",
+      "choix": [
+        "AS332 Super Puma",
+        "H225M Caracal",
+        "AS555 Fennec",
+        "SA330 Puma"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-aero-140",
+      "type": "FLASHCARD",
+      "question": "Sous quel autre nom le SAMP-T est-il connu ?",
+      "verso": "Mamba"
+    },
+    {
+      "id": "hz-aero-141",
+      "type": "QCM",
+      "question": "Quel hélicoptère de l’AAE est capable de ravitaillement en vol ?",
+      "choix": [
+        "SA330 Puma",
+        "H225M Caracal",
+        "AS332 Super Puma",
+        "AS555 Fennec"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-aero-142",
+      "type": "QCM",
+      "question": "Quelle est la hauteur de la présentation « beau temps » de la Patrouille de France ?",
+      "choix": [
+        "3 500 pieds",
+        "1 500 pieds",
+        "6 000 pieds",
+        "4 500 pieds"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-aero-143",
+      "type": "FLASHCARD",
+      "question": "Que signifie REVO ?",
+      "verso": "Ravitaillement en vol"
+    },
+    {
+      "id": "hz-aero-144",
+      "type": "QCM",
+      "question": "Sur quel avion la Patrouille de France a-t-elle volé de 1964 à 1981 ?",
+      "choix": [
+        "Mystère IV A",
+        "Alpha Jet",
+        "CM 170 Fouga Magister",
+        "Ouragan"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-aero-145",
+      "type": "QCM",
+      "question": "Quel fut le premier avion de la Patrouille de France (1953-1954) ?",
+      "choix": [
+        "Fouga Magister",
+        "Republic F-84G Thunderjet",
+        "Mystère IV A",
+        "Dassault Ouragan"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-aero-146",
+      "type": "QCR",
+      "question": "Quels escadrons mettent en œuvre le Mirage 2000D ?",
+      "choix": [
+        "L’EC 3/11 Corse",
+        "L’EC 2/3 Champagne",
+        "Le GC 1/2 Cigognes",
+        "L’EC 1/3 Navarre",
+        "L’EC 3/3 Ardennes"
+      ],
+      "reponses": [
+        1,
+        3,
+        4
+      ],
+      "explication": "Vrai : B, D, E. Faux : A, C."
+    },
+    {
+      "id": "hz-aero-147",
+      "type": "QCM",
+      "question": "À quelle escadre l’A330 MRTT est-il rattaché ?",
+      "choix": [
+        "La 61e escadre de transport",
+        "La 64e escadre de transport",
+        "La 31e escadre aérienne de ravitaillement et de transport stratégiques",
+        "La 36e escadre de commandement et de conduite aéroportée"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-aero-148",
+      "type": "QCM",
+      "question": "Quel était l’objet de l’opération Bubo 25 (février 2025) ?",
+      "choix": [
+        "Sécuriser le lancement d’Ariane 6 à Kourou",
+        "Frapper des sites chimiques syriens",
+        "Projeter des Rafale à Tahiti",
+        "Évacuer des ressortissants au Soudan"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-aero-149",
+      "type": "QCR",
+      "question": "Quelles affirmations sur l’A400M sont exactes ?",
+      "choix": [
+        "Il peut atterrir sur terrains sommaires et courts",
+        "Il peut ravitailler en vol avions et hélicoptères",
+        "Il remplace ou complète les C-130 et les Transall",
+        "Il est construit par Lockheed Martin",
+        "Il est basé à Istres"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Vrai : A, B, C. Faux : D, E. Constructeur : Airbus Defence & Space ; basé à Orléans (BA 123)."
+    },
+    {
+      "id": "hz-aero-150",
+      "type": "QCM",
+      "question": "Quel missile équipe le SAMP-T ?",
+      "choix": [
+        "ASTER 30",
+        "MICA VL",
+        "R440",
+        "ASTER 15"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-aero-151",
+      "type": "QCM",
+      "question": "Quand l’Équipe de voltige de l’AAE est-elle officiellement mise en place ?",
+      "choix": [
+        "Septembre 1999",
+        "1953",
+        "Août 2005",
+        "1er mars 1968"
+      ],
+      "reponses": [
+        3
+      ]
+    }
+  ]
+}

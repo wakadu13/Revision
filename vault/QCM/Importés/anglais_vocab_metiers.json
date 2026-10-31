@@ -1,0 +1,155 @@
+{
+  "langue": "Anglais",
+  "titre": "Anglais — vocabulaire : les métiers (A1)",
+  "particules_optionnelles": [
+    "to",
+    "a",
+    "an",
+    "the"
+  ],
+  "caracteres_speciaux": [],
+  "vocabulaire": [
+    {
+      "id": "en-metiers-001",
+      "mot": "a job",
+      "traductions": [
+        "un emploi",
+        "un travail"
+      ],
+      "exemple": "What does she do for a [job]?",
+      "exemple_traduction": "Qu'est-ce qu'elle fait comme travail ?",
+      "note": "What do you do? = Que faites-vous dans la vie ?"
+    },
+    {
+      "id": "en-metiers-002",
+      "mot": "an occupation",
+      "traductions": [
+        "une profession",
+        "un métier"
+      ],
+      "exemple": "Please write your [occupation] on the form.",
+      "exemple_traduction": "Veuillez indiquer votre profession sur le formulaire.",
+      "note": "Plus formel que « job »."
+    },
+    {
+      "id": "en-metiers-003",
+      "mot": "a teacher",
+      "traductions": [
+        "un enseignant",
+        "un professeur"
+      ],
+      "exemple": "After university, I became a history [teacher].",
+      "exemple_traduction": "Après l'université, je suis devenu professeur d'histoire.",
+      "note": "Article obligatoire : I am A teacher."
+    },
+    {
+      "id": "en-metiers-004",
+      "mot": "a doctor",
+      "traductions": [
+        "un médecin"
+      ],
+      "exemple": "My brother is a [doctor] in a hospital.",
+      "exemple_traduction": "Mon frère est médecin dans un hôpital.",
+      "note": "Article obligatoire devant un métier : He is a doctor."
+    },
+    {
+      "id": "en-metiers-005",
+      "mot": "a dentist",
+      "traductions": [
+        "un dentiste"
+      ],
+      "exemple": "She was scared to go to the [dentist].",
+      "exemple_traduction": "Elle avait peur d'aller chez le dentiste.",
+      "note": "to go to the dentist('s) = aller chez le dentiste."
+    },
+    {
+      "id": "en-metiers-006",
+      "mot": "a secretary",
+      "traductions": [
+        "un ou une secrétaire"
+      ],
+      "exemple": "My [secretary] arranges all my meetings.",
+      "exemple_traduction": "Ma secrétaire organise toutes mes réunions.",
+      "note": "/ˈsekrətri/"
+    },
+    {
+      "id": "en-metiers-007",
+      "mot": "a receptionist",
+      "traductions": [
+        "un ou une réceptionniste"
+      ],
+      "exemple": "The [receptionist] answers the office phones.",
+      "exemple_traduction": "La réceptionniste répond au téléphone du bureau."
+    },
+    {
+      "id": "en-metiers-008",
+      "mot": "a driver",
+      "traductions": [
+        "un conducteur",
+        "un chauffeur"
+      ],
+      "exemple": "The taxi [driver] knew all the roads.",
+      "exemple_traduction": "Le chauffeur de taxi connaissait toutes les routes.",
+      "note": "a bus driver, a train driver, a taxi driver."
+    },
+    {
+      "id": "en-metiers-009",
+      "mot": "a pilot",
+      "traductions": [
+        "un pilote"
+      ],
+      "exemple": "He decided to become a [pilot].",
+      "exemple_traduction": "Il a décidé de devenir pilote.",
+      "note": "/ˈpaɪlət/"
+    },
+    {
+      "id": "en-metiers-010",
+      "mot": "a construction worker",
+      "traductions": [
+        "un ouvrier du bâtiment"
+      ],
+      "exemple": "[Construction workers] must wear a hard hat.",
+      "exemple_traduction": "Les ouvriers du bâtiment doivent porter un casque.",
+      "note": "a hard hat = un casque de chantier."
+    },
+    {
+      "id": "en-metiers-011",
+      "mot": "a baker",
+      "traductions": [
+        "un boulanger"
+      ],
+      "exemple": "She wants to work as a [baker].",
+      "exemple_traduction": "Elle veut devenir boulangère.",
+      "note": "to work as a… = travailler comme… ; a bakery = une boulangerie."
+    },
+    {
+      "id": "en-metiers-012",
+      "mot": "a butcher",
+      "traductions": [
+        "un boucher"
+      ],
+      "exemple": "The [butcher] sold the meat in his shop.",
+      "exemple_traduction": "Le boucher vendait la viande dans sa boutique.",
+      "note": "the butcher's = la boucherie."
+    },
+    {
+      "id": "en-metiers-013",
+      "mot": "an actor",
+      "traductions": [
+        "un acteur"
+      ],
+      "exemple": "He is a very famous [actor].",
+      "exemple_traduction": "C'est un acteur très célèbre.",
+      "note": "Féminin : an actress (ou actor)."
+    },
+    {
+      "id": "en-metiers-014",
+      "mot": "an artist",
+      "traductions": [
+        "un artiste"
+      ],
+      "exemple": "Picasso was a famous Spanish [artist].",
+      "exemple_traduction": "Picasso était un célèbre artiste espagnol."
+    }
+  ]
+}

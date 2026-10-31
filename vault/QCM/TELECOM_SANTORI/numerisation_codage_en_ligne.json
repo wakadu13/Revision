@@ -1,0 +1,789 @@
+{
+  "titre": "Numérisation et codage en ligne",
+  "description": "CLEAE2, cours 1 : chaîne de transmission, échantillonnage, quantification, pré-codage, codes en ligne et largeur de bande.",
+  "questions": [
+    {
+      "id": "clea1-001",
+      "type": "FLASHCARD",
+      "question": "Dans la chaîne de télécommunications, quel est le rôle de la source ?",
+      "verso": "Transformer l'information brute originale en énergie électrique (transduction).",
+      "explication": "Exemple : un micro. À l'autre bout, le destinataire fait la transduction inverse (ex. haut-parleur)."
+    },
+    {
+      "id": "clea1-002",
+      "type": "QCM",
+      "question": "Quel élément de la chaîne traite le signal reçu pour réduire le bruit et compenser l'affaiblissement dû au canal ?",
+      "choix": [
+        "Le récepteur",
+        "Le destinataire",
+        "L'émetteur",
+        "Le canal"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "C'est le récepteur ; idéalement il restitue m̂(t) = m(t). L'émetteur, lui, met en forme le signal pour la transmission (modulation) et l'émission (puissance)."
+    },
+    {
+      "id": "clea1-003",
+      "type": "QCR",
+      "question": "Lesquels de ces exemples sont des canaux de transmission cités dans le cours ?",
+      "choix": [
+        "Paire torsadée",
+        "Fibre optique",
+        "Microphone",
+        "Faisceau hertzien",
+        "Haut-parleur"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "A, B, D : vrais (le cours cite aussi le guide d'onde). C : faux, le micro est une source. E : faux, le haut-parleur est côté destinataire."
+    },
+    {
+      "id": "clea1-004",
+      "type": "TROU",
+      "question": "Dans la chaîne numérique, côté émetteur, l'ordre est : numérisation, codage de source, codage de ___, mise en forme.",
+      "reponses_texte": [
+        "canal"
+      ],
+      "explication": "Codage de source (compression) puis codage de canal (protection contre les erreurs), puis mise en forme et émission en bande de base."
+    },
+    {
+      "id": "clea1-005",
+      "type": "FLASHCARD",
+      "question": "Quel bloc du récepteur numérique attribue une valeur de symbole à un signal physique reçu ?",
+      "verso": "La décision.",
+      "explication": "Décision : attribution d'une valeur d'un signal physique à un symbole. Elle suit la démodulation (ou réception en bande de base)."
+    },
+    {
+      "id": "clea1-006",
+      "type": "QCM",
+      "question": "Dans le cours, la « mise en forme » désigne :",
+      "choix": [
+        "Le passage de l'analogique au numérique",
+        "L'association entre un symbole et une onde physique",
+        "L'association entre symboles d'alphabets différents",
+        "Le passage du numérique à l'analogique"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Mise en forme = symbole → onde physique. L'association entre alphabets définit le codage, le passage analogique → numérique la numérisation, et numérique → analogique la restitution."
+    },
+    {
+      "id": "clea1-007",
+      "type": "TROU",
+      "question": "Le passage d'une représentation numérique de l'information à une représentation analogique s'appelle la ___.",
+      "reponses_texte": [
+        "restitution"
+      ],
+      "explication": "C'est l'opération inverse de la numérisation, en fin de chaîne côté destinataire."
+    },
+    {
+      "id": "clea1-008",
+      "type": "FLASHCARD",
+      "question": "Qu'est-ce qu'une source numérique ?",
+      "verso": "Une source qui délivre l'information sous forme de symboles issus d'un alphabet fini.",
+      "explication": "Exemple du cours : une caméra numérique. Une source analogique (ex. micro) délivre une information analogique."
+    },
+    {
+      "id": "clea1-009",
+      "type": "QCR",
+      "question": "Lesquelles de ces propositions sont des avantages du numérique par rapport à l'analogique ?",
+      "choix": [
+        "Meilleure résistance au bruit",
+        "Bande passante plus étroite",
+        "Régénération parfaite du signal",
+        "Chiffrement facilité",
+        "Aucun délai de traitement"
+      ],
+      "reponses": [
+        0,
+        2,
+        3
+      ],
+      "explication": "A, C, D : vrais (le cours cite aussi la compression et le filtrage facilités). B : faux, le numérique demande une bande passante plus LARGE. E : faux, codage et décodage ajoutent un délai."
+    },
+    {
+      "id": "clea1-010",
+      "type": "FLASHCARD",
+      "question": "Cite un inconvénient du numérique lié à la bande passante.",
+      "verso": "Il nécessite une bande passante plus large.",
+      "explication": "Autres inconvénients : délai dû au codage/décodage et consommation si la puissance de calcul est importante."
+    },
+    {
+      "id": "clea1-011",
+      "type": "QCM",
+      "question": "Dans quel ordre se déroulent les 3 étapes de la numérisation ?",
+      "choix": [
+        "Quantification, échantillonnage, pré-codage",
+        "Échantillonnage, pré-codage, quantification",
+        "Échantillonnage, quantification, pré-codage",
+        "Pré-codage, échantillonnage, quantification"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "On prélève des valeurs (échantillonnage), on les arrondit à un ensemble fini (quantification), puis on les traduit en mots binaires (pré-codage)."
+    },
+    {
+      "id": "clea1-012",
+      "type": "FLASHCARD",
+      "question": "Pourquoi la numérisation entraîne-t-elle forcément une perte d'information ?",
+      "verso": "Parce qu'on exprime l'information par une logique codée à valeurs finies : on n'en garde qu'une représentation très similaire, pas identique.",
+      "explication": "Cette perte vient notamment de la quantification (bruit de quantification)."
+    },
+    {
+      "id": "clea1-013",
+      "type": "TROU",
+      "question": "L'échantillonnage prélève des valeurs aux instants tn = n·___ (période d'échantillonnage).",
+      "reponses_texte": [
+        "Te",
+        "T e"
+      ],
+      "explication": "Te est la période d'échantillonnage et Fe = 1/Te la fréquence d'échantillonnage."
+    },
+    {
+      "id": "clea1-014",
+      "type": "FLASHCARD",
+      "question": "Énonce la condition du théorème de Nyquist-Shannon.",
+      "verso": "Fe ≥ 2 × fmax",
+      "explication": "Pour reconstruire parfaitement le signal, la fréquence d'échantillonnage doit valoir au moins deux fois la fréquence maximale du signal."
+    },
+    {
+      "id": "clea1-015",
+      "type": "QCM",
+      "question": "Un signal a une bande de fréquence de 200 Hz à 4 kHz. Quelle est sa fréquence d'échantillonnage minimale ?",
+      "choix": [
+        "7,6 kHz",
+        "400 Hz",
+        "4 kHz",
+        "8 kHz"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Fe ≥ 2 × fmax = 2 × 4 kHz = 8 kHz. Le piège « 7,6 kHz » utilise la largeur de bande (4 kHz − 200 Hz) au lieu de fmax."
+    },
+    {
+      "id": "clea1-016",
+      "type": "FLASHCARD",
+      "question": "Quel est l'effet de l'échantillonnage sur le spectre du signal ?",
+      "verso": "Il périodise le spectre avec une période Fe.",
+      "explication": "Les copies du spectre sont centrées sur 0, Fe, 2Fe… Si elles se chevauchent, il y a repliement."
+    },
+    {
+      "id": "clea1-017",
+      "type": "TROU",
+      "question": "Si Fe < 2 × fmax, les motifs du spectre se chevauchent : c'est le ___ de spectre.",
+      "reponses_texte": [
+        "repliement",
+        "aliasing",
+        "recouvrement"
+      ],
+      "explication": "Le repliement mélange les informations et entraîne une perte d'information irréversible."
+    },
+    {
+      "id": "clea1-018",
+      "type": "QCM",
+      "question": "Pourquoi filtre-t-on le signal AVANT l'échantillonnage ?",
+      "choix": [
+        "Pour éviter le repliement de spectre",
+        "Pour supprimer la composante continue",
+        "Pour augmenter le débit binaire",
+        "Pour supprimer le bruit de quantification"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Un signal d'énergie finie ne peut être à la fois de durée finie et à bande limitée : on le filtre (filtre anti-repliement) pour limiter fmax. Le bruit de quantification apparaît plus tard, à la quantification."
+    },
+    {
+      "id": "clea1-019",
+      "type": "QCM",
+      "question": "Pour un CD audio, on coupe le spectre au-delà de 20 kHz. Quelle est la fréquence d'échantillonnage minimale, et quel standard a été retenu ?",
+      "choix": [
+        "20 kHz ; 22,05 kHz",
+        "40 kHz ; 44,1 kHz",
+        "40 kHz ; 48 kHz",
+        "44,1 kHz ; 96 kHz"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "fmax = 20 kHz donc Fe ≥ 40 kHz ; le standard CD est 44,1 kHz sur 16 bits. 48 kHz est le standard des DAT et Minidisc."
+    },
+    {
+      "id": "clea1-020",
+      "type": "FLASHCARD",
+      "question": "Quelle est la bande passante approximative de l'oreille humaine ?",
+      "verso": "De 20 Hz à 20 kHz environ.",
+      "explication": "C'est pour cela qu'on filtre au-delà de 20 kHz avant d'échantillonner un CD."
+    },
+    {
+      "id": "clea1-021",
+      "type": "QCR",
+      "question": "Quelles associations « support : échantillonnage » sont correctes selon le cours ?",
+      "choix": [
+        "CD : 44,1 kHz sur 16 bits",
+        "DAT / Minidisc : 48 kHz sur 16 bits",
+        "DVD / SACD : 22 kHz sur 8 bits",
+        "DVD / SACD : de 96 kHz à 192 kHz sur 16 ou 24 bits"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "A, B, D : vrais. C : faux, le DVD/SACD échantillonne beaucoup plus haut (96 à 192 kHz) et sur 16 ou 24 bits."
+    },
+    {
+      "id": "clea1-022",
+      "type": "FLASHCARD",
+      "question": "Quel est le but de la quantification ?",
+      "verso": "Représenter les valeurs du signal dans un ensemble fini de valeurs.",
+      "explication": "Chaque échantillon est « arrondi » à la graduation la plus proche."
+    },
+    {
+      "id": "clea1-023",
+      "type": "QCM",
+      "question": "Avec les niveaux de quantification −1,5 ; −0,5 ; 0,5 ; 1,5, à quelle valeur est quantifié l'échantillon −1,1 ?",
+      "choix": [
+        "−0,5",
+        "−1",
+        "−1,5",
+        "−1,1"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "−1,1 est à 0,4 de −1,5 et à 0,6 de −0,5 : on arrondit au plus proche, −1,5. « −1 » n'est pas un niveau disponible."
+    },
+    {
+      "id": "clea1-024",
+      "type": "TROU",
+      "question": "L'écart entre la valeur quantifiée et la valeur réelle de l'échantillon s'appelle l'erreur (ou le bruit) de ___.",
+      "reponses_texte": [
+        "quantification"
+      ],
+      "explication": "Il est inhérent au processus et ne peut pas être supprimé, seulement réduit."
+    },
+    {
+      "id": "clea1-025",
+      "type": "QCM",
+      "question": "En quantification uniforme, comment évolue le bruit de quantification quand on diminue le pas ?",
+      "choix": [
+        "Il reste constant",
+        "Il devient nul",
+        "Il augmente",
+        "Il diminue"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Des intervalles plus petits donnent des arrondis plus fins, donc moins d'erreur. Il ne devient jamais nul : c'est un phénomène inhérent."
+    },
+    {
+      "id": "clea1-026",
+      "type": "FLASHCARD",
+      "question": "Quelle est la différence entre quantification uniforme et non uniforme ?",
+      "verso": "Uniforme : intervalles de taille constante (le pas de quantification). Non uniforme : intervalles de taille variable.",
+      "explication": "Exemple de quantification non uniforme : la numérisation de la parole."
+    },
+    {
+      "id": "clea1-027",
+      "type": "FLASHCARD",
+      "question": "En quoi consiste le pré-codage ?",
+      "verso": "À associer un symbole ou un groupe de symboles (en général binaires) à chaque niveau de quantification.",
+      "explication": "Le pré-codage binaire est très majoritairement utilisé."
+    },
+    {
+      "id": "clea1-028",
+      "type": "TROU",
+      "question": "En pré-codage binaire, le nombre m de bits par mot s'appelle le ___.",
+      "reponses_texte": [
+        "moment"
+      ],
+      "explication": "Le moment m est le nombre de bits de codage ; la valence M est le nombre d'états possibles, avec M = 2^m."
+    },
+    {
+      "id": "clea1-029",
+      "type": "TROU",
+      "question": "Le nombre total d'états possibles de l'information, M = 2^m, s'appelle la ___.",
+      "reponses_texte": [
+        "valence"
+      ],
+      "explication": "Ne pas confondre avec le moment m (nombre de bits)."
+    },
+    {
+      "id": "clea1-030",
+      "type": "QCM",
+      "question": "Combien de bits faut-il au minimum pour coder 9 niveaux de quantification ?",
+      "choix": [
+        "4",
+        "5",
+        "9",
+        "3"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "3 bits ne donnent que 2³ = 8 niveaux, insuffisant ; 4 bits en donnent 16. Le piège « 3 » oublie qu'il faut arrondir log₂(9) ≈ 3,17 au-dessus."
+    },
+    {
+      "id": "clea1-031",
+      "type": "TROU",
+      "question": "Un pré-codage sur un octet (8 bits) permet de coder ___ niveaux de quantification.",
+      "reponses_texte": [
+        "256"
+      ],
+      "explication": "M = 2^8 = 256."
+    },
+    {
+      "id": "clea1-032",
+      "type": "QCM",
+      "question": "Avec m = 6 bits, combien de niveaux de quantification peut-on coder ?",
+      "choix": [
+        "32",
+        "64",
+        "12",
+        "36"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "M = 2^6 = 64. « 32 » correspond à m = 5 ; « 36 » confond 2^6 et 6²."
+    },
+    {
+      "id": "clea1-033",
+      "type": "FLASHCARD",
+      "question": "Dans le codage de Gray du cours (M = 4), quel code reçoit le niveau −0,5 ?",
+      "verso": "11",
+      "explication": "Gray : 1,5 → 00 ; 0,5 → 01 ; −0,5 → 11 ; −1,5 → 10. Deux niveaux voisins ne diffèrent que d'un bit."
+    },
+    {
+      "id": "clea1-034",
+      "type": "QCM",
+      "question": "Un CD audio stéréo est échantillonné à 44,1 kHz sur 16 bits. Quel est son débit ?",
+      "choix": [
+        "176,4 kbit/s",
+        "705,6 kbit/s",
+        "1,41 Mbit/s",
+        "2,82 Mbit/s"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "D = 2 voies × 16 bits × 44 100 = 1,41 Mbit/s. Le piège « 705,6 kbit/s » oublie la stéréo."
+    },
+    {
+      "id": "clea1-035",
+      "type": "TROU",
+      "question": "Un CD audio de 70 min, à 1,41 Mbit/s, contient environ ___ Mo.",
+      "reponses_texte": [
+        "741",
+        "741 Mo",
+        "741mo"
+      ],
+      "explication": "C = D × 70 × 60 / 8 ≈ 741 Mo (on divise par 8 pour passer des bits aux octets)."
+    },
+    {
+      "id": "clea1-036",
+      "type": "QCM",
+      "question": "Un signal entre −1 V et +1 V est codé sur 8 bits. Quel est le pas de quantification ?",
+      "choix": [
+        "1/255 V ≈ 3,92 mV",
+        "2/8 V = 250 mV",
+        "2/256 V ≈ 7,81 mV",
+        "2/255 V ≈ 7,84 mV"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "8 bits donnent 256 valeurs, donc 255 intervalles sur 2 V : 2/255 ≈ 7,84 mV. Le piège « 2/256 » compte les valeurs au lieu des intervalles."
+    },
+    {
+      "id": "clea1-037",
+      "type": "QCM",
+      "question": "Signal PCM échantillonné à 8 kHz, chaque échantillon codé sur 8 bits. Quel est le débit binaire ?",
+      "choix": [
+        "64 kbit/s",
+        "128 kbit/s",
+        "8 kbit/s",
+        "16 kbit/s"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "T = 1/8000 = 125 µs ; durée d'un bit = 125/8 = 15,625 µs ; D = 1/15,625 µs = 64 000 bit/s."
+    },
+    {
+      "id": "clea1-038",
+      "type": "FLASHCARD",
+      "question": "Qu'est-ce que le codage en ligne ?",
+      "verso": "Une convention d'association entre symboles logiques et formes d'ondes physiques.",
+      "explication": "Il fait le lien entre les mots binaires issus de la numérisation et des ondes transmissibles sur un support. L'association est une bijection."
+    },
+    {
+      "id": "clea1-039",
+      "type": "FLASHCARD",
+      "question": "Comment appelle-t-on la convention d'association entre symboles logiques et formes d'ondes ?",
+      "verso": "Le codage en ligne.",
+      "explication": "Il correspond à une modulation en bande de base."
+    },
+    {
+      "id": "clea1-040",
+      "type": "QCM",
+      "question": "Quelles sont les deux façons d'émettre le signal après le codage ?",
+      "choix": [
+        "Échantillonnage ou quantification",
+        "Émission en bande de base ou modulation sur fréquence porteuse",
+        "Codage de source ou codage de canal",
+        "NRZ ou RZ"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Bande de base = codage en ligne ; on passe sur porteuse quand il faut une bande de fréquence appropriée (disponibilité, adaptation au support)."
+    },
+    {
+      "id": "clea1-041",
+      "type": "TROU",
+      "question": "La fonction h(t) qui associe une forme d'onde à chaque symbole s'appelle le ___.",
+      "reponses_texte": [
+        "formant",
+        "filtre de mise en forme"
+      ],
+      "explication": "Chaîne : ik (bits) → étiquetage → ak (symboles) → formant h(t) → m(t)."
+    },
+    {
+      "id": "clea1-042",
+      "type": "FLASHCARD",
+      "question": "Dans la chaîne ik → ak → m(t), que fait l'étiquetage ?",
+      "verso": "Il regroupe les bits ik en mots de n bits et associe à chacun un symbole ak d'un alphabet de taille M = 2^n.",
+      "explication": "Exemple : ik = 0 → ak = −1 et ik = 1 → ak = +1 (alphabet {−1, +1})."
+    },
+    {
+      "id": "clea1-043",
+      "type": "TROU",
+      "question": "Un symbole M-aire véhicule n = ___ bits.",
+      "reponses_texte": [
+        "log2(M)",
+        "log2 M",
+        "log2M",
+        "ln(M)/ln(2)"
+      ],
+      "explication": "Réciproquement, des paquets de n bits donnent M = 2^n symboles possibles."
+    },
+    {
+      "id": "clea1-044",
+      "type": "QCM",
+      "question": "Pour un codage NRZ à 4 niveaux, combien de bits porte chaque symbole ?",
+      "choix": [
+        "3",
+        "1",
+        "2",
+        "4"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "M = 4 donc n = log₂(4) = 2 bits. Dans l'exemple du cours : 00 → −3α ; 01 → −α ; 11 → +α ; 10 → +3α."
+    },
+    {
+      "id": "clea1-045",
+      "type": "FLASHCARD",
+      "question": "Dans l'exemple NRZ 4-aire du cours, quel niveau correspond au couple de bits (1,0) ?",
+      "verso": "+3α",
+      "explication": "00 → −3α ; 01 → −α ; 11 → +α ; 10 → +3α (étiquetage de Gray : deux niveaux voisins diffèrent d'un seul bit)."
+    },
+    {
+      "id": "clea1-046",
+      "type": "FLASHCARD",
+      "question": "Qu'est-ce que la rapidité de modulation R, et quelle est son unité ?",
+      "verso": "R = 1/Ts : le nombre de symboles transmis par seconde, en bauds (Bd).",
+      "explication": "Ts est le temps symbole."
+    },
+    {
+      "id": "clea1-047",
+      "type": "QCM",
+      "question": "Quelle relation lie le débit binaire D, la rapidité de modulation R et le nombre de bits par symbole n ?",
+      "choix": [
+        "D = R + n",
+        "D = R / n",
+        "R = D × n",
+        "R = D / n"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Un symbole porte n bits, donc Ts = n·Tb et R = D/n : le débit binaire va n fois plus vite que R."
+    },
+    {
+      "id": "clea1-048",
+      "type": "TROU",
+      "question": "Le temps symbole Ts et le temps bit Tb sont liés par Ts = ___ × Tb.",
+      "reponses_texte": [
+        "n",
+        "log2(M)",
+        "log2 M"
+      ],
+      "explication": "Un symbole véhicule n = log₂(M) bits."
+    },
+    {
+      "id": "clea1-049",
+      "type": "QCM",
+      "question": "Une liaison transmet 4-aire (M = 4) à 2 400 bauds. Quel est son débit binaire ?",
+      "choix": [
+        "4 800 bit/s",
+        "9 600 bit/s",
+        "1 200 bit/s",
+        "2 400 bit/s"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "n = log₂(4) = 2 bits/symbole, donc D = n × R = 2 × 2 400 = 4 800 bit/s. Le piège « 9 600 » multiplie par M au lieu de n."
+    },
+    {
+      "id": "clea1-050",
+      "type": "FLASHCARD",
+      "question": "Comment est définie l'efficacité spectrale η ?",
+      "verso": "η = D / B, en bit/s/Hz (D : débit binaire, B : largeur de bande du signal).",
+      "explication": "Plus η est grande, plus on transmet de bits dans une bande donnée."
+    },
+    {
+      "id": "clea1-051",
+      "type": "FLASHCARD",
+      "question": "Qu'appelle-t-on la bande de base ?",
+      "verso": "L'intervalle des fréquences comprises entre 0 et une fréquence proportionnelle à R.",
+      "explication": "R est la rapidité de modulation."
+    },
+    {
+      "id": "clea1-052",
+      "type": "QCR",
+      "question": "Quels critères faut-il prendre en compte pour choisir un codage en ligne ?",
+      "choix": [
+        "Largeur de bande du signal la plus faible possible",
+        "Présence ou non d'une composante continue",
+        "Récupération de la synchronisation",
+        "Nombre de niveaux de quantification",
+        "Fréquence d'échantillonnage"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "A, B, C : vrais, c'est le compromis présenté dans le cours. D et E : faux, ils concernent la numérisation, pas le codage en ligne."
+    },
+    {
+      "id": "clea1-053",
+      "type": "QCM",
+      "question": "Pourquoi le nombre de transitions du signal codé est-il important ?",
+      "choix": [
+        "Il fixe le pas de quantification",
+        "Il permet au récepteur de rester synchronisé avec l'émetteur",
+        "Il supprime le bruit du canal",
+        "Il fixe la fréquence d'échantillonnage"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Sans transitions (longue suite de bits identiques), le récepteur perd l'horloge et ne sait plus combien de bits il a reçus."
+    },
+    {
+      "id": "clea1-054",
+      "type": "FLASHCARD",
+      "question": "Sur quoi informent les propriétés statistiques d'un code en ligne ?",
+      "verso": "Sur le nombre de transitions d'état, donc sur la capacité de synchronisation entre émetteur et récepteur.",
+      "explication": "Les propriétés spectrales, elles, indiquent l'adaptation du signal à la bande passante du support."
+    },
+    {
+      "id": "clea1-055",
+      "type": "FLASHCARD",
+      "question": "En codage NRZ, que se passe-t-il pour une longue suite de bits identiques ?",
+      "verso": "Le signal reste constant, d'où un risque de perte de synchronisation.",
+      "explication": "Le NRZ a aussi une composante continue non négligeable."
+    },
+    {
+      "id": "clea1-056",
+      "type": "QCM",
+      "question": "Dans le code RZ (Return to Zero) :",
+      "choix": [
+        "Chaque 1 alterne entre +V et −V",
+        "Le signal ne prend jamais la valeur 0",
+        "Le signal prend la valeur 0 pendant la moitié du temps bit",
+        "La polarité change à chaque bit 0"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Le temps bit est divisé en deux et le signal revient à 0 pendant ½ temps bit. Le changement de polarité sur les 0 décrit le NRZI ; l'alternance +V/−V des 1 décrit le bipolaire (AMI)."
+    },
+    {
+      "id": "clea1-057",
+      "type": "TROU",
+      "question": "Selon le cours, en codage NRZI, on change de polarité lorsqu'il y a un bit ___.",
+      "reponses_texte": [
+        "0",
+        "zero",
+        "zéro"
+      ],
+      "explication": "Pas de changement de polarité sur un bit 1."
+    },
+    {
+      "id": "clea1-058",
+      "type": "FLASHCARD",
+      "question": "Dans le codage Manchester (biphase), comment est codé un bit '0' ?",
+      "verso": "Par une transition du niveau bas vers le niveau haut au milieu du temps bit.",
+      "explication": "Le '1' est une transition du haut vers le bas. Il faut connaître la règle : certains auteurs utilisent l'inverse."
+    },
+    {
+      "id": "clea1-059",
+      "type": "QCM",
+      "question": "Dans le Manchester différentiel (Manchester 2), un bit 1 se traduit par :",
+      "choix": [
+        "Un retour à 0 pendant ½ temps bit",
+        "Une impulsion alternativement +V / −V",
+        "Aucun changement de transition par rapport au bit précédent",
+        "Un changement de transition par rapport au bit précédent"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Il code la différence entre deux bits : 1 = changement, 0 = pas de changement. L'impulsion alternée +V/−V décrit le code bipolaire (AMI)."
+    },
+    {
+      "id": "clea1-060",
+      "type": "FLASHCARD",
+      "question": "Dans le codage de Miller, comment est codé un bit 1 ?",
+      "verso": "Par un changement d'état au milieu du temps bit.",
+      "explication": "Un 0 n'a pas de transition au milieu, mais une transition à la fin s'il est suivi d'un autre 0. Sa DSP est plus étroite que celle du Manchester."
+    },
+    {
+      "id": "clea1-061",
+      "type": "QCM",
+      "question": "Combien de niveaux de tension utilise le code bipolaire (AMI) ?",
+      "choix": [
+        "3 : −V, 0 et +V",
+        "4 : −3α, −α, +α, +3α",
+        "2 : +V et −V",
+        "2 : 0 et +V"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "AMI = Alternate Mark Inversion : un 0 est codé 0, un 1 alternativement +V ou −V."
+    },
+    {
+      "id": "clea1-062",
+      "type": "TROU",
+      "question": "Le code bipolaire à haute densité, qui limite le nombre de 0 consécutifs, s'appelle le code ___ (sigle).",
+      "reponses_texte": [
+        "HDBn",
+        "HDB",
+        "HDB3"
+      ],
+      "explication": "Il insère des suites de remplissage avec des bits de « viol » et de « bourrage »."
+    },
+    {
+      "id": "clea1-063",
+      "type": "FLASHCARD",
+      "question": "Dans le code bipolaire simple (AMI), comment est codé un bit 1 ?",
+      "verso": "Alternativement par +V et −V.",
+      "explication": "Un bit 0 est codé par 0 V."
+    },
+    {
+      "id": "clea1-064",
+      "type": "QCM",
+      "question": "Selon le cours, quelle est la largeur de bande du code NRZ bipolaire ?",
+      "choix": [
+        "1/Ts",
+        "2/Ts",
+        "4/Ts",
+        "Ts/2"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "B_NRZ = 2/Ts. RZ et Manchester utilisent une impulsion de durée Ts/2, d'où une bande deux fois plus large : 4/Ts."
+    },
+    {
+      "id": "clea1-065",
+      "type": "QCR",
+      "question": "Quelles affirmations sur le code Manchester sont exactes ?",
+      "choix": [
+        "Il est utilisé par Ethernet 10BASE-X",
+        "Sa largeur de bande vaut 4/Ts",
+        "Il présente une forte composante continue",
+        "Sa valeur moyenne est nulle",
+        "Il est utilisé par la liaison série RS-232"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "A, B, D : vrais. C : faux, pas de puissance à f = 0, donc pas de composante continue. E : faux, RS-232 utilise le NRZ bipolaire."
+    },
+    {
+      "id": "clea1-066",
+      "type": "TROU",
+      "question": "Le codage NRZ bipolaire est utilisé par les ordinateurs pour la liaison série ___.",
+      "reponses_texte": [
+        "RS-232",
+        "RS232",
+        "RS 232"
+      ],
+      "explication": "Formant NRZ : ak = −1 si ik = 0, ak = +1 si ik = 1."
+    },
+    {
+      "id": "clea1-067",
+      "type": "FLASHCARD",
+      "question": "Quel avantage le code RZ unipolaire présente-t-il, malgré sa bande de 4/Ts ?",
+      "verso": "Il facilite la récupération de la synchronisation.",
+      "explication": "Il reste peu utilisé : bande double du NRZ et composante continue."
+    },
+    {
+      "id": "clea1-068",
+      "type": "QCM",
+      "question": "Pourquoi le code Manchester n'a-t-il pas de composante continue ?",
+      "choix": [
+        "Parce qu'il revient à 0 à chaque bit",
+        "Parce que son débit est faible",
+        "Parce que chaque bit contient une moitié à +V et une moitié à −V, donc une valeur moyenne nulle",
+        "Parce qu'il utilise trois niveaux"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Sa DSP est nulle en f = 0 avec peu d'énergie en basses fréquences. Les trois niveaux décrivent l'AMI, le retour à 0 décrit le RZ."
+    },
+    {
+      "id": "clea1-069",
+      "type": "FLASHCARD",
+      "question": "Pour la séquence 01101 en codage unipolaire avec formant RZ (porte de durée Ts/2), que vaut le signal pendant un bit 1 ?",
+      "verso": "1 pendant la première moitié du temps bit, puis 0.",
+      "explication": "Un bit 0 donne 0 sur tout le temps bit (ak = 0)."
+    },
+    {
+      "id": "clea1-070",
+      "type": "QCM",
+      "question": "Pour doubler le débit binaire à rapidité de modulation constante, que peut-on faire ?",
+      "choix": [
+        "Doubler le pas de quantification",
+        "Utiliser un formant RZ",
+        "Diviser n par 2",
+        "Doubler le nombre de bits par symbole n (passer de M à M²)"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "D = n × R : à R constant, doubler n double D sans élargir la bande (η double), mais les niveaux sont plus serrés, d'où plus de puissance ou plus d'erreurs. L'autre moyen est de doubler R, ce qui double la bande."
+    }
+  ]
+}

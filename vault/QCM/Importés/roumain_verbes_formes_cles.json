@@ -1,0 +1,878 @@
+{
+  "langue": "Roumain",
+  "caracteres_speciaux": [
+    "ă",
+    "â",
+    "î",
+    "ș",
+    "ț",
+    "Ă",
+    "Â",
+    "Î",
+    "Ș",
+    "Ț"
+  ],
+  "titre": "Roumain — conjugaison : formes clés et autres temps",
+  "description": "Participes (passé composé), conjonctif 3e personne, impératif, et les tables de passé composé, imparfait, futur, conditionnel, conjonctif.",
+  "conjugaison": [
+    {
+      "id": "ro-conj-face-pc",
+      "verbe": "a face",
+      "traduction": "faire",
+      "temps": "passé composé",
+      "formes": {
+        "eu": [
+          "am făcut"
+        ],
+        "tu": [
+          "ai făcut"
+        ],
+        "el / ea": [
+          "a făcut"
+        ],
+        "noi": [
+          "am făcut"
+        ],
+        "voi": [
+          "ați făcut",
+          "aţi făcut"
+        ],
+        "ei / ele": [
+          "au făcut"
+        ]
+      },
+      "explication": "Auxiliaire avoir réduit : am, ai, a, am, ați, au (≠ présent are / au) + participe invariable. C'est LE temps du passé à l'oral."
+    },
+    {
+      "id": "ro-conj-fi-imp",
+      "verbe": "a fi",
+      "traduction": "être",
+      "temps": "imparfait",
+      "formes": {
+        "eu": [
+          "eram"
+        ],
+        "tu": [
+          "erai"
+        ],
+        "el / ea": [
+          "era"
+        ],
+        "noi": [
+          "eram"
+        ],
+        "voi": [
+          "erați",
+          "eraţi"
+        ],
+        "ei / ele": [
+          "erau"
+        ]
+      },
+      "explication": "eram sert pour eu ET noi. Très utilisé : Când eram mic… (quand j'étais petit…)."
+    },
+    {
+      "id": "ro-conj-avea-imp",
+      "verbe": "a avea",
+      "traduction": "avoir",
+      "temps": "imparfait",
+      "formes": {
+        "eu": [
+          "aveam"
+        ],
+        "tu": [
+          "aveai"
+        ],
+        "el / ea": [
+          "avea"
+        ],
+        "noi": [
+          "aveam"
+        ],
+        "voi": [
+          "aveați",
+          "aveaţi"
+        ],
+        "ei / ele": [
+          "aveau"
+        ]
+      },
+      "explication": "Terminaisons de l'imparfait : -am, -ai, -a, -am, -ați, -au."
+    },
+    {
+      "id": "ro-conj-merge-fut",
+      "verbe": "a merge",
+      "traduction": "aller",
+      "temps": "futur",
+      "formes": {
+        "eu": [
+          "o să merg",
+          "voi merge"
+        ],
+        "tu": [
+          "o să mergi",
+          "vei merge"
+        ],
+        "el / ea": [
+          "o să meargă",
+          "va merge"
+        ],
+        "noi": [
+          "o să mergem",
+          "vom merge"
+        ],
+        "voi": [
+          "o să mergeți",
+          "o să mergeţi",
+          "veți merge",
+          "veţi merge"
+        ],
+        "ei / ele": [
+          "o să meargă",
+          "vor merge"
+        ]
+      },
+      "explication": "Oral : o să + conjonctif (invariable o). Écrit / soutenu : voi, vei, va, vom, veți, vor + infinitif."
+    },
+    {
+      "id": "ro-conj-vrea-cond",
+      "verbe": "a vrea",
+      "traduction": "vouloir",
+      "temps": "conditionnel",
+      "formes": {
+        "eu": [
+          "aș vrea",
+          "aş vrea"
+        ],
+        "tu": [
+          "ai vrea"
+        ],
+        "el / ea": [
+          "ar vrea"
+        ],
+        "noi": [
+          "am vrea"
+        ],
+        "voi": [
+          "ați vrea",
+          "aţi vrea"
+        ],
+        "ei / ele": [
+          "ar vrea"
+        ]
+      },
+      "explication": "aș, ai, ar, am, ați, ar + infinitif. Aș vrea… = je voudrais… (la formule polie)."
+    },
+    {
+      "id": "ro-conj-merge-conj",
+      "verbe": "a merge",
+      "traduction": "aller",
+      "temps": "conjonctif",
+      "formes": {
+        "eu": [
+          "să merg",
+          "merg"
+        ],
+        "tu": [
+          "să mergi",
+          "mergi"
+        ],
+        "el / ea": [
+          "să meargă",
+          "meargă"
+        ],
+        "noi": [
+          "să mergem",
+          "mergem"
+        ],
+        "voi": [
+          "să mergeți",
+          "să mergeţi",
+          "mergeți",
+          "mergeţi"
+        ],
+        "ei / ele": [
+          "să meargă",
+          "meargă"
+        ]
+      },
+      "explication": "Identique au présent SAUF à la 3e personne : să meargă. Après vreau, pot, trebuie, hai, înainte…"
+    },
+    {
+      "id": "ro-conj-fi-conj",
+      "verbe": "a fi",
+      "traduction": "être",
+      "temps": "conjonctif",
+      "formes": {
+        "eu": [
+          "să fiu",
+          "fiu"
+        ],
+        "tu": [
+          "să fii",
+          "fii"
+        ],
+        "el / ea": [
+          "să fie",
+          "fie"
+        ],
+        "noi": [
+          "să fim",
+          "fim"
+        ],
+        "voi": [
+          "să fiți",
+          "să fiţi",
+          "fiți",
+          "fiţi"
+        ],
+        "ei / ele": [
+          "să fie",
+          "fie"
+        ]
+      },
+      "explication": "Totalement différent du présent : să fiu, să fii, să fie… (Trebuie să fii atent.)"
+    },
+    {
+      "id": "ro-conj-avea-conj",
+      "verbe": "a avea",
+      "traduction": "avoir",
+      "temps": "conjonctif",
+      "formes": {
+        "eu": [
+          "să am",
+          "am"
+        ],
+        "tu": [
+          "să ai",
+          "ai"
+        ],
+        "el / ea": [
+          "să aibă",
+          "aibă"
+        ],
+        "noi": [
+          "să avem",
+          "avem"
+        ],
+        "voi": [
+          "să aveți",
+          "să aveţi",
+          "aveți",
+          "aveţi"
+        ],
+        "ei / ele": [
+          "să aibă",
+          "aibă"
+        ]
+      },
+      "explication": "Seule la 3e personne change : să aibă."
+    },
+    {
+      "id": "ro-cle-fi",
+      "verbe": "a fi",
+      "traduction": "être",
+      "temps": "formes clés",
+      "formes": {
+        "participe passé": [
+          "fost"
+        ],
+        "conjonctif (el / ea)": [
+          "să fie",
+          "fie"
+        ],
+        "impératif (tu)": [
+          "fii"
+        ]
+      },
+      "explication": "Impératif négatif : nu fi! (ex. nu fi supărat). Passé composé = am/ai/a/am/ați/au + participe ; conjonctif = să + forme."
+    },
+    {
+      "id": "ro-cle-avea",
+      "verbe": "a avea",
+      "traduction": "avoir",
+      "temps": "formes clés",
+      "formes": {
+        "participe passé": [
+          "avut"
+        ],
+        "conjonctif (el / ea)": [
+          "să aibă",
+          "aibă"
+        ],
+        "impératif (tu)": [
+          "ai"
+        ]
+      },
+      "explication": "Conjonctif irrégulier : să aibă. Impératif : ai grijă! (fais attention). Passé composé = am/ai/a/am/ați/au + participe ; conjonctif = să + forme."
+    },
+    {
+      "id": "ro-cle-face",
+      "verbe": "a face",
+      "traduction": "faire",
+      "temps": "formes clés",
+      "formes": {
+        "participe passé": [
+          "făcut"
+        ],
+        "conjonctif (el / ea)": [
+          "să facă",
+          "facă"
+        ],
+        "impératif (tu)": [
+          "fă"
+        ]
+      },
+      "explication": "Impératif court : fă! (nu face! au négatif). Passé composé = am/ai/a/am/ați/au + participe ; conjonctif = să + forme."
+    },
+    {
+      "id": "ro-cle-putea",
+      "verbe": "a putea",
+      "traduction": "pouvoir",
+      "temps": "formes clés",
+      "formes": {
+        "participe passé": [
+          "putut"
+        ],
+        "conjonctif (el / ea)": [
+          "să poată",
+          "poată"
+        ]
+      },
+      "explication": "Conjonctif : să poată (o / oa). Passé composé = am/ai/a/am/ați/au + participe ; conjonctif = să + forme."
+    },
+    {
+      "id": "ro-cle-vrea",
+      "verbe": "a vrea",
+      "traduction": "vouloir",
+      "temps": "formes clés",
+      "formes": {
+        "participe passé": [
+          "vrut"
+        ],
+        "conjonctif (el / ea)": [
+          "să vrea",
+          "vrea"
+        ]
+      },
+      "explication": "Conjonctif 3e pers. identique au présent : să vrea. Passé composé = am/ai/a/am/ați/au + participe ; conjonctif = să + forme."
+    },
+    {
+      "id": "ro-cle-sti",
+      "verbe": "a ști",
+      "traduction": "savoir",
+      "temps": "formes clés",
+      "formes": {
+        "participe passé": [
+          "știut",
+          "ştiut"
+        ],
+        "conjonctif (el / ea)": [
+          "să știe",
+          "să ştie",
+          "știe",
+          "ştie"
+        ]
+      },
+      "explication": "Conjonctif : să știe. Passé composé = am/ai/a/am/ați/au + participe ; conjonctif = să + forme."
+    },
+    {
+      "id": "ro-cle-merge",
+      "verbe": "a merge",
+      "traduction": "aller",
+      "temps": "formes clés",
+      "formes": {
+        "participe passé": [
+          "mers"
+        ],
+        "conjonctif (el / ea)": [
+          "să meargă",
+          "meargă"
+        ],
+        "impératif (tu)": [
+          "mergi"
+        ]
+      },
+      "explication": "Participe court : mers. Conjonctif : să meargă (e / ea). Passé composé = am/ai/a/am/ați/au + participe ; conjonctif = să + forme."
+    },
+    {
+      "id": "ro-cle-veni",
+      "verbe": "a veni",
+      "traduction": "venir",
+      "temps": "formes clés",
+      "formes": {
+        "participe passé": [
+          "venit"
+        ],
+        "conjonctif (el / ea)": [
+          "să vină",
+          "vină"
+        ],
+        "impératif (tu)": [
+          "vino"
+        ]
+      },
+      "explication": "Impératif irrégulier : vino! Conjonctif : să vină. Passé composé = am/ai/a/am/ați/au + participe ; conjonctif = să + forme."
+    },
+    {
+      "id": "ro-cle-da",
+      "verbe": "a da",
+      "traduction": "donner",
+      "temps": "formes clés",
+      "formes": {
+        "participe passé": [
+          "dat"
+        ],
+        "conjonctif (el / ea)": [
+          "să dea",
+          "dea"
+        ],
+        "impératif (tu)": [
+          "dă"
+        ]
+      },
+      "explication": "Conjonctif : să dea. Dă-mi… = donne-moi… Passé composé = am/ai/a/am/ați/au + participe ; conjonctif = să + forme."
+    },
+    {
+      "id": "ro-cle-lua",
+      "verbe": "a lua",
+      "traduction": "prendre",
+      "temps": "formes clés",
+      "formes": {
+        "participe passé": [
+          "luat"
+        ],
+        "conjonctif (el / ea)": [
+          "să ia",
+          "ia"
+        ],
+        "impératif (tu)": [
+          "ia"
+        ]
+      },
+      "explication": "Conjonctif : să ia ; impératif : ia! (ia-l = prends-le). Passé composé = am/ai/a/am/ați/au + participe ; conjonctif = să + forme."
+    },
+    {
+      "id": "ro-cle-spune",
+      "verbe": "a spune",
+      "traduction": "dire",
+      "temps": "formes clés",
+      "formes": {
+        "participe passé": [
+          "spus"
+        ],
+        "conjonctif (el / ea)": [
+          "să spună",
+          "spună"
+        ],
+        "impératif (tu)": [
+          "spune"
+        ]
+      },
+      "explication": "Participe : spus. Spune-mi = dis-moi. Passé composé = am/ai/a/am/ați/au + participe ; conjonctif = să + forme."
+    },
+    {
+      "id": "ro-cle-zice",
+      "verbe": "a zice",
+      "traduction": "dire (oral)",
+      "temps": "formes clés",
+      "formes": {
+        "participe passé": [
+          "zis"
+        ],
+        "conjonctif (el / ea)": [
+          "să zică",
+          "zică"
+        ],
+        "impératif (tu)": [
+          "zi"
+        ]
+      },
+      "explication": "Impératif court : zi! (zi-mi = dis-moi). Passé composé = am/ai/a/am/ați/au + participe ; conjonctif = să + forme."
+    },
+    {
+      "id": "ro-cle-vedea",
+      "verbe": "a vedea",
+      "traduction": "voir",
+      "temps": "formes clés",
+      "formes": {
+        "participe passé": [
+          "văzut"
+        ],
+        "conjonctif (el / ea)": [
+          "să vadă",
+          "vadă"
+        ],
+        "impératif (tu)": [
+          "vezi"
+        ]
+      },
+      "explication": "Participe : văzut. Conjonctif : să vadă. Passé composé = am/ai/a/am/ați/au + participe ; conjonctif = să + forme."
+    },
+    {
+      "id": "ro-cle-sta",
+      "verbe": "a sta",
+      "traduction": "rester, se tenir",
+      "temps": "formes clés",
+      "formes": {
+        "participe passé": [
+          "stat"
+        ],
+        "conjonctif (el / ea)": [
+          "să stea",
+          "stea"
+        ],
+        "impératif (tu)": [
+          "stai"
+        ]
+      },
+      "explication": "Conjonctif : să stea. Stai! = attends ! Passé composé = am/ai/a/am/ați/au + participe ; conjonctif = să + forme."
+    },
+    {
+      "id": "ro-cle-manca",
+      "verbe": "a mânca",
+      "traduction": "manger",
+      "temps": "formes clés",
+      "formes": {
+        "participe passé": [
+          "mâncat"
+        ],
+        "conjonctif (el / ea)": [
+          "să mănânce",
+          "mănânce"
+        ],
+        "impératif (tu)": [
+          "mănâncă"
+        ]
+      },
+      "explication": "Conjonctif : să mănânce. Passé composé = am/ai/a/am/ați/au + participe ; conjonctif = să + forme."
+    },
+    {
+      "id": "ro-cle-bea",
+      "verbe": "a bea",
+      "traduction": "boire",
+      "temps": "formes clés",
+      "formes": {
+        "participe passé": [
+          "băut"
+        ],
+        "conjonctif (el / ea)": [
+          "să bea",
+          "bea"
+        ],
+        "impératif (tu)": [
+          "bea"
+        ]
+      },
+      "explication": "Participe : băut (am băut). Passé composé = am/ai/a/am/ați/au + participe ; conjonctif = să + forme."
+    },
+    {
+      "id": "ro-cle-pleca",
+      "verbe": "a pleca",
+      "traduction": "partir",
+      "temps": "formes clés",
+      "formes": {
+        "participe passé": [
+          "plecat"
+        ],
+        "conjonctif (el / ea)": [
+          "să plece",
+          "plece"
+        ],
+        "impératif (tu)": [
+          "pleacă"
+        ]
+      },
+      "explication": "Conjonctif : să plece (pas *să pleacă). Passé composé = am/ai/a/am/ați/au + participe ; conjonctif = să + forme."
+    },
+    {
+      "id": "ro-cle-duce",
+      "verbe": "a duce",
+      "traduction": "porter, emmener",
+      "temps": "formes clés",
+      "formes": {
+        "participe passé": [
+          "dus"
+        ],
+        "conjonctif (el / ea)": [
+          "să ducă",
+          "ducă"
+        ],
+        "impératif (tu)": [
+          "du"
+        ]
+      },
+      "explication": "Impératif court : du! (du-te! = va-t'en / vas-y). Passé composé = am/ai/a/am/ați/au + participe ; conjonctif = să + forme."
+    },
+    {
+      "id": "ro-cle-aduce",
+      "verbe": "a aduce",
+      "traduction": "apporter",
+      "temps": "formes clés",
+      "formes": {
+        "participe passé": [
+          "adus"
+        ],
+        "conjonctif (el / ea)": [
+          "să aducă",
+          "aducă"
+        ],
+        "impératif (tu)": [
+          "adu"
+        ]
+      },
+      "explication": "Impératif court : adu! (adu-mi = apporte-moi). Passé composé = am/ai/a/am/ați/au + participe ; conjonctif = să + forme."
+    },
+    {
+      "id": "ro-cle-pune",
+      "verbe": "a pune",
+      "traduction": "mettre",
+      "temps": "formes clés",
+      "formes": {
+        "participe passé": [
+          "pus"
+        ],
+        "conjonctif (el / ea)": [
+          "să pună",
+          "pună"
+        ],
+        "impératif (tu)": [
+          "pune"
+        ]
+      },
+      "explication": "Participe : pus. Passé composé = am/ai/a/am/ați/au + participe ; conjonctif = să + forme."
+    },
+    {
+      "id": "ro-cle-scrie",
+      "verbe": "a scrie",
+      "traduction": "écrire",
+      "temps": "formes clés",
+      "formes": {
+        "participe passé": [
+          "scris"
+        ],
+        "conjonctif (el / ea)": [
+          "să scrie",
+          "scrie"
+        ],
+        "impératif (tu)": [
+          "scrie"
+        ]
+      },
+      "explication": "Participe : scris. Conjonctif = présent : să scrie. Passé composé = am/ai/a/am/ați/au + participe ; conjonctif = să + forme."
+    },
+    {
+      "id": "ro-cle-ramane",
+      "verbe": "a rămâne",
+      "traduction": "rester",
+      "temps": "formes clés",
+      "formes": {
+        "participe passé": [
+          "rămas"
+        ],
+        "conjonctif (el / ea)": [
+          "să rămână",
+          "rămână"
+        ],
+        "impératif (tu)": [
+          "rămâi"
+        ]
+      },
+      "explication": "Participe : rămas ; impératif : rămâi! Passé composé = am/ai/a/am/ați/au + participe ; conjonctif = să + forme."
+    },
+    {
+      "id": "ro-cle-intelege",
+      "verbe": "a înțelege",
+      "traduction": "comprendre",
+      "temps": "formes clés",
+      "formes": {
+        "participe passé": [
+          "înțeles",
+          "înţeles"
+        ],
+        "conjonctif (el / ea)": [
+          "să înțeleagă",
+          "să înţeleagă",
+          "înțeleagă",
+          "înţeleagă"
+        ]
+      },
+      "explication": "Participe : înțeles ; conjonctif : să înțeleagă. Passé composé = am/ai/a/am/ați/au + participe ; conjonctif = să + forme."
+    },
+    {
+      "id": "ro-cle-crede",
+      "verbe": "a crede",
+      "traduction": "croire",
+      "temps": "formes clés",
+      "formes": {
+        "participe passé": [
+          "crezut"
+        ],
+        "conjonctif (el / ea)": [
+          "să creadă",
+          "creadă"
+        ]
+      },
+      "explication": "Participe : crezut ; conjonctif : să creadă. Passé composé = am/ai/a/am/ați/au + participe ; conjonctif = să + forme."
+    },
+    {
+      "id": "ro-cle-cere",
+      "verbe": "a cere",
+      "traduction": "demander (réclamer)",
+      "temps": "formes clés",
+      "formes": {
+        "participe passé": [
+          "cerut"
+        ],
+        "conjonctif (el / ea)": [
+          "să ceară",
+          "ceară"
+        ],
+        "impératif (tu)": [
+          "cere"
+        ]
+      },
+      "explication": "Conjonctif : să ceară (e / ea). Passé composé = am/ai/a/am/ați/au + participe ; conjonctif = să + forme."
+    },
+    {
+      "id": "ro-cle-deschide",
+      "verbe": "a deschide",
+      "traduction": "ouvrir",
+      "temps": "formes clés",
+      "formes": {
+        "participe passé": [
+          "deschis"
+        ],
+        "conjonctif (el / ea)": [
+          "să deschidă",
+          "deschidă"
+        ],
+        "impératif (tu)": [
+          "deschide"
+        ]
+      },
+      "explication": "Participe : deschis (aussi « ouvert »). Passé composé = am/ai/a/am/ați/au + participe ; conjonctif = să + forme."
+    },
+    {
+      "id": "ro-cle-iesi",
+      "verbe": "a ieși",
+      "traduction": "sortir",
+      "temps": "formes clés",
+      "formes": {
+        "participe passé": [
+          "ieșit",
+          "ieşit"
+        ],
+        "conjonctif (el / ea)": [
+          "să iasă",
+          "iasă"
+        ],
+        "impératif (tu)": [
+          "ieși",
+          "ieşi"
+        ]
+      },
+      "explication": "Conjonctif irrégulier : să iasă. Passé composé = am/ai/a/am/ați/au + participe ; conjonctif = să + forme."
+    },
+    {
+      "id": "ro-cle-tine",
+      "verbe": "a ține",
+      "traduction": "tenir",
+      "temps": "formes clés",
+      "formes": {
+        "participe passé": [
+          "ținut",
+          "ţinut"
+        ],
+        "conjonctif (el / ea)": [
+          "să țină",
+          "să ţină",
+          "țină",
+          "ţină"
+        ],
+        "impératif (tu)": [
+          "ține",
+          "ţine"
+        ]
+      },
+      "explication": "Ține-mă la curent = tiens-moi au courant. Passé composé = am/ai/a/am/ați/au + participe ; conjonctif = să + forme."
+    },
+    {
+      "id": "ro-cle-incepe",
+      "verbe": "a începe",
+      "traduction": "commencer",
+      "temps": "formes clés",
+      "formes": {
+        "participe passé": [
+          "început"
+        ],
+        "conjonctif (el / ea)": [
+          "să înceapă",
+          "înceapă"
+        ],
+        "impératif (tu)": [
+          "începe"
+        ]
+      },
+      "explication": "Conjonctif : să înceapă (e / ea). Passé composé = am/ai/a/am/ați/au + participe ; conjonctif = să + forme."
+    },
+    {
+      "id": "ro-cle-trimite",
+      "verbe": "a trimite",
+      "traduction": "envoyer",
+      "temps": "formes clés",
+      "formes": {
+        "participe passé": [
+          "trimis"
+        ],
+        "conjonctif (el / ea)": [
+          "să trimită",
+          "trimită"
+        ],
+        "impératif (tu)": [
+          "trimite"
+        ]
+      },
+      "explication": "Participe : trimis. Passé composé = am/ai/a/am/ați/au + participe ; conjonctif = să + forme."
+    },
+    {
+      "id": "ro-cle-lucra",
+      "verbe": "a lucra",
+      "traduction": "travailler",
+      "temps": "formes clés",
+      "formes": {
+        "participe passé": [
+          "lucrat"
+        ],
+        "conjonctif (el / ea)": [
+          "să lucreze",
+          "lucreze"
+        ],
+        "impératif (tu)": [
+          "lucrează"
+        ]
+      },
+      "explication": "Verbes en -ez : conjonctif 3e en -eze (să lucreze). Passé composé = am/ai/a/am/ați/au + participe ; conjonctif = să + forme."
+    },
+    {
+      "id": "ro-cle-vorbi",
+      "verbe": "a vorbi",
+      "traduction": "parler",
+      "temps": "formes clés",
+      "formes": {
+        "participe passé": [
+          "vorbit"
+        ],
+        "conjonctif (el / ea)": [
+          "să vorbească",
+          "vorbească"
+        ],
+        "impératif (tu)": [
+          "vorbește",
+          "vorbeşte"
+        ]
+      },
+      "explication": "Verbes en -esc : conjonctif 3e en -ească (să vorbească). Passé composé = am/ai/a/am/ați/au + participe ; conjonctif = să + forme."
+    }
+  ]
+}

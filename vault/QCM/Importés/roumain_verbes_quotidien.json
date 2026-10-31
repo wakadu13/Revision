@@ -1,0 +1,493 @@
+{
+  "langue": "Roumain",
+  "caracteres_speciaux": [
+    "ă",
+    "â",
+    "î",
+    "ș",
+    "ț",
+    "Ă",
+    "Â",
+    "Î",
+    "Ș",
+    "Ț"
+  ],
+  "titre": "Roumain — vocabulaire : verbes du quotidien",
+  "description": "Verbes très courants à savoir PRODUIRE, surtout les pronominaux (a se descurca, a-și da seama…).",
+  "particules_optionnelles": [
+    "a",
+    "un",
+    "o"
+  ],
+  "vocabulaire": [
+    {
+      "id": "ro-verb-001",
+      "mot": "a reuși",
+      "traductions": [
+        "réussir (à)"
+      ],
+      "exemple": "Am [reușit|reuşit] să găsesc un loc de parcare.",
+      "exemple_traduction": "J'ai réussi à trouver une place de parking.",
+      "note": "a reuși să + conjonctif : reușesc să vin.",
+      "variantes": [
+        "a reuşi"
+      ]
+    },
+    {
+      "id": "ro-verb-002",
+      "mot": "a se descurca",
+      "traductions": [
+        "se débrouiller"
+      ],
+      "exemple": "Nu-ți face griji, mă [descurc] singur.",
+      "exemple_traduction": "Ne t'inquiète pas, je me débrouille seul.",
+      "note": "mă descurc, te descurci, se descurcă. « Descurcă-te! » = débrouille-toi !"
+    },
+    {
+      "id": "ro-verb-003",
+      "mot": "a-și da seama",
+      "traductions": [
+        "se rendre compte"
+      ],
+      "exemple": "Abia acum îmi [dau] seama de greșeală.",
+      "exemple_traduction": "C'est seulement maintenant que je me rends compte de l'erreur.",
+      "note": "Pronom au datif : îmi dau seama, îți dai seama, își dă seama. « Îți dai seama? » = tu te rends compte ?",
+      "variantes": [
+        "a-şi da seama"
+      ]
+    },
+    {
+      "id": "ro-verb-004",
+      "mot": "a se întâmpla",
+      "traductions": [
+        "se passer (événement)",
+        "arriver (événement)"
+      ],
+      "exemple": "Ce s-a [întâmplat] aici?",
+      "exemple_traduction": "Que s'est-il passé ici ?",
+      "note": "Ce s-a întâmplat? = qu'est-ce qui s'est passé ? Ce se întâmplă? = qu'est-ce qui se passe ?"
+    },
+    {
+      "id": "ro-verb-005",
+      "mot": "a încerca",
+      "traductions": [
+        "essayer"
+      ],
+      "exemple": "Am [încercat] să te sun de trei ori.",
+      "exemple_traduction": "J'ai essayé de t'appeler trois fois.",
+      "note": "Alternance e/ea : încerc, încerci, încearcă."
+    },
+    {
+      "id": "ro-verb-006",
+      "mot": "a avea nevoie de",
+      "traductions": [
+        "avoir besoin de"
+      ],
+      "exemple": "[Am] nevoie de ajutorul tău.",
+      "exemple_traduction": "J'ai besoin de ton aide.",
+      "note": "Équivalent familier : îmi trebuie (« Îmi trebuie o pungă »)."
+    },
+    {
+      "id": "ro-verb-007",
+      "mot": "a se grăbi",
+      "traductions": [
+        "se dépêcher"
+      ],
+      "exemple": "Hai, [grăbește-te|grăbeşte-te], pierdem trenul!",
+      "exemple_traduction": "Allez, dépêche-toi, on va rater le train !",
+      "note": "Grăbește-te! (tu) / Grăbiți-vă! (vous). Mă grăbesc = je suis pressé."
+    },
+    {
+      "id": "ro-verb-008",
+      "mot": "a aștepta",
+      "traductions": [
+        "attendre"
+      ],
+      "exemple": "Te [aștept|aştept] în fața blocului.",
+      "exemple_traduction": "Je t'attends devant l'immeuble.",
+      "note": "aștept, aștepți, așteaptă. Bloc = immeuble d'habitation.",
+      "variantes": [
+        "a aştepta"
+      ]
+    },
+    {
+      "id": "ro-verb-009",
+      "mot": "a căuta",
+      "traductions": [
+        "chercher"
+      ],
+      "exemple": "[Caut] o farmacie deschisă.",
+      "exemple_traduction": "Je cherche une pharmacie ouverte.",
+      "note": "caut, cauți, caută, căutăm, căutați, caută."
+    },
+    {
+      "id": "ro-verb-010",
+      "mot": "a găsi",
+      "traductions": [
+        "trouver"
+      ],
+      "exemple": "Nu-mi [găsesc] cheile nicăieri.",
+      "exemple_traduction": "Je ne trouve mes clés nulle part.",
+      "note": "Verbe en -esc : găsesc, găsești, găsește."
+    },
+    {
+      "id": "ro-verb-011",
+      "mot": "a pierde",
+      "traductions": [
+        "perdre"
+      ],
+      "exemple": "Mi-am [pierdut] portofelul în autobuz.",
+      "exemple_traduction": "J'ai perdu mon portefeuille dans le bus.",
+      "note": "Participe : pierdut. A pierde trenul = rater le train."
+    },
+    {
+      "id": "ro-verb-012",
+      "mot": "a uita",
+      "traductions": [
+        "oublier"
+      ],
+      "exemple": "Am [uitat] să cumpăr pâine.",
+      "exemple_traduction": "J'ai oublié d'acheter du pain.",
+      "note": "a uita să + conjonctif (jamais « de a »)."
+    },
+    {
+      "id": "ro-verb-013",
+      "mot": "a-și aminti",
+      "traductions": [
+        "se souvenir (de)"
+      ],
+      "exemple": "Nu-mi [amintesc] cum se numește.",
+      "exemple_traduction": "Je ne me souviens pas comment il s'appelle.",
+      "note": "Très courant aussi : a-și aduce aminte (« nu-mi aduc aminte »).",
+      "variantes": [
+        "a-şi aminti",
+        "a-și aduce aminte",
+        "a-şi aduce aminte"
+      ]
+    },
+    {
+      "id": "ro-verb-014",
+      "mot": "a se simți",
+      "traductions": [
+        "se sentir"
+      ],
+      "exemple": "Nu mă [simt] prea bine azi.",
+      "exemple_traduction": "Je ne me sens pas très bien aujourd'hui.",
+      "note": "Mă simt bine / rău. Participe : simțit.",
+      "variantes": [
+        "a se simţi"
+      ]
+    },
+    {
+      "id": "ro-verb-015",
+      "mot": "a se obișnui (cu)",
+      "traductions": [
+        "s'habituer (à)"
+      ],
+      "exemple": "M-am [obișnuit|obişnuit] cu frigul de aici.",
+      "exemple_traduction": "Je me suis habitué au froid d'ici.",
+      "note": "Préposition cu : m-am obișnuit cu…",
+      "variantes": [
+        "a se obişnui (cu)",
+        "a se obișnui",
+        "a se obişnui"
+      ]
+    },
+    {
+      "id": "ro-verb-016",
+      "mot": "a se plânge (de)",
+      "traductions": [
+        "se plaindre (de)"
+      ],
+      "exemple": "Vecinul se [plânge] mereu de zgomot.",
+      "exemple_traduction": "Le voisin se plaint toujours du bruit.",
+      "note": "Participe : plâns (s-a plâns).",
+      "variantes": [
+        "a se plânge"
+      ]
+    },
+    {
+      "id": "ro-verb-017",
+      "mot": "a se supăra (pe)",
+      "traductions": [
+        "se fâcher (contre)"
+      ],
+      "exemple": "S-a [supărat] pe mine fără motiv.",
+      "exemple_traduction": "Il s'est fâché contre moi sans raison.",
+      "note": "« Nu vă supărați… » = excusez-moi (pour aborder quelqu'un).",
+      "variantes": [
+        "a se supăra"
+      ]
+    },
+    {
+      "id": "ro-verb-018",
+      "mot": "a se muta",
+      "traductions": [
+        "déménager"
+      ],
+      "exemple": "Ne-am [mutat] la Cluj anul trecut.",
+      "exemple_traduction": "Nous avons déménagé à Cluj l'an dernier.",
+      "note": "a muta (sans se) = déplacer quelque chose."
+    },
+    {
+      "id": "ro-verb-019",
+      "mot": "a închiria",
+      "traductions": [
+        "louer"
+      ],
+      "exemple": "Vrem să [închiriem] o mașină pentru weekend.",
+      "exemple_traduction": "Nous voulons louer une voiture pour le week-end.",
+      "note": "închiriez, închiriezi, închiriază. Chirie = loyer."
+    },
+    {
+      "id": "ro-verb-020",
+      "mot": "a plăti",
+      "traductions": [
+        "payer"
+      ],
+      "exemple": "Pot să [plătesc] cu cardul?",
+      "exemple_traduction": "Je peux payer par carte ?",
+      "note": "plătesc, plătești, plătește. « Plătesc eu! » = c'est moi qui paie !"
+    },
+    {
+      "id": "ro-verb-021",
+      "mot": "a costa",
+      "traductions": [
+        "coûter"
+      ],
+      "exemple": "Cât [costă] un bilet până la Brașov?",
+      "exemple_traduction": "Combien coûte un billet jusqu'à Brașov ?",
+      "note": "Cât costă? = combien ça coûte ?"
+    },
+    {
+      "id": "ro-verb-022",
+      "mot": "a schimba",
+      "traductions": [
+        "changer"
+      ],
+      "exemple": "Trebuie să [schimb] trenul la Ploiești?",
+      "exemple_traduction": "Je dois changer de train à Ploiești ?",
+      "note": "a schimba bani = changer de l'argent ; a se schimba = se changer, changer (devenir différent)."
+    },
+    {
+      "id": "ro-verb-023",
+      "mot": "a întârzia",
+      "traductions": [
+        "être en retard"
+      ],
+      "exemple": "Scuze, am [întârziat] din cauza traficului.",
+      "exemple_traduction": "Désolé, je suis en retard à cause des bouchons.",
+      "note": "Un seul verbe, sans « a fi ». Présent : întârzii, întârzii, întârzie."
+    },
+    {
+      "id": "ro-verb-024",
+      "mot": "a se întoarce",
+      "traductions": [
+        "rentrer",
+        "revenir"
+      ],
+      "exemple": "Mă [întorc] acasă pe la șase.",
+      "exemple_traduction": "Je rentre à la maison vers six heures.",
+      "note": "Participe : întors (m-am întors)."
+    },
+    {
+      "id": "ro-verb-025",
+      "mot": "a rămâne",
+      "traductions": [
+        "rester"
+      ],
+      "exemple": "[Rămânem] la voi încă o noapte?",
+      "exemple_traduction": "On reste chez vous encore une nuit ?",
+      "note": "rămân, rămâi, rămâne. Participe : rămas."
+    },
+    {
+      "id": "ro-verb-026",
+      "mot": "a trimite",
+      "traductions": [
+        "envoyer"
+      ],
+      "exemple": "Îți [trimit] adresa pe WhatsApp.",
+      "exemple_traduction": "Je t'envoie l'adresse sur WhatsApp.",
+      "note": "Participe : trimis."
+    },
+    {
+      "id": "ro-verb-027",
+      "mot": "a suna",
+      "traductions": [
+        "appeler (au téléphone)",
+        "sonner"
+      ],
+      "exemple": "Te [sun] mâine dimineață.",
+      "exemple_traduction": "Je t'appelle demain matin.",
+      "note": "S'appeler (nom) = a se numi / a-l chema : mă numesc, mă cheamă."
+    },
+    {
+      "id": "ro-verb-028",
+      "mot": "a se înțelege (cu)",
+      "traductions": [
+        "s'entendre (avec)"
+      ],
+      "exemple": "Mă [înțeleg|înţeleg] foarte bine cu colegii.",
+      "exemple_traduction": "Je m'entends très bien avec mes collègues.",
+      "note": "a înțelege (sans se) = comprendre. « Ne-am înțeles? » = on est d'accord ?",
+      "variantes": [
+        "a se înţelege (cu)",
+        "a se înțelege",
+        "a se înţelege"
+      ]
+    },
+    {
+      "id": "ro-verb-029",
+      "mot": "a se ocupa (de)",
+      "traductions": [
+        "s'occuper (de)"
+      ],
+      "exemple": "Mă [ocup] eu de bilete.",
+      "exemple_traduction": "Je m'occupe des billets.",
+      "note": "« Cu ce vă ocupați? » = que faites-vous dans la vie ?",
+      "variantes": [
+        "a se ocupa"
+      ]
+    },
+    {
+      "id": "ro-verb-030",
+      "mot": "a se hotărî",
+      "traductions": [
+        "se décider"
+      ],
+      "exemple": "Te-ai [hotărât] ce comanzi?",
+      "exemple_traduction": "Tu as décidé ce que tu commandes ?",
+      "note": "mă hotărăsc, te hotărăști. Synonyme : a se decide."
+    },
+    {
+      "id": "ro-verb-031",
+      "mot": "a recomanda",
+      "traductions": [
+        "recommander"
+      ],
+      "exemple": "Ce ne [recomandați|recomandaţi] din meniu?",
+      "exemple_traduction": "Que nous recommandez-vous sur la carte ?",
+      "note": "Présent : recomand, recomanzi, recomandă."
+    },
+    {
+      "id": "ro-verb-032",
+      "mot": "a comanda",
+      "traductions": [
+        "commander"
+      ],
+      "exemple": "Aș vrea să [comand] o ciorbă de burtă.",
+      "exemple_traduction": "Je voudrais commander une soupe de tripes.",
+      "note": "comand, comanzi, comandă (alternance d/z)."
+    },
+    {
+      "id": "ro-verb-033",
+      "mot": "a împrumuta",
+      "traductions": [
+        "prêter",
+        "emprunter"
+      ],
+      "exemple": "Îmi [împrumuți|împrumuţi] umbrela ta?",
+      "exemple_traduction": "Tu me prêtes ton parapluie ?",
+      "note": "Un seul verbe : a împrumuta ceva cuiva (prêter) / de la cineva (emprunter)."
+    },
+    {
+      "id": "ro-verb-034",
+      "mot": "a datora",
+      "traductions": [
+        "devoir (une somme)"
+      ],
+      "exemple": "Cât vă [datorez]?",
+      "exemple_traduction": "Combien je vous dois ?",
+      "note": "Pour l'obligation, on dit trebuie să : je dois partir = trebuie să plec."
+    },
+    {
+      "id": "ro-verb-035",
+      "mot": "a se bucura",
+      "traductions": [
+        "se réjouir",
+        "être content"
+      ],
+      "exemple": "Mă [bucur] să te cunosc!",
+      "exemple_traduction": "Ravi de te connaître !",
+      "note": "a se bucura de = profiter de (« Bucură-te de vacanță! »)."
+    },
+    {
+      "id": "ro-verb-036",
+      "mot": "a-i plăcea",
+      "traductions": [
+        "plaire",
+        "aimer bien"
+      ],
+      "exemple": "Îmi [place] mult orașul ăsta.",
+      "exemple_traduction": "J'aime beaucoup cette ville.",
+      "note": "Construction inversée : la chose aimée est le sujet → îmi place (sing.), îmi plac (plur.)."
+    },
+    {
+      "id": "ro-verb-037",
+      "mot": "a-i fi dor (de)",
+      "traductions": [
+        "manquer (à quelqu'un)"
+      ],
+      "exemple": "Mi-e [dor] de familia mea.",
+      "exemple_traduction": "Ma famille me manque.",
+      "note": "Mi-e dor de tine = tu me manques."
+    },
+    {
+      "id": "ro-verb-038",
+      "mot": "a se certa",
+      "traductions": [
+        "se disputer"
+      ],
+      "exemple": "Iar s-au [certat] pe bani.",
+      "exemple_traduction": "Ils se sont encore disputés pour de l'argent.",
+      "note": "Ceartă = dispute."
+    },
+    {
+      "id": "ro-verb-039",
+      "mot": "a se baza (pe)",
+      "traductions": [
+        "compter sur"
+      ],
+      "exemple": "Mă [bazez] pe tine!",
+      "exemple_traduction": "Je compte sur toi !",
+      "note": "mă bazez, te bazezi, se bazează.",
+      "variantes": [
+        "a se baza"
+      ]
+    },
+    {
+      "id": "ro-verb-040",
+      "mot": "a merita",
+      "traductions": [
+        "valoir la peine",
+        "mériter"
+      ],
+      "exemple": "[Merită] să vizitezi Sibiul.",
+      "exemple_traduction": "Ça vaut la peine de visiter Sibiu.",
+      "note": "« Merită! » = ça vaut le coup !"
+    },
+    {
+      "id": "ro-verb-041",
+      "mot": "a se pricepe (la)",
+      "traductions": [
+        "s'y connaître (en)"
+      ],
+      "exemple": "Te [pricepi] la mașini?",
+      "exemple_traduction": "Tu t'y connais en voitures ?",
+      "note": "Participe : priceput. Un om priceput = quelqu'un de doué.",
+      "variantes": [
+        "a se pricepe"
+      ]
+    },
+    {
+      "id": "ro-verb-042",
+      "mot": "a ajuta",
+      "traductions": [
+        "aider"
+      ],
+      "exemple": "Mă puteți [ajuta], vă rog?",
+      "exemple_traduction": "Vous pouvez m'aider, s'il vous plaît ?",
+      "note": "ajut, ajuți, ajută. « Ajutor! » = au secours !"
+    }
+  ]
+}

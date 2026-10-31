@@ -1,0 +1,621 @@
+{
+  "titre": "Modulations numériques",
+  "description": "CLEAE2, cours 2 : nécessité de la modulation, ASK, modulation I/Q, PSK, QAM et comparaison des performances.",
+  "questions": [
+    {
+      "id": "clea2-001",
+      "type": "FLASHCARD",
+      "question": "Qu'appelle-t-on une transmission en bande de base ?",
+      "verso": "Une transmission directe du signal, dont le spectre démarre à la fréquence zéro.",
+      "explication": "Elle impose un canal dont la bande passante est située en basses fréquences."
+    },
+    {
+      "id": "clea2-002",
+      "type": "QCR",
+      "question": "Pourquoi ne transmet-on pas toujours le signal directement en bande de base ?",
+      "choix": [
+        "La ressource spectrale est limitée : risque de brouillage en basses fréquences",
+        "La bande passante des canaux est généralement en hautes fréquences",
+        "Les répéteurs (transformateurs) ne laissent pas passer la composante continue",
+        "La bande de base supprime le bruit"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "A, B, C : vrais, ce sont les trois raisons du cours (ressource spectrale, adaptation au support, longue distance). D : faux, la bande de base ne supprime pas le bruit."
+    },
+    {
+      "id": "clea2-003",
+      "type": "FLASHCARD",
+      "question": "Quel est le but de la modulation ?",
+      "verso": "Transposer le spectre du signal contenant l'information autour d'une fréquence porteuse f0.",
+      "explication": "On fait varier l'amplitude, la fréquence ou la phase de la porteuse en fonction du signal utile m(t)."
+    },
+    {
+      "id": "clea2-004",
+      "type": "TROU",
+      "question": "L'opération qui permet de récupérer le signal d'origine m(t) à partir du signal modulé s'appelle la ___.",
+      "reponses_texte": [
+        "demodulation",
+        "démodulation"
+      ],
+      "explication": "Elle est réalisée au récepteur."
+    },
+    {
+      "id": "clea2-005",
+      "type": "QCM",
+      "question": "On multiplie une porteuse cos(2πf0t) par un signal cos(2πft). Quelles fréquences obtient-on ?",
+      "choix": [
+        "f0 + f et f0 − f",
+        "2f0 et 2f",
+        "f0 × f",
+        "f0 et f"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "cos(a)·cos(b) = ½[cos(a+b) + cos(a−b)] : on obtient f0 + f et f0 − f, le spectre est transposé autour de f0."
+    },
+    {
+      "id": "clea2-006",
+      "type": "QCR",
+      "question": "De quoi dépend le choix de la fréquence porteuse ?",
+      "choix": [
+        "Du support de transmission",
+        "Des bandes de fréquences disponibles",
+        "De la largeur de bande du signal à transmettre",
+        "Du nombre de niveaux de quantification"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "A, B, C : vrais. D : faux, il concerne la numérisation. Le choix de la porteuse influe ensuite sur la taille de l'antenne, l'atténuation et la distorsion du canal."
+    },
+    {
+      "id": "clea2-007",
+      "type": "QCM",
+      "question": "Quelle est la fréquence porteuse de la TNT (UHF) indiquée dans le cours ?",
+      "choix": [
+        "2,4 GHz",
+        "470 à 830 MHz",
+        "230 THz",
+        "900 MHz"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "TNT : 470-830 MHz, B = 8 MHz. 900 MHz correspond au GSM, 2,4 GHz au WiFi, 230 THz à la fibre optique."
+    },
+    {
+      "id": "clea2-008",
+      "type": "FLASHCARD",
+      "question": "Quelle est la fréquence porteuse en fibre optique, et à quelle longueur d'onde correspond-elle ?",
+      "verso": "f ≈ 230 THz, soit λ = 1 300 nm.",
+      "explication": "Bande disponible : environ 25 GHz."
+    },
+    {
+      "id": "clea2-009",
+      "type": "FLASHCARD",
+      "question": "Quelles fréquences porteuses utilise le WiFi ?",
+      "verso": "1,8 GHz ; 2,4 GHz ; 5,2 GHz (λ ≈ 10 cm).",
+      "explication": "Bande : quelques dizaines de MHz."
+    },
+    {
+      "id": "clea2-010",
+      "type": "QCM",
+      "question": "Pourquoi la modulation de fréquence (FM) est-elle peu sensible aux perturbations électromagnétiques ?",
+      "choix": [
+        "Parce qu'elle n'a pas de composante continue",
+        "Parce qu'elle utilise une porteuse plus élevée",
+        "Parce que les perturbations modifient l'amplitude du signal mais pas sa fréquence",
+        "Parce qu'elle a une bande plus étroite"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Les perturbations agissent sur l'amplitude : l'AM y est très sensible, la FM non."
+    },
+    {
+      "id": "clea2-011",
+      "type": "TROU",
+      "question": "En modulation d'amplitude analogique, le signal source constitue l'___ de la porteuse.",
+      "reponses_texte": [
+        "enveloppe"
+      ],
+      "explication": "s(t) = A(m(t))·cos(2πf0t + φ0). C'est pourquoi l'AM est sensible aux perturbations qui modifient l'amplitude."
+    },
+    {
+      "id": "clea2-012",
+      "type": "FLASHCARD",
+      "question": "Pourquoi modulation de phase et modulation de fréquence sont-elles liées ?",
+      "verso": "Parce que la fréquence est liée à la phase : modifier la phase modifie la fréquence.",
+      "explication": "Moduler en phase par un sinus produit le même résultat que moduler en fréquence par un sinus."
+    },
+    {
+      "id": "clea2-013",
+      "type": "QCM",
+      "question": "Qu'est-ce qu'une modulation à bande étroite ?",
+      "choix": [
+        "Une modulation sans porteuse",
+        "Une modulation multi-porteuses",
+        "Une modulation où B >> f0",
+        "Une modulation où B << f0"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "B << f0 : on transmet dans la bande de cohérence du canal, où le module de sa fonction de transfert est considéré constant."
+    },
+    {
+      "id": "clea2-014",
+      "type": "TROU",
+      "question": "La bande sur laquelle le module de la fonction de transfert du canal est considéré comme constant s'appelle la bande de ___.",
+      "reponses_texte": [
+        "coherence",
+        "cohérence"
+      ],
+      "explication": "Une modulation à bande étroite (B << f0) transmet dans cette bande."
+    },
+    {
+      "id": "clea2-015",
+      "type": "QCR",
+      "question": "Quelles modulations numériques sont étudiées dans ce cours (linéaires, bande étroite) ?",
+      "choix": [
+        "M-ASK (MDA-M)",
+        "M-PSK (MDP-M)",
+        "M-QAM (MAQ-M)",
+        "OFDM multi-porteuses",
+        "FSK"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "A, B, C : vrais. D : faux, le cours se limite à une porteuse unique. E : faux, la FSK n'est pas une modulation linéaire étudiée ici."
+    },
+    {
+      "id": "clea2-016",
+      "type": "FLASHCARD",
+      "question": "Que signifie le sigle MDA-M (M-ASK) ?",
+      "verso": "Modulation d'amplitude à M états (Amplitude Shift Keying).",
+      "explication": "Porteuse unique simple."
+    },
+    {
+      "id": "clea2-017",
+      "type": "FLASHCARD",
+      "question": "Que signifie le sigle MAQ-M (M-QAM) ?",
+      "verso": "Modulation d'amplitude en quadrature à M états (Quadrature Amplitude Modulation).",
+      "explication": "Porteuse unique composite (voies en phase et en quadrature)."
+    },
+    {
+      "id": "clea2-018",
+      "type": "QCM",
+      "question": "Quel est l'alphabet d'une 4-ASK ?",
+      "choix": [
+        "{−3α ; −α ; α ; 3α}",
+        "{−4α ; −2α ; 2α ; 4α}",
+        "{−2α ; −α ; α ; 2α}",
+        "{0 ; α ; 2α ; 3α}"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Alphabet général : {−(M−1)α ; … ; −α ; α ; … ; (M−1)α}. Pour M = 4 : {−3α ; −α ; α ; 3α}, écart constant 2α."
+    },
+    {
+      "id": "clea2-019",
+      "type": "TROU",
+      "question": "La modulation « tout ou rien », d'alphabet {0 ; α}, s'appelle la modulation ___ (sigle).",
+      "reponses_texte": [
+        "OOK",
+        "On Off Keying",
+        "on-off keying"
+      ],
+      "explication": "C'est l'ASK la plus employée : code Morse radio, communications optiques."
+    },
+    {
+      "id": "clea2-020",
+      "type": "QCM",
+      "question": "Quel est l'alphabet de la 2-ASK « standard » ?",
+      "choix": [
+        "{0 ; α}",
+        "{−α ; α}",
+        "{−α ; 0 ; α}",
+        "{α ; 2α}"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "2-ASK standard : {−α ; α}. Le piège {0 ; α} est l'OOK."
+    },
+    {
+      "id": "clea2-021",
+      "type": "FLASHCARD",
+      "question": "Avantage et inconvénient de la 2-ASK standard ?",
+      "verso": "Peu coûteuse, mais sensible aux distorsions et au bruit atmosphérique.",
+      "explication": "Elle est utilisée sur fibre optique."
+    },
+    {
+      "id": "clea2-022",
+      "type": "QCM",
+      "question": "En 4-ASK avec codage de Gray (00 → −3 ; 01 → −1 ; 11 → +1 ; 10 → +3), quelle amplitude correspond à 10 ?",
+      "choix": [
+        "−1",
+        "+1",
+        "+3",
+        "−3"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "10 → +3. Avec le codage de Gray, deux amplitudes voisines ne diffèrent que d'un bit."
+    },
+    {
+      "id": "clea2-023",
+      "type": "FLASHCARD",
+      "question": "En démodulation ASK, par quoi multiplie-t-on le signal reçu r(t) ?",
+      "verso": "Par 2cos(2πf0t), puis on applique un filtre passe-bas.",
+      "explication": "d(t) = m(t) + m(t)cos(4πf0t) + 2b(t)cos(2πf0t) : le passe-bas élimine la composante à 2f0. Un filtre passe-bande en entrée élimine d'abord le bruit hors bande."
+    },
+    {
+      "id": "clea2-024",
+      "type": "TROU",
+      "question": "Après multiplication par 2cos(2πf0t), le démodulateur ASK élimine la composante à 2f0 avec un filtre passe-___.",
+      "reponses_texte": [
+        "bas"
+      ],
+      "explication": "On garde m(t), qui est ensuite traité par le récepteur optimal."
+    },
+    {
+      "id": "clea2-025",
+      "type": "QCM",
+      "question": "Pourquoi utilise-t-on deux porteuses de même fréquence déphasées de π/2 ?",
+      "choix": [
+        "Pour supprimer le bruit",
+        "Pour réduire la taille de l'antenne",
+        "Pour doubler la fréquence porteuse",
+        "Pour transmettre deux signaux simultanément sur la même fréquence sans interférence"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "p1(t) = A0·cos(2πf0t + φ0) et p2(t) = −A0·sin(2πf0t + φ0) sont en quadrature : deux voies indépendantes sur la même fréquence."
+    },
+    {
+      "id": "clea2-026",
+      "type": "FLASHCARD",
+      "question": "Que signifient I et Q dans la modulation I/Q ?",
+      "verso": "In-phase (voie en phase) et Quadrature (voie en quadrature).",
+      "explication": "On parle aussi de modulation vectorielle complexe. PSK et QAM en font partie."
+    },
+    {
+      "id": "clea2-027",
+      "type": "TROU",
+      "question": "Le signal modulé I/Q s'écrit s(t) = i(t)cos(2πf0t + φ0) − q(t)___(2πf0t + φ0).",
+      "reponses_texte": [
+        "sin"
+      ],
+      "explication": "La voie Q module la porteuse déphasée de π/2."
+    },
+    {
+      "id": "clea2-028",
+      "type": "FLASHCARD",
+      "question": "Comment s'écrit l'enveloppe complexe s̃(t) d'un signal I/Q ?",
+      "verso": "s̃(t) = i(t) + j·q(t)",
+      "explication": "Et s(t) = Re(s̃(t)·e^(j2πf0t)). Outil mathématique utile pour représenter les constellations."
+    },
+    {
+      "id": "clea2-029",
+      "type": "FLASHCARD",
+      "question": "Qu'est-ce qu'un diagramme de constellation ?",
+      "verso": "La représentation dans le plan complexe des symboles de l'alphabet utilisé.",
+      "explication": "Chaque point est un symbole ck = ak + j·bk."
+    },
+    {
+      "id": "clea2-030",
+      "type": "QCM",
+      "question": "Si ak est M-aire et bk N-aire, combien de valeurs peut prendre ck = ak + j·bk ?",
+      "choix": [
+        "M × N",
+        "max(M, N)",
+        "2^(M+N)",
+        "M + N"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "ck est P-aire avec P = M × N (en général M = N). Exemple : 4 × 4 = 16 pour la 16-QAM."
+    },
+    {
+      "id": "clea2-031",
+      "type": "QCM",
+      "question": "Quel est le rapport entre la puissance de l'enveloppe complexe et la puissance du signal modulé ?",
+      "choix": [
+        "Elles sont égales",
+        "L'enveloppe complexe a une puissance 2 fois plus grande",
+        "L'enveloppe complexe a une puissance 2 fois plus petite",
+        "L'enveloppe complexe a une puissance 4 fois plus grande"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "P(s(t)) = P(i)/2 + P(q)/2 alors que P(s̃) = P(i) + P(q) : donc P(s̃) = 2·P(s)."
+    },
+    {
+      "id": "clea2-032",
+      "type": "FLASHCARD",
+      "question": "Quelle est la particularité des symboles d'une M-PSK dans la constellation ?",
+      "verso": "Ils ont tous le même module : ils sont situés sur un cercle.",
+      "explication": "L'information est portée par la phase seule."
+    },
+    {
+      "id": "clea2-033",
+      "type": "QCM",
+      "question": "Sur quoi l'information est-elle codée dans une M-QAM ?",
+      "choix": [
+        "Sur l'amplitude seule",
+        "Sur la phase seule",
+        "Sur l'amplitude et la phase",
+        "Sur la fréquence"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "En QAM, les points sont répartis de façon homogène dans le plan complexe, ce qui code à la fois l'amplitude et la phase."
+    },
+    {
+      "id": "clea2-034",
+      "type": "QCM",
+      "question": "Pourquoi la M-PSK autorise-t-elle des amplificateurs non linéaires ?",
+      "choix": [
+        "Parce qu'elle n'utilise qu'une porteuse",
+        "Parce qu'elle a une faible efficacité spectrale",
+        "Parce que sa bande est étroite",
+        "Parce que son amplitude est constante"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Tous les points ont la même énergie : une non-linéarité d'amplitude ne déforme pas l'information portée par la phase."
+    },
+    {
+      "id": "clea2-035",
+      "type": "QCR",
+      "question": "Quelles associations « modulation : usage » sont citées dans le cours ?",
+      "choix": [
+        "QPSK : UMTS et WiFi 802.11b",
+        "PSK 2 à 16 états : liens satellite DVB-S",
+        "64-QAM : TNT (DVB-T)",
+        "OOK : TNT en Allemagne",
+        "QAM : fibre optique haut débit"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "explication": "A, B, C, E : vrais. D : faux, l'Allemagne utilise la 16-QAM pour la TNT ; l'OOK sert au Morse et aux communications optiques."
+    },
+    {
+      "id": "clea2-036",
+      "type": "TROU",
+      "question": "La TNT française (DVB-T) utilise une modulation ___ (ex. 16-QAM, 64-QAM…).",
+      "reponses_texte": [
+        "64-QAM",
+        "64 QAM",
+        "64QAM",
+        "MAQ-64",
+        "MAQ64",
+        "QAM-64",
+        "QAM64"
+      ],
+      "explication": "L'Allemagne utilise aussi la 16-QAM."
+    },
+    {
+      "id": "clea2-037",
+      "type": "FLASHCARD",
+      "question": "En 2-ASK sans IES, quelle règle de décision applique-t-on sur z̃(n) ?",
+      "verso": "Si z̃(n) > 0 alors âk = +α ; si z̃(n) < 0 alors âk = −α.",
+      "explication": "Le seuil de décision est 0, à mi-chemin entre −α et +α."
+    },
+    {
+      "id": "clea2-038",
+      "type": "QCM",
+      "question": "Quelle est la probabilité d'erreur d'une 2-ASK en fonction de Eb/N0 ?",
+      "choix": [
+        "Pe = Q(√(2Eb/N0))",
+        "Pe = 2Q(√(Eb/N0))",
+        "Pe = Q(√(Eb/(2N0)))",
+        "Pe = Q(Eb/N0)"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Pe = Q(α/√N0) avec Eb = α²/2 en bande modulée, donc Pe = Q(√(2Eb/N0))."
+    },
+    {
+      "id": "clea2-039",
+      "type": "FLASHCARD",
+      "question": "Que représente la fonction Q(x) ?",
+      "verso": "La queue d'une loi gaussienne centrée réduite : Q(x) = P(X > x).",
+      "explication": "Q(x) = (1/√(2π))·∫ₓ^∞ e^(−t²/2) dt."
+    },
+    {
+      "id": "clea2-040",
+      "type": "TROU",
+      "question": "Pour comparer objectivement les modulations, on exprime Pe en fonction du rapport Eb/___.",
+      "reponses_texte": [
+        "N0",
+        "N 0"
+      ],
+      "explication": "Eb : énergie moyenne pour émettre un bit sur la porteuse ; N0 : variance du bruit. Ce rapport est souvent confondu avec le RSB."
+    },
+    {
+      "id": "clea2-041",
+      "type": "QCM",
+      "question": "Pour une 2-ASK, comment l'énergie bit en bande modulée se compare-t-elle à celle en bande de base ?",
+      "choix": [
+        "Elle est deux fois plus grande",
+        "Elle est deux fois plus petite",
+        "Elle est égale",
+        "Elle est quatre fois plus petite"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "L'énergie en bande de base est double de celle en bande modulée : Eb(bb) = α², Eb(bm) = α²/2."
+    },
+    {
+      "id": "clea2-042",
+      "type": "QCM",
+      "question": "Quelle est l'énergie moyenne par symbole d'une 4-ASK d'alphabet {−3α ; −α ; α ; 3α} en bande de base ?",
+      "choix": [
+        "α²",
+        "2,5α²",
+        "5α²",
+        "9α²"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "(9α² + α² + α² + 9α²)/4 = 5α². L'énergie par bit vaut alors 5α²/2 (2 bits par symbole)."
+    },
+    {
+      "id": "clea2-043",
+      "type": "FLASHCARD",
+      "question": "Dans une constellation, que représente la distance d'un symbole à l'origine ?",
+      "verso": "Son énergie Es.",
+      "explication": "La distance entre symboles, elle, représente la résistance au bruit."
+    },
+    {
+      "id": "clea2-044",
+      "type": "FLASHCARD",
+      "question": "Quel paramètre de la constellation témoigne de sa résistance au bruit ?",
+      "verso": "La distance minimale dmin entre deux symboles.",
+      "explication": "Formule générale : Pe = Nmin·Q(dmin / (2√N0)), Nmin étant le nombre moyen de points à dmin."
+    },
+    {
+      "id": "clea2-045",
+      "type": "TROU",
+      "question": "Dans Pe = Nmin·Q(dmin / (2√N0)), Nmin est le nombre moyen de points situés à la distance ___ (sigle).",
+      "reponses_texte": [
+        "dmin",
+        "d min",
+        "distance minimale"
+      ],
+      "explication": "dmin : distance euclidienne minimale entre deux symboles."
+    },
+    {
+      "id": "clea2-046",
+      "type": "QCM",
+      "question": "Comment varie Pe quand le RSB augmente ?",
+      "choix": [
+        "Elle reste constante",
+        "Elle augmente",
+        "Linéairement",
+        "De façon exponentiellement décroissante"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Une petite modification du RSB entraîne une grande modification de Pe."
+    },
+    {
+      "id": "clea2-047",
+      "type": "QCM",
+      "question": "Avec un codage de Gray, quel est le lien entre TEB et Pe pour une modulation M-aire ?",
+      "choix": [
+        "TEB = Pe / log2(M)",
+        "TEB = Pe",
+        "TEB = Pe × log2(M)",
+        "TEB = Pe / M"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Une erreur de symbole entre voisins ne change qu'un bit sur les log2(M) que porte le symbole."
+    },
+    {
+      "id": "clea2-048",
+      "type": "QCM",
+      "question": "Pourquoi la M-QAM est-elle plus efficace énergétiquement que la M-ASK et la M-PSK ?",
+      "choix": [
+        "Parce qu'elle utilise une seule voie",
+        "Parce que ses points sont répartis de façon homogène dans le plan complexe",
+        "Parce que tous ses points ont la même énergie",
+        "Parce qu'elle a moins de symboles"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "M-ASK et M-PSK ont une répartition non homogène, ce qui gaspille de l'énergie. Le fait que tous les points aient la même énergie caractérise la PSK."
+    },
+    {
+      "id": "clea2-049",
+      "type": "FLASHCARD",
+      "question": "Quel est le principal avantage de la M-ASK ?",
+      "verso": "Elle est très simple à mettre en œuvre.",
+      "explication": "En revanche, sa répartition non homogène des points la rend moins efficace que la QAM."
+    },
+    {
+      "id": "clea2-050",
+      "type": "QCR",
+      "question": "D'après les courbes du cours (TEB en fonction de Eb/N0), quelles modulations ont des performances quasi identiques ?",
+      "choix": [
+        "BPSK (PSK-2) et QPSK (PSK-4)",
+        "QAM-4 et ASK-2",
+        "QAM-16 et ASK-4",
+        "PSK-32 et QAM-16"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "A, B, C : vrais, leurs courbes se superposent. D : faux, la PSK-32 demande un Eb/N0 bien plus élevé que la QAM-16."
+    },
+    {
+      "id": "clea2-051",
+      "type": "QCM",
+      "question": "À TEB = 10⁻⁶ et Eb/N0 fixés, comment augmenter l'efficacité spectrale η ?",
+      "choix": [
+        "Diminuer le nombre d'états",
+        "Passer de QAM-16 à PSK-16",
+        "Passer de PSK à QAM à même Eb/N0",
+        "Passer de QAM à ASK"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Sur le graphe η / Eb/N0, la QAM atteint un η plus élevé que la PSK pour un même Eb/N0. Moins d'états réduit η."
+    },
+    {
+      "id": "clea2-052",
+      "type": "FLASHCARD",
+      "question": "Sur le graphe η en fonction de Eb/N0, quelle courbe borne les performances de toutes les modulations ?",
+      "verso": "La courbe limite de Shannon.",
+      "explication": "Les modulations réelles (QAM, PSK) restent toutes à droite de cette courbe."
+    },
+    {
+      "id": "clea2-053",
+      "type": "QCM",
+      "question": "MDA-16, MDP-32 et MAQ-256 ont presque le même TEB en fonction de Eb/N0. À débit constant, laquelle a la meilleure efficacité spectrale ?",
+      "choix": [
+        "Elles sont équivalentes",
+        "MDA-16 (4 bits/symbole)",
+        "MDP-32 (5 bits/symbole)",
+        "MAQ-256 (8 bits/symbole)"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Plus un symbole porte de bits, plus la rapidité R = D/n est faible à débit constant, donc plus la bande est étroite. Avec 8 bits par symbole, la MAQ-256 a le meilleur η."
+    }
+  ]
+}

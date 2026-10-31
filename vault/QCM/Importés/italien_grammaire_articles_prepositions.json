@@ -1,0 +1,424 @@
+{
+  "langue": "Italien",
+  "caracteres_speciaux": [
+    "à",
+    "è",
+    "é",
+    "ì",
+    "ò",
+    "ù"
+  ],
+  "titre": "Italien — grammaire : articles, prépositions, noms",
+  "description": "Articles, prépositions articulées, a / in / da, partitif, possessifs, pluriels, comparatifs.",
+  "grammaire": [
+    {
+      "id": "it-art-001",
+      "type": "TROU",
+      "question": "Ho comprato ___ zaino nuovo.",
+      "reponses_texte": [
+        "uno"
+      ],
+      "explication": "uno / lo devant s + consonne, z, gn, ps, y : uno zaino, lo studente, lo psicologo.",
+      "traduction": "J'ai acheté un sac à dos neuf."
+    },
+    {
+      "id": "it-art-002",
+      "type": "TROU",
+      "question": "Mi piacciono ___ spaghetti alle vongole.",
+      "reponses_texte": [
+        "gli"
+      ],
+      "explication": "gli = pluriel de lo et de l' : gli spaghetti, gli amici, gli zii.",
+      "traduction": "J'aime les spaghetti aux palourdes."
+    },
+    {
+      "id": "it-art-003",
+      "type": "QCM",
+      "question": "Quel article ? ___ psicologo",
+      "choix": [
+        "il",
+        "lo",
+        "l'",
+        "la"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "ps → lo (lo psicologo, gli psicologi)."
+    },
+    {
+      "id": "it-art-004",
+      "type": "TROU",
+      "question": "Il libro è ___ (su + il) tavolo.",
+      "reponses_texte": [
+        "sul"
+      ],
+      "explication": "Prépositions articulées : su + il = sul, su + la = sulla, su + i = sui…",
+      "traduction": "Le livre est sur la table."
+    },
+    {
+      "id": "it-art-005",
+      "type": "TROU",
+      "question": "Abito ___ (in + la) casa gialla in fondo alla strada.",
+      "reponses_texte": [
+        "nella"
+      ],
+      "explication": "in + la = nella ; in + il = nel ; in + gli = negli.",
+      "traduction": "J'habite dans la maison jaune au bout de la rue."
+    },
+    {
+      "id": "it-art-006",
+      "type": "TROU",
+      "question": "Torno ___ (da + lo) stadio verso mezzanotte.",
+      "reponses_texte": [
+        "dallo"
+      ],
+      "explication": "da + lo = dallo ; da + il = dal ; da + gli = dagli.",
+      "traduction": "Je reviens du stade vers minuit."
+    },
+    {
+      "id": "it-art-007",
+      "type": "TROU",
+      "question": "Il gatto ___ (di + la) vicina è sul tetto.",
+      "reponses_texte": [
+        "della"
+      ],
+      "explication": "di + la = della ; di + il = del ; di + gli = degli.",
+      "traduction": "Le chat de la voisine est sur le toit."
+    },
+    {
+      "id": "it-art-008",
+      "type": "TROU",
+      "question": "Il professore parla ___ (a + gli) studenti.",
+      "reponses_texte": [
+        "agli"
+      ],
+      "explication": "a + gli = agli ; a + il = al ; a + le = alle.",
+      "traduction": "Le professeur parle aux étudiants."
+    },
+    {
+      "id": "it-art-009",
+      "type": "TROU",
+      "question": "La settimana prossima vado ___ Roma.",
+      "reponses_texte": [
+        "a"
+      ],
+      "explication": "Ville → a ; pays, région, grande île → in : a Roma, in Italia, in Sicilia.",
+      "traduction": "La semaine prochaine je vais à Rome."
+    },
+    {
+      "id": "it-art-010",
+      "type": "TROU",
+      "question": "Abito ___ Francia da dieci anni.",
+      "reponses_texte": [
+        "in"
+      ],
+      "explication": "Pays → in (in Francia, in Italia).",
+      "traduction": "J'habite en France depuis dix ans."
+    },
+    {
+      "id": "it-art-011",
+      "type": "TROU",
+      "question": "Stasera vado ___ Marco.",
+      "reponses_texte": [
+        "da"
+      ],
+      "explication": "Chez quelqu'un = da : da Marco, da mia nonna.",
+      "traduction": "Ce soir je vais chez Marco."
+    },
+    {
+      "id": "it-art-012",
+      "type": "TROU",
+      "question": "Domani devo andare ___ medico.",
+      "reponses_texte": [
+        "dal"
+      ],
+      "explication": "da + il = dal : dal medico, dal dentista, dal parrucchiere.",
+      "traduction": "Demain je dois aller chez le médecin."
+    },
+    {
+      "id": "it-art-013",
+      "type": "TROU",
+      "question": "Studio l'italiano ___ due anni.",
+      "reponses_texte": [
+        "da"
+      ],
+      "explication": "Depuis + durée → da + présent : studio da due anni.",
+      "traduction": "J'étudie l'italien depuis deux ans."
+    },
+    {
+      "id": "it-art-014",
+      "type": "TROU",
+      "question": "Sono arrivato in Italia tre anni ___.",
+      "reponses_texte": [
+        "fa"
+      ],
+      "explication": "« Il y a » + durée passée → durée + fa (tre anni fa).",
+      "traduction": "Je suis arrivé en Italie il y a trois ans."
+    },
+    {
+      "id": "it-art-015",
+      "type": "TROU",
+      "question": "Vuoi ___ (di + il) pane?",
+      "reponses_texte": [
+        "del"
+      ],
+      "explication": "Partitif = di + article : del pane, della frutta, degli spinaci.",
+      "traduction": "Tu veux du pain ?"
+    },
+    {
+      "id": "it-art-016",
+      "type": "TROU",
+      "question": "Ho comprato ___ (di + gli) spinaci freschi.",
+      "reponses_texte": [
+        "degli"
+      ],
+      "explication": "di + gli = degli.",
+      "traduction": "J'ai acheté des épinards frais."
+    },
+    {
+      "id": "it-art-017",
+      "type": "CORRECTION",
+      "phrase": "La mia madre è di Napoli.",
+      "corrections": [
+        "Mia madre è di Napoli."
+      ],
+      "explication": "Possessif + nom de famille au singulier, sans adjectif : pas d'article (mia madre, mio fratello). Mais : i miei fratelli, la mia sorellina, la mia mamma.",
+      "traduction": "Ma mère est de Naples."
+    },
+    {
+      "id": "it-art-018",
+      "type": "TROU",
+      "question": "___ miei genitori vivono in Sicilia.",
+      "reponses_texte": [
+        "i"
+      ],
+      "explication": "Au pluriel, l'article revient : i miei genitori, le mie sorelle.",
+      "traduction": "Mes parents vivent en Sicile."
+    },
+    {
+      "id": "it-art-019",
+      "type": "CORRECTION",
+      "phrase": "Vado in Milano domani.",
+      "corrections": [
+        "Vado a Milano domani."
+      ],
+      "explication": "Ville → a.",
+      "traduction": "Je vais à Milan demain."
+    },
+    {
+      "id": "it-art-020",
+      "type": "QCM",
+      "question": "« Il y a beaucoup de monde » :",
+      "choix": [
+        "C'è molta gente.",
+        "Ha molta gente.",
+        "Ci sono molto gente.",
+        "È molta gente."
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Il y a = c'è (sing.) / ci sono (plur.), jamais avere. Gente est singulier."
+    },
+    {
+      "id": "it-art-021",
+      "type": "TROU",
+      "question": "In questa via ___ tre ristoranti.",
+      "reponses_texte": [
+        "ci sono"
+      ],
+      "explication": "Pluriel → ci sono.",
+      "traduction": "Dans cette rue il y a trois restaurants."
+    },
+    {
+      "id": "it-art-022",
+      "type": "TROU",
+      "question": "Che ___ (bello) ragazzo!",
+      "reponses_texte": [
+        "bel"
+      ],
+      "explication": "bello se forme comme l'article : bel ragazzo, bello zaino, bell'uomo, bei ragazzi, begli occhi.",
+      "traduction": "Quel beau garçon !"
+    },
+    {
+      "id": "it-art-023",
+      "type": "TROU",
+      "question": "Che ___ (bello) occhi hai!",
+      "reponses_texte": [
+        "begli"
+      ],
+      "explication": "Devant voyelle au masc. plur. : begli occhi.",
+      "traduction": "Tu as de beaux yeux !"
+    },
+    {
+      "id": "it-art-024",
+      "type": "TROU",
+      "question": "Chi sono ___ (quello) ragazzi?",
+      "reponses_texte": [
+        "quei"
+      ],
+      "explication": "quello se forme comme l'article : quel libro, quello zaino, quell'albero, quei libri, quegli amici.",
+      "traduction": "Qui sont ces garçons-là ?"
+    },
+    {
+      "id": "it-art-025",
+      "type": "TROU",
+      "question": "Mi passi ___ (quello) bicchiere, per favore?",
+      "reponses_texte": [
+        "quel"
+      ],
+      "explication": "Devant consonne simple au masc. sing. : quel.",
+      "traduction": "Tu me passes ce verre-là, s'il te plaît ?"
+    },
+    {
+      "id": "it-art-026",
+      "type": "TROU",
+      "question": "Ho comprato sei ___ (uovo).",
+      "reponses_texte": [
+        "uova"
+      ],
+      "explication": "Pluriels irréguliers en -a (féminin) : l'uovo → le uova, il braccio → le braccia, il dito → le dita.",
+      "traduction": "J'ai acheté six œufs."
+    },
+    {
+      "id": "it-art-027",
+      "type": "TROU",
+      "question": "Dopo la palestra mi fanno male le ___ (braccio).",
+      "reponses_texte": [
+        "braccia"
+      ],
+      "explication": "il braccio → le braccia.",
+      "traduction": "Après la salle de sport j'ai mal aux bras."
+    },
+    {
+      "id": "it-art-028",
+      "type": "TROU",
+      "question": "Ho tanti ___ (amico) a Bologna.",
+      "reponses_texte": [
+        "amici"
+      ],
+      "explication": "-co → -ci ou -chi selon le mot : amico → amici, medico → medici, mais gioco → giochi, tedesco → tedeschi.",
+      "traduction": "J'ai beaucoup d'amis à Bologne."
+    },
+    {
+      "id": "it-art-029",
+      "type": "TROU",
+      "question": "Le strade qui sono molto ___ (lungo).",
+      "reponses_texte": [
+        "lunghe"
+      ],
+      "explication": "-go / -ga → -ghi / -ghe pour garder le son [g].",
+      "traduction": "Les rues ici sont très longues."
+    },
+    {
+      "id": "it-art-030",
+      "type": "TROU",
+      "question": "D'estate ci sono molti ___ (turista) tedeschi.",
+      "reponses_texte": [
+        "turisti"
+      ],
+      "explication": "-ista : masc. plur. -isti, fém. plur. -iste.",
+      "traduction": "L'été il y a beaucoup de touristes allemands."
+    },
+    {
+      "id": "it-art-031",
+      "type": "CORRECTION",
+      "phrase": "Ci sono molto turisti in agosto.",
+      "corrections": [
+        "Ci sono molti turisti in agosto."
+      ],
+      "explication": "Molto adjectif (devant un nom) s'accorde : molti turisti. Adverbe (devant un adjectif ou verbe) : invariable (sono molto stanchi).",
+      "traduction": "Il y a beaucoup de touristes en août."
+    },
+    {
+      "id": "it-art-032",
+      "type": "QCM",
+      "question": "« Il est plus grand que moi » :",
+      "choix": [
+        "È più alto che me.",
+        "È più alto di me.",
+        "È più alto come me.",
+        "È più alto da me."
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Comparaison de deux personnes / noms / pronoms : più … di."
+    },
+    {
+      "id": "it-art-033",
+      "type": "TROU",
+      "question": "Leggere è più facile ___ scrivere.",
+      "reponses_texte": [
+        "che"
+      ],
+      "explication": "Comparaison de deux verbes, adjectifs ou compléments : più … che.",
+      "traduction": "Lire est plus facile qu'écrire."
+    },
+    {
+      "id": "it-art-034",
+      "type": "TROU",
+      "question": "È il museo più famoso ___ (di + la) città.",
+      "reponses_texte": [
+        "della"
+      ],
+      "explication": "Superlatif relatif : il più … di / della.",
+      "traduction": "C'est le musée le plus célèbre de la ville."
+    },
+    {
+      "id": "it-art-035",
+      "type": "TROU",
+      "question": "Il treno parte ___ (a + le) otto.",
+      "reponses_texte": [
+        "alle"
+      ],
+      "explication": "L'heure : alle otto, all'una, a mezzogiorno.",
+      "traduction": "Le train part à huit heures."
+    },
+    {
+      "id": "it-art-036",
+      "type": "TROU",
+      "question": "Stasera torno ___ casa presto.",
+      "reponses_texte": [
+        "a"
+      ],
+      "explication": "Sans article : a casa, a scuola, a letto ; in ufficio, in banca, in centro, in macchina.",
+      "traduction": "Ce soir je rentre tôt à la maison."
+    },
+    {
+      "id": "it-art-037",
+      "type": "TROU",
+      "question": "Ci vediamo ___ centro alle sei?",
+      "reponses_texte": [
+        "in"
+      ],
+      "explication": "In centro, in piazza, in montagna.",
+      "traduction": "On se voit au centre à six heures ?"
+    },
+    {
+      "id": "it-art-038",
+      "type": "TROU",
+      "question": "Vado al lavoro ___ macchina.",
+      "reponses_texte": [
+        "in"
+      ],
+      "explication": "Moyen de transport : in macchina, in treno, in bici ; mais a piedi.",
+      "traduction": "Je vais au travail en voiture."
+    },
+    {
+      "id": "it-art-039",
+      "type": "ORDRE",
+      "phrase": "Il treno per Firenze parte alle otto.",
+      "traduction": "Le train pour Florence part à huit heures.",
+      "explication": "Ordre simple sujet – verbe – complément."
+    },
+    {
+      "id": "it-art-040",
+      "type": "ORDRE",
+      "phrase": "C'è una farmacia qui vicino?",
+      "traduction": "Il y a une pharmacie près d'ici ?",
+      "explication": "C'è + nom singulier, sans inversion pour la question."
+    }
+  ]
+}

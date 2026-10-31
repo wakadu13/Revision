@@ -1,0 +1,262 @@
+{
+  "langue": "Anglais",
+  "titre": "Anglais — vocabulaire : informatique (C1)",
+  "particules_optionnelles": [
+    "to",
+    "a",
+    "an",
+    "the"
+  ],
+  "caracteres_speciaux": [],
+  "vocabulaire": [
+    {
+      "id": "en-informatique-001",
+      "mot": "a computer",
+      "traductions": [
+        "un ordinateur"
+      ],
+      "exemple": "Most of us use a [computer] at work.",
+      "exemple_traduction": "La plupart d'entre nous utilisent un ordinateur au travail.",
+      "note": "Faux ami : a computer ≠ un compteur."
+    },
+    {
+      "id": "en-informatique-002",
+      "mot": "the keyboard",
+      "traductions": [
+        "le clavier"
+      ],
+      "exemple": "In France, the [keyboard] starts with AZERTY.",
+      "exemple_traduction": "En France, le clavier commence par AZERTY.",
+      "note": "En Angleterre : QWERTY."
+    },
+    {
+      "id": "en-informatique-003",
+      "mot": "a mouse",
+      "traductions": [
+        "une souris"
+      ],
+      "exemple": "I use a wireless [mouse] to save a USB port.",
+      "exemple_traduction": "J'utilise une souris sans fil pour économiser un port USB.",
+      "note": "Pluriel : mice ou mouses (pour l'informatique, les deux existent)."
+    },
+    {
+      "id": "en-informatique-004",
+      "mot": "a monitor",
+      "traductions": [
+        "un écran d'ordinateur",
+        "un moniteur"
+      ],
+      "exemple": "I knocked my computer [monitor] on the floor and it broke.",
+      "exemple_traduction": "J'ai fait tomber l'écran de mon ordinateur et il s'est cassé.",
+      "note": "Synonyme : a screen."
+    },
+    {
+      "id": "en-informatique-005",
+      "mot": "a laptop",
+      "traductions": [
+        "un ordinateur portable"
+      ],
+      "exemple": "My new [laptop] is very light and easy to carry.",
+      "exemple_traduction": "Mon nouvel ordinateur portable est très léger et facile à porter.",
+      "note": "Forme longue : a laptop computer.",
+      "variantes": [
+        "a laptop computer"
+      ]
+    },
+    {
+      "id": "en-informatique-006",
+      "mot": "a desktop computer",
+      "traductions": [
+        "un ordinateur de bureau",
+        "un ordinateur fixe"
+      ],
+      "exemple": "My [desktop computer] takes up a lot of space.",
+      "exemple_traduction": "Mon ordinateur de bureau prend beaucoup de place.",
+      "note": "Faux ami partiel : « the desktop » = aussi le bureau de l'écran (fond d'écran avec icônes).",
+      "variantes": [
+        "a desktop"
+      ]
+    },
+    {
+      "id": "en-informatique-007",
+      "mot": "software",
+      "traductions": [
+        "un logiciel",
+        "les logiciels"
+      ],
+      "exemple": "I only really use two programs from this [software] package.",
+      "exemple_traduction": "Je n'utilise vraiment que deux programmes de ce pack de logiciels.",
+      "note": "Indénombrable : pas de « a software » ni « softwares ». Dire : a piece of software, a program."
+    },
+    {
+      "id": "en-informatique-008",
+      "mot": "a website",
+      "traductions": [
+        "un site web",
+        "un site internet"
+      ],
+      "exemple": "Can you send me your [website] address?",
+      "exemple_traduction": "Peux-tu m'envoyer l'adresse de ton site web ?"
+    },
+    {
+      "id": "en-informatique-009",
+      "mot": "a link",
+      "traductions": [
+        "un lien (hypertexte)"
+      ],
+      "exemple": "I will send you the [link] to their website.",
+      "exemple_traduction": "Je t'enverrai le lien vers leur site."
+    },
+    {
+      "id": "en-informatique-010",
+      "mot": "a browser",
+      "traductions": [
+        "un navigateur (web)"
+      ],
+      "exemple": "The link didn't work, so I had to download a new [browser].",
+      "exemple_traduction": "Le lien ne marchait pas, alors j'ai dû télécharger un nouveau navigateur.",
+      "note": "to browse = naviguer, parcourir.",
+      "prononciation": "/ˈbraʊzə(r)/"
+    },
+    {
+      "id": "en-informatique-011",
+      "mot": "to access",
+      "traductions": [
+        "accéder à"
+      ],
+      "exemple": "I'm not authorized to [access] these files.",
+      "exemple_traduction": "Je n'ai pas l'autorisation d'accéder à ces fichiers.",
+      "note": "Verbe transitif : to access something (pas de « to » après). Aussi un nom : access to = l'accès à.",
+      "prononciation": "/ˈækses/"
+    },
+    {
+      "id": "en-informatique-012",
+      "mot": "to crash",
+      "traductions": [
+        "planter (ordinateur)"
+      ],
+      "exemple": "My computer [crashed] and I lost all my work.",
+      "exemple_traduction": "Mon ordinateur a planté et j'ai perdu tout mon travail.",
+      "note": "Aussi : a crash = un plantage. To crash = aussi s'écraser (avion, voiture)."
+    },
+    {
+      "id": "en-informatique-013",
+      "mot": "to back up",
+      "traductions": [
+        "sauvegarder",
+        "faire une copie de sauvegarde"
+      ],
+      "exemple": "I [back up] my work onto an external hard drive.",
+      "exemple_traduction": "Je sauvegarde mon travail sur un disque dur externe.",
+      "note": "Verbe : to back up (en deux mots). Nom : a backup (en un mot).",
+      "variantes": [
+        "to backup"
+      ]
+    },
+    {
+      "id": "en-informatique-014",
+      "mot": "to shut down",
+      "traductions": [
+        "éteindre (un ordinateur)"
+      ],
+      "exemple": "All staff should [shut down] their computers before going home.",
+      "exemple_traduction": "Tout le personnel doit éteindre son ordinateur avant de partir.",
+      "note": "Irrégulier : shut – shut – shut. Nom : a shutdown."
+    },
+    {
+      "id": "en-informatique-015",
+      "mot": "to upgrade",
+      "traductions": [
+        "mettre à niveau",
+        "mettre à jour (vers une meilleure version)"
+      ],
+      "exemple": "I [upgraded] my software, but the new version is confusing.",
+      "exemple_traduction": "J'ai mis à niveau mon logiciel, mais la nouvelle version est déroutante.",
+      "note": "Nuance : to update = installer une mise à jour ; to upgrade = passer à une version supérieure."
+    },
+    {
+      "id": "en-informatique-016",
+      "mot": "storage",
+      "traductions": [
+        "le stockage",
+        "l'espace de stockage"
+      ],
+      "exemple": "My computer's [storage] is nearly full.",
+      "exemple_traduction": "L'espace de stockage de mon ordinateur est presque plein.",
+      "note": "Indénombrable. to store = stocker, enregistrer."
+    },
+    {
+      "id": "en-informatique-017",
+      "mot": "a virus",
+      "traductions": [
+        "un virus"
+      ],
+      "exemple": "My sister opened a [virus] without knowing it.",
+      "exemple_traduction": "Ma sœur a ouvert un virus sans le savoir.",
+      "note": "Pluriel : viruses.",
+      "prononciation": "/ˈvaɪrəs/"
+    },
+    {
+      "id": "en-informatique-018",
+      "mot": "corrupted",
+      "traductions": [
+        "corrompu (données, fichier)"
+      ],
+      "exemple": "All my documents are [corrupted] and I can't open them.",
+      "exemple_traduction": "Tous mes documents sont corrompus et je ne peux pas les ouvrir.",
+      "note": "Aussi : corrupt (adjectif). a corrupted file = un fichier corrompu."
+    },
+    {
+      "id": "en-informatique-019",
+      "mot": "a USB port",
+      "traductions": [
+        "un port USB"
+      ],
+      "exemple": "I can plug my flash drive into any [USB port].",
+      "exemple_traduction": "Je peux brancher ma clé USB dans n'importe quel port USB.",
+      "note": "a flash drive / a USB stick = une clé USB."
+    },
+    {
+      "id": "en-informatique-020",
+      "mot": "a spreadsheet",
+      "traductions": [
+        "un tableur",
+        "une feuille de calcul"
+      ],
+      "exemple": "I use a [spreadsheet] to track my monthly spending.",
+      "exemple_traduction": "J'utilise un tableur pour suivre mes dépenses mensuelles.",
+      "note": "Exemple de tableur : Excel."
+    },
+    {
+      "id": "en-informatique-021",
+      "mot": "word processing",
+      "traductions": [
+        "le traitement de texte"
+      ],
+      "exemple": "I mostly use my computer for [word processing].",
+      "exemple_traduction": "J'utilise surtout mon ordinateur pour le traitement de texte.",
+      "note": "a word processor = un logiciel de traitement de texte (ex. Word)."
+    },
+    {
+      "id": "en-informatique-022",
+      "mot": "a bookmark",
+      "traductions": [
+        "un favori (navigateur)",
+        "un marque-page"
+      ],
+      "exemple": "I organize my [bookmarks] into folders.",
+      "exemple_traduction": "Je range mes favoris dans des dossiers.",
+      "note": "Aussi un verbe : to bookmark a page = ajouter une page aux favoris."
+    },
+    {
+      "id": "en-informatique-023",
+      "mot": "the components",
+      "traductions": [
+        "les composants"
+      ],
+      "exemple": "My desktop computer has six [components].",
+      "exemple_traduction": "Mon ordinateur de bureau a six composants.",
+      "note": "Ex. : keyboard, mouse, monitor…"
+    }
+  ]
+}

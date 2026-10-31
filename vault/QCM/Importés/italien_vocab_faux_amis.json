@@ -1,0 +1,451 @@
+{
+  "langue": "Italien",
+  "caracteres_speciaux": [
+    "à",
+    "è",
+    "é",
+    "ì",
+    "ò",
+    "ù"
+  ],
+  "titre": "Italien — vocabulaire : faux amis",
+  "description": "Les mots qui piègent les francophones (burro, camera, salire, fermare…).",
+  "particules_optionnelles": [
+    "il",
+    "lo",
+    "la",
+    "i",
+    "gli",
+    "le",
+    "un",
+    "uno",
+    "una"
+  ],
+  "vocabulaire": [
+    {
+      "id": "it-faux-001",
+      "mot": "il burro",
+      "traductions": [
+        "le beurre"
+      ],
+      "exemple": "Pane, [burro] e marmellata: la colazione perfetta.",
+      "exemple_traduction": "Pain, beurre et confiture : le petit-déjeuner parfait.",
+      "note": "≠ bureau = l'ufficio (lieu) / la scrivania (meuble)."
+    },
+    {
+      "id": "it-faux-002",
+      "mot": "l'ufficio",
+      "traductions": [
+        "le bureau (lieu de travail)"
+      ],
+      "exemple": "Sono ancora in [ufficio].",
+      "exemple_traduction": "Je suis encore au bureau.",
+      "note": "Le meuble : la scrivania.",
+      "variantes": [
+        "ufficio"
+      ]
+    },
+    {
+      "id": "it-faux-003",
+      "mot": "la scrivania",
+      "traductions": [
+        "le bureau (meuble)"
+      ],
+      "exemple": "Ho lasciato il computer sulla [scrivania].",
+      "exemple_traduction": "J'ai laissé l'ordinateur sur le bureau."
+    },
+    {
+      "id": "it-faux-004",
+      "mot": "caldo",
+      "traductions": [
+        "chaud"
+      ],
+      "exemple": "Attento, il caffè è molto [caldo].",
+      "exemple_traduction": "Attention, le café est très chaud.",
+      "note": "≠ froid = freddo. Il caldo = la chaleur."
+    },
+    {
+      "id": "it-faux-005",
+      "mot": "la camera",
+      "traductions": [
+        "la chambre"
+      ],
+      "exemple": "Vorrei una [camera] doppia per due notti.",
+      "exemple_traduction": "Je voudrais une chambre double pour deux nuits.",
+      "note": "≠ caméra = la telecamera / videocamera."
+    },
+    {
+      "id": "it-faux-006",
+      "mot": "sporcare",
+      "traductions": [
+        "salir"
+      ],
+      "exemple": "Attento a non [sporcare] il divano!",
+      "exemple_traduction": "Fais attention à ne pas salir le canapé !",
+      "note": "≠ salire = monter. Sporco = sale."
+    },
+    {
+      "id": "it-faux-007",
+      "mot": "fermare",
+      "traductions": [
+        "arrêter"
+      ],
+      "exemple": "La polizia ha [fermato] la macchina.",
+      "exemple_traduction": "La police a arrêté la voiture.",
+      "note": "≠ fermer = chiudere."
+    },
+    {
+      "id": "it-faux-008",
+      "mot": "guardare",
+      "traductions": [
+        "regarder"
+      ],
+      "exemple": "[Guarda] che bel tramonto!",
+      "exemple_traduction": "Regarde quel beau coucher de soleil !",
+      "note": "≠ garder = tenere, custodire."
+    },
+    {
+      "id": "it-faux-009",
+      "mot": "tenere",
+      "traductions": [
+        "garder",
+        "tenir"
+      ],
+      "exemple": "[Tenga] pure il resto.",
+      "exemple_traduction": "Gardez la monnaie.",
+      "note": "Tieni! = tiens ! Tenga (Lei) = gardez / tenez."
+    },
+    {
+      "id": "it-faux-010",
+      "mot": "subito",
+      "traductions": [
+        "tout de suite"
+      ],
+      "exemple": "Arrivo [subito]!",
+      "exemple_traduction": "J'arrive tout de suite !",
+      "note": "≠ subit = improvviso."
+    },
+    {
+      "id": "it-faux-011",
+      "mot": "l'autista",
+      "traductions": [
+        "le chauffeur"
+      ],
+      "exemple": "L'[autista] dell'autobus era gentilissimo.",
+      "exemple_traduction": "Le chauffeur du bus était très gentil.",
+      "note": "≠ artiste = l'artista.",
+      "variantes": [
+        "autista"
+      ]
+    },
+    {
+      "id": "it-faux-012",
+      "mot": "truccarsi",
+      "traductions": [
+        "se maquiller"
+      ],
+      "exemple": "Si [trucca] sempre prima di uscire.",
+      "exemple_traduction": "Elle se maquille toujours avant de sortir.",
+      "note": "Il trucco = le maquillage (et aussi le truc, l'astuce)."
+    },
+    {
+      "id": "it-faux-013",
+      "mot": "intendere",
+      "traductions": [
+        "vouloir dire",
+        "avoir l'intention de"
+      ],
+      "exemple": "Che cosa [intendi] dire?",
+      "exemple_traduction": "Qu'est-ce que tu veux dire ?",
+      "note": "≠ entendre = sentire."
+    },
+    {
+      "id": "it-faux-014",
+      "mot": "morbido",
+      "traductions": [
+        "doux (au toucher)",
+        "moelleux"
+      ],
+      "exemple": "Questo cuscino è molto [morbido].",
+      "exemple_traduction": "Cet oreiller est très moelleux.",
+      "note": "≠ morbide = morboso."
+    },
+    {
+      "id": "it-faux-015",
+      "mot": "bravo",
+      "traductions": [
+        "doué",
+        "bon (en quelque chose)"
+      ],
+      "exemple": "Sei proprio [bravo] in cucina!",
+      "exemple_traduction": "Tu es vraiment doué en cuisine !",
+      "note": "≠ brave = coraggioso."
+    },
+    {
+      "id": "it-faux-016",
+      "mot": "i confetti",
+      "traductions": [
+        "les dragées"
+      ],
+      "exemple": "Al matrimonio regalano sempre i [confetti].",
+      "exemple_traduction": "Au mariage on offre toujours des dragées.",
+      "note": "≠ confettis = i coriandoli."
+    },
+    {
+      "id": "it-faux-017",
+      "mot": "la fattura",
+      "traductions": [
+        "la facture"
+      ],
+      "exemple": "Mi può fare la [fattura]?",
+      "exemple_traduction": "Vous pouvez me faire la facture ?",
+      "note": "≠ la fattoria = la ferme."
+    },
+    {
+      "id": "it-faux-018",
+      "mot": "la fattoria",
+      "traductions": [
+        "la ferme"
+      ],
+      "exemple": "I bambini adorano la [fattoria] dello zio.",
+      "exemple_traduction": "Les enfants adorent la ferme de leur oncle."
+    },
+    {
+      "id": "it-faux-019",
+      "mot": "la firma",
+      "traductions": [
+        "la signature"
+      ],
+      "exemple": "Manca la sua [firma] in fondo al foglio.",
+      "exemple_traduction": "Il manque votre signature en bas de la feuille.",
+      "note": "≠ firme = la ditta, l'azienda."
+    },
+    {
+      "id": "it-faux-020",
+      "mot": "la ditta",
+      "traductions": [
+        "l'entreprise"
+      ],
+      "exemple": "Lavoro per una piccola [ditta] di Torino.",
+      "exemple_traduction": "Je travaille pour une petite entreprise de Turin.",
+      "note": "Synonyme : l'azienda."
+    },
+    {
+      "id": "it-faux-021",
+      "mot": "la gamba",
+      "traductions": [
+        "la jambe"
+      ],
+      "exemple": "Mi fa male la [gamba] destra.",
+      "exemple_traduction": "J'ai mal à la jambe droite.",
+      "note": "≠ gambas = i gamberoni."
+    },
+    {
+      "id": "it-faux-022",
+      "mot": "la cantina",
+      "traductions": [
+        "la cave"
+      ],
+      "exemple": "Teniamo il vino in [cantina].",
+      "exemple_traduction": "Nous gardons le vin à la cave.",
+      "note": "≠ cantine = la mensa."
+    },
+    {
+      "id": "it-faux-023",
+      "mot": "la mensa",
+      "traductions": [
+        "la cantine"
+      ],
+      "exemple": "A pranzo mangio alla [mensa] dell'università.",
+      "exemple_traduction": "Le midi je mange à la cantine de l'université."
+    },
+    {
+      "id": "it-faux-024",
+      "mot": "spingere",
+      "traductions": [
+        "pousser"
+      ],
+      "exemple": "Per aprire la porta devi [spingere].",
+      "exemple_traduction": "Pour ouvrir la porte, tu dois pousser.",
+      "note": "Sur les portes : SPINGERE (pousser) / TIRARE (tirer)."
+    },
+    {
+      "id": "it-faux-025",
+      "mot": "la libreria",
+      "traductions": [
+        "la librairie"
+      ],
+      "exemple": "Ho comprato questo libro in [libreria].",
+      "exemple_traduction": "J'ai acheté ce livre en librairie.",
+      "note": "Aussi : la bibliothèque (meuble). Le lieu = la biblioteca."
+    },
+    {
+      "id": "it-faux-026",
+      "mot": "la biblioteca",
+      "traductions": [
+        "la bibliothèque (lieu)"
+      ],
+      "exemple": "Studio in [biblioteca] il pomeriggio.",
+      "exemple_traduction": "J'étudie à la bibliothèque l'après-midi."
+    },
+    {
+      "id": "it-faux-027",
+      "mot": "la macchina",
+      "traductions": [
+        "la voiture"
+      ],
+      "exemple": "Ho parcheggiato la [macchina] davanti al bar.",
+      "exemple_traduction": "J'ai garé la voiture devant le bar.",
+      "note": "Au quotidien, macchina = voiture. Macchinetta = cafetière italienne."
+    },
+    {
+      "id": "it-faux-028",
+      "mot": "il negozio",
+      "traductions": [
+        "le magasin"
+      ],
+      "exemple": "Il [negozio] chiude alle otto.",
+      "exemple_traduction": "Le magasin ferme à huit heures.",
+      "note": "≠ négoce."
+    },
+    {
+      "id": "it-faux-029",
+      "mot": "il magazzino",
+      "traductions": [
+        "l'entrepôt"
+      ],
+      "exemple": "La merce è ancora in [magazzino].",
+      "exemple_traduction": "La marchandise est encore à l'entrepôt.",
+      "note": "≠ magasin = negozio. I grandi magazzini = les grands magasins."
+    },
+    {
+      "id": "it-faux-030",
+      "mot": "i parenti",
+      "traductions": [
+        "la famille (les proches)"
+      ],
+      "exemple": "A Natale vengono tutti i [parenti].",
+      "exemple_traduction": "À Noël toute la famille vient.",
+      "note": "Parents (père et mère) = i genitori."
+    },
+    {
+      "id": "it-faux-031",
+      "mot": "i genitori",
+      "traductions": [
+        "les parents (père et mère)"
+      ],
+      "exemple": "I miei [genitori] vivono a Lecce.",
+      "exemple_traduction": "Mes parents vivent à Lecce."
+    },
+    {
+      "id": "it-faux-032",
+      "mot": "il rumore",
+      "traductions": [
+        "le bruit"
+      ],
+      "exemple": "C'è troppo [rumore] in questo ristorante.",
+      "exemple_traduction": "Il y a trop de bruit dans ce restaurant.",
+      "note": "≠ rumeur = la voce, la diceria."
+    },
+    {
+      "id": "it-faux-033",
+      "mot": "cattivo",
+      "traductions": [
+        "méchant",
+        "mauvais"
+      ],
+      "exemple": "Questo vino è proprio [cattivo].",
+      "exemple_traduction": "Ce vin est vraiment mauvais.",
+      "note": "≠ captif."
+    },
+    {
+      "id": "it-faux-034",
+      "mot": "la tenda",
+      "traductions": [
+        "le rideau",
+        "la tente"
+      ],
+      "exemple": "Chiudi le [tende], c'è troppo sole.",
+      "exemple_traduction": "Ferme les rideaux, il y a trop de soleil.",
+      "note": "≠ tendre = tenero."
+    },
+    {
+      "id": "it-faux-035",
+      "mot": "la mancia",
+      "traductions": [
+        "le pourboire"
+      ],
+      "exemple": "Abbiamo lasciato una [mancia] al cameriere.",
+      "exemple_traduction": "Nous avons laissé un pourboire au serveur.",
+      "note": "≠ manche = la manica."
+    },
+    {
+      "id": "it-faux-036",
+      "mot": "la palestra",
+      "traductions": [
+        "la salle de sport"
+      ],
+      "exemple": "Vado in [palestra] tre volte a settimana.",
+      "exemple_traduction": "Je vais à la salle de sport trois fois par semaine."
+    },
+    {
+      "id": "it-faux-037",
+      "mot": "il costume",
+      "traductions": [
+        "le maillot de bain"
+      ],
+      "exemple": "Non dimenticare il [costume], andiamo al mare!",
+      "exemple_traduction": "N'oublie pas ton maillot, on va à la mer !",
+      "note": "En entier : costume da bagno. Un costume (habit) = un abito, un completo."
+    },
+    {
+      "id": "it-faux-038",
+      "mot": "il cocomero",
+      "traductions": [
+        "la pastèque"
+      ],
+      "exemple": "D'estate mangiamo sempre il [cocomero].",
+      "exemple_traduction": "L'été on mange toujours de la pastèque.",
+      "note": "≠ concombre = il cetriolo. Au Nord : l'anguria."
+    },
+    {
+      "id": "it-faux-039",
+      "mot": "lo scontrino",
+      "traductions": [
+        "le ticket de caisse"
+      ],
+      "exemple": "Conservi lo [scontrino], per favore.",
+      "exemple_traduction": "Gardez le ticket de caisse, s'il vous plaît."
+    },
+    {
+      "id": "it-faux-040",
+      "mot": "stufo",
+      "traductions": [
+        "qui en a marre"
+      ],
+      "exemple": "Sono [stufo] di questo traffico!",
+      "exemple_traduction": "J'en ai marre de cette circulation !",
+      "note": "Essere stufo di = en avoir marre de. ≠ étouffé."
+    },
+    {
+      "id": "it-faux-041",
+      "mot": "la stanza",
+      "traductions": [
+        "la pièce (d'un logement)"
+      ],
+      "exemple": "L'appartamento ha tre [stanze].",
+      "exemple_traduction": "L'appartement a trois pièces."
+    },
+    {
+      "id": "it-faux-042",
+      "mot": "piano",
+      "traductions": [
+        "doucement",
+        "l'étage"
+      ],
+      "exemple": "Vai [piano], la strada è bagnata!",
+      "exemple_traduction": "Roule doucement, la route est mouillée !",
+      "note": "Al terzo piano = au troisième étage ; aussi : le piano."
+    }
+  ]
+}

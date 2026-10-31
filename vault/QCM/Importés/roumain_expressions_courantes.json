@@ -1,0 +1,533 @@
+{
+  "langue": "Roumain",
+  "caracteres_speciaux": [
+    "ă",
+    "â",
+    "î",
+    "ș",
+    "ț",
+    "Ă",
+    "Â",
+    "Î",
+    "Ș",
+    "Ț"
+  ],
+  "titre": "Roumain — vocabulaire : expressions courantes",
+  "description": "Expressions orales du quotidien : politesse, réactions, familier, sensations (mi-e foame…).",
+  "particules_optionnelles": [
+    "a",
+    "un",
+    "o"
+  ],
+  "vocabulaire": [
+    {
+      "id": "ro-expr-001",
+      "mot": "Ce mai faci?",
+      "traductions": [
+        "comment vas-tu ?"
+      ],
+      "exemple": "Salut, Mihai! [Ce mai faci]?",
+      "exemple_traduction": "Salut Mihai ! Comment vas-tu ?",
+      "note": "Vouvoiement : Ce mai faceți? Réponses : Bine, mersi. / Merge."
+    },
+    {
+      "id": "ro-expr-002",
+      "mot": "Merge.",
+      "traductions": [
+        "ça peut aller",
+        "ça marche"
+      ],
+      "exemple": "— Cum e la noul job? — [Merge], nu mă plâng.",
+      "exemple_traduction": "— Comment ça se passe au nouveau boulot ? — Ça va, je ne me plains pas.",
+      "note": "Merge și așa = couci-couça."
+    },
+    {
+      "id": "ro-expr-003",
+      "mot": "Nu-i nimic.",
+      "traductions": [
+        "ce n'est rien"
+      ],
+      "exemple": "— Scuze că am întârziat! — [Nu-i nimic].",
+      "exemple_traduction": "— Désolé d'être en retard ! — Ce n'est rien.",
+      "note": "Nu-i = nu e (oral)."
+    },
+    {
+      "id": "ro-expr-004",
+      "mot": "Nicio problemă.",
+      "traductions": [
+        "pas de problème"
+      ],
+      "exemple": "— Pot să vin mai târziu? — [Nicio problemă]!",
+      "exemple_traduction": "— Je peux venir plus tard ? — Pas de problème !"
+    },
+    {
+      "id": "ro-expr-005",
+      "mot": "Nu contează.",
+      "traductions": [
+        "peu importe"
+      ],
+      "exemple": "— Roșu sau alb? — [Nu contează], alege tu.",
+      "exemple_traduction": "— Rouge ou blanc ? — Peu importe, choisis, toi."
+    },
+    {
+      "id": "ro-expr-006",
+      "mot": "Stai puțin!",
+      "traductions": [
+        "attends un peu !"
+      ],
+      "exemple": "[Stai puțin|Stai puţin], îmi caut telefonul.",
+      "exemple_traduction": "Attends un peu, je cherche mon téléphone.",
+      "note": "Vouvoiement : Stați puțin! Stai! seul = attends ! / arrête !",
+      "variantes": [
+        "Stai puţin!"
+      ]
+    },
+    {
+      "id": "ro-expr-007",
+      "mot": "hai",
+      "traductions": [
+        "allez !",
+        "on y va !"
+      ],
+      "exemple": "[Hai|Haide] să mergem, e târziu!",
+      "exemple_traduction": "Allez, on y va, il est tard !",
+      "note": "Hai să + conjonctif = allons… (Hai să mâncăm!).",
+      "variantes": [
+        "haide"
+      ]
+    },
+    {
+      "id": "ro-expr-008",
+      "mot": "Las-o baltă!",
+      "traductions": [
+        "laisse tomber !"
+      ],
+      "exemple": "[Las-o baltă], nu merită să te enervezi.",
+      "exemple_traduction": "Laisse tomber, ça ne vaut pas la peine de t'énerver.",
+      "note": "Familier ; littéralement « laisse-la dans la mare »."
+    },
+    {
+      "id": "ro-expr-009",
+      "mot": "Pe bune?",
+      "traductions": [
+        "sérieux ?"
+      ],
+      "exemple": "Ai luat permisul din prima? [Pe bune]?",
+      "exemple_traduction": "Tu as eu ton permis du premier coup ? Sérieux ?",
+      "note": "Familier. Pe bune! = pour de vrai !"
+    },
+    {
+      "id": "ro-expr-010",
+      "mot": "noroc că",
+      "traductions": [
+        "heureusement que"
+      ],
+      "exemple": "[Noroc că] ai venit cu mașina!",
+      "exemple_traduction": "Heureusement que tu es venu en voiture !",
+      "note": "Synonymes : bine că, din fericire."
+    },
+    {
+      "id": "ro-expr-011",
+      "mot": "Noroc!",
+      "traductions": [
+        "santé ! (en trinquant)"
+      ],
+      "exemple": "Ridicăm paharele și spunem: [noroc]!",
+      "exemple_traduction": "On lève nos verres et on dit : santé !",
+      "note": "Noroc = chance. Sert aussi de « salut » familier dans certaines régions."
+    },
+    {
+      "id": "ro-expr-012",
+      "mot": "Poftă bună!",
+      "traductions": [
+        "bon appétit !"
+      ],
+      "exemple": "Masa e gata, [poftă bună]!",
+      "exemple_traduction": "Le repas est prêt, bon appétit !"
+    },
+    {
+      "id": "ro-expr-013",
+      "mot": "Sănătate!",
+      "traductions": [
+        "à tes souhaits !"
+      ],
+      "exemple": "— Hapciu! — [Sănătate]!",
+      "exemple_traduction": "— Atchoum ! — À tes souhaits !",
+      "note": "Après un éternuement ; aussi « (bonne) santé » dans les vœux."
+    },
+    {
+      "id": "ro-expr-014",
+      "mot": "Cu plăcere.",
+      "traductions": [
+        "de rien",
+        "avec plaisir"
+      ],
+      "exemple": "— Mulțumesc pentru ajutor! — [Cu plăcere]!",
+      "exemple_traduction": "— Merci pour ton aide ! — De rien !"
+    },
+    {
+      "id": "ro-expr-015",
+      "mot": "N-ai pentru ce.",
+      "traductions": [
+        "il n'y a pas de quoi"
+      ],
+      "exemple": "— Mersi mult! — [N-ai pentru ce].",
+      "exemple_traduction": "— Merci beaucoup ! — Il n'y a pas de quoi.",
+      "note": "Vouvoiement : N-aveți pentru ce."
+    },
+    {
+      "id": "ro-expr-016",
+      "mot": "Mă scuzați.",
+      "traductions": [
+        "excusez-moi (pardon)"
+      ],
+      "exemple": "[Mă scuzați|Mă scuzaţi], am greșit numărul.",
+      "exemple_traduction": "Excusez-moi, je me suis trompé de numéro.",
+      "note": "Tutoiement : Scuză-mă / Scuze.",
+      "variantes": [
+        "Mă scuzaţi."
+      ]
+    },
+    {
+      "id": "ro-expr-017",
+      "mot": "Nu vă supărați…",
+      "traductions": [
+        "excusez-moi de vous déranger"
+      ],
+      "exemple": "[Nu vă supărați|Nu vă supăraţi], unde e stația de autobuz?",
+      "exemple_traduction": "Excusez-moi, où est l'arrêt de bus ?",
+      "note": "LA formule pour aborder un inconnu (littéralement « ne vous fâchez pas »). Tutoiement : Nu te supăra…",
+      "variantes": [
+        "Nu vă supăraţi…",
+        "Nu vă supărați",
+        "Nu vă supăraţi"
+      ]
+    },
+    {
+      "id": "ro-expr-018",
+      "mot": "Îmi pare rău.",
+      "traductions": [
+        "je suis désolé"
+      ],
+      "exemple": "[Îmi pare rău], n-am știut.",
+      "exemple_traduction": "Je suis désolé, je ne savais pas."
+    },
+    {
+      "id": "ro-expr-019",
+      "mot": "Îmi pare bine.",
+      "traductions": [
+        "enchanté (de faire votre connaissance)"
+      ],
+      "exemple": "— Eu sunt Ana. — [Îmi pare bine]!",
+      "exemple_traduction": "— Moi, c'est Ana. — Enchanté !",
+      "note": "Forme complète : Îmi pare bine de cunoștință."
+    },
+    {
+      "id": "ro-expr-020",
+      "mot": "Poftim?",
+      "traductions": [
+        "pardon ? (faire répéter)",
+        "tenez ! (en tendant quelque chose)"
+      ],
+      "exemple": "[Poftim]? Nu v-am auzit.",
+      "exemple_traduction": "Pardon ? Je ne vous ai pas entendu.",
+      "note": "Aussi « je vous en prie » pour inviter à entrer ou à s'asseoir."
+    },
+    {
+      "id": "ro-expr-021",
+      "mot": "Nota, vă rog!",
+      "traductions": [
+        "l'addition, s'il vous plaît !"
+      ],
+      "exemple": "Am terminat. [Nota], vă rog!",
+      "exemple_traduction": "On a fini. L'addition, s'il vous plaît !",
+      "note": "« Putem plăti? » = on peut payer ?"
+    },
+    {
+      "id": "ro-expr-022",
+      "mot": "Se poate?",
+      "traductions": [
+        "c'est possible ?",
+        "on peut ?"
+      ],
+      "exemple": "Aș vrea o masă lângă geam, [se poate]?",
+      "exemple_traduction": "Je voudrais une table près de la fenêtre, c'est possible ?",
+      "note": "Réponses : Se poate. / Nu se poate."
+    },
+    {
+      "id": "ro-expr-023",
+      "mot": "E în regulă.",
+      "traductions": [
+        "c'est bon (tout va bien)"
+      ],
+      "exemple": "Nu-ți face griji, [e în regulă].",
+      "exemple_traduction": "Ne t'inquiète pas, c'est bon.",
+      "note": "În regulă? = d'accord ?"
+    },
+    {
+      "id": "ro-expr-024",
+      "mot": "Gata!",
+      "traductions": [
+        "c'est prêt !",
+        "c'est fini !"
+      ],
+      "exemple": "[Gata], putem pleca!",
+      "exemple_traduction": "C'est bon, on peut y aller !",
+      "note": "Gata? = tu es prêt ? Gata cu… = fini les…"
+    },
+    {
+      "id": "ro-expr-025",
+      "mot": "Asta e.",
+      "traductions": [
+        "c'est comme ça",
+        "tant pis"
+      ],
+      "exemple": "Am pierdut autobuzul, [asta e].",
+      "exemple_traduction": "On a raté le bus, tant pis.",
+      "note": "Résignation. Variante : Asta e viața."
+    },
+    {
+      "id": "ro-expr-026",
+      "mot": "Ce să-i faci?",
+      "traductions": [
+        "on n'y peut rien"
+      ],
+      "exemple": "Plouă iar… [ce să-i faci]?",
+      "exemple_traduction": "Il pleut encore… qu'est-ce que tu veux y faire ?",
+      "note": "Littéralement « que lui faire ? »."
+    },
+    {
+      "id": "ro-expr-027",
+      "mot": "Doamne ferește!",
+      "traductions": [
+        "surtout pas ! (Dieu m'en garde)"
+      ],
+      "exemple": "Să conduc iarna pe Transfăgărășan? [Doamne ferește|Doamne fereşte]!",
+      "exemple_traduction": "Conduire sur la Transfăgărășan en hiver ? Surtout pas !",
+      "variantes": [
+        "Doamne fereşte!"
+      ]
+    },
+    {
+      "id": "ro-expr-028",
+      "mot": "mi-e foame",
+      "traductions": [
+        "j'ai faim"
+      ],
+      "exemple": "Mi-e [foame], hai să mâncăm ceva.",
+      "exemple_traduction": "J'ai faim, allons manger quelque chose.",
+      "note": "Datif : mi-e, ți-e, îi e, ne e, vă e, le e. Aussi : mi-e sete (soif), mi-e somn (sommeil)."
+    },
+    {
+      "id": "ro-expr-029",
+      "mot": "mi-e frig",
+      "traductions": [
+        "j'ai froid"
+      ],
+      "exemple": "Închide geamul, mi-e [frig].",
+      "exemple_traduction": "Ferme la fenêtre, j'ai froid.",
+      "note": "Contraire : mi-e cald. Pour la météo : e frig (il fait froid)."
+    },
+    {
+      "id": "ro-expr-030",
+      "mot": "mi-e frică (de)",
+      "traductions": [
+        "j'ai peur (de)"
+      ],
+      "exemple": "Mi-e [frică] de câini mari.",
+      "exemple_traduction": "J'ai peur des gros chiens.",
+      "note": "Synonyme : mă tem de.",
+      "variantes": [
+        "mi-e frică"
+      ]
+    },
+    {
+      "id": "ro-expr-031",
+      "mot": "a avea chef (de)",
+      "traductions": [
+        "avoir envie (de)"
+      ],
+      "exemple": "N-am [chef] de nimic azi.",
+      "exemple_traduction": "Je n'ai envie de rien aujourd'hui.",
+      "note": "Familier mais omniprésent. Pour la nourriture : a avea poftă de.",
+      "variantes": [
+        "a avea chef"
+      ]
+    },
+    {
+      "id": "ro-expr-032",
+      "mot": "a avea dreptate",
+      "traductions": [
+        "avoir raison"
+      ],
+      "exemple": "Ai [dreptate], am greșit eu.",
+      "exemple_traduction": "Tu as raison, c'est moi qui me suis trompé.",
+      "note": "Se tromper = a greși."
+    },
+    {
+      "id": "ro-expr-033",
+      "mot": "a face cumpărături",
+      "traductions": [
+        "faire les courses"
+      ],
+      "exemple": "Sâmbăta [fac] cumpărături la piață.",
+      "exemple_traduction": "Le samedi, je fais les courses au marché.",
+      "note": "A face piața = faire le marché."
+    },
+    {
+      "id": "ro-expr-034",
+      "mot": "a sta la coadă",
+      "traductions": [
+        "faire la queue"
+      ],
+      "exemple": "Am [stat] o oră la coadă la poștă.",
+      "exemple_traduction": "J'ai fait la queue une heure à la poste.",
+      "note": "Coadă = queue (aussi celle d'un animal)."
+    },
+    {
+      "id": "ro-expr-035",
+      "mot": "a da o mână de ajutor",
+      "traductions": [
+        "donner un coup de main"
+      ],
+      "exemple": "Îmi dai o [mână] de ajutor cu bagajele?",
+      "exemple_traduction": "Tu me donnes un coup de main avec les bagages ?"
+    },
+    {
+      "id": "ro-expr-036",
+      "mot": "a pierde vremea",
+      "traductions": [
+        "perdre son temps"
+      ],
+      "exemple": "Nu mai [pierde] vremea pe telefon!",
+      "exemple_traduction": "Arrête de perdre ton temps sur ton téléphone !",
+      "note": "Nu mai + impératif négatif = arrête de…"
+    },
+    {
+      "id": "ro-expr-037",
+      "mot": "a coborî",
+      "traductions": [
+        "descendre"
+      ],
+      "exemple": "[Coborâți|Coborâţi] la următoarea?",
+      "exemple_traduction": "Vous descendez au prochain arrêt ?",
+      "note": "LA question du bus bondé pour se placer vers la porte. Contraire : a urca (monter)."
+    },
+    {
+      "id": "ro-expr-038",
+      "mot": "Baftă!",
+      "traductions": [
+        "bonne chance !"
+      ],
+      "exemple": "Mâine ai examenul? [Baftă]!",
+      "exemple_traduction": "Tu as ton examen demain ? Bonne chance !",
+      "note": "Familier ; plus neutre : Succes!"
+    },
+    {
+      "id": "ro-expr-039",
+      "mot": "Ce păcat!",
+      "traductions": [
+        "quel dommage !"
+      ],
+      "exemple": "Nu poți veni? [Ce păcat]!",
+      "exemple_traduction": "Tu ne peux pas venir ? Quel dommage !"
+    },
+    {
+      "id": "ro-expr-040",
+      "mot": "mișto",
+      "traductions": [
+        "cool, sympa (familier)"
+      ],
+      "exemple": "Ce apartament [mișto|mişto] ai!",
+      "exemple_traduction": "Il est trop bien, ton appartement !",
+      "note": "Très familier, invariable.",
+      "variantes": [
+        "mişto"
+      ]
+    },
+    {
+      "id": "ro-expr-041",
+      "mot": "nasol",
+      "traductions": [
+        "nul, pas terrible (familier)"
+      ],
+      "exemple": "E [nasol] că plouă tot weekendul.",
+      "exemple_traduction": "C'est nul qu'il pleuve tout le week-end.",
+      "note": "Familier ; contraire : mișto."
+    },
+    {
+      "id": "ro-expr-042",
+      "mot": "Bine ai venit!",
+      "traductions": [
+        "bienvenue !"
+      ],
+      "exemple": "[Bine ai venit] în România!",
+      "exemple_traduction": "Bienvenue en Roumanie !",
+      "note": "Vouvoiement ou pluriel : Bine ați venit!"
+    },
+    {
+      "id": "ro-expr-043",
+      "mot": "La mulți ani!",
+      "traductions": [
+        "bon anniversaire !",
+        "bonne année !"
+      ],
+      "exemple": "[La mulți ani|La mulţi ani], Elena!",
+      "exemple_traduction": "Bon anniversaire, Elena !",
+      "note": "Pour les anniversaires, les fêtes et le Nouvel An ; littéralement « à beaucoup d'années ».",
+      "variantes": [
+        "La mulţi ani!"
+      ]
+    },
+    {
+      "id": "ro-expr-044",
+      "mot": "Fii atent!",
+      "traductions": [
+        "fais attention !"
+      ],
+      "exemple": "[Fii atent], e gheață pe trotuar!",
+      "exemple_traduction": "Fais attention, il y a du verglas sur le trottoir !",
+      "note": "Au féminin : Fii atentă! Vouvoiement : Fiți atenți!"
+    },
+    {
+      "id": "ro-expr-045",
+      "mot": "Nu-mi vine să cred!",
+      "traductions": [
+        "je n'en reviens pas !"
+      ],
+      "exemple": "Am câștigat? [Nu-mi vine să cred]!",
+      "exemple_traduction": "On a gagné ? Je n'en reviens pas !"
+    },
+    {
+      "id": "ro-expr-046",
+      "mot": "Cum se spune?",
+      "traductions": [
+        "comment dit-on ?"
+      ],
+      "exemple": "[Cum se spune] « parapluie » în românește?",
+      "exemple_traduction": "Comment dit-on « parapluie » en roumain ?",
+      "note": "Réponse : umbrelă. Aussi : Ce înseamnă…? = que veut dire… ?"
+    },
+    {
+      "id": "ro-expr-047",
+      "mot": "mai rar",
+      "traductions": [
+        "plus lentement (en parlant)"
+      ],
+      "exemple": "Nu înțeleg tot, vorbiți [mai rar], vă rog.",
+      "exemple_traduction": "Je ne comprends pas tout, parlez plus lentement, s'il vous plaît.",
+      "note": "Rar = lentement quand on parle ; mai încet = moins fort (ou plus lentement)."
+    },
+    {
+      "id": "ro-expr-048",
+      "mot": "Treaba ta!",
+      "traductions": [
+        "c'est ton affaire !",
+        "comme tu veux !"
+      ],
+      "exemple": "Vrei să pleci acum? [Treaba ta]!",
+      "exemple_traduction": "Tu veux partir maintenant ? C'est ton affaire !",
+      "note": "Peut sonner sec selon le ton."
+    }
+  ]
+}

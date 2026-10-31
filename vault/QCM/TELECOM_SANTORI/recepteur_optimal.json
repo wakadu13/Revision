@@ -1,0 +1,497 @@
+{
+  "titre": "Le récepteur optimal",
+  "description": "CLEAE2, cours 1 (suite) : structure du récepteur, filtrage adapté, interférences entre symboles, diagramme de l'œil et filtres de Nyquist.",
+  "questions": [
+    {
+      "id": "clea1b-001",
+      "type": "QCM",
+      "question": "Dans quel ordre se succèdent les blocs du récepteur optimal ?",
+      "choix": [
+        "Filtre gr(t), échantillonnage à 1/Ts, détecteur à seuils",
+        "Détecteur à seuils, filtre gr(t), échantillonnage",
+        "Filtre gr(t), détecteur à seuils, échantillonnage",
+        "Échantillonnage, filtre gr(t), détecteur à seuils"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "u(t) passe dans le filtre gr(t), donne z(t), est échantillonné à la fréquence 1/Ts, puis le détecteur à seuils fournit les symboles estimés."
+    },
+    {
+      "id": "clea1b-002",
+      "type": "FLASHCARD",
+      "question": "À quelle fréquence le récepteur optimal échantillonne-t-il le signal filtré z(t) ?",
+      "verso": "1/Ts, une fois par temps symbole.",
+      "explication": "On obtient z̃(n), que le détecteur à seuils compare aux seuils pour estimer le symbole."
+    },
+    {
+      "id": "clea1b-003",
+      "type": "TROU",
+      "question": "Le dernier bloc du récepteur optimal, qui fournit les symboles estimés, est le détecteur à ___.",
+      "reponses_texte": [
+        "seuils",
+        "seuil"
+      ],
+      "explication": "Structure : filtre gr(t) → échantillonnage (1/Ts) → détecteur à seuils → symboles estimés."
+    },
+    {
+      "id": "clea1b-004",
+      "type": "QCM",
+      "question": "La structure du récepteur optimal est valable :",
+      "choix": [
+        "Uniquement sur porteuse HF",
+        "En bande de base comme sur porteuse HF",
+        "Uniquement pour des symboles binaires",
+        "Uniquement en bande de base"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le cours précise qu'elle vaut pour toute transmission, en bande de base ou sur porteuse HF."
+    },
+    {
+      "id": "clea1b-005",
+      "type": "FLASHCARD",
+      "question": "Quel est le but d'un récepteur numérique, contrairement à un récepteur analogique ?",
+      "verso": "Identifier le symbole de l'alphabet le plus probablement envoyé, et non restituer fidèlement le signal.",
+      "explication": "Le récepteur numérique prend une décision sur la valeur d'origine de chaque symbole."
+    },
+    {
+      "id": "clea1b-006",
+      "type": "QCR",
+      "question": "Quels sont les deux phénomènes du canal qui compliquent la prise de décision ?",
+      "choix": [
+        "L'addition de bruit",
+        "Le comportement du canal en filtre passe-bas",
+        "Le comportement du canal en filtre passe-haut",
+        "La quantification du signal"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "A et B : vrais. C : faux, le canal se comporte en passe-bas. D : faux, la quantification a lieu à la numérisation, pas dans le canal."
+    },
+    {
+      "id": "clea1b-007",
+      "type": "QCM",
+      "question": "Quel est l'effet du comportement passe-bas du canal sur le signal ?",
+      "choix": [
+        "Il réduit seulement son amplitude",
+        "Il élargit son support fréquentiel et réduit son support temporel",
+        "Il réduit son support fréquentiel et élargit son support temporel",
+        "Il ajoute une composante continue"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Le filtrage passe-bas coupe les hautes fréquences, donc le support fréquentiel diminue et les impulsions s'étalent dans le temps."
+    },
+    {
+      "id": "clea1b-008",
+      "type": "TROU",
+      "question": "En réception, z(t) = u(t) * gr(t), où u(t) contient s'(t), le signal ___ par son passage dans le canal, plus du bruit.",
+      "reponses_texte": [
+        "deforme",
+        "déformé"
+      ],
+      "explication": "z(t) = s'(t) * gr(t) + be(t) * gr(t) : une partie signal et une partie bruit."
+    },
+    {
+      "id": "clea1b-009",
+      "type": "FLASHCARD",
+      "question": "Quel est l'objectif du filtre adapté ?",
+      "verso": "Maximiser le rapport signal sur bruit (RSB) en réception.",
+      "explication": "Il sert à minimiser l'effet du bruit, pas à éliminer l'IES (c'est le rôle du filtre de Nyquist)."
+    },
+    {
+      "id": "clea1b-010",
+      "type": "TROU",
+      "question": "Le filtre adapté (matched filter) a pour réponse impulsionnelle gr(t) = ___, où g(t) est le filtre d'émission.",
+      "reponses_texte": [
+        "g*(-t)",
+        "g*(−t)",
+        "g(-t)*"
+      ],
+      "explication": "C'est le conjugué retourné dans le temps du filtre d'émission g(t)."
+    },
+    {
+      "id": "clea1b-011",
+      "type": "QCM",
+      "question": "Où le filtre adapté est-il placé ?",
+      "choix": [
+        "Après le détecteur à seuils",
+        "À l'émission, avant le canal",
+        "Dans le canal",
+        "À la réception, avant l'échantillonnage"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Le filtre adapté gr(t) est le premier bloc du récepteur. Penser qu'il est à l'émission est un piège classique (question Q10 du cours : FAUX)."
+    },
+    {
+      "id": "clea1b-012",
+      "type": "QCM",
+      "question": "Vrai ou faux : « L'objectif du filtre adapté est d'éliminer l'IES. »",
+      "choix": [
+        "Faux, il maximise le RSB pour lutter contre le bruit",
+        "Vrai, c'est un filtre de Nyquist",
+        "Faux, il sert à récupérer l'horloge",
+        "Vrai, il annule les symboles voisins"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Le filtre adapté lutte contre le bruit en maximisant le RSB. L'IES s'élimine avec un filtre global de Nyquist."
+    },
+    {
+      "id": "clea1b-013",
+      "type": "FLASHCARD",
+      "question": "Comment modélise-t-on la chaîne de transmission pour étudier le récepteur ?",
+      "verso": "Par des filtres : ge(t) à l'émission, g(t) pour le canal (bruit + passe-bas), gr(t) à la réception.",
+      "explication": "Le canal ajoute du bruit et se comporte en filtre passe-bas, à l'origine de l'IES."
+    },
+    {
+      "id": "clea1b-014",
+      "type": "FLASHCARD",
+      "question": "Que signifie le sigle IES ?",
+      "verso": "Interférences entre symboles.",
+      "explication": "L'étalement temporel d'un symbole dû au canal vient perturber les symboles voisins."
+    },
+    {
+      "id": "clea1b-015",
+      "type": "QCM",
+      "question": "Quelle est l'origine des interférences entre symboles ?",
+      "choix": [
+        "Le bruit additif du canal",
+        "L'étalement temporel des impulsions dû au filtrage passe-bas du canal",
+        "Une fréquence d'échantillonnage trop élevée",
+        "Le codage de Gray"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Les formants rectangulaires ont de l'énergie en hautes fréquences ; le canal passe-bas les coupe et allonge les impulsions, qui débordent sur les symboles voisins. Le bruit est un phénomène distinct."
+    },
+    {
+      "id": "clea1b-016",
+      "type": "TROU",
+      "question": "Les formants rectangulaires posent problème car ils contiennent de l'énergie à hautes ___.",
+      "reponses_texte": [
+        "frequences",
+        "fréquences",
+        "frequence",
+        "fréquence"
+      ],
+      "explication": "Le canal passe-bas coupe ces hautes fréquences, ce qui étale les impulsions dans le temps."
+    },
+    {
+      "id": "clea1b-017",
+      "type": "QCM",
+      "question": "Une impulsion rectangulaire de largeur T passe dans un filtre passe-bas. Pour quelle fréquence de coupure est-elle la plus déformée ?",
+      "choix": [
+        "fc = 3/T",
+        "fc = 1/T",
+        "fc = 1/(2T)",
+        "Elle est déformée de la même façon dans les trois cas"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Plus la fréquence de coupure est basse, plus on coupe de hautes fréquences et plus l'impulsion s'étale dans le temps."
+    },
+    {
+      "id": "clea1b-018",
+      "type": "FLASHCARD",
+      "question": "Après échantillonnage, z̃(n) = Σ g̃(k)·a(n−k) + b̃(n). Quel est le terme d'IES ?",
+      "verso": "Les termes g̃(k)·a(n−k) pour k ≠ 0.",
+      "explication": "Sans IES, il ne reste que z̃(n) = g̃(0)·a(n) + b̃(n)."
+    },
+    {
+      "id": "clea1b-019",
+      "type": "QCR",
+      "question": "Quelles sont les conséquences des IES ?",
+      "choix": [
+        "Elles modifient la valeur des symboles reçus",
+        "Elles provoquent des erreurs de décision",
+        "Elles augmentent le débit binaire",
+        "Elles conduisent à une mauvaise transmission du message"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "A, B, D : vrais, ce sont les conséquences citées dans le cours. C : faux, l'IES ne change pas le débit, elle dégrade la décision."
+    },
+    {
+      "id": "clea1b-020",
+      "type": "FLASHCARD",
+      "question": "Qu'est-ce que le diagramme de l'œil ?",
+      "verso": "L'affichage de u(t) à l'oscilloscope, avec une base de temps réglée sur Ts, qui superpose les symboles sur plusieurs périodes.",
+      "explication": "On affiche en général 2 ou 3 Ts en abscisse. Il permet d'apprécier la qualité du signal reçu."
+    },
+    {
+      "id": "clea1b-021",
+      "type": "QCM",
+      "question": "Dans un diagramme de l'œil, que traduit une grande ouverture verticale ?",
+      "choix": [
+        "Un débit binaire plus élevé",
+        "Une bande passante plus faible",
+        "Une récupération de rythme plus simple",
+        "Une meilleure résistance au bruit"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Plus l'œil est ouvert verticalement, plus les symboles '0' et '1' sont faciles à distinguer, donc meilleure est la résistance au bruit. L'ouverture horizontale concerne la récupération du rythme."
+    },
+    {
+      "id": "clea1b-022",
+      "type": "TROU",
+      "question": "Dans un diagramme de l'œil, une grande ouverture ___ (horizontale ou verticale) relâche la contrainte sur l'instant d'échantillonnage.",
+      "reponses_texte": [
+        "horizontale"
+      ],
+      "explication": "Une large ouverture horizontale simplifie la récupération de rythme. L'ouverture verticale, elle, traduit la résistance au bruit."
+    },
+    {
+      "id": "clea1b-023",
+      "type": "FLASHCARD",
+      "question": "Sur quelle durée règle-t-on la base de temps de l'oscilloscope pour un diagramme de l'œil ?",
+      "verso": "Sur Ts (en général 2 ou 3 Ts affichés en abscisse).",
+      "explication": "Les traces successives se superposent et dessinent l'« œil »."
+    },
+    {
+      "id": "clea1b-024",
+      "type": "FLASHCARD",
+      "question": "Qu'est-ce qu'un filtre de Nyquist ?",
+      "verso": "Un filtre dont la réponse impulsionnelle globale est nulle à tous les instants d'échantillonnage kTs, sauf en k = 0.",
+      "explication": "Il annule l'effet des symboles précédents aux instants d'échantillonnage, donc il élimine l'IES."
+    },
+    {
+      "id": "clea1b-025",
+      "type": "FLASHCARD",
+      "question": "Comment appelle-t-on un filtre dont la réponse impulsionnelle est nulle à tous les instants d'échantillonnage sauf un ?",
+      "verso": "Un filtre de Nyquist.",
+      "explication": "Condition : g̃(kTs) = 0 pour tout k ≠ 0."
+    },
+    {
+      "id": "clea1b-026",
+      "type": "QCM",
+      "question": "Quel est le critère temporel de Nyquist ?",
+      "choix": [
+        "g̃(kTs) = 0 pour tout k ≠ 0",
+        "g̃(kTs) = 1 pour tout k",
+        "g̃(0) = 0",
+        "g̃(t) = 0 pour tout t ≠ 0"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "La réponse n'est nulle qu'aux instants d'échantillonnage kTs (k ≠ 0), pas partout. Le piège « pour tout t ≠ 0 » est l'erreur de la question Q7 du cours."
+    },
+    {
+      "id": "clea1b-027",
+      "type": "TROU",
+      "question": "Critère fréquentiel de Nyquist : Σ G(f − k/Ts) = constante = Ts × ___.",
+      "reponses_texte": [
+        "g(0)",
+        "g̃(0)",
+        "g~(0)"
+      ],
+      "explication": "La somme des copies du spectre décalées de 1/Ts doit être plate, égale à Ts·g̃(0)."
+    },
+    {
+      "id": "clea1b-028",
+      "type": "QCM",
+      "question": "Vrai ou faux : « Un filtre de Nyquist a une réponse impulsionnelle non nulle en un seul point. »",
+      "choix": [
+        "Vrai, elle est nulle partout sauf en t = 0",
+        "Faux, elle n'est nulle qu'aux instants kTs (k ≠ 0)",
+        "Vrai, c'est un Dirac",
+        "Faux, elle est nulle en t = 0"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Entre les instants d'échantillonnage, la réponse peut être non nulle (ex. sinus cardinal, triangle de base 2Ts). Seules les valeurs aux instants kTs comptent."
+    },
+    {
+      "id": "clea1b-029",
+      "type": "FLASHCARD",
+      "question": "Vrai ou faux : l'objectif du filtre global de Nyquist est d'éliminer l'IES.",
+      "verso": "Vrai.",
+      "explication": "Le filtre adapté, lui, sert à maximiser le RSB."
+    },
+    {
+      "id": "clea1b-030",
+      "type": "TROU",
+      "question": "Selon le 1er critère de Nyquist, la bande passante du canal doit vérifier Bc ≥ 1/(___).",
+      "reponses_texte": [
+        "2Ts",
+        "2 Ts",
+        "2*Ts",
+        "2×Ts"
+      ],
+      "explication": "Sinon, on ne peut pas transmettre sans IES un signal de rapidité R = 1/Ts dans un canal passe-bas de bande Bc."
+    },
+    {
+      "id": "clea1b-031",
+      "type": "QCM",
+      "question": "Quelle est la bande de Nyquist (bande minimale) pour une rapidité de modulation R = 1/Ts ?",
+      "choix": [
+        "1/Ts",
+        "2/Ts",
+        "1/(2Ts)",
+        "Ts/2"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "B_N = B_min = 1/(2Ts) = R/2. Le piège « 1/Ts » correspond à toute la bande du lobe principal d'un NRZ."
+    },
+    {
+      "id": "clea1b-032",
+      "type": "QCM",
+      "question": "Un canal passe-bas a une bande de 4 kHz. Quelle rapidité de modulation maximale permet une transmission sans IES ?",
+      "choix": [
+        "16 000 bauds",
+        "2 000 bauds",
+        "4 000 bauds",
+        "8 000 bauds"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Bc ≥ 1/(2Ts) donne R = 1/Ts ≤ 2·Bc = 8 000 bauds. Le piège « 4 000 » oublie le facteur 2."
+    },
+    {
+      "id": "clea1b-033",
+      "type": "FLASHCARD",
+      "question": "Quelle condition de symétrie sur G̃(f) garantit une IES nulle ?",
+      "verso": "Le point (1/(2Ts), G̃(0)/2) doit être un centre de symétrie de la réponse en fréquence.",
+      "explication": "Exemple du cours : un G̃(f) triangulaire de −1/Ts à 1/Ts vaut 1/2 en 1/(2Ts) et respecte cette symétrie, c'est un filtre de Nyquist."
+    },
+    {
+      "id": "clea1b-034",
+      "type": "QCR",
+      "question": "D'après les exemples du cours, lesquels de ces filtres g̃ / G̃ vérifient le critère de Nyquist ?",
+      "choix": [
+        "g̃(t) triangulaire de −Ts à Ts",
+        "G̃(f) triangulaire de −1/Ts à 1/Ts",
+        "Un G̃(f) pour lequel (1/(2Ts), G̃(0)/2) n'est pas un centre de symétrie",
+        "G̃(f) en cosinus surélevé"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "A : vrai, nul en ±Ts, ±2Ts… B : vrai, symétrie autour de (1/(2Ts), 1/2). C : faux, sans cette symétrie l'IES n'est pas nulle. D : vrai, le cosinus surélevé respecte la symétrie autour de (1/(2Ts), G(0)/2)."
+    },
+    {
+      "id": "clea1b-035",
+      "type": "FLASHCARD",
+      "question": "Quel filtre de Nyquist réalise un compromis entre largeur de bande et limitation temporelle de la réponse impulsionnelle ?",
+      "verso": "Le filtre en cosinus surélevé.",
+      "explication": "C'est le « critère de Nyquist élargi »."
+    },
+    {
+      "id": "clea1b-036",
+      "type": "TROU",
+      "question": "Dans le cosinus surélevé, α est appelé facteur d'excès de bande, facteur d'arrondi ou facteur de ___ (roll-off).",
+      "reponses_texte": [
+        "retombee",
+        "retombée"
+      ],
+      "explication": "On prend en général un α faible pour minimiser la bande utilisée."
+    },
+    {
+      "id": "clea1b-037",
+      "type": "QCM",
+      "question": "Pour un cosinus surélevé, pour quelles fréquences G(f) vaut-il Ts (partie plate) ?",
+      "choix": [
+        "|f| ≤ (1−α)/(2Ts)",
+        "|f| ≤ 1/(2Ts)",
+        "|f| ≥ (1+α)/(2Ts)",
+        "|f| ≤ (1+α)/(2Ts)"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "G(f) = Ts pour |f| ≤ (1−α)/(2Ts), transition en cosinus jusqu'à (1+α)/(2Ts), puis 0 au-delà."
+    },
+    {
+      "id": "clea1b-038",
+      "type": "FLASHCARD",
+      "question": "Au-delà de quelle fréquence la réponse d'un cosinus surélevé est-elle nulle ?",
+      "verso": "(1+α)/(2Ts)",
+      "explication": "C'est donc la bande occupée par le signal : B = (1+α)/(2Ts)."
+    },
+    {
+      "id": "clea1b-039",
+      "type": "QCM",
+      "question": "Pourquoi choisit-on en général un facteur de retombée α faible ?",
+      "choix": [
+        "Pour raccourcir la réponse impulsionnelle",
+        "Pour minimiser la bande utilisée",
+        "Pour augmenter le RSB",
+        "Pour supprimer le bruit"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "La bande vaut (1+α)/(2Ts) : plus α est petit, plus elle est étroite. En contrepartie, la réponse impulsionnelle décroît plus lentement."
+    },
+    {
+      "id": "clea1b-040",
+      "type": "QCM",
+      "question": "Le RTC permet au maximum 6 200 bauds. Quel débit maximal obtient-on avec une modulation à 8 états ?",
+      "choix": [
+        "6 200 bit/s",
+        "12 400 bit/s",
+        "18 600 bit/s",
+        "49 600 bit/s"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "8 états : n = log₂(8) = 3 bits par symbole, donc D = 3 × 6 200 = 18 600 bit/s. Le piège « 49 600 » multiplie par M au lieu de n."
+    },
+    {
+      "id": "clea1b-041",
+      "type": "TROU",
+      "question": "Téléphone numérique à 64 000 bit/s en binaire, sans IES : la bande minimale nécessaire est de ___ kHz.",
+      "reponses_texte": [
+        "32",
+        "32 kHz",
+        "32khz"
+      ],
+      "explication": "Bande de Nyquist B = 1/(2Tb) = 64 000 / 2 = 32 kHz, contre 3 kHz pour le canal analogique."
+    },
+    {
+      "id": "clea1b-042",
+      "type": "QCM",
+      "question": "Transmission binaire, Ts ≈ 0,26042 µs, racine de cosinus surélevé avec α = 22 %. Quel est le débit binaire ?",
+      "choix": [
+        "4,68 Mbit/s",
+        "7,68 Mbit/s",
+        "1,92 Mbit/s",
+        "3,84 Mbit/s"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "En binaire, D = 1/Ts = 1/0,26042 µs ≈ 3,84 Mbit/s. « 1,92 » est la bande de Nyquist 1/(2Ts) en MHz."
+    },
+    {
+      "id": "clea1b-043",
+      "type": "FLASHCARD",
+      "question": "Même système (D = 3,84 Mbit/s, α = 22 %) : quelle bande occupe le signal, et passe-t-il sans IES dans un canal de 5 MHz ?",
+      "verso": "B = (1+α)/(2Ts) ≈ 1,22 × 1,92 ≈ 2,34 MHz < 5 MHz : oui, sans IES.",
+      "explication": "L'efficacité spectrale vaut alors η = D/B ≈ 3,84 / 2,34 ≈ 1,64 bit/s/Hz."
+    }
+  ]
+}

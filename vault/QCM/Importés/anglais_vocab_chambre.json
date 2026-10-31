@@ -1,0 +1,142 @@
+{
+  "langue": "Anglais",
+  "titre": "Anglais — vocabulaire : la chambre (A1)",
+  "particules_optionnelles": [
+    "to",
+    "a",
+    "an",
+    "the"
+  ],
+  "caracteres_speciaux": [],
+  "vocabulaire": [
+    {
+      "id": "en-chambre-001",
+      "mot": "a bedroom",
+      "traductions": [
+        "une chambre (à coucher)"
+      ],
+      "exemple": "My [bedroom] is small but comfortable.",
+      "exemple_traduction": "Ma chambre est petite mais confortable.",
+      "note": "Une chambre d'hôtel = a room / a hotel room."
+    },
+    {
+      "id": "en-chambre-002",
+      "mot": "a bed",
+      "traductions": [
+        "un lit"
+      ],
+      "exemple": "I like to read in [bed] before I fall asleep.",
+      "exemple_traduction": "J'aime lire au lit avant de m'endormir.",
+      "note": "to go to bed = aller se coucher ; in bed = au lit (sans article)."
+    },
+    {
+      "id": "en-chambre-003",
+      "mot": "to sleep",
+      "traductions": [
+        "dormir"
+      ],
+      "exemple": "I normally go to [sleep] around 9 p.m.",
+      "exemple_traduction": "Je m'endors généralement vers 21 h.",
+      "note": "Irrégulier : sleep – slept – slept. to go to sleep = s'endormir."
+    },
+    {
+      "id": "en-chambre-004",
+      "mot": "to dream",
+      "traductions": [
+        "rêver"
+      ],
+      "exemple": "Last night I [dreamed] I was flying like a bird!",
+      "exemple_traduction": "Cette nuit, j'ai rêvé que je volais comme un oiseau !",
+      "note": "Passé : dreamed ou dreamt. to dream about / of. a dream = un rêve."
+    },
+    {
+      "id": "en-chambre-005",
+      "mot": "to nap",
+      "traductions": [
+        "faire la sieste"
+      ],
+      "exemple": "I sometimes [nap] for 20 minutes before dinner.",
+      "exemple_traduction": "Je fais parfois une sieste de 20 minutes avant le dîner.",
+      "note": "Plus courant : to have / to take a nap. Passé : napped."
+    },
+    {
+      "id": "en-chambre-006",
+      "mot": "to relax",
+      "traductions": [
+        "se détendre"
+      ],
+      "exemple": "On Saturdays I come home to [relax].",
+      "exemple_traduction": "Le samedi, je rentre à la maison pour me détendre.",
+      "note": "Pas de pronom réfléchi en anglais : I relax (pas « I relax myself »)."
+    },
+    {
+      "id": "en-chambre-007",
+      "mot": "furniture",
+      "traductions": [
+        "les meubles",
+        "le mobilier"
+      ],
+      "exemple": "All the [furniture] in my house is black wood.",
+      "exemple_traduction": "Tous les meubles de ma maison sont en bois noir.",
+      "note": "Indénombrable : pas de « furnitures ». Un meuble = a piece of furniture."
+    },
+    {
+      "id": "en-chambre-008",
+      "mot": "a wardrobe",
+      "traductions": [
+        "une armoire",
+        "une penderie"
+      ],
+      "exemple": "I have lots of space in my [wardrobe] now.",
+      "exemple_traduction": "J'ai maintenant beaucoup de place dans mon armoire.",
+      "note": "Américain : a closet. Aussi : la garde-robe (ensemble des vêtements).",
+      "variantes": [
+        "a closet"
+      ]
+    },
+    {
+      "id": "en-chambre-009",
+      "mot": "a chest of drawers",
+      "traductions": [
+        "une commode"
+      ],
+      "exemple": "My clothes are in my [chest of drawers].",
+      "exemple_traduction": "Mes vêtements sont dans ma commode.",
+      "note": "a drawer = un tiroir. Américain : a dresser."
+    },
+    {
+      "id": "en-chambre-010",
+      "mot": "a bedside cabinet",
+      "traductions": [
+        "une table de chevet"
+      ],
+      "exemple": "I keep an alarm clock on my [bedside cabinet].",
+      "exemple_traduction": "Je garde un réveil sur ma table de chevet.",
+      "note": "Aussi : a bedside table, a nightstand (US).",
+      "variantes": [
+        "a bedside table",
+        "a nightstand"
+      ]
+    },
+    {
+      "id": "en-chambre-011",
+      "mot": "a lamp",
+      "traductions": [
+        "une lampe"
+      ],
+      "exemple": "I have a [lamp] next to my bed.",
+      "exemple_traduction": "J'ai une lampe à côté de mon lit.",
+      "note": "to turn on / off the lamp = allumer / éteindre la lampe."
+    },
+    {
+      "id": "en-chambre-012",
+      "mot": "a desk",
+      "traductions": [
+        "un bureau (meuble)"
+      ],
+      "exemple": "Sometimes I study at the [desk] in my bedroom.",
+      "exemple_traduction": "Parfois, j'étudie au bureau de ma chambre.",
+      "note": "Le meuble. La pièce = an office / a study."
+    }
+  ]
+}

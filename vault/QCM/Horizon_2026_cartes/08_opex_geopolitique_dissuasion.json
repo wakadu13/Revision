@@ -1,0 +1,1096 @@
+{
+  "titre": "Horizon — Opérations extérieures, géopolitique et dissuasion nucléaire",
+  "description": "Grandes opérations de l’AAE depuis 1986, point géopolitique et focus sur la dissuasion nucléaire française (Horizon 2026, ch. 2-VIII et IX).",
+  "questions": [
+    {
+      "id": "hz-opex-001",
+      "type": "FLASHCARD",
+      "question": "Avec quels pays Barkhane luttait-elle contre les groupes terroristes ?",
+      "verso": "Les pays du G5 Sahel"
+    },
+    {
+      "id": "hz-opex-002",
+      "type": "FLASHCARD",
+      "question": "Où Emmanuel Macron a-t-il annoncé l’augmentation du nombre de têtes nucléaires françaises ?",
+      "verso": "Lors de son discours à l’Île-Longue",
+      "explication": "Une première depuis 1992, sans préciser le nombre."
+    },
+    {
+      "id": "hz-opex-003",
+      "type": "QCR",
+      "question": "Quelles caractéristiques de la dissuasion française cite l’Horizon ?",
+      "choix": [
+        "Dimension européenne",
+        "Indépendance et gage de souveraineté",
+        "Strictement défensive",
+        "Puissance et responsabilité",
+        "Emploi possible en premier sur décision de l’OTAN"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explication": "Vrai : A, B, C, D. Faux : E."
+    },
+    {
+      "id": "hz-opex-004",
+      "type": "QCM",
+      "question": "Combien de Rafale la France déploie-t-elle pour l’Enhanced Air Policing ?",
+      "choix": [
+        "2",
+        "6",
+        "4",
+        "10"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-opex-005",
+      "type": "FLASHCARD",
+      "question": "Que signifie SNLE ?",
+      "verso": "Sous-marin nucléaire lanceur d’engins"
+    },
+    {
+      "id": "hz-opex-006",
+      "type": "QCR",
+      "question": "À quelles opérations Barkhane succède-t-elle ?",
+      "choix": [
+        "Serval",
+        "Épervier",
+        "Chammal",
+        "Sangaris",
+        "Harmattan"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "Vrai : A, B. Faux : C, D, E."
+    },
+    {
+      "id": "hz-opex-007",
+      "type": "QCM",
+      "question": "Combien d’ogives nucléaires la France détient-elle selon l’estimation de l’Horizon ?",
+      "choix": [
+        "~290",
+        "~170",
+        "~500",
+        "~225"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-opex-008",
+      "type": "QCM",
+      "question": "Quel traité nucléaire est signé mais pas entré en vigueur ?",
+      "choix": [
+        "Le TNP",
+        "Le TICE",
+        "Le TIAN",
+        "Le traité New START"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-opex-009",
+      "type": "QCR",
+      "question": "Quels avions ont été engagés dans l’opération Apagan ?",
+      "choix": [
+        "C-130",
+        "A400M",
+        "Rafale",
+        "A330 MRTT",
+        "E-3F"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "Vrai : A, B, D. Faux : C, E."
+    },
+    {
+      "id": "hz-opex-010",
+      "type": "QCM",
+      "question": "Pendant combien de temps chaque pays assure-t-il la surveillance dans le cadre de l’Enhanced Air Policing ?",
+      "choix": [
+        "4 mois, à tour de rôle",
+        "6 mois",
+        "2 mois",
+        "1 an"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-opex-011",
+      "type": "QCR",
+      "question": "Quelles opérations françaises sont liées à la guerre de Bosnie (1993-1995) ?",
+      "choix": [
+        "Pamir",
+        "Deliberate Force",
+        "Serval",
+        "Daguet",
+        "Crécerelle"
+      ],
+      "reponses": [
+        1,
+        4
+      ],
+      "explication": "Vrai : B, E. Faux : A, C, D."
+    },
+    {
+      "id": "hz-opex-012",
+      "type": "FLASHCARD",
+      "question": "Quel est le nom de la coalition internationale à laquelle participe Chammal ?",
+      "verso": "OIR (Operation Inherent Resolve)"
+    },
+    {
+      "id": "hz-opex-013",
+      "type": "QCR",
+      "question": "Quelles puissances nucléaires ne sont pas signataires du TNP ou en sont sorties ?",
+      "choix": [
+        "Inde",
+        "Pakistan",
+        "Corée du Nord",
+        "Israël",
+        "Chine"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explication": "Vrai : A, B, C, D. Faux : E."
+    },
+    {
+      "id": "hz-opex-014",
+      "type": "FLASHCARD",
+      "question": "Que signifie FOST ?",
+      "verso": "Forces océaniques stratégiques"
+    },
+    {
+      "id": "hz-opex-015",
+      "type": "QCR",
+      "question": "Où sont implantés les Rafale de Chammal ?",
+      "choix": [
+        "Jordanie (4 Rafale)",
+        "EAU (6 Rafale)",
+        "Chypre (6 Rafale)",
+        "Djibouti (4 Rafale)"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "Vrai : A, B. Faux : C, D."
+    },
+    {
+      "id": "hz-opex-016",
+      "type": "QCR",
+      "question": "Quelles affirmations sur Sangaris sont exactes ?",
+      "choix": [
+        "Jusqu’à 2 000 militaires français y sont engagés",
+        "Elle s’achève en 2022",
+        "La MINUSCA prend le relais en 2016",
+        "Elle vise à stopper les violences entre Séléka et anti-balaka",
+        "Elle se déroule au Mali"
+      ],
+      "reponses": [
+        0,
+        2,
+        3
+      ],
+      "explication": "Vrai : A, C, D. Faux : B, E."
+    },
+    {
+      "id": "hz-opex-017",
+      "type": "QCM",
+      "question": "Dans quel pays la mission Aigle renforce-t-elle le flanc Est de l’OTAN ?",
+      "choix": [
+        "L’Ukraine",
+        "La Roumanie",
+        "La Pologne",
+        "La Lituanie"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-opex-018",
+      "type": "FLASHCARD",
+      "question": "Quel événement déclenche la guerre du Golfe (1990-1991) ?",
+      "verso": "L’invasion du Koweït par l’Irak"
+    },
+    {
+      "id": "hz-opex-019",
+      "type": "FLASHCARD",
+      "question": "Que signifie FIAS ?",
+      "verso": "Force internationale d’assistance et de sécurité (Afghanistan)"
+    },
+    {
+      "id": "hz-opex-020",
+      "type": "QCR",
+      "question": "Quels détroits ou mers sont cités pour la piraterie et les attaques ?",
+      "choix": [
+        "La mer Baltique",
+        "La mer Rouge",
+        "Le détroit de Gibraltar",
+        "Le détroit d’Ormuz"
+      ],
+      "reponses": [
+        1,
+        3
+      ],
+      "explication": "Vrai : B, D. Faux : A, C."
+    },
+    {
+      "id": "hz-opex-021",
+      "type": "QCR",
+      "question": "Quelles bases servaient d’implantation à Barkhane ?",
+      "choix": [
+        "N’Djamena (Tchad)",
+        "Bamako (Mali)",
+        "Djibouti",
+        "Abidjan (Côte d’Ivoire)",
+        "Niamey (Niger)"
+      ],
+      "reponses": [
+        0,
+        4
+      ],
+      "explication": "Vrai : A, E. Faux : B, C, D."
+    },
+    {
+      "id": "hz-opex-022",
+      "type": "QCM",
+      "question": "Quand a eu lieu le premier essai nucléaire français ?",
+      "choix": [
+        "13 février 1960",
+        "4 octobre 1958",
+        "13 février 1966",
+        "2 juillet 1934"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-opex-023",
+      "type": "QCM",
+      "question": "Quel pays possède le plus de têtes nucléaires selon l’Horizon ?",
+      "choix": [
+        "La France (~290)",
+        "La Chine (~500)",
+        "La Russie (~5 800)",
+        "Les États-Unis (~5 250)"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-opex-024",
+      "type": "FLASHCARD",
+      "question": "Quel est le principe clé de la dissuasion française ?",
+      "verso": "« L’arme nucléaire n’est pas faite pour être utilisée, mais pour dissuader. »"
+    },
+    {
+      "id": "hz-opex-025",
+      "type": "QCM",
+      "question": "À qui appartient exclusivement la décision d’emploi de l’arme nucléaire ?",
+      "choix": [
+        "Au Président de la République",
+        "Au CEMA",
+        "Au Premier ministre",
+        "Au Parlement"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-opex-026",
+      "type": "QCM",
+      "question": "Qui a déclaré en février 2020 que « les intérêts vitaux de la France ont désormais une dimension européenne » ?",
+      "choix": [
+        "Le CEMA",
+        "Jacques Chirac",
+        "Charles de Gaulle",
+        "Emmanuel Macron"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-opex-027",
+      "type": "TROU",
+      "question": "La guerre de Bosnie se conclut par les accords de paix de ___.",
+      "reponses_texte": [
+        "Dayton"
+      ]
+    },
+    {
+      "id": "hz-opex-028",
+      "type": "QCM",
+      "question": "Contre qui l’opération Chammal est-elle dirigée ?",
+      "choix": [
+        "Le régime de Kadhafi",
+        "Les Talibans en Afghanistan",
+        "Les groupes armés du Sahel",
+        "Daech, en Irak et en Syrie"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-opex-029",
+      "type": "QCM",
+      "question": "Quelle opération de 2023 évacue des ressortissants du Soudan ?",
+      "choix": [
+        "Hamilton",
+        "Aigle",
+        "Sagittaire",
+        "Apagan"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-opex-030",
+      "type": "FLASHCARD",
+      "question": "Que signifie ASN4G ?",
+      "verso": "Air-sol nucléaire de 4e génération"
+    },
+    {
+      "id": "hz-opex-031",
+      "type": "FLASHCARD",
+      "question": "Que signifie TNP et de quand date-t-il ?",
+      "verso": "Traité de non-prolifération des armes nucléaires, 1968"
+    },
+    {
+      "id": "hz-opex-032",
+      "type": "QCM",
+      "question": "Remettez dans l’ordre chronologique :",
+      "choix": [
+        "Serval, Épervier, Apagan, Harmattan",
+        "Épervier, Harmattan, Serval, Apagan",
+        "Épervier, Serval, Harmattan, Apagan",
+        "Harmattan, Épervier, Serval, Apagan"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Épervier 1986, Harmattan 2011, Serval 2013, Apagan 2021."
+    },
+    {
+      "id": "hz-opex-033",
+      "type": "QCM",
+      "question": "Depuis quand la France maintient-elle une présence militaire permanente au Levant (FINUL) ?",
+      "choix": [
+        "1978",
+        "2014",
+        "1991",
+        "2001"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-opex-034",
+      "type": "QCR",
+      "question": "Quels missiles composaient l’ancienne composante terrestre ?",
+      "choix": [
+        "Pluton",
+        "ASMP-A",
+        "Hadès",
+        "Exocet",
+        "M51"
+      ],
+      "reponses": [
+        0,
+        2
+      ],
+      "explication": "Vrai : A, C. Faux : B, D, E."
+    },
+    {
+      "id": "hz-opex-035",
+      "type": "QCM",
+      "question": "En quelle année les Talibans reviennent-ils au pouvoir en Afghanistan ?",
+      "choix": [
+        "2014",
+        "2019",
+        "2001",
+        "2021"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-opex-036",
+      "type": "FLASHCARD",
+      "question": "Quelles ressources sont citées comme générateurs possibles de conflit ?",
+      "verso": "Eau, nourriture, territoires arctiques, terres rares"
+    },
+    {
+      "id": "hz-opex-037",
+      "type": "QCM",
+      "question": "Quelle opération est la plus récente ?",
+      "choix": [
+        "Apagan",
+        "Sagittaire",
+        "Hamilton",
+        "Sangaris"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Sagittaire 2023, Apagan 2021, Hamilton 2018, Sangaris 2013-2016."
+    },
+    {
+      "id": "hz-opex-038",
+      "type": "QCM",
+      "question": "Quel traité est entré en vigueur en 2021 sans être signé par les puissances nucléaires ?",
+      "choix": [
+        "Le TIAN",
+        "New START",
+        "Le TICE",
+        "Le TNP"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-opex-039",
+      "type": "FLASHCARD",
+      "question": "Quel événement déclenche l’opération Épervier ?",
+      "verso": "L’intervention militaire libyenne au nord du Tchad"
+    },
+    {
+      "id": "hz-opex-040",
+      "type": "QCM",
+      "question": "Quel est le budget de la dissuasion nucléaire en 2024 ?",
+      "choix": [
+        "Environ 7,5 milliards d’euros",
+        "Environ 2,5 milliards d’euros",
+        "Environ 47 milliards d’euros",
+        "Environ 15 milliards d’euros"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-opex-041",
+      "type": "QCM",
+      "question": "Quelle opération française de 2011 vise la Libye de Kadhafi ?",
+      "choix": [
+        "Serval",
+        "Hamilton",
+        "Épervier",
+        "Harmattan"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-opex-042",
+      "type": "TROU",
+      "question": "L’opération Harmattan s’appuie sur la résolution ___ de l’ONU.",
+      "reponses_texte": [
+        "1973"
+      ]
+    },
+    {
+      "id": "hz-opex-043",
+      "type": "QCM",
+      "question": "Quel est le prochain missile nucléaire aéroporté prévu à l’horizon 2035 ?",
+      "choix": [
+        "M51.3",
+        "Hadès",
+        "ASN4G",
+        "SCALP-EG"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-opex-044",
+      "type": "QCM",
+      "question": "Quelle est la portée de l’ASMP-A ?",
+      "choix": [
+        "~100 km",
+        "~1 500 km",
+        "> 8 000 km",
+        "~500 km"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-opex-045",
+      "type": "TROU",
+      "question": "Le premier essai nucléaire français, « Gerboise bleue », a lieu le 13 février 1960 dans le ___ algérien.",
+      "reponses_texte": [
+        "Sahara"
+      ]
+    },
+    {
+      "id": "hz-opex-046",
+      "type": "QCM",
+      "question": "Quel était l’objectif du raid Hamilton (2018) ?",
+      "choix": [
+        "Frapper Daech à Mossoul",
+        "Détruire des installations liées au programme d’armes chimiques syrien",
+        "Évacuer des ressortissants de Kaboul",
+        "Instaurer une zone d’exclusion aérienne en Libye"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-opex-047",
+      "type": "FLASHCARD",
+      "question": "Que signifie OPEX ?",
+      "verso": "Opération extérieure"
+    },
+    {
+      "id": "hz-opex-048",
+      "type": "QCR",
+      "question": "Quels moyens français ont participé au raid Hamilton ?",
+      "choix": [
+        "FREMM",
+        "AWACS",
+        "A400M",
+        "Mirage 2000-5",
+        "Rafale"
+      ],
+      "reponses": [
+        0,
+        1,
+        3,
+        4
+      ],
+      "explication": "Vrai : A, B, D, E. Faux : C."
+    },
+    {
+      "id": "hz-opex-049",
+      "type": "QCM",
+      "question": "Dans quel pays se déroule l’opération Épervier ?",
+      "choix": [
+        "Le Tchad",
+        "La Centrafrique",
+        "Le Mali",
+        "La Libye"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-opex-050",
+      "type": "QCM",
+      "question": "En quelle année la France se retire-t-elle du commandement intégré de l’OTAN ?",
+      "choix": [
+        "1960",
+        "2009",
+        "1966",
+        "1958"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Elle le réintègre en 2009."
+    },
+    {
+      "id": "hz-opex-051",
+      "type": "QCR",
+      "question": "Quelles composantes nucléaires la France possède-t-elle aujourd’hui ?",
+      "choix": [
+        "Composante terrestre",
+        "Composante océanique (FOST)",
+        "Composante spatiale",
+        "Composante aéroportée (FAS)"
+      ],
+      "reponses": [
+        1,
+        3
+      ],
+      "explication": "Vrai : B, D. Faux : A, C. La composante terrestre a été abandonnée dans les années 1990."
+    },
+    {
+      "id": "hz-opex-052",
+      "type": "QCM",
+      "question": "Combien de missiles M51 chaque SNLE peut-il embarquer ?",
+      "choix": [
+        "Jusqu’à 16",
+        "Jusqu’à 8",
+        "Jusqu’à 24",
+        "Jusqu’à 4"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-opex-053",
+      "type": "QCM",
+      "question": "Quelles sont les dates de l’opération Épervier ?",
+      "choix": [
+        "2013 – 2014",
+        "Février 1986 – août 2014",
+        "2014 – 2022",
+        "1990 – 1991"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-opex-054",
+      "type": "TROU",
+      "question": "Selon la RNS 2025, la dissuasion nucléaire reste la clé de ___ de notre politique de défense.",
+      "reponses_texte": [
+        "voûte",
+        "voute"
+      ]
+    },
+    {
+      "id": "hz-opex-055",
+      "type": "FLASHCARD",
+      "question": "Quelles sont les dates de l’évacuation Apagan ?",
+      "verso": "Du 15 au 27 août 2021"
+    },
+    {
+      "id": "hz-opex-056",
+      "type": "FLASHCARD",
+      "question": "Quels pays composent l’« Axis of Upheaval » selon l’Horizon ?",
+      "verso": "Chine, Russie, Iran, Corée du Nord"
+    },
+    {
+      "id": "hz-opex-057",
+      "type": "TROU",
+      "question": "La France a réintégré le commandement intégré de l’OTAN en ___.",
+      "reponses_texte": [
+        "2009"
+      ]
+    },
+    {
+      "id": "hz-opex-058",
+      "type": "QCR",
+      "question": "Quels États sont des puissances nucléaires officiellement reconnues par le TNP ?",
+      "choix": [
+        "Russie",
+        "Inde",
+        "États-Unis",
+        "Royaume-Uni",
+        "Chine"
+      ],
+      "reponses": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "explication": "Vrai : A, C, D, E. Faux : B. Les cinq reconnues : États-Unis, Russie, Chine, France, Royaume-Uni."
+    },
+    {
+      "id": "hz-opex-059",
+      "type": "QCM",
+      "question": "Quelle opération en Bosnie correspond à la zone d’exclusion aérienne ?",
+      "choix": [
+        "Deliberate Force",
+        "Harmattan",
+        "Héraclès",
+        "Crécerelle"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-opex-060",
+      "type": "QCR",
+      "question": "Quels sont les SNLE français ?",
+      "choix": [
+        "Le Téméraire",
+        "Le Redoutable",
+        "Le Vigilant",
+        "Le Triomphant",
+        "Le Terrible"
+      ],
+      "reponses": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "explication": "Vrai : A, C, D, E. Faux : B."
+    },
+    {
+      "id": "hz-opex-061",
+      "type": "FLASHCARD",
+      "question": "Que signifie FINUL ?",
+      "verso": "Force intérimaire des Nations unies au Liban"
+    },
+    {
+      "id": "hz-opex-062",
+      "type": "TROU",
+      "question": "L’opération Sagittaire a mobilisé 150 militaires et la frégate ___.",
+      "reponses_texte": [
+        "Lorraine"
+      ]
+    },
+    {
+      "id": "hz-opex-063",
+      "type": "QCM",
+      "question": "Jusqu’à combien de soldats français l’opération Barkhane a-t-elle mobilisés ?",
+      "choix": [
+        "5 100",
+        "2 000",
+        "600",
+        "10 000"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-opex-064",
+      "type": "QCM",
+      "question": "Quel sommet la France a-t-elle organisé en février 2025 ?",
+      "choix": [
+        "Le sommet de l’OTAN",
+        "Le G7",
+        "L’AI Action Summit",
+        "La COP 30"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-opex-065",
+      "type": "QCR",
+      "question": "Quels pays ont mené conjointement le raid Hamilton ?",
+      "choix": [
+        "Royaume-Uni",
+        "Italie",
+        "Allemagne",
+        "France",
+        "États-Unis"
+      ],
+      "reponses": [
+        0,
+        3,
+        4
+      ],
+      "explication": "Vrai : A, D, E. Faux : B, C."
+    },
+    {
+      "id": "hz-opex-066",
+      "type": "QCM",
+      "question": "Quelle opération répond en 2013 à l’offensive djihadiste vers Bamako ?",
+      "choix": [
+        "Barkhane",
+        "Sangaris",
+        "Serval",
+        "Épervier"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-opex-067",
+      "type": "QCM",
+      "question": "Quel est le nom de l’engagement terrestre français pendant la guerre du Golfe ?",
+      "choix": [
+        "Opération Harmattan",
+        "Opération Daguet",
+        "Opération Héraclès",
+        "Opération Crécerelle"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-opex-068",
+      "type": "FLASHCARD",
+      "question": "Quel événement est à l’origine de l’Enhanced Air Policing (2014) ?",
+      "verso": "L’annexion illégale de la Crimée par la Russie"
+    },
+    {
+      "id": "hz-opex-069",
+      "type": "QCM",
+      "question": "Combien de SNLE la France possède-t-elle ?",
+      "choix": [
+        "3",
+        "6",
+        "4",
+        "2"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-opex-070",
+      "type": "QCM",
+      "question": "Combien de têtes nucléaires possède le Royaume-Uni selon l’Horizon ?",
+      "choix": [
+        "~290",
+        "~170",
+        "~500",
+        "~225"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-opex-071",
+      "type": "TROU",
+      "question": "L’opération Sangaris est autorisée par la résolution ___ de l’ONU.",
+      "reponses_texte": [
+        "2127"
+      ]
+    },
+    {
+      "id": "hz-opex-072",
+      "type": "TROU",
+      "question": "Les missiles du plateau d’___ ont été démontés en 1996.",
+      "reponses_texte": [
+        "Albion"
+      ]
+    },
+    {
+      "id": "hz-opex-073",
+      "type": "QCR",
+      "question": "Quelles opérations françaises se déroulent en Afghanistan ?",
+      "choix": [
+        "Héraclès",
+        "Sangaris",
+        "Apagan",
+        "Pamir",
+        "Daguet"
+      ],
+      "reponses": [
+        0,
+        2,
+        3
+      ],
+      "explication": "Vrai : A, C, D. Faux : B, E. Héraclès (2001), Pamir (2001-2014) et l’évacuation Apagan (2021)."
+    },
+    {
+      "id": "hz-opex-074",
+      "type": "QCR",
+      "question": "Quels moyens la mission Aigle déploie-t-elle ?",
+      "choix": [
+        "Les drones Reaper",
+        "Le radar GM200",
+        "Le système sol-air MAMBA",
+        "Le Crotale NG en Pologne"
+      ],
+      "reponses": [
+        1,
+        2
+      ],
+      "explication": "Vrai : B, C. Faux : A, D."
+    },
+    {
+      "id": "hz-opex-075",
+      "type": "QCM",
+      "question": "Quelles sont les dates de l’opération Serval ?",
+      "choix": [
+        "2011",
+        "2013 – 2014",
+        "2013 – 2016",
+        "2014 – 2022"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-opex-076",
+      "type": "QCM",
+      "question": "Dans quel pays se déroule l’opération Sangaris ?",
+      "choix": [
+        "La Centrafrique",
+        "Le Soudan",
+        "Le Tchad",
+        "Le Mali"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-opex-077",
+      "type": "QCR",
+      "question": "Quelles bases ont été utilisées pour l’opération Harmattan ?",
+      "choix": [
+        "Djibouti",
+        "La Crète",
+        "Solenzara",
+        "La Sicile",
+        "N’Djamena"
+      ],
+      "reponses": [
+        1,
+        2,
+        3
+      ],
+      "explication": "Vrai : B, C, D. Faux : A, E."
+    },
+    {
+      "id": "hz-opex-078",
+      "type": "QCM",
+      "question": "Combien de soldats l’opération Chammal mobilise-t-elle actuellement selon l’Horizon ?",
+      "choix": [
+        "Environ 150",
+        "Environ 5 100",
+        "Environ 600",
+        "Environ 2 000"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-opex-079",
+      "type": "QCM",
+      "question": "Quelles sont les dates de l’opération Barkhane ?",
+      "choix": [
+        "2013 – 2014",
+        "2014 – 2022",
+        "2013 – 2016",
+        "1986 – 2014"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-opex-080",
+      "type": "FLASHCARD",
+      "question": "Que dit l’article L1111-1 du Code de la défense ?",
+      "verso": "La stratégie de défense repose sur l’indépendance nationale, la dissuasion nucléaire, la prévention, la protection et l’intervention."
+    },
+    {
+      "id": "hz-opex-081",
+      "type": "QCR",
+      "question": "Quelles puissances montent en puissance dans un monde multipolaire selon l’Horizon ?",
+      "choix": [
+        "La Chine",
+        "L’Inde",
+        "Le Brésil",
+        "Le Royaume-Uni",
+        "Le Japon"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Vrai : A, B, C. Faux : D, E."
+    },
+    {
+      "id": "hz-opex-082",
+      "type": "QCR",
+      "question": "Avec quels partenaires la France renforce-t-elle sa coopération en Indo-Pacifique ?",
+      "choix": [
+        "L’ASEAN",
+        "La Russie",
+        "L’Inde",
+        "Le Japon",
+        "La Corée du Nord"
+      ],
+      "reponses": [
+        0,
+        2,
+        3
+      ],
+      "explication": "Vrai : A, C, D. Faux : B, E."
+    },
+    {
+      "id": "hz-opex-083",
+      "type": "FLASHCARD",
+      "question": "Que signifie MINUSMA ?",
+      "verso": "Mission multidimensionnelle intégrée des Nations unies pour la stabilisation au Mali"
+    },
+    {
+      "id": "hz-opex-084",
+      "type": "QCM",
+      "question": "Combien de personnes l’opération Apagan a-t-elle évacuées de Kaboul ?",
+      "choix": [
+        "2 772",
+        "1 000",
+        "5 100",
+        "600"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-opex-085",
+      "type": "QCM",
+      "question": "Combien de personnes l’opération Sagittaire a-t-elle évacuées ?",
+      "choix": [
+        "5 000 en un mois",
+        "2 772 en 12 jours",
+        "150 en 2 jours",
+        "1 000 en 7 jours"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-opex-086",
+      "type": "TROU",
+      "question": "Le raid Hamilton est une frappe unique dans la nuit du 13 au 14 ___ 2018.",
+      "reponses_texte": [
+        "avril"
+      ]
+    },
+    {
+      "id": "hz-opex-087",
+      "type": "QCM",
+      "question": "Quelle est la portée du missile M51 ?",
+      "choix": [
+        "> 8 000 km",
+        "~3 000 km",
+        "> 15 000 km",
+        "~500 km"
+      ],
+      "reponses": [
+        0
+      ]
+    }
+  ]
+}

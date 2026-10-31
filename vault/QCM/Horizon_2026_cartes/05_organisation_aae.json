@@ -1,0 +1,939 @@
+{
+  "titre": "Horizon — Organisation de l’armée de l’Air et de l’Espace",
+  "description": "Grands commandements, brigades, centres et autorités de l’AAE (Horizon 2026, ch. 2-III ; organigramme au 1er septembre 2025).",
+  "questions": [
+    {
+      "id": "hz-org-001",
+      "type": "TROU",
+      "question": "La Brigade des pompiers de l’Air a été créée en ___.",
+      "reponses_texte": [
+        "2021"
+      ]
+    },
+    {
+      "id": "hz-org-002",
+      "type": "QCM",
+      "question": "Selon l’organigramme de l’Horizon (situation au 1er septembre 2025), qui est le CEMAAE ?",
+      "choix": [
+        "Le GCA Dominique Tardif",
+        "Le GAA Laurent Rataud",
+        "Le GAA Fabien Mandon",
+        "Le GAA Jérôme Bellanger"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-org-003",
+      "type": "QCM",
+      "question": "Où est basée la BFSA ?",
+      "choix": [
+        "À Orléans-Bricy (BA 123)",
+        "À Cazaux (BA 120)",
+        "À Orange (quartier Geilles)",
+        "À Nancy (caserne Verneau)"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-org-004",
+      "type": "FLASHCARD",
+      "question": "Que signifie BPA ?",
+      "verso": "Brigade des pompiers de l’Air"
+    },
+    {
+      "id": "hz-org-005",
+      "type": "QCM",
+      "question": "Qui commande le CDAOA selon l’organigramme de l’Horizon ?",
+      "choix": [
+        "Le GCA Marc Le Bouil",
+        "Le GCA Stéphane Groën",
+        "Le GCA Stéphane Virem",
+        "Le GDA Vincent Chusseau"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-org-006",
+      "type": "QCM",
+      "question": "Qui commande l’Espace selon l’organigramme de l’Horizon ?",
+      "choix": [
+        "Le GDA Laurent Thiébaut",
+        "Le GCA Stéphane Virem",
+        "Le GBA Jean-Patrice Le Saint",
+        "Le GDA Vincent Chusseau"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-org-007",
+      "type": "QCR",
+      "question": "Quelles bases sont des BAVN selon l’Horizon (actuelles) ?",
+      "choix": [
+        "Saint-Dizier (BA 113)",
+        "Avord (BA 702)",
+        "Orléans (BA 123)",
+        "Istres (BA 125)",
+        "Mont-de-Marsan (BA 118)"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "Vrai : A, B, D. Faux : C, E. Luxeuil (BA 116) doit le devenir à l’horizon 2032."
+    },
+    {
+      "id": "hz-org-008",
+      "type": "QCM",
+      "question": "Quelle unité de la BAOS assure la surveillance de l’espace et la détection des menaces spatiales ?",
+      "choix": [
+        "Le C3OS",
+        "Le CNES",
+        "Le COSMOS",
+        "Le CMOS"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-org-009",
+      "type": "QCM",
+      "question": "Quel exercice est associé au CDE ?",
+      "choix": [
+        "Poker",
+        "Volfa",
+        "Athéna",
+        "AsterX"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-org-010",
+      "type": "FLASHCARD",
+      "question": "Que signifie BAPPS ?",
+      "verso": "Brigade aérienne de la posture permanente de sûreté (Air)"
+    },
+    {
+      "id": "hz-org-011",
+      "type": "FLASHCARD",
+      "question": "Que signifie CDAOA ?",
+      "verso": "Commandement de la défense aérienne et des opérations aériennes"
+    },
+    {
+      "id": "hz-org-012",
+      "type": "QCR",
+      "question": "Quelles unités la BFSA regroupe-t-elle ?",
+      "choix": [
+        "L’ET 60",
+        "L’EH Pyrénées",
+        "L’ET Poitou",
+        "L’EC 2/4 La Fayette",
+        "Les CPA 10 et 30"
+      ],
+      "reponses": [
+        1,
+        2,
+        4
+      ],
+      "explication": "Vrai : B, C, E. Faux : A, D."
+    },
+    {
+      "id": "hz-org-013",
+      "type": "FLASHCARD",
+      "question": "Que signifie BATL ?",
+      "verso": "Brigade aérienne technique et logistique"
+    },
+    {
+      "id": "hz-org-014",
+      "type": "FLASHCARD",
+      "question": "Que signifie BAAC ?",
+      "verso": "Brigade aérienne de l’aviation de chasse"
+    },
+    {
+      "id": "hz-org-015",
+      "type": "QCM",
+      "question": "En quelle année le CFAS est-il créé ?",
+      "choix": [
+        "2007",
+        "1966",
+        "1960",
+        "1964"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-org-016",
+      "type": "QCR",
+      "question": "Quelles affirmations sur la BPA sont exactes ?",
+      "choix": [
+        "Elle compte environ 1 500 personnels",
+        "Elle relève du CDAOA",
+        "Elle regroupe les pompiers de l’air et les unités NEDEX",
+        "Elle compte 25 unités",
+        "Elle est implantée à Orange"
+      ],
+      "reponses": [
+        0,
+        2,
+        3
+      ],
+      "explication": "Vrai : A, C, D. Faux : B, E. Elle relève du CTAAE et est implantée à Cazaux."
+    },
+    {
+      "id": "hz-org-017",
+      "type": "QCM",
+      "question": "Qui commande les Forces aériennes stratégiques selon l’organigramme de l’Horizon ?",
+      "choix": [
+        "Le GCA Marc Le Bouil",
+        "Le GCA Stéphane Virem",
+        "Le GCA Philippe Hirtzig",
+        "Le GDA Vincent Chusseau"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-org-018",
+      "type": "QCR",
+      "question": "Quels sont les grands commandements de l’AAE présentés par l’Horizon ?",
+      "choix": [
+        "CDAOA",
+        "CTAAE",
+        "CPCO",
+        "CDE",
+        "CFAS"
+      ],
+      "reponses": [
+        0,
+        1,
+        3,
+        4
+      ],
+      "explication": "Vrai : A, B, D, E. Faux : C. Le CPCO est un centre interarmées, cité comme partenaire de la BAOS."
+    },
+    {
+      "id": "hz-org-019",
+      "type": "QCM",
+      "question": "Quelle brigade planifie et conduit les opérations aériennes hors PPS ?",
+      "choix": [
+        "La BATL",
+        "La BAPPS",
+        "La BAO",
+        "La BACA"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-org-020",
+      "type": "QCR",
+      "question": "Quels commandants de brigade figurent dans l’organigramme ?",
+      "choix": [
+        "GBA Jean-Luc Daroux (BAAC)",
+        "GBA Cédric Colardelle (BFSA)",
+        "GBA Jean-Luc Daroux (BFSA)",
+        "GBA Cédric Colardelle (BAAP)",
+        "GBA Pierre Gaudillière (BAAC)"
+      ],
+      "reponses": [
+        2,
+        3,
+        4
+      ],
+      "explication": "Vrai : C, D, E. Faux : A, B."
+    },
+    {
+      "id": "hz-org-021",
+      "type": "QCR",
+      "question": "Quelles sont des missions du CDAOA ?",
+      "choix": [
+        "Gérer la mobilisation et les réserves",
+        "Planifier et conduire les missions aériennes sur le territoire et en OPEX",
+        "Gérer le CNOA à Lyon Mont-Verdun",
+        "Mettre en œuvre la dissuasion nucléaire",
+        "Assurer la défense aérienne du territoire via la PPS"
+      ],
+      "reponses": [
+        1,
+        2,
+        4
+      ],
+      "explication": "Vrai : B, C, E. Faux : A, D. La dissuasion relève du CFAS ; la mobilisation et les réserves du CTAAE."
+    },
+    {
+      "id": "hz-org-022",
+      "type": "FLASHCARD",
+      "question": "Que signifie BAO ?",
+      "verso": "Brigade aérienne des opérations",
+      "explication": "Elle conduit les opérations hors PPS (CAPCO, CASPOA, C2)."
+    },
+    {
+      "id": "hz-org-023",
+      "type": "QCM",
+      "question": "En quelle année le CTAAE est-il créé ?",
+      "choix": [
+        "2021",
+        "2023",
+        "2019",
+        "2020"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-org-024",
+      "type": "QCM",
+      "question": "De la fusion de quelles entités le CAPCODA est-il issu (2024) ?",
+      "choix": [
+        "Du CAFDA et du CFAS",
+        "Du CDC et de l’ESCA",
+        "Du CAPCO et du CNOA",
+        "De la BACE et de la sous-chefferie SIC"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-org-025",
+      "type": "FLASHCARD",
+      "question": "Que signifie MGAAE ?",
+      "verso": "Major général de l’armée de l’Air et de l’Espace"
+    },
+    {
+      "id": "hz-org-026",
+      "type": "FLASHCARD",
+      "question": "Que signifie CAPCODA ?",
+      "verso": "Centre Air de planification et de conduite des opérations de défense aérienne"
+    },
+    {
+      "id": "hz-org-027",
+      "type": "QCM",
+      "question": "Quel exercice majeur est associé à la BFSA ?",
+      "choix": [
+        "AsterX",
+        "Poker",
+        "Volfa",
+        "Athéna"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-org-028",
+      "type": "FLASHCARD",
+      "question": "Que signifie DRHAAE ?",
+      "verso": "Direction des ressources humaines de l’armée de l’Air et de l’Espace"
+    },
+    {
+      "id": "hz-org-029",
+      "type": "QCM",
+      "question": "À quel commandement le CTAAE succède-t-il ?",
+      "choix": [
+        "Au Commandement des bases aériennes",
+        "Au Commandement air des forces de défense aérienne",
+        "Au Commandement de la défense aérienne",
+        "Au Commandement des forces aériennes stratégiques"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-org-030",
+      "type": "FLASHCARD",
+      "question": "Que signifie CDE ?",
+      "verso": "Commandement de l’Espace"
+    },
+    {
+      "id": "hz-org-031",
+      "type": "QCM",
+      "question": "Qui dirige le Centre d’études stratégiques aérospatiales (CESA) selon l’organigramme ?",
+      "choix": [
+        "Le GDA Laurent Thiébaut",
+        "Le GBA Arnaud Gary",
+        "Le GBA Jean-Patrice Le Saint",
+        "Le GBR Jérôme Bisognin"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-org-032",
+      "type": "QCM",
+      "question": "Combien de personnes la BATL rassemble-t-elle ?",
+      "choix": [
+        "Plus de 15 000",
+        "Environ 3 000",
+        "Plus de 7 000",
+        "Environ 1 500"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Près de 100 unités et plus de 7 000 personnes."
+    },
+    {
+      "id": "hz-org-033",
+      "type": "FLASHCARD",
+      "question": "Que signifie BACA ?",
+      "verso": "Brigade aérienne connaissance et anticipation"
+    },
+    {
+      "id": "hz-org-034",
+      "type": "QCM",
+      "question": "Où sont réunies les neuf unités spécialisées du CDE (C3OS, COSMOS, CMOS, LISA…) ?",
+      "choix": [
+        "BA 101 Toulouse",
+        "BA 942 Lyon Mont-Verdun",
+        "Balard (Paris)",
+        "BA 705 Tours"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-org-035",
+      "type": "QCM",
+      "question": "En quelle année le Commandement de l’Espace est-il créé ?",
+      "choix": [
+        "2023",
+        "2007",
+        "2019",
+        "2020"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Rattaché à l’AAE depuis 2020."
+    },
+    {
+      "id": "hz-org-036",
+      "type": "FLASHCARD",
+      "question": "Que signifie CESA ?",
+      "verso": "Centre d’études stratégiques aérospatiales"
+    },
+    {
+      "id": "hz-org-037",
+      "type": "QCM",
+      "question": "Quelle unité de la BAOS assure le commandement et la coordination ?",
+      "choix": [
+        "Le COSMOS",
+        "Le CMOS",
+        "Le C3OS",
+        "Le CPCO"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-org-038",
+      "type": "FLASHCARD",
+      "question": "Que signifie NEDEX ?",
+      "verso": "Neutralisation, enlèvement et destruction des explosifs"
+    },
+    {
+      "id": "hz-org-039",
+      "type": "QCM",
+      "question": "Où est basée la BACA ?",
+      "choix": [
+        "BA 701 Salon",
+        "BA 942 Lyon Mont-Verdun",
+        "BA 110 Creil",
+        "BA 106 Bordeaux-Mérignac"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-org-040",
+      "type": "QCM",
+      "question": "Qui est le commandant territorial de l’AAE selon l’organigramme de l’Horizon ?",
+      "choix": [
+        "Le GCA Stéphane Groën",
+        "Le GCA Marc Le Bouil",
+        "Le GCA Christophe Pagès",
+        "Le GCA Dominique Tardif"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-org-041",
+      "type": "FLASHCARD",
+      "question": "Qui est le directeur général de l’École de l’air et de l’espace, signataire de la préface de l’Horizon 2026 ?",
+      "verso": "Le général de division aérienne Pierre Réal",
+      "explication": "Il commande aussi la base aérienne 701 « Général Pineau »."
+    },
+    {
+      "id": "hz-org-042",
+      "type": "QCM",
+      "question": "Quelle base doit devenir BAVN à l’horizon 2032 ?",
+      "choix": [
+        "Luxeuil (BA 116)",
+        "Nancy (BA 133)",
+        "Cognac (BA 709)",
+        "Orange (BA 115)"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-org-043",
+      "type": "QCM",
+      "question": "De quel commandement le CDAOA est-il l’héritier ?",
+      "choix": [
+        "Le CAFDA",
+        "Le CFAS",
+        "Le CPCO",
+        "Le CBA"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-org-044",
+      "type": "TROU",
+      "question": "L’exercice ___ est une simulation de raid nucléaire des FAS.",
+      "reponses_texte": [
+        "Poker"
+      ]
+    },
+    {
+      "id": "hz-org-045",
+      "type": "FLASHCARD",
+      "question": "Que signifie BAOS ?",
+      "verso": "Brigade aérienne des opérations spatiales"
+    },
+    {
+      "id": "hz-org-046",
+      "type": "FLASHCARD",
+      "question": "Que signifie BAAP ?",
+      "verso": "Brigade aérienne d’assaut et de projection"
+    },
+    {
+      "id": "hz-org-047",
+      "type": "QCM",
+      "question": "En quelle année le CDAOA est-il créé ?",
+      "choix": [
+        "2007",
+        "1964",
+        "2023",
+        "2019"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Il évolue en 2020 pour intégrer la dimension spatiale."
+    },
+    {
+      "id": "hz-org-048",
+      "type": "FLASHCARD",
+      "question": "Que signifie CTAAE ?",
+      "verso": "Commandement territorial de l’armée de l’Air et de l’Espace"
+    },
+    {
+      "id": "hz-org-049",
+      "type": "QCM",
+      "question": "Quelle brigade pilote les dispositifs de sûreté aérienne (DPSA) depuis le CNOA ?",
+      "choix": [
+        "La BAO",
+        "La BACEA",
+        "La BAPPS",
+        "La BACA"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-org-050",
+      "type": "QCM",
+      "question": "À quel commandement la BATL et la BPA sont-elles rattachées ?",
+      "choix": [
+        "Au CDE",
+        "Au CDAOA",
+        "Au MGAAE",
+        "Au CTAAE"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-org-051",
+      "type": "FLASHCARD",
+      "question": "Que signifie BAVN ?",
+      "verso": "Base aérienne à vocation nucléaire"
+    },
+    {
+      "id": "hz-org-052",
+      "type": "FLASHCARD",
+      "question": "Quel est le rôle de l’IGAAE (GAA Laurent Rataud) ?",
+      "verso": "Inspecteur général des armées – Air et Espace"
+    },
+    {
+      "id": "hz-org-053",
+      "type": "QCR",
+      "question": "Quelles affirmations sur le CDE sont exactes ?",
+      "choix": [
+        "Il a une vocation offensive affichée",
+        "Il dispose du radar GRAVES",
+        "Son état-major est installé à Toulouse",
+        "Il développe une expertise spatiale militaire en lien avec le CNES",
+        "Il conduit des opérations depuis, vers et dans l’espace"
+      ],
+      "reponses": [
+        1,
+        3,
+        4
+      ],
+      "explication": "Vrai : B, D, E. Faux : A, C. Présence active non offensive ; l’état-major reste à Balard (Paris), les unités à Toulouse."
+    },
+    {
+      "id": "hz-org-054",
+      "type": "FLASHCARD",
+      "question": "Que signifie CSAR ?",
+      "verso": "Combat search and rescue (recherche et sauvetage au combat)"
+    },
+    {
+      "id": "hz-org-055",
+      "type": "QCR",
+      "question": "Quelles unités spécialisées sont citées pour la BACA ?",
+      "choix": [
+        "Le C3OS",
+        "Le CNCI",
+        "Le CASPOA",
+        "L’EER",
+        "Le CRA"
+      ],
+      "reponses": [
+        1,
+        3,
+        4
+      ],
+      "explication": "Vrai : B, D, E. Faux : A, C."
+    },
+    {
+      "id": "hz-org-056",
+      "type": "QCR",
+      "question": "Que regroupe la BAAC ?",
+      "choix": [
+        "Les avions de chasse conventionnels (hors dissuasion)",
+        "Les avions de transport",
+        "Les escadrons de défense sol-air",
+        "Les Rafale de la dissuasion",
+        "Les escadrons de drones"
+      ],
+      "reponses": [
+        0,
+        2,
+        4
+      ],
+      "explication": "Vrai : A, C, E. Faux : B, D."
+    },
+    {
+      "id": "hz-org-057",
+      "type": "QCM",
+      "question": "Qui dirige la DRHAAE selon l’organigramme de l’Horizon ?",
+      "choix": [
+        "Le GCA Stéphane Groën",
+        "Le GCA Christophe Pagès",
+        "Le GCA Philippe Hirtzig",
+        "Le GBA Nicolas Chambaz"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-org-058",
+      "type": "QCM",
+      "question": "Quelle unité de la BAOS acquiert et traite les images satellitaires pour la Défense ?",
+      "choix": [
+        "Le C3OS",
+        "La DRM",
+        "Le COSMOS",
+        "Le CMOS"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-org-059",
+      "type": "FLASHCARD",
+      "question": "Que signifie CEAM ?",
+      "verso": "Centre d’expertise aérienne militaire"
+    },
+    {
+      "id": "hz-org-060",
+      "type": "QCM",
+      "question": "Selon l’organigramme de l’Horizon (1er septembre 2025), qui est le CEMA ?",
+      "choix": [
+        "Le GAA Fabien Mandon",
+        "Le GCA Stéphane Virem",
+        "Le GCA Marc Le Bouil",
+        "Le GAA Jérôme Bellanger"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-org-061",
+      "type": "QCM",
+      "question": "Qui commande le CEAM selon l’organigramme ?",
+      "choix": [
+        "Le GBA Jean-Patrice Le Saint",
+        "Le GBA Pierre Gaudillière",
+        "Le GDA Vincent Chusseau",
+        "Le GDA Laurent Thiébaut"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-org-062",
+      "type": "FLASHCARD",
+      "question": "Dans quel contexte le CTAAE a-t-il été créé ?",
+      "verso": "La montée en puissance des menaces hybrides (cyber, drones, sabotage…)"
+    },
+    {
+      "id": "hz-org-063",
+      "type": "QCM",
+      "question": "Qui est le major général de l’AAE selon l’organigramme de l’Horizon ?",
+      "choix": [
+        "Le GAA Laurent Rataud",
+        "Le GCA Stéphane Groën",
+        "Le GCA Dominique Tardif",
+        "Le GCA Philippe Hirtzig"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-org-064",
+      "type": "FLASHCARD",
+      "question": "Que signifie EMO Air ?",
+      "verso": "État-major opérationnel Air (du CDAOA)"
+    },
+    {
+      "id": "hz-org-065",
+      "type": "TROU",
+      "question": "Le radar de surveillance spatiale cité pour le CDE s’appelle ___.",
+      "reponses_texte": [
+        "GRAVES"
+      ]
+    },
+    {
+      "id": "hz-org-066",
+      "type": "FLASHCARD",
+      "question": "Que signifie CFAS ?",
+      "verso": "Commandement des forces aériennes stratégiques"
+    },
+    {
+      "id": "hz-org-067",
+      "type": "QCR",
+      "question": "Quels exercices sont associés au CDAOA ?",
+      "choix": [
+        "Poker",
+        "Pégase",
+        "Orion",
+        "Volfa",
+        "AsterX"
+      ],
+      "reponses": [
+        1,
+        2,
+        3
+      ],
+      "explication": "Vrai : B, C, D. Faux : A, E. Poker : CFAS ; AsterX : CDE."
+    },
+    {
+      "id": "hz-org-068",
+      "type": "FLASHCARD",
+      "question": "Que signifie CNOA ?",
+      "verso": "Centre national des opérations aériennes",
+      "explication": "Situé à Lyon Mont-Verdun."
+    },
+    {
+      "id": "hz-org-069",
+      "type": "TROU",
+      "question": "La BAAC, la BAAP et la BFSA relèvent du MGAAE depuis la réforme ___.",
+      "reponses_texte": [
+        "ALTAIR"
+      ]
+    },
+    {
+      "id": "hz-org-070",
+      "type": "QCM",
+      "question": "Où est basée la BAAC ?",
+      "choix": [
+        "À Nancy et à Bordeaux",
+        "À Lyon et à Tours",
+        "À Orléans et à Évreux",
+        "À Orange et à Istres"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-org-071",
+      "type": "QCM",
+      "question": "À quel commandement la BACA, la BAPPS et la BAO sont-elles rattachées ?",
+      "choix": [
+        "Au CTAAE",
+        "Au CDE",
+        "Au CDAOA",
+        "Au CFAS"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-org-072",
+      "type": "FLASHCARD",
+      "question": "Que signifie BACEA ?",
+      "verso": "Brigade aérienne de contrôle de l’espace aérien"
+    },
+    {
+      "id": "hz-org-073",
+      "type": "TROU",
+      "question": "Le CAPCODA est basé à Lyon-___.",
+      "reponses_texte": [
+        "Mont Verdun",
+        "Mont-Verdun",
+        "MontVerdun"
+      ]
+    },
+    {
+      "id": "hz-org-074",
+      "type": "QCM",
+      "question": "Quel exercice du CFAS simule un raid nucléaire ?",
+      "choix": [
+        "AsterX",
+        "Athéna",
+        "Poker",
+        "Volfa"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-org-075",
+      "type": "QCM",
+      "question": "Où est située la BAAP ?",
+      "choix": [
+        "BA 105 Évreux",
+        "BA 106 Bordeaux-Mérignac",
+        "BA 115 Orange",
+        "BA 123 Orléans-Bricy"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-org-076",
+      "type": "FLASHCARD",
+      "question": "Que signifie CEMAAE ?",
+      "verso": "Chef d’état-major de l’armée de l’Air et de l’Espace"
+    },
+    {
+      "id": "hz-org-077",
+      "type": "QCM",
+      "question": "De quelle fusion la BACEA est-elle issue ?",
+      "choix": [
+        "De la BAPPS et de la BAO",
+        "Du CAFDA et du CFAS",
+        "Du CAPCO et du CNOA",
+        "De la sous-chefferie SIC et de la BACE"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-org-078",
+      "type": "FLASHCARD",
+      "question": "Que signifie BFSA ?",
+      "verso": "Brigade des forces spéciales Air"
+    },
+    {
+      "id": "hz-org-079",
+      "type": "QCM",
+      "question": "Sous le commandement de qui sont placées la BAAC, la BAAP et la BFSA (réforme ALTAIR) ?",
+      "choix": [
+        "Du CTAAE",
+        "Du CDAOA",
+        "Du MGAAE",
+        "Du CEMA"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-org-080",
+      "type": "QCR",
+      "question": "Quelles missions relèvent du CTAAE ?",
+      "choix": [
+        "Conduite des opérations spatiales",
+        "Mise en œuvre de l’ASMP-A",
+        "Gestion de la mobilisation et des réserves",
+        "Contribution à la cyberdéfense territoriale",
+        "Protection, résilience et soutien des bases aériennes"
+      ],
+      "reponses": [
+        2,
+        3,
+        4
+      ],
+      "explication": "Vrai : C, D, E. Faux : A, B."
+    },
+    {
+      "id": "hz-org-081",
+      "type": "QCM",
+      "question": "Où est implantée la Brigade des pompiers de l’Air ?",
+      "choix": [
+        "BA 120 Cazaux",
+        "BA 123 Orléans",
+        "BA 125 Istres",
+        "BA 106 Bordeaux-Mérignac"
+      ],
+      "reponses": [
+        0
+      ]
+    }
+  ]
+}

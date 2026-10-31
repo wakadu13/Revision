@@ -1,0 +1,178 @@
+{
+  "langue": "Anglais",
+  "titre": "Anglais — vocabulaire : l'entretien d'embauche (B1)",
+  "particules_optionnelles": [
+    "to",
+    "a",
+    "an",
+    "the"
+  ],
+  "caracteres_speciaux": [],
+  "vocabulaire": [
+    {
+      "id": "en-entretien-001",
+      "mot": "a job interview",
+      "traductions": [
+        "un entretien d'embauche"
+      ],
+      "exemple": "Tomorrow I have a [job interview] for my dream job.",
+      "exemple_traduction": "Demain, j'ai un entretien d'embauche pour le poste de mes rêves.",
+      "note": "Faux ami : an interview = aussi une interview (journalisme).",
+      "variantes": [
+        "an interview"
+      ]
+    },
+    {
+      "id": "en-entretien-002",
+      "mot": "to apply",
+      "traductions": [
+        "postuler",
+        "poser sa candidature"
+      ],
+      "exemple": "Many people [apply] for our jobs.",
+      "exemple_traduction": "Beaucoup de gens postulent à nos offres.",
+      "note": "to apply FOR a job ; an application = une candidature."
+    },
+    {
+      "id": "en-entretien-003",
+      "mot": "a candidate",
+      "traductions": [
+        "un candidat"
+      ],
+      "exemple": "I will be interviewing [candidates] all day tomorrow.",
+      "exemple_traduction": "Je vais recevoir des candidats en entretien toute la journée demain."
+    },
+    {
+      "id": "en-entretien-004",
+      "mot": "a CV",
+      "traductions": [
+        "un CV"
+      ],
+      "exemple": "The first page of my [CV] lists my job history.",
+      "exemple_traduction": "La première page de mon CV présente mon parcours professionnel.",
+      "note": "Britannique. Américain : a résumé / a resume.",
+      "variantes": [
+        "a résumé",
+        "a resume"
+      ]
+    },
+    {
+      "id": "en-entretien-005",
+      "mot": "a cover letter",
+      "traductions": [
+        "une lettre de motivation"
+      ],
+      "exemple": "Always send a personalized [cover letter] with your CV.",
+      "exemple_traduction": "Envoie toujours une lettre de motivation personnalisée avec ton CV.",
+      "note": "Britannique : aussi a covering letter.",
+      "variantes": [
+        "a covering letter"
+      ]
+    },
+    {
+      "id": "en-entretien-006",
+      "mot": "a recruiter",
+      "traductions": [
+        "un recruteur"
+      ],
+      "exemple": "Fifty [recruiters] will be at the job fair.",
+      "exemple_traduction": "Cinquante recruteurs seront au salon de l'emploi."
+    },
+    {
+      "id": "en-entretien-007",
+      "mot": "an interviewer",
+      "traductions": [
+        "la personne qui fait passer l'entretien"
+      ],
+      "exemple": "The [interviewer] made me relax with a joke.",
+      "exemple_traduction": "La personne qui m'a fait passer l'entretien m'a détendu avec une blague.",
+      "note": "-er = celui qui pose les questions."
+    },
+    {
+      "id": "en-entretien-008",
+      "mot": "an interviewee",
+      "traductions": [
+        "la personne interrogée en entretien"
+      ],
+      "exemple": "I have the list of questions for the [interviewees].",
+      "exemple_traduction": "J'ai la liste des questions pour les personnes reçues en entretien.",
+      "note": "-ee = celui qui répond aux questions."
+    },
+    {
+      "id": "en-entretien-009",
+      "mot": "an interview panel",
+      "traductions": [
+        "un jury d'entretien"
+      ],
+      "exemple": "There were five people on the [interview panel].",
+      "exemple_traduction": "Il y avait cinq personnes dans le jury d'entretien."
+    },
+    {
+      "id": "en-entretien-010",
+      "mot": "an invitation",
+      "traductions": [
+        "une convocation",
+        "une invitation"
+      ],
+      "exemple": "I got an [invitation] to go in for an interview.",
+      "exemple_traduction": "J'ai reçu une convocation à un entretien."
+    },
+    {
+      "id": "en-entretien-011",
+      "mot": "a second interview",
+      "traductions": [
+        "un deuxième entretien"
+      ],
+      "exemple": "After the [second interview], they gave me personality tests.",
+      "exemple_traduction": "Après le deuxième entretien, ils m'ont fait passer des tests de personnalité."
+    },
+    {
+      "id": "en-entretien-012",
+      "mot": "to arrive punctually",
+      "traductions": [
+        "arriver à l'heure"
+      ],
+      "exemple": "She always [arrives punctually] for everything.",
+      "exemple_traduction": "Elle arrive toujours à l'heure partout.",
+      "note": "Synonyme courant : to be on time."
+    },
+    {
+      "id": "en-entretien-013",
+      "mot": "to dress smartly",
+      "traductions": [
+        "s'habiller de façon soignée"
+      ],
+      "exemple": "I borrowed a suit to [dress smartly] for the interview.",
+      "exemple_traduction": "J'ai emprunté un costume pour être bien habillé à l'entretien.",
+      "note": "smart (britannique) = élégant, chic (pas seulement « intelligent »)."
+    },
+    {
+      "id": "en-entretien-014",
+      "mot": "to make eye contact",
+      "traductions": [
+        "regarder dans les yeux"
+      ],
+      "exemple": "It is important to [make eye contact] in an interview.",
+      "exemple_traduction": "En entretien, il est important de regarder son interlocuteur dans les yeux."
+    },
+    {
+      "id": "en-entretien-015",
+      "mot": "to give full answers",
+      "traductions": [
+        "donner des réponses complètes"
+      ],
+      "exemple": "Jon [gave full answers] to every question.",
+      "exemple_traduction": "Jon a donné des réponses complètes à chaque question."
+    },
+    {
+      "id": "en-entretien-016",
+      "mot": "to provide references",
+      "traductions": [
+        "fournir des références"
+      ],
+      "exemple": "I had to [provide references] for my current job.",
+      "exemple_traduction": "J'ai dû fournir des références pour mon poste actuel.",
+      "note": "a reference = une recommandation d'un ancien employeur, professeur, etc."
+    }
+  ]
+}

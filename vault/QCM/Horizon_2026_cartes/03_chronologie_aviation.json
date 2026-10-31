@@ -1,0 +1,844 @@
+{
+  "titre": "Horizon — Chronologie de l’aviation",
+  "description": "Les grandes dates de l’aéronautique et de l’armée de l’Air et de l’Espace, de 1783 à 2026 (Horizon 2026, ch. 2-I).",
+  "questions": [
+    {
+      "id": "hz-chro-001",
+      "type": "FLASHCARD",
+      "question": "Quelle fut la première mission militaire de l’aviation en 1914 ?",
+      "verso": "La reconnaissance aérienne"
+    },
+    {
+      "id": "hz-chro-002",
+      "type": "FLASHCARD",
+      "question": "En quelle année a eu lieu : premier Français (et Européen) à passer le mur du son : Roger Carpentier sur Mystère II ?",
+      "verso": "1952"
+    },
+    {
+      "id": "hz-chro-003",
+      "type": "TROU",
+      "question": "___ : Mort du capitaine Georges Guynemer à Poelcappelle.",
+      "reponses_texte": [
+        "1917"
+      ],
+      "explication": "Date de la chronologie de l’Horizon."
+    },
+    {
+      "id": "hz-chro-004",
+      "type": "FLASHCARD",
+      "question": "En quelle année a eu lieu : premier vol du Concorde par André Turcat ?",
+      "verso": "1969"
+    },
+    {
+      "id": "hz-chro-005",
+      "type": "QCM",
+      "question": "Quel est le démonstrateur de drone de combat furtif européen de Dassault (premier vol 2012) ?",
+      "choix": [
+        "Barracuda",
+        "Harfang",
+        "Neuron",
+        "Taranis"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-chro-006",
+      "type": "FLASHCARD",
+      "question": "Quel est le nom de la première bombe atomique française (1960) ?",
+      "verso": "Gerboise bleue"
+    },
+    {
+      "id": "hz-chro-007",
+      "type": "QCM",
+      "question": "Sur quel avion les FAS prennent-elles leur première alerte en 1964 ?",
+      "choix": [
+        "Mirage III",
+        "Vautour",
+        "Mirage IV",
+        "Mirage 2000N"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-chro-008",
+      "type": "TROU",
+      "question": "___ : Disparition de Nungesser et Coli à bord de l’Oiseau blanc.",
+      "reponses_texte": [
+        "1927"
+      ],
+      "explication": "Date de la chronologie de l’Horizon."
+    },
+    {
+      "id": "hz-chro-009",
+      "type": "QCM",
+      "question": "Qui réalise en 1783 le premier vol d’un plus léger que l’air ?",
+      "choix": [
+        "Les frères Wright",
+        "Blanchard",
+        "Clément Ader",
+        "Les frères Montgolfier"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-chro-010",
+      "type": "QCM",
+      "question": "Où se tient en 1909 le premier meeting aérien international ?",
+      "choix": [
+        "Le Bourget",
+        "Reims",
+        "Pau",
+        "Villacoublay"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-chro-011",
+      "type": "TROU",
+      "question": "___ : Premier largage d’une bombe nucléaire aéroportée française (opération Tamouré).",
+      "reponses_texte": [
+        "1966"
+      ],
+      "explication": "Date de la chronologie de l’Horizon."
+    },
+    {
+      "id": "hz-chro-012",
+      "type": "QCM",
+      "question": "Sur quel avion Roger Carpentier passe-t-il le mur du son en 1952 ?",
+      "choix": [
+        "Mirage III",
+        "Mystère II",
+        "Super Mystère B2",
+        "Ouragan"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-chro-013",
+      "type": "QCM",
+      "question": "Sur quel appareil les frères Wright réalisent-ils le premier vol propulsé, soutenu et contrôlé en 1903 ?",
+      "choix": [
+        "Le Spirit of St. Louis",
+        "L’Éole",
+        "Le Flyer",
+        "Le Blériot XI"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-chro-014",
+      "type": "QCR",
+      "question": "Quels événements de 2025 figurent dans la chronologie ?",
+      "choix": [
+        "Le premier vol du NGF",
+        "La création du Commandement de l’Espace",
+        "L’ouverture à Toulouse de la 1re base aérienne à vocation spatiale",
+        "L’officialisation du remplacement des SR20 par des PC-7",
+        "Le retrait du Mirage 2000D"
+      ],
+      "reponses": [
+        2,
+        3
+      ],
+      "explication": "Vrai : C, D. Faux : A, B, E."
+    },
+    {
+      "id": "hz-chro-015",
+      "type": "FLASHCARD",
+      "question": "En quelle année a eu lieu : l’armée de l’Air devient l’armée de l’Air et de l’Espace (24 juillet) ?",
+      "verso": "2020"
+    },
+    {
+      "id": "hz-chro-016",
+      "type": "TROU",
+      "question": "___ : Premier vol d’un hydravion par Henri Fabre.",
+      "reponses_texte": [
+        "1910"
+      ],
+      "explication": "Date de la chronologie de l’Horizon."
+    },
+    {
+      "id": "hz-chro-017",
+      "type": "TROU",
+      "question": "___ : Premier vol de Solar Impulse.",
+      "reponses_texte": [
+        "2009"
+      ],
+      "explication": "Date de la chronologie de l’Horizon."
+    },
+    {
+      "id": "hz-chro-018",
+      "type": "FLASHCARD",
+      "question": "En quelle année a eu lieu : traversée de la Méditerranée par Roland Garros ?",
+      "verso": "1913"
+    },
+    {
+      "id": "hz-chro-019",
+      "type": "TROU",
+      "question": "___ : Premier vol du Mirage 2000.",
+      "reponses_texte": [
+        "1978"
+      ],
+      "explication": "Date de la chronologie de l’Horizon."
+    },
+    {
+      "id": "hz-chro-020",
+      "type": "FLASHCARD",
+      "question": "En quelle année a eu lieu : création du ministère de l’Air ?",
+      "verso": "1928"
+    },
+    {
+      "id": "hz-chro-021",
+      "type": "TROU",
+      "question": "___ : Traversée des Andes par Guillaumet.",
+      "reponses_texte": [
+        "1930"
+      ],
+      "explication": "Date de la chronologie de l’Horizon."
+    },
+    {
+      "id": "hz-chro-022",
+      "type": "FLASHCARD",
+      "question": "En quelle année a eu lieu : premier vol d’un plus léger que l’air par les frères Montgolfier ?",
+      "verso": "1783"
+    },
+    {
+      "id": "hz-chro-023",
+      "type": "TROU",
+      "question": "___ : Création de la SNECMA.",
+      "reponses_texte": [
+        "1945"
+      ],
+      "explication": "Date de la chronologie de l’Horizon."
+    },
+    {
+      "id": "hz-chro-024",
+      "type": "FLASHCARD",
+      "question": "En quelle année a eu lieu : premier vol du Rafale (4 juillet, Istres) ?",
+      "verso": "1986"
+    },
+    {
+      "id": "hz-chro-025",
+      "type": "QCM",
+      "question": "Quel appareil Clément Ader pilote-t-il en 1890 ?",
+      "choix": [
+        "Le Blériot XI",
+        "Le Flyer",
+        "L’Avion III",
+        "L’Éole"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-chro-026",
+      "type": "FLASHCARD",
+      "question": "En quelle année a eu lieu : création des Lignes Aériennes Latécoère ?",
+      "verso": "1918"
+    },
+    {
+      "id": "hz-chro-027",
+      "type": "FLASHCARD",
+      "question": "En quelle année a eu lieu : première prise d’alerte des Forces aériennes stratégiques sur Mirage IV ?",
+      "verso": "1964"
+    },
+    {
+      "id": "hz-chro-028",
+      "type": "TROU",
+      "question": "___ : Arrivée de la colonel Sophie Adenot dans l’ISS (14 février).",
+      "reponses_texte": [
+        "2026"
+      ],
+      "explication": "Date de la chronologie de l’Horizon."
+    },
+    {
+      "id": "hz-chro-029",
+      "type": "FLASHCARD",
+      "question": "En quelle année a eu lieu : explosion de Gerboise bleue, première bombe atomique française ?",
+      "verso": "1960"
+    },
+    {
+      "id": "hz-chro-030",
+      "type": "FLASHCARD",
+      "question": "En quelle année a eu lieu : création de l’Agence spatiale européenne ?",
+      "verso": "1975"
+    },
+    {
+      "id": "hz-chro-031",
+      "type": "TROU",
+      "question": "___ : Jean-Loup Chrétien, premier Français dans l’espace.",
+      "reponses_texte": [
+        "1982"
+      ],
+      "explication": "Date de la chronologie de l’Horizon."
+    },
+    {
+      "id": "hz-chro-032",
+      "type": "FLASHCARD",
+      "question": "En quelle année a eu lieu : accident d’un Concorde d’Air France à Gonesse ?",
+      "verso": "2000"
+    },
+    {
+      "id": "hz-chro-033",
+      "type": "FLASHCARD",
+      "question": "En quelle année a eu lieu : premier vol avec passagers de l’Airbus A380 ?",
+      "verso": "2006"
+    },
+    {
+      "id": "hz-chro-034",
+      "type": "TROU",
+      "question": "___ : Première traversée de la Manche en ballon libre par Blanchard.",
+      "reponses_texte": [
+        "1785"
+      ],
+      "explication": "Date de la chronologie de l’Horizon."
+    },
+    {
+      "id": "hz-chro-035",
+      "type": "TROU",
+      "question": "Le premier largage d’une bombe nucléaire aéroportée française (1966) est l’opération ___.",
+      "reponses_texte": [
+        "Tamouré"
+      ]
+    },
+    {
+      "id": "hz-chro-036",
+      "type": "QCM",
+      "question": "Quel avion est le premier avion de ligne à réaction (1952) ?",
+      "choix": [
+        "Tupolev Tu-104",
+        "Caravelle",
+        "Boeing 707",
+        "De Havilland Comet"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-chro-037",
+      "type": "QCM",
+      "question": "Quel avion a été le premier à réaliser un tour du monde à l’énergie solaire ?",
+      "choix": [
+        "Neuron",
+        "Sunseeker",
+        "Solar Impulse",
+        "Helios"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-chro-038",
+      "type": "TROU",
+      "question": "___ : Caroline Aigle, première femme pilote de chasse de recrutement direct.",
+      "reponses_texte": [
+        "1999"
+      ],
+      "explication": "Date de la chronologie de l’Horizon."
+    },
+    {
+      "id": "hz-chro-039",
+      "type": "QCM",
+      "question": "Par quel acte l’armée de l’Air devient-elle l’armée de l’Air et de l’Espace en 2020 ?",
+      "choix": [
+        "Un décret du Premier ministre",
+        "Une décision du CEMA",
+        "Une loi votée par le Parlement",
+        "Un ordre du jour du CEMAA"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-chro-040",
+      "type": "QCM",
+      "question": "Quel événement de 1941 figure dans la chronologie ?",
+      "choix": [
+        "Le raid sur Tokyo",
+        "La création de la SNECMA",
+        "Le premier vol d’un avion à réaction",
+        "L’attaque japonaise sur Pearl Harbor (7 décembre)"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-chro-041",
+      "type": "FLASHCARD",
+      "question": "En quelle année a eu lieu : premier vol d’un avion à réaction (He 178) ?",
+      "verso": "1939"
+    },
+    {
+      "id": "hz-chro-042",
+      "type": "QCM",
+      "question": "Quelle aviatrice réalise en 1928 la traversée de l’Atlantique Nord ?",
+      "choix": [
+        "Hélène Boucher",
+        "Maryse Hilsz",
+        "Amelia Earhart",
+        "Maryse Bastié"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-chro-043",
+      "type": "FLASHCARD",
+      "question": "En quelle année a eu lieu : création d’Air France ?",
+      "verso": "1933"
+    },
+    {
+      "id": "hz-chro-044",
+      "type": "FLASHCARD",
+      "question": "En quelle année a eu lieu : entrée de la première promotion de l’École de l’air aux Petites Écuries de Versailles ?",
+      "verso": "1935"
+    },
+    {
+      "id": "hz-chro-045",
+      "type": "QCM",
+      "question": "Qui est la première femme pilote de chasse de recrutement direct (1999) ?",
+      "choix": [
+        "Sophie Adenot",
+        "Maryse Bastié",
+        "Caroline Aigle",
+        "Claudie Haigneré"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-chro-046",
+      "type": "FLASHCARD",
+      "question": "En quelle année a eu lieu : premier décollage d’un homme à bord d’un plus lourd que l’air (l’Éole de Clément Ader) ?",
+      "verso": "1890"
+    },
+    {
+      "id": "hz-chro-047",
+      "type": "TROU",
+      "question": "Le capitaine Guynemer meurt le 11 septembre 1917 à ___.",
+      "reponses_texte": [
+        "Poelcappelle",
+        "Poelcapelle"
+      ]
+    },
+    {
+      "id": "hz-chro-048",
+      "type": "TROU",
+      "question": "___ : Premiers vols du Mirage F1 et de l’Alpha Jet.",
+      "reponses_texte": [
+        "1973"
+      ],
+      "explication": "Date de la chronologie de l’Horizon."
+    },
+    {
+      "id": "hz-chro-049",
+      "type": "QCM",
+      "question": "Quel événement eut lieu en premier ?",
+      "choix": [
+        "Passage du mur du son par Yeager",
+        "Premier vol du Triton",
+        "Premier vol d’un avion à réaction (He 178)",
+        "Création de la SNECMA"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "He 178 : 1939 ; SNECMA : 1945 ; Triton : 1946 ; Yeager : 1947."
+    },
+    {
+      "id": "hz-chro-050",
+      "type": "TROU",
+      "question": "___ : Création de l’armée de l’Air (2 juillet).",
+      "reponses_texte": [
+        "1934"
+      ],
+      "explication": "Date de la chronologie de l’Horizon."
+    },
+    {
+      "id": "hz-chro-051",
+      "type": "TROU",
+      "question": "___ : Lancement de Spoutnik 1, premier satellite.",
+      "reponses_texte": [
+        "1957"
+      ],
+      "explication": "Date de la chronologie de l’Horizon."
+    },
+    {
+      "id": "hz-chro-052",
+      "type": "QCM",
+      "question": "Qui pilote le premier vol du Rafale le 4 juillet 1986 ?",
+      "choix": [
+        "Roger Carpentier",
+        "Jean-Loup Chrétien",
+        "Guy Mitaux-Maurouard",
+        "André Turcat"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-chro-053",
+      "type": "FLASHCARD",
+      "question": "Sur quel avion Lindbergh traverse-t-il l’Atlantique Nord sans escale ?",
+      "verso": "Le Spirit of St. Louis"
+    },
+    {
+      "id": "hz-chro-054",
+      "type": "TROU",
+      "question": "___ : Révélation de la maquette du Next Generation Fighter (NGF) au Bourget.",
+      "reponses_texte": [
+        "2019"
+      ],
+      "explication": "Date de la chronologie de l’Horizon."
+    },
+    {
+      "id": "hz-chro-055",
+      "type": "TROU",
+      "question": "___ : Installation de la 3e promotion de l’École de l’air à Salon-de-Provence.",
+      "reponses_texte": [
+        "1937"
+      ],
+      "explication": "Date de la chronologie de l’Horizon."
+    },
+    {
+      "id": "hz-chro-056",
+      "type": "QCR",
+      "question": "Quels appareils ont été retirés du service en 2022 ?",
+      "choix": [
+        "Le Transall",
+        "Le C-135",
+        "Le Mirage 2000-5",
+        "Le Mirage 2000D",
+        "Le Mirage 2000C"
+      ],
+      "reponses": [
+        0,
+        4
+      ],
+      "explication": "Vrai : A, E. Faux : B, C, D."
+    },
+    {
+      "id": "hz-chro-057",
+      "type": "TROU",
+      "question": "___ : Passage du mur du son par Chuck Yeager sur Bell X-1.",
+      "reponses_texte": [
+        "1947"
+      ],
+      "explication": "Date de la chronologie de l’Horizon."
+    },
+    {
+      "id": "hz-chro-058",
+      "type": "TROU",
+      "question": "Le 24 juillet 2020, l’armée de l’Air devient l’armée de l’Air et de l’___.",
+      "reponses_texte": [
+        "Espace"
+      ]
+    },
+    {
+      "id": "hz-chro-059",
+      "type": "FLASHCARD",
+      "question": "De quelle promotion de l’École de l’air est issu Jean-Loup Chrétien ?",
+      "verso": "La promotion EA62"
+    },
+    {
+      "id": "hz-chro-060",
+      "type": "QCM",
+      "question": "Qui réalise en 1934 la première liaison commerciale Paris–Buenos Aires ?",
+      "choix": [
+        "Henri Guillaumet",
+        "Dieudonné Costes",
+        "Jean Mermoz",
+        "Antoine de Saint-Exupéry"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-chro-061",
+      "type": "QCM",
+      "question": "Qui pilote le premier vol du Concorde en 1969 ?",
+      "choix": [
+        "Roger Carpentier",
+        "Guy Mitaux-Maurouard",
+        "André Turcat",
+        "Jacqueline Auriol"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-chro-062",
+      "type": "FLASHCARD",
+      "question": "Que signifie BAVS ?",
+      "verso": "Base aérienne à vocation spatiale",
+      "explication": "La 1re BAVS a ouvert à Toulouse en 2025."
+    },
+    {
+      "id": "hz-chro-063",
+      "type": "QCM",
+      "question": "Quelle innovation Roland Garros met-il au point en 1915 sur Morane-Saulnier type L ?",
+      "choix": [
+        "Le premier parachute dorsal",
+        "Le premier ravitaillement en vol",
+        "Le premier système de tir à travers l’hélice",
+        "Le premier viseur de bombardement"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Abattu et capturé le 18 avril 1915, son système est découvert et adapté par les Allemands sur Fokker E (tir synchronisé)."
+    },
+    {
+      "id": "hz-chro-064",
+      "type": "FLASHCARD",
+      "question": "En quelle année a eu lieu : premier vol réussi de la fusée Ariane ?",
+      "verso": "1979"
+    },
+    {
+      "id": "hz-chro-065",
+      "type": "FLASHCARD",
+      "question": "En quelle année a eu lieu : première liaison Natal–Rio de l’Aéropostale par Jean Mermoz ?",
+      "verso": "1925"
+    },
+    {
+      "id": "hz-chro-066",
+      "type": "QCM",
+      "question": "Quelle est la date de création de l’armée de l’Air ?",
+      "choix": [
+        "1er avril 1933",
+        "2 juillet 1934",
+        "2 juillet 1928",
+        "24 juillet 1934"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-chro-067",
+      "type": "FLASHCARD",
+      "question": "En quelle année a eu lieu : premier vol du Neuron, démonstrateur de drone de combat furtif européen ?",
+      "verso": "2012"
+    },
+    {
+      "id": "hz-chro-068",
+      "type": "FLASHCARD",
+      "question": "En quelle année a eu lieu : vol du premier avion à réaction français, le Triton ?",
+      "verso": "1946"
+    },
+    {
+      "id": "hz-chro-069",
+      "type": "QCM",
+      "question": "Quel événement eut lieu en premier ?",
+      "choix": [
+        "Premier ravitaillement en vol",
+        "Premier vol d’un hydravion par Fabre",
+        "Traversée de la Méditerranée par Garros",
+        "Traversée de la Manche par Blériot"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Blériot 1909, Fabre 1910, Garros 1913, ravitaillement 1923."
+    },
+    {
+      "id": "hz-chro-070",
+      "type": "QCM",
+      "question": "Qui réalisent en 1930 la première traversée sans escale de l’Atlantique dans le sens Paris–New York ?",
+      "choix": [
+        "Saint-Exupéry et Prévot",
+        "Mermoz et Guillaumet",
+        "Costes et Bellonte",
+        "Nungesser et Coli"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-chro-071",
+      "type": "TROU",
+      "question": "___ : Youri Gagarine, premier homme dans l’espace.",
+      "reponses_texte": [
+        "1961"
+      ],
+      "explication": "Date de la chronologie de l’Horizon."
+    },
+    {
+      "id": "hz-chro-072",
+      "type": "TROU",
+      "question": "___ : Premier ravitaillement en vol.",
+      "reponses_texte": [
+        "1923"
+      ],
+      "explication": "Date de la chronologie de l’Horizon."
+    },
+    {
+      "id": "hz-chro-073",
+      "type": "QCM",
+      "question": "En quelle année Charles Lindbergh effectue-t-il le premier survol de l’Atlantique Nord sans escale ?",
+      "choix": [
+        "1919",
+        "1927",
+        "1930",
+        "1928"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "À bord du Spirit of St. Louis, la même année que la disparition de Nungesser et Coli."
+    },
+    {
+      "id": "hz-chro-074",
+      "type": "QCR",
+      "question": "Quels événements de 1914 l’Horizon retient-il ?",
+      "choix": [
+        "La création par la France du premier groupe de bombardement au monde",
+        "La création de l’armée de l’Air",
+        "Le premier ravitaillement en vol",
+        "La reconnaissance aérienne, première mission militaire de l’aviation",
+        "La première victoire aérienne homologuée, obtenue par l’armée française"
+      ],
+      "reponses": [
+        0,
+        3,
+        4
+      ],
+      "explication": "Vrai : A, D, E. Faux : B, C. L’armée de l’Air est créée en 1934 ; le premier ravitaillement en vol date de 1923."
+    },
+    {
+      "id": "hz-chro-075",
+      "type": "TROU",
+      "question": "___ : Mise en service du premier Rafale Marine.",
+      "reponses_texte": [
+        "2002"
+      ],
+      "explication": "Date de la chronologie de l’Horizon."
+    },
+    {
+      "id": "hz-chro-076",
+      "type": "QCM",
+      "question": "Sur quel avion Chuck Yeager passe-t-il le mur du son en 1947 ?",
+      "choix": [
+        "Bell X-15",
+        "Mystère II",
+        "F-86 Sabre",
+        "Bell X-1"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-chro-077",
+      "type": "TROU",
+      "question": "___ : Premier vol propulsé, soutenu et contrôlé des frères Wright sur le Flyer.",
+      "reponses_texte": [
+        "1903"
+      ],
+      "explication": "Date de la chronologie de l’Horizon."
+    },
+    {
+      "id": "hz-chro-078",
+      "type": "QCM",
+      "question": "Qui arrive dans l’ISS le 14 février 2026 ?",
+      "choix": [
+        "Claudie Haigneré",
+        "La colonel Sophie Adenot",
+        "Caroline Aigle",
+        "Thomas Pesquet"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-chro-079",
+      "type": "TROU",
+      "question": "Costes et Bellonte traversent l’Atlantique en 1930 à bord du « Point d’___ ».",
+      "reponses_texte": [
+        "interrogation"
+      ]
+    },
+    {
+      "id": "hz-chro-080",
+      "type": "TROU",
+      "question": "L’armée de l’Air est créée le ___ juillet 1934.",
+      "reponses_texte": [
+        "2",
+        "deux"
+      ]
+    },
+    {
+      "id": "hz-chro-081",
+      "type": "FLASHCARD",
+      "question": "En quelle année a eu lieu : traversée de la Manche par Louis Blériot (Blériot XI) ?",
+      "verso": "1909"
+    },
+    {
+      "id": "hz-chro-082",
+      "type": "TROU",
+      "question": "___ : Retrait du service du Mirage 2000C et du Transall.",
+      "reponses_texte": [
+        "2022"
+      ],
+      "explication": "Date de la chronologie de l’Horizon."
+    },
+    {
+      "id": "hz-chro-083",
+      "type": "QCM",
+      "question": "Sur quel avion les Allemands adaptent-ils dès 1916 le tir à travers l’hélice découvert sur l’avion de Garros ?",
+      "choix": [
+        "Gotha G.IV",
+        "Albatros D.III",
+        "Fokker E",
+        "Fokker Dr.I"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-chro-084",
+      "type": "QCM",
+      "question": "Quel avion largue en 1945 les premières bombes atomiques utilisées en temps de guerre ?",
+      "choix": [
+        "B-29",
+        "Lancaster",
+        "B-52",
+        "B-17"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-chro-085",
+      "type": "FLASHCARD",
+      "question": "En quelle année a eu lieu : retrait du C-135 au profit de l’A330 MRTT ?",
+      "verso": "2023"
+    }
+  ]
+}

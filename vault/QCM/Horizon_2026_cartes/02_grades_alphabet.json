@@ -1,0 +1,1076 @@
+{
+  "titre": "Horizon — Grades, appellations et alphabet radio",
+  "description": "Grades de l’AAE et correspondances Terre/Marine, appellations, médecins, commissaires et alphabet radio international (Horizon 2026, ch. 1).",
+  "questions": [
+    {
+      "id": "hz-grad-001",
+      "type": "QCM",
+      "question": "Quel est le sigle du caporal dans l’AAE ?",
+      "choix": [
+        "CLC",
+        "CAL",
+        "CPL",
+        "CAP"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-grad-002",
+      "type": "TROU",
+      "question": "Le sigle de l’enseigne de vaisseau de 1re classe est ___.",
+      "reponses_texte": [
+        "EV1"
+      ]
+    },
+    {
+      "id": "hz-grad-003",
+      "type": "FLASHCARD",
+      "question": "Alphabet radio : quelle lettre correspond à « Tango » ?",
+      "verso": "T"
+    },
+    {
+      "id": "hz-grad-004",
+      "type": "FLASHCARD",
+      "question": "Selon la légende, pourquoi les marins ne « donnent-ils pas du Mon » ?",
+      "verso": "Napoléon leur aurait retiré ce privilège après la défaite de Trafalgar (21 octobre 1805).",
+      "explication": "Légende probablement fausse selon l’Horizon."
+    },
+    {
+      "id": "hz-grad-005",
+      "type": "TROU",
+      "question": "Le sigle du sergent-chef dans l’AAE est ___.",
+      "reponses_texte": [
+        "SGC"
+      ]
+    },
+    {
+      "id": "hz-grad-006",
+      "type": "FLASHCARD",
+      "question": "Alphabet radio : quelle lettre correspond à « Delta » ?",
+      "verso": "D"
+    },
+    {
+      "id": "hz-grad-007",
+      "type": "QCM",
+      "question": "Quel est le grade le plus élevé des médecins militaires cité dans l’Horizon ?",
+      "choix": [
+        "Médecin en chef des services hors classe",
+        "Médecin général des armées",
+        "Médecin général inspecteur",
+        "Médecin général"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-grad-008",
+      "type": "FLASHCARD",
+      "question": "Alphabet radio : quelle lettre correspond à « Zulu » ?",
+      "verso": "Z"
+    },
+    {
+      "id": "hz-grad-009",
+      "type": "TROU",
+      "question": "Dans l’alphabet radio international, la lettre W se dit ___.",
+      "reponses_texte": [
+        "Whiskey",
+        "Whisky"
+      ]
+    },
+    {
+      "id": "hz-grad-010",
+      "type": "TROU",
+      "question": "Le général Valin a été promu « général d’armée aérienne maintenu en activité sans limite d’âge » en ___.",
+      "reponses_texte": [
+        "1954"
+      ]
+    },
+    {
+      "id": "hz-grad-011",
+      "type": "QCM",
+      "question": "Quel mot de l’alphabet radio correspond à la lettre Q ?",
+      "choix": [
+        "Quebrada",
+        "Quintal",
+        "Québec",
+        "Queen"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-grad-012",
+      "type": "TROU",
+      "question": "Le sigle du lieutenant-colonel est ___.",
+      "reponses_texte": [
+        "LCL"
+      ]
+    },
+    {
+      "id": "hz-grad-013",
+      "type": "QCM",
+      "question": "Quel grade de la Marine correspond à l’adjudant-chef ?",
+      "choix": [
+        "Maître",
+        "Premier maître",
+        "Maître principal",
+        "Second maître"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-grad-014",
+      "type": "QCM",
+      "question": "Quelle est la date de la bataille de Trafalgar citée dans l’Horizon ?",
+      "choix": [
+        "14 juillet 1789",
+        "2 décembre 1805",
+        "21 octobre 1805",
+        "18 juin 1815"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-grad-015",
+      "type": "FLASHCARD",
+      "question": "Alphabet radio : quelle lettre correspond à « Romeo » ?",
+      "verso": "R"
+    },
+    {
+      "id": "hz-grad-016",
+      "type": "QCM",
+      "question": "Quel grade de la Marine correspond au sergent ?",
+      "choix": [
+        "Maître",
+        "Second maître",
+        "Quartier-maître de 1re classe",
+        "Matelot breveté"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-grad-017",
+      "type": "QCM",
+      "question": "Quel grade de la Marine correspond au général de corps aérien ?",
+      "choix": [
+        "Vice-amiral",
+        "Vice-amiral d’escadre",
+        "Contre-amiral",
+        "Amiral"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-grad-018",
+      "type": "TROU",
+      "question": "Le sigle du vice-amiral d’escadre est ___.",
+      "reponses_texte": [
+        "VAE"
+      ]
+    },
+    {
+      "id": "hz-grad-019",
+      "type": "QCM",
+      "question": "Quelle est l’équivalent dans la Marine de la dignité de Maréchal de France ?",
+      "choix": [
+        "Amiral de France",
+        "Vice-amiral de France",
+        "Grand amiral",
+        "Amiral d’escadre"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-grad-020",
+      "type": "TROU",
+      "question": "Le sigle du sous-lieutenant est ___.",
+      "reponses_texte": [
+        "SLT"
+      ]
+    },
+    {
+      "id": "hz-grad-021",
+      "type": "QCM",
+      "question": "Quel est l’ordre croissant correct des officiers supérieurs de l’AAE ?",
+      "choix": [
+        "Commandant, lieutenant-colonel, colonel",
+        "Capitaine, commandant, colonel",
+        "Commandant, colonel, lieutenant-colonel",
+        "Lieutenant-colonel, commandant, colonel"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-grad-022",
+      "type": "TROU",
+      "question": "Selon la légende, Napoléon retira aux marins le privilège du « Mon » après la défaite de ___ (1805).",
+      "reponses_texte": [
+        "Trafalgar"
+      ]
+    },
+    {
+      "id": "hz-grad-023",
+      "type": "FLASHCARD",
+      "question": "Alphabet radio : quelle lettre correspond à « November » ?",
+      "verso": "N"
+    },
+    {
+      "id": "hz-grad-024",
+      "type": "TROU",
+      "question": "Dans l’alphabet radio international, la lettre C se dit ___.",
+      "reponses_texte": [
+        "Charlie"
+      ]
+    },
+    {
+      "id": "hz-grad-025",
+      "type": "TROU",
+      "question": "Dans l’alphabet radio international, la lettre M se dit ___.",
+      "reponses_texte": [
+        "Mike"
+      ]
+    },
+    {
+      "id": "hz-grad-026",
+      "type": "FLASHCARD",
+      "question": "Comment s’adresse-t-on à un capitaine de frégate ou de corvette ?",
+      "verso": "« Commandant »"
+    },
+    {
+      "id": "hz-grad-027",
+      "type": "QCM",
+      "question": "Classez : quel grade se situe immédiatement au-dessus du général de division aérienne ?",
+      "choix": [
+        "Général d’armée aérienne",
+        "Général de corps aérien",
+        "Général de brigade aérienne",
+        "Colonel"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-grad-028",
+      "type": "FLASHCARD",
+      "question": "Alphabet radio : quelle lettre correspond à « Victor » ?",
+      "verso": "V"
+    },
+    {
+      "id": "hz-grad-029",
+      "type": "QCM",
+      "question": "À quelle condition la dignité de maréchal de France s’obtient-elle ?",
+      "choix": [
+        "Avoir exercé les fonctions de CEMA pendant au moins 5 ans",
+        "Être nommé par un vote du Parlement réuni en Congrès",
+        "Avoir accompli 40 ans de service actif dans les armées",
+        "Avoir victorieusement commandé une armée en temps de guerre"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-grad-030",
+      "type": "QCR",
+      "question": "Quels grades font partie des officiers supérieurs de l’AAE ?",
+      "choix": [
+        "Lieutenant-colonel",
+        "Lieutenant",
+        "Colonel",
+        "Commandant",
+        "Capitaine"
+      ],
+      "reponses": [
+        0,
+        2,
+        3
+      ],
+      "explication": "Vrai : A, C, D. Faux : B, E. Capitaine et lieutenant sont des officiers subalternes."
+    },
+    {
+      "id": "hz-grad-031",
+      "type": "FLASHCARD",
+      "question": "Comment s’adresse-t-on à un commissaire, du commissaire aspirant au commissaire en chef de 1re classe ?",
+      "verso": "« Madame/Monsieur le commissaire »"
+    },
+    {
+      "id": "hz-grad-032",
+      "type": "FLASHCARD",
+      "question": "Quel autre intitulé l’armée de Terre emploie-t-elle pour le grade de sergent ?",
+      "verso": "Maréchal des logis (MDL)"
+    },
+    {
+      "id": "hz-grad-033",
+      "type": "QCM",
+      "question": "Comment s’adresse-t-on correctement à une femme capitaine de l’AAE ?",
+      "choix": [
+        "« Mes respects Madame »",
+        "« Mes respects Mon Capitaine »",
+        "« Ma Capitaine »",
+        "« Mes respects Capitaine »"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-grad-034",
+      "type": "QCM",
+      "question": "Quel grade de la Marine correspond au capitaine ?",
+      "choix": [
+        "Enseigne de vaisseau de 1re classe",
+        "Lieutenant de vaisseau",
+        "Premier maître",
+        "Capitaine de corvette"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-grad-035",
+      "type": "TROU",
+      "question": "Dans l’alphabet radio international, la lettre S se dit ___.",
+      "reponses_texte": [
+        "Sierra"
+      ]
+    },
+    {
+      "id": "hz-grad-036",
+      "type": "QCM",
+      "question": "Quel sigle désigne le général de brigade aérienne ?",
+      "choix": [
+        "GDA",
+        "GBR",
+        "GBA",
+        "GBAA"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-grad-037",
+      "type": "FLASHCARD",
+      "question": "En quelle année d’études est l’« aspirant médecin » ?",
+      "verso": "En 2e année"
+    },
+    {
+      "id": "hz-grad-038",
+      "type": "TROU",
+      "question": "Le général de brigade aérienne se désigne par le sigle ___.",
+      "reponses_texte": [
+        "GBA"
+      ]
+    },
+    {
+      "id": "hz-grad-039",
+      "type": "FLASHCARD",
+      "question": "Que signifie le « Mon » de « Mon Capitaine » ?",
+      "verso": "C’est l’abréviation de « Monsieur le » (et non un possessif)."
+    },
+    {
+      "id": "hz-grad-040",
+      "type": "QCM",
+      "question": "Comment s’adresse-t-on à un sergent-chef de l’AAE ?",
+      "choix": [
+        "« Sergent »",
+        "« Mon Chef »",
+        "« Mon Sergent-Chef »",
+        "« Chef »"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-grad-041",
+      "type": "QCM",
+      "question": "Quel grade de la Marine correspond au lieutenant-colonel ?",
+      "choix": [
+        "Lieutenant de vaisseau",
+        "Capitaine de corvette",
+        "Capitaine de frégate",
+        "Capitaine de vaisseau"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-grad-042",
+      "type": "TROU",
+      "question": "Dans l’alphabet radio international, la lettre K se dit ___.",
+      "reponses_texte": [
+        "Kilo"
+      ]
+    },
+    {
+      "id": "hz-grad-043",
+      "type": "QCM",
+      "question": "Comment épelle-t-on l’indicatif « EAE » à la radio ?",
+      "choix": [
+        "Echo Alpha Echo",
+        "Echo Able Echo",
+        "Easy Alpha Easy",
+        "Edward Alpha Edward"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-grad-044",
+      "type": "QCM",
+      "question": "Quel est le sigle de l’aviateur de 1re classe ?",
+      "choix": [
+        "1CL",
+        "A1C",
+        "AV1",
+        "AVT"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-grad-045",
+      "type": "FLASHCARD",
+      "question": "Quel est le grade d’officier général le plus élevé de l’armée de l’Air et de l’Espace ?",
+      "verso": "Général d’armée aérienne (GAA)"
+    },
+    {
+      "id": "hz-grad-046",
+      "type": "QCM",
+      "question": "Quel grade de la Marine correspond à l’aviateur ?",
+      "choix": [
+        "Mousse",
+        "Matelot",
+        "Quartier-maître de 2e classe",
+        "Matelot breveté"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-grad-047",
+      "type": "QCM",
+      "question": "Quel est l’ordre croissant correct des militaires du rang de l’AAE ?",
+      "choix": [
+        "Caporal, aviateur, aviateur de 1re classe, caporal-chef",
+        "Aviateur, caporal, aviateur de 1re classe, caporal-chef",
+        "Aviateur, aviateur de 1re classe, caporal, caporal-chef",
+        "Aviateur de 1re classe, aviateur, caporal, caporal-chef"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-grad-048",
+      "type": "FLASHCARD",
+      "question": "Le maréchalat est-il un grade ?",
+      "verso": "Non, c’est une dignité dans l’État",
+      "explication": "Elle ne s’obtient qu’après avoir victorieusement commandé une armée en temps de guerre."
+    },
+    {
+      "id": "hz-grad-049",
+      "type": "QCM",
+      "question": "Quel grade de la Marine correspond au général de brigade aérienne ?",
+      "choix": [
+        "Contre-amiral",
+        "Capitaine de vaisseau",
+        "Amiral",
+        "Vice-amiral"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-grad-050",
+      "type": "QCM",
+      "question": "Quel grade de la Marine correspond au général de division aérienne ?",
+      "choix": [
+        "Vice-amiral",
+        "Contre-amiral",
+        "Vice-amiral d’escadre",
+        "Capitaine de vaisseau"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-grad-051",
+      "type": "TROU",
+      "question": "Le sigle de l’adjudant-chef est ___.",
+      "reponses_texte": [
+        "ADC"
+      ]
+    },
+    {
+      "id": "hz-grad-052",
+      "type": "QCM",
+      "question": "Quel est le sigle du caporal-chef dans l’AAE ?",
+      "choix": [
+        "CCH",
+        "CPC",
+        "CAL",
+        "CLC"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "CCH est le sigle utilisé dans l’armée de Terre."
+    },
+    {
+      "id": "hz-grad-053",
+      "type": "QCM",
+      "question": "Comment s’adresse-t-on à un lieutenant-colonel (homme) de l’AAE ?",
+      "choix": [
+        "« Mon Commandant »",
+        "« Mon Lieutenant-Colonel »",
+        "« Colonel »",
+        "« Mon Colonel »"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-grad-054",
+      "type": "TROU",
+      "question": "Le sigle de l’aviateur (premier grade du rang dans l’AAE) est ___.",
+      "reponses_texte": [
+        "AVT"
+      ]
+    },
+    {
+      "id": "hz-grad-055",
+      "type": "QCM",
+      "question": "Quel grade de la Marine correspond au commandant ?",
+      "choix": [
+        "Capitaine de frégate",
+        "Enseigne de vaisseau de 1re classe",
+        "Capitaine de corvette",
+        "Lieutenant de vaisseau"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-grad-056",
+      "type": "QCM",
+      "question": "Quel grade de la Marine correspond à l’adjudant ?",
+      "choix": [
+        "Maître principal",
+        "Maître",
+        "Second maître",
+        "Premier maître"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-grad-057",
+      "type": "QCR",
+      "question": "Quels grades sont des sous-officiers supérieurs dans l’AAE ?",
+      "choix": [
+        "Sergent-chef",
+        "Major",
+        "Caporal-chef",
+        "Adjudant-chef",
+        "Adjudant"
+      ],
+      "reponses": [
+        1,
+        3,
+        4
+      ],
+      "explication": "Vrai : B, D, E. Faux : A, C."
+    },
+    {
+      "id": "hz-grad-058",
+      "type": "QCM",
+      "question": "Quel sigle désigne le général de division aérienne ?",
+      "choix": [
+        "GBA",
+        "GCA",
+        "GDA",
+        "GDAA"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-grad-059",
+      "type": "QCM",
+      "question": "Quel sigle désigne le général de corps aérien ?",
+      "choix": [
+        "GCA",
+        "GCAA",
+        "GDA",
+        "GAA"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-grad-060",
+      "type": "TROU",
+      "question": "Dans l’alphabet radio international, la lettre Q se dit ___.",
+      "reponses_texte": [
+        "Québec"
+      ]
+    },
+    {
+      "id": "hz-grad-061",
+      "type": "TROU",
+      "question": "Dans l’alphabet radio international, la lettre Y se dit ___.",
+      "reponses_texte": [
+        "Yankee"
+      ]
+    },
+    {
+      "id": "hz-grad-062",
+      "type": "QCM",
+      "question": "Quel grade de la Marine correspond au caporal-chef ?",
+      "choix": [
+        "Quartier-maître de 1re classe",
+        "Matelot breveté",
+        "Second maître",
+        "Quartier-maître de 2e classe"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-grad-063",
+      "type": "QCR",
+      "question": "Quels grades existent pour les commissaires généraux ?",
+      "choix": [
+        "Commissaire général hors classe",
+        "Commissaire général de 1re classe",
+        "Commissaire général de 2e classe",
+        "Commissaire général d’armée"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Vrai : A, B, C. Faux : D."
+    },
+    {
+      "id": "hz-grad-064",
+      "type": "QCR",
+      "question": "Quels intitulés figurent parmi les grades des médecins militaires ?",
+      "choix": [
+        "Médecin colonel",
+        "Médecin général inspecteur",
+        "Médecin major",
+        "Médecin en chef",
+        "Médecin principal"
+      ],
+      "reponses": [
+        1,
+        3,
+        4
+      ],
+      "explication": "Vrai : B, D, E. Faux : A, C."
+    },
+    {
+      "id": "hz-grad-065",
+      "type": "FLASHCARD",
+      "question": "Alphabet radio : quelle lettre correspond à « X-Ray » ?",
+      "verso": "X"
+    },
+    {
+      "id": "hz-grad-066",
+      "type": "TROU",
+      "question": "Dans l’alphabet radio international, la lettre G se dit ___.",
+      "reponses_texte": [
+        "Golf"
+      ]
+    },
+    {
+      "id": "hz-grad-067",
+      "type": "QCM",
+      "question": "Quel grade de la Marine correspond au lieutenant ?",
+      "choix": [
+        "Enseigne de vaisseau de 1re classe",
+        "Enseigne de vaisseau de 2e classe",
+        "Aspirant",
+        "Lieutenant de vaisseau"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-grad-068",
+      "type": "QCM",
+      "question": "Comment épelle-t-on « BA » à la radio ?",
+      "choix": [
+        "Bravo Alpha",
+        "Bravo Alfa Romeo",
+        "Beta Alpha",
+        "Baker Able"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-grad-069",
+      "type": "FLASHCARD",
+      "question": "Alphabet radio : quelle lettre correspond à « Papa » ?",
+      "verso": "P"
+    },
+    {
+      "id": "hz-grad-070",
+      "type": "FLASHCARD",
+      "question": "Comment s’adresse-t-on à un officier général de la Marine ?",
+      "verso": "« Amiral »",
+      "explication": "Sans « Mon », contrairement aux généraux de l’AAE et de la Terre (« Mon Général »)."
+    },
+    {
+      "id": "hz-grad-071",
+      "type": "QCM",
+      "question": "Comment s’adresse-t-on à un sous-lieutenant (homme) de l’AAE ?",
+      "choix": [
+        "« Mon Lieutenant »",
+        "« Sous-Lieutenant »",
+        "« Mon Sous-Lieutenant »",
+        "« Mon Aspirant »"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-grad-072",
+      "type": "QCM",
+      "question": "Comment appelle-t-on un lieutenant de vaisseau ?",
+      "choix": [
+        "« Commandant »",
+        "« Capitaine »",
+        "« Mon Capitaine »",
+        "« Lieutenant »"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Dans la Marine, on ne « donne pas du Mon » : on s’adresse à l’officier directement par l’appellation."
+    },
+    {
+      "id": "hz-grad-073",
+      "type": "TROU",
+      "question": "Le sigle du lieutenant dans l’AAE est ___.",
+      "reponses_texte": [
+        "LTT"
+      ]
+    },
+    {
+      "id": "hz-grad-074",
+      "type": "TROU",
+      "question": "Dans l’alphabet radio international, la lettre E se dit ___.",
+      "reponses_texte": [
+        "Echo"
+      ]
+    },
+    {
+      "id": "hz-grad-075",
+      "type": "QCM",
+      "question": "Comment s’adresse-t-on à un major ?",
+      "choix": [
+        "« Major »",
+        "« Chef »",
+        "« Mon Adjudant-Chef »",
+        "« Mon Major »"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Le major est l’exception : on ne lui « donne pas du Mon »."
+    },
+    {
+      "id": "hz-grad-076",
+      "type": "QCM",
+      "question": "Quel grade de la Marine correspond à l’aviateur de 1re classe ?",
+      "choix": [
+        "Quartier-maître de 2e classe",
+        "Matelot breveté",
+        "Mousse",
+        "Second maître"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-grad-077",
+      "type": "TROU",
+      "question": "Dans l’alphabet radio international, la lettre U se dit ___.",
+      "reponses_texte": [
+        "Uniform"
+      ]
+    },
+    {
+      "id": "hz-grad-078",
+      "type": "QCM",
+      "question": "Quel grade de la Marine correspond au sous-lieutenant ?",
+      "choix": [
+        "Enseigne de vaisseau de 2e classe",
+        "Aspirant",
+        "Second maître",
+        "Enseigne de vaisseau de 1re classe"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-grad-079",
+      "type": "FLASHCARD",
+      "question": "Alphabet radio : quelle lettre correspond à « Fox-Trot » ?",
+      "verso": "F"
+    },
+    {
+      "id": "hz-grad-080",
+      "type": "QCM",
+      "question": "Quel grade de la Marine correspond au général d’armée aérienne ?",
+      "choix": [
+        "Vice-amiral d’escadre",
+        "Contre-amiral",
+        "Amiral",
+        "Vice-amiral"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-grad-081",
+      "type": "QCM",
+      "question": "Quel grade de la Marine correspond au colonel ?",
+      "choix": [
+        "Capitaine de frégate",
+        "Contre-amiral",
+        "Capitaine de vaisseau",
+        "Capitaine de corvette"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-grad-082",
+      "type": "FLASHCARD",
+      "question": "Alphabet radio : quelle lettre correspond à « Juliet » ?",
+      "verso": "J"
+    },
+    {
+      "id": "hz-grad-083",
+      "type": "QCM",
+      "question": "Quel grade de la Marine correspond au caporal ?",
+      "choix": [
+        "Mousse",
+        "Quartier-maître de 1re classe",
+        "Matelot breveté",
+        "Quartier-maître de 2e classe"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-grad-084",
+      "type": "QCM",
+      "question": "Quel est l’ordre croissant correct des sous-officiers de l’AAE ?",
+      "choix": [
+        "Sergent, sergent-chef, adjudant-chef, adjudant, major",
+        "Sergent, sergent-chef, adjudant, adjudant-chef, major",
+        "Sergent-chef, sergent, adjudant, major, adjudant-chef",
+        "Sergent, adjudant, sergent-chef, adjudant-chef, major"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-grad-085",
+      "type": "FLASHCARD",
+      "question": "Alphabet radio : quelle lettre correspond à « Hotel » ?",
+      "verso": "H"
+    },
+    {
+      "id": "hz-grad-086",
+      "type": "QCM",
+      "question": "Quel grade de la Marine correspond au sergent-chef ?",
+      "choix": [
+        "Maître",
+        "Second maître",
+        "Quartier-maître de 1re classe",
+        "Premier maître"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-grad-087",
+      "type": "QCM",
+      "question": "Comment s’adresse-t-on à un aspirant (homme) de l’AAE ?",
+      "choix": [
+        "« Mon Aspirant »",
+        "« Mon Sous-Lieutenant »",
+        "« Mon Lieutenant »",
+        "« Aspirant »"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-grad-088",
+      "type": "TROU",
+      "question": "Dans l’alphabet radio international, la lettre I se dit ___.",
+      "reponses_texte": [
+        "India"
+      ]
+    },
+    {
+      "id": "hz-grad-089",
+      "type": "QCM",
+      "question": "Quel est l’ordre croissant correct des officiers subalternes de l’AAE ?",
+      "choix": [
+        "Sous-lieutenant, lieutenant, aspirant, capitaine",
+        "Aspirant, sous-lieutenant, lieutenant, capitaine",
+        "Sous-lieutenant, aspirant, lieutenant, capitaine",
+        "Aspirant, lieutenant, sous-lieutenant, capitaine"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-grad-090",
+      "type": "QCM",
+      "question": "Quel mot de l’alphabet radio correspond à la lettre W ?",
+      "choix": [
+        "Wiskey Ray",
+        "Whiskey",
+        "Whisper",
+        "Washington"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-grad-091",
+      "type": "TROU",
+      "question": "Dans l’alphabet radio international, la lettre A se dit ___.",
+      "reponses_texte": [
+        "Alpha"
+      ]
+    },
+    {
+      "id": "hz-grad-092",
+      "type": "FLASHCARD",
+      "question": "Comment s’adresse-t-on à un aviateur de 1re classe ?",
+      "verso": "« Aviateur »"
+    },
+    {
+      "id": "hz-grad-093",
+      "type": "TROU",
+      "question": "Dans l’alphabet radio international, la lettre O se dit ___.",
+      "reponses_texte": [
+        "Oscar"
+      ]
+    },
+    {
+      "id": "hz-grad-094",
+      "type": "QCR",
+      "question": "À qui « donne-t-on du Mon » dans l’armée de l’Air et de l’Espace ?",
+      "choix": [
+        "Aux officiers de marine",
+        "Aux sous-officiers supérieurs masculins (adjudant, adjudant-chef)",
+        "Aux officiers féminins",
+        "Aux officiers masculins",
+        "Aux majors"
+      ],
+      "reponses": [
+        1,
+        3
+      ],
+      "explication": "Vrai : B, D. Faux : A, C, E. Exception : le major. On s’adresse à une femme directement par le grade (« Mes respects Capitaine »)."
+    },
+    {
+      "id": "hz-grad-095",
+      "type": "FLASHCARD",
+      "question": "Alphabet radio : quelle lettre correspond à « Lima » ?",
+      "verso": "L"
+    },
+    {
+      "id": "hz-grad-096",
+      "type": "TROU",
+      "question": "Le sigle du capitaine est ___.",
+      "reponses_texte": [
+        "CNE"
+      ]
+    },
+    {
+      "id": "hz-grad-097",
+      "type": "TROU",
+      "question": "Le sigle du commandant est ___.",
+      "reponses_texte": [
+        "CDT"
+      ]
+    },
+    {
+      "id": "hz-grad-098",
+      "type": "FLASHCARD",
+      "question": "Quel général a été qualifié de « général à vie » de l’armée de l’Air ?",
+      "verso": "Le général d’armée aérienne Martial Valin",
+      "explication": "Promu en 1954 « général d’armée aérienne maintenu en activité sans limite d’âge »."
+    },
+    {
+      "id": "hz-grad-099",
+      "type": "FLASHCARD",
+      "question": "Alphabet radio : quelle lettre correspond à « Bravo » ?",
+      "verso": "B"
+    },
+    {
+      "id": "hz-grad-100",
+      "type": "FLASHCARD",
+      "question": "Comment s’adresse-t-on à un commissaire officier général ?",
+      "verso": "« Madame/Monsieur le commissaire général »"
+    }
+  ]
+}

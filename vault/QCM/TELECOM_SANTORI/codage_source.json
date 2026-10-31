@@ -1,0 +1,545 @@
+{
+  "titre": "Codage de source",
+  "description": "CLEAE2, cours 3 : compression, quantité d'information, entropie, codes de longueur fixe et en bloc, codes de longueur variable, théorèmes de Shannon et Huffman.",
+  "questions": [
+    {
+      "id": "clea3-001",
+      "type": "QCM",
+      "question": "Quel est le rôle du codage de source ?",
+      "choix": [
+        "Éliminer la redondance inutile (compression)",
+        "Associer un support physique aux bits",
+        "Échantillonner le signal",
+        "Ajouter de la redondance utile pour corriger les erreurs"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Codage de source = compression. Le codage de canal, lui, ajoute de la redondance utile (codes correcteurs d'erreurs)."
+    },
+    {
+      "id": "clea3-002",
+      "type": "FLASHCARD",
+      "question": "Quel est le rôle du codage de canal ?",
+      "verso": "Augmenter la fiabilité en ajoutant de la redondance utile (codes correcteurs d'erreurs).",
+      "explication": "À l'inverse, le codage de source retire la redondance inutile."
+    },
+    {
+      "id": "clea3-003",
+      "type": "FLASHCARD",
+      "question": "Quelle est l'idée de base de la compression d'image ?",
+      "verso": "Décorréler l'image pour ne pas coder deux fois la même information.",
+      "explication": "Dans une image naturelle, la corrélation entre pixels voisins est très élevée."
+    },
+    {
+      "id": "clea3-004",
+      "type": "QCR",
+      "question": "Quels types de corrélation exploite-t-on en compression d'image et de vidéo ?",
+      "choix": [
+        "Spatiale : entre échantillons voisins",
+        "Spectrale : entre plans couleur (ex. RGB → YUV)",
+        "Temporelle : entre images successives d'une vidéo",
+        "Statistique : entre bits de parité"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "A, B, C : vrais (la corrélation spectrale vaut aussi entre bandes en télédétection). D : faux, les bits de parité relèvent du codage de canal."
+    },
+    {
+      "id": "clea3-005",
+      "type": "TROU",
+      "question": "La corrélation entre images successives d'une séquence vidéo est dite ___.",
+      "reponses_texte": [
+        "temporelle"
+      ],
+      "explication": "Les deux autres sont la corrélation spatiale et la corrélation spectrale."
+    },
+    {
+      "id": "clea3-006",
+      "type": "QCM",
+      "question": "La suppression de la redondance statistique d'une source conduit à un codage :",
+      "choix": [
+        "Avec pertes",
+        "Exact (réversible)",
+        "Psychovisuel",
+        "Irréversible"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "La redondance est éliminée au codage et restituée au décodage : codage exact. Supprimer les informations non pertinentes donne un codage avec pertes."
+    },
+    {
+      "id": "clea3-007",
+      "type": "FLASHCARD",
+      "question": "De quoi dépend la notion de pertinence en compression ?",
+      "verso": "De l'application ; elle se mesure par un critère de fidélité ou de qualité.",
+      "explication": "Les informations non pertinentes sont éliminées au codage : on obtient un codage approximatif, avec pertes."
+    },
+    {
+      "id": "clea3-008",
+      "type": "FLASHCARD",
+      "question": "Quelle est la démarche du codage de source ?",
+      "verso": "D'abord enlever la redondance (compression réversible), puis, si le taux est insuffisant, enlever les informations non pertinentes (compression avec pertes).",
+      "explication": "Exemples : JPEG, JPEG 2000 pour l'image, MP3 pour le son."
+    },
+    {
+      "id": "clea3-009",
+      "type": "QCR",
+      "question": "Quels sont des critères de choix d'un algorithme de compression cités dans le cours ?",
+      "choix": [
+        "Réversibilité",
+        "Taux de compression recherché (compromis quantité/qualité)",
+        "Complexité du codeur et du décodeur",
+        "Fréquence porteuse",
+        "Algorithme propriétaire ou normalisé"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "explication": "A, B, C, E : vrais (aussi : nature des données, robustesse aux erreurs, délais…). D : faux, la porteuse concerne la modulation."
+    },
+    {
+      "id": "clea3-010",
+      "type": "QCM",
+      "question": "Lequel de ces codages est sans pertes ?",
+      "choix": [
+        "JPEG",
+        "MP3",
+        "Huffman",
+        "Codage psychoacoustique"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Huffman et .zip sont réversibles. JPEG et MP3 sont avec pertes (méthodes psychovisuelles et psychoacoustiques)."
+    },
+    {
+      "id": "clea3-011",
+      "type": "FLASHCARD",
+      "question": "Qui a fondé la théorie de l'information, et en quelle année ?",
+      "verso": "Claude Elwood Shannon, en 1948.",
+      "explication": "Elle définit la capacité maximale d'un canal et le débit minimal pour coder une source."
+    },
+    {
+      "id": "clea3-012",
+      "type": "QCM",
+      "question": "Que cherche à approcher le codeur de source ?",
+      "choix": [
+        "La bande de Nyquist",
+        "Le TEB nul",
+        "La capacité maximale du canal",
+        "Le débit minimum nécessaire pour coder la source"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Codeur de source → débit minimum ; codeur de canal → capacité maximale du canal."
+    },
+    {
+      "id": "clea3-013",
+      "type": "QCM",
+      "question": "Comment varie la quantité d'information d'un symbole avec sa probabilité ?",
+      "choix": [
+        "Elle décroît quand la probabilité augmente",
+        "Elle est constante",
+        "Elle vaut toujours 1 bit",
+        "Elle croît avec la probabilité"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Un événement probable apporte peu d'information ; un message certain n'en apporte aucune, un événement improbable en apporte beaucoup."
+    },
+    {
+      "id": "clea3-014",
+      "type": "TROU",
+      "question": "La quantité d'information d'un événement A vaut h(A) = −log___(p(A)) bits.",
+      "reponses_texte": [
+        "2"
+      ],
+      "explication": "h est logarithmique car h(1) = 0, h(0) = +∞ et h(pi·pj) = h(pi) + h(pj)."
+    },
+    {
+      "id": "clea3-015",
+      "type": "FLASHCARD",
+      "question": "Quelle est la quantité d'information apportée par deux symboles indépendants ai et aj ?",
+      "verso": "La somme des deux : h(i+j) = hi + hj.",
+      "explication": "Cette propriété, f(pi·pj) = f(pi) + f(pj), impose une fonction logarithmique."
+    },
+    {
+      "id": "clea3-016",
+      "type": "QCM",
+      "question": "Quelle quantité d'information apporte un événement de probabilité 1/8 ?",
+      "choix": [
+        "1/8 bit",
+        "3 bits",
+        "8 bits",
+        "0,375 bit"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "h = −log2(1/8) = 3 bits. Le piège « 8 » confond 1/p et log2(1/p)."
+    },
+    {
+      "id": "clea3-017",
+      "type": "FLASHCARD",
+      "question": "Qu'est-ce que l'entropie d'une source ?",
+      "verso": "La quantité moyenne d'information par symbole : H = −Σ pi·log2(pi).",
+      "explication": "Elle s'exprime en bits d'information par symbole (ou shannons par symbole)."
+    },
+    {
+      "id": "clea3-018",
+      "type": "FLASHCARD",
+      "question": "Comment appelle-t-on la quantité moyenne d'information délivrée par une source ?",
+      "verso": "L'entropie.",
+      "explication": "H = −Σ pi·log2(pi)."
+    },
+    {
+      "id": "clea3-019",
+      "type": "QCM",
+      "question": "Quand l'entropie d'une source à M symboles est-elle maximale, et que vaut-elle ?",
+      "choix": [
+        "Quand M = 2 : H = 2",
+        "Quand un symbole est certain : H = 0",
+        "Quand les symboles sont équiprobables : H = log2(M)",
+        "Quand les symboles sont équiprobables : H = M"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Hmax = −Σ (1/M)·log2(1/M) = log2(M), atteinte pour des symboles équiprobables."
+    },
+    {
+      "id": "clea3-020",
+      "type": "TROU",
+      "question": "Une source de 6 symboles équiprobables a une entropie de ___ bits par symbole (2 décimales).",
+      "reponses_texte": [
+        "2,58",
+        "2.58",
+        "2,59",
+        "2.59"
+      ],
+      "explication": "H = log2(6) ≈ 2,585 bits/symbole."
+    },
+    {
+      "id": "clea3-021",
+      "type": "QCM",
+      "question": "Pour coder en longueur fixe une source de M = 24 symboles, combien de bits n faut-il ?",
+      "choix": [
+        "6",
+        "24",
+        "4",
+        "5"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "2^4 = 16 < 24 ≤ 2^5 = 32 : n = 5 (8 mots restent inutilisés)."
+    },
+    {
+      "id": "clea3-022",
+      "type": "FLASHCARD",
+      "question": "Quelle relation donne le nombre de bits n d'un code de longueur fixe pour M symboles ?",
+      "verso": "2^(n−1) < M ≤ 2^n",
+      "explication": "Donc n ≥ log2(M) ≥ H : l'entropie est une borne inférieure de la longueur du code."
+    },
+    {
+      "id": "clea3-023",
+      "type": "QCM",
+      "question": "M = 24 symboles équiprobables codés sur n = 5 bits. Quelle est l'efficacité du codage ?",
+      "choix": [
+        "91,68 %",
+        "98,25 %",
+        "100 %",
+        "80 %"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "η = H/n = log2(24)/5 = 4,584/5 ≈ 91,68 %. « 98,25 % » est le résultat du codage en bloc d'ordre 3."
+    },
+    {
+      "id": "clea3-024",
+      "type": "FLASHCARD",
+      "question": "Quelle est la différence entre débit d'information et débit binaire ?",
+      "verso": "Débit d'information = H × Rm (en shannons/s) ; débit binaire D = n × Rm (en bit/s).",
+      "explication": "Rm est le débit symbole de la source."
+    },
+    {
+      "id": "clea3-025",
+      "type": "TROU",
+      "question": "L'efficacité d'un code de longueur fixe vaut η = H / ___.",
+      "reponses_texte": [
+        "n"
+      ],
+      "explication": "C'est l'entropie par bit en sortie du codeur, en bit d'info par bit transmis."
+    },
+    {
+      "id": "clea3-026",
+      "type": "QCM",
+      "question": "Une source de 24 symboles équiprobables émet 1 symbole/s, codé sur 5 bits. Quel est son débit d'information ?",
+      "choix": [
+        "5 shannons/s",
+        "4,584 shannons/s",
+        "24 shannons/s",
+        "1 shannon/s"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Débit d'information = H × Rm = 4,584 × 1. Son débit binaire, lui, vaut 5 bit/s."
+    },
+    {
+      "id": "clea3-027",
+      "type": "TROU",
+      "question": "Une source de 6 symboles équiprobables émet 5 000 symboles/s. Son débit d'information vaut environ ___ shannons/s.",
+      "reponses_texte": [
+        "12925",
+        "12 925",
+        "12 900",
+        "12900"
+      ],
+      "explication": "Di = H × Rm = log2(6) × 5 000 ≈ 12 925 shannons/s."
+    },
+    {
+      "id": "clea3-028",
+      "type": "FLASHCARD",
+      "question": "Qu'est-ce que l'extension d'ordre j d'une source X d'alphabet de taille M ?",
+      "verso": "La source composée des M^j mots possibles de j lettres de l'alphabet.",
+      "explication": "Ex. pour {0,1} : X² = {00, 01, 10, 11}."
+    },
+    {
+      "id": "clea3-029",
+      "type": "QCM",
+      "question": "Quelle est l'entropie de l'extension d'ordre j d'une source sans mémoire X ?",
+      "choix": [
+        "H(X)",
+        "H(X)/j",
+        "j·H(X)",
+        "H(X)^j"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Les symboles étant indépendants, les informations s'additionnent : H(X^j) = j·H(X)."
+    },
+    {
+      "id": "clea3-030",
+      "type": "QCM",
+      "question": "Codage en bloc : M = 24, J = 3. Combien de bits n faut-il pour coder un bloc ?",
+      "choix": [
+        "15",
+        "72",
+        "13",
+        "14"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "M^J = 24³ = 13 824 et 2^13 = 8 192 < 13 824 ≤ 2^14 = 16 384 : n = 14."
+    },
+    {
+      "id": "clea3-031",
+      "type": "FLASHCARD",
+      "question": "Codage en bloc M = 24, J = 3, n = 14 : combien de bits par symbole primaire, et quelle efficacité ?",
+      "verso": "n' = 14/3 ≈ 4,67 bits ; η = 3 × 4,584 / 14 ≈ 98,25 %.",
+      "explication": "Contre 5 bits et 91,68 % sans extension : le codage en bloc améliore l'efficacité."
+    },
+    {
+      "id": "clea3-032",
+      "type": "TROU",
+      "question": "En codage en bloc d'ordre J avec des mots de n bits, le nombre de bits par symbole primaire est n' = n / ___.",
+      "reponses_texte": [
+        "J"
+      ],
+      "explication": "L'efficacité vaut η = H·J / n."
+    },
+    {
+      "id": "clea3-033",
+      "type": "TROU",
+      "question": "6 symboles équiprobables, codage en bloc d'ordre 5 : chaque bloc est codé sur ___ bits.",
+      "reponses_texte": [
+        "13",
+        "treize"
+      ],
+      "explication": "6^5 = 7 776 et 2^12 = 4 096 < 7 776 ≤ 8 192 = 2^13. Efficacité : 5 × 2,585 / 13 ≈ 99,4 %."
+    },
+    {
+      "id": "clea3-034",
+      "type": "FLASHCARD",
+      "question": "Que dit le premier théorème de Shannon pour les codes de longueur fixe ?",
+      "verso": "Une source X doit être codée avec au minimum H(X) bits par symbole : n' ≥ H(X).",
+      "explication": "Si les symboles sont équiprobables, on peut rendre n' aussi proche de H que l'on veut (codage en bloc)."
+    },
+    {
+      "id": "clea3-035",
+      "type": "QCM",
+      "question": "Pourquoi utiliser des codes de longueur variable ?",
+      "choix": [
+        "Parce qu'avec des symboles non équiprobables, la longueur fixe ne peut pas approcher H",
+        "Pour ajouter de la redondance",
+        "Parce qu'ils sont toujours plus courts que log2(M)",
+        "Pour simplifier le décodeur"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "On donne des mots courts aux symboles fréquents et des mots longs aux symboles rares."
+    },
+    {
+      "id": "clea3-036",
+      "type": "FLASHCARD",
+      "question": "Qu'est-ce qu'un code non singulier ?",
+      "verso": "Un code où deux mots de code différents correspondent à deux symboles différents.",
+      "explication": "C'est la condition minimale, insuffisante pour garantir un décodage unique."
+    },
+    {
+      "id": "clea3-037",
+      "type": "TROU",
+      "question": "Un code instantané vérifie la condition du ___ : aucun mot de code n'est le début d'un autre.",
+      "reponses_texte": [
+        "prefixe",
+        "préfixe"
+      ],
+      "explication": "Un code préfixe est décodable de manière unique et instantanément."
+    },
+    {
+      "id": "clea3-038",
+      "type": "FLASHCARD",
+      "question": "Comment calcule-t-on la longueur moyenne L d'un code de longueur variable ?",
+      "verso": "L = Σ pi·li (li : longueur du mot de code i).",
+      "explication": "L'efficacité vaut alors η = H / L."
+    },
+    {
+      "id": "clea3-039",
+      "type": "QCM",
+      "question": "Code A → 0 ; B → 10 ; C → 110 ; D → 111 avec p(A) = 0,81 ; p(B) = 0,09 ; p(C) = 0,01 ; p(D) = 0,09. Quelle est la longueur moyenne ?",
+      "choix": [
+        "0,94",
+        "1,29",
+        "1,5",
+        "2"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "L = 0,81×1 + 0,09×2 + 0,01×3 + 0,09×3 = 1,29. « 0,94 » est l'entropie de la source."
+    },
+    {
+      "id": "clea3-040",
+      "type": "QCM",
+      "question": "Pour cette même source (H = 0,94), quelle est l'efficacité du code de longueur variable (L = 1,29), et celle d'un code fixe sur 2 bits ?",
+      "choix": [
+        "0,47 et 0,73",
+        "1,29 et 2",
+        "0,73 et 0,47",
+        "0,94 et 0,5"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Variable : 0,94 / 1,29 ≈ 0,73. Fixe : 0,94 / 2 = 0,47. La longueur variable est plus efficace quand les symboles ne sont pas équiprobables."
+    },
+    {
+      "id": "clea3-041",
+      "type": "FLASHCARD",
+      "question": "Que dit le premier théorème de Shannon pour les codes de longueur variable ?",
+      "verso": "La longueur moyenne vérifie H(X) ≤ L < H(X) + 1.",
+      "explication": "L'égalité L = H est atteinte si li = −log2(pi) est entier pour tout i."
+    },
+    {
+      "id": "clea3-042",
+      "type": "QCR",
+      "question": "Quelles affirmations sur le codage de Huffman sont exactes ?",
+      "choix": [
+        "C'est un codage sans pertes",
+        "C'est un code entropique",
+        "Il donne des mots courts aux symboles rares",
+        "C'est un code instantané (déchiffrable)",
+        "Il utilise des mots de longueur fixe"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "A, B, D : vrais. C : faux, les mots courts vont aux symboles fréquents. E : faux, Huffman est à longueur variable."
+    },
+    {
+      "id": "clea3-043",
+      "type": "QCM",
+      "question": "À chaque étape de l'algorithme de Huffman, que regroupe-t-on ?",
+      "choix": [
+        "Le plus fréquent et le moins fréquent",
+        "Tous les symboles de même probabilité",
+        "Les 2 symboles les plus fréquents",
+        "Les 2 symboles les moins fréquents"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "On fusionne les 2 symboles les moins probables en un nouveau symbole dont la probabilité est la somme, et on itère jusqu'à la racine."
+    },
+    {
+      "id": "clea3-044",
+      "type": "TROU",
+      "question": "L'algorithme de Huffman s'arrête quand il ne reste qu'un seul symbole, appelé la ___.",
+      "reponses_texte": [
+        "racine"
+      ],
+      "explication": "On nomme ensuite les branches de l'arbre avec une logique constante (ex. 0 pour la branche la plus probable)."
+    },
+    {
+      "id": "clea3-045",
+      "type": "FLASHCARD",
+      "question": "Exercice de Huffman du cours (A 0,36 ; B 0,15 ; C 0,13 ; D 0,11 ; E 0,09 ; F 0,07 ; G 0,05 ; H 0,03 ; I 0,01) : quelle est la longueur moyenne du code obtenu ?",
+      "verso": "L = 2,77 bits/symbole.",
+      "explication": "Longueurs : A 1 ; B, C 3 ; D, E, F 4 ; G 5 ; H, I 6. L'entropie vaut ≈ 2,69, d'où η ≈ 97 %."
+    },
+    {
+      "id": "clea3-046",
+      "type": "QCM",
+      "question": "Dans l'exercice de Huffman du cours, quel symbole reçoit le mot le plus court ?",
+      "choix": [
+        "A (p = 0,36)",
+        "B (p = 0,15)",
+        "Tous ont la même longueur",
+        "I (p = 0,01)"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "A, le plus probable, est codé sur 1 bit. H et I, les plus rares, sont codés sur 6 bits."
+    },
+    {
+      "id": "clea3-047",
+      "type": "QCM",
+      "question": "Quelle est la quantité d'information d'un symbole de probabilité 0,3 ?",
+      "choix": [
+        "0,52 bit",
+        "1,74 bit",
+        "3,33 bits",
+        "0,3 bit"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "h = −log2(0,3) ≈ 1,74 bit. « 0,52 » correspond à −0,3·log2(0,3), sa contribution à l'entropie."
+    },
+    {
+      "id": "clea3-048",
+      "type": "FLASHCARD",
+      "question": "Quel est l'inconvénient d'un codage de source très efficace ?",
+      "verso": "Le message devient plus sensible au bruit : chaque bit perdu fait perdre plus d'information.",
+      "explication": "Exemple : perdre 1 bit = perdre 0,47 bit d'info (code fixe) contre 0,73 (code variable). D'où la nécessité du codage de canal."
+    }
+  ]
+}

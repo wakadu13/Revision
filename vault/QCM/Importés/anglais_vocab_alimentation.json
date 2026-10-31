@@ -1,0 +1,120 @@
+{
+  "langue": "Anglais",
+  "titre": "Anglais — vocabulaire : nourriture et boissons (A1)",
+  "particules_optionnelles": [
+    "to",
+    "a",
+    "an",
+    "the"
+  ],
+  "caracteres_speciaux": [],
+  "vocabulaire": [
+    {
+      "id": "en-alimentation-001",
+      "mot": "meat",
+      "traductions": [
+        "la viande"
+      ],
+      "exemple": "My husband doesn't eat [meat] because he's vegetarian.",
+      "exemple_traduction": "Mon mari ne mange pas de viande parce qu'il est végétarien.",
+      "note": "Indénombrable : some meat (pas « a meat »)."
+    },
+    {
+      "id": "en-alimentation-002",
+      "mot": "vegetables",
+      "traductions": [
+        "les légumes"
+      ],
+      "exemple": "I made a curry with lots of [vegetables].",
+      "exemple_traduction": "J'ai fait un curry avec beaucoup de légumes.",
+      "note": "Familier : veggies / veg.",
+      "prononciation": "/ˈvedʒtəblz/",
+      "variantes": [
+        "a vegetable"
+      ]
+    },
+    {
+      "id": "en-alimentation-003",
+      "mot": "fruit",
+      "traductions": [
+        "les fruits"
+      ],
+      "exemple": "I buy my [fruit] from the local farm.",
+      "exemple_traduction": "J'achète mes fruits à la ferme du coin.",
+      "note": "Généralement indénombrable : some fruit, a piece of fruit."
+    },
+    {
+      "id": "en-alimentation-004",
+      "mot": "dairy",
+      "traductions": [
+        "les produits laitiers"
+      ],
+      "exemple": "I spend a lot in the [dairy] section because I love cheese.",
+      "exemple_traduction": "Je dépense beaucoup au rayon produits laitiers car j'adore le fromage.",
+      "note": "Aussi : dairy products."
+    },
+    {
+      "id": "en-alimentation-005",
+      "mot": "seafood",
+      "traductions": [
+        "les fruits de mer"
+      ],
+      "exemple": "I get really sick if I eat [seafood].",
+      "exemple_traduction": "Je suis vraiment malade si je mange des fruits de mer.",
+      "note": "Inclut poissons et crustacés. shellfish = les crustacés/coquillages."
+    },
+    {
+      "id": "en-alimentation-006",
+      "mot": "poultry",
+      "traductions": [
+        "la volaille"
+      ],
+      "exemple": "We buy chicken in the [poultry] section every week.",
+      "exemple_traduction": "Nous achetons du poulet au rayon volaille chaque semaine.",
+      "note": "Indénombrable. Prononciation : /ˈpəʊltri/.",
+      "prononciation": "/ˈpəʊltri/"
+    },
+    {
+      "id": "en-alimentation-007",
+      "mot": "a soft drink",
+      "traductions": [
+        "une boisson sucrée non alcoolisée",
+        "un soda"
+      ],
+      "exemple": "She buys her kids too many [soft drinks].",
+      "exemple_traduction": "Elle achète trop de sodas à ses enfants.",
+      "note": "N'inclut ni les jus ni l'alcool."
+    },
+    {
+      "id": "en-alimentation-008",
+      "mot": "a hot drink",
+      "traductions": [
+        "une boisson chaude"
+      ],
+      "exemple": "I always have a [hot drink] after dinner.",
+      "exemple_traduction": "Je prends toujours une boisson chaude après le dîner."
+    },
+    {
+      "id": "en-alimentation-009",
+      "mot": "ice",
+      "traductions": [
+        "des glaçons",
+        "la glace (eau gelée)"
+      ],
+      "exemple": "Can I have some [ice], please?",
+      "exemple_traduction": "Je peux avoir des glaçons, s'il vous plaît ?",
+      "note": "Faux ami partiel : la glace (dessert) = ice cream. an ice cube = un glaçon."
+    },
+    {
+      "id": "en-alimentation-010",
+      "mot": "a diet",
+      "traductions": [
+        "une alimentation",
+        "un régime (alimentaire)"
+      ],
+      "exemple": "Her [diet] isn't very healthy.",
+      "exemple_traduction": "Son alimentation n'est pas très saine.",
+      "note": "a diet = ce qu'on mange habituellement ; to be on a diet / to diet = faire un régime."
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "langue": "Anglais",
+  "titre": "Anglais — vocabulaire : le salon (A1)",
+  "particules_optionnelles": [
+    "to",
+    "a",
+    "an",
+    "the"
+  ],
+  "caracteres_speciaux": [],
+  "vocabulaire": [
+    {
+      "id": "en-salon-001",
+      "mot": "a living room",
+      "traductions": [
+        "un salon",
+        "une salle de séjour"
+      ],
+      "exemple": "We watch TV in the [living room].",
+      "exemple_traduction": "Nous regardons la télé dans le salon.",
+      "note": "Synonymes : a sitting room, a lounge.",
+      "variantes": [
+        "a sitting room",
+        "a lounge"
+      ]
+    },
+    {
+      "id": "en-salon-002",
+      "mot": "a sofa",
+      "traductions": [
+        "un canapé"
+      ],
+      "exemple": "I have a large corner [sofa].",
+      "exemple_traduction": "J'ai un grand canapé d'angle.",
+      "note": "Synonymes : a couch, a settee (britannique)."
+    },
+    {
+      "id": "en-salon-003",
+      "mot": "an armchair",
+      "traductions": [
+        "un fauteuil"
+      ],
+      "exemple": "I have two brown [armchairs] in my living room.",
+      "exemple_traduction": "J'ai deux fauteuils marron dans mon salon.",
+      "note": "arm = le bras (de fauteuil)."
+    },
+    {
+      "id": "en-salon-004",
+      "mot": "to watch TV",
+      "traductions": [
+        "regarder la télé"
+      ],
+      "exemple": "After dinner I always [watch] TV for an hour.",
+      "exemple_traduction": "Après le dîner, je regarde toujours la télé une heure.",
+      "note": "to watch (regarder attentivement) ≠ to look at (poser les yeux sur). Sans article : watch TV."
+    },
+    {
+      "id": "en-salon-005",
+      "mot": "a coffee table",
+      "traductions": [
+        "une table basse"
+      ],
+      "exemple": "I have a glass-topped [coffee table].",
+      "exemple_traduction": "J'ai une table basse à plateau en verre."
+    },
+    {
+      "id": "en-salon-006",
+      "mot": "a dining room table",
+      "traductions": [
+        "une table de salle à manger"
+      ],
+      "exemple": "My [dining room table] seats 12 people.",
+      "exemple_traduction": "Ma table de salle à manger peut accueillir 12 personnes.",
+      "note": "Aussi : a dining table.",
+      "variantes": [
+        "a dining table"
+      ]
+    },
+    {
+      "id": "en-salon-007",
+      "mot": "furniture",
+      "traductions": [
+        "les meubles",
+        "le mobilier"
+      ],
+      "exemple": "The [furniture] in my grandmother's house is very old.",
+      "exemple_traduction": "Les meubles chez ma grand-mère sont très anciens.",
+      "note": "Indénombrable : pas de « furnitures ». Un meuble = a piece of furniture."
+    },
+    {
+      "id": "en-salon-008",
+      "mot": "a lamp",
+      "traductions": [
+        "une lampe"
+      ],
+      "exemple": "We watch TV with two [lamps] on.",
+      "exemple_traduction": "Nous regardons la télé avec deux lampes allumées."
+    },
+    {
+      "id": "en-salon-009",
+      "mot": "a carpet",
+      "traductions": [
+        "une moquette"
+      ],
+      "exemple": "My [carpet] keeps my feet warm in winter.",
+      "exemple_traduction": "Ma moquette me garde les pieds au chaud l'hiver.",
+      "note": "Faux ami partiel : a carpet couvre tout le sol ; un tapis = a rug."
+    },
+    {
+      "id": "en-salon-010",
+      "mot": "a rug",
+      "traductions": [
+        "un tapis"
+      ],
+      "exemple": "I bought some colorful [rugs] in Morocco.",
+      "exemple_traduction": "J'ai acheté des tapis colorés au Maroc.",
+      "note": "Plus petit qu'un carpet, posé sur le sol."
+    },
+    {
+      "id": "en-salon-011",
+      "mot": "a shelf",
+      "traductions": [
+        "une étagère"
+      ],
+      "exemple": "We put new [shelves] up near the window.",
+      "exemple_traduction": "Nous avons installé de nouvelles étagères près de la fenêtre.",
+      "note": "Pluriel irrégulier : shelves.",
+      "variantes": [
+        "shelves"
+      ]
+    }
+  ]
+}

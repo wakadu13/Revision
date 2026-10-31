@@ -1,0 +1,232 @@
+{
+  "langue": "Anglais",
+  "titre": "Anglais — vocabulaire : e-mails (A1)",
+  "particules_optionnelles": [
+    "to",
+    "a",
+    "an",
+    "the"
+  ],
+  "caracteres_speciaux": [],
+  "vocabulaire": [
+    {
+      "id": "en-email-001",
+      "mot": "an email address",
+      "traductions": [
+        "une adresse e-mail"
+      ],
+      "exemple": "What is your [email address], please?",
+      "exemple_traduction": "Quelle est votre adresse e-mail, s'il vous plaît ?",
+      "note": "Aussi écrit « e-mail address ».",
+      "variantes": [
+        "an e-mail address"
+      ]
+    },
+    {
+      "id": "en-email-002",
+      "mot": "to send",
+      "traductions": [
+        "envoyer"
+      ],
+      "exemple": "I need to [send] an email to the manager.",
+      "exemple_traduction": "Je dois envoyer un e-mail au responsable.",
+      "note": "Irrégulier : send – sent – sent."
+    },
+    {
+      "id": "en-email-003",
+      "mot": "to receive",
+      "traductions": [
+        "recevoir"
+      ],
+      "exemple": "You will [receive] a confirmation email soon.",
+      "exemple_traduction": "Vous recevrez bientôt un e-mail de confirmation.",
+      "note": "Orthographe : « i » après « e » (receive).",
+      "prononciation": "/rɪˈsiːv/"
+    },
+    {
+      "id": "en-email-004",
+      "mot": "to reply",
+      "traductions": [
+        "répondre (à un message)"
+      ],
+      "exemple": "Did you [reply] to the customer's email yet?",
+      "exemple_traduction": "As-tu déjà répondu à l'e-mail du client ?",
+      "note": "to reply to someone / to something. Synonyme : to answer."
+    },
+    {
+      "id": "en-email-005",
+      "mot": "an inbox",
+      "traductions": [
+        "une boîte de réception"
+      ],
+      "exemple": "All your new messages will appear in your [inbox].",
+      "exemple_traduction": "Tous vos nouveaux messages apparaîtront dans votre boîte de réception."
+    },
+    {
+      "id": "en-email-006",
+      "mot": "a subject",
+      "traductions": [
+        "l'objet (d'un e-mail)"
+      ],
+      "exemple": "Make sure the [subject] of your email is clear.",
+      "exemple_traduction": "Assure-toi que l'objet de ton e-mail est clair.",
+      "note": "Faux ami partiel : ici « subject » = l'objet de l'e-mail, pas le « sujet » d'une phrase."
+    },
+    {
+      "id": "en-email-007",
+      "mot": "an attachment",
+      "traductions": [
+        "une pièce jointe"
+      ],
+      "exemple": "I've added a photo as an [attachment] to my email.",
+      "exemple_traduction": "J'ai ajouté une photo en pièce jointe à mon e-mail.",
+      "note": "to attach = joindre.",
+      "prononciation": "/əˈtætʃmənt/"
+    },
+    {
+      "id": "en-email-008",
+      "mot": "a file",
+      "traductions": [
+        "un fichier"
+      ],
+      "exemple": "Can you send me the [file]?",
+      "exemple_traduction": "Peux-tu m'envoyer le fichier ?",
+      "note": "Faux ami : a file ≠ une file d'attente (a queue / a line)."
+    },
+    {
+      "id": "en-email-009",
+      "mot": "a link",
+      "traductions": [
+        "un lien"
+      ],
+      "exemple": "Click on this [link] to visit our help center.",
+      "exemple_traduction": "Cliquez sur ce lien pour visiter notre centre d'aide.",
+      "note": "to click on a link = cliquer sur un lien."
+    },
+    {
+      "id": "en-email-010",
+      "mot": "to forward",
+      "traductions": [
+        "transférer (un e-mail)"
+      ],
+      "exemple": "I will [forward] the schedule to the rest of the team.",
+      "exemple_traduction": "Je transférerai le planning au reste de l'équipe.",
+      "note": "Abréviation dans les e-mails : « Fwd: » ou « Fw: »."
+    },
+    {
+      "id": "en-email-011",
+      "mot": "to delete",
+      "traductions": [
+        "supprimer"
+      ],
+      "exemple": "If the email is not important, you can [delete] it.",
+      "exemple_traduction": "Si l'e-mail n'est pas important, tu peux le supprimer.",
+      "note": "/dɪˈliːt/"
+    },
+    {
+      "id": "en-email-012",
+      "mot": "a draft",
+      "traductions": [
+        "un brouillon"
+      ],
+      "exemple": "I have a [draft] of the email ready.",
+      "exemple_traduction": "J'ai un brouillon de l'e-mail prêt.",
+      "note": "to draft = rédiger un premier jet."
+    },
+    {
+      "id": "en-email-013",
+      "mot": "to download",
+      "traductions": [
+        "télécharger"
+      ],
+      "exemple": "You can [download] the software from the official website.",
+      "exemple_traduction": "Tu peux télécharger le logiciel sur le site officiel.",
+      "note": "down = vers le bas : d'internet vers ton ordinateur. Contraire : to upload."
+    },
+    {
+      "id": "en-email-014",
+      "mot": "to upload",
+      "traductions": [
+        "mettre en ligne",
+        "téléverser"
+      ],
+      "exemple": "I will [upload] the photo to the shared folder.",
+      "exemple_traduction": "Je vais mettre la photo en ligne dans le dossier partagé.",
+      "note": "up = vers le haut : de ton ordinateur vers internet. Contraire : to download."
+    },
+    {
+      "id": "en-email-015",
+      "mot": "at (@)",
+      "traductions": [
+        "arobase (@)"
+      ],
+      "exemple": "My email is jane dot birkin [at] globalexam dot com.",
+      "exemple_traduction": "Mon e-mail est jane point birkin arobase globalexam point com.",
+      "note": "À l'oral, « @ » se dit « at ». jane.birkin@globalexam.com.",
+      "variantes": [
+        "@"
+      ]
+    },
+    {
+      "id": "en-email-016",
+      "mot": "a dot",
+      "traductions": [
+        "un point (dans une adresse)"
+      ],
+      "exemple": "My website is globalexam [dot] com.",
+      "exemple_traduction": "Mon site est globalexam point com.",
+      "note": "À l'oral, le « . » d'une adresse web ou e-mail se dit « dot » (et non « point » ou « full stop »)."
+    },
+    {
+      "id": "en-email-017",
+      "mot": "Please find the attached file",
+      "traductions": [
+        "Veuillez trouver ci-joint le fichier"
+      ],
+      "exemple": "[Please find the attached file] with all the information.",
+      "exemple_traduction": "Veuillez trouver ci-joint le fichier avec toutes les informations.",
+      "note": "Formule polie et formelle. Variante : Please find attached…"
+    },
+    {
+      "id": "en-email-018",
+      "mot": "Looking forward to",
+      "traductions": [
+        "Dans l'attente de",
+        "J'ai hâte de"
+      ],
+      "exemple": "[Looking forward to] our meeting next week!",
+      "exemple_traduction": "J'ai hâte de notre réunion la semaine prochaine !",
+      "note": "Suivi d'un nom ou d'un verbe en -ing : Looking forward to hearing from you."
+    },
+    {
+      "id": "en-email-019",
+      "mot": "Best regards",
+      "traductions": [
+        "Cordialement"
+      ],
+      "exemple": "Let me know if you have questions. [Best regards], Lucy",
+      "exemple_traduction": "Dites-moi si vous avez des questions. Cordialement, Lucy",
+      "note": "Formule de fin d'e-mail, polie et neutre. Variantes : Kind regards, Regards."
+    },
+    {
+      "id": "en-email-020",
+      "mot": "ASAP",
+      "traductions": [
+        "dès que possible"
+      ],
+      "exemple": "Please call me back [ASAP].",
+      "exemple_traduction": "Rappelle-moi dès que possible, s'il te plaît.",
+      "note": "Acronyme de « As Soon As Possible »."
+    },
+    {
+      "id": "en-email-021",
+      "mot": "FYI",
+      "traductions": [
+        "pour information"
+      ],
+      "exemple": "[FYI], the meeting is now at 3 pm.",
+      "exemple_traduction": "Pour information, la réunion est maintenant à 15 h.",
+      "note": "Acronyme de « For Your Information »."
+    }
+  ]
+}

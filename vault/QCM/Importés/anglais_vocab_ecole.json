@@ -1,0 +1,201 @@
+{
+  "langue": "Anglais",
+  "titre": "Anglais — vocabulaire : l'école (A1)",
+  "particules_optionnelles": [
+    "to",
+    "a",
+    "an",
+    "the"
+  ],
+  "caracteres_speciaux": [],
+  "vocabulaire": [
+    {
+      "id": "en-ecole-001",
+      "mot": "a classroom",
+      "traductions": [
+        "une salle de classe"
+      ],
+      "exemple": "Our [classroom] has lots of posters and books.",
+      "exemple_traduction": "Notre salle de classe a beaucoup d'affiches et de livres."
+    },
+    {
+      "id": "en-ecole-002",
+      "mot": "a lesson",
+      "traductions": [
+        "un cours",
+        "une leçon"
+      ],
+      "exemple": "My favorite [lesson] is English.",
+      "exemple_traduction": "Mon cours préféré, c'est l'anglais."
+    },
+    {
+      "id": "en-ecole-003",
+      "mot": "to learn",
+      "traductions": [
+        "apprendre (soi-même)"
+      ],
+      "exemple": "I [learn] so many new things at school every day!",
+      "exemple_traduction": "J'apprends tellement de choses nouvelles à l'école chaque jour !",
+      "note": "learn = apprendre (l'élève) ≠ teach = enseigner (le professeur). Irrégulier possible en anglais britannique : learnt."
+    },
+    {
+      "id": "en-ecole-004",
+      "mot": "to teach",
+      "traductions": [
+        "enseigner"
+      ],
+      "exemple": "I [teach] English and History at our school.",
+      "exemple_traduction": "J'enseigne l'anglais et l'histoire dans notre école.",
+      "note": "Irrégulier : teach – taught – taught."
+    },
+    {
+      "id": "en-ecole-005",
+      "mot": "to ask",
+      "traductions": [
+        "demander",
+        "poser (une question)"
+      ],
+      "exemple": "I always [ask] questions if I don't understand.",
+      "exemple_traduction": "Je pose toujours des questions si je ne comprends pas.",
+      "note": "to ask a question = poser une question (pas « to put a question »)."
+    },
+    {
+      "id": "en-ecole-006",
+      "mot": "to explain",
+      "traductions": [
+        "expliquer"
+      ],
+      "exemple": "Could you [explain] the Present Simple to us, please?",
+      "exemple_traduction": "Pourriez-vous nous expliquer le présent simple, s'il vous plaît ?",
+      "note": "Construction : to explain something to someone (jamais « explain me »)."
+    },
+    {
+      "id": "en-ecole-007",
+      "mot": "to listen",
+      "traductions": [
+        "écouter"
+      ],
+      "exemple": "If you [listen] in class, you will understand.",
+      "exemple_traduction": "Si tu écoutes en classe, tu comprendras.",
+      "note": "to listen TO someone/something : « Listen to the teacher »."
+    },
+    {
+      "id": "en-ecole-008",
+      "mot": "to think",
+      "traductions": [
+        "réfléchir",
+        "penser"
+      ],
+      "exemple": "I'm not sure of the answer, let me [think].",
+      "exemple_traduction": "Je ne suis pas sûr de la réponse, laisse-moi réfléchir.",
+      "note": "Irrégulier : think – thought – thought. to think about = réfléchir à."
+    },
+    {
+      "id": "en-ecole-009",
+      "mot": "to spell",
+      "traductions": [
+        "épeler"
+      ],
+      "exemple": "I don't know how to [spell] « mathematics ».",
+      "exemple_traduction": "Je ne sais pas comment épeler « mathematics ».",
+      "note": "How do you spell it? = Comment ça s'écrit ?"
+    },
+    {
+      "id": "en-ecole-010",
+      "mot": "a grade",
+      "traductions": [
+        "une note (scolaire)"
+      ],
+      "exemple": "I am happy with my [grades] this year.",
+      "exemple_traduction": "Je suis content de mes notes cette année.",
+      "note": "Américain ; en anglais britannique : a mark.",
+      "variantes": [
+        "a mark"
+      ]
+    },
+    {
+      "id": "en-ecole-011",
+      "mot": "a desk",
+      "traductions": [
+        "un bureau (meuble)",
+        "un pupitre"
+      ],
+      "exemple": "I like to sit at my [desk] and write notes.",
+      "exemple_traduction": "J'aime m'asseoir à mon bureau et prendre des notes.",
+      "note": "Le meuble. Le bureau (la pièce) = an office."
+    },
+    {
+      "id": "en-ecole-012",
+      "mot": "a notebook",
+      "traductions": [
+        "un cahier",
+        "un carnet"
+      ],
+      "exemple": "I write everything down in my [notebook].",
+      "exemple_traduction": "J'écris tout dans mon cahier.",
+      "note": "Peut aussi désigner un petit ordinateur portable."
+    },
+    {
+      "id": "en-ecole-013",
+      "mot": "a dictionary",
+      "traductions": [
+        "un dictionnaire"
+      ],
+      "exemple": "I look up new words in my [dictionary].",
+      "exemple_traduction": "Je cherche les nouveaux mots dans mon dictionnaire.",
+      "note": "to look up a word = chercher un mot (dans le dictionnaire).",
+      "prononciation": "/ˈdɪkʃənri/"
+    },
+    {
+      "id": "en-ecole-014",
+      "mot": "a library",
+      "traductions": [
+        "une bibliothèque"
+      ],
+      "exemple": "I enjoy finding nice books at the [library].",
+      "exemple_traduction": "J'aime trouver de bons livres à la bibliothèque.",
+      "note": "Faux ami : a library ≠ une librairie (a bookshop / a bookstore)."
+    },
+    {
+      "id": "en-ecole-015",
+      "mot": "a calculator",
+      "traductions": [
+        "une calculatrice"
+      ],
+      "exemple": "I use my [calculator] for my math problems.",
+      "exemple_traduction": "J'utilise ma calculatrice pour mes exercices de maths.",
+      "note": "to calculate / to work out = calculer."
+    },
+    {
+      "id": "en-ecole-016",
+      "mot": "a cafeteria",
+      "traductions": [
+        "une cantine",
+        "une cafétéria"
+      ],
+      "exemple": "I meet my friends at the [cafeteria] for lunch.",
+      "exemple_traduction": "Je retrouve mes amis à la cantine pour déjeuner.",
+      "note": "/ˌkæfəˈtɪəriə/"
+    },
+    {
+      "id": "en-ecole-017",
+      "mot": "a locker",
+      "traductions": [
+        "un casier"
+      ],
+      "exemple": "My [locker] is full of school books.",
+      "exemple_traduction": "Mon casier est plein de livres scolaires.",
+      "note": "to lock = fermer à clé."
+    },
+    {
+      "id": "en-ecole-018",
+      "mot": "a pencil",
+      "traductions": [
+        "un crayon (à papier)"
+      ],
+      "exemple": "An average [pencil] can write 70 miles!",
+      "exemple_traduction": "Un crayon moyen peut écrire 112 km !",
+      "note": "a pen = un stylo."
+    }
+  ]
+}

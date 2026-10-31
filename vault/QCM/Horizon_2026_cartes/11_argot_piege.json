@@ -1,0 +1,972 @@
+{
+  "titre": "Horizon — Dictionnaire d’argot du Piège",
+  "description": "Le vocabulaire des élèves de l’École de l’air et de l’espace (Horizon 2026, ch. 3-VIII).",
+  "questions": [
+    {
+      "id": "hz-argo-001",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Taper la MEF » ?",
+      "verso": "Faire attention"
+    },
+    {
+      "id": "hz-argo-002",
+      "type": "QCM",
+      "question": "Que signifie « satelliser » ?",
+      "choix": [
+        "Être muté loin",
+        "Punir de tours de P.O.",
+        "Partir en quartier libre",
+        "Faire le mur"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-argo-003",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Magouiller » ?",
+      "verso": "Comploter"
+    },
+    {
+      "id": "hz-argo-004",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Crack » ?",
+      "verso": "Membre de la IVe brigade"
+    },
+    {
+      "id": "hz-argo-005",
+      "type": "TROU",
+      "question": "Argot du Piège — Aumônier : ___.",
+      "reponses_texte": [
+        "marab",
+        "padre"
+      ]
+    },
+    {
+      "id": "hz-argo-006",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Se braquer » ?",
+      "verso": "Se coincer, se vexer"
+    },
+    {
+      "id": "hz-argo-007",
+      "type": "FLASHCARD",
+      "question": "Que signifie « EPA » dans l’argot du Piège ?",
+      "verso": "École des pupilles de l’Air"
+    },
+    {
+      "id": "hz-argo-008",
+      "type": "QCM",
+      "question": "Que désigne « KN » ?",
+      "choix": [
+        "Le lycée militaire de Saint-Cyr-l’École",
+        "Le lycée militaire de la Marine nationale",
+        "Le lycée militaire d’Autun",
+        "Un élève commissaire"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-argo-009",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Dégageante » ?",
+      "verso": "Dégagement, sortie en groupe"
+    },
+    {
+      "id": "hz-argo-010",
+      "type": "FLASHCARD",
+      "question": "Que signifie « P.N. » ?",
+      "verso": "Personnel navigant"
+    },
+    {
+      "id": "hz-argo-011",
+      "type": "QCM",
+      "question": "Comment sont surnommés les membres de la IVe brigade ?",
+      "choix": [
+        "Les Durs",
+        "Les Phénix",
+        "Les Cracks",
+        "Les Rois"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-argo-012",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « H.S. » ?",
+      "verso": "Hors service, malade, éclopé"
+    },
+    {
+      "id": "hz-argo-013",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Aspi » ?",
+      "verso": "Élève de deuxième année"
+    },
+    {
+      "id": "hz-argo-014",
+      "type": "TROU",
+      "question": "Argot du Piège — Punir : ___.",
+      "reponses_texte": [
+        "cranter"
+      ]
+    },
+    {
+      "id": "hz-argo-015",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Arpète » ?",
+      "verso": "Élève ayant suivi sa scolarité à l’EETAAE"
+    },
+    {
+      "id": "hz-argo-016",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Chibane » ?",
+      "verso": "Personne qui excelle dans un domaine"
+    },
+    {
+      "id": "hz-argo-017",
+      "type": "TROU",
+      "question": "Argot du Piège — Travail intense : ___.",
+      "reponses_texte": [
+        "stâkhe",
+        "stakhe"
+      ]
+    },
+    {
+      "id": "hz-argo-018",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Soufflante » ?",
+      "verso": "Réprimande"
+    },
+    {
+      "id": "hz-argo-019",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Lutter » ?",
+      "verso": "Avoir toutes les peines du monde à rester éveillé en cours ou en conférence"
+    },
+    {
+      "id": "hz-argo-020",
+      "type": "TROU",
+      "question": "Argot du Piège — Réprimande : ___.",
+      "reponses_texte": [
+        "soufflante"
+      ]
+    },
+    {
+      "id": "hz-argo-021",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Basier » ?",
+      "verso": "Élève du corps des bases"
+    },
+    {
+      "id": "hz-argo-022",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Manger chaud » ?",
+      "verso": "Voir « morfler » : subir des désagréments"
+    },
+    {
+      "id": "hz-argo-023",
+      "type": "QCM",
+      "question": "Quelle brigade porte le surnom de « Phénix » ?",
+      "choix": [
+        "La IIe brigade",
+        "La VIe brigade",
+        "La Ve brigade",
+        "La IVe brigade"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-argo-024",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Ziber » ?",
+      "verso": "Crassusser / khrâssusser"
+    },
+    {
+      "id": "hz-argo-025",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Zeff, co-zeff » ?",
+      "verso": "Gardien des traditions et des brigades"
+    },
+    {
+      "id": "hz-argo-026",
+      "type": "TROU",
+      "question": "Argot du Piège — Élève commissaire : ___.",
+      "reponses_texte": [
+        "croc"
+      ]
+    },
+    {
+      "id": "hz-argo-027",
+      "type": "FLASHCARD",
+      "question": "Que signifie « Pax » ?",
+      "verso": "Personnel"
+    },
+    {
+      "id": "hz-argo-028",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Roi » ?",
+      "verso": "Membre de la IIIe brigade"
+    },
+    {
+      "id": "hz-argo-029",
+      "type": "TROU",
+      "question": "Argot du Piège — Poignard : ___.",
+      "reponses_texte": [
+        "cure-dent",
+        "cure dent",
+        "curedent"
+      ]
+    },
+    {
+      "id": "hz-argo-030",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Se faire griller » ?",
+      "verso": "Se faire prendre sur le fait"
+    },
+    {
+      "id": "hz-argo-031",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Gazer » ?",
+      "verso": "Faire les choses vite et bien"
+    },
+    {
+      "id": "hz-argo-032",
+      "type": "QCM",
+      "question": "Que signifie « percuter » ?",
+      "choix": [
+        "Être pris dans une embuscade",
+        "Réagir vite et bien",
+        "Se faire prendre sur le fait",
+        "Punir"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-argo-033",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Ne rien capter » ?",
+      "verso": "Ne rien comprendre"
+    },
+    {
+      "id": "hz-argo-034",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Fana » ?",
+      "verso": "Diminutif de fanatique, volontaire"
+    },
+    {
+      "id": "hz-argo-035",
+      "type": "TROU",
+      "question": "Argot du Piège — Commando de l’air : ___.",
+      "reponses_texte": [
+        "cocoye"
+      ]
+    },
+    {
+      "id": "hz-argo-036",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Faire le mur » ?",
+      "verso": "Sortir sans permission de l’EA"
+    },
+    {
+      "id": "hz-argo-037",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Khôldo » ?",
+      "verso": "Lycée militaire de Saint-Cyr-l’École"
+    },
+    {
+      "id": "hz-argo-038",
+      "type": "QCM",
+      "question": "Que désigne « BDE » dans l’argot du Piège (en plus du bâtiment) ?",
+      "choix": [
+        "Le bureau des élèves",
+        "Le bal des élèves",
+        "Le bataillon d’élèves",
+        "La brigade des élèves"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-argo-039",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Fruit » ?",
+      "verso": "Voir « boulet », « psycho »"
+    },
+    {
+      "id": "hz-argo-040",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Bœuf » ?",
+      "verso": "Membre de la IIe brigade"
+    },
+    {
+      "id": "hz-argo-041",
+      "type": "TROU",
+      "question": "Argot du Piège — Élève de deuxième année : ___.",
+      "reponses_texte": [
+        "aspi"
+      ]
+    },
+    {
+      "id": "hz-argo-042",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Pecs » ?",
+      "verso": "Civil"
+    },
+    {
+      "id": "hz-argo-043",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Polymagicien » ?",
+      "verso": "Élève provenant de Polytechnique"
+    },
+    {
+      "id": "hz-argo-044",
+      "type": "TROU",
+      "question": "Argot du Piège — Élève de 1re année : ___.",
+      "reponses_texte": [
+        "poussin",
+        "poussine",
+        "poussin(e)"
+      ]
+    },
+    {
+      "id": "hz-argo-045",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Tchatcher » ?",
+      "verso": "Parler abondamment, baratiner, se vanter"
+    },
+    {
+      "id": "hz-argo-046",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Percuter » ?",
+      "verso": "Réagir vite et bien"
+    },
+    {
+      "id": "hz-argo-047",
+      "type": "QCM",
+      "question": "Quelle brigade porte le surnom de « Lions » ?",
+      "choix": [
+        "La Ve brigade",
+        "La Ire brigade",
+        "La VIe brigade",
+        "La IIIe brigade"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-argo-048",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Tiquer » ?",
+      "verso": "Faire les travaux d’intérêt commun (TIC)"
+    },
+    {
+      "id": "hz-argo-049",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Bricards » ?",
+      "verso": "Brigadiers"
+    },
+    {
+      "id": "hz-argo-050",
+      "type": "QCM",
+      "question": "Comment sont surnommés les membres de la Ve brigade ?",
+      "choix": [
+        "Les Bœufs",
+        "Les Lions",
+        "Les Cracks",
+        "Les Durs"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-argo-051",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Se maquer » ?",
+      "verso": "Se mettre en couple"
+    },
+    {
+      "id": "hz-argo-052",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Piège » ?",
+      "verso": "École de l’air et de l’espace"
+    },
+    {
+      "id": "hz-argo-053",
+      "type": "QCM",
+      "question": "Comment sont surnommés les membres de la IIe brigade ?",
+      "choix": [
+        "Les Durs",
+        "Les Bœufs",
+        "Les Lions",
+        "Les Cracks"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-argo-054",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Broken » ?",
+      "verso": "Un blessé"
+    },
+    {
+      "id": "hz-argo-055",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Se bahuter » ?",
+      "verso": "Faire beaucoup d’efforts pour très peu"
+    },
+    {
+      "id": "hz-argo-056",
+      "type": "TROU",
+      "question": "Argot du Piège — Civil : ___.",
+      "reponses_texte": [
+        "pecs"
+      ]
+    },
+    {
+      "id": "hz-argo-057",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Chouiller » ?",
+      "verso": "Faire la fête"
+    },
+    {
+      "id": "hz-argo-058",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « RAS » ?",
+      "verso": "Exempt de tout reproche, carré"
+    },
+    {
+      "id": "hz-argo-059",
+      "type": "QCR",
+      "question": "Associez : quelles correspondances brigade / surnom sont exactes ?",
+      "choix": [
+        "VIe brigade : les Phénix",
+        "Ire brigade : les Lions",
+        "IIe brigade : les Durs",
+        "IVe brigade : les Bœufs",
+        "IIIe brigade : les Rois"
+      ],
+      "reponses": [
+        0,
+        1,
+        4
+      ],
+      "explication": "Vrai : A, B, E. Faux : C, D. IIe : Bœufs ; IVe : Cracks ; Ve : Durs."
+    },
+    {
+      "id": "hz-argo-060",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Cure-dent » ?",
+      "verso": "Poignard"
+    },
+    {
+      "id": "hz-argo-061",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Sachet beurk » ?",
+      "verso": "Repas froid servi par le mess"
+    },
+    {
+      "id": "hz-argo-062",
+      "type": "QCR",
+      "question": "Quelles expressions signifient « Silence ! » ?",
+      "choix": [
+        "La graille",
+        "La moule",
+        "Le masque",
+        "Sopo",
+        "Museau"
+      ],
+      "reponses": [
+        1,
+        4
+      ],
+      "explication": "Vrai : B, E. Faux : A, C, D."
+    },
+    {
+      "id": "hz-argo-063",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Piégeard » ?",
+      "verso": "Élève de l’École de l’air et de l’espace"
+    },
+    {
+      "id": "hz-argo-064",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Se peler » ?",
+      "verso": "Avoir très froid"
+    },
+    {
+      "id": "hz-argo-065",
+      "type": "TROU",
+      "question": "Argot du Piège — Élève de l’École de l’air et de l’espace : ___.",
+      "reponses_texte": [
+        "piégeard",
+        "piegeard"
+      ]
+    },
+    {
+      "id": "hz-argo-066",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Satelliser » ?",
+      "verso": "Punir de tours de P.O."
+    },
+    {
+      "id": "hz-argo-067",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « La moule / Museau » ?",
+      "verso": "Silence !"
+    },
+    {
+      "id": "hz-argo-068",
+      "type": "TROU",
+      "question": "Argot du Piège — Élève provenant de Polytechnique : ___.",
+      "reponses_texte": [
+        "polymagicien"
+      ]
+    },
+    {
+      "id": "hz-argo-069",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Avoir la dalle » ?",
+      "verso": "Avoir très faim"
+    },
+    {
+      "id": "hz-argo-070",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Mistral » ?",
+      "verso": "Vent violent qui fait de l’EA le Piège"
+    },
+    {
+      "id": "hz-argo-071",
+      "type": "QCM",
+      "question": "Que désigne « Khôldo » ?",
+      "choix": [
+        "Un élève de prépa",
+        "Le lycée militaire de Saint-Cyr-l’École",
+        "Le lycée militaire de la Marine",
+        "Le lycée militaire d’Aix"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-argo-072",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Durs » ?",
+      "verso": "Membres de la Ve brigade"
+    },
+    {
+      "id": "hz-argo-073",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Coxer » ?",
+      "verso": "Être pris dans une embuscade"
+    },
+    {
+      "id": "hz-argo-074",
+      "type": "TROU",
+      "question": "Argot du Piège — Peaufiner : ___.",
+      "reponses_texte": [
+        "chiader"
+      ]
+    },
+    {
+      "id": "hz-argo-075",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Stâkhe » ?",
+      "verso": "Travail intense"
+    },
+    {
+      "id": "hz-argo-076",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Ksitter » ?",
+      "verso": "Manifester sa réprobation"
+    },
+    {
+      "id": "hz-argo-077",
+      "type": "QCM",
+      "question": "Que désigne « Khûbe » ?",
+      "choix": [
+        "Un élève ayant fait trois ans de prépa",
+        "Un élève du lycée de Saint-Cyr",
+        "Un élève de Polytechnique",
+        "Un élève ayant fait deux ans de prépa"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« Khârré » : deux ans de prépa."
+    },
+    {
+      "id": "hz-argo-078",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Crassusser » ?",
+      "verso": "En faire le moins possible"
+    },
+    {
+      "id": "hz-argo-079",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Boulet » ?",
+      "verso": "Poids mort pour une promotion"
+    },
+    {
+      "id": "hz-argo-080",
+      "type": "TROU",
+      "question": "Argot du Piège — Encadrement de l’École : ___.",
+      "reponses_texte": [
+        "strasse"
+      ]
+    },
+    {
+      "id": "hz-argo-081",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Sopo » ?",
+      "verso": "Abréviation de soporifique"
+    },
+    {
+      "id": "hz-argo-082",
+      "type": "FLASHCARD",
+      "question": "Que signifie « ASAP » ?",
+      "verso": "As soon as possible"
+    },
+    {
+      "id": "hz-argo-083",
+      "type": "QCM",
+      "question": "Quelle brigade porte le surnom de « Rois » ?",
+      "choix": [
+        "La IIIe brigade",
+        "La IVe brigade",
+        "La Ire brigade",
+        "La IIe brigade"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-argo-084",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Marab ou Padre » ?",
+      "verso": "Aumônier"
+    },
+    {
+      "id": "hz-argo-085",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Croc » ?",
+      "verso": "Élève commissaire"
+    },
+    {
+      "id": "hz-argo-086",
+      "type": "TROU",
+      "question": "Argot du Piège — Le général : ___.",
+      "reponses_texte": [
+        "gégène",
+        "gegene"
+      ]
+    },
+    {
+      "id": "hz-argo-087",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Piou-piou » ?",
+      "verso": "Voir « poussin » : élève de 1re année"
+    },
+    {
+      "id": "hz-argo-088",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « BUC » ?",
+      "verso": "Bel uniforme de cérémonie"
+    },
+    {
+      "id": "hz-argo-089",
+      "type": "QCR",
+      "question": "Que peut signifier le sigle LMA dans l’argot du Piège ?",
+      "choix": [
+        "Lycée de la Marine d’Arcachon",
+        "Lycée militaire d’Angers",
+        "Lycée militaire d’Autun",
+        "Lycée militaire d’Aix"
+      ],
+      "reponses": [
+        2,
+        3
+      ],
+      "explication": "Vrai : C, D. Faux : A, B."
+    },
+    {
+      "id": "hz-argo-090",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Khârré » ?",
+      "verso": "Rare élève ayant deux ans de prépa"
+    },
+    {
+      "id": "hz-argo-091",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « CSEA » ?",
+      "verso": "Élève du Cours spécial de l’EA"
+    },
+    {
+      "id": "hz-argo-092",
+      "type": "QCR",
+      "question": "Quels mots signifient « en faire le moins possible » ?",
+      "choix": [
+        "Khrâssusser",
+        "Gazer",
+        "Ziber",
+        "Crassusser",
+        "Percuter"
+      ],
+      "reponses": [
+        0,
+        2,
+        3
+      ],
+      "explication": "Vrai : A, C, D. Faux : B, E."
+    },
+    {
+      "id": "hz-argo-093",
+      "type": "FLASHCARD",
+      "question": "Que signifie « P.N.N. » ?",
+      "verso": "Personnel non navigant"
+    },
+    {
+      "id": "hz-argo-094",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Le masque » ?",
+      "verso": "Visage impassible pour garder son sérieux"
+    },
+    {
+      "id": "hz-argo-095",
+      "type": "TROU",
+      "question": "Argot du Piège — Faire la fête : ___.",
+      "reponses_texte": [
+        "chouiller"
+      ]
+    },
+    {
+      "id": "hz-argo-096",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Q.L. » ?",
+      "verso": "Quartier libre"
+    },
+    {
+      "id": "hz-argo-097",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « BV » ?",
+      "verso": "Tâche ingrate dont on se passerait bien"
+    },
+    {
+      "id": "hz-argo-098",
+      "type": "TROU",
+      "question": "Argot du Piège — Sortir sans permission de l’EA : faire le : ___.",
+      "reponses_texte": [
+        "mur"
+      ]
+    },
+    {
+      "id": "hz-argo-099",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Youler » ?",
+      "verso": "Couper les cheveux d’une manière bien définie"
+    },
+    {
+      "id": "hz-argo-100",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Poussin(e) » ?",
+      "verso": "Élève de 1re année"
+    },
+    {
+      "id": "hz-argo-101",
+      "type": "TROU",
+      "question": "Argot du Piège — Guetter : ___.",
+      "reponses_texte": [
+        "chouffer"
+      ]
+    },
+    {
+      "id": "hz-argo-102",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Lions » ?",
+      "verso": "Membres de la Ire brigade"
+    },
+    {
+      "id": "hz-argo-103",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Pschitter » ?",
+      "verso": "Témoigner sa satisfaction"
+    },
+    {
+      "id": "hz-argo-104",
+      "type": "QCM",
+      "question": "Que signifie « prendre feu » ?",
+      "choix": [
+        "Se mettre très vite en colère contre quelqu’un",
+        "Être submergé par les tâches à effectuer",
+        "Réagir vite et bien face à l’imprévu",
+        "Faire la fête jusqu’au bout de la nuit"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-argo-105",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Taper, taxer » ?",
+      "verso": "Abuser de ses « petits khô »"
+    },
+    {
+      "id": "hz-argo-106",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Khûbe » ?",
+      "verso": "Élève ayant fait trois ans de prépa"
+    },
+    {
+      "id": "hz-argo-107",
+      "type": "TROU",
+      "question": "Argot du Piège — Brigadiers : ___.",
+      "reponses_texte": [
+        "bricards"
+      ]
+    },
+    {
+      "id": "hz-argo-108",
+      "type": "FLASHCARD",
+      "question": "Que désigne « P.O. » dans l’argot du Piège ?",
+      "verso": "La place Pelletier Doisy"
+    },
+    {
+      "id": "hz-argo-109",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Psycho » ?",
+      "verso": "Maladroit, difficultés psychomotrices"
+    },
+    {
+      "id": "hz-argo-110",
+      "type": "TROU",
+      "question": "Argot du Piège — Bel uniforme de cérémonie (sigle) : ___.",
+      "reponses_texte": [
+        "BUC"
+      ]
+    },
+    {
+      "id": "hz-argo-111",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Crapahuter » ?",
+      "verso": "Marcher"
+    },
+    {
+      "id": "hz-argo-112",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Strasse » ?",
+      "verso": "Encadrement de l’École"
+    },
+    {
+      "id": "hz-argo-113",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Gégène » ?",
+      "verso": "Le général"
+    },
+    {
+      "id": "hz-argo-114",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Cocoye » ?",
+      "verso": "Commando de l’air"
+    },
+    {
+      "id": "hz-argo-115",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Cranter » ?",
+      "verso": "Punir"
+    },
+    {
+      "id": "hz-argo-116",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Prendre feu » ?",
+      "verso": "Être submergé par les tâches à effectuer"
+    },
+    {
+      "id": "hz-argo-117",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Morfler » ?",
+      "verso": "Subir des désagréments"
+    },
+    {
+      "id": "hz-argo-118",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Chouffer » ?",
+      "verso": "Guetter"
+    },
+    {
+      "id": "hz-argo-119",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « KN (« keuneu ») » ?",
+      "verso": "Lycée militaire de la Marine nationale"
+    },
+    {
+      "id": "hz-argo-120",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « La graille » ?",
+      "verso": "La nourriture, le mess"
+    },
+    {
+      "id": "hz-argo-121",
+      "type": "FLASHCARD",
+      "question": "Que signifie « Méca » ?",
+      "verso": "Mécaniciens / mécano"
+    },
+    {
+      "id": "hz-argo-122",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Stâkhy » ?",
+      "verso": "Mallette de l’étudiant au Piège (ou personne qui aime la stâkhe)"
+    },
+    {
+      "id": "hz-argo-123",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Péchu » ?",
+      "verso": "Qui a de la gueule, ou qui est ardu"
+    },
+    {
+      "id": "hz-argo-124",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Chiader » ?",
+      "verso": "Peaufiner"
+    },
+    {
+      "id": "hz-argo-125",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Peter Pan » ?",
+      "verso": "Sous-vêtements temps froid de dotation"
+    },
+    {
+      "id": "hz-argo-126",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Phénix » ?",
+      "verso": "Membres de la VIe brigade"
+    },
+    {
+      "id": "hz-argo-127",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « PIM » ?",
+      "verso": "Période d’instruction militaire (ou nouveau pilote arrivant en escadron)"
+    },
+    {
+      "id": "hz-argo-128",
+      "type": "FLASHCARD",
+      "question": "Argot du Piège : que signifie « Lambda » ?",
+      "verso": "Ordinaire, moyen"
+    }
+  ]
+}

@@ -1,0 +1,224 @@
+{
+  "langue": "Anglais",
+  "titre": "Anglais — vocabulaire : le bureau (B1)",
+  "particules_optionnelles": [
+    "to",
+    "a",
+    "an",
+    "the"
+  ],
+  "caracteres_speciaux": [],
+  "vocabulaire": [
+    {
+      "id": "en-bureau-001",
+      "mot": "an open-plan office",
+      "traductions": [
+        "un open space",
+        "un bureau paysager"
+      ],
+      "exemple": "Jean loves working in an [open-plan office].",
+      "exemple_traduction": "Jean adore travailler en open space.",
+      "note": "« open space » n'est pas utilisé en anglais dans ce sens."
+    },
+    {
+      "id": "en-bureau-002",
+      "mot": "a cubicle",
+      "traductions": [
+        "un box (de bureau)"
+      ],
+      "exemple": "He decorated his [cubicle] with family photos.",
+      "exemple_traduction": "Il a décoré son box avec des photos de famille."
+    },
+    {
+      "id": "en-bureau-003",
+      "mot": "a boardroom",
+      "traductions": [
+        "une salle de conseil",
+        "une salle de réunion"
+      ],
+      "exemple": "The heads of department meet in the [boardroom] every Friday.",
+      "exemple_traduction": "Les chefs de service se réunissent dans la salle de conseil chaque vendredi.",
+      "note": "the board = le conseil d'administration."
+    },
+    {
+      "id": "en-bureau-004",
+      "mot": "the reception area",
+      "traductions": [
+        "l'accueil",
+        "la réception"
+      ],
+      "exemple": "Please wait in the [reception area].",
+      "exemple_traduction": "Veuillez patienter à l'accueil."
+    },
+    {
+      "id": "en-bureau-005",
+      "mot": "a department",
+      "traductions": [
+        "un service (d'entreprise)"
+      ],
+      "exemple": "She left the marketing [department] for the media team.",
+      "exemple_traduction": "Elle a quitté le service marketing pour l'équipe médias.",
+      "note": "the accounts department = la comptabilité."
+    },
+    {
+      "id": "en-bureau-006",
+      "mot": "an assistant",
+      "traductions": [
+        "un assistant"
+      ],
+      "exemple": "Sam's [assistant] arranges all his meetings.",
+      "exemple_traduction": "L'assistant de Sam organise toutes ses réunions."
+    },
+    {
+      "id": "en-bureau-007",
+      "mot": "a temp",
+      "traductions": [
+        "un intérimaire"
+      ],
+      "exemple": "I worked as a [temp] for many years.",
+      "exemple_traduction": "J'ai travaillé comme intérimaire pendant des années.",
+      "note": "Abréviation de temporary worker."
+    },
+    {
+      "id": "en-bureau-008",
+      "mot": "a printer",
+      "traductions": [
+        "une imprimante"
+      ],
+      "exemple": "There is one [printer] for every eight computers.",
+      "exemple_traduction": "Il y a une imprimante pour huit ordinateurs."
+    },
+    {
+      "id": "en-bureau-009",
+      "mot": "a photocopier",
+      "traductions": [
+        "une photocopieuse"
+      ],
+      "exemple": "The paper keeps getting stuck in the [photocopier].",
+      "exemple_traduction": "Le papier se coince sans arrêt dans la photocopieuse.",
+      "note": "Aussi : a copier. to photocopy = photocopier."
+    },
+    {
+      "id": "en-bureau-010",
+      "mot": "a scanner",
+      "traductions": [
+        "un scanner"
+      ],
+      "exemple": "Can I use the [scanner] this afternoon?",
+      "exemple_traduction": "Je peux utiliser le scanner cet après-midi ?",
+      "note": "to scan = scanner, numériser."
+    },
+    {
+      "id": "en-bureau-011",
+      "mot": "a fax machine",
+      "traductions": [
+        "un télécopieur",
+        "un fax"
+      ],
+      "exemple": "Our [fax machine] is broken.",
+      "exemple_traduction": "Notre fax est en panne."
+    },
+    {
+      "id": "en-bureau-012",
+      "mot": "a switchboard",
+      "traductions": [
+        "un standard téléphonique"
+      ],
+      "exemple": "The receptionist forgot to change the [switchboard] settings.",
+      "exemple_traduction": "Le réceptionniste a oublié de modifier les réglages du standard.",
+      "note": "a switchboard operator = un standardiste."
+    },
+    {
+      "id": "en-bureau-013",
+      "mot": "a filing cabinet",
+      "traductions": [
+        "un classeur à tiroirs"
+      ],
+      "exemple": "The [filing cabinet] holds all the patients' records.",
+      "exemple_traduction": "Le classeur à tiroirs contient tous les dossiers des patients.",
+      "note": "to file = classer."
+    },
+    {
+      "id": "en-bureau-014",
+      "mot": "the office furniture",
+      "traductions": [
+        "le mobilier de bureau"
+      ],
+      "exemple": "The [office furniture] was getting old.",
+      "exemple_traduction": "Le mobilier de bureau devenait vieux.",
+      "note": "furniture est indénombrable."
+    },
+    {
+      "id": "en-bureau-015",
+      "mot": "the stationery",
+      "traductions": [
+        "les fournitures de bureau"
+      ],
+      "exemple": "I'm doing a [stationery] order today.",
+      "exemple_traduction": "Je passe une commande de fournitures aujourd'hui.",
+      "note": "Orthographe : stationery (fournitures) ≠ stationary (immobile)."
+    },
+    {
+      "id": "en-bureau-016",
+      "mot": "a water cooler",
+      "traductions": [
+        "une fontaine à eau"
+      ],
+      "exemple": "Staff meet and chat at the [water cooler].",
+      "exemple_traduction": "Les employés se retrouvent pour discuter à la fontaine à eau.",
+      "note": "water-cooler chat = les discussions informelles au bureau."
+    },
+    {
+      "id": "en-bureau-017",
+      "mot": "a business card",
+      "traductions": [
+        "une carte de visite"
+      ],
+      "exemple": "He collected over 50 [business cards] at the conference.",
+      "exemple_traduction": "Il a récupéré plus de 50 cartes de visite au salon."
+    },
+    {
+      "id": "en-bureau-018",
+      "mot": "a briefcase",
+      "traductions": [
+        "un attaché-case",
+        "une mallette"
+      ],
+      "exemple": "She used her [briefcase] as a table for her laptop.",
+      "exemple_traduction": "Elle utilisait sa mallette comme table pour son portable."
+    },
+    {
+      "id": "en-bureau-019",
+      "mot": "a memo",
+      "traductions": [
+        "une note de service"
+      ],
+      "exemple": "The manager sent the staff a [memo].",
+      "exemple_traduction": "Le responsable a envoyé une note de service au personnel.",
+      "note": "Forme longue : a memorandum.",
+      "variantes": [
+        "a memorandum"
+      ]
+    },
+    {
+      "id": "en-bureau-020",
+      "mot": "an invoice",
+      "traductions": [
+        "une facture"
+      ],
+      "exemple": "I will send you an [invoice] later.",
+      "exemple_traduction": "Je vous enverrai une facture plus tard.",
+      "note": "Synonyme courant : a bill."
+    },
+    {
+      "id": "en-bureau-021",
+      "mot": "a purchase order",
+      "traductions": [
+        "un bon de commande"
+      ],
+      "exemple": "Can you check the [purchase order] you sent us?",
+      "exemple_traduction": "Pouvez-vous vérifier le bon de commande que vous nous avez envoyé ?",
+      "note": "Abréviation : a PO."
+    }
+  ]
+}

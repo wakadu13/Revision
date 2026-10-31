@@ -1,0 +1,172 @@
+{
+  "langue": "Anglais",
+  "titre": "Anglais — vocabulaire : études et examens (A1)",
+  "particules_optionnelles": [
+    "to",
+    "a",
+    "an",
+    "the"
+  ],
+  "caracteres_speciaux": [],
+  "vocabulaire": [
+    {
+      "id": "en-etudes-examens-001",
+      "mot": "to study",
+      "traductions": [
+        "étudier"
+      ],
+      "exemple": "If you [study] hard, you will do well.",
+      "exemple_traduction": "Si tu étudies sérieusement, tu réussiras.",
+      "note": "Au passé : studied (y → ied)."
+    },
+    {
+      "id": "en-etudes-examens-002",
+      "mot": "an exam",
+      "traductions": [
+        "un examen"
+      ],
+      "exemple": "I'm nervous about our [exam] at the end of the month.",
+      "exemple_traduction": "Je suis stressé par notre examen de la fin du mois.",
+      "note": "Forme longue : an examination.",
+      "variantes": [
+        "an examination"
+      ]
+    },
+    {
+      "id": "en-etudes-examens-003",
+      "mot": "to pass",
+      "traductions": [
+        "réussir (un examen)"
+      ],
+      "exemple": "I am so happy, I [passed] my exams!",
+      "exemple_traduction": "Je suis tellement content, j'ai réussi mes examens !",
+      "note": "Faux ami : to pass an exam = RÉUSSIR un examen, pas « passer » un examen (= to take / to sit an exam)."
+    },
+    {
+      "id": "en-etudes-examens-004",
+      "mot": "to fail",
+      "traductions": [
+        "échouer à",
+        "rater (un examen)"
+      ],
+      "exemple": "I didn't study enough, so I might have [failed].",
+      "exemple_traduction": "Je n'ai pas assez révisé, alors j'ai peut-être échoué.",
+      "note": "to fail an exam (sans préposition)."
+    },
+    {
+      "id": "en-etudes-examens-005",
+      "mot": "to revise",
+      "traductions": [
+        "réviser"
+      ],
+      "exemple": "I will just [revise] tomorrow before the exam.",
+      "exemple_traduction": "Je réviserai juste demain avant l'examen.",
+      "note": "Britannique. En américain : to review."
+    },
+    {
+      "id": "en-etudes-examens-006",
+      "mot": "a question",
+      "traductions": [
+        "une question"
+      ],
+      "exemple": "The [questions] in the exam were very hard!",
+      "exemple_traduction": "Les questions de l'examen étaient très difficiles !"
+    },
+    {
+      "id": "en-etudes-examens-007",
+      "mot": "an answer",
+      "traductions": [
+        "une réponse"
+      ],
+      "exemple": "What [answer] did you put for question 3?",
+      "exemple_traduction": "Quelle réponse as-tu mise à la question 3 ?",
+      "note": "to answer a question = répondre à une question (sans « to »).",
+      "prononciation": "/ˈɑːnsə(r)/"
+    },
+    {
+      "id": "en-etudes-examens-008",
+      "mot": "to guess",
+      "traductions": [
+        "deviner"
+      ],
+      "exemple": "It was a hard test; I had to [guess] some answers.",
+      "exemple_traduction": "Le test était difficile ; j'ai dû deviner certaines réponses.",
+      "note": "/ɡes/ : le « u » ne se prononce pas."
+    },
+    {
+      "id": "en-etudes-examens-009",
+      "mot": "a pass",
+      "traductions": [
+        "une réussite (à un examen)",
+        "la moyenne"
+      ],
+      "exemple": "I am so happy, I have a [pass] for Biology!",
+      "exemple_traduction": "Je suis tellement content, j'ai la moyenne en biologie !",
+      "note": "Contraire : a fail."
+    },
+    {
+      "id": "en-etudes-examens-010",
+      "mot": "a certificate",
+      "traductions": [
+        "un certificat",
+        "une attestation"
+      ],
+      "exemple": "I am so proud of my [certificate].",
+      "exemple_traduction": "Je suis si fier de mon certificat.",
+      "note": "/səˈtɪfɪkət/"
+    },
+    {
+      "id": "en-etudes-examens-011",
+      "mot": "a qualification",
+      "traductions": [
+        "un diplôme",
+        "une qualification"
+      ],
+      "exemple": "John will have a Business [qualification] at the end of the year.",
+      "exemple_traduction": "John aura un diplôme de commerce à la fin de l'année."
+    },
+    {
+      "id": "en-etudes-examens-012",
+      "mot": "an assessment",
+      "traductions": [
+        "une évaluation"
+      ],
+      "exemple": "This [assessment] checks that we understand our science work.",
+      "exemple_traduction": "Cette évaluation vérifie que nous comprenons nos cours de sciences.",
+      "note": "to assess = évaluer."
+    },
+    {
+      "id": "en-etudes-examens-013",
+      "mot": "a multiple-choice test",
+      "traductions": [
+        "un QCM"
+      ],
+      "exemple": "[Multiple-choice tests] are my favorite.",
+      "exemple_traduction": "Les QCM sont mes préférés.",
+      "note": "QCM = questionnaire à choix multiples.",
+      "variantes": [
+        "a multiple choice test"
+      ]
+    },
+    {
+      "id": "en-etudes-examens-014",
+      "mot": "an exam paper",
+      "traductions": [
+        "un sujet d'examen",
+        "une épreuve écrite"
+      ],
+      "exemple": "This [exam paper] was easier than last year's.",
+      "exemple_traduction": "Ce sujet d'examen était plus facile que celui de l'an dernier."
+    },
+    {
+      "id": "en-etudes-examens-015",
+      "mot": "an exam timetable",
+      "traductions": [
+        "un calendrier des examens"
+      ],
+      "exemple": "Our [exam timetable] gives us a few free days.",
+      "exemple_traduction": "Notre calendrier des examens nous laisse quelques jours libres.",
+      "note": "Américain : an exam schedule."
+    }
+  ]
+}

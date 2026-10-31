@@ -1,0 +1,1299 @@
+{
+  "titre": "Horizon — Bases, escadres et escadrons",
+  "description": "Bases aériennes et leurs parrains, unités stationnées, numérotation, forces à l’étranger et glossaire des unités (Horizon 2026, ch. 2-VII).",
+  "questions": [
+    {
+      "id": "hz-base-001",
+      "type": "FLASHCARD",
+      "question": "Que signifie le sigle EH ?",
+      "verso": "Escadron d’hélicoptères"
+    },
+    {
+      "id": "hz-base-002",
+      "type": "QCM",
+      "question": "Quelle base accueille le centre de formation à l’appui aérien (formation des JTAC) ?",
+      "choix": [
+        "BA 115 Orange",
+        "BA 118 Mont-de-Marsan",
+        "BA 120 Cazaux",
+        "BA 133 Nancy-Ochey"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-base-003",
+      "type": "QCM",
+      "question": "Quelle escadre de transport est stationnée à Évreux (BA 105) ?",
+      "choix": [
+        "La 64e escadre de transport",
+        "La 31e escadre",
+        "La 33e escadre",
+        "La 61e escadre de transport"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-base-004",
+      "type": "FLASHCARD",
+      "question": "Quel est le parrain (nom de tradition) de la BA 186 Nouméa-La Tontouta ?",
+      "verso": "LTT Klein"
+    },
+    {
+      "id": "hz-base-005",
+      "type": "FLASHCARD",
+      "question": "Quelle ville correspond à la BA 278 ?",
+      "verso": "Ambérieu-en-Bugey",
+      "explication": "Parrain : « COL Albert Chambonnet »."
+    },
+    {
+      "id": "hz-base-006",
+      "type": "QCM",
+      "question": "Quel escadron met en œuvre l’ALSR Vador ?",
+      "choix": [
+        "ED 1/33 Belfort",
+        "ER 4/33 Périgord",
+        "ETOD 3/33 Moselle",
+        "EE 3/8 Côte d’Or"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-base-007",
+      "type": "FLASHCARD",
+      "question": "Que signifie EPA ?",
+      "verso": "École des pupilles de l’Air (et de l’Espace)"
+    },
+    {
+      "id": "hz-base-008",
+      "type": "QCM",
+      "question": "Quelle base aérienne porte le numéro BA 110 ?",
+      "choix": [
+        "Rochefort",
+        "Al Dhafra (EAU)",
+        "Orléans",
+        "Creil"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-base-009",
+      "type": "QCM",
+      "question": "Quelle escadre est stationnée à Avord (BA 702) ?",
+      "choix": [
+        "La 36e escadre",
+        "La 31e escadre",
+        "La 3e escadre de chasse",
+        "La 33e escadre"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-base-010",
+      "type": "TROU",
+      "question": "Escadron d’instruction en vol à voile : sigle ___.",
+      "reponses_texte": [
+        "EIVV"
+      ]
+    },
+    {
+      "id": "hz-base-011",
+      "type": "QCM",
+      "question": "Quel est le code de l’implantation d’Abidjan (Côte d’Ivoire) ?",
+      "choix": [
+        "DA 181",
+        "EA 470",
+        "DA 168",
+        "BA 188"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-base-012",
+      "type": "QCM",
+      "question": "Où se trouve le CEAM ?",
+      "choix": [
+        "BA 125 Istres",
+        "BA 113 Saint-Dizier",
+        "BA 942 Lyon",
+        "BA 118 Mont-de-Marsan"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-base-013",
+      "type": "FLASHCARD",
+      "question": "Quel est le parrain (nom de tradition) de la BA 107 Villacoublay ?",
+      "verso": "SLT Dorme"
+    },
+    {
+      "id": "hz-base-014",
+      "type": "FLASHCARD",
+      "question": "Quel est le parrain (nom de tradition) de la BA 116 Luxeuil ?",
+      "verso": "LCL Papin"
+    },
+    {
+      "id": "hz-base-015",
+      "type": "QCM",
+      "question": "Quel escadron de défense sol-air est stationné à Istres ?",
+      "choix": [
+        "EDSA 01/950 « Crau »",
+        "EDSA 12/950 « Tursan »",
+        "EDSA 0/950 « Sancerre »"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-base-016",
+      "type": "FLASHCARD",
+      "question": "Quel est le nom de tradition de la BA 701 de Salon-de-Provence ?",
+      "verso": "« Général Pineau »"
+    },
+    {
+      "id": "hz-base-017",
+      "type": "TROU",
+      "question": "La base aérienne de Mont-de-Marsan porte le numéro BA ___.",
+      "reponses_texte": [
+        "118"
+      ]
+    },
+    {
+      "id": "hz-base-018",
+      "type": "QCR",
+      "question": "Quelles unités sont stationnées à Évreux (BA 105) ?",
+      "choix": [
+        "ET 3/62 Ventoux",
+        "BATS",
+        "ET 1/62 Vercors",
+        "ET 1/61 Touraine",
+        "GAM 56 Vaucluse"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "explication": "Vrai : A, B, C, E. Faux : D."
+    },
+    {
+      "id": "hz-base-019",
+      "type": "TROU",
+      "question": "La base aérienne de Avord porte le numéro BA ___.",
+      "reponses_texte": [
+        "702"
+      ]
+    },
+    {
+      "id": "hz-base-020",
+      "type": "QCM",
+      "question": "Quelle escadre est stationnée à Cognac (BA 709) ?",
+      "choix": [
+        "La 33e escadre",
+        "La 2e escadre de chasse",
+        "La 36e escadre",
+        "La 64e escadre de transport"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-base-021",
+      "type": "QCM",
+      "question": "Quelle base aérienne porte le numéro BA 188 ?",
+      "choix": [
+        "Djibouti",
+        "Bordeaux-Mérignac",
+        "Avord",
+        "Luxeuil"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-base-022",
+      "type": "TROU",
+      "question": "Groupement école : sigle ___.",
+      "reponses_texte": [
+        "GE"
+      ]
+    },
+    {
+      "id": "hz-base-023",
+      "type": "TROU",
+      "question": "Centre d’instruction des équipages de transport : sigle ___.",
+      "reponses_texte": [
+        "CIET"
+      ]
+    },
+    {
+      "id": "hz-base-024",
+      "type": "QCM",
+      "question": "Quelle base porte le nom du commandant Saint-Exupéry ?",
+      "choix": [
+        "BA 113 Saint-Dizier",
+        "BA 118 Mont-de-Marsan",
+        "BA 701 Salon",
+        "BA 123 Orléans"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-base-025",
+      "type": "QCM",
+      "question": "Depuis quand la France est-elle présente à Al Dhafra (EAU) ?",
+      "choix": [
+        "2009",
+        "2011",
+        "2015",
+        "1960"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-base-026",
+      "type": "TROU",
+      "question": "La base aérienne de Istres porte le numéro BA ___.",
+      "reponses_texte": [
+        "125"
+      ]
+    },
+    {
+      "id": "hz-base-027",
+      "type": "QCM",
+      "question": "Depuis quand la France est-elle présente à Libreville (Gabon) selon l’Horizon ?",
+      "choix": [
+        "1960",
+        "2015",
+        "2011",
+        "2009"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-base-028",
+      "type": "QCM",
+      "question": "Quel escadron de chasse est stationné à Al Dhafra (BA 104) ?",
+      "choix": [
+        "EC 1/7 Provence",
+        "EC 3/11 Corse",
+        "GC 1/2 Cigognes",
+        "EC 1/5 Vendée"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-base-029",
+      "type": "TROU",
+      "question": "Dans la numérotation d’origine, les bases de support portent les numéros ___ à 299.",
+      "reponses_texte": [
+        "200"
+      ]
+    },
+    {
+      "id": "hz-base-030",
+      "type": "QCM",
+      "question": "Selon la numérotation d’origine, à quoi correspondent les bases numérotées de 100 à 199 ?",
+      "choix": [
+        "Bases écoles",
+        "Bases radars",
+        "Bases de support",
+        "Bases opérationnelles"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-base-031",
+      "type": "QCR",
+      "question": "Quelles unités appartiennent à la 3e escadre de chasse (Nancy-Ochey) ?",
+      "choix": [
+        "EC 3/3 Ardennes",
+        "EC 2/3 Champagne",
+        "EC 1/3 Navarre",
+        "GC 1/2 Cigognes",
+        "EC 3/11 Corse"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Vrai : A, B, C. Faux : D, E."
+    },
+    {
+      "id": "hz-base-032",
+      "type": "FLASHCARD",
+      "question": "Quelle ville correspond à la BA 104 ?",
+      "verso": "Al Dhafra (EAU)",
+      "explication": "Parrain : « LCL Pijeaud »."
+    },
+    {
+      "id": "hz-base-033",
+      "type": "FLASHCARD",
+      "question": "Quel est le parrain (nom de tradition) de la BA 705 Tours ?",
+      "verso": "CDT François et Jean Tulasne"
+    },
+    {
+      "id": "hz-base-034",
+      "type": "QCM",
+      "question": "Que permet l’obtention d’un CAP à l’EETAAE ?",
+      "choix": [
+        "Entrer à l’École de l’air",
+        "Devenir militaire technicien de l’air (MTA)",
+        "Accéder au corps des sous-officiers",
+        "Devenir officier sous contrat"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le baccalauréat donne accès au corps des sous-officiers."
+    },
+    {
+      "id": "hz-base-035",
+      "type": "QCR",
+      "question": "Quelles unités sont stationnées à Villacoublay (BA 107) ?",
+      "choix": [
+        "ET 43 Médoc",
+        "EH 1/65 Alpilles",
+        "ET 60",
+        "EH 3/67 Parisis",
+        "ET 41 Verdun"
+      ],
+      "reponses": [
+        2,
+        3,
+        4
+      ],
+      "explication": "Vrai : C, D, E. Faux : A, B. L’ET 43 Médoc est à Bordeaux-Mérignac."
+    },
+    {
+      "id": "hz-base-036",
+      "type": "QCM",
+      "question": "Pour qui l’EPA a-t-elle été initialement créée ?",
+      "choix": [
+        "Les enfants d’officiers généraux",
+        "Les pupilles de la nation",
+        "Les futurs mécaniciens",
+        "Les élèves étrangers"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-base-037",
+      "type": "QCM",
+      "question": "Selon la numérotation d’origine, à quoi correspondent les numéros 300 à 399 ?",
+      "choix": [
+        "Écoles de formation",
+        "Bases écoles",
+        "Bases de support",
+        "Entrepôts"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-base-038",
+      "type": "FLASHCARD",
+      "question": "Quel est le parrain (nom de tradition) de la BA 120 Cazaux ?",
+      "verso": "CDT Marzac"
+    },
+    {
+      "id": "hz-base-039",
+      "type": "FLASHCARD",
+      "question": "Quelle ville correspond à la BA 126 ?",
+      "verso": "Solenzara",
+      "explication": "Parrain : « CNE Preziosi »."
+    },
+    {
+      "id": "hz-base-040",
+      "type": "TROU",
+      "question": "La base aérienne de Toulouse porte le numéro BA ___.",
+      "reponses_texte": [
+        "101"
+      ]
+    },
+    {
+      "id": "hz-base-041",
+      "type": "FLASHCARD",
+      "question": "Que signifie le sigle EIV ?",
+      "verso": "Escadron d’instruction en vol"
+    },
+    {
+      "id": "hz-base-042",
+      "type": "QCM",
+      "question": "Quel est le numéro de l’EETAAE de Saintes ?",
+      "choix": [
+        "721",
+        "722",
+        "709",
+        "749"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-base-043",
+      "type": "FLASHCARD",
+      "question": "Que signifie EC2A ?",
+      "verso": "Escadre de commandement et de conduite aéroportée (36e)"
+    },
+    {
+      "id": "hz-base-044",
+      "type": "FLASHCARD",
+      "question": "Comment sont surnommés les élèves de l’EETAAE ?",
+      "verso": "Les « arpètes »"
+    },
+    {
+      "id": "hz-base-045",
+      "type": "QCR",
+      "question": "Quelles implantations relèvent des forces de présence ?",
+      "choix": [
+        "Abidjan",
+        "Djibouti",
+        "Libreville",
+        "Al Dhafra",
+        "Nouméa"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explication": "Vrai : A, B, C, D. Faux : E."
+    },
+    {
+      "id": "hz-base-046",
+      "type": "QCM",
+      "question": "Quelle base aérienne porte le numéro BA 709 ?",
+      "choix": [
+        "Cognac",
+        "Nouméa-La Tontouta",
+        "Villacoublay",
+        "Tahiti-Faa’a"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-base-047",
+      "type": "QCM",
+      "question": "Sur quel avion vole le RC 2/30 Normandie-Niemen ?",
+      "choix": [
+        "Mirage 2000D",
+        "Mirage 2000-5",
+        "Rafale B",
+        "Rafale C"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-base-048",
+      "type": "TROU",
+      "question": "La base aérienne de Bordeaux-Mérignac porte le numéro BA ___.",
+      "reponses_texte": [
+        "106"
+      ]
+    },
+    {
+      "id": "hz-base-049",
+      "type": "FLASHCARD",
+      "question": "Quelle ville correspond à la BA 115 ?",
+      "verso": "Orange",
+      "explication": "Parrain : « CNE De Seynes »."
+    },
+    {
+      "id": "hz-base-050",
+      "type": "FLASHCARD",
+      "question": "Que signifie ERVTS ?",
+      "verso": "Escadron de ravitaillement en vol et de transport stratégique"
+    },
+    {
+      "id": "hz-base-051",
+      "type": "TROU",
+      "question": "La base aérienne de Rochefort porte le numéro BA ___.",
+      "reponses_texte": [
+        "721"
+      ]
+    },
+    {
+      "id": "hz-base-052",
+      "type": "FLASHCARD",
+      "question": "Quelle ville correspond à la BA 942 ?",
+      "verso": "Lyon Mont-Verdun",
+      "explication": "Parrain : « CNE Jean Robert »."
+    },
+    {
+      "id": "hz-base-053",
+      "type": "FLASHCARD",
+      "question": "Quel est le parrain (nom de tradition) de la BA 133 Nancy-Ochey ?",
+      "verso": "CDT Jeandet"
+    },
+    {
+      "id": "hz-base-054",
+      "type": "QCM",
+      "question": "Quelle base accueille la Direction des ressources humaines de l’AAE ?",
+      "choix": [
+        "BA 106 Bordeaux",
+        "BA 107 Villacoublay",
+        "BA 705 Tours",
+        "BA 942 Lyon"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-base-055",
+      "type": "FLASHCARD",
+      "question": "Que signifie le sigle GC ?",
+      "verso": "Groupe de chasse"
+    },
+    {
+      "id": "hz-base-056",
+      "type": "TROU",
+      "question": "Escadron de ravitaillement en vol : sigle ___.",
+      "reponses_texte": [
+        "ERV"
+      ]
+    },
+    {
+      "id": "hz-base-057",
+      "type": "QCM",
+      "question": "Selon la numérotation d’origine, à quoi correspondent les bases numérotées de 900 à 999 ?",
+      "choix": [
+        "Unités diverses",
+        "Bases radars",
+        "Bases opérationnelles",
+        "Entrepôts"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-base-058",
+      "type": "QCM",
+      "question": "Quelle escadre est stationnée à Istres (BA 125) ?",
+      "choix": [
+        "La 4e escadre de chasse",
+        "La 61e escadre de transport",
+        "La 36e escadre de commandement et de conduite aéroportée",
+        "La 31e escadre aérienne de ravitaillement et de transport stratégiques"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-base-059",
+      "type": "FLASHCARD",
+      "question": "Que signifie BAP (Jordanie) ?",
+      "verso": "Base aérienne projetée"
+    },
+    {
+      "id": "hz-base-060",
+      "type": "QCM",
+      "question": "Quelle base aérienne porte le numéro BA 133 ?",
+      "choix": [
+        "Saint-Dizier",
+        "Nancy-Ochey",
+        "Solenzara",
+        "Tours"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-base-061",
+      "type": "QCM",
+      "question": "Selon la numérotation d’origine, à quoi correspondent les bases numérotées de 701 à 799 ?",
+      "choix": [
+        "Écoles de formation",
+        "Bases écoles",
+        "Unités diverses",
+        "Entrepôts"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-base-062",
+      "type": "FLASHCARD",
+      "question": "Que signifie le sigle CDC ?",
+      "verso": "Centre de détection et de contrôle"
+    },
+    {
+      "id": "hz-base-063",
+      "type": "FLASHCARD",
+      "question": "Que signifie le sigle ED ?",
+      "verso": "Escadron de drones"
+    },
+    {
+      "id": "hz-base-064",
+      "type": "QCR",
+      "question": "Quels escadrons composent l’école de Rochefort ?",
+      "choix": [
+        "EFIP",
+        "EFM",
+        "EFASS",
+        "EFMAD",
+        "EIVV"
+      ],
+      "reponses": [
+        1,
+        2,
+        3
+      ],
+      "explication": "Vrai : B, C, D. Faux : A, E."
+    },
+    {
+      "id": "hz-base-065",
+      "type": "FLASHCARD",
+      "question": "Quelle ville correspond à la BA 120 ?",
+      "verso": "Cazaux",
+      "explication": "Parrain : « CDT Marzac »."
+    },
+    {
+      "id": "hz-base-066",
+      "type": "FLASHCARD",
+      "question": "Quel est le parrain (nom de tradition) de la BA 367 Cayenne-Rochambeau ?",
+      "verso": "CNE Massé"
+    },
+    {
+      "id": "hz-base-067",
+      "type": "TROU",
+      "question": "Escadron d’entraînement : sigle ___.",
+      "reponses_texte": [
+        "EE"
+      ]
+    },
+    {
+      "id": "hz-base-068",
+      "type": "FLASHCARD",
+      "question": "Que signifie le sigle EEA ?",
+      "verso": "Escadron électronique aéroporté"
+    },
+    {
+      "id": "hz-base-069",
+      "type": "FLASHCARD",
+      "question": "Que signifie ETOD ?",
+      "verso": "Escadron de transformation opérationnelle drone"
+    },
+    {
+      "id": "hz-base-070",
+      "type": "QCM",
+      "question": "Quelle escadre de transport est stationnée à Orléans (BA 123) ?",
+      "choix": [
+        "La 64e escadre de transport",
+        "La 31e escadre",
+        "La 61e escadre de transport",
+        "La 36e escadre"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-base-071",
+      "type": "FLASHCARD",
+      "question": "Que signifie EDCA ?",
+      "verso": "Escadron de détection et de contrôle aéroporté"
+    },
+    {
+      "id": "hz-base-072",
+      "type": "FLASHCARD",
+      "question": "Que signifie DA (DA 181, DA 168…) ?",
+      "verso": "Détachement Air"
+    },
+    {
+      "id": "hz-base-073",
+      "type": "TROU",
+      "question": "Escadron de formation des instructeurs au pilotage : sigle ___.",
+      "reponses_texte": [
+        "EFIP"
+      ]
+    },
+    {
+      "id": "hz-base-074",
+      "type": "TROU",
+      "question": "La base aérienne de Tahiti-Faa’a porte le numéro BA ___.",
+      "reponses_texte": [
+        "190"
+      ]
+    },
+    {
+      "id": "hz-base-075",
+      "type": "QCM",
+      "question": "Quel escadron de chasse est stationné à Orange (BA 115) ?",
+      "choix": [
+        "EC 1/5 Vendée",
+        "EC 3/11 Corse",
+        "EC 1/7 Provence",
+        "EC 2/4 La Fayette"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-base-076",
+      "type": "FLASHCARD",
+      "question": "Que signifie CIEH ?",
+      "verso": "Centre d’instruction des équipages d’hélicoptère"
+    },
+    {
+      "id": "hz-base-077",
+      "type": "QCM",
+      "question": "Quel escadron de défense sol-air est stationné à Mont-de-Marsan ?",
+      "choix": [
+        "EDSA 0/950 « Sancerre »",
+        "EDSA 12/950 « Tursan »",
+        "EDSA 01/950 « Crau »"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-base-078",
+      "type": "TROU",
+      "question": "Escadron de chasse et d’expérimentation : sigle ___.",
+      "reponses_texte": [
+        "ECE"
+      ]
+    },
+    {
+      "id": "hz-base-079",
+      "type": "QCR",
+      "question": "Quelles unités sont stationnées à Cazaux (BA 120) ?",
+      "choix": [
+        "EH 1/65 Alpilles",
+        "EH 1/44 Solenzara",
+        "EH 1/67 Pyrénées",
+        "EE 3/8 Côte d’Or",
+        "ETR 3/4 Aquitaine"
+      ],
+      "reponses": [
+        2,
+        3
+      ],
+      "explication": "Vrai : C, D. Faux : A, B, E."
+    },
+    {
+      "id": "hz-base-080",
+      "type": "FLASHCARD",
+      "question": "Quelle ville correspond à la BA 705 ?",
+      "verso": "Tours",
+      "explication": "Parrain : « CDT François et Jean Tulasne »."
+    },
+    {
+      "id": "hz-base-081",
+      "type": "FLASHCARD",
+      "question": "Que signifie EETAAE ?",
+      "verso": "École d’enseignement technique de l’AAE (Saintes)"
+    },
+    {
+      "id": "hz-base-082",
+      "type": "QCM",
+      "question": "Quelle base aérienne porte le numéro BA 116 ?",
+      "choix": [
+        "Cayenne-Rochambeau",
+        "Avord",
+        "Ambérieu-en-Bugey",
+        "Luxeuil"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-base-083",
+      "type": "FLASHCARD",
+      "question": "Que signifie ESRA ?",
+      "verso": "Escadre de surveillance, de reconnaissance et d’attaque (33e)"
+    },
+    {
+      "id": "hz-base-084",
+      "type": "QCM",
+      "question": "Quelle école est située à Rochefort (BA 721) ?",
+      "choix": [
+        "L’école des pupilles de l’air",
+        "L’école d’enseignement technique",
+        "L’école de formation des sous-officiers de l’AAE",
+        "L’école de l’aviation de chasse"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-base-085",
+      "type": "QCM",
+      "question": "Quelle base aérienne porte le numéro BA 367 ?",
+      "choix": [
+        "Al Dhafra (EAU)",
+        "Avord",
+        "Cayenne-Rochambeau",
+        "Bordeaux-Mérignac"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-base-086",
+      "type": "FLASHCARD",
+      "question": "Que signifie EDSA ?",
+      "verso": "Escadron de défense sol-air"
+    },
+    {
+      "id": "hz-base-087",
+      "type": "FLASHCARD",
+      "question": "Quel est le parrain (nom de tradition) de la BA 190 Tahiti-Faa’a ?",
+      "verso": "SGT Allain"
+    },
+    {
+      "id": "hz-base-088",
+      "type": "TROU",
+      "question": "La base aérienne de La Réunion porte le numéro BA ___.",
+      "reponses_texte": [
+        "181"
+      ]
+    },
+    {
+      "id": "hz-base-089",
+      "type": "TROU",
+      "question": "Escadron de transition opérationnelle : sigle ___.",
+      "reponses_texte": [
+        "ETO"
+      ]
+    },
+    {
+      "id": "hz-base-090",
+      "type": "FLASHCARD",
+      "question": "Que signifie EFMAD ?",
+      "verso": "Escadron de formation à la maintenance aéronautique de la Défense (formation des mécaniciens)"
+    },
+    {
+      "id": "hz-base-091",
+      "type": "QCR",
+      "question": "Quelles unités appartiennent à la 30e escadre de chasse (Mont-de-Marsan) ?",
+      "choix": [
+        "EE 3/8 Côte d’Or",
+        "RC 2/30 Normandie-Niemen",
+        "RC 3/30 Lorraine",
+        "ECE 1/30 Côte d’Argent",
+        "EC 1/4 Gascogne"
+      ],
+      "reponses": [
+        1,
+        2,
+        3
+      ],
+      "explication": "Vrai : B, C, D. Faux : A, E."
+    },
+    {
+      "id": "hz-base-092",
+      "type": "FLASHCARD",
+      "question": "Quel est le parrain (nom de tradition) de la BA 125 Istres ?",
+      "verso": "SLT Monier"
+    },
+    {
+      "id": "hz-base-093",
+      "type": "QCR",
+      "question": "Quelles unités sont stationnées à Orange (BA 115) ?",
+      "choix": [
+        "EH 1/65 Alpilles",
+        "CIEH 00.341",
+        "CPA 10",
+        "CPA 20",
+        "EH 3/67 Parisis"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "Vrai : A, B, D. Faux : C, E. Les CPA 10 et 30 sont à Orléans ; l’EH 3/67 Parisis à Villacoublay."
+    },
+    {
+      "id": "hz-base-094",
+      "type": "QCM",
+      "question": "Quelle base porte le nom du lieutenant Roland Garros ?",
+      "choix": [
+        "BA 709 Cognac",
+        "BA 113 Saint-Dizier",
+        "BA 181 La Réunion",
+        "BA 115 Orange"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-base-095",
+      "type": "FLASHCARD",
+      "question": "Que signifie EARTS ?",
+      "verso": "Escadre aérienne de ravitaillement et de transport stratégiques (31e escadre)"
+    },
+    {
+      "id": "hz-base-096",
+      "type": "FLASHCARD",
+      "question": "Quelle ville correspond à la BA 186 ?",
+      "verso": "Nouméa-La Tontouta",
+      "explication": "Parrain : « LTT Klein »."
+    },
+    {
+      "id": "hz-base-097",
+      "type": "QCM",
+      "question": "Quelle est la mission des forces de souveraineté ?",
+      "choix": [
+        "Protéger le territoire national et la souveraineté dans les espaces maritimes outre-mer",
+        "Soutenir un partenariat de défense dans une zone d’intérêt majeur",
+        "Conduire la dissuasion nucléaire",
+        "Former les armées étrangères en Europe"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-base-098",
+      "type": "TROU",
+      "question": "La base aérienne de Saint-Dizier porte le numéro BA ___.",
+      "reponses_texte": [
+        "113"
+      ]
+    },
+    {
+      "id": "hz-base-099",
+      "type": "QCR",
+      "question": "Quelles implantations relèvent des forces de souveraineté ?",
+      "choix": [
+        "BA 104 Al Dhafra",
+        "BA 188 Djibouti",
+        "BA 367 Cayenne-Rochambeau",
+        "DA 190 Tahiti",
+        "BA 186 Nouméa-La Tontouta"
+      ],
+      "reponses": [
+        2,
+        3,
+        4
+      ],
+      "explication": "Vrai : C, D, E. Faux : A, B. Djibouti et Al Dhafra relèvent des forces de présence."
+    },
+    {
+      "id": "hz-base-100",
+      "type": "FLASHCARD",
+      "question": "Que signifie le sigle ET ?",
+      "verso": "Escadron de transport"
+    },
+    {
+      "id": "hz-base-101",
+      "type": "QCM",
+      "question": "Quel escadron de chasse est stationné à Djibouti (BA 188) ?",
+      "choix": [
+        "EC 1/7 Provence",
+        "EC 1/5 Vendée",
+        "EC 3/11 Corse",
+        "EC 2/3 Champagne"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-base-102",
+      "type": "QCM",
+      "question": "Quel est le numéro de l’École des pupilles de l’air ?",
+      "choix": [
+        "722",
+        "749",
+        "721",
+        "701"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-base-103",
+      "type": "FLASHCARD",
+      "question": "Que signifie ETR (ETR 3/4 Aquitaine) ?",
+      "verso": "Escadron de transformation Rafale"
+    },
+    {
+      "id": "hz-base-104",
+      "type": "QCM",
+      "question": "Quel escadron de défense sol-air est stationné à Avord ?",
+      "choix": [
+        "EDSA 0/950 « Sancerre »",
+        "EDSA 01/950 « Crau »",
+        "EDSA 12/950 « Tursan »"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-base-105",
+      "type": "QCM",
+      "question": "Quelle escadre est stationnée à Luxeuil ?",
+      "choix": [
+        "La 4e escadre de chasse",
+        "La 2e escadre de chasse",
+        "La 8e escadre de chasse",
+        "La 3e escadre de chasse"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-base-106",
+      "type": "FLASHCARD",
+      "question": "Que signifie le sigle GSBDD ?",
+      "verso": "Groupement de soutien de base de défense"
+    },
+    {
+      "id": "hz-base-107",
+      "type": "QCM",
+      "question": "Quelle base aérienne porte le numéro BA 123 ?",
+      "choix": [
+        "La Réunion",
+        "Solenzara",
+        "Al Dhafra (EAU)",
+        "Orléans"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-base-108",
+      "type": "FLASHCARD",
+      "question": "Quel est le parrain (nom de tradition) de la BA 105 Évreux ?",
+      "verso": "CDT Viot"
+    },
+    {
+      "id": "hz-base-109",
+      "type": "QCM",
+      "question": "Quelle escadre est stationnée à Cazaux ?",
+      "choix": [
+        "La 8e escadre de chasse",
+        "La 30e escadre de chasse",
+        "La 31e escadre",
+        "La 2e escadre de chasse"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-base-110",
+      "type": "FLASHCARD",
+      "question": "Quel est le parrain (nom de tradition) de la BA 113 Saint-Dizier ?",
+      "verso": "CDT Saint-Exupéry"
+    },
+    {
+      "id": "hz-base-111",
+      "type": "QCM",
+      "question": "Quelle base porte le nom du capitaine Madon ?",
+      "choix": [
+        "BA 105 Évreux",
+        "BA 133 Nancy",
+        "BA 709 Cognac",
+        "BA 702 Avord"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-base-112",
+      "type": "QCR",
+      "question": "Quelles unités appartiennent à la 4e escadre de chasse (Saint-Dizier) ?",
+      "choix": [
+        "RC 2/30 Normandie-Niemen",
+        "EC 2/4 La Fayette",
+        "EC 1/4 Gascogne",
+        "ETR 3/4 Aquitaine",
+        "EC 1/3 Navarre"
+      ],
+      "reponses": [
+        1,
+        2,
+        3
+      ],
+      "explication": "Vrai : B, C, D. Faux : A, E."
+    },
+    {
+      "id": "hz-base-113",
+      "type": "FLASHCARD",
+      "question": "Que signifie CPOCAAE ?",
+      "verso": "Centre de préparation opérationnelle des combattants de l’AAE (BA 115 Orange)"
+    },
+    {
+      "id": "hz-base-114",
+      "type": "FLASHCARD",
+      "question": "Comment sont surnommés les élèves de l’École des pupilles de l’air ?",
+      "verso": "Les « Pipins »"
+    },
+    {
+      "id": "hz-base-115",
+      "type": "QCR",
+      "question": "Quelles unités de la 33e escadre mettent en œuvre le MQ-9 Reaper ?",
+      "choix": [
+        "ED 1/33 Belfort",
+        "ED 2/33 Savoie",
+        "ETOD 3/33 Moselle",
+        "ER 4/33 Périgord"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Vrai : A, B, C. Faux : D. L’ER 4/33 Périgord met en œuvre l’ALSR Vador."
+    },
+    {
+      "id": "hz-base-116",
+      "type": "FLASHCARD",
+      "question": "Quel est le parrain (nom de tradition) de la BA 101 Toulouse ?",
+      "verso": "GDA Aubinière"
+    },
+    {
+      "id": "hz-base-117",
+      "type": "FLASHCARD",
+      "question": "Que signifie GAM ?",
+      "verso": "Groupe aérien mixte"
+    },
+    {
+      "id": "hz-base-118",
+      "type": "QCR",
+      "question": "Quelles catégories de bases ont quasiment disparu ?",
+      "choix": [
+        "Les entrepôts (600)",
+        "Les bases opérationnelles (100)",
+        "Les unités diverses (800)",
+        "Les bases radars (900)",
+        "Les bases écoles (700)"
+      ],
+      "reponses": [
+        0,
+        2
+      ],
+      "explication": "Vrai : A, C. Faux : B, D, E."
+    },
+    {
+      "id": "hz-base-119",
+      "type": "FLASHCARD",
+      "question": "Que signifie le sigle EC ?",
+      "verso": "Escadron de chasse"
+    },
+    {
+      "id": "hz-base-120",
+      "type": "QCR",
+      "question": "Quels centres sont implantés sur la BA 942 Lyon Mont-Verdun ?",
+      "choix": [
+        "Le CEAM",
+        "L’ARCC",
+        "Le CASPOA",
+        "Le Centre de renseignement Air",
+        "Le CNOA"
+      ],
+      "reponses": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "explication": "Vrai : B, C, D, E. Faux : A. Le CEAM est à Mont-de-Marsan."
+    },
+    {
+      "id": "hz-base-121",
+      "type": "FLASHCARD",
+      "question": "Quelle ville correspond à la BA 107 ?",
+      "verso": "Villacoublay",
+      "explication": "Parrain : « SLT Dorme »."
+    },
+    {
+      "id": "hz-base-122",
+      "type": "FLASHCARD",
+      "question": "Quel est le parrain (nom de tradition) de la BA 721 Rochefort ?",
+      "verso": "ADJ Gémot"
+    },
+    {
+      "id": "hz-base-123",
+      "type": "QCM",
+      "question": "Quelle base aérienne porte le numéro BA 105 ?",
+      "choix": [
+        "Saint-Dizier",
+        "Solenzara",
+        "Évreux",
+        "Nouméa-La Tontouta"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-base-124",
+      "type": "FLASHCARD",
+      "question": "Que signifie RC (RC 2/30 Normandie-Niemen) ?",
+      "verso": "Régiment de chasse"
+    },
+    {
+      "id": "hz-base-125",
+      "type": "QCM",
+      "question": "Quel âge minimum ont les élèves de l’EETAAE ?",
+      "choix": [
+        "17 ans",
+        "15 ans",
+        "16 ans",
+        "18 ans"
+      ],
+      "reponses": [
+        2
+      ]
+    }
+  ]
+}

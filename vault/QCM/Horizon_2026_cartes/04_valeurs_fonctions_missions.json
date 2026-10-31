@@ -1,0 +1,644 @@
+{
+  "titre": "Horizon — Valeurs de l’aviateur, fonctions stratégiques et missions de l’AAE",
+  "description": "RISE, code de l’aviateur, six fonctions stratégiques et trois missions permanentes de l’AAE (Horizon 2026, ch. 2-II).",
+  "questions": [
+    {
+      "id": "hz-val-001",
+      "type": "QCM",
+      "question": "Sur quoi repose principalement la fonction Connaissance – Compréhension – Anticipation ?",
+      "choix": [
+        "La sécurité civile",
+        "La dissuasion nucléaire",
+        "Le renseignement",
+        "Le prépositionnement de forces"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-val-002",
+      "type": "TROU",
+      "question": "Code de l’aviateur : « En quête permanente de l’excellence, je fais preuve de précision et de ___ dans chacun de mes actes. »",
+      "reponses_texte": [
+        "rigueur"
+      ]
+    },
+    {
+      "id": "hz-val-003",
+      "type": "QCM",
+      "question": "Depuis quand la mission de dissuasion de l’AAE n’a-t-elle jamais été interrompue ?",
+      "choix": [
+        "1972",
+        "1964",
+        "1960",
+        "1966"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-val-004",
+      "type": "TROU",
+      "question": "Code de l’aviateur : « Franc, droit et loyal […]. Je commande avec bienveillance et ___. »",
+      "reponses_texte": [
+        "exigence"
+      ]
+    },
+    {
+      "id": "hz-val-005",
+      "type": "QCR",
+      "question": "Où se trouvent les centres de détection et de contrôle (CDC) cités par l’Horizon ?",
+      "choix": [
+        "Saint-Dizier",
+        "Salon-de-Provence",
+        "Lyon Mont-Verdun",
+        "Cinq-Mars-la-Pile",
+        "Mont-de-Marsan"
+      ],
+      "reponses": [
+        2,
+        3,
+        4
+      ],
+      "explication": "Vrai : C, D, E. Faux : A, B."
+    },
+    {
+      "id": "hz-val-006",
+      "type": "FLASHCARD",
+      "question": "Au service de qui l’aviateur est-il selon la valeur « sens du service » ?",
+      "verso": "De la mission, de ses concitoyens, de la Nation"
+    },
+    {
+      "id": "hz-val-007",
+      "type": "FLASHCARD",
+      "question": "En quoi consiste la PPS-AIR ?",
+      "verso": "Détecter, surveiller et intercepter tout aéronef suspect"
+    },
+    {
+      "id": "hz-val-008",
+      "type": "QCM",
+      "question": "Quelle opération illustre la fonction intervention ?",
+      "choix": [
+        "La présence sur les réseaux sociaux",
+        "La PPS-AIR",
+        "Les satellites CSO",
+        "L’opération Chammal"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-val-009",
+      "type": "FLASHCARD",
+      "question": "Code de l’aviateur : avec quelle réserve l’aviateur « humble et exemplaire » s’exprime-t-il ?",
+      "verso": "La réserve qu’exige son état militaire"
+    },
+    {
+      "id": "hz-val-010",
+      "type": "FLASHCARD",
+      "question": "Quelle devise historique conclut le code de l’aviateur ?",
+      "verso": "« Tant qu’on n’a pas tout donné, on n’a rien donné » (capitaine Georges Guynemer)"
+    },
+    {
+      "id": "hz-val-011",
+      "type": "QCM",
+      "question": "Selon le code de l’aviateur, l’aviateur est disponible pour la protection de son pays :",
+      "choix": [
+        "uniquement sur le territoire national",
+        "uniquement en opérations extérieures",
+        "en tout temps et en tout lieu, si nécessaire au péril de sa vie",
+        "uniquement pendant ses heures de service"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-val-012",
+      "type": "FLASHCARD",
+      "question": "Que signifie ESCA ?",
+      "verso": "Escadron des services de la circulation aérienne"
+    },
+    {
+      "id": "hz-val-013",
+      "type": "FLASHCARD",
+      "question": "Que signifie l’acronyme RISE ?",
+      "verso": "Respect, Intégrité, Sens du service, Excellence"
+    },
+    {
+      "id": "hz-val-014",
+      "type": "QCR",
+      "question": "Selon le code de l’aviateur, « agile et innovant », l’aviateur cultive dès l’entraînement :",
+      "choix": [
+        "La prudence",
+        "L’initiative",
+        "La mesure",
+        "L’audace",
+        "L’obéissance aveugle"
+      ],
+      "reponses": [
+        1,
+        2,
+        3
+      ],
+      "explication": "Vrai : B, C, D. Faux : A, E."
+    },
+    {
+      "id": "hz-val-015",
+      "type": "FLASHCARD",
+      "question": "Qu’est-ce que la résilience ?",
+      "verso": "La capacité du pays à continuer de fonctionner en situation de crise"
+    },
+    {
+      "id": "hz-val-016",
+      "type": "FLASHCARD",
+      "question": "Selon RISE, qu’exige la complexité des missions aériennes ?",
+      "verso": "Rigueur et capacité d’innovation permanente (l’excellence)"
+    },
+    {
+      "id": "hz-val-017",
+      "type": "QCM",
+      "question": "Quel exemple illustre la dissuasion aéroportée ?",
+      "choix": [
+        "Des Rafale B armés de l’ASMPA ravitaillés par des A330 MRTT Phénix",
+        "Des Mirage 2000-5 armés de MICA escortés par un AWACS",
+        "Des A400M transportant des Crotale NG en Roumanie",
+        "Des Mirage 2000D armés du SCALP ravitaillés par des C-135"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-val-018",
+      "type": "QCM",
+      "question": "Quel exemple illustre la fonction influence ?",
+      "choix": [
+        "La posture permanente de sûreté aérienne",
+        "La présence sur les réseaux sociaux contre la désinformation",
+        "Les satellites d’observation CSO",
+        "L’opération Chammal contre Daech"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-val-019",
+      "type": "TROU",
+      "question": "Les 4 valeurs fondatrices de l’aviateur sont connues sous l’acronyme ___.",
+      "reponses_texte": [
+        "RISE"
+      ]
+    },
+    {
+      "id": "hz-val-020",
+      "type": "TROU",
+      "question": "Le plan « Unis pour Faire Face », qui définit les valeurs RISE, date de ___.",
+      "reponses_texte": [
+        "2013"
+      ]
+    },
+    {
+      "id": "hz-val-021",
+      "type": "QCM",
+      "question": "Quel pilier de la dissuasion correspond à « une volonté claire de l’utiliser si nécessaire » ?",
+      "choix": [
+        "La puissance",
+        "La crédibilité politique",
+        "La crédibilité technique",
+        "La crédibilité opérationnelle"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-val-022",
+      "type": "TROU",
+      "question": "Code de l’aviateur : « Au service de mes camarades […], je fais preuve de cohésion et de ___ d’armes. »",
+      "reponses_texte": [
+        "fraternité"
+      ]
+    },
+    {
+      "id": "hz-val-023",
+      "type": "QCM",
+      "question": "Combien de grandes fonctions stratégiques de la défense française l’Horizon présente-t-il ?",
+      "choix": [
+        "5",
+        "6",
+        "4",
+        "7"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-val-024",
+      "type": "QCM",
+      "question": "À qui le code de l’aviateur attribue-t-il la devise « Tant qu’on n’a pas tout donné, on n’a rien donné » ?",
+      "choix": [
+        "Au colonel Fonck",
+        "Au général Valin",
+        "Au capitaine Georges Guynemer",
+        "Au commandant de Saint-Exupéry"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-val-025",
+      "type": "TROU",
+      "question": "Le code de l’aviateur comporte ___ articles.",
+      "reponses_texte": [
+        "12",
+        "douze"
+      ]
+    },
+    {
+      "id": "hz-val-026",
+      "type": "QCM",
+      "question": "Quel plan de 2013 définit les quatre valeurs fondatrices de l’aviateur ?",
+      "choix": [
+        "« Cap 2030 »",
+        "« ALTAIR »",
+        "« Air 2010 »",
+        "« Unis pour Faire Face »"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-val-027",
+      "type": "TROU",
+      "question": "Les trois missions permanentes de l’AAE sont décidées par le ___ de la République.",
+      "reponses_texte": [
+        "Président"
+      ]
+    },
+    {
+      "id": "hz-val-028",
+      "type": "QCR",
+      "question": "Sur quels trois piliers repose la crédibilité de la dissuasion ?",
+      "choix": [
+        "Crédibilité technique",
+        "Crédibilité médiatique",
+        "Crédibilité politique",
+        "Crédibilité budgétaire",
+        "Crédibilité opérationnelle"
+      ],
+      "reponses": [
+        0,
+        2,
+        4
+      ],
+      "explication": "Vrai : A, C, E. Faux : B, D."
+    },
+    {
+      "id": "hz-val-029",
+      "type": "QCR",
+      "question": "Selon le code de l’aviateur, quelles sont « les plus grandes vertus militaires » ?",
+      "choix": [
+        "L’esprit de sacrifice",
+        "L’obéissance",
+        "La prudence",
+        "L’ambition",
+        "Le courage"
+      ],
+      "reponses": [
+        0,
+        1,
+        4
+      ],
+      "explication": "Vrai : A, B, E. Faux : C, D."
+    },
+    {
+      "id": "hz-val-030",
+      "type": "QCM",
+      "question": "Que fait l’aviateur « attaché à ses institutions » selon l’article 1 du code ?",
+      "choix": [
+        "Il ne s’exprime jamais, en service comme en dehors du service",
+        "Il obéit à tout ordre sans exception, même manifestement illégal",
+        "Il représente l’AAE en toutes circonstances et respecte les lois et symboles de la France",
+        "Il défend publiquement ses opinions politiques en uniforme"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-val-031",
+      "type": "TROU",
+      "question": "Code de l’aviateur : « J’emploie la force avec discernement et ___, toujours dans le respect de la dignité humaine. »",
+      "reponses_texte": [
+        "maîtrise"
+      ]
+    },
+    {
+      "id": "hz-val-032",
+      "type": "QCM",
+      "question": "Combien d’avions survolent la France chaque jour selon l’Horizon ?",
+      "choix": [
+        "Plus de 50 000",
+        "Environ 3 000",
+        "Plus de 10 000",
+        "Environ 1 000"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-val-033",
+      "type": "FLASHCARD",
+      "question": "Devenir aviateur, c’est travailler dans un climat de… ?",
+      "verso": "Confiance et de dialogue"
+    },
+    {
+      "id": "hz-val-034",
+      "type": "FLASHCARD",
+      "question": "À quel rythme l’AAE met-elle en œuvre la composante aéroportée de la dissuasion ?",
+      "verso": "24 h/24, 7 j/7"
+    },
+    {
+      "id": "hz-val-035",
+      "type": "QCM",
+      "question": "Quelle fonction stratégique cherche à éviter les crises avant qu’elles ne dégénèrent ?",
+      "choix": [
+        "L’influence",
+        "La prévention",
+        "La protection",
+        "L’intervention"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-val-036",
+      "type": "FLASHCARD",
+      "question": "Quelle fonction stratégique est le pilier fondamental de la stratégie de défense française ?",
+      "verso": "La dissuasion"
+    },
+    {
+      "id": "hz-val-037",
+      "type": "QCM",
+      "question": "Quel exemple illustre la fonction protection–résilience ?",
+      "choix": [
+        "La posture permanente de sûreté aérienne (PPS-AIR)",
+        "L’opération Barkhane",
+        "Le partage de renseignement OTAN",
+        "Les bases de Djibouti"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-val-038",
+      "type": "QCR",
+      "question": "Quelles bases françaises à l’étranger sont citées comme exemples de la fonction prévention ?",
+      "choix": [
+        "Kaboul",
+        "Libreville",
+        "Abidjan",
+        "Djibouti",
+        "Niamey"
+      ],
+      "reponses": [
+        1,
+        2,
+        3
+      ],
+      "explication": "Vrai : B, C, D. Faux : A, E."
+    },
+    {
+      "id": "hz-val-039",
+      "type": "FLASHCARD",
+      "question": "Quelle est la « nouvelle » fonction stratégique ?",
+      "verso": "L’influence",
+      "explication": "Promouvoir les intérêts et valeurs de la France : diplomatie, culture, technologie, information."
+    },
+    {
+      "id": "hz-val-040",
+      "type": "QCM",
+      "question": "Quel pilier de la dissuasion correspond à « une capacité militaire disponible en permanence » ?",
+      "choix": [
+        "La crédibilité opérationnelle",
+        "La crédibilité technique",
+        "La stricte suffisance",
+        "La crédibilité politique"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-val-041",
+      "type": "QCM",
+      "question": "Quel exemple illustre la fonction CCA ?",
+      "choix": [
+        "Les satellites d’observation CSO",
+        "La PPS-AIR",
+        "Les bases de Djibouti et Libreville",
+        "L’opération Chammal"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-val-042",
+      "type": "FLASHCARD",
+      "question": "Que signifie le sigle CCA (fonction stratégique) ?",
+      "verso": "Connaissance – Compréhension – Anticipation"
+    },
+    {
+      "id": "hz-val-043",
+      "type": "QCM",
+      "question": "Quelle valeur RISE consiste à « donner du sens à son engagement » ?",
+      "choix": [
+        "Le respect",
+        "L’excellence",
+        "L’intégrité",
+        "Le sens du service"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-val-044",
+      "type": "QCR",
+      "question": "Pour quelles raisons principales la fonction intervention projette-t-elle des forces ?",
+      "choix": [
+        "Conquérir des territoires",
+        "Défendre les intérêts de la France et de ses alliés",
+        "Assumer ses responsabilités internationales",
+        "Assurer la sécurité civile",
+        "Protéger les ressortissants français"
+      ],
+      "reponses": [
+        1,
+        2,
+        4
+      ],
+      "explication": "Vrai : B, C, E. Faux : A, D."
+    },
+    {
+      "id": "hz-val-045",
+      "type": "QCM",
+      "question": "Quel pilier de la dissuasion correspond à « la fiabilité des moyens (missiles, vecteurs, commandement) » ?",
+      "choix": [
+        "La crédibilité technique",
+        "La crédibilité politique",
+        "L’indépendance",
+        "La crédibilité opérationnelle"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-val-046",
+      "type": "FLASHCARD",
+      "question": "Que signifie EAN ?",
+      "verso": "Espace aérien national"
+    },
+    {
+      "id": "hz-val-047",
+      "type": "FLASHCARD",
+      "question": "Quel est le nom français de l’AWACS ?",
+      "verso": "SDCA : système de détection et de commandement aéroporté"
+    },
+    {
+      "id": "hz-val-048",
+      "type": "QCR",
+      "question": "Quelles sont les missions permanentes de l’AAE ?",
+      "choix": [
+        "Intervention",
+        "Influence",
+        "Protection",
+        "Dissuasion",
+        "Prévention"
+      ],
+      "reponses": [
+        0,
+        2,
+        3
+      ],
+      "explication": "Vrai : A, C, D. Faux : B, E. Prévention et influence sont des fonctions stratégiques, pas des missions permanentes de l’AAE."
+    },
+    {
+      "id": "hz-val-049",
+      "type": "QCM",
+      "question": "Quelle valeur RISE est qualifiée de « credo de l’aviateur » ?",
+      "choix": [
+        "Le sens du service",
+        "L’excellence",
+        "L’intégrité",
+        "Le respect"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-val-050",
+      "type": "QCM",
+      "question": "Quelle valeur RISE implique que « chacun dans ses actes soit responsable de l’autre » ?",
+      "choix": [
+        "L’excellence",
+        "Le respect",
+        "L’intégrité",
+        "Le sens du service"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-val-051",
+      "type": "QCR",
+      "question": "Quelles valeurs composent RISE ?",
+      "choix": [
+        "Intégrité",
+        "Excellence",
+        "Sens du service",
+        "Respect",
+        "Rigueur"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explication": "Vrai : A, B, C, D. Faux : E. La rigueur est citée dans la définition de l’excellence, mais n’est pas une des quatre valeurs."
+    },
+    {
+      "id": "hz-val-052",
+      "type": "QCM",
+      "question": "Quelle valeur RISE est « à l’origine de la confiance et au cœur du dialogue » ?",
+      "choix": [
+        "Le sens du service",
+        "L’intégrité",
+        "L’excellence",
+        "Le respect"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-val-053",
+      "type": "QCR",
+      "question": "Quelles sont des fonctions stratégiques de la défense française ?",
+      "choix": [
+        "Dissuasion",
+        "Prévention",
+        "Connaissance – compréhension – anticipation",
+        "Influence",
+        "Projection de puissance"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explication": "Vrai : A, B, C, D. Faux : E. Les six fonctions : CCA, dissuasion, prévention, intervention, protection-résilience, influence."
+    },
+    {
+      "id": "hz-val-054",
+      "type": "TROU",
+      "question": "« Tant qu’on n’a pas tout donné, on n’a ___ donné. »",
+      "reponses_texte": [
+        "rien"
+      ],
+      "explication": "Devise du capitaine Guynemer, article 12 du code de l’aviateur."
+    },
+    {
+      "id": "hz-val-055",
+      "type": "QCM",
+      "question": "Combien de missions permanentes l’AAE assure-t-elle ?",
+      "choix": [
+        "2",
+        "4",
+        "3",
+        "6"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Dissuasion, intervention et protection."
+    }
+  ]
+}

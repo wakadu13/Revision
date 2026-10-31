@@ -1,0 +1,271 @@
+{
+  "langue": "Anglais",
+  "titre": "Anglais — vocabulaire : les secteurs d'activité (B1)",
+  "particules_optionnelles": [
+    "to",
+    "a",
+    "an",
+    "the"
+  ],
+  "caracteres_speciaux": [],
+  "vocabulaire": [
+    {
+      "id": "en-industries-001",
+      "mot": "an industry",
+      "traductions": [
+        "une industrie",
+        "un secteur d'activité"
+      ],
+      "exemple": "Many [industries] were affected by the recession.",
+      "exemple_traduction": "De nombreux secteurs ont été touchés par la récession.",
+      "note": "Faux ami partiel : industry désigne tout secteur économique, y compris les services."
+    },
+    {
+      "id": "en-industries-002",
+      "mot": "a business",
+      "traductions": [
+        "une entreprise",
+        "une affaire"
+      ],
+      "exemple": "He started his [business] in his bedroom at 15.",
+      "exemple_traduction": "Il a lancé son entreprise dans sa chambre à 15 ans.",
+      "note": "to run a business = diriger une entreprise.",
+      "prononciation": "/ˈbɪznəs/"
+    },
+    {
+      "id": "en-industries-003",
+      "mot": "the primary sector",
+      "traductions": [
+        "le secteur primaire"
+      ],
+      "exemple": "Many people here work in the [primary sector].",
+      "exemple_traduction": "Beaucoup de gens ici travaillent dans le secteur primaire.",
+      "note": "Matières premières : pétrole, bois, coton, charbon."
+    },
+    {
+      "id": "en-industries-004",
+      "mot": "the secondary sector",
+      "traductions": [
+        "le secteur secondaire"
+      ],
+      "exemple": "Many people in my city work in the [secondary sector].",
+      "exemple_traduction": "Beaucoup de gens dans ma ville travaillent dans le secteur secondaire.",
+      "note": "Transformation des matières premières : industrie, construction."
+    },
+    {
+      "id": "en-industries-005",
+      "mot": "the tertiary sector",
+      "traductions": [
+        "le secteur tertiaire"
+      ],
+      "exemple": "He decided to enter the [tertiary sector] and became a police officer.",
+      "exemple_traduction": "Il a choisi le secteur tertiaire et est devenu policier.",
+      "note": "Les services."
+    },
+    {
+      "id": "en-industries-006",
+      "mot": "the quaternary sector",
+      "traductions": [
+        "le secteur quaternaire"
+      ],
+      "exemple": "As a teacher, he works in the [quaternary sector].",
+      "exemple_traduction": "En tant qu'enseignant, il travaille dans le secteur quaternaire.",
+      "note": "Secteur de la connaissance : médias, informatique, éducation."
+    },
+    {
+      "id": "en-industries-007",
+      "mot": "heavy industry",
+      "traductions": [
+        "l'industrie lourde"
+      ],
+      "exemple": "Many people in the area work in [heavy industry].",
+      "exemple_traduction": "Beaucoup de gens de la région travaillent dans l'industrie lourde.",
+      "note": "Ex. : construction navale, machines."
+    },
+    {
+      "id": "en-industries-008",
+      "mot": "light industry",
+      "traductions": [
+        "l'industrie légère"
+      ],
+      "exemple": "Clothes are made by [light industry].",
+      "exemple_traduction": "Les vêtements sont fabriqués par l'industrie légère.",
+      "note": "Ex. : vêtements, électroménager."
+    },
+    {
+      "id": "en-industries-009",
+      "mot": "the manufacturing industry",
+      "traductions": [
+        "l'industrie manufacturière"
+      ],
+      "exemple": "My father worked in the [manufacturing industry] all his life.",
+      "exemple_traduction": "Mon père a travaillé toute sa vie dans l'industrie manufacturière."
+    },
+    {
+      "id": "en-industries-010",
+      "mot": "the agriculture industry",
+      "traductions": [
+        "l'agriculture"
+      ],
+      "exemple": "Her family has always worked in the [agriculture industry].",
+      "exemple_traduction": "Sa famille a toujours travaillé dans l'agriculture.",
+      "note": "Aussi simplement : agriculture."
+    },
+    {
+      "id": "en-industries-011",
+      "mot": "the food industry",
+      "traductions": [
+        "l'agroalimentaire",
+        "la restauration"
+      ],
+      "exemple": "He loves working in the [food industry].",
+      "exemple_traduction": "Il adore travailler dans l'agroalimentaire."
+    },
+    {
+      "id": "en-industries-012",
+      "mot": "the construction industry",
+      "traductions": [
+        "le BTP",
+        "le secteur du bâtiment"
+      ],
+      "exemple": "He works in the [construction industry] as a foreman.",
+      "exemple_traduction": "Il travaille dans le BTP comme contremaître."
+    },
+    {
+      "id": "en-industries-013",
+      "mot": "the energy industry",
+      "traductions": [
+        "le secteur de l'énergie"
+      ],
+      "exemple": "My grandfather works in the [energy industry].",
+      "exemple_traduction": "Mon grand-père travaille dans le secteur de l'énergie."
+    },
+    {
+      "id": "en-industries-014",
+      "mot": "the mining industry",
+      "traductions": [
+        "l'industrie minière"
+      ],
+      "exemple": "The town was famous for its [mining industry].",
+      "exemple_traduction": "La ville était célèbre pour son industrie minière.",
+      "note": "a mine = une mine ; a miner = un mineur."
+    },
+    {
+      "id": "en-industries-015",
+      "mot": "the chemical industry",
+      "traductions": [
+        "l'industrie chimique"
+      ],
+      "exemple": "He developed medicines in the [chemical industry].",
+      "exemple_traduction": "Il a mis au point des médicaments dans l'industrie chimique.",
+      "note": "/ˈkemɪkl/"
+    },
+    {
+      "id": "en-industries-016",
+      "mot": "the computer industry",
+      "traductions": [
+        "l'industrie informatique"
+      ],
+      "exemple": "She now works as a hardware engineer in the [computer industry].",
+      "exemple_traduction": "Elle travaille maintenant comme ingénieure matériel dans l'informatique."
+    },
+    {
+      "id": "en-industries-017",
+      "mot": "the aerospace industry",
+      "traductions": [
+        "l'aérospatiale"
+      ],
+      "exemple": "He designs satellite equipment in the [aerospace industry].",
+      "exemple_traduction": "Il conçoit des équipements satellites dans l'aérospatiale."
+    },
+    {
+      "id": "en-industries-018",
+      "mot": "the defense industry",
+      "traductions": [
+        "l'industrie de l'armement",
+        "l'industrie de défense"
+      ],
+      "exemple": "Buyers came to the [defense industry] show from all over the world.",
+      "exemple_traduction": "Des acheteurs du monde entier sont venus au salon de l'armement.",
+      "note": "Britannique : defence.",
+      "variantes": [
+        "the defence industry"
+      ]
+    },
+    {
+      "id": "en-industries-019",
+      "mot": "the transport industry",
+      "traductions": [
+        "le secteur des transports"
+      ],
+      "exemple": "The [transport industry] in this country is very complicated.",
+      "exemple_traduction": "Le secteur des transports dans ce pays est très compliqué.",
+      "note": "Américain : the transportation industry."
+    },
+    {
+      "id": "en-industries-020",
+      "mot": "the financial services industry",
+      "traductions": [
+        "les services financiers"
+      ],
+      "exemple": "Her whole family works in the [financial services industry].",
+      "exemple_traduction": "Toute sa famille travaille dans les services financiers.",
+      "note": "Banque, assurance, cartes de crédit."
+    },
+    {
+      "id": "en-industries-021",
+      "mot": "the health care industry",
+      "traductions": [
+        "le secteur de la santé"
+      ],
+      "exemple": "The [health care industry] here is under-funded.",
+      "exemple_traduction": "Le secteur de la santé ici est sous-financé.",
+      "note": "Aussi écrit « healthcare ».",
+      "variantes": [
+        "the healthcare industry"
+      ]
+    },
+    {
+      "id": "en-industries-022",
+      "mot": "the education industry",
+      "traductions": [
+        "le secteur de l'enseignement"
+      ],
+      "exemple": "She worked in the [education industry] for 40 years.",
+      "exemple_traduction": "Elle a travaillé 40 ans dans l'enseignement."
+    },
+    {
+      "id": "en-industries-023",
+      "mot": "the hospitality industry",
+      "traductions": [
+        "l'hôtellerie-restauration",
+        "le secteur du tourisme"
+      ],
+      "exemple": "Her work in the [hospitality industry] took her all over the world.",
+      "exemple_traduction": "Son travail dans l'hôtellerie l'a emmenée partout dans le monde.",
+      "note": "Faux ami : hospitality ≠ hôpital."
+    },
+    {
+      "id": "en-industries-024",
+      "mot": "the entertainment industry",
+      "traductions": [
+        "l'industrie du divertissement",
+        "le monde du spectacle"
+      ],
+      "exemple": "She went into the [entertainment industry] and became an actress.",
+      "exemple_traduction": "Elle est entrée dans le monde du spectacle et est devenue actrice.",
+      "note": "show business = le show-business."
+    },
+    {
+      "id": "en-industries-025",
+      "mot": "the mass media",
+      "traductions": [
+        "les médias de masse",
+        "les grands médias"
+      ],
+      "exemple": "The [mass media] has changed a lot since she was a child.",
+      "exemple_traduction": "Les grands médias ont beaucoup changé depuis son enfance.",
+      "note": "Verbe au singulier ou au pluriel."
+    }
+  ]
+}

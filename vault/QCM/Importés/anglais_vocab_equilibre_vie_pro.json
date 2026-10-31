@@ -1,0 +1,174 @@
+{
+  "langue": "Anglais",
+  "titre": "Anglais — vocabulaire : l'équilibre vie pro / vie perso (B1)",
+  "particules_optionnelles": [
+    "to",
+    "a",
+    "an",
+    "the"
+  ],
+  "caracteres_speciaux": [],
+  "vocabulaire": [
+    {
+      "id": "en-equilibre-001",
+      "mot": "a salary",
+      "traductions": [
+        "un salaire"
+      ],
+      "exemple": "My [salary] is higher than ever.",
+      "exemple_traduction": "Mon salaire n'a jamais été aussi élevé.",
+      "note": "a pay rise (GB) / a raise (US) = une augmentation."
+    },
+    {
+      "id": "en-equilibre-002",
+      "mot": "to commute",
+      "traductions": [
+        "faire le trajet domicile-travail"
+      ],
+      "exemple": "It took me two hours to [commute] to my last job.",
+      "exemple_traduction": "Il me fallait deux heures de trajet pour mon ancien travail.",
+      "note": "Aussi un nom : a commute = le trajet. a commuter = un navetteur."
+    },
+    {
+      "id": "en-equilibre-003",
+      "mot": "to work a 9 to 5",
+      "traductions": [
+        "avoir un emploi aux horaires de bureau"
+      ],
+      "exemple": "They both gave up their [9 to 5] jobs.",
+      "exemple_traduction": "Ils ont tous les deux quitté leur emploi aux horaires de bureau.",
+      "note": "Expression, même si les horaires réels diffèrent.",
+      "variantes": [
+        "to work a nine to five"
+      ]
+    },
+    {
+      "id": "en-equilibre-004",
+      "mot": "to relax",
+      "traductions": [
+        "se détendre"
+      ],
+      "exemple": "I like to [relax] in the garden after work.",
+      "exemple_traduction": "J'aime me détendre dans le jardin après le travail.",
+      "note": "Pas de pronom : I relax (pas « I relax myself »)."
+    },
+    {
+      "id": "en-equilibre-005",
+      "mot": "to go out",
+      "traductions": [
+        "sortir"
+      ],
+      "exemple": "I'm usually too tired to [go out] after work.",
+      "exemple_traduction": "Je suis souvent trop fatigué pour sortir après le travail.",
+      "note": "Irrégulier : go – went – gone."
+    },
+    {
+      "id": "en-equilibre-006",
+      "mot": "to stay in",
+      "traductions": [
+        "rester à la maison"
+      ],
+      "exemple": "In winter, I prefer to [stay in] at the weekend.",
+      "exemple_traduction": "En hiver, je préfère rester à la maison le week-end.",
+      "note": "Contraire : to go out."
+    },
+    {
+      "id": "en-equilibre-007",
+      "mot": "to eat out",
+      "traductions": [
+        "manger au restaurant"
+      ],
+      "exemple": "We [eat out] at least twice a week.",
+      "exemple_traduction": "Nous mangeons au restaurant au moins deux fois par semaine."
+    },
+    {
+      "id": "en-equilibre-008",
+      "mot": "to entertain friends",
+      "traductions": [
+        "recevoir des amis"
+      ],
+      "exemple": "It's my turn to [entertain friends] on Friday.",
+      "exemple_traduction": "C'est mon tour de recevoir des amis vendredi.",
+      "note": "Faux ami partiel : to entertain = recevoir chez soi / divertir (pas « entretenir »)."
+    },
+    {
+      "id": "en-equilibre-009",
+      "mot": "to spend time with friends and family",
+      "traductions": [
+        "passer du temps avec ses proches"
+      ],
+      "exemple": "I try to [spend time with friends and family] at weekends.",
+      "exemple_traduction": "J'essaie de passer du temps avec mes proches le week-end.",
+      "note": "Irrégulier : spend – spent – spent."
+    },
+    {
+      "id": "en-equilibre-010",
+      "mot": "a hobby",
+      "traductions": [
+        "un passe-temps",
+        "un loisir"
+      ],
+      "exemple": "As a child, I had many [hobbies].",
+      "exemple_traduction": "Enfant, j'avais beaucoup de passe-temps.",
+      "note": "Pluriel : hobbies. Plutôt pour des activités où l'on fait quelque chose."
+    },
+    {
+      "id": "en-equilibre-011",
+      "mot": "an interest",
+      "traductions": [
+        "un centre d'intérêt"
+      ],
+      "exemple": "I have many [interests], but not much time.",
+      "exemple_traduction": "J'ai beaucoup de centres d'intérêt, mais peu de temps."
+    },
+    {
+      "id": "en-equilibre-012",
+      "mot": "to do an evening class",
+      "traductions": [
+        "suivre un cours du soir"
+      ],
+      "exemple": "My friend has been [doing evening classes] for years.",
+      "exemple_traduction": "Mon amie suit des cours du soir depuis des années."
+    },
+    {
+      "id": "en-equilibre-013",
+      "mot": "to do an online course",
+      "traductions": [
+        "suivre une formation en ligne"
+      ],
+      "exemple": "I'm [doing an online course] while working full-time.",
+      "exemple_traduction": "Je suis une formation en ligne tout en travaillant à temps plein."
+    },
+    {
+      "id": "en-equilibre-014",
+      "mot": "to volunteer",
+      "traductions": [
+        "faire du bénévolat"
+      ],
+      "exemple": "My brother [volunteers] at an animal shelter.",
+      "exemple_traduction": "Mon frère fait du bénévolat dans un refuge pour animaux.",
+      "note": "a volunteer = un bénévole."
+    },
+    {
+      "id": "en-equilibre-015",
+      "mot": "to budget",
+      "traductions": [
+        "gérer son budget"
+      ],
+      "exemple": "They are really good at [budgeting].",
+      "exemple_traduction": "Ils savent très bien gérer leur budget.",
+      "note": "Aussi un nom : a budget."
+    },
+    {
+      "id": "en-equilibre-016",
+      "mot": "savings",
+      "traductions": [
+        "les économies",
+        "l'épargne"
+      ],
+      "exemple": "She has a lot of [savings] in the bank.",
+      "exemple_traduction": "Elle a beaucoup d'économies à la banque.",
+      "note": "to save money = économiser de l'argent."
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "langue": "Anglais",
+  "titre": "Anglais — vocabulaire : le restaurant (A1)",
+  "particules_optionnelles": [
+    "to",
+    "a",
+    "an",
+    "the"
+  ],
+  "caracteres_speciaux": [],
+  "vocabulaire": [
+    {
+      "id": "en-restaurant-001",
+      "mot": "to book",
+      "traductions": [
+        "réserver"
+      ],
+      "exemple": "I'd like to [book] a table for six people.",
+      "exemple_traduction": "Je voudrais réserver une table pour six personnes.",
+      "note": "Synonyme : to reserve. a booking = une réservation."
+    },
+    {
+      "id": "en-restaurant-002",
+      "mot": "a menu",
+      "traductions": [
+        "une carte (au restaurant)",
+        "un menu"
+      ],
+      "exemple": "I looked at the [menu] online before coming.",
+      "exemple_traduction": "J'ai regardé la carte en ligne avant de venir.",
+      "note": "Faux ami partiel : a menu = la carte. Le « menu » à prix fixe = a set menu."
+    },
+    {
+      "id": "en-restaurant-003",
+      "mot": "to order",
+      "traductions": [
+        "commander"
+      ],
+      "exemple": "We are ready to [order] now.",
+      "exemple_traduction": "Nous sommes prêts à commander.",
+      "note": "I'll have… = Je vais prendre…"
+    },
+    {
+      "id": "en-restaurant-004",
+      "mot": "a starter",
+      "traductions": [
+        "une entrée"
+      ],
+      "exemple": "Can we have a salad as a [starter]?",
+      "exemple_traduction": "Pouvons-nous prendre une salade en entrée ?",
+      "note": "Américain : an appetizer. Attention : an entrée (US) = le plat principal !",
+      "variantes": [
+        "an appetizer"
+      ]
+    },
+    {
+      "id": "en-restaurant-005",
+      "mot": "a main course",
+      "traductions": [
+        "un plat principal"
+      ],
+      "exemple": "For my [main course], I'd like the carbonara.",
+      "exemple_traduction": "Comme plat principal, je voudrais les carbonara."
+    },
+    {
+      "id": "en-restaurant-006",
+      "mot": "a dessert",
+      "traductions": [
+        "un dessert"
+      ],
+      "exemple": "I want apple pie for [dessert].",
+      "exemple_traduction": "Je veux une tarte aux pommes en dessert.",
+      "note": "Orthographe : dessert (2 s) ≠ desert (1 s) = un désert.",
+      "prononciation": "/dɪˈzɜːt/"
+    },
+    {
+      "id": "en-restaurant-007",
+      "mot": "the bill",
+      "traductions": [
+        "l'addition"
+      ],
+      "exemple": "I'll pay the [bill] this time.",
+      "exemple_traduction": "Je paie l'addition cette fois-ci.",
+      "note": "Britannique. Américain : the check.",
+      "variantes": [
+        "the check"
+      ]
+    },
+    {
+      "id": "en-restaurant-008",
+      "mot": "a tip",
+      "traductions": [
+        "un pourboire"
+      ],
+      "exemple": "Let's leave five dollars as a [tip].",
+      "exemple_traduction": "Laissons cinq dollars de pourboire.",
+      "note": "to tip = donner un pourboire. a tip = aussi un conseil, une astuce."
+    },
+    {
+      "id": "en-restaurant-009",
+      "mot": "cash",
+      "traductions": [
+        "les espèces",
+        "le liquide"
+      ],
+      "exemple": "I don't have enough [cash] on me.",
+      "exemple_traduction": "Je n'ai pas assez de liquide sur moi.",
+      "note": "Indénombrable. to pay in cash = payer en espèces ; a cash machine = un distributeur."
+    },
+    {
+      "id": "en-restaurant-010",
+      "mot": "a credit card",
+      "traductions": [
+        "une carte bancaire",
+        "une carte de crédit"
+      ],
+      "exemple": "Can I pay by [credit card]?",
+      "exemple_traduction": "Puis-je payer par carte bancaire ?",
+      "note": "to pay by card = payer par carte."
+    }
+  ]
+}

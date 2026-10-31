@@ -1,0 +1,798 @@
+{
+  "langue": "Italien",
+  "caracteres_speciaux": [
+    "à",
+    "è",
+    "é",
+    "ì",
+    "ò",
+    "ù"
+  ],
+  "titre": "Italien — conjugaison : presente",
+  "description": "Les verbes les plus fréquents au présent, réguliers et irréguliers.",
+  "conjugaison": [
+    {
+      "id": "it-conj-essere-pres",
+      "verbe": "essere",
+      "traduction": "être",
+      "temps": "presente",
+      "formes": {
+        "io": [
+          "sono"
+        ],
+        "tu": [
+          "sei"
+        ],
+        "lui / lei": [
+          "è"
+        ],
+        "noi": [
+          "siamo"
+        ],
+        "voi": [
+          "siete"
+        ],
+        "loro": [
+          "sono"
+        ]
+      },
+      "explication": "Irrégulier. sono = io ET loro."
+    },
+    {
+      "id": "it-conj-avere-pres",
+      "verbe": "avere",
+      "traduction": "avoir",
+      "temps": "presente",
+      "formes": {
+        "io": [
+          "ho"
+        ],
+        "tu": [
+          "hai"
+        ],
+        "lui / lei": [
+          "ha"
+        ],
+        "noi": [
+          "abbiamo"
+        ],
+        "voi": [
+          "avete"
+        ],
+        "loro": [
+          "hanno"
+        ]
+      },
+      "explication": "Le h ne se prononce pas : ho, hai, ha, hanno."
+    },
+    {
+      "id": "it-conj-parlare-pres",
+      "verbe": "parlare",
+      "traduction": "parler",
+      "temps": "presente",
+      "formes": {
+        "io": [
+          "parlo"
+        ],
+        "tu": [
+          "parli"
+        ],
+        "lui / lei": [
+          "parla"
+        ],
+        "noi": [
+          "parliamo"
+        ],
+        "voi": [
+          "parlate"
+        ],
+        "loro": [
+          "parlano"
+        ]
+      },
+      "explication": "Modèle -are : -o, -i, -a, -iamo, -ate, -ano. Accent de loro sur le radical : PARlano."
+    },
+    {
+      "id": "it-conj-prendere-pres",
+      "verbe": "prendere",
+      "traduction": "prendre",
+      "temps": "presente",
+      "formes": {
+        "io": [
+          "prendo"
+        ],
+        "tu": [
+          "prendi"
+        ],
+        "lui / lei": [
+          "prende"
+        ],
+        "noi": [
+          "prendiamo"
+        ],
+        "voi": [
+          "prendete"
+        ],
+        "loro": [
+          "prendono"
+        ]
+      },
+      "explication": "Modèle -ere : -o, -i, -e, -iamo, -ete, -ono."
+    },
+    {
+      "id": "it-conj-dormire-pres",
+      "verbe": "dormire",
+      "traduction": "dormir",
+      "temps": "presente",
+      "formes": {
+        "io": [
+          "dormo"
+        ],
+        "tu": [
+          "dormi"
+        ],
+        "lui / lei": [
+          "dorme"
+        ],
+        "noi": [
+          "dormiamo"
+        ],
+        "voi": [
+          "dormite"
+        ],
+        "loro": [
+          "dormono"
+        ]
+      },
+      "explication": "Modèle -ire sans -isc- : comme partire, sentire, aprire."
+    },
+    {
+      "id": "it-conj-capire-pres",
+      "verbe": "capire",
+      "traduction": "comprendre",
+      "temps": "presente",
+      "formes": {
+        "io": [
+          "capisco"
+        ],
+        "tu": [
+          "capisci"
+        ],
+        "lui / lei": [
+          "capisce"
+        ],
+        "noi": [
+          "capiamo"
+        ],
+        "voi": [
+          "capite"
+        ],
+        "loro": [
+          "capiscono"
+        ]
+      },
+      "explication": "Verbes en -ire avec -isc- (sauf noi / voi) : finire, preferire, pulire."
+    },
+    {
+      "id": "it-conj-fare-pres",
+      "verbe": "fare",
+      "traduction": "faire",
+      "temps": "presente",
+      "formes": {
+        "io": [
+          "faccio"
+        ],
+        "tu": [
+          "fai"
+        ],
+        "lui / lei": [
+          "fa"
+        ],
+        "noi": [
+          "facciamo"
+        ],
+        "voi": [
+          "fate"
+        ],
+        "loro": [
+          "fanno"
+        ]
+      },
+      "explication": "Irrégulier (radical fac- du latin)."
+    },
+    {
+      "id": "it-conj-andare-pres",
+      "verbe": "andare",
+      "traduction": "aller",
+      "temps": "presente",
+      "formes": {
+        "io": [
+          "vado"
+        ],
+        "tu": [
+          "vai"
+        ],
+        "lui / lei": [
+          "va"
+        ],
+        "noi": [
+          "andiamo"
+        ],
+        "voi": [
+          "andate"
+        ],
+        "loro": [
+          "vanno"
+        ]
+      },
+      "explication": "Deux radicaux : vad- / and-."
+    },
+    {
+      "id": "it-conj-venire-pres",
+      "verbe": "venire",
+      "traduction": "venir",
+      "temps": "presente",
+      "formes": {
+        "io": [
+          "vengo"
+        ],
+        "tu": [
+          "vieni"
+        ],
+        "lui / lei": [
+          "viene"
+        ],
+        "noi": [
+          "veniamo"
+        ],
+        "voi": [
+          "venite"
+        ],
+        "loro": [
+          "vengono"
+        ]
+      },
+      "explication": "-g- à io et loro ; ie aux personnes accentuées."
+    },
+    {
+      "id": "it-conj-stare-pres",
+      "verbe": "stare",
+      "traduction": "rester, être (état)",
+      "temps": "presente",
+      "formes": {
+        "io": [
+          "sto"
+        ],
+        "tu": [
+          "stai"
+        ],
+        "lui / lei": [
+          "sta"
+        ],
+        "noi": [
+          "stiamo"
+        ],
+        "voi": [
+          "state"
+        ],
+        "loro": [
+          "stanno"
+        ]
+      },
+      "explication": "Comme stare : dare (do, dai, dà…). Come stai?"
+    },
+    {
+      "id": "it-conj-dare-pres",
+      "verbe": "dare",
+      "traduction": "donner",
+      "temps": "presente",
+      "formes": {
+        "io": [
+          "do"
+        ],
+        "tu": [
+          "dai"
+        ],
+        "lui / lei": [
+          "dà"
+        ],
+        "noi": [
+          "diamo"
+        ],
+        "voi": [
+          "date"
+        ],
+        "loro": [
+          "danno"
+        ]
+      },
+      "explication": "dà (il donne) prend un accent pour le distinguer de da (préposition)."
+    },
+    {
+      "id": "it-conj-dire-pres",
+      "verbe": "dire",
+      "traduction": "dire",
+      "temps": "presente",
+      "formes": {
+        "io": [
+          "dico"
+        ],
+        "tu": [
+          "dici"
+        ],
+        "lui / lei": [
+          "dice"
+        ],
+        "noi": [
+          "diciamo"
+        ],
+        "voi": [
+          "dite"
+        ],
+        "loro": [
+          "dicono"
+        ]
+      },
+      "explication": "Radical dic- ; voi dite."
+    },
+    {
+      "id": "it-conj-potere-pres",
+      "verbe": "potere",
+      "traduction": "pouvoir",
+      "temps": "presente",
+      "formes": {
+        "io": [
+          "posso"
+        ],
+        "tu": [
+          "puoi"
+        ],
+        "lui / lei": [
+          "può"
+        ],
+        "noi": [
+          "possiamo"
+        ],
+        "voi": [
+          "potete"
+        ],
+        "loro": [
+          "possono"
+        ]
+      },
+      "explication": "può avec accent."
+    },
+    {
+      "id": "it-conj-volere-pres",
+      "verbe": "volere",
+      "traduction": "vouloir",
+      "temps": "presente",
+      "formes": {
+        "io": [
+          "voglio"
+        ],
+        "tu": [
+          "vuoi"
+        ],
+        "lui / lei": [
+          "vuole"
+        ],
+        "noi": [
+          "vogliamo"
+        ],
+        "voi": [
+          "volete"
+        ],
+        "loro": [
+          "vogliono"
+        ]
+      },
+      "explication": "Radical vogl- / vuo-. Poli : vorrei."
+    },
+    {
+      "id": "it-conj-dovere-pres",
+      "verbe": "dovere",
+      "traduction": "devoir",
+      "temps": "presente",
+      "formes": {
+        "io": [
+          "devo"
+        ],
+        "tu": [
+          "devi"
+        ],
+        "lui / lei": [
+          "deve"
+        ],
+        "noi": [
+          "dobbiamo"
+        ],
+        "voi": [
+          "dovete"
+        ],
+        "loro": [
+          "devono"
+        ]
+      },
+      "explication": "dev- / dobb-. (Formes anciennes : debbo, debbono.)"
+    },
+    {
+      "id": "it-conj-sapere-pres",
+      "verbe": "sapere",
+      "traduction": "savoir",
+      "temps": "presente",
+      "formes": {
+        "io": [
+          "so"
+        ],
+        "tu": [
+          "sai"
+        ],
+        "lui / lei": [
+          "sa"
+        ],
+        "noi": [
+          "sappiamo"
+        ],
+        "voi": [
+          "sapete"
+        ],
+        "loro": [
+          "sanno"
+        ]
+      },
+      "explication": "Non lo so = je ne sais pas."
+    },
+    {
+      "id": "it-conj-uscire-pres",
+      "verbe": "uscire",
+      "traduction": "sortir",
+      "temps": "presente",
+      "formes": {
+        "io": [
+          "esco"
+        ],
+        "tu": [
+          "esci"
+        ],
+        "lui / lei": [
+          "esce"
+        ],
+        "noi": [
+          "usciamo"
+        ],
+        "voi": [
+          "uscite"
+        ],
+        "loro": [
+          "escono"
+        ]
+      },
+      "explication": "Radical esc- aux personnes accentuées, usc- à noi / voi."
+    },
+    {
+      "id": "it-conj-bere-pres",
+      "verbe": "bere",
+      "traduction": "boire",
+      "temps": "presente",
+      "formes": {
+        "io": [
+          "bevo"
+        ],
+        "tu": [
+          "bevi"
+        ],
+        "lui / lei": [
+          "beve"
+        ],
+        "noi": [
+          "beviamo"
+        ],
+        "voi": [
+          "bevete"
+        ],
+        "loro": [
+          "bevono"
+        ]
+      },
+      "explication": "Se conjugue sur l'ancien infinitif bevere."
+    },
+    {
+      "id": "it-conj-tenere-pres",
+      "verbe": "tenere",
+      "traduction": "tenir, garder",
+      "temps": "presente",
+      "formes": {
+        "io": [
+          "tengo"
+        ],
+        "tu": [
+          "tieni"
+        ],
+        "lui / lei": [
+          "tiene"
+        ],
+        "noi": [
+          "teniamo"
+        ],
+        "voi": [
+          "tenete"
+        ],
+        "loro": [
+          "tengono"
+        ]
+      },
+      "explication": "Comme venire : -g- à io et loro, ie à tu / lui."
+    },
+    {
+      "id": "it-conj-rimanere-pres",
+      "verbe": "rimanere",
+      "traduction": "rester",
+      "temps": "presente",
+      "formes": {
+        "io": [
+          "rimango"
+        ],
+        "tu": [
+          "rimani"
+        ],
+        "lui / lei": [
+          "rimane"
+        ],
+        "noi": [
+          "rimaniamo"
+        ],
+        "voi": [
+          "rimanete"
+        ],
+        "loro": [
+          "rimangono"
+        ]
+      },
+      "explication": "-g- à io et loro."
+    },
+    {
+      "id": "it-conj-salire-pres",
+      "verbe": "salire",
+      "traduction": "monter",
+      "temps": "presente",
+      "formes": {
+        "io": [
+          "salgo"
+        ],
+        "tu": [
+          "sali"
+        ],
+        "lui / lei": [
+          "sale"
+        ],
+        "noi": [
+          "saliamo"
+        ],
+        "voi": [
+          "salite"
+        ],
+        "loro": [
+          "salgono"
+        ]
+      },
+      "explication": "-g- à io et loro."
+    },
+    {
+      "id": "it-conj-scegliere-pres",
+      "verbe": "scegliere",
+      "traduction": "choisir",
+      "temps": "presente",
+      "formes": {
+        "io": [
+          "scelgo"
+        ],
+        "tu": [
+          "scegli"
+        ],
+        "lui / lei": [
+          "sceglie"
+        ],
+        "noi": [
+          "scegliamo"
+        ],
+        "voi": [
+          "scegliete"
+        ],
+        "loro": [
+          "scelgono"
+        ]
+      },
+      "explication": "Inversion gl → lg à io et loro."
+    },
+    {
+      "id": "it-conj-cercare-pres",
+      "verbe": "cercare",
+      "traduction": "chercher",
+      "temps": "presente",
+      "formes": {
+        "io": [
+          "cerco"
+        ],
+        "tu": [
+          "cerchi"
+        ],
+        "lui / lei": [
+          "cerca"
+        ],
+        "noi": [
+          "cerchiamo"
+        ],
+        "voi": [
+          "cercate"
+        ],
+        "loro": [
+          "cercano"
+        ]
+      },
+      "explication": "h devant i pour garder le son [k]."
+    },
+    {
+      "id": "it-conj-pagare-pres",
+      "verbe": "pagare",
+      "traduction": "payer",
+      "temps": "presente",
+      "formes": {
+        "io": [
+          "pago"
+        ],
+        "tu": [
+          "paghi"
+        ],
+        "lui / lei": [
+          "paga"
+        ],
+        "noi": [
+          "paghiamo"
+        ],
+        "voi": [
+          "pagate"
+        ],
+        "loro": [
+          "pagano"
+        ]
+      },
+      "explication": "h devant i pour garder le son [g]."
+    },
+    {
+      "id": "it-conj-mangiare-pres",
+      "verbe": "mangiare",
+      "traduction": "manger",
+      "temps": "presente",
+      "formes": {
+        "io": [
+          "mangio"
+        ],
+        "tu": [
+          "mangi"
+        ],
+        "lui / lei": [
+          "mangia"
+        ],
+        "noi": [
+          "mangiamo"
+        ],
+        "voi": [
+          "mangiate"
+        ],
+        "loro": [
+          "mangiano"
+        ]
+      },
+      "explication": "Un seul i à tu et noi : mangi, mangiamo."
+    },
+    {
+      "id": "it-conj-conoscere-pres",
+      "verbe": "conoscere",
+      "traduction": "connaître",
+      "temps": "presente",
+      "formes": {
+        "io": [
+          "conosco"
+        ],
+        "tu": [
+          "conosci"
+        ],
+        "lui / lei": [
+          "conosce"
+        ],
+        "noi": [
+          "conosciamo"
+        ],
+        "voi": [
+          "conoscete"
+        ],
+        "loro": [
+          "conoscono"
+        ]
+      },
+      "explication": "Son [sk] devant o, [ʃ] devant i / e."
+    },
+    {
+      "id": "it-conj-tradurre-pres",
+      "verbe": "tradurre",
+      "traduction": "traduire",
+      "temps": "presente",
+      "formes": {
+        "io": [
+          "traduco"
+        ],
+        "tu": [
+          "traduci"
+        ],
+        "lui / lei": [
+          "traduce"
+        ],
+        "noi": [
+          "traduciamo"
+        ],
+        "voi": [
+          "traducete"
+        ],
+        "loro": [
+          "traducono"
+        ]
+      },
+      "explication": "Sur l'ancien infinitif traducere (comme produrre, condurre)."
+    },
+    {
+      "id": "it-conj-alzarsi-pres",
+      "verbe": "alzarsi",
+      "traduction": "se lever",
+      "temps": "presente",
+      "formes": {
+        "io": [
+          "mi alzo"
+        ],
+        "tu": [
+          "ti alzi"
+        ],
+        "lui / lei": [
+          "si alza"
+        ],
+        "noi": [
+          "ci alziamo"
+        ],
+        "voi": [
+          "vi alzate"
+        ],
+        "loro": [
+          "si alzano"
+        ]
+      },
+      "explication": "Verbe pronominal : tape le pronom réfléchi avec le verbe (mi alzo)."
+    },
+    {
+      "id": "it-conj-sedersi-pres",
+      "verbe": "sedersi",
+      "traduction": "s'asseoir",
+      "temps": "presente",
+      "formes": {
+        "io": [
+          "mi siedo"
+        ],
+        "tu": [
+          "ti siedi"
+        ],
+        "lui / lei": [
+          "si siede"
+        ],
+        "noi": [
+          "ci sediamo"
+        ],
+        "voi": [
+          "vi sedete"
+        ],
+        "loro": [
+          "si siedono"
+        ]
+      },
+      "explication": "ie aux personnes accentuées. Si sieda! = asseyez-vous !"
+    }
+  ]
+}

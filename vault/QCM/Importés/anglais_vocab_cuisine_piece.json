@@ -1,0 +1,151 @@
+{
+  "langue": "Anglais",
+  "titre": "Anglais — vocabulaire : la cuisine, la pièce (A1)",
+  "particules_optionnelles": [
+    "to",
+    "a",
+    "an",
+    "the"
+  ],
+  "caracteres_speciaux": [],
+  "vocabulaire": [
+    {
+      "id": "en-cuisine-piece-001",
+      "mot": "a kitchen",
+      "traductions": [
+        "une cuisine (la pièce)"
+      ],
+      "exemple": "For many people, the [kitchen] is the heart of the house.",
+      "exemple_traduction": "Pour beaucoup, la cuisine est le cœur de la maison.",
+      "note": "La cuisine (l'activité) = cooking."
+    },
+    {
+      "id": "en-cuisine-piece-002",
+      "mot": "to cook",
+      "traductions": [
+        "cuisiner"
+      ],
+      "exemple": "I [cook] for my family every night.",
+      "exemple_traduction": "Je cuisine pour ma famille tous les soirs.",
+      "note": "a cook = un cuisinier ; a cooker = une cuisinière (l'appareil)."
+    },
+    {
+      "id": "en-cuisine-piece-003",
+      "mot": "a fridge",
+      "traductions": [
+        "un réfrigérateur",
+        "un frigo"
+      ],
+      "exemple": "There isn't much food in the [fridge].",
+      "exemple_traduction": "Il n'y a pas grand-chose dans le frigo.",
+      "note": "Forme longue : a refrigerator.",
+      "variantes": [
+        "a refrigerator"
+      ]
+    },
+    {
+      "id": "en-cuisine-piece-004",
+      "mot": "a freezer",
+      "traductions": [
+        "un congélateur"
+      ],
+      "exemple": "We have lots of ice cream in our [freezer].",
+      "exemple_traduction": "Nous avons beaucoup de glace dans notre congélateur.",
+      "note": "to freeze = congeler, geler (froze – frozen)."
+    },
+    {
+      "id": "en-cuisine-piece-005",
+      "mot": "an oven",
+      "traductions": [
+        "un four"
+      ],
+      "exemple": "Our new [oven] uses gas.",
+      "exemple_traduction": "Notre nouveau four fonctionne au gaz.",
+      "note": "/ˈʌvn/"
+    },
+    {
+      "id": "en-cuisine-piece-006",
+      "mot": "a microwave",
+      "traductions": [
+        "un micro-ondes"
+      ],
+      "exemple": "The [microwave] heats up meals very quickly.",
+      "exemple_traduction": "Le micro-ondes réchauffe les plats très vite.",
+      "note": "Forme longue : a microwave oven."
+    },
+    {
+      "id": "en-cuisine-piece-007",
+      "mot": "a kettle",
+      "traductions": [
+        "une bouilloire"
+      ],
+      "exemple": "Most people in the UK have an electric [kettle].",
+      "exemple_traduction": "La plupart des Britanniques ont une bouilloire électrique.",
+      "note": "to put the kettle on = mettre l'eau à chauffer (pour le thé)."
+    },
+    {
+      "id": "en-cuisine-piece-008",
+      "mot": "a sink",
+      "traductions": [
+        "un évier"
+      ],
+      "exemple": "My brother leaves his dirty plates in the [sink].",
+      "exemple_traduction": "Mon frère laisse ses assiettes sales dans l'évier.",
+      "note": "Dans la salle de bain : a basin (un lavabo)."
+    },
+    {
+      "id": "en-cuisine-piece-009",
+      "mot": "a dishwasher",
+      "traductions": [
+        "un lave-vaisselle"
+      ],
+      "exemple": "I live alone, so I don't need a [dishwasher].",
+      "exemple_traduction": "Je vis seul, donc je n'ai pas besoin de lave-vaisselle.",
+      "note": "Aussi écrit « dish washer ».",
+      "variantes": [
+        "a dish washer"
+      ]
+    },
+    {
+      "id": "en-cuisine-piece-010",
+      "mot": "to wash up",
+      "traductions": [
+        "faire la vaisselle"
+      ],
+      "exemple": "I cook dinner and my wife [washes] up.",
+      "exemple_traduction": "Je fais le dîner et ma femme fait la vaisselle.",
+      "note": "Britannique. Américain : to do the dishes."
+    },
+    {
+      "id": "en-cuisine-piece-011",
+      "mot": "a cupboard",
+      "traductions": [
+        "un placard"
+      ],
+      "exemple": "We have many [cupboards] in our kitchen.",
+      "exemple_traduction": "Nous avons beaucoup de placards dans notre cuisine.",
+      "note": "Prononciation : le « p » est muet.",
+      "prononciation": "/ˈkʌbəd/"
+    },
+    {
+      "id": "en-cuisine-piece-012",
+      "mot": "crockery",
+      "traductions": [
+        "la vaisselle (assiettes, tasses, bols)"
+      ],
+      "exemple": "All our [crockery] is yellow.",
+      "exemple_traduction": "Toute notre vaisselle est jaune.",
+      "note": "Indénombrable. Aussi : the dishes."
+    },
+    {
+      "id": "en-cuisine-piece-013",
+      "mot": "cutlery",
+      "traductions": [
+        "les couverts"
+      ],
+      "exemple": "[Cutlery] like knives, forks and spoons is popular in the West.",
+      "exemple_traduction": "Les couverts comme les couteaux, fourchettes et cuillères sont courants en Occident.",
+      "note": "Indénombrable, verbe au singulier. Américain : silverware. chopsticks = des baguettes."
+    }
+  ]
+}

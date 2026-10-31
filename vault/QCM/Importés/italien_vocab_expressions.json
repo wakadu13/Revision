@@ -1,0 +1,530 @@
+{
+  "langue": "Italien",
+  "caracteres_speciaux": [
+    "à",
+    "è",
+    "é",
+    "ì",
+    "ò",
+    "ù"
+  ],
+  "titre": "Italien — vocabulaire : expressions courantes",
+  "description": "Politesse, réactions, familier et tournures idiomatiques.",
+  "particules_optionnelles": [
+    "il",
+    "lo",
+    "la",
+    "i",
+    "gli",
+    "le",
+    "un",
+    "uno",
+    "una"
+  ],
+  "vocabulaire": [
+    {
+      "id": "it-expr-001",
+      "mot": "Come va?",
+      "traductions": [
+        "comment ça va ?"
+      ],
+      "exemple": "Ciao Marco, [come va]?",
+      "exemple_traduction": "Salut Marco, comment ça va ?",
+      "note": "Réponses : bene, grazie / così così / non c'è male."
+    },
+    {
+      "id": "it-expr-002",
+      "mot": "Non c'è male.",
+      "traductions": [
+        "pas mal (ça va)"
+      ],
+      "exemple": "— Come stai? — [Non c'è male], grazie.",
+      "exemple_traduction": "— Comment vas-tu ? — Pas mal, merci."
+    },
+    {
+      "id": "it-expr-003",
+      "mot": "Così così.",
+      "traductions": [
+        "couci-couça"
+      ],
+      "exemple": "— Com'è andato l'esame? — [Così così].",
+      "exemple_traduction": "— Comment s'est passé l'examen ? — Couci-couça."
+    },
+    {
+      "id": "it-expr-004",
+      "mot": "Figurati!",
+      "traductions": [
+        "de rien !",
+        "tu parles !"
+      ],
+      "exemple": "— Grazie mille! — [Figurati]!",
+      "exemple_traduction": "— Merci mille fois ! — De rien !",
+      "note": "Vouvoiement : Si figuri! Exprime aussi l'incrédulité."
+    },
+    {
+      "id": "it-expr-005",
+      "mot": "Prego.",
+      "traductions": [
+        "je vous en prie"
+      ],
+      "exemple": "— Grazie! — [Prego]!",
+      "exemple_traduction": "— Merci ! — Je vous en prie !",
+      "note": "Aussi : entrez / allez-y / servez-vous. Prego? = pardon ?"
+    },
+    {
+      "id": "it-expr-006",
+      "mot": "Non fa niente.",
+      "traductions": [
+        "ce n'est rien"
+      ],
+      "exemple": "— Scusa il ritardo! — [Non fa niente].",
+      "exemple_traduction": "— Désolé pour le retard ! — Ce n'est rien."
+    },
+    {
+      "id": "it-expr-007",
+      "mot": "Non importa.",
+      "traductions": [
+        "peu importe"
+      ],
+      "exemple": "— Rosso o bianco? — [Non importa], scegli tu.",
+      "exemple_traduction": "— Rouge ou blanc ? — Peu importe, choisis, toi."
+    },
+    {
+      "id": "it-expr-008",
+      "mot": "Nessun problema.",
+      "traductions": [
+        "pas de problème"
+      ],
+      "exemple": "— Posso venire più tardi? — [Nessun problema]!",
+      "exemple_traduction": "— Je peux venir plus tard ? — Pas de problème !"
+    },
+    {
+      "id": "it-expr-009",
+      "mot": "Magari!",
+      "traductions": [
+        "si seulement !",
+        "peut-être"
+      ],
+      "exemple": "— Vai in vacanza ad agosto? — [Magari]!",
+      "exemple_traduction": "— Tu pars en vacances en août ? — Si seulement !",
+      "note": "Magari domani = peut-être demain."
+    },
+    {
+      "id": "it-expr-010",
+      "mot": "Dai!",
+      "traductions": [
+        "allez !",
+        "sans blague !"
+      ],
+      "exemple": "[Dai], andiamo, è tardi!",
+      "exemple_traduction": "Allez, on y va, il est tard !"
+    },
+    {
+      "id": "it-expr-011",
+      "mot": "Boh.",
+      "traductions": [
+        "aucune idée"
+      ],
+      "exemple": "— Dov'è Luca? — [Boh], non lo so.",
+      "exemple_traduction": "— Où est Luca ? — Aucune idée, je ne sais pas.",
+      "note": "Très familier, avec un haussement d'épaules."
+    },
+    {
+      "id": "it-expr-012",
+      "mot": "Meno male!",
+      "traductions": [
+        "heureusement !"
+      ],
+      "exemple": "[Meno male] che sei venuto in macchina!",
+      "exemple_traduction": "Heureusement que tu es venu en voiture !"
+    },
+    {
+      "id": "it-expr-013",
+      "mot": "Che peccato!",
+      "traductions": [
+        "quel dommage !"
+      ],
+      "exemple": "Non puoi venire? [Che peccato]!",
+      "exemple_traduction": "Tu ne peux pas venir ? Quel dommage !"
+    },
+    {
+      "id": "it-expr-014",
+      "mot": "Che schifo!",
+      "traductions": [
+        "c'est dégoûtant !"
+      ],
+      "exemple": "[Che schifo], questo caffè è freddo!",
+      "exemple_traduction": "Beurk, ce café est froid !"
+    },
+    {
+      "id": "it-expr-015",
+      "mot": "Che figata!",
+      "traductions": [
+        "trop cool ! (familier)"
+      ],
+      "exemple": "Hai i biglietti per il concerto? [Che figata]!",
+      "exemple_traduction": "Tu as les billets pour le concert ? Trop cool !",
+      "note": "Familier."
+    },
+    {
+      "id": "it-expr-016",
+      "mot": "Ci mancherebbe!",
+      "traductions": [
+        "c'est bien normal !"
+      ],
+      "exemple": "— Grazie dell'aiuto! — [Ci mancherebbe]!",
+      "exemple_traduction": "— Merci pour ton aide ! — C'est bien normal !",
+      "note": "Litt. « il ne manquerait plus que ça » ; réponse chaleureuse à un merci."
+    },
+    {
+      "id": "it-expr-017",
+      "mot": "Buon appetito!",
+      "traductions": [
+        "bon appétit !"
+      ],
+      "exemple": "È pronto in tavola, [buon appetito]!",
+      "exemple_traduction": "C'est servi, bon appétit !"
+    },
+    {
+      "id": "it-expr-018",
+      "mot": "Salute!",
+      "traductions": [
+        "à tes souhaits !"
+      ],
+      "exemple": "— Etciù! — [Salute]!",
+      "exemple_traduction": "— Atchoum ! — À tes souhaits !"
+    },
+    {
+      "id": "it-expr-019",
+      "mot": "Cin cin!",
+      "traductions": [
+        "santé ! (en trinquant)"
+      ],
+      "exemple": "Alziamo i bicchieri: [cin cin]!",
+      "exemple_traduction": "Levons nos verres : santé !"
+    },
+    {
+      "id": "it-expr-020",
+      "mot": "In bocca al lupo!",
+      "traductions": [
+        "bonne chance !"
+      ],
+      "exemple": "Domani hai l'esame? [In bocca al lupo]!",
+      "exemple_traduction": "Tu as ton examen demain ? Bonne chance !",
+      "note": "Réponse rituelle : Crepi! (ou Crepi il lupo!)."
+    },
+    {
+      "id": "it-expr-021",
+      "mot": "Mi dispiace.",
+      "traductions": [
+        "je suis désolé"
+      ],
+      "exemple": "[Mi dispiace], non lo sapevo.",
+      "exemple_traduction": "Je suis désolé, je ne le savais pas."
+    },
+    {
+      "id": "it-expr-022",
+      "mot": "Piacere!",
+      "traductions": [
+        "enchanté !"
+      ],
+      "exemple": "— Sono Giulia. — [Piacere], Antoine.",
+      "exemple_traduction": "— Moi c'est Giulia. — Enchanté, Antoine."
+    },
+    {
+      "id": "it-expr-023",
+      "mot": "Permesso?",
+      "traductions": [
+        "je peux entrer ?",
+        "pardon (pour passer)"
+      ],
+      "exemple": "[Permesso]? Posso entrare?",
+      "exemple_traduction": "Je peux ? Je peux entrer ?",
+      "note": "Aussi pour se frayer un chemin dans la foule."
+    },
+    {
+      "id": "it-expr-024",
+      "mot": "Scusi",
+      "traductions": [
+        "excusez-moi"
+      ],
+      "exemple": "[Scusi], dov'è la stazione?",
+      "exemple_traduction": "Excusez-moi, où est la gare ?",
+      "note": "Tutoiement : scusa."
+    },
+    {
+      "id": "it-expr-025",
+      "mot": "Come?",
+      "traductions": [
+        "pardon ? (faire répéter)"
+      ],
+      "exemple": "[Come]? Non ho sentito.",
+      "exemple_traduction": "Pardon ? Je n'ai pas entendu."
+    },
+    {
+      "id": "it-expr-026",
+      "mot": "il conto",
+      "traductions": [
+        "l'addition"
+      ],
+      "exemple": "Abbiamo finito: [il conto], per favore!",
+      "exemple_traduction": "On a fini : l'addition, s'il vous plaît !",
+      "note": "≠ lo scontrino (ticket de caisse)."
+    },
+    {
+      "id": "it-expr-027",
+      "mot": "Si può?",
+      "traductions": [
+        "on peut ? (c'est permis ?)"
+      ],
+      "exemple": "[Si può] pagare con la carta?",
+      "exemple_traduction": "On peut payer par carte ?"
+    },
+    {
+      "id": "it-expr-028",
+      "mot": "Va bene.",
+      "traductions": [
+        "d'accord"
+      ],
+      "exemple": "— Ci vediamo alle otto? — [Va bene]!",
+      "exemple_traduction": "— On se voit à huit heures ? — D'accord !"
+    },
+    {
+      "id": "it-expr-029",
+      "mot": "Ecco!",
+      "traductions": [
+        "voilà !"
+      ],
+      "exemple": "[Ecco] il tuo caffè.",
+      "exemple_traduction": "Voilà ton café.",
+      "note": "Eccomi! = me voilà ! Eccolo = le voilà."
+    },
+    {
+      "id": "it-expr-030",
+      "mot": "ci vuole",
+      "traductions": [
+        "il faut (du temps, quelque chose)"
+      ],
+      "exemple": "[Ci vuole] un'ora per arrivare a Siena.",
+      "exemple_traduction": "Il faut une heure pour arriver à Sienne.",
+      "note": "Pluriel : ci vogliono due ore."
+    },
+    {
+      "id": "it-expr-031",
+      "mot": "ce l'ho",
+      "traductions": [
+        "je l'ai"
+      ],
+      "exemple": "— Hai il biglietto? — Sì, [ce l'ho].",
+      "exemple_traduction": "— Tu as le billet ? — Oui, je l'ai.",
+      "note": "Avere + pronom COD → ce l'ho, ce l'hai, ce li ho…"
+    },
+    {
+      "id": "it-expr-032",
+      "mot": "farcela",
+      "traductions": [
+        "y arriver",
+        "s'en sortir"
+      ],
+      "exemple": "Non ti preoccupare, [ce la faccio] da solo.",
+      "exemple_traduction": "Ne t'inquiète pas, je m'en sors seul.",
+      "note": "Non ce la faccio più = je n'en peux plus."
+    },
+    {
+      "id": "it-expr-033",
+      "mot": "avere voglia di",
+      "traductions": [
+        "avoir envie de"
+      ],
+      "exemple": "Non ho [voglia] di uscire stasera.",
+      "exemple_traduction": "Je n'ai pas envie de sortir ce soir."
+    },
+    {
+      "id": "it-expr-034",
+      "mot": "avere ragione",
+      "traductions": [
+        "avoir raison"
+      ],
+      "exemple": "Hai [ragione], mi sono sbagliato.",
+      "exemple_traduction": "Tu as raison, je me suis trompé.",
+      "note": "Avoir tort = avere torto."
+    },
+    {
+      "id": "it-expr-035",
+      "mot": "fare la spesa",
+      "traductions": [
+        "faire les courses"
+      ],
+      "exemple": "Il sabato [faccio] la spesa al mercato.",
+      "exemple_traduction": "Le samedi je fais les courses au marché."
+    },
+    {
+      "id": "it-expr-036",
+      "mot": "fare la fila",
+      "traductions": [
+        "faire la queue"
+      ],
+      "exemple": "Abbiamo [fatto] la fila per un'ora.",
+      "exemple_traduction": "Nous avons fait la queue pendant une heure.",
+      "note": "Aussi : fare la coda."
+    },
+    {
+      "id": "it-expr-037",
+      "mot": "dare una mano",
+      "traductions": [
+        "donner un coup de main"
+      ],
+      "exemple": "Mi dai una [mano] con le valigie?",
+      "exemple_traduction": "Tu me donnes un coup de main avec les valises ?"
+    },
+    {
+      "id": "it-expr-038",
+      "mot": "perdere tempo",
+      "traductions": [
+        "perdre son temps"
+      ],
+      "exemple": "Smettila di [perdere] tempo con il telefono!",
+      "exemple_traduction": "Arrête de perdre ton temps avec ton téléphone !"
+    },
+    {
+      "id": "it-expr-039",
+      "mot": "fa caldo",
+      "traductions": [
+        "il fait chaud"
+      ],
+      "exemple": "Oggi [fa] un caldo terribile!",
+      "exemple_traduction": "Aujourd'hui il fait une chaleur terrible !",
+      "note": "Météo avec fare : fa freddo, fa bel tempo."
+    },
+    {
+      "id": "it-expr-040",
+      "mot": "Sul serio?",
+      "traductions": [
+        "sérieux ?"
+      ],
+      "exemple": "Hai vinto? [Sul serio]?",
+      "exemple_traduction": "Tu as gagné ? Sérieux ?"
+    },
+    {
+      "id": "it-expr-041",
+      "mot": "Che ne dici?",
+      "traductions": [
+        "qu'en dis-tu ?"
+      ],
+      "exemple": "Andiamo al mare domenica, [che ne dici]?",
+      "exemple_traduction": "On va à la mer dimanche, qu'en dis-tu ?"
+    },
+    {
+      "id": "it-expr-042",
+      "mot": "Non vedo l'ora!",
+      "traductions": [
+        "j'ai hâte !"
+      ],
+      "exemple": "Parto per la Sicilia domani, [non vedo l'ora]!",
+      "exemple_traduction": "Je pars en Sicile demain, j'ai hâte !",
+      "note": "Non vedo l'ora di + infinitif."
+    },
+    {
+      "id": "it-expr-043",
+      "mot": "Tanti auguri!",
+      "traductions": [
+        "bon anniversaire !",
+        "meilleurs vœux !"
+      ],
+      "exemple": "[Tanti auguri], Chiara!",
+      "exemple_traduction": "Bon anniversaire, Chiara !"
+    },
+    {
+      "id": "it-expr-044",
+      "mot": "benvenuto",
+      "traductions": [
+        "bienvenue"
+      ],
+      "exemple": "[Benvenuti] in Italia!",
+      "exemple_traduction": "Bienvenue en Italie !",
+      "note": "S'accorde : benvenuto, benvenuta, benvenuti, benvenute.",
+      "variantes": [
+        "benvenuti",
+        "benvenuta",
+        "benvenute"
+      ]
+    },
+    {
+      "id": "it-expr-045",
+      "mot": "Stai attento!",
+      "traductions": [
+        "fais attention !"
+      ],
+      "exemple": "[Stai attento], il pavimento è bagnato!",
+      "exemple_traduction": "Fais attention, le sol est mouillé !",
+      "note": "Au féminin : stai attenta ; Lei : stia attento."
+    },
+    {
+      "id": "it-expr-046",
+      "mot": "Non ci posso credere!",
+      "traductions": [
+        "je n'y crois pas !"
+      ],
+      "exemple": "Abbiamo vinto? [Non ci posso credere]!",
+      "exemple_traduction": "On a gagné ? Je n'y crois pas !"
+    },
+    {
+      "id": "it-expr-047",
+      "mot": "Come si dice?",
+      "traductions": [
+        "comment dit-on ?"
+      ],
+      "exemple": "[Come si dice] « parapluie » in italiano?",
+      "exemple_traduction": "Comment dit-on « parapluie » en italien ?",
+      "note": "Réponse : ombrello."
+    },
+    {
+      "id": "it-expr-048",
+      "mot": "più piano",
+      "traductions": [
+        "plus lentement"
+      ],
+      "exemple": "Non capisco, parli [più piano], per favore.",
+      "exemple_traduction": "Je ne comprends pas, parlez plus lentement, s'il vous plaît.",
+      "note": "Piano = doucement, lentement (et aussi : étage)."
+    },
+    {
+      "id": "it-expr-049",
+      "mot": "Basta!",
+      "traductions": [
+        "ça suffit !"
+      ],
+      "exemple": "[Basta], smettila di urlare!",
+      "exemple_traduction": "Ça suffit, arrête de crier !"
+    },
+    {
+      "id": "it-expr-050",
+      "mot": "Pazienza!",
+      "traductions": [
+        "tant pis !"
+      ],
+      "exemple": "Abbiamo perso il treno? [Pazienza], prendiamo il prossimo.",
+      "exemple_traduction": "On a raté le train ? Tant pis, on prend le suivant."
+    },
+    {
+      "id": "it-expr-051",
+      "mot": "Mica male!",
+      "traductions": [
+        "pas mal du tout !"
+      ],
+      "exemple": "Questa pizza? [Mica male]!",
+      "exemple_traduction": "Cette pizza ? Pas mal du tout !",
+      "note": "Mica renforce la négation : non è mica facile = ce n'est pas du tout facile."
+    },
+    {
+      "id": "it-expr-052",
+      "mot": "Fatti gli affari tuoi!",
+      "traductions": [
+        "occupe-toi de tes affaires !"
+      ],
+      "exemple": "[Fatti gli affari tuoi], non sono cose tue!",
+      "exemple_traduction": "Occupe-toi de tes affaires, ça ne te regarde pas !",
+      "note": "Sec, voire impoli."
+    }
+  ]
+}

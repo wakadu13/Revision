@@ -1,0 +1,728 @@
+{
+  "titre": "Horizon — Citations, récits et lectures",
+  "description": "Citation de Guynemer, citation de l’École à la Légion d’honneur, citations sur les valeurs du chef et liste de lecture (Horizon 2026, ch. 4).",
+  "questions": [
+    {
+      "id": "hz-cit-001",
+      "type": "QCM",
+      "question": "Qui est l’auteur de cette citation : « Tout se conquiert, tout se mérite. Si rien n’est sacrifié, rien n’est obtenu. »",
+      "choix": [
+        "Michel Menu",
+        "Hélie de Saint Marc",
+        "Général Pierre de Villiers",
+        "Maréchal de Belle-Isle"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Citation illustrant : l’esprit de sacrifice."
+    },
+    {
+      "id": "hz-cit-002",
+      "type": "TROU",
+      "question": "Citation de l’École : « […] ont su victorieusement FAIRE ___ à l’ennemi dans tous les ciels de bataille. »",
+      "reponses_texte": [
+        "FACE"
+      ]
+    },
+    {
+      "id": "hz-cit-003",
+      "type": "QCR",
+      "question": "Quelles qualités la dernière citation de Guynemer présente-t-elle comme le « plus pur symbole » ?",
+      "choix": [
+        "Ténacité indomptable",
+        "Énergie farouche",
+        "Prudence exemplaire",
+        "Discipline rigoureuse",
+        "Courage sublime"
+      ],
+      "reponses": [
+        0,
+        1,
+        4
+      ],
+      "explication": "Vrai : A, B, E. Faux : C, D."
+    },
+    {
+      "id": "hz-cit-004",
+      "type": "QCM",
+      "question": "Quelle valeur l’Horizon illustre-t-il par cette citation : « La vraie loyauté consiste à dire la vérité à son chef. »",
+      "choix": [
+        "L’humilité",
+        "La loyauté",
+        "L’intégrité",
+        "L’exemplarité"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-cit-005",
+      "type": "TROU",
+      "question": "Citation de l’École : « elle s’est révélée une ___ incomparable de combattants et de chefs aériens. »",
+      "reponses_texte": [
+        "pépinière",
+        "pepiniere"
+      ]
+    },
+    {
+      "id": "hz-cit-006",
+      "type": "QCM",
+      "question": "Quelle valeur l’Horizon illustre-t-il par cette citation : « Si tu veux être chef un jour, pense à ceux qui te seront confiés… »",
+      "choix": [
+        "Être chef",
+        "L’exemplarité",
+        "L’intégrité",
+        "Le courage"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-cit-007",
+      "type": "QCM",
+      "question": "Quelle valeur l’Horizon illustre-t-il par cette citation : « Une fois pris dans l’événement les hommes ne s’en effraient plus. Seul l’inconnu épouvante l’homme. »",
+      "choix": [
+        "Le dépassement de soi",
+        "L’intégrité",
+        "Le courage",
+        "Être chef"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-cit-008",
+      "type": "TROU",
+      "question": "« Seul l’___ épouvante l’homme. » (Saint-Exupéry)",
+      "reponses_texte": [
+        "inconnu"
+      ]
+    },
+    {
+      "id": "hz-cit-009",
+      "type": "TROU",
+      "question": "Citation de Guynemer : « Il lègue au soldat français un souvenir impérissable, qui exaltera l’esprit de ___ ».",
+      "reponses_texte": [
+        "sacrifice"
+      ]
+    },
+    {
+      "id": "hz-cit-010",
+      "type": "QCM",
+      "question": "Qui est l’auteur de « Le grand cirque » ?",
+      "choix": [
+        "CESA",
+        "Pierre Clostermann",
+        "Commandant Marc Scheffler",
+        "Général Pierre de Villiers"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-cit-011",
+      "type": "FLASHCARD",
+      "question": "Liste de lecture conseillée : quel ouvrage a pour auteur Sun Tzu ?",
+      "verso": "« L’art de la guerre » (VIe siècle av. J.-C.)"
+    },
+    {
+      "id": "hz-cit-012",
+      "type": "QCM",
+      "question": "De quand date la citation de l’École de l’air à la croix de la Légion d’honneur reproduite dans l’Horizon ?",
+      "choix": [
+        "14 juin 1946",
+        "2 juillet 1934",
+        "14 avril 1947",
+        "3 avril 1948"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-cit-013",
+      "type": "TROU",
+      "question": "« La véritable victoire […] se reconnaît plus à ses fruits qu’à ses ___. » (Général de Villiers)",
+      "reponses_texte": [
+        "trophées",
+        "trophees"
+      ]
+    },
+    {
+      "id": "hz-cit-014",
+      "type": "QCM",
+      "question": "Quelle valeur l’Horizon illustre-t-il par cette citation : « On peut demander beaucoup à un soldat, en particulier de mourir, c’est son métier. On ne peut lui demander de tricher… »",
+      "choix": [
+        "La responsabilité",
+        "La loyauté",
+        "Le dépassement de soi",
+        "L’intégrité"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-cit-015",
+      "type": "FLASHCARD",
+      "question": "De quoi témoigne « Le grand cirque » de Pierre Clostermann ?",
+      "verso": "De son expérience de pilote de la France libre dans la RAF pendant la Seconde Guerre mondiale"
+    },
+    {
+      "id": "hz-cit-016",
+      "type": "QCM",
+      "question": "Qui est l’auteur de « La pointe du diamant » ?",
+      "choix": [
+        "Général Pierre de Villiers",
+        "CESA",
+        "Maréchal Lyautey",
+        "Capitaine de corvette Yannick Piart"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-cit-017",
+      "type": "QCM",
+      "question": "Qui a écrit la biographie « Mermoz » (1938) ?",
+      "choix": [
+        "Antoine de Saint-Exupéry",
+        "Joseph Kessel",
+        "Hélie de Saint Marc",
+        "Pierre Clostermann"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-cit-018",
+      "type": "FLASHCARD",
+      "question": "Selon Lyautey dans « Le Rôle social de l’officier », qu’est avant tout l’officier ?",
+      "verso": "Un éducateur et un chef humain au service de ses hommes et de la nation"
+    },
+    {
+      "id": "hz-cit-019",
+      "type": "QCM",
+      "question": "Qui est l’auteur de « Mermoz » ?",
+      "choix": [
+        "Joseph Kessel",
+        "Hélie de Saint Marc",
+        "Commandant Marc Scheffler",
+        "Général Pierre de Villiers"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-cit-020",
+      "type": "QCM",
+      "question": "Qui est l’auteur de cette citation : « Une fois pris dans l’événement les hommes ne s’en effraient plus. Seul l’inconnu épouvante l’homme. »",
+      "choix": [
+        "Général Pierre de Villiers",
+        "Hélie de Saint Marc",
+        "Maréchal de Belle-Isle",
+        "Commandant Antoine de Saint-Exupéry"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Citation illustrant : le courage."
+    },
+    {
+      "id": "hz-cit-021",
+      "type": "FLASHCARD",
+      "question": "Liste de lecture conseillée : quel ouvrage a pour auteur Général Pierre de Villiers ?",
+      "verso": "« Paroles d’honneur » (2022)"
+    },
+    {
+      "id": "hz-cit-022",
+      "type": "QCM",
+      "question": "Qui est l’auteur de « Le Rôle social de l’officier » ?",
+      "choix": [
+        "CESA",
+        "Maréchal Lyautey",
+        "Hélie de Saint Marc",
+        "Pierre Clostermann"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-cit-023",
+      "type": "QCM",
+      "question": "Quelle opération raconte « La pointe du diamant » ?",
+      "choix": [
+        "Hamilton (Syrie)",
+        "Harmattan (Libye)",
+        "Chammal (Irak)",
+        "Serval (Mali)"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-cit-024",
+      "type": "FLASHCARD",
+      "question": "Liste de lecture conseillée : quel ouvrage a pour auteur Commandant Marc Scheffler ?",
+      "verso": "« La guerre vue du ciel » (2013)"
+    },
+    {
+      "id": "hz-cit-025",
+      "type": "QCM",
+      "question": "Quelle valeur l’Horizon illustre-t-il par cette citation : « La véritable victoire est humble et discrète ; elle ne se paie pas de mots. »",
+      "choix": [
+        "L’humilité",
+        "L’intégrité",
+        "Être chef",
+        "L’esprit de sacrifice"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-cit-026",
+      "type": "FLASHCARD",
+      "question": "Que contient la 26e et dernière citation du capitaine Guynemer sur le lieu et la date de sa mort ?",
+      "verso": "« Mort au champ d’honneur, à Poelcappelle, le 11 septembre 1917. »"
+    },
+    {
+      "id": "hz-cit-027",
+      "type": "TROU",
+      "question": "Hélie de Saint Marc : « Il faut savoir que rien n’est sûr, que rien n’est facile, que rien n’est donné, que rien n’est ___. »",
+      "reponses_texte": [
+        "gratuit"
+      ]
+    },
+    {
+      "id": "hz-cit-028",
+      "type": "TROU",
+      "question": "« Le chef est celui qui prend tout en ___. » (Saint-Exupéry, Pilote de guerre)",
+      "reponses_texte": [
+        "charge"
+      ]
+    },
+    {
+      "id": "hz-cit-029",
+      "type": "QCM",
+      "question": "Complétez Michel Menu : « Si tu ralentis… »",
+      "choix": [
+        "« …ils démolissent. »",
+        "« …ils se couchent. »",
+        "« …ils s’arrêtent. »",
+        "« …ils flanchent. »"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-cit-030",
+      "type": "QCM",
+      "question": "Qui est l’auteur de cette citation : « Si tu veux être chef un jour, pense à ceux qui te seront confiés… »",
+      "choix": [
+        "Commandant Antoine de Saint-Exupéry",
+        "Michel Menu",
+        "Capitaine Guynemer",
+        "Maréchal de Belle-Isle"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Citation illustrant : être chef."
+    },
+    {
+      "id": "hz-cit-031",
+      "type": "FLASHCARD",
+      "question": "Liste de lecture conseillée : quel ouvrage a pour auteur CESA ?",
+      "verso": "« Les ailes du commandement » (2022)"
+    },
+    {
+      "id": "hz-cit-032",
+      "type": "QCM",
+      "question": "Qui est l’auteur de cette citation : « L’exemplarité est la qualité qui conduit le chef à adopter le comportement qu’il attend de ses subordonnés… »",
+      "choix": [
+        "Capitaine Guynemer",
+        "Maréchal de Belle-Isle",
+        "Hélie de Saint Marc",
+        "Général Pierre de Villiers"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Citation illustrant : l’exemplarité."
+    },
+    {
+      "id": "hz-cit-033",
+      "type": "QCM",
+      "question": "Qui est l’auteur de « La guerre vue du ciel » ?",
+      "choix": [
+        "Pierre Clostermann",
+        "Hélie de Saint Marc",
+        "Commandant Marc Scheffler",
+        "Capitaine de corvette Yannick Piart"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-cit-034",
+      "type": "TROU",
+      "question": "« La vraie loyauté consiste à dire la ___ à son chef. » (Général de Villiers)",
+      "reponses_texte": [
+        "vérité"
+      ]
+    },
+    {
+      "id": "hz-cit-035",
+      "type": "QCM",
+      "question": "Complétez Michel Menu : « Si tu faiblis… »",
+      "choix": [
+        "« …ils flanchent. »",
+        "« …ils démolissent. »",
+        "« …ils se couchent. »",
+        "« …ils s’arrêtent. »"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-cit-036",
+      "type": "QCM",
+      "question": "Qui est l’auteur de « Les ailes du commandement » ?",
+      "choix": [
+        "CESA",
+        "Hélie de Saint Marc",
+        "Général Pierre de Villiers",
+        "Maréchal Lyautey"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-cit-037",
+      "type": "TROU",
+      "question": "Citation de Guynemer : « Héros légendaire tombé en plein ciel de gloire après ___ ans de lutte ardente. »",
+      "reponses_texte": [
+        "trois",
+        "3"
+      ]
+    },
+    {
+      "id": "hz-cit-038",
+      "type": "QCM",
+      "question": "Quelle valeur l’Horizon illustre-t-il par cette citation : « Tant qu’on n’a pas tout donné, on n’a rien donné. »",
+      "choix": [
+        "L’humilité",
+        "L’exemplarité",
+        "Être chef",
+        "Le dépassement de soi"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-cit-039",
+      "type": "QCR",
+      "question": "Quels épisodes traverse « Champ de braise » d’Hélie de Saint Marc ?",
+      "choix": [
+        "La bataille d’Angleterre",
+        "Le putsch d’Alger",
+        "Buchenwald",
+        "L’opération Harmattan"
+      ],
+      "reponses": [
+        1,
+        2
+      ],
+      "explication": "Vrai : B, C. Faux : A, D."
+    },
+    {
+      "id": "hz-cit-040",
+      "type": "QCM",
+      "question": "Complétez Michel Menu : « Si tu t’assieds… »",
+      "choix": [
+        "« …ils flanchent. »",
+        "« …ils démolissent. »",
+        "« …ils se couchent. »",
+        "« …ils s’arrêtent. »"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-cit-041",
+      "type": "QCM",
+      "question": "Qui est l’auteur de cette citation : « La véritable victoire est humble et discrète ; elle ne se paie pas de mots. »",
+      "choix": [
+        "Michel Menu",
+        "Capitaine Guynemer",
+        "Maréchal de Belle-Isle",
+        "Général Pierre de Villiers"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Citation illustrant : l’humilité."
+    },
+    {
+      "id": "hz-cit-042",
+      "type": "TROU",
+      "question": "Michel Menu : « Et si tu pries, alors, ils seront des ___. »",
+      "reponses_texte": [
+        "saints"
+      ]
+    },
+    {
+      "id": "hz-cit-043",
+      "type": "QCM",
+      "question": "Quelle valeur l’Horizon illustre-t-il par cette citation : « Tout se conquiert, tout se mérite. Si rien n’est sacrifié, rien n’est obtenu. »",
+      "choix": [
+        "L’exemplarité",
+        "Le courage",
+        "L’esprit de sacrifice",
+        "Être chef"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-cit-044",
+      "type": "FLASHCARD",
+      "question": "Liste de lecture conseillée : quel ouvrage a pour auteur Pierre Clostermann ?",
+      "verso": "« Le grand cirque » (1945)"
+    },
+    {
+      "id": "hz-cit-045",
+      "type": "QCM",
+      "question": "Sur quel avion vole Marc Scheffler, auteur de « La guerre vue du ciel » ?",
+      "choix": [
+        "Mirage F1",
+        "Jaguar",
+        "Mirage 2000D",
+        "Rafale Marine"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-cit-046",
+      "type": "QCR",
+      "question": "Selon Hélie de Saint Marc, que ne peut-on pas demander à un soldat ?",
+      "choix": [
+        "De tricher",
+        "De se renier",
+        "De mentir",
+        "D’obéir",
+        "De mourir"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Vrai : A, B, C. Faux : D, E. « On peut demander beaucoup à un soldat, en particulier de mourir, c’est son métier. »"
+    },
+    {
+      "id": "hz-cit-047",
+      "type": "QCM",
+      "question": "Quelle valeur l’Horizon illustre-t-il par cette citation : « Le chef est celui qui prend tout en charge. Il dit “J’ai été battu”. »",
+      "choix": [
+        "La loyauté",
+        "L’humilité",
+        "La responsabilité",
+        "Être chef"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-cit-048",
+      "type": "QCM",
+      "question": "Qui est l’auteur de « L’art de la guerre » ?",
+      "choix": [
+        "Sun Tzu",
+        "Joseph Kessel",
+        "Commandant Marc Scheffler",
+        "Maréchal Lyautey"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-cit-049",
+      "type": "TROU",
+      "question": "Michel Menu : « Si tu marches devant, ils te ___. »",
+      "reponses_texte": [
+        "dépasseront",
+        "depasseront"
+      ]
+    },
+    {
+      "id": "hz-cit-050",
+      "type": "QCM",
+      "question": "Qui est l’auteur de « Champ de braise » ?",
+      "choix": [
+        "Commandant Marc Scheffler",
+        "Hélie de Saint Marc",
+        "Général Pierre de Villiers",
+        "Maréchal Lyautey"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-cit-051",
+      "type": "QCM",
+      "question": "Qui est l’auteur de cette citation : « Le chef est celui qui prend tout en charge. Il dit “J’ai été battu”. »",
+      "choix": [
+        "Maréchal de Belle-Isle",
+        "Capitaine Guynemer",
+        "Commandant Antoine de Saint-Exupéry",
+        "Hélie de Saint Marc"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Citation illustrant : la responsabilité."
+    },
+    {
+      "id": "hz-cit-052",
+      "type": "TROU",
+      "question": "Michel Menu : « Si tu donnes la main, ils donneront leur ___. »",
+      "reponses_texte": [
+        "peau"
+      ]
+    },
+    {
+      "id": "hz-cit-053",
+      "type": "QCM",
+      "question": "Quelle valeur l’Horizon illustre-t-il par cette citation : « L’exemplarité est la qualité qui conduit le chef à adopter le comportement qu’il attend de ses subordonnés… »",
+      "choix": [
+        "La responsabilité",
+        "L’intégrité",
+        "La loyauté",
+        "L’exemplarité"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-cit-054",
+      "type": "QCM",
+      "question": "Qui est l’auteur de « Paroles d’honneur » ?",
+      "choix": [
+        "Maréchal Lyautey",
+        "Capitaine de corvette Yannick Piart",
+        "Général Pierre de Villiers",
+        "Joseph Kessel"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-cit-055",
+      "type": "TROU",
+      "question": "Citation de l’École : « Jeune école qui dès les premières années, s’égale aux plus ___. »",
+      "reponses_texte": [
+        "anciennes"
+      ]
+    },
+    {
+      "id": "hz-cit-056",
+      "type": "QCM",
+      "question": "Qui est l’auteur de cette citation : « Tant qu’on n’a pas tout donné, on n’a rien donné. »",
+      "choix": [
+        "Hélie de Saint Marc",
+        "Michel Menu",
+        "Capitaine Guynemer",
+        "Commandant Antoine de Saint-Exupéry"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Citation illustrant : le dépassement de soi."
+    },
+    {
+      "id": "hz-cit-057",
+      "type": "QCM",
+      "question": "Qui est l’auteur de cette citation : « On peut demander beaucoup à un soldat, en particulier de mourir, c’est son métier. On ne peut lui demander de tricher… »",
+      "choix": [
+        "Michel Menu",
+        "Hélie de Saint Marc",
+        "Commandant Antoine de Saint-Exupéry",
+        "Maréchal de Belle-Isle"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Citation illustrant : l’intégrité."
+    },
+    {
+      "id": "hz-cit-058",
+      "type": "QCM",
+      "question": "Qui est l’auteur de cette citation : « La vraie loyauté consiste à dire la vérité à son chef. »",
+      "choix": [
+        "Michel Menu",
+        "Commandant Antoine de Saint-Exupéry",
+        "Général Pierre de Villiers",
+        "Capitaine Guynemer"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Citation illustrant : la loyauté."
+    },
+    {
+      "id": "hz-cit-059",
+      "type": "QCM",
+      "question": "Quel numéro porte la dernière citation du capitaine Guynemer ?",
+      "choix": [
+        "28e",
+        "26e",
+        "53e",
+        "25e"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Ne pas confondre avec ses 25 palmes ou ses 53 victoires."
+    },
+    {
+      "id": "hz-cit-060",
+      "type": "QCM",
+      "question": "Complétez Michel Menu : « Si tu critiques… »",
+      "choix": [
+        "« …ils démolissent. »",
+        "« …ils flanchent. »",
+        "« …ils se couchent. »",
+        "« …ils s’arrêtent. »"
+      ],
+      "reponses": [
+        0
+      ]
+    }
+  ]
+}

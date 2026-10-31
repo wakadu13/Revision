@@ -1,0 +1,1762 @@
+{
+  "titre": "Horizon — L’École de l’air et de l’espace : base, histoire, figures et formations",
+  "description": "Plan de la BA 701, histoire du Piège, EMA, figures emblématiques, cursus et spécialités, organisation de l’EFC (Horizon 2026, ch. 3).",
+  "questions": [
+    {
+      "id": "hz-eae-001",
+      "type": "QCM",
+      "question": "Quel groupe de chasse René Mouchotte met-il sur pied et commande-t-il en 1943 ?",
+      "choix": [
+        "Le GC III/2 Alsace",
+        "L’EFC1",
+        "Le Normandie-Niemen",
+        "Le groupe Île-de-France"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-eae-002",
+      "type": "FLASHCARD",
+      "question": "Que signifie NOSA ?",
+      "verso": "Navigateur officier systèmes d’armes"
+    },
+    {
+      "id": "hz-eae-003",
+      "type": "FLASHCARD",
+      "question": "Que représente l’insigne « le Charognard » ?",
+      "verso": "Un rapace offrant à ses petits, encore au nid, le poignard d’officier."
+    },
+    {
+      "id": "hz-eae-004",
+      "type": "QCM",
+      "question": "Comment est surnommé le bâtiment de la DGER ?",
+      "choix": [
+        "Le « Camembert »",
+        "La « Strasse »",
+        "Le « Bahut »",
+        "Le « Piège »"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-eae-005",
+      "type": "TROU",
+      "question": "Le 14 juillet ___, les élèves de l’École de l’air défilent pour la première fois aux côtés des trois autres grandes écoles militaires.",
+      "reponses_texte": [
+        "1936"
+      ]
+    },
+    {
+      "id": "hz-eae-006",
+      "type": "QCM",
+      "question": "Quelle est la tradition présentée comme « la plus ancienne et la plus respectée » de l’École ?",
+      "choix": [
+        "La présentation au drapeau",
+        "La sainte prudence",
+        "Le baptême dans le vent des hélices",
+        "Le bahutage"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-eae-007",
+      "type": "QCM",
+      "question": "Où débute la formation de base des pilotes d’hélicoptère ?",
+      "choix": [
+        "À l’EALAT de Dax",
+        "Au Luc-en-Provence",
+        "À Cognac",
+        "À Orange"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-eae-008",
+      "type": "FLASHCARD",
+      "question": "Où Pierre Clostermann obtient-il son diplôme d’ingénieur aéronautique ?",
+      "verso": "Au CALTECH"
+    },
+    {
+      "id": "hz-eae-009",
+      "type": "QCM",
+      "question": "Quelle escadrille le capitaine Brocard commande-t-il en 1915 ?",
+      "choix": [
+        "L’escadrille La Fayette",
+        "Le groupe Alsace",
+        "Le groupe de bombardement n°1",
+        "L’escadrille MS 3, les « Cigognes »"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-eae-010",
+      "type": "QCM",
+      "question": "Quand l’École revient-elle à Salon après la dissolution ?",
+      "choix": [
+        "Octobre 1946",
+        "1er octobre 1941",
+        "15 novembre 1937",
+        "8 juillet 1943"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-eae-011",
+      "type": "FLASHCARD",
+      "question": "Que signifie OCSA ?",
+      "verso": "Officier capteur systèmes d’armes"
+    },
+    {
+      "id": "hz-eae-012",
+      "type": "QCM",
+      "question": "Quel gymnase abrite le Service des sports ?",
+      "choix": [
+        "Le gymnase Guynemer",
+        "Le gymnase Valin",
+        "Le gymnase Agnel",
+        "Le gymnase Pineau"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-eae-013",
+      "type": "QCR",
+      "question": "Quels éléments se trouvent dans la zone sud de la BA 701 ?",
+      "choix": [
+        "Le mess élèves",
+        "Le CFAMI",
+        "Le service des essences",
+        "La chapelle",
+        "Les hangars de la Patrouille de France"
+      ],
+      "reponses": [
+        1,
+        2,
+        4
+      ],
+      "explication": "Vrai : B, C, E. Faux : A, D."
+    },
+    {
+      "id": "hz-eae-014",
+      "type": "FLASHCARD",
+      "question": "Que signifie PAD ?",
+      "verso": "Pilote à distance (drones)"
+    },
+    {
+      "id": "hz-eae-015",
+      "type": "FLASHCARD",
+      "question": "Que signifie LAD ?",
+      "verso": "Lutte anti-drones"
+    },
+    {
+      "id": "hz-eae-016",
+      "type": "QCM",
+      "question": "Quel parrain la première promotion choisit-elle ?",
+      "choix": [
+        "Le commandant Mezergues",
+        "Clément Ader",
+        "Le capitaine Guynemer",
+        "Le capitaine Astier de Villatte"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-eae-017",
+      "type": "QCM",
+      "question": "Combien de victoires Pierre Clostermann remporte-t-il ?",
+      "choix": [
+        "53",
+        "33",
+        "16",
+        "75"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-eae-018",
+      "type": "QCR",
+      "question": "Quels domaines regroupe la spécialité PCOA ?",
+      "choix": [
+        "Flight Dispatcher",
+        "Command & Control",
+        "Contrôle circulation aérienne",
+        "Air surface integration",
+        "Opérations bases"
+      ],
+      "reponses": [
+        0,
+        1,
+        3,
+        4
+      ],
+      "explication": "Vrai : A, B, D, E. Faux : C."
+    },
+    {
+      "id": "hz-eae-019",
+      "type": "QCM",
+      "question": "Où la première promotion de l’École de l’air entre-t-elle en 1935 ?",
+      "choix": [
+        "Sur la base de Villacoublay",
+        "Au collège de Bouffemont",
+        "Aux Petites Écuries de Versailles",
+        "Sur la base de Salon-de-Provence"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-eae-020",
+      "type": "QCM",
+      "question": "Combien de Compagnons de la Libération ont été faits ?",
+      "choix": [
+        "1 038",
+        "1 061",
+        "583",
+        "1 500"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "1 061 croix attribuées : 1 038 Compagnons, plus des unités et des communes."
+    },
+    {
+      "id": "hz-eae-021",
+      "type": "QCR",
+      "question": "Quelles bases annexes sont créées en 1939 ?",
+      "choix": [
+        "Bergerac",
+        "Mont-de-Marsan",
+        "Cazaux",
+        "Cognac",
+        "Landes de Bussac"
+      ],
+      "reponses": [
+        0,
+        1,
+        4
+      ],
+      "explication": "Vrai : A, B, E. Faux : C, D."
+    },
+    {
+      "id": "hz-eae-022",
+      "type": "QCM",
+      "question": "Où les pilotes d’hélicoptère suivent-ils la formation au vol aux instruments ?",
+      "choix": [
+        "Sur la BA 115 d’Orange",
+        "Sur la BA 709 de Cognac",
+        "Au 2e RHC du Luc-en-Provence",
+        "À l’EALAT de Dax"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-eae-023",
+      "type": "QCM",
+      "question": "Combien de fois Pierre Clostermann a-t-il été élu au Parlement ?",
+      "choix": [
+        "4 fois",
+        "8 fois",
+        "Jamais",
+        "2 fois"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-eae-024",
+      "type": "FLASHCARD",
+      "question": "Que signifie PCOA ?",
+      "verso": "Planification et conduite des opérations aériennes"
+    },
+    {
+      "id": "hz-eae-025",
+      "type": "QCM",
+      "question": "Combien de semaines de formation suivent à l’EAE les sous-officiers du parcours rang ?",
+      "choix": [
+        "12 semaines",
+        "1 an",
+        "6 mois",
+        "8 semaines"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-eae-026",
+      "type": "QCM",
+      "question": "Par qui le baptême est-il donné aux poussins de 1937 ?",
+      "choix": [
+        "Leur parrain, l’aspirant Lecerf",
+        "Le major Delattre",
+        "Le commandant Paille",
+        "Le colonel Bonneau"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-eae-027",
+      "type": "FLASHCARD",
+      "question": "Depuis 2019, de quelle unité les Poussins sont-ils héritiers des traditions ?",
+      "verso": "L’Escadrille française de chasse n°1 (EFC1)"
+    },
+    {
+      "id": "hz-eae-028",
+      "type": "QCM",
+      "question": "Combien de victoires confirmées René Fonck totalise-t-il ?",
+      "choix": [
+        "53",
+        "75",
+        "33",
+        "69"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Plus 69 probables : l’« As des As » allié."
+    },
+    {
+      "id": "hz-eae-029",
+      "type": "QCM",
+      "question": "Quel groupe, précurseur du groupe Lorraine, le général Testart commande-t-il en 1941 ?",
+      "choix": [
+        "Le groupe de bombardement n°1",
+        "Le GB 1/33",
+        "L’EFC1",
+        "Le groupe de chasse Alsace"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-eae-030",
+      "type": "QCR",
+      "question": "Quelles étaient les brigades de la première promotion ?",
+      "choix": [
+        "« Les Durs »",
+        "« Les Phénix »",
+        "« Les Bas Bretons » ou « Les Rois »",
+        "« Les Lions »",
+        "« Les Pénibles »"
+      ],
+      "reponses": [
+        2,
+        3,
+        4
+      ],
+      "explication": "Vrai : C, D, E. Faux : A, B."
+    },
+    {
+      "id": "hz-eae-031",
+      "type": "QCM",
+      "question": "Où se fait la transformation sur Rafale ?",
+      "choix": [
+        "À l’EC 2/4 La Fayette",
+        "À l’ETR 3/4 Aquitaine",
+        "Au 2/3 Champagne",
+        "À l’EC 1/7 Provence"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-eae-032",
+      "type": "QCM",
+      "question": "Où meurt le général Testart en 1945 ?",
+      "choix": [
+        "En Alsace, aux commandes d’un P-47",
+        "Au-dessus de la Manche, en Spitfire",
+        "Au Congo, en service aérien commandé",
+        "À Londres, lors d’un bombardement"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-eae-033",
+      "type": "FLASHCARD",
+      "question": "Que signifie EISPN ?",
+      "verso": "Escadron d’instruction au sol du personnel navigant"
+    },
+    {
+      "id": "hz-eae-034",
+      "type": "QCM",
+      "question": "Où et quand l’École militaire de l’air est-elle créée ?",
+      "choix": [
+        "À Salon en 1945",
+        "À Versailles en 1925",
+        "À Salon en 1935",
+        "À Versailles en 1935"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-eae-035",
+      "type": "QCM",
+      "question": "Quelle est la deuxième promotion, entrée en 1936 ?",
+      "choix": [
+        "Capitaine Astier de Villatte",
+        "Capitaine Guynemer",
+        "Commandant Mezergues",
+        "Lieutenant-colonel Mailloux"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-eae-036",
+      "type": "TROU",
+      "question": "Au retour à Salon en 1941, un nouveau chant de marche est écrit : « Race d’___ ».",
+      "reponses_texte": [
+        "aiglon"
+      ]
+    },
+    {
+      "id": "hz-eae-037",
+      "type": "QCM",
+      "question": "Quel escadron forme les navigateurs de combat ?",
+      "choix": [
+        "L’EAC 00.315",
+        "L’EAT 00.319",
+        "L’escadron AUNIS",
+        "L’ETOD Moselle"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-eae-038",
+      "type": "QCM",
+      "question": "Sous la protection de qui l’Ordre de la Libération est-il placé depuis 2021 ?",
+      "choix": [
+        "Du grand chancelier de la Légion d’honneur",
+        "Du ministre des Armées",
+        "Du Premier ministre",
+        "Du Président de la République"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-eae-039",
+      "type": "QCR",
+      "question": "Quelles licences composent le cursus CLEAE ?",
+      "choix": [
+        "SP",
+        "TESA",
+        "SI",
+        "NED",
+        "EGID"
+      ],
+      "reponses": [
+        1,
+        3,
+        4
+      ],
+      "explication": "Vrai : B, D, E. Faux : A, C. SI et SP sont les cursus master."
+    },
+    {
+      "id": "hz-eae-040",
+      "type": "QCM",
+      "question": "Quel est l’ordre hiérarchique correct de l’organisation de l’EFC ?",
+      "choix": [
+        "DGEAE, commandant de l’EFC, DGFM, brigadiers, commandant de promotion",
+        "DGEAE, DGFM, commandant de l’EFC, commandant de promotion, brigadiers",
+        "Commandant de l’EFC, DGEAE, DGFM, commandant de promotion, brigadiers",
+        "DGFM, DGEAE, commandant de promotion, commandant de l’EFC, brigadiers"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-eae-041",
+      "type": "QCM",
+      "question": "Dans quel pays le général Valin est-il envoyé en mai 1940 pour développer l’armée de l’air ?",
+      "choix": [
+        "Le Maroc",
+        "Le Royaume-Uni",
+        "Le Brésil",
+        "Le Liban"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-eae-042",
+      "type": "FLASHCARD",
+      "question": "Qui fut le dernier Compagnon de la Libération ?",
+      "verso": "Hubert Germain, inhumé au Mont-Valérien le 11/11/2021"
+    },
+    {
+      "id": "hz-eae-043",
+      "type": "QCM",
+      "question": "Quel exploit réalise Pelletier Doisy ?",
+      "choix": [
+        "Paris–Tokyo : 20 000 km en 118 heures de vol",
+        "La première traversée de l’Atlantique Sud",
+        "Le premier vol de nuit Paris–Londres",
+        "La traversée des Andes"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-eae-044",
+      "type": "QCM",
+      "question": "Lors de quel baptême la fourragère du capitaine Guynemer est-elle remise à l’École (3 avril 1948) ?",
+      "choix": [
+        "Celui de la « Marin la Meslée »",
+        "Celui de la « Préziosi »",
+        "Celui de la « Thollon »",
+        "Celui de la « Saint-Exupéry »"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-eae-045",
+      "type": "FLASHCARD",
+      "question": "À qui la « sainte prudence » doit-elle son nom ?",
+      "verso": "Au commandant Paille, chef de promotion, qui recommandait la prudence à ses élèves."
+    },
+    {
+      "id": "hz-eae-046",
+      "type": "QCM",
+      "question": "Combien de palmes compte la croix de guerre de Guynemer ?",
+      "choix": [
+        "28",
+        "25",
+        "17",
+        "26"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-eae-047",
+      "type": "QCM",
+      "question": "Quand l’École de l’air est-elle dissoute ?",
+      "choix": [
+        "27 novembre 1942",
+        "18 juin 1940",
+        "31 août 1940",
+        "1er octobre 1941"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-eae-048",
+      "type": "FLASHCARD",
+      "question": "Où loge tout le personnel de l’École pendant les premiers mois à Salon (1937) ?",
+      "verso": "À Istres"
+    },
+    {
+      "id": "hz-eae-049",
+      "type": "QCM",
+      "question": "Quels sont les périmètres de la place Pelletier Doisy (P.O.) ?",
+      "choix": [
+        "490 m intérieur et 540 m extérieur",
+        "2 001 m",
+        "540 m intérieur et 600 m extérieur",
+        "400 m intérieur et 500 m extérieur"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-eae-050",
+      "type": "QCM",
+      "question": "Où est né Clément Ader ?",
+      "choix": [
+        "À Paris",
+        "À Muret, près de Toulouse",
+        "À Toulouse",
+        "À Auch"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-eae-051",
+      "type": "FLASHCARD",
+      "question": "Quelle unité fut la première décorée de la croix de l’Ordre de la Libération ?",
+      "verso": "L’Escadrille française de chasse n°1 (EFC1)"
+    },
+    {
+      "id": "hz-eae-052",
+      "type": "QCM",
+      "question": "Dans quel camp marocain se déroule l’instruction militaire de la promotion recrutée en Afrique du Nord en 1943 ?",
+      "choix": [
+        "Le camp d’Arround (Atlas)",
+        "Le camp de Rabat",
+        "Le camp de Tindouf",
+        "Le camp de Meknès"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-eae-053",
+      "type": "QCM",
+      "question": "Où les officiers renseignement suivent-ils le stage ORIA ?",
+      "choix": [
+        "BA 118 Mont-de-Marsan",
+        "BA 110 Creil",
+        "BA 705 Tours",
+        "BA 942 Lyon"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-eae-054",
+      "type": "FLASHCARD",
+      "question": "Que signifie la licence EGID ?",
+      "verso": "Étude de la guerre et des institutions de défense"
+    },
+    {
+      "id": "hz-eae-055",
+      "type": "QCM",
+      "question": "Dans quel amphithéâtre l’École écoute-t-elle l’allocution du général de Sevin le 27 novembre 1942 ?",
+      "choix": [
+        "L’amphithéâtre Guynemer",
+        "L’amphithéâtre Valin",
+        "La salle des marbres",
+        "L’amphithéâtre Clément Ader"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-eae-056",
+      "type": "FLASHCARD",
+      "question": "Quels officiers l’École militaire de l’air (EMA) formait-elle ?",
+      "verso": "Les officiers de l’AAE issus du recrutement interne"
+    },
+    {
+      "id": "hz-eae-057",
+      "type": "FLASHCARD",
+      "question": "Quel sommet les élèves gravissent-ils en 1943 en tenue de campagne ?",
+      "verso": "Le mont Toubkal, point culminant du Maghreb"
+    },
+    {
+      "id": "hz-eae-058",
+      "type": "QCM",
+      "question": "Où se replient les EA 39 en 1939 ?",
+      "choix": [
+        "À Versailles",
+        "À Marrakech",
+        "Sur Bordeaux",
+        "À Istres"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-eae-059",
+      "type": "TROU",
+      "question": "L’École des commissaires des armées a été fondée en ___.",
+      "reponses_texte": [
+        "2013"
+      ]
+    },
+    {
+      "id": "hz-eae-060",
+      "type": "FLASHCARD",
+      "question": "Quel est le symbole de l’Ordre de la Libération ?",
+      "verso": "La croix de Lorraine (couleurs vert et noir : espoir et deuil)"
+    },
+    {
+      "id": "hz-eae-061",
+      "type": "QCR",
+      "question": "Quels pilotes figuraient parmi les six désignés pour former l’escadrille française en Égypte ?",
+      "choix": [
+        "Pierre Clostermann",
+        "Albert Littolff",
+        "James Denis",
+        "René Mouchotte",
+        "Noël Castelain"
+      ],
+      "reponses": [
+        1,
+        2,
+        4
+      ],
+      "explication": "Vrai : B, C, E. Faux : A, D."
+    },
+    {
+      "id": "hz-eae-062",
+      "type": "FLASHCARD",
+      "question": "Que signifie CICDA ?",
+      "verso": "Centre d’instruction du contrôle et de la défense aérienne (Mont-de-Marsan)"
+    },
+    {
+      "id": "hz-eae-063",
+      "type": "TROU",
+      "question": "Georges Pelletier Doisy est breveté pilote en 1912 avec le numéro ___.",
+      "reponses_texte": [
+        "284"
+      ]
+    },
+    {
+      "id": "hz-eae-064",
+      "type": "QCM",
+      "question": "Quelle est la longueur de la piste en dur de la BA 701 ?",
+      "choix": [
+        "1 500 m",
+        "2 400 m",
+        "2 001 m",
+        "3 000 m"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-eae-065",
+      "type": "FLASHCARD",
+      "question": "Que représente l’insigne de l’EMA ?",
+      "verso": "Un aigle adulte s’envolant pour saisir son poignard d’officier depuis un sommet escarpé."
+    },
+    {
+      "id": "hz-eae-066",
+      "type": "FLASHCARD",
+      "question": "À quel concours Guynemer se préparait-il en 1914 ?",
+      "verso": "Le concours d’entrée à l’École polytechnique"
+    },
+    {
+      "id": "hz-eae-067",
+      "type": "QCM",
+      "question": "Combien de temps durent les échanges franco-allemands pour les cadets ?",
+      "choix": [
+        "6 mois pour tous",
+        "13 mois pour les Allemands, 9 mois pour les Français",
+        "12 mois pour tous",
+        "9 mois pour les Allemands, 13 mois pour les Français"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-eae-068",
+      "type": "FLASHCARD",
+      "question": "Comment est surnommée la 158e antenne médicale ?",
+      "verso": "« Le SM »"
+    },
+    {
+      "id": "hz-eae-069",
+      "type": "FLASHCARD",
+      "question": "Comment sont baptisés les élèves de 1re année depuis 1936 ?",
+      "verso": "Les « Poussins »"
+    },
+    {
+      "id": "hz-eae-070",
+      "type": "QCM",
+      "question": "Quelle promotion s’installe à Salon-de-Provence en 1937 ?",
+      "choix": [
+        "Lieutenant Pinczon du Sel",
+        "Capitaine Astier de Villatte",
+        "Commandant Mezergues",
+        "Lieutenant-colonel Mailloux"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-eae-071",
+      "type": "FLASHCARD",
+      "question": "Que signifie CFAMI ?",
+      "verso": "Centre de formation aéronautique militaire initiale"
+    },
+    {
+      "id": "hz-eae-072",
+      "type": "FLASHCARD",
+      "question": "Que signifie CLEAE ?",
+      "verso": "Cursus licence de l’École de l’air et de l’espace (recrutement interne)"
+    },
+    {
+      "id": "hz-eae-073",
+      "type": "QCM",
+      "question": "Sur quel avion les poussins volent-ils dès 1956 ?",
+      "choix": [
+        "Potez 25",
+        "Fouga Magister (CM 170)",
+        "Alpha Jet",
+        "Mystère IV"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-eae-074",
+      "type": "FLASHCARD",
+      "question": "Pourquoi une brigade de la 1re promotion était-elle surnommée « Les Bas Bretons » ?",
+      "verso": "À cause du nombre de noms en « ec » qui la composaient."
+    },
+    {
+      "id": "hz-eae-075",
+      "type": "TROU",
+      "question": "L’École de l’air est dissoute le 31 ___ 1940.",
+      "reponses_texte": [
+        "août"
+      ]
+    },
+    {
+      "id": "hz-eae-076",
+      "type": "FLASHCARD",
+      "question": "Que signifie la licence NED ?",
+      "verso": "Numérique et échange de données"
+    },
+    {
+      "id": "hz-eae-077",
+      "type": "QCM",
+      "question": "Sur quel avion Marin-la-Meslée trouve-t-il la mort en libérant l’Alsace ?",
+      "choix": [
+        "Dewoitine D.520",
+        "P-47",
+        "P-38",
+        "Spitfire"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-eae-078",
+      "type": "FLASHCARD",
+      "question": "Que signifie OSC ?",
+      "verso": "Officier sous contrat"
+    },
+    {
+      "id": "hz-eae-079",
+      "type": "QCR",
+      "question": "Quelles écoles ont fusionné pour former l’École des commissaires des armées ?",
+      "choix": [
+        "L’École du commissariat de l’armée de Terre (Montpellier)",
+        "L’École de santé des armées (Lyon)",
+        "L’École des commissaires de l’Air (Salon)",
+        "L’École des officiers du commissariat de la Marine (Lanvéoc-Poulmic)"
+      ],
+      "reponses": [
+        0,
+        2,
+        3
+      ],
+      "explication": "Vrai : A, C, D. Faux : B."
+    },
+    {
+      "id": "hz-eae-080",
+      "type": "FLASHCARD",
+      "question": "Que signifie SIC ?",
+      "verso": "Systèmes d’information et de communication"
+    },
+    {
+      "id": "hz-eae-081",
+      "type": "QCM",
+      "question": "Dans l’organisation de l’EFC, qui se situe juste au-dessus des brigadiers ?",
+      "choix": [
+        "Le DGFM",
+        "Le DGEAE",
+        "Le commandant de promotion",
+        "Le commandant de l’EFC"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-eae-082",
+      "type": "FLASHCARD",
+      "question": "Que signifie DGFM ?",
+      "verso": "Directeur général de la formation militaire"
+    },
+    {
+      "id": "hz-eae-083",
+      "type": "QCM",
+      "question": "Quelle couleur a la fourragère portée par les Poussins héritiers de l’EFC1 ?",
+      "choix": [
+        "Rouge",
+        "Jaune et verte",
+        "Rouge et verte",
+        "Noire et verte"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Aux couleurs de l’Ordre de la Libération."
+    },
+    {
+      "id": "hz-eae-084",
+      "type": "QCR",
+      "question": "Quels services abrite le bâtiment O de la zone nord ?",
+      "choix": [
+        "L’EIVV",
+        "L’EISPN",
+        "Le CFAMI",
+        "L’EVAAE",
+        "La SIM"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "Vrai : A, B. Faux : C, D, E."
+    },
+    {
+      "id": "hz-eae-085",
+      "type": "QCM",
+      "question": "À quelle escadrille Guynemer est-il affecté ?",
+      "choix": [
+        "L’EFC1",
+        "L’escadrille des « Cigognes »",
+        "L’escadrille La Fayette",
+        "L’escadrille des « Lions »"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-eae-086",
+      "type": "QCM",
+      "question": "Quel bilan l’EFC1 affiche-t-elle fin été 1941 ?",
+      "choix": [
+        "17 victoires en 165 missions",
+        "33 victoires en 400 missions",
+        "53 victoires en 400 missions",
+        "6 victoires en 408 missions"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-eae-087",
+      "type": "FLASHCARD",
+      "question": "Que signifie DGEAE ?",
+      "verso": "Directeur général de l’École de l’air et de l’espace"
+    },
+    {
+      "id": "hz-eae-088",
+      "type": "QCM",
+      "question": "Combien de temps dure le stage ORIA ?",
+      "choix": [
+        "Neuf mois",
+        "Un an",
+        "Six mois",
+        "Trois mois"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-eae-089",
+      "type": "QCM",
+      "question": "Où Guynemer reçoit-il son brevet de pilote le 26 avril 1915 ?",
+      "choix": [
+        "À Avord",
+        "À Pau",
+        "À Salon",
+        "À Villacoublay"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-eae-090",
+      "type": "FLASHCARD",
+      "question": "Que signifie FAFL ?",
+      "verso": "Forces aériennes françaises libres"
+    },
+    {
+      "id": "hz-eae-091",
+      "type": "QCM",
+      "question": "En quelle année le Cours spécial de l’EAE (élèves étrangers) a-t-il été créé ?",
+      "choix": [
+        "1973",
+        "1935",
+        "2015",
+        "1994"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-eae-092",
+      "type": "FLASHCARD",
+      "question": "Que signifie EFC ?",
+      "verso": "Escadron de formation au commandement"
+    },
+    {
+      "id": "hz-eae-093",
+      "type": "QCM",
+      "question": "Sur quel recrutement le cursus CMEAE-SP est-il ouvert ?",
+      "choix": [
+        "Avec le niveau bac, pour les élèves du recrutement interne",
+        "Sur concours interne après au moins 3 ans de service",
+        "Sur concours CPGE scientifique ou après une licence scientifique",
+        "Après 3 ans de CPGE économique ou une licence de science politique"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-eae-094",
+      "type": "QCM",
+      "question": "Quel organisme recueille les élèves en janvier 1943 dans des villages alpins ?",
+      "choix": [
+        "« Jeunesse et Montagne »",
+        "La Défense passive",
+        "Les Chantiers de la jeunesse",
+        "Le STO"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-eae-095",
+      "type": "FLASHCARD",
+      "question": "Qui préside l’inauguration de la piste Mistral en 1954 ?",
+      "verso": "Le colonel Bigot, nouveau commandant de l’École"
+    },
+    {
+      "id": "hz-eae-096",
+      "type": "QCM",
+      "question": "Quand René Mouchotte disparaît-il au-dessus de la Manche ?",
+      "choix": [
+        "27 août 1943",
+        "3 mars 1945",
+        "8 juillet 1943",
+        "11 septembre 1917"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-eae-097",
+      "type": "QCM",
+      "question": "Sur quel avion le major des anciens, Delattre, arrose-t-il la nouvelle promotion lors du baptême de 1936 ?",
+      "choix": [
+        "Un Morane-Saulnier",
+        "Un Fouga Magister",
+        "Un Caudron",
+        "Un Potez 25"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-eae-098",
+      "type": "TROU",
+      "question": "En octobre ___, aspirants et poussins se retrouvent à Salon.",
+      "reponses_texte": [
+        "1946"
+      ]
+    },
+    {
+      "id": "hz-eae-099",
+      "type": "QCM",
+      "question": "Quand les troupes allemandes cernent-elles la base de Salon ?",
+      "choix": [
+        "8 juillet 1943",
+        "27 novembre 1942",
+        "11 novembre 1942",
+        "31 août 1940"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-eae-100",
+      "type": "QCM",
+      "question": "Quel lieu remplace provisoirement Salon après la Libération ?",
+      "choix": [
+        "Le château de Versailles",
+        "L’ancien collège de Bouffemont",
+        "La base de Cazaux",
+        "Ancelle"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-eae-101",
+      "type": "TROU",
+      "question": "La place Pelletier Doisy, désignée par le sigle ___, a un périmètre intérieur de 490 m.",
+      "reponses_texte": [
+        "PO",
+        "P.O.",
+        "P.O"
+      ]
+    },
+    {
+      "id": "hz-eae-102",
+      "type": "QCM",
+      "question": "Quand la promotion « Préziosi » est-elle baptisée ?",
+      "choix": [
+        "14 avril 1947",
+        "8 juillet 1943",
+        "25 janvier 1946",
+        "3 avril 1948"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-eae-103",
+      "type": "QCM",
+      "question": "Sur quelle distance Clément Ader se maintient-il en l’air le 9 octobre 1890 ?",
+      "choix": [
+        "Cinquante mètres",
+        "Dix mètres",
+        "Trois cents mètres",
+        "Cent mètres"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-eae-104",
+      "type": "FLASHCARD",
+      "question": "Quel moteur équipe l’aéroplane de Clément Ader ?",
+      "verso": "Un moteur à vapeur"
+    },
+    {
+      "id": "hz-eae-105",
+      "type": "QCM",
+      "question": "Qui remet à l’École la Croix de guerre avec palmes et la Légion d’honneur le 14 avril 1947 ?",
+      "choix": [
+        "Le général Valin",
+        "René Coty",
+        "Le général de Gaulle",
+        "Vincent Auriol"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-eae-106",
+      "type": "QCM",
+      "question": "Combien de semaines de formation suivent à l’EAE les officiers sous contrat (OSC) ?",
+      "choix": [
+        "12 semaines",
+        "8 semaines",
+        "6 mois",
+        "2 ans"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-eae-107",
+      "type": "FLASHCARD",
+      "question": "Quand la promotion est-elle baptisée malgré son départ probable pour l’Allemagne ?",
+      "verso": "Le 8 juillet 1943",
+      "explication": "Afin que « quoi qu’il arrive on puisse toujours compter sur l’École de l’Air »."
+    },
+    {
+      "id": "hz-eae-108",
+      "type": "QCM",
+      "question": "Quel est le rang de l’Ordre de la Libération ?",
+      "choix": [
+        "Premier ordre de France",
+        "Deuxième ordre de France",
+        "Troisième ordre de France",
+        "Quatrième ordre de France"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-eae-109",
+      "type": "QCM",
+      "question": "Quel bâtiment abrite la SIM et l’EFC ?",
+      "choix": [
+        "Le BDE",
+        "Le bâtiment Général Brocard",
+        "Le bâtiment Général Valin",
+        "Le bâtiment Général Testart"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-eae-110",
+      "type": "FLASHCARD",
+      "question": "Qu’abrite le bâtiment K de la zone nord de la BA 701 ?",
+      "verso": "La BSMA et le maître tailleur (habillement)"
+    },
+    {
+      "id": "hz-eae-111",
+      "type": "QCM",
+      "question": "Quand est né Georges Guynemer ?",
+      "choix": [
+        "26 avril 1895 à Pau",
+        "24 décembre 1894 à Paris",
+        "24 décembre 1897 à Paris",
+        "11 septembre 1894 à Compiègne"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-eae-112",
+      "type": "QCM",
+      "question": "Combien de victoires homologuées Guynemer totalise-t-il à sa mort ?",
+      "choix": [
+        "53",
+        "20",
+        "33",
+        "75"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-eae-113",
+      "type": "QCR",
+      "question": "Quels groupes le général Valin crée-t-il au sein des FAFL ?",
+      "choix": [
+        "Île-de-France",
+        "Alsace",
+        "Normandie-Niemen",
+        "Bretagne",
+        "Lorraine"
+      ],
+      "reponses": [
+        0,
+        1,
+        3,
+        4
+      ],
+      "explication": "Vrai : A, B, D, E. Faux : C."
+    },
+    {
+      "id": "hz-eae-114",
+      "type": "QCM",
+      "question": "Quelles conditions doit remplir un candidat du recrutement interne au concours de l’EAE ?",
+      "choix": [
+        "Le baccalauréat et moins de 25 ans",
+        "Au moins 3 ans de service et au plus 33 ans",
+        "Au moins 2 ans de service et au plus 35 ans",
+        "Au moins 5 ans de service et au plus 30 ans"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-eae-115",
+      "type": "QCM",
+      "question": "Quelle est l’orientation de la piste en dur de la BA 701 ?",
+      "choix": [
+        "09/27",
+        "16/34",
+        "18/36",
+        "13/31"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-eae-116",
+      "type": "QCR",
+      "question": "Quelles sont les deux branches des officiers contrôleurs ?",
+      "choix": [
+        "Défense aérienne (DA)",
+        "Planification (PCOA)",
+        "Défense sol-air (DSA)",
+        "Circulation aérienne (CA)"
+      ],
+      "reponses": [
+        0,
+        3
+      ],
+      "explication": "Vrai : A, D. Faux : B, C."
+    },
+    {
+      "id": "hz-eae-117",
+      "type": "QCM",
+      "question": "Avec quelle école l’EAE réalise-t-elle un échange depuis 1994 ?",
+      "choix": [
+        "L’OSLW (Luftwaffe)",
+        "L’USAFA (US Air Force)",
+        "Cranwell (RAF)",
+        "Pozzuoli (Aeronautica Militare)"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-eae-118",
+      "type": "QCM",
+      "question": "Quel commandant de l’École prescrit à Salon une stricte discipline et une solide formation morale de l’officier ?",
+      "choix": [
+        "Le colonel Bigot",
+        "Le colonel Bonneau",
+        "Le commandant Paille",
+        "Le lieutenant-colonel Bezy"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-eae-119",
+      "type": "FLASHCARD",
+      "question": "Que signifie ESIS ?",
+      "verso": "Escadron de sécurité incendie et sauvetage"
+    },
+    {
+      "id": "hz-eae-120",
+      "type": "QCM",
+      "question": "Combien de temps dure la formation à l’École de l’aviation de chasse (EAC) sur PC-21 ?",
+      "choix": [
+        "8 mois",
+        "12 mois",
+        "24 mois",
+        "18 mois"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-eae-121",
+      "type": "QCM",
+      "question": "Dans quel escadron les pilotes de drone se spécialisent-ils ?",
+      "choix": [
+        "L’ER 4/33 « Périgord »",
+        "L’ETR 3/4 « Aquitaine »",
+        "L’ED 1/33 « Belfort »",
+        "L’ETOD 3/33 « Moselle »"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-eae-122",
+      "type": "FLASHCARD",
+      "question": "Que signifie EMSST ?",
+      "verso": "Enseignement militaire supérieur scientifique et technique"
+    },
+    {
+      "id": "hz-eae-123",
+      "type": "QCM",
+      "question": "Avec quelle force aérienne l’EFC1 opère-t-elle en Afrique ?",
+      "choix": [
+        "La RAF",
+        "La Regia Aeronautica",
+        "L’USAAF",
+        "L’armée de l’Air de Vichy"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-eae-124",
+      "type": "TROU",
+      "question": "L’École militaire de l’air fusionne avec l’École de l’air en ___ pour former une promotion unique.",
+      "reponses_texte": [
+        "2015"
+      ]
+    },
+    {
+      "id": "hz-eae-125",
+      "type": "QCM",
+      "question": "Quels officiers contrôleurs encadrent le contrôle des avions militaires ou civils au décollage, à l’atterrissage et en approche ?",
+      "choix": [
+        "Les officiers DSA",
+        "Les contrôleurs défense aérienne",
+        "Les contrôleurs circulation aérienne",
+        "Les officiers PCOA"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-eae-126",
+      "type": "TROU",
+      "question": "La piste en dur de Salon mesure 2 001 m de long et ___ m de large.",
+      "reponses_texte": [
+        "45"
+      ]
+    },
+    {
+      "id": "hz-eae-127",
+      "type": "QCM",
+      "question": "Où se fait la transformation sur Mirage 2000 ?",
+      "choix": [
+        "À l’ETR 3/4 Aquitaine",
+        "Au 1/2 Cigognes",
+        "À l’EC 1/3 Navarre",
+        "Au 2/3 Champagne"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-eae-128",
+      "type": "FLASHCARD",
+      "question": "Où repose le général Brocard ?",
+      "verso": "Dans la crypte du Mémorial de l’escadrille La Fayette, à Garches"
+    },
+    {
+      "id": "hz-eae-129",
+      "type": "QCM",
+      "question": "Quand la nouvelle vague de Poussins s’installe-t-elle à Salon-de-Provence ?",
+      "choix": [
+        "15 décembre 1954",
+        "1er octobre 1941",
+        "15 novembre 1937",
+        "2 juillet 1934"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-eae-130",
+      "type": "FLASHCARD",
+      "question": "Quel surnom porte René Fonck ?",
+      "verso": "L’« As des As » allié"
+    },
+    {
+      "id": "hz-eae-131",
+      "type": "QCR",
+      "question": "Quelles écoles ont fusionné en 2015 pour reprendre l’appellation « École de l’air » ?",
+      "choix": [
+        "Le Cours spécial de l’École de l’air",
+        "L’École militaire de l’air",
+        "L’École des commissaires de l’air",
+        "L’École des pupilles de l’air",
+        "L’École de l’air"
+      ],
+      "reponses": [
+        0,
+        1,
+        4
+      ],
+      "explication": "Vrai : A, B, E. Faux : C, D."
+    },
+    {
+      "id": "hz-eae-132",
+      "type": "QCM",
+      "question": "Quand la piste Mistral est-elle inaugurée ?",
+      "choix": [
+        "15 novembre 1937",
+        "14 avril 1947",
+        "15 décembre 1954",
+        "1956"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-eae-133",
+      "type": "FLASHCARD",
+      "question": "Que signifie la licence TESA ?",
+      "verso": "Technologies et emploi des systèmes aérospatiaux"
+    },
+    {
+      "id": "hz-eae-134",
+      "type": "FLASHCARD",
+      "question": "Que signifie CMEAE ?",
+      "verso": "Cursus master de l’École de l’air et de l’espace"
+    },
+    {
+      "id": "hz-eae-135",
+      "type": "TROU",
+      "question": "L’Ordre de la Libération est forclos depuis ___.",
+      "reponses_texte": [
+        "1946"
+      ]
+    },
+    {
+      "id": "hz-eae-136",
+      "type": "FLASHCARD",
+      "question": "Que signifie SIM ?",
+      "verso": "Section d’instruction militaire"
+    },
+    {
+      "id": "hz-eae-137",
+      "type": "QCM",
+      "question": "À qui le général Valin succède-t-il à la tête des FAFL ?",
+      "choix": [
+        "Au vice-amiral Muselier",
+        "Au général Testart",
+        "Au général de Gaulle",
+        "Au général Brocard"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-eae-138",
+      "type": "FLASHCARD",
+      "question": "Qu’est-ce qu’une fourragère ?",
+      "verso": "Une décoration portée par les membres d’une unité au nom d’une décoration collective remise à celle-ci."
+    },
+    {
+      "id": "hz-eae-139",
+      "type": "QCM",
+      "question": "Quand la démonstration de l’Avion n°3 d’Ader échoue-t-elle devant une commission militaire ?",
+      "choix": [
+        "17 décembre 1903",
+        "14 octobre 1925",
+        "14 octobre 1897",
+        "9 octobre 1890"
+      ],
+      "reponses": [
+        2
+      ]
+    },
+    {
+      "id": "hz-eae-140",
+      "type": "QCM",
+      "question": "Durant quel siège l’unité prend-elle officiellement le nom d’EFC1 ?",
+      "choix": [
+        "La bataille de Crète",
+        "La campagne de Syrie",
+        "La défense d’Athènes",
+        "Le siège de Tobrouk"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-eae-141",
+      "type": "FLASHCARD",
+      "question": "Que signifie BDE (bâtiment) ?",
+      "verso": "Bâtiment de la direction et de l’enseignement"
+    },
+    {
+      "id": "hz-eae-142",
+      "type": "QCM",
+      "question": "Sur quel avion les pilotes de transport sont-ils instruits à Avord ?",
+      "choix": [
+        "PC-21",
+        "Xingu",
+        "A400M",
+        "Grob 120"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-eae-143",
+      "type": "QCM",
+      "question": "Au profit de quel groupe l’EFC1 est-elle dissoute ?",
+      "choix": [
+        "Le groupe de chasse Alsace",
+        "Le groupe Île-de-France",
+        "Le groupe Lorraine",
+        "Le Normandie-Niemen"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-eae-144",
+      "type": "FLASHCARD",
+      "question": "Quel surnom porte Edmond Marin-la-Meslée ?",
+      "verso": "« L’as aux vingt victoires » (16 homologuées et 4 probables)"
+    },
+    {
+      "id": "hz-eae-145",
+      "type": "QCM",
+      "question": "Au bout de combien d’années les officiers mécaniciens choisissent-ils entre forces, état-major ou EMSST ?",
+      "choix": [
+        "Cinq ans",
+        "Trois ans",
+        "Dix ans",
+        "Huit ans"
+      ],
+      "reponses": [
+        0
+      ]
+    },
+    {
+      "id": "hz-eae-146",
+      "type": "FLASHCARD",
+      "question": "Quel record René Mouchotte établit-il dans la RAF ?",
+      "verso": "Premier Français à commander un squadron anglais (No. 65 Squadron)"
+    },
+    {
+      "id": "hz-eae-147",
+      "type": "QCM",
+      "question": "Qui a créé l’Ordre de la Libération et quand ?",
+      "choix": [
+        "Le général Valin, en 1941",
+        "Napoléon, en 1802",
+        "Vincent Auriol, en 1946",
+        "Le général de Gaulle, en 1940"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-eae-148",
+      "type": "FLASHCARD",
+      "question": "Combien de temps les baraques « provisoires » de 1938 sont-elles restées en place ?",
+      "verso": "Trente ans"
+    },
+    {
+      "id": "hz-eae-149",
+      "type": "FLASHCARD",
+      "question": "Que signifie DGER ?",
+      "verso": "Direction générale de l’enseignement et de la recherche"
+    },
+    {
+      "id": "hz-eae-150",
+      "type": "QCM",
+      "question": "Combien de temps dure la formation à Cognac puis à Avord pour les pilotes de transport ?",
+      "choix": [
+        "1 an à Cognac puis 8 mois à Avord",
+        "18 mois à Cognac",
+        "6 mois chacun",
+        "8 mois à Cognac puis un an à Avord"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-eae-151",
+      "type": "FLASHCARD",
+      "question": "Avec qui Guynemer décolle-t-il pour sa dernière mission le 11 septembre 1917 ?",
+      "verso": "Le lieutenant Bozon-Verduraz"
+    },
+    {
+      "id": "hz-eae-152",
+      "type": "TROU",
+      "question": "La devise de l’École de l’air est « Faire ___ ».",
+      "reponses_texte": [
+        "face"
+      ]
+    },
+    {
+      "id": "hz-eae-153",
+      "type": "QCM",
+      "question": "Combien de palmes compte la croix de guerre de René Fonck ?",
+      "choix": [
+        "26 palmes et une étoile de vermeil",
+        "25 palmes et une étoile d’argent",
+        "17 palmes et deux étoiles de bronze",
+        "28 palmes et une étoile de bronze"
+      ],
+      "reponses": [
+        3
+      ]
+    },
+    {
+      "id": "hz-eae-154",
+      "type": "FLASHCARD",
+      "question": "Quand les pilotes de chasse passent-ils l’ATPL ?",
+      "verso": "En quatrième année à l’EAE"
+    },
+    {
+      "id": "hz-eae-155",
+      "type": "QCM",
+      "question": "Où les élèves suivent-ils leur stage de pilotage aux États-Unis ?",
+      "choix": [
+        "Randolph (Texas)",
+        "Tuscaloosa (Alabama)",
+        "Maxwell (Alabama)",
+        "Pensacola (Floride)"
+      ],
+      "reponses": [
+        1
+      ]
+    },
+    {
+      "id": "hz-eae-156",
+      "type": "FLASHCARD",
+      "question": "Que signifie ORIA ?",
+      "verso": "Officier renseignement interprète analyste"
+    },
+    {
+      "id": "hz-eae-157",
+      "type": "FLASHCARD",
+      "question": "En quelle année la première édition de l’Horizon a-t-elle été rédigée ?",
+      "verso": "1997, par des cadres de l’École"
+    }
+  ]
+}

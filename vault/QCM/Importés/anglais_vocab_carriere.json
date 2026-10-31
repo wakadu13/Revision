@@ -1,0 +1,194 @@
+{
+  "langue": "Anglais",
+  "titre": "Anglais — vocabulaire : la carrière et les contrats (B1)",
+  "particules_optionnelles": [
+    "to",
+    "a",
+    "an",
+    "the"
+  ],
+  "caracteres_speciaux": [],
+  "vocabulaire": [
+    {
+      "id": "en-carriere-001",
+      "mot": "a career",
+      "traductions": [
+        "une carrière"
+      ],
+      "exemple": "I always wanted a [career] in marketing.",
+      "exemple_traduction": "J'ai toujours voulu faire carrière dans le marketing.",
+      "note": "Prononciation : accent sur la 2e syllabe.",
+      "prononciation": "/kəˈrɪə(r)/"
+    },
+    {
+      "id": "en-carriere-002",
+      "mot": "a full-time job",
+      "traductions": [
+        "un emploi à temps plein"
+      ],
+      "exemple": "Both my parents had [full-time jobs].",
+      "exemple_traduction": "Mes deux parents travaillaient à temps plein."
+    },
+    {
+      "id": "en-carriere-003",
+      "mot": "a part-time job",
+      "traductions": [
+        "un emploi à temps partiel"
+      ],
+      "exemple": "I have a [part-time job] three evenings a week.",
+      "exemple_traduction": "J'ai un emploi à temps partiel trois soirs par semaine."
+    },
+    {
+      "id": "en-carriere-004",
+      "mot": "a permanent contract",
+      "traductions": [
+        "un CDI"
+      ],
+      "exemple": "I signed a [permanent contract] four years ago.",
+      "exemple_traduction": "J'ai signé un CDI il y a quatre ans.",
+      "note": "CDI = contrat à durée indéterminée."
+    },
+    {
+      "id": "en-carriere-005",
+      "mot": "a temporary contract",
+      "traductions": [
+        "un CDD"
+      ],
+      "exemple": "I only have a [temporary contract] over Christmas.",
+      "exemple_traduction": "Je n'ai qu'un CDD pour la période de Noël.",
+      "note": "CDD = contrat à durée déterminée."
+    },
+    {
+      "id": "en-carriere-006",
+      "mot": "to do casual work",
+      "traductions": [
+        "faire des petits boulots",
+        "faire du travail saisonnier"
+      ],
+      "exemple": "We hire students to [do casual work] at Christmas.",
+      "exemple_traduction": "Nous embauchons des étudiants pour des petits boulots à Noël.",
+      "note": "Aussi : seasonal work. casual staff = le personnel temporaire."
+    },
+    {
+      "id": "en-carriere-007",
+      "mot": "to be freelance",
+      "traductions": [
+        "être freelance"
+      ],
+      "exemple": "Being [freelance] is perfect for me.",
+      "exemple_traduction": "Être freelance me convient parfaitement.",
+      "note": "Aussi : a freelancer, to work freelance."
+    },
+    {
+      "id": "en-carriere-008",
+      "mot": "to be self-employed",
+      "traductions": [
+        "travailler à son compte"
+      ],
+      "exemple": "I love being [self-employed].",
+      "exemple_traduction": "J'adore travailler à mon compte."
+    },
+    {
+      "id": "en-carriere-009",
+      "mot": "a location independent worker",
+      "traductions": [
+        "un travailleur nomade"
+      ],
+      "exemple": "As a [location independent worker], I work from anywhere.",
+      "exemple_traduction": "En tant que travailleur nomade, je travaille de n'importe où.",
+      "note": "Proche : a digital nomad, to work remotely (télétravailler)."
+    },
+    {
+      "id": "en-carriere-010",
+      "mot": "to work flexi-time",
+      "traductions": [
+        "avoir des horaires flexibles"
+      ],
+      "exemple": "I [work flexi-time], so I avoid the rush hour.",
+      "exemple_traduction": "J'ai des horaires flexibles, donc j'évite l'heure de pointe.",
+      "note": "Américain : flextime.",
+      "variantes": [
+        "to work flextime"
+      ]
+    },
+    {
+      "id": "en-carriere-011",
+      "mot": "to get a promotion",
+      "traductions": [
+        "obtenir une promotion"
+      ],
+      "exemple": "He was so good that he [got a promotion].",
+      "exemple_traduction": "Il était si bon qu'il a obtenu une promotion.",
+      "note": "Faux ami : a promotion ≠ une promotion commerciale (a special offer)."
+    },
+    {
+      "id": "en-carriere-012",
+      "mot": "to quit",
+      "traductions": [
+        "démissionner",
+        "quitter son emploi"
+      ],
+      "exemple": "I hated my job, so I [quit].",
+      "exemple_traduction": "Je détestais mon travail, alors j'ai démissionné.",
+      "note": "Irrégulier : quit – quit – quit. Formel : to resign."
+    },
+    {
+      "id": "en-carriere-013",
+      "mot": "to get fired",
+      "traductions": [
+        "se faire renvoyer (pour faute)"
+      ],
+      "exemple": "After being late every day, Frank [got fired].",
+      "exemple_traduction": "À force d'être en retard tous les jours, Frank s'est fait renvoyer.",
+      "note": "Familier britannique : to get sacked.",
+      "variantes": [
+        "to get sacked"
+      ]
+    },
+    {
+      "id": "en-carriere-014",
+      "mot": "to be made redundant",
+      "traductions": [
+        "être licencié (pour motif économique)"
+      ],
+      "exemple": "We are all being [made redundant].",
+      "exemple_traduction": "Nous allons tous être licenciés pour raison économique.",
+      "note": "Britannique. Américain : to be laid off. Ce n'est pas une faute du salarié."
+    },
+    {
+      "id": "en-carriere-015",
+      "mot": "to be unemployed",
+      "traductions": [
+        "être au chômage"
+      ],
+      "exemple": "He has been [unemployed] since he left school.",
+      "exemple_traduction": "Il est au chômage depuis qu'il a quitté l'école.",
+      "note": "unemployment = le chômage."
+    },
+    {
+      "id": "en-carriere-016",
+      "mot": "to retire",
+      "traductions": [
+        "prendre sa retraite"
+      ],
+      "exemple": "My father was able to [retire] at 45.",
+      "exemple_traduction": "Mon père a pu prendre sa retraite à 45 ans.",
+      "note": "retirement = la retraite ; a pension = une pension de retraite."
+    },
+    {
+      "id": "en-carriere-017",
+      "mot": "a stay-at-home parent",
+      "traductions": [
+        "un parent au foyer"
+      ],
+      "exemple": "John became a [stay-at-home] dad.",
+      "exemple_traduction": "John est devenu père au foyer.",
+      "note": "a stay-at-home mum (GB) / mom (US) / dad.",
+      "variantes": [
+        "a stay-at-home mum",
+        "a stay-at-home mom",
+        "a stay-at-home dad"
+      ]
+    }
+  ]
+}

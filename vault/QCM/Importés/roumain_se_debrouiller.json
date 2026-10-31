@@ -1,0 +1,474 @@
+{
+  "langue": "Roumain",
+  "caracteres_speciaux": [
+    "ă",
+    "â",
+    "î",
+    "ș",
+    "ț",
+    "Ă",
+    "Â",
+    "Î",
+    "Ș",
+    "Ț"
+  ],
+  "titre": "Roumain — grammaire : se débrouiller au quotidien",
+  "description": "Les pièges qui trahissent un francophone, en situations réelles (magasin, resto, transport, médecin).",
+  "grammaire": [
+    {
+      "id": "ro-deb-001",
+      "type": "TROU",
+      "question": "Trebuie să ___ (plăti, eu) la casă sau la masă?",
+      "reponses_texte": [
+        "plătesc"
+      ],
+      "explication": "« Je dois / il faut » = trebuie să + conjonctif ; trebuie reste invariable : trebuie să plătesc, trebuie să plătești…",
+      "traduction": "Je dois payer à la caisse ou à table ?"
+    },
+    {
+      "id": "ro-deb-002",
+      "type": "QCM",
+      "question": "« Il y a une pharmacie près d'ici ? » se dit :",
+      "choix": [
+        "Are vreo farmacie pe aici?",
+        "E vreo farmacie pe aici?",
+        "Este acolo o farmacie aproape?",
+        "Face o farmacie pe aici?"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« Il y a » = e / este / există, jamais a avea. Vreo (un… quelconque) est typique des questions."
+    },
+    {
+      "id": "ro-deb-003",
+      "type": "TROU",
+      "question": "El vrea să ___ (merge) acasă.",
+      "reponses_texte": [
+        "meargă"
+      ],
+      "explication": "Conjonctif 3e personne : la forme change (merge → să meargă). Piège classique : *să merge.",
+      "traduction": "Il veut rentrer à la maison."
+    },
+    {
+      "id": "ro-deb-004",
+      "type": "CORRECTION",
+      "phrase": "Cheile sunt pe masa.",
+      "corrections": [
+        "Cheile sunt pe masă."
+      ],
+      "explication": "Après pe, în, la, sub, fără… un nom seul ne prend pas l'article défini : pe masă, în dulap. Avec un complément, l'article revient : pe masa din bucătărie. Exception : cu (cu mașina).",
+      "traduction": "Les clés sont sur la table."
+    },
+    {
+      "id": "ro-deb-005",
+      "type": "TROU",
+      "question": "Mă ___ (durea) capul de azi-dimineață.",
+      "reponses_texte": [
+        "doare"
+      ],
+      "explication": "« Avoir mal » = a durea + accusatif : mă doare capul (sing.), mă dor picioarele (plur.). La partie du corps prend l'article défini.",
+      "traduction": "J'ai mal à la tête depuis ce matin."
+    },
+    {
+      "id": "ro-deb-006",
+      "type": "QCM",
+      "question": "« Je viens d'arriver » se dit :",
+      "choix": [
+        "Vin de a ajunge.",
+        "Tocmai am ajuns.",
+        "Vin să ajung.",
+        "Am venit de ajuns."
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Passé récent : tocmai + passé composé. « Vin să… » signifie « je viens pour… »."
+    },
+    {
+      "id": "ro-deb-007",
+      "type": "TROU",
+      "question": "Locuiesc în Iași ___ trei ani.",
+      "reponses_texte": [
+        "de"
+      ],
+      "explication": "Depuis + durée = de (de trei ani) ; depuis + date = din (din 2022).",
+      "traduction": "J'habite à Iași depuis trois ans."
+    },
+    {
+      "id": "ro-deb-008",
+      "type": "TROU",
+      "question": "Hai să ___ (bea, noi) o cafea!",
+      "reponses_texte": [
+        "bem"
+      ],
+      "explication": "Hai să + 1re pers. du pluriel = « allons… / et si on… ».",
+      "traduction": "Allons boire un café !"
+    },
+    {
+      "id": "ro-deb-009",
+      "type": "CORRECTION",
+      "phrase": "Caut Andrei, e acasă?",
+      "corrections": [
+        "Îl caut pe Andrei, e acasă?",
+        "Îl caut pe Andrei. E acasă?"
+      ],
+      "explication": "COD de personne : pe + reprise par le pronom : îl caut pe Andrei, o aștept pe Maria.",
+      "traduction": "Je cherche Andrei, il est à la maison ?"
+    },
+    {
+      "id": "ro-deb-010",
+      "type": "TROU",
+      "question": "Îmi ___ (plăcea) mult sarmalele.",
+      "reponses_texte": [
+        "plac"
+      ],
+      "explication": "Avec a-i plăcea, le verbe s'accorde avec la chose aimée : ici sarmalele (plur.) → plac.",
+      "traduction": "J'adore les sarmale."
+    },
+    {
+      "id": "ro-deb-011",
+      "type": "QCM",
+      "question": "La formule la plus polie pour commander :",
+      "choix": [
+        "Vreau o supă.",
+        "Aș vrea o supă, vă rog.",
+        "Voi vrea o supă.",
+        "Vrut o supă, vă rog."
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Conditionnel aș vrea = je voudrais. Vreau n'est pas faux, mais plus direct."
+    },
+    {
+      "id": "ro-deb-012",
+      "type": "TROU",
+      "question": "Am ajuns în România ___ doi ani.",
+      "reponses_texte": [
+        "acum",
+        "în urmă cu"
+      ],
+      "explication": "« Il y a » + durée passée = acum (ou în urmă cu), placé devant : acum doi ani.",
+      "traduction": "Je suis arrivé en Roumanie il y a deux ans."
+    },
+    {
+      "id": "ro-deb-013",
+      "type": "CORRECTION",
+      "phrase": "Am văzut nimeni.",
+      "corrections": [
+        "N-am văzut pe nimeni.",
+        "Nu am văzut pe nimeni."
+      ],
+      "explication": "Double négation obligatoire : nu… nimeni / nimic / niciodată. Nimeni en COD prend pe.",
+      "traduction": "Je n'ai vu personne."
+    },
+    {
+      "id": "ro-deb-014",
+      "type": "TROU",
+      "question": "Mergem diseară ___ Ioana.",
+      "reponses_texte": [
+        "la"
+      ],
+      "explication": "« Chez quelqu'un » = la cineva (la Ioana, la doctor, la mama).",
+      "traduction": "On va chez Ioana ce soir."
+    },
+    {
+      "id": "ro-deb-015",
+      "type": "QCM",
+      "question": "À un inconnu plus âgé dans la rue :",
+      "choix": [
+        "Poți să-mi spui unde e gara?",
+        "Puteți să-mi spuneți unde e gara?",
+        "Puteți să-mi spui unde e gara?",
+        "Poate să-mi spuneți unde e gara?"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Vouvoiement = 2e pers. du pluriel sur TOUS les verbes : puteți… spuneți. Ne mélange pas tu et vous."
+    },
+    {
+      "id": "ro-deb-016",
+      "type": "TROU",
+      "question": "Biletul costă douăzeci și cinci ___ lei.",
+      "reponses_texte": [
+        "de"
+      ],
+      "explication": "Quand les deux derniers chiffres valent 0 ou au moins 20, on intercale « de » : 25 de lei, 100 de lei, mais 15 lei, 105 lei.",
+      "traduction": "Le billet coûte vingt-cinq lei."
+    },
+    {
+      "id": "ro-deb-017",
+      "type": "CORRECTION",
+      "phrase": "Am 25 ani.",
+      "corrections": [
+        "Am 25 de ani.",
+        "Am douăzeci și cinci de ani.",
+        "Am douăzeci şi cinci de ani."
+      ],
+      "explication": "Même règle : 25 de ani, mais 18 ani.",
+      "traduction": "J'ai 25 ans."
+    },
+    {
+      "id": "ro-deb-018",
+      "type": "TROU",
+      "question": "Vă rog, ___ (2) beri la masa asta.",
+      "reponses_texte": [
+        "două"
+      ],
+      "explication": "Le nombre s'accorde : doi au masculin (doi lei), două au féminin (două beri).",
+      "traduction": "Deux bières à cette table, s'il vous plaît."
+    },
+    {
+      "id": "ro-deb-019",
+      "type": "TROU",
+      "question": "Un covrig costă ___ (2) lei.",
+      "reponses_texte": [
+        "doi"
+      ],
+      "explication": "Leu est masculin : un leu, doi lei. Au féminin : o bere, două beri.",
+      "traduction": "Un covrig coûte deux lei."
+    },
+    {
+      "id": "ro-deb-020",
+      "type": "QCM",
+      "question": "« Ne pars pas ! » se dit :",
+      "choix": [
+        "Nu pleacă!",
+        "Nu pleca!",
+        "Nu pleci!",
+        "Să nu pleacă!"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Impératif négatif (tu) = nu + infinitif sans « a » : nu pleca, nu uita, nu fi supărat."
+    },
+    {
+      "id": "ro-deb-021",
+      "type": "CORRECTION",
+      "phrase": "Dumneavoastră vrei o pungă?",
+      "corrections": [
+        "Dumneavoastră vreți o pungă?",
+        "Dumneavoastră vreţi o pungă?",
+        "Vreți o pungă?",
+        "Vreţi o pungă?"
+      ],
+      "explication": "Dumneavoastră se conjugue à la 2e pers. du pluriel : vreți.",
+      "traduction": "Vous voulez un sac ?"
+    },
+    {
+      "id": "ro-deb-022",
+      "type": "TROU",
+      "question": "Spune-i să ___ (veni) mâine dimineață.",
+      "reponses_texte": [
+        "vină"
+      ],
+      "explication": "Conjonctif 3e pers. : să vină (pas *să vine).",
+      "traduction": "Dis-lui de venir demain matin."
+    },
+    {
+      "id": "ro-deb-023",
+      "type": "CORRECTION",
+      "phrase": "Mâine plecăm în mare.",
+      "corrections": [
+        "Mâine plecăm la mare.",
+        "Mâine mergem la mare."
+      ],
+      "explication": "On va la mare, la munte, la țară (à la mer, à la montagne, à la campagne). În mare = dans l'eau de la mer !",
+      "traduction": "Demain, on part à la mer."
+    },
+    {
+      "id": "ro-deb-024",
+      "type": "QCR",
+      "question": "« Je m'appelle Antoine » : quelles phrases sont correctes ?",
+      "choix": [
+        "Mă cheamă Antoine.",
+        "Mă numesc Antoine.",
+        "Mă sun Antoine.",
+        "Numele meu e Antoine.",
+        "Îmi cheamă Antoine."
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "a suna = téléphoner / sonner, donc *mă sun est un calque. Mă cheamă est à l'accusatif (pas îmi)."
+    },
+    {
+      "id": "ro-deb-025",
+      "type": "TROU",
+      "question": "Mi s-a ___ (pierde) bagajul la aeroport.",
+      "reponses_texte": [
+        "pierdut"
+      ],
+      "explication": "« Mi s-a + participe » pour un incident subi : mi s-a stricat telefonul, mi s-a furat portofelul.",
+      "traduction": "On m'a perdu mon bagage à l'aéroport."
+    },
+    {
+      "id": "ro-deb-026",
+      "type": "CORRECTION",
+      "phrase": "Am uitat de a cumpăra lapte.",
+      "corrections": [
+        "Am uitat să cumpăr lapte."
+      ],
+      "explication": "Infinitif français après un verbe → conjonctif roumain : am uitat să cumpăr, încerc să înțeleg (jamais « de a »).",
+      "traduction": "J'ai oublié d'acheter du lait."
+    },
+    {
+      "id": "ro-deb-027",
+      "type": "TROU",
+      "question": "Mă ___ (durea) picioarele după drumeție.",
+      "reponses_texte": [
+        "dor"
+      ],
+      "explication": "Picioarele est pluriel → mă dor.",
+      "traduction": "J'ai mal aux jambes après la randonnée."
+    },
+    {
+      "id": "ro-deb-028",
+      "type": "ORDRE",
+      "phrase": "Unde este cea mai apropiată farmacie?",
+      "traduction": "Où est la pharmacie la plus proche ?",
+      "explication": "Superlatif : cel / cea mai + adjectif, placé avant le nom ici (cea mai apropiată farmacie)."
+    },
+    {
+      "id": "ro-deb-029",
+      "type": "TROU",
+      "question": "___ (vrea, eu) o cameră pentru două nopți, vă rog.",
+      "reponses_texte": [
+        "aș vrea",
+        "aş vrea"
+      ],
+      "explication": "Conditionnel de politesse : aș vrea.",
+      "traduction": "Je voudrais une chambre pour deux nuits, s'il vous plaît."
+    },
+    {
+      "id": "ro-deb-030",
+      "type": "CORRECTION",
+      "phrase": "Îmi place mult merele.",
+      "corrections": [
+        "Îmi plac mult merele."
+      ],
+      "explication": "La chose aimée (merele, pluriel) est le sujet : îmi plac.",
+      "traduction": "J'aime beaucoup les pommes."
+    },
+    {
+      "id": "ro-deb-031",
+      "type": "TROU",
+      "question": "Locuiesc aici ___ 2022.",
+      "reponses_texte": [
+        "din"
+      ],
+      "explication": "Depuis + date = din ; depuis + durée = de.",
+      "traduction": "J'habite ici depuis 2022."
+    },
+    {
+      "id": "ro-deb-032",
+      "type": "QCM",
+      "question": "Pour demander l'heure :",
+      "choix": [
+        "Câte ore sunt?",
+        "Cât e ceasul?",
+        "Ce timp e?",
+        "Cât timp e?"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "L'heure se demande avec ceas : Cât e ceasul? (ou Ce oră e?). Câte ore / cât timp portent sur une durée."
+    },
+    {
+      "id": "ro-deb-033",
+      "type": "TROU",
+      "question": "E ora ___ (2) și jumătate.",
+      "reponses_texte": [
+        "două"
+      ],
+      "explication": "Ora est féminin : ora unu, ora două, ora douăsprezece.",
+      "traduction": "Il est deux heures et demie."
+    },
+    {
+      "id": "ro-deb-034",
+      "type": "ORDRE",
+      "phrase": "Cum ajung la Gara de Nord?",
+      "traduction": "Comment je vais à la Gare du Nord ?",
+      "explication": "Question directe : mot interrogatif + verbe, sans inversion du sujet."
+    },
+    {
+      "id": "ro-deb-035",
+      "type": "CORRECTION",
+      "phrase": "El trebuie să merge la doctor.",
+      "corrections": [
+        "El trebuie să meargă la doctor.",
+        "Trebuie să meargă la doctor."
+      ],
+      "explication": "Après trebuie să, conjonctif : à la 3e pers. să meargă.",
+      "traduction": "Il doit aller chez le médecin."
+    },
+    {
+      "id": "ro-deb-036",
+      "type": "TROU",
+      "question": "Mâine ___ (merge, noi) la munte, vii cu noi?",
+      "reponses_texte": [
+        "mergem",
+        "o să mergem",
+        "vom merge"
+      ],
+      "explication": "Pour un futur proche et sûr, le présent suffit ; sinon o să mergem (oral) ou vom merge (soutenu).",
+      "traduction": "Demain on va à la montagne, tu viens avec nous ?"
+    },
+    {
+      "id": "ro-deb-037",
+      "type": "QCR",
+      "question": "Quelles phrases sont correctes ?",
+      "choix": [
+        "Mi-e frig.",
+        "Sunt frig.",
+        "Mi-e foame.",
+        "Sunt foame.",
+        "Mi-e somn."
+      ],
+      "reponses": [
+        0,
+        2,
+        4
+      ],
+      "explication": "Sensations au datif : mi-e frig / foame / sete / somn. Jamais *sunt foame (calque de « je suis… »)."
+    },
+    {
+      "id": "ro-deb-038",
+      "type": "ORDRE",
+      "phrase": "Aș vrea să rezerv o masă pentru doi.",
+      "traduction": "Je voudrais réserver une table pour deux.",
+      "explication": "Aș vrea să + conjonctif : la structure de base pour toute demande polie.",
+      "variantes": [
+        "Aş vrea să rezerv o masă pentru doi."
+      ]
+    },
+    {
+      "id": "ro-deb-039",
+      "type": "ORDRE",
+      "phrase": "Mi s-a stricat mașina pe autostradă.",
+      "traduction": "Ma voiture est tombée en panne sur l'autoroute.",
+      "explication": "Mi s-a stricat… = mon … est tombé en panne / s'est cassé.",
+      "variantes": [
+        "Mi s-a stricat maşina pe autostradă.",
+        "Pe autostradă mi s-a stricat mașina.",
+        "Pe autostradă mi s-a stricat maşina."
+      ]
+    },
+    {
+      "id": "ro-deb-040",
+      "type": "TROU",
+      "question": "Vreau ca ea să ___ (face) asta singură.",
+      "reponses_texte": [
+        "facă"
+      ],
+      "explication": "Vreau ca + sujet + să + conjonctif : vreau ca ea să facă.",
+      "traduction": "Je veux qu'elle fasse ça toute seule."
+    }
+  ]
+}

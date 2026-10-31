@@ -1,0 +1,845 @@
+{
+  "langue": "Italien",
+  "caracteres_speciaux": [
+    "à",
+    "è",
+    "é",
+    "ì",
+    "ò",
+    "ù"
+  ],
+  "titre": "Italien — conjugaison : passato prossimo et imperfetto",
+  "description": "Participes irréguliers et choix de l'auxiliaire, passato prossimo, imperfetto.",
+  "conjugaison": [
+    {
+      "id": "it-conj-mangiare-pp",
+      "verbe": "mangiare",
+      "traduction": "manger",
+      "temps": "passato prossimo",
+      "formes": {
+        "io": [
+          "ho mangiato"
+        ],
+        "tu": [
+          "hai mangiato"
+        ],
+        "lui / lei": [
+          "ha mangiato"
+        ],
+        "noi": [
+          "abbiamo mangiato"
+        ],
+        "voi": [
+          "avete mangiato"
+        ],
+        "loro": [
+          "hanno mangiato"
+        ]
+      },
+      "explication": "avere + participe invariable (sauf pronom COD placé avant)."
+    },
+    {
+      "id": "it-conj-andare-pp",
+      "verbe": "andare",
+      "traduction": "aller",
+      "temps": "passato prossimo",
+      "formes": {
+        "io": [
+          "sono andato",
+          "sono andata"
+        ],
+        "tu": [
+          "sei andato",
+          "sei andata"
+        ],
+        "lui / lei": [
+          "è andato",
+          "è andata"
+        ],
+        "noi": [
+          "siamo andati",
+          "siamo andate"
+        ],
+        "voi": [
+          "siete andati",
+          "siete andate"
+        ],
+        "loro": [
+          "sono andati",
+          "sono andate"
+        ]
+      },
+      "explication": "essere + participe accordé avec le sujet : sono andato / andata, siamo andati / andate."
+    },
+    {
+      "id": "it-conj-alzarsi-pp",
+      "verbe": "alzarsi",
+      "traduction": "se lever",
+      "temps": "passato prossimo",
+      "formes": {
+        "io": [
+          "mi sono alzato",
+          "mi sono alzata"
+        ],
+        "tu": [
+          "ti sei alzato",
+          "ti sei alzata"
+        ],
+        "lui / lei": [
+          "si è alzato",
+          "si è alzata"
+        ],
+        "noi": [
+          "ci siamo alzati",
+          "ci siamo alzate"
+        ],
+        "voi": [
+          "vi siete alzati",
+          "vi siete alzate"
+        ],
+        "loro": [
+          "si sono alzati",
+          "si sono alzate"
+        ]
+      },
+      "explication": "Tous les pronominaux prennent essere : mi sono alzato / alzata."
+    },
+    {
+      "id": "it-conj-essere-pp",
+      "verbe": "essere",
+      "traduction": "être",
+      "temps": "passato prossimo",
+      "formes": {
+        "io": [
+          "sono stato",
+          "sono stata"
+        ],
+        "tu": [
+          "sei stato",
+          "sei stata"
+        ],
+        "lui / lei": [
+          "è stato",
+          "è stata"
+        ],
+        "noi": [
+          "siamo stati",
+          "siamo state"
+        ],
+        "voi": [
+          "siete stati",
+          "siete state"
+        ],
+        "loro": [
+          "sono stati",
+          "sono state"
+        ]
+      },
+      "explication": "essere se conjugue avec lui-même : sono stato (j'ai été / je suis allé). Jamais *ho stato."
+    },
+    {
+      "id": "it-conj-essere-imp",
+      "verbe": "essere",
+      "traduction": "être",
+      "temps": "imperfetto",
+      "formes": {
+        "io": [
+          "ero"
+        ],
+        "tu": [
+          "eri"
+        ],
+        "lui / lei": [
+          "era"
+        ],
+        "noi": [
+          "eravamo"
+        ],
+        "voi": [
+          "eravate"
+        ],
+        "loro": [
+          "erano"
+        ]
+      },
+      "explication": "Irrégulier. Quand ero piccolo… = quand j'étais petit…"
+    },
+    {
+      "id": "it-conj-avere-imp",
+      "verbe": "avere",
+      "traduction": "avoir",
+      "temps": "imperfetto",
+      "formes": {
+        "io": [
+          "avevo"
+        ],
+        "tu": [
+          "avevi"
+        ],
+        "lui / lei": [
+          "aveva"
+        ],
+        "noi": [
+          "avevamo"
+        ],
+        "voi": [
+          "avevate"
+        ],
+        "loro": [
+          "avevano"
+        ]
+      },
+      "explication": "Terminaisons de l'imparfait : -vo, -vi, -va, -vamo, -vate, -vano."
+    },
+    {
+      "id": "it-conj-parlare-imp",
+      "verbe": "parlare",
+      "traduction": "parler",
+      "temps": "imperfetto",
+      "formes": {
+        "io": [
+          "parlavo"
+        ],
+        "tu": [
+          "parlavi"
+        ],
+        "lui / lei": [
+          "parlava"
+        ],
+        "noi": [
+          "parlavamo"
+        ],
+        "voi": [
+          "parlavate"
+        ],
+        "loro": [
+          "parlavano"
+        ]
+      },
+      "explication": "Régulier : radical + a / e / i + vo, vi, va…"
+    },
+    {
+      "id": "it-conj-fare-imp",
+      "verbe": "fare",
+      "traduction": "faire",
+      "temps": "imperfetto",
+      "formes": {
+        "io": [
+          "facevo"
+        ],
+        "tu": [
+          "facevi"
+        ],
+        "lui / lei": [
+          "faceva"
+        ],
+        "noi": [
+          "facevamo"
+        ],
+        "voi": [
+          "facevate"
+        ],
+        "loro": [
+          "facevano"
+        ]
+      },
+      "explication": "Sur le radical fac- : facevo."
+    },
+    {
+      "id": "it-conj-dire-imp",
+      "verbe": "dire",
+      "traduction": "dire",
+      "temps": "imperfetto",
+      "formes": {
+        "io": [
+          "dicevo"
+        ],
+        "tu": [
+          "dicevi"
+        ],
+        "lui / lei": [
+          "diceva"
+        ],
+        "noi": [
+          "dicevamo"
+        ],
+        "voi": [
+          "dicevate"
+        ],
+        "loro": [
+          "dicevano"
+        ]
+      },
+      "explication": "Sur le radical dic- : dicevo."
+    },
+    {
+      "id": "it-conj-bere-imp",
+      "verbe": "bere",
+      "traduction": "boire",
+      "temps": "imperfetto",
+      "formes": {
+        "io": [
+          "bevevo"
+        ],
+        "tu": [
+          "bevevi"
+        ],
+        "lui / lei": [
+          "beveva"
+        ],
+        "noi": [
+          "bevevamo"
+        ],
+        "voi": [
+          "bevevate"
+        ],
+        "loro": [
+          "bevevano"
+        ]
+      },
+      "explication": "Sur le radical bev- : bevevo."
+    },
+    {
+      "id": "it-part-fare",
+      "verbe": "fare",
+      "traduction": "faire",
+      "temps": "participe et auxiliaire",
+      "formes": {
+        "participio passato": [
+          "fatto"
+        ],
+        "ausiliare": [
+          "avere"
+        ]
+      },
+      "explication": "Avec avere, le participe ne s'accorde qu'avec un pronom COD placé avant (l'ho vista)."
+    },
+    {
+      "id": "it-part-dire",
+      "verbe": "dire",
+      "traduction": "dire",
+      "temps": "participe et auxiliaire",
+      "formes": {
+        "participio passato": [
+          "detto"
+        ],
+        "ausiliare": [
+          "avere"
+        ]
+      },
+      "explication": "Avec avere, le participe ne s'accorde qu'avec un pronom COD placé avant (l'ho vista)."
+    },
+    {
+      "id": "it-part-prendere",
+      "verbe": "prendere",
+      "traduction": "prendre",
+      "temps": "participe et auxiliaire",
+      "formes": {
+        "participio passato": [
+          "preso"
+        ],
+        "ausiliare": [
+          "avere"
+        ]
+      },
+      "explication": "Avec avere, le participe ne s'accorde qu'avec un pronom COD placé avant (l'ho vista)."
+    },
+    {
+      "id": "it-part-mettere",
+      "verbe": "mettere",
+      "traduction": "mettre",
+      "temps": "participe et auxiliaire",
+      "formes": {
+        "participio passato": [
+          "messo"
+        ],
+        "ausiliare": [
+          "avere"
+        ]
+      },
+      "explication": "Avec avere, le participe ne s'accorde qu'avec un pronom COD placé avant (l'ho vista)."
+    },
+    {
+      "id": "it-part-vedere",
+      "verbe": "vedere",
+      "traduction": "voir",
+      "temps": "participe et auxiliaire",
+      "formes": {
+        "participio passato": [
+          "visto",
+          "veduto"
+        ],
+        "ausiliare": [
+          "avere"
+        ]
+      },
+      "explication": "Avec avere, le participe ne s'accorde qu'avec un pronom COD placé avant (l'ho vista)."
+    },
+    {
+      "id": "it-part-leggere",
+      "verbe": "leggere",
+      "traduction": "lire",
+      "temps": "participe et auxiliaire",
+      "formes": {
+        "participio passato": [
+          "letto"
+        ],
+        "ausiliare": [
+          "avere"
+        ]
+      },
+      "explication": "Avec avere, le participe ne s'accorde qu'avec un pronom COD placé avant (l'ho vista)."
+    },
+    {
+      "id": "it-part-scrivere",
+      "verbe": "scrivere",
+      "traduction": "écrire",
+      "temps": "participe et auxiliaire",
+      "formes": {
+        "participio passato": [
+          "scritto"
+        ],
+        "ausiliare": [
+          "avere"
+        ]
+      },
+      "explication": "Avec avere, le participe ne s'accorde qu'avec un pronom COD placé avant (l'ho vista)."
+    },
+    {
+      "id": "it-part-aprire",
+      "verbe": "aprire",
+      "traduction": "ouvrir",
+      "temps": "participe et auxiliaire",
+      "formes": {
+        "participio passato": [
+          "aperto"
+        ],
+        "ausiliare": [
+          "avere"
+        ]
+      },
+      "explication": "Avec avere, le participe ne s'accorde qu'avec un pronom COD placé avant (l'ho vista)."
+    },
+    {
+      "id": "it-part-chiudere",
+      "verbe": "chiudere",
+      "traduction": "fermer",
+      "temps": "participe et auxiliaire",
+      "formes": {
+        "participio passato": [
+          "chiuso"
+        ],
+        "ausiliare": [
+          "avere"
+        ]
+      },
+      "explication": "Avec avere, le participe ne s'accorde qu'avec un pronom COD placé avant (l'ho vista)."
+    },
+    {
+      "id": "it-part-chiedere",
+      "verbe": "chiedere",
+      "traduction": "demander",
+      "temps": "participe et auxiliaire",
+      "formes": {
+        "participio passato": [
+          "chiesto"
+        ],
+        "ausiliare": [
+          "avere"
+        ]
+      },
+      "explication": "Avec avere, le participe ne s'accorde qu'avec un pronom COD placé avant (l'ho vista)."
+    },
+    {
+      "id": "it-part-rispondere",
+      "verbe": "rispondere",
+      "traduction": "répondre",
+      "temps": "participe et auxiliaire",
+      "formes": {
+        "participio passato": [
+          "risposto"
+        ],
+        "ausiliare": [
+          "avere"
+        ]
+      },
+      "explication": "Avec avere, le participe ne s'accorde qu'avec un pronom COD placé avant (l'ho vista)."
+    },
+    {
+      "id": "it-part-perdere",
+      "verbe": "perdere",
+      "traduction": "perdre",
+      "temps": "participe et auxiliaire",
+      "formes": {
+        "participio passato": [
+          "perso",
+          "perduto"
+        ],
+        "ausiliare": [
+          "avere"
+        ]
+      },
+      "explication": "Avec avere, le participe ne s'accorde qu'avec un pronom COD placé avant (l'ho vista)."
+    },
+    {
+      "id": "it-part-decidere",
+      "verbe": "decidere",
+      "traduction": "décider",
+      "temps": "participe et auxiliaire",
+      "formes": {
+        "participio passato": [
+          "deciso"
+        ],
+        "ausiliare": [
+          "avere"
+        ]
+      },
+      "explication": "Avec avere, le participe ne s'accorde qu'avec un pronom COD placé avant (l'ho vista)."
+    },
+    {
+      "id": "it-part-spendere",
+      "verbe": "spendere",
+      "traduction": "dépenser",
+      "temps": "participe et auxiliaire",
+      "formes": {
+        "participio passato": [
+          "speso"
+        ],
+        "ausiliare": [
+          "avere"
+        ]
+      },
+      "explication": "Avec avere, le participe ne s'accorde qu'avec un pronom COD placé avant (l'ho vista)."
+    },
+    {
+      "id": "it-part-bere",
+      "verbe": "bere",
+      "traduction": "boire",
+      "temps": "participe et auxiliaire",
+      "formes": {
+        "participio passato": [
+          "bevuto"
+        ],
+        "ausiliare": [
+          "avere"
+        ]
+      },
+      "explication": "Avec avere, le participe ne s'accorde qu'avec un pronom COD placé avant (l'ho vista)."
+    },
+    {
+      "id": "it-part-vincere",
+      "verbe": "vincere",
+      "traduction": "gagner",
+      "temps": "participe et auxiliaire",
+      "formes": {
+        "participio passato": [
+          "vinto"
+        ],
+        "ausiliare": [
+          "avere"
+        ]
+      },
+      "explication": "Avec avere, le participe ne s'accorde qu'avec un pronom COD placé avant (l'ho vista)."
+    },
+    {
+      "id": "it-part-scegliere",
+      "verbe": "scegliere",
+      "traduction": "choisir",
+      "temps": "participe et auxiliaire",
+      "formes": {
+        "participio passato": [
+          "scelto"
+        ],
+        "ausiliare": [
+          "avere"
+        ]
+      },
+      "explication": "Avec avere, le participe ne s'accorde qu'avec un pronom COD placé avant (l'ho vista)."
+    },
+    {
+      "id": "it-part-rompere",
+      "verbe": "rompere",
+      "traduction": "casser",
+      "temps": "participe et auxiliaire",
+      "formes": {
+        "participio passato": [
+          "rotto"
+        ],
+        "ausiliare": [
+          "avere"
+        ]
+      },
+      "explication": "Avec avere, le participe ne s'accorde qu'avec un pronom COD placé avant (l'ho vista)."
+    },
+    {
+      "id": "it-part-offrire",
+      "verbe": "offrire",
+      "traduction": "offrir",
+      "temps": "participe et auxiliaire",
+      "formes": {
+        "participio passato": [
+          "offerto"
+        ],
+        "ausiliare": [
+          "avere"
+        ]
+      },
+      "explication": "Avec avere, le participe ne s'accorde qu'avec un pronom COD placé avant (l'ho vista)."
+    },
+    {
+      "id": "it-part-tradurre",
+      "verbe": "tradurre",
+      "traduction": "traduire",
+      "temps": "participe et auxiliaire",
+      "formes": {
+        "participio passato": [
+          "tradotto"
+        ],
+        "ausiliare": [
+          "avere"
+        ]
+      },
+      "explication": "Avec avere, le participe ne s'accorde qu'avec un pronom COD placé avant (l'ho vista)."
+    },
+    {
+      "id": "it-part-accendere",
+      "verbe": "accendere",
+      "traduction": "allumer",
+      "temps": "participe et auxiliaire",
+      "formes": {
+        "participio passato": [
+          "acceso"
+        ],
+        "ausiliare": [
+          "avere"
+        ]
+      },
+      "explication": "Avec avere, le participe ne s'accorde qu'avec un pronom COD placé avant (l'ho vista)."
+    },
+    {
+      "id": "it-part-spegnere",
+      "verbe": "spegnere",
+      "traduction": "éteindre",
+      "temps": "participe et auxiliaire",
+      "formes": {
+        "participio passato": [
+          "spento"
+        ],
+        "ausiliare": [
+          "avere"
+        ]
+      },
+      "explication": "Avec avere, le participe ne s'accorde qu'avec un pronom COD placé avant (l'ho vista)."
+    },
+    {
+      "id": "it-part-ridere",
+      "verbe": "ridere",
+      "traduction": "rire",
+      "temps": "participe et auxiliaire",
+      "formes": {
+        "participio passato": [
+          "riso"
+        ],
+        "ausiliare": [
+          "avere"
+        ]
+      },
+      "explication": "Avec avere, le participe ne s'accorde qu'avec un pronom COD placé avant (l'ho vista)."
+    },
+    {
+      "id": "it-part-piangere",
+      "verbe": "piangere",
+      "traduction": "pleurer",
+      "temps": "participe et auxiliaire",
+      "formes": {
+        "participio passato": [
+          "pianto"
+        ],
+        "ausiliare": [
+          "avere"
+        ]
+      },
+      "explication": "Avec avere, le participe ne s'accorde qu'avec un pronom COD placé avant (l'ho vista)."
+    },
+    {
+      "id": "it-part-conoscere",
+      "verbe": "conoscere",
+      "traduction": "connaître",
+      "temps": "participe et auxiliaire",
+      "formes": {
+        "participio passato": [
+          "conosciuto"
+        ],
+        "ausiliare": [
+          "avere"
+        ]
+      },
+      "explication": "Avec avere, le participe ne s'accorde qu'avec un pronom COD placé avant (l'ho vista)."
+    },
+    {
+      "id": "it-part-correggere",
+      "verbe": "correggere",
+      "traduction": "corriger",
+      "temps": "participe et auxiliaire",
+      "formes": {
+        "participio passato": [
+          "corretto"
+        ],
+        "ausiliare": [
+          "avere"
+        ]
+      },
+      "explication": "Avec avere, le participe ne s'accorde qu'avec un pronom COD placé avant (l'ho vista)."
+    },
+    {
+      "id": "it-part-essere",
+      "verbe": "essere",
+      "traduction": "être",
+      "temps": "participe et auxiliaire",
+      "formes": {
+        "participio passato": [
+          "stato"
+        ],
+        "ausiliare": [
+          "essere"
+        ]
+      },
+      "explication": "Avec essere, le participe s'accorde avec le sujet (è stata, sono venuti)."
+    },
+    {
+      "id": "it-part-stare",
+      "verbe": "stare",
+      "traduction": "rester, être",
+      "temps": "participe et auxiliaire",
+      "formes": {
+        "participio passato": [
+          "stato"
+        ],
+        "ausiliare": [
+          "essere"
+        ]
+      },
+      "explication": "Avec essere, le participe s'accorde avec le sujet (è stata, sono venuti)."
+    },
+    {
+      "id": "it-part-venire",
+      "verbe": "venire",
+      "traduction": "venir",
+      "temps": "participe et auxiliaire",
+      "formes": {
+        "participio passato": [
+          "venuto"
+        ],
+        "ausiliare": [
+          "essere"
+        ]
+      },
+      "explication": "Avec essere, le participe s'accorde avec le sujet (è stata, sono venuti)."
+    },
+    {
+      "id": "it-part-nascere",
+      "verbe": "nascere",
+      "traduction": "naître",
+      "temps": "participe et auxiliaire",
+      "formes": {
+        "participio passato": [
+          "nato"
+        ],
+        "ausiliare": [
+          "essere"
+        ]
+      },
+      "explication": "Avec essere, le participe s'accorde avec le sujet (è stata, sono venuti)."
+    },
+    {
+      "id": "it-part-morire",
+      "verbe": "morire",
+      "traduction": "mourir",
+      "temps": "participe et auxiliaire",
+      "formes": {
+        "participio passato": [
+          "morto"
+        ],
+        "ausiliare": [
+          "essere"
+        ]
+      },
+      "explication": "Avec essere, le participe s'accorde avec le sujet (è stata, sono venuti)."
+    },
+    {
+      "id": "it-part-rimanere",
+      "verbe": "rimanere",
+      "traduction": "rester",
+      "temps": "participe et auxiliaire",
+      "formes": {
+        "participio passato": [
+          "rimasto"
+        ],
+        "ausiliare": [
+          "essere"
+        ]
+      },
+      "explication": "Avec essere, le participe s'accorde avec le sujet (è stata, sono venuti)."
+    },
+    {
+      "id": "it-part-succedere",
+      "verbe": "succedere",
+      "traduction": "arriver (événement)",
+      "temps": "participe et auxiliaire",
+      "formes": {
+        "participio passato": [
+          "successo"
+        ],
+        "ausiliare": [
+          "essere"
+        ]
+      },
+      "explication": "Avec essere, le participe s'accorde avec le sujet (è stata, sono venuti)."
+    },
+    {
+      "id": "it-part-piacere",
+      "verbe": "piacere",
+      "traduction": "plaire",
+      "temps": "participe et auxiliaire",
+      "formes": {
+        "participio passato": [
+          "piaciuto"
+        ],
+        "ausiliare": [
+          "essere"
+        ]
+      },
+      "explication": "Avec essere, le participe s'accorde avec le sujet (è stata, sono venuti)."
+    },
+    {
+      "id": "it-part-andare",
+      "verbe": "andare",
+      "traduction": "aller",
+      "temps": "participe et auxiliaire",
+      "formes": {
+        "participio passato": [
+          "andato"
+        ],
+        "ausiliare": [
+          "essere"
+        ]
+      },
+      "explication": "Avec essere, le participe s'accorde avec le sujet (è stata, sono venuti)."
+    },
+    {
+      "id": "it-part-uscire",
+      "verbe": "uscire",
+      "traduction": "sortir",
+      "temps": "participe et auxiliaire",
+      "formes": {
+        "participio passato": [
+          "uscito"
+        ],
+        "ausiliare": [
+          "essere"
+        ]
+      },
+      "explication": "Avec essere, le participe s'accorde avec le sujet (è stata, sono venuti)."
+    }
+  ]
+}
