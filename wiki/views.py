@@ -2,9 +2,10 @@ import re
 from pathlib import PurePosixPath
 
 from django.conf import settings
+from django.contrib import messages
 from django.contrib.auth.views import redirect_to_login
 from django.core.exceptions import PermissionDenied
-from django.http import FileResponse, Http404, HttpResponse
+from django.http import FileResponse, Http404, HttpResponse, JsonResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.views.decorators.clickjacking import xframe_options_sameorigin
@@ -12,6 +13,7 @@ from django.views.decorators.http import require_POST
 
 from accounts.roles import is_admin
 
+from . import uploads
 from .render import Renderer, render_note
 from .vault import CODE_RE, Note, clean_key, get_vault, split_frontmatter
 
@@ -26,6 +28,11 @@ def _deny(request):
     if request.user.is_authenticated:
         raise PermissionDenied
     return redirect_to_login(request.get_full_path())
+
+
+def _wants_json(request):
+    """Requête envoyée par le JavaScript de l'éditeur ou de l'import (réponse JSON)."""
+    return "application/json" in request.headers.get("Accept", "")
 
 
 def _render(request, vault, template, context, status=200):
@@ -97,22 +104,31 @@ def edit(request, path):
                 "Cette page a été modifiée ailleurs depuis l'ouverture de l'éditeur. "
                 "Copiez votre texte, rechargez la page, puis réappliquez vos changements."
             )
+            if _wants_json(request):
+                return JsonResponse({"error": error}, status=409)
         else:
             file.parent.mkdir(parents=True, exist_ok=True)
             file.write_text(content, encoding="utf-8", newline="\n")
+            if _wants_json(request):
+                # Ctrl+S dans l'éditeur : on reste sur la page, avec la nouvelle version.
+                return JsonResponse({"version": str(file.stat().st_mtime_ns), "url": reverse("wiki:page", args=[key])})
             return redirect("wiki:page", key)
     else:
-        content = file.read_text(encoding="utf-8").lstrip("﻿") if file.is_file() else ""
+        content = file.read_text(encoding="utf-8").lstrip("\ufeff") if file.is_file() else ""
 
     return _render(request, vault, "wiki/edit.html", {
         "note": note,
         "key": key,
+        "folders": key.split("/")[:-1],
+        "name": key.rsplit("/", 1)[-1],
         "is_new": note is None,
         "content": content,
         "version": version,
         "error": error,
         "link_choices": vault.link_choices(),
+        "attachment_choices": vault.attachment_choices(uploads.ATTACHMENT_EXTS),
         "preview_url": reverse("wiki:preview", args=[key]),
+        "import_url": reverse("wiki:import"),
     })
 
 
@@ -151,6 +167,63 @@ def new(request):
     })
 
 
+def import_files(request):
+    """Import de notes .md (et de leurs images) par glisser-déposer.
+
+    Champs : ``fichiers`` (les fichiers), ``chemins`` (chemin relatif de chacun,
+    pour garder les sous-dossiers d'un dossier déposé), ``dossier`` (destination),
+    ``remplacer`` (écraser les fichiers existants), ``pour_note`` (image collée
+    dans l'éditeur : rangée comme Obsidian, sous un nom libre).
+    """
+    if not can_edit(request):
+        return _deny(request)
+    vault = get_vault()
+    if request.method != "POST":
+        return _render(request, vault, "wiki/import.html", {
+            "folders": vault.folders(),
+            "folder": request.GET.get("dossier", ""),
+            "max_note": uploads.MAX_NOTE_SIZE // 1024 // 1024,
+            "max_attachment": uploads.MAX_ATTACHMENT_SIZE // 1024 // 1024,
+        })
+
+    files = request.FILES.getlist("fichiers")
+    paths = request.POST.getlist("chemins")
+    note_key = clean_key(request.POST.get("pour_note", ""))
+    rename = note_key is not None
+    folder = vault.attachment_folder(note_key) if rename else uploads.clean_folder(request.POST.get("dossier", ""))
+    error = ""
+    if folder is None:
+        error = f"Dossier de destination invalide : caractères interdits {uploads.FORBIDDEN_CHARS}, ou dossier caché."
+    elif not files:
+        error = "Aucun fichier reçu."
+    if error:
+        if _wants_json(request):
+            return JsonResponse({"error": error}, status=400)
+        messages.error(request, error)
+        return redirect("wiki:import")
+
+    replace = request.POST.get("remplacer") == "1"
+    results = [
+        uploads.import_file(vault, upload, paths[i] if i < len(paths) else "", folder, replace=replace, rename=rename)
+        for i, upload in enumerate(files)
+    ]
+    results = uploads.finish(get_vault(), results)
+    if _wants_json(request):
+        return JsonResponse({"results": [r.as_dict() for r in results]})
+
+    done = [r for r in results if r.ok]
+    if done:
+        notes = sum(r.is_note for r in done)
+        messages.success(request, f"{len(done)} fichier{'s' if len(done) > 1 else ''} importé{'s' if len(done) > 1 else ''}"
+                         f" dont {notes} page{'s' if notes > 1 else ''}.")
+    for r in results:
+        if not r.ok and not r.ignored:
+            messages.error(request, f"{r.name} : {r.message}")
+    if len(done) == 1 and done[0].url and (done[0].is_note or done[0].path.lower().endswith(".pdf")):
+        return redirect(done[0].url)
+    return redirect("wiki:import")
+
+
 # Pièces jointes affichées dans la page ; tout le reste (HTML, SVG, JS...) est
 # téléchargé, pour qu'un fichier déposé dans le coffre ne puisse pas exécuter
 # de script au nom du site.
@@ -158,6 +231,26 @@ INLINE_TYPES = {
     ".png", ".jpg", ".jpeg", ".gif", ".webp", ".bmp", ".avif", ".pdf",
     ".mp3", ".wav", ".ogg", ".m4a", ".flac", ".webm", ".3gp", ".mp4", ".ogv", ".mov", ".mkv",
 }
+
+
+@xframe_options_sameorigin  # lecteur intégré dans les notes (iframe du même site)
+def pdf(request, path):
+    """Lecteur de PDF (PDF.js) : page complète, ou version compacte avec
+    ``?integre=1`` pour les ``![[cours.pdf]]`` des notes."""
+    vault = get_vault()
+    attachment = vault.attachments.get(path.lower())
+    if attachment is None or attachment.suffix != ".pdf":
+        raise Http404("PDF introuvable")
+    full = vault.root / attachment.path
+    context = {
+        "attachment": attachment,
+        "title": attachment.path.stem,
+        "size": full.stat().st_size if full.is_file() else 0,
+    }
+    if request.GET.get("integre") == "1":
+        return render(request, "wiki/pdf_integre.html", context)
+    backlinks = sorted(vault.attachment_backlinks.get(str(attachment.path).lower(), ()), key=lambda n: n.title.lower())
+    return _render(request, vault, "wiki/pdf.html", {**context, "backlinks": backlinks})
 
 
 @xframe_options_sameorigin  # PDF intégrés dans les notes (iframe du même site)

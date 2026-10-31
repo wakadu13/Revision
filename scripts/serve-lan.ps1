@@ -51,10 +51,13 @@ $root = Join-Path $env:APPDATA "Caddy\pki\authorities\local\root.crt"
 Write-Host ""
 Write-Host "Wiki : https://$Ip/  (appareils du même réseau)"
 Write-Host "Certificat à installer sur les autres appareils : $root"
+Write-Host "Après une mise à jour du code (git pull, changement de branche) : Ctrl+C puis relancer ce script."
 Write-Host ""
 
 try {
     Set-Location (Join-Path $PSScriptRoot "..")
+    # --noreload : le code n'est pas relu à chaud, il faut relancer le script
+    # après une mise à jour (sinon : erreurs 500 sur les pages qui ont changé).
     uv run python manage.py runserver "127.0.0.1:$port" --noreload
 }
 finally {

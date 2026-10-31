@@ -144,7 +144,7 @@ Référence complète et exemple rendu : `vault/Guide/Syntaxe Obsidian.md`.
 | Lien interne | `[[Nom de la note]]`, `[[Note\|texte affiché]]`, `[[Note#Titre]]`, `[[#Titre de cette page]]`, `[[Note#^id-bloc]]` |
 | Lien externe | `[texte](https://…)` |
 | Image | `![[schema.png]]`, largeur : `![[schema.png\|400]]` |
-| PDF / audio / vidéo intégrés | `![[support.pdf]]`, `![[son.mp3]]`, `![[demo.mp4]]` |
+| PDF / audio / vidéo intégrés | `![[support.pdf]]` (lecteur PDF dans la page), `![[support.pdf#page=3]]` (ouvert à la page 3), `![[son.mp3]]`, `![[demo.mp4]]` |
 | Inclure une autre note / section | `![[Note]]`, `![[Note#Titre]]` |
 | Callout | `> [!note] Titre` ; types : `note`, `tip`, `info`, `warning`, `danger`, `example`, `question`, `success`, `failure`, `quote`, `abstract`, `important`… |
 | Callout replié / déplié | `> [!question]- Titre` / `> [!example]+ Titre` |

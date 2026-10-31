@@ -1,0 +1,31 @@
+{% extends "wiki/base.html" %}
+{% load static %}
+{% block title %}{{ title }}{% endblock %}
+{% block head %}<link rel="stylesheet" href="{% static 'wiki/vendor/pdfjs/pdf_viewer.min.css' %}">{% endblock %}
+{% block content %}
+<article class="note pdf-page">
+  {% if attachment.path.parent.parts %}
+  <p class="breadcrumb">{% for part in attachment.path.parent.parts %}{{ part }} / {% endfor %}</p>
+  {% endif %}
+  <h1 class="note-title">{{ title }}</h1>
+  {% include "wiki/_pdf_lecteur.html" %}
+  <footer class="note-footer">PDF · {{ size|filesizeformat }} · <code>{{ attachment.path }}</code>
+    · pour l'intégrer à une note : <code>![[{{ attachment.name }}]]</code></footer>
+</article>
+{% endblock %}
+{% block aside %}
+  <section class="panel" data-pdf-outline-panel hidden>
+    <h2>Sommaire du PDF</h2>
+    <nav class="outline pdf-outline" data-pdf-outline></nav>
+  </section>
+  <section class="panel">
+    <h2>Rétroliens</h2>
+    {% if backlinks %}
+    <ul class="backlinks">
+      {% for n in backlinks %}<li><a href="{{ n.url }}">{{ n.title }}</a></li>{% endfor %}
+    </ul>
+    {% else %}
+    <p class="muted">Aucune note ne cite ce PDF.</p>
+    {% endif %}
+  </section>
+{% endblock %}

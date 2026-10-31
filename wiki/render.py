@@ -75,7 +75,7 @@ ALLOWED_ATTRIBUTES = {
     "audio": {"src", "controls"},
     "video": {"src", "controls", "width", "height"},
     "source": {"src", "type"},
-    "iframe": {"src"},
+    "iframe": {"src", "allowfullscreen"},
     "input": {"type", "checked", "disabled"},
     "details": {"open", "data-callout"},
     "div": {"data-callout"},
@@ -248,7 +248,7 @@ class Renderer:
         if target is None:
             url = reverse("wiki:page", args=[page])
             return f'<a class="internal-link is-unresolved" href="{escape(url)}" title="Page à créer">{escape(label)}</a>'
-        url = target.url if page else ""
+        url = (target.view_url if isinstance(target, Attachment) else target.url) if page else ""
         if fragment and isinstance(target, Note):
             url += "#" + heading_anchor(fragment)
         return f'<a class="internal-link" href="{escape(url)}">{escape(label)}</a>'
@@ -270,7 +270,10 @@ class Renderer:
             if target.suffix in VIDEO_EXTS:
                 return f'<video class="embed-video" controls src="{url}"></video>'
             if target.suffix == ".pdf":
-                return f'<iframe class="embed-pdf" src="{url}" title="{escape(target.name)}"></iframe>'
+                # Lecteur intégré (PDF.js) : marche aussi sur téléphone, contrairement au lecteur du navigateur.
+                page_number = re.fullmatch(r"page=(\d+)", fragment)
+                src = target.view_url + "?integre=1" + (f"#page={page_number.group(1)}" if page_number else "")
+                return f'<iframe class="embed-pdf" src="{escape(src)}" title="{escape(target.name)}" allowfullscreen></iframe>'
             return self._link(page, fragment, alias, target)
 
         if self.depth >= MAX_EMBED_DEPTH or (target in self.chain and not fragment):
