@@ -73,6 +73,8 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    # Site privé : aucune page ni pièce jointe dans un cache partagé (Cloudflare…).
+    'accounts.middleware.CachePriveMiddleware',
     'django.middleware.csp.ContentSecurityPolicyMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -220,10 +222,14 @@ AXES_LOCKOUT_PARAMETERS = [['username', 'ip_address']]
 AXES_RESET_ON_SUCCESS = True
 AXES_LOCKOUT_TEMPLATE = 'accounts/lockout.html'
 
-# Derrière un proxy inverse (nginx...) : DJANGO_BEHIND_PROXY=1 pour lire l'IP
-# réelle du client et le protocole HTTPS transmis par le proxy.
-BEHIND_PROXY = env_bool('DJANGO_BEHIND_PROXY', False)
-AXES_IPWARE_META_PRECEDENCE_ORDER = ['HTTP_X_FORWARDED_FOR', 'REMOTE_ADDR'] if BEHIND_PROXY else ['REMOTE_ADDR']
+# Derrière un proxy inverse (Caddy, nginx...) : DJANGO_BEHIND_PROXY=1 pour lire
+# l'IP réelle du client et le protocole HTTPS transmis par le proxy.
+# Derrière Cloudflare : DJANGO_CLOUDFLARE=1 (inclut DJANGO_BEHIND_PROXY), l'IP du
+# visiteur est lue dans CF-Connecting-IP. Le serveur ne doit alors être
+# joignable que par Cloudflare (tunnel, ou pare-feu limité à ses adresses).
+CLOUDFLARE = env_bool('DJANGO_CLOUDFLARE', False)
+BEHIND_PROXY = CLOUDFLARE or env_bool('DJANGO_BEHIND_PROXY', False)
+AXES_CLIENT_IP_CALLABLE = 'accounts.ip.ip_client'
 if BEHIND_PROXY:
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 

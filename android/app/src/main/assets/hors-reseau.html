@@ -7,14 +7,17 @@
   <title>Pas de connexion · ProjetPluri</title>
   <link rel="stylesheet" href="web/wiki.css">
   <link rel="stylesheet" href="appli.css">
+  <script src="appli.js"></script>
   <script src="hors-reseau.js" defer></script>
 </head>
 <body class="hl-body">
   <main class="content hl appli-hors-reseau">
     <h1 class="note-title" id="hr-titre">Le wiki ne répond pas</h1>
-    <p id="hr-message">Le serveur du wiki est injoignable. L'appareil doit être sur le même réseau que lui
-      (ou passer par un VPN). Les QCM téléchargés restent disponibles hors ligne.</p>
+    <p id="hr-message">Le serveur du wiki est injoignable : pas de connexion Internet, ou serveur éteint.
+      Une adresse en 192.168.… ne marche que sur le Wi‑Fi de la maison (Réglages pour la changer).
+      Les QCM téléchargés restent disponibles hors ligne.</p>
     <div class="quiz-actions appli-actions">
+      <button type="button" class="button primary" id="hr-passer" hidden></button>
       <button type="button" class="button primary" id="hr-reessayer">Réessayer</button>
       <a class="button" href="index.html">Réviser les QCM hors ligne</a>
       <a class="button" href="connexion.html">Réglages</a>

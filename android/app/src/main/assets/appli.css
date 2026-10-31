@@ -3,6 +3,8 @@
 .appli-formulaire label { display: flex; flex-direction: column; gap: .25rem; font-weight: 600; }
 .appli-formulaire input { padding: .55rem .7rem; border: 1px solid var(--border); border-radius: 6px; background: var(--bg); color: var(--text); font: inherit; font-weight: 400; }
 .appli-formulaire .button { justify-content: center; padding: .6rem; }
+.appli-suggestion { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .6rem; margin: -.4rem 0 0; font-size: .9rem; }
+.appli-suggestion .button { padding: .45rem .7rem; }
 .appli-actions { flex-direction: column; align-items: stretch; max-width: 22rem; }
 .appli-actions .button { justify-content: center; padding: .65rem; }
 .hl-entete { flex-wrap: wrap; gap: .5rem; }

@@ -21,6 +21,16 @@
     joueur: () => natif.joueur(),
     connecte: () => natif.connecte(),
 
+    // Le wiki sur Internet (Cloudflare) : joignable de partout, certificat reconnu.
+    PUBLIQUE: "https://wiki.airhiterofprovence.fr",
+    // Adresse du réseau local (IP privée, nom en .local, localhost) : injoignable hors de la maison.
+    locale(adresse) {
+      try {
+        const hote = new URL(adresse).hostname;
+        return /^(10|127|192\.168|172\.(1[6-9]|2\d|3[01]))\./.test(hote) || /\.local$|^localhost$/i.test(hote);
+      } catch (e) { return false; }
+    },
+
     fetch(url, options) {
       options = options || {};
       return new Promise((resoudre, rejeter) => {
@@ -38,6 +48,23 @@
       const entetes = { "Content-Type": type };
       if (location) entetes.Location = location;
       p.resoudre(new Response(vide ? null : octets(base64), { status: statut, headers: entetes }));
+    },
+
+    // Autre adresse du même wiki, en gardant le jeton (Pont.changerServeur) :
+    // résout le statut HTTP (200 : fait ; 401 : appareil inconnu ; 0 : injoignable).
+    changerServeur(adresse) {
+      return new Promise((resoudre) => {
+        const id = String(++compteur);
+        enAttente.set(id, { resoudre, rejeter: resoudre });
+        natif.changerServeur(id, adresse);
+      });
+    },
+
+    _statut(id, statut) {
+      const p = enAttente.get(id);
+      if (!p) return;
+      enAttente.delete(id);
+      p.resoudre(statut);
     },
 
     _echec(id, message) {

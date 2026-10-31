@@ -4,9 +4,10 @@ APK pour téléphone et tablette : le **wiki complet** (pages, éditeur, lecteur
 PDF, QCM en ligne) avec une navigation pensée pour le tactile, et les **QCM hors
 ligne** (`/qcm/hors-ligne/` embarqué) qui se synchronisent avec le serveur.
 
-- **Connexion une seule fois** : au premier lancement, adresse du serveur,
-  identifiant et mot de passe. L'appli reçoit un jeton d'appareil et ouvre
-  ensuite le wiki sans redemander le mot de passe (`/api/appareil/session/`).
+- **Connexion une seule fois** : au premier lancement, identifiant et mot de
+  passe (l'adresse publique `https://wiki.airhiterofprovence.fr` est déjà
+  remplie). L'appli reçoit un jeton d'appareil et ouvre ensuite le wiki sans
+  redemander le mot de passe (`/api/appareil/session/`).
 - **Navigation au pouce** : sur téléphone, barre en bas de l'écran (Accueil,
   Parcourir, Rechercher, QCM, Hors ligne) et menu latéral en tiroir (bouton
   « Parcourir » ou glissement depuis le bord gauche). Sur tablette, menu latéral
@@ -28,12 +29,18 @@ même clé de signature) : sets téléchargés et réponses en attente sont gard
    <https://github.com/wakadu13/Revision/releases> (tags `apk-v…`), ou sur
    le téléphone directement depuis cette page.
 2. L'ouvrir sur le téléphone et autoriser l'installation depuis cette source.
-3. Au premier lancement : adresse du serveur, identifiant et mot de passe du wiki
-   (le wiki s'ouvre ensuite tout seul ; « Réglages » depuis le menu pour changer).
-   - Pi en HTTP sur le réseau local : `http://192.168.1.20:8000` (IP du Pi et port publié par Docker).
-   - Pi en HTTPS : `https://wiki.exemple.fr`. Avec un certificat d'une autorité
-     locale (Caddy…), installer son `root.crt` sur le téléphone
-     (Paramètres → Sécurité → Chiffrement → Installer un certificat → Certificat CA).
+3. Au premier lancement : identifiant et mot de passe du wiki (le wiki s'ouvre
+   ensuite tout seul ; « Réglages » depuis le menu pour changer).
+   - Adresse proposée : `https://wiki.airhiterofprovence.fr`, le wiki sur
+     Internet (Cloudflare) : marche partout, en Wi‑Fi comme en 4G.
+   - Adresse du réseau local, seulement à la maison : `http://192.168.1.20:8000`
+     (HTTP), ou `https://192.168.1.20` avec Caddy (installer alors son
+     `root.crt` sur le téléphone : Paramètres → Sécurité → Chiffrement →
+     Installer un certificat → Certificat CA). Un nom de domaine tapé sans
+     `https://` est complété tout seul.
+   - Déjà connecté à une adresse locale ? « Passer à wiki.airhiterofprovence.fr »
+     (Réglages, ou la page « Le wiki ne répond pas ») : même serveur, même jeton,
+     pas de mot de passe à retaper.
 4. Pour réviser sans réseau : onglet « Hors ligne », puis « Télécharger des sets ».
 
 Le mot de passe n'est pas gardé : le serveur donne un **jeton d'appareil** à
@@ -57,10 +64,11 @@ uv run python manage.py migrate     # table des jetons d'appareil
 ```
 
 L'adresse utilisée par le téléphone doit être dans `DJANGO_ALLOWED_HOSTS`
-(ex. `DJANGO_ALLOWED_HOSTS=192.168.1.20,localhost`), sinon Django répond 400.
-Si `DJANGO_HTTPS=1`, le serveur redirige HTTP vers HTTPS : utiliser l'adresse en `https://`.
-Hors de la maison, le téléphone ne joint le Pi que par un VPN (Tailscale,
-WireGuard…) ; sans lui, on révise quand même et tout part au retour.
+(ex. `DJANGO_ALLOWED_HOSTS=wiki.airhiterofprovence.fr,192.168.1.20`), sinon
+Django répond 400. Si `DJANGO_HTTPS=1`, le serveur redirige HTTP vers HTTPS :
+utiliser l'adresse en `https://`. Hors de la maison, l'appli passe par
+l'adresse publique (Cloudflare, voir « Accès depuis Internet » dans le
+[README](../README.md)) ; sans réseau, on révise quand même et tout part au retour.
 
 ## Construire l'APK
 
@@ -114,7 +122,8 @@ pas encore envoyées sont perdues.
 - `Pont.java` (`window.QcmNatif`, pages locales seulement) : requêtes HTTP vers
   le serveur en Java, avec l'en-tête `Authorization: Bearer <jeton>` — pas de
   CORS ni de contenu mixte, HTTP ou HTTPS indifféremment ; échange du jeton
-  contre la session du wiki.
+  contre la session du wiki ; passage à une autre adresse du même wiki
+  (`changerServeur`, HTTPS seulement, gardée si le serveur accepte le jeton).
 - `window.AppliNatif` (toutes les pages, rien de sensible) : rouvrir le wiki,
   enregistrer un fichier produit par la page (« Télécharger » de l'éditeur).
 - `assets/appli.js` : `QcmReseau.fetch()`, même interface que `fetch()`, que

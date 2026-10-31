@@ -23,6 +23,15 @@
 
     <section id="cx-connecte" hidden>
       <p>Connecté à <b id="cx-serveur"></b> en tant que <b id="cx-joueur"></b>.</p>
+      <div class="callout" data-callout="tip" id="cx-conseil" hidden>
+        <div class="callout-title">Cette adresse ne marche qu'à la maison.</div>
+        <div class="callout-content">
+          <p>Le wiki est aussi sur Internet : avec son adresse publique, il s'ouvre partout (4G, autre Wi‑Fi),
+            sans redemander le mot de passe.</p>
+          <p><button type="button" class="button primary small" id="cx-passer"></button></p>
+          <p class="muted" id="cx-passer-etat" aria-live="polite"></p>
+        </div>
+      </div>
       <p class="muted">Les réponses faites sans réseau restent sur le téléphone et sont envoyées au serveur à la
         prochaine synchronisation.</p>
       <div class="quiz-actions">
@@ -35,8 +44,12 @@
     <form id="cx-formulaire" class="appli-formulaire" hidden>
       <label>Adresse du serveur
         <input type="text" id="cx-adresse" required inputmode="url" autocapitalize="off" spellcheck="false"
-               placeholder="http://192.168.1.20:8000">
+               placeholder="https://wiki.airhiterofprovence.fr">
       </label>
+      <p class="appli-suggestion" id="cx-suggestion" hidden>
+        <button type="button" class="button small" id="cx-adresse-publique"></button>
+        <span class="muted">marche partout (Wi‑Fi, 4G) ; une adresse en 192.168.… seulement à la maison.</span>
+      </p>
       <label>Nom d'utilisateur
         <input type="text" id="cx-utilisateur" required autocapitalize="off" autocomplete="username">
       </label>

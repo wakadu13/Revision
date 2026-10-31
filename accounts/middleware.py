@@ -12,6 +12,7 @@ requêtes.
 from django.contrib.auth import logout
 from django.http import JsonResponse
 from django.utils import timezone
+from django.utils.cache import patch_cache_control
 
 from .models import JetonAppareil
 
@@ -48,3 +49,22 @@ class JetonAppareilMiddleware:
             if jeton_id is not None and not JetonAppareil.objects.filter(pk=jeton_id, user=request.user).exists():
                 logout(request)
         return self.get_response(request)
+
+
+class CachePriveMiddleware:
+    """Pages et fichiers du wiki : jamais gardés par un cache partagé.
+
+    Derrière Cloudflare (ou un proxy d'entreprise), une réponse sans
+    « Cache-Control: private » peut être mise en cache selon son extension
+    (/fichiers/cours.pdf, images…) puis resservie à quelqu'un sans compte. Le
+    navigateur et l'application gardent leur propre cache (pages hors ligne).
+    À placer après WhiteNoise : les fichiers statiques, publics, restent en cache.
+    """
+
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        response = self.get_response(request)
+        patch_cache_control(response, private=True)
+        return response

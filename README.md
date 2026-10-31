@@ -169,9 +169,10 @@ L'APK **ProjetPluri** ([releases](https://github.com/wakadu13/Revision/releases)
 tags `apk-v2.…`) affiche le wiki complet avec une navigation tactile : barre en
 bas de l'écran (Accueil, Parcourir, Rechercher, QCM, Hors ligne), menu latéral
 en tiroir, import et téléchargement de fichiers, PDF en plein écran, zoom au
-pincement. On se connecte une fois (adresse du serveur, identifiant, mot de
-passe) ; le wiki s'ouvre ensuite directement. Les QCM restent disponibles sans
-réseau. Marche avec un serveur en HTTP ou en HTTPS (Caddy). Détails :
+pincement. On se connecte une fois (identifiant, mot de passe ; l'adresse
+publique `https://wiki.airhiterofprovence.fr` est proposée) ; le wiki s'ouvre
+ensuite directement, partout. Les QCM restent disponibles sans réseau. Marche
+aussi avec l'adresse du réseau local (HTTP, ou HTTPS avec Caddy). Détails :
 [`android/README.md`](android/README.md).
 
 ## Comptes et rôles
@@ -201,6 +202,11 @@ Mesures en place :
   (`LoginRequiredMiddleware`) ; la page de connexion n'affiche rien du wiki.
 - **Anti-force brute** (django-axes) : 5 mots de passe faux pour un compte depuis
   une même IP → blocage 30 min. Débloquer : `uv run python manage.py axes_reset`.
+  Derrière Caddy ou Cloudflare, c'est l'IP réelle du visiteur qui compte, lue
+  seulement dans ce que le proxy écrit lui-même (impossible à falsifier,
+  [`accounts/ip.py`](accounts/ip.py)).
+- **Cache** : pages et fichiers du wiki en `Cache-Control: private` ; Cloudflare
+  ou un proxy ne les gardent jamais pour les resservir à quelqu'un sans compte.
 - **Anti-XSS** : le HTML des notes et des QCM est nettoyé (nh3) ; Content Security
   Policy stricte (aucun script en ligne) ; bibliothèques du CDN à version figée
   avec contrôle d'intégrité (SRI) ; les fichiers HTML/SVG du coffre sont
@@ -223,6 +229,7 @@ Variables d'environnement :
 | `DJANGO_CSRF_TRUSTED_ORIGINS` | ex. `https://wiki.exemple.fr` | vide |
 | `DJANGO_HTTPS` | HTTPS forcé, cookies sécurisés, HSTS | `1` si un vrai domaine est dans `DJANGO_ALLOWED_HOSTS` (hors debug), sinon `0` |
 | `DJANGO_BEHIND_PROXY` | derrière nginx/Caddy (IP et HTTPS transmis par le proxy) | `0` |
+| `DJANGO_CLOUDFLARE` | derrière Cloudflare : IP du visiteur lue dans `CF-Connecting-IP` (inclut `DJANGO_BEHIND_PROXY`) | `0` |
 
 ### HTTPS sur le réseau local
 
@@ -240,6 +247,31 @@ Pour ouvrir le wiki depuis un autre appareil du même Wi‑Fi, en HTTPS :
    script (<kbd>Ctrl</kbd>+<kbd>C</kbd>) et le relancer : le serveur ne relit pas
    le code à chaud, et les pages modifiées renverraient « Server Error (500) ».
    Le détail d'une erreur 500 s'affiche dans la fenêtre du script.
+
+### Accès depuis Internet (Cloudflare)
+
+Le wiki est en ligne sur <https://wiki.airhiterofprovence.fr> : Cloudflare →
+Caddy → Django. Dans le script de lancement, en plus des réglages de
+`serve-lan.ps1` :
+
+```powershell
+$env:DJANGO_ALLOWED_HOSTS = "wiki.airhiterofprovence.fr,$Ip"   # domaine + IP pour le Wi-Fi
+$env:DJANGO_CLOUDFLARE = "1"
+```
+
+- `DJANGO_CLOUDFLARE=1` : l'anti-force brute compte les essais par visiteur
+  (IP donnée par Cloudflare). Sans ce réglage, tout le monde arrive par les
+  mêmes adresses de Cloudflare : un inconnu qui tape 5 mots de passe faux
+  bloque le compte 30 minutes, y compris pour son propriétaire.
+- Le PC ne doit être joignable que par Cloudflare : Cloudflare Tunnel
+  (`cloudflared`, aucun port ouvert sur la box), ou ports de la box limités aux
+  [adresses de Cloudflare](https://www.cloudflare.com/ips/). Sinon, quelqu'un qui
+  connaît l'IP de la box contourne Cloudflare et choisit l'IP qu'il annonce.
+- Pas de règle de cache « Cache Everything » dans Cloudflare : les pages et
+  fichiers du wiki sont marqués privés, les fichiers statiques (`/static/`)
+  restent en cache.
+- Cloudflare refuse les envois de plus de 100 Mo (offre gratuite) : un très gros
+  PDF s'importe depuis l'adresse locale.
 
 Mise en production : définir `DJANGO_ALLOWED_HOSTS` et `DJANGO_CSRF_TRUSTED_ORIGINS`,
 servir le site en HTTPS derrière un proxy (`DJANGO_BEHIND_PROXY=1`) avec un

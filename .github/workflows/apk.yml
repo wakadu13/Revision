@@ -92,5 +92,5 @@ jobs:
             --notes "Application Android du wiki ProjetPluri, pour téléphone et tablette : le wiki complet (pages, éditeur, PDF, QCM) avec une navigation tactile, et les QCM hors ligne synchronisés avec le serveur.
 
           Installation : télécharger l'APK sur l'appareil, l'ouvrir et autoriser l'installation depuis cette source (elle se met à jour par-dessus l'appli QCM déjà installée, sans perdre les réponses gardées).
-          Au premier lancement : adresse du serveur (ex. https://192.168.1.20 avec Caddy, ou http://192.168.1.20:8000), identifiant et mot de passe du wiki. Le wiki s'ouvre ensuite sans redemander le mot de passe.
+          Au premier lancement : identifiant et mot de passe du wiki (adresse proposée : https://wiki.airhiterofprovence.fr, qui marche partout, Wi-Fi ou 4G). Le wiki s'ouvre ensuite sans redemander le mot de passe. Appli déjà connectée à une adresse locale (192.168.…) : « Passer à wiki.airhiterofprovence.fr » dans les Réglages, sans retaper le mot de passe.
           Le serveur doit être à jour (git pull, puis redémarrer) : voir android/README.md."
