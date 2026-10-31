@@ -13,6 +13,7 @@ from django.views.decorators.http import require_POST
 
 from accounts.roles import is_admin
 
+from . import latex as latex_converter
 from . import uploads
 from .render import Renderer, render_note
 from .vault import CODE_RE, Note, clean_key, get_vault, split_frontmatter
@@ -129,6 +130,7 @@ def edit(request, path):
         "attachment_choices": vault.attachment_choices(uploads.ATTACHMENT_EXTS),
         "preview_url": reverse("wiki:preview", args=[key]),
         "import_url": reverse("wiki:import"),
+        "latex_url": reverse("wiki:latex"),
     })
 
 
@@ -141,6 +143,21 @@ def preview(request, path):
     meta, body = split_frontmatter(request.POST.get("content", "").replace("\r\n", "\n"))
     note = Note(PurePosixPath(f"{key}.md"), 0, meta, body)
     return HttpResponse(Renderer(get_vault(), note).convert(body))
+
+
+@require_POST
+def latex(request):
+    """Conversion d'un document LaTeX en Markdown pour l'éditeur (bouton, collage, fichier .tex)."""
+    if not can_edit(request):
+        return JsonResponse({"error": "Réservé aux admins."}, status=403)
+    source = request.POST.get("source", "")
+    if not source.strip():
+        return JsonResponse({"error": "Aucun texte LaTeX à convertir."}, status=400)
+    try:
+        markdown = latex_converter.convert(source)
+    except (RecursionError, ValueError, IndexError):
+        return JsonResponse({"error": "Ce LaTeX n'a pas pu être converti."}, status=400)
+    return JsonResponse({"markdown": markdown})
 
 
 def new(request):

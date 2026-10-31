@@ -11,8 +11,8 @@
   <form class="md-import" method="post" enctype="multipart/form-data" data-md-import>
     {% csrf_token %}
     <label class="quiz-dropzone" data-dropzone>
-      <input type="file" name="fichiers" accept=".md,.markdown,image/*,.pdf,audio/*,video/*" multiple hidden data-import-files>
-      <b>Glissez-déposez vos fichiers .md, vos PDF ou un dossier ici</b>
+      <input type="file" name="fichiers" accept=".md,.markdown,.tex,image/*,.pdf,audio/*,video/*" multiple hidden data-import-files>
+      <b>Glissez-déposez vos fichiers .md, .tex, PDF ou un dossier ici</b>
       <span class="muted">ou cliquez pour choisir des fichiers</span>
     </label>
     <div class="md-import-options">
@@ -49,6 +49,7 @@
     <li>Un fichier qui existe déjà n'est pas écrasé, sauf si « Remplacer » est coché.</li>
     <li>Les dossiers cachés (<code>.obsidian</code>, <code>.trash</code>) sont ignorés.</li>
     <li>Acceptés : notes <code>.md</code> (jusqu'à {{ max_note }} Mo), images, PDF, audio et vidéo (jusqu'à {{ max_attachment }} Mo).</li>
+    <li>Un cours en LaTeX (<code>.tex</code>) est converti en page : chapitres, formules, théorèmes en encadrés, tableaux. Les figures TikZ ne sont pas dessinées (leur code est gardé).</li>
     <li>Les PDF apparaissent dans l'arborescence de gauche ; dans une note, <code>![[cours.pdf]]</code> affiche le lecteur et <code>![[cours.pdf#page=3]]</code> l'ouvre à la page 3.</li>
     <li>Pour remplacer le texte d'une seule page, ouvrez-la avec « Modifier » puis « Ouvrir un .md ».</li>
   </ul>

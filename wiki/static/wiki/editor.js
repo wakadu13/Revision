@@ -15,7 +15,7 @@
   if (!textarea || !CM) return;
 
   const {
-    EditorState, EditorSelection, Compartment, Prec, EditorView, ViewPlugin, Decoration, WidgetType, keymap,
+    EditorState, EditorSelection, Compartment, Prec, StateField, EditorView, ViewPlugin, Decoration, WidgetType, keymap,
     drawSelection, dropCursor, placeholder, history, historyKeymap, defaultKeymap, indentWithTab,
     syntaxTree, syntaxHighlighting, HighlightStyle, indentOnInput, markdown, markdownLanguage,
     autocompletion, completionKeymap, closeBrackets, closeBracketsKeymap,
@@ -33,7 +33,7 @@
   const countLabel = form.querySelector("[data-count]");
   const autosaveBox = form.querySelector("[data-autosave]");
   const closeLink = form.querySelector(".editor-actions a");
-  const { previewUrl, importUrl, noteKey, noteName } = form.dataset;
+  const { previewUrl, importUrl, latexUrl, noteKey, noteName } = form.dataset;
   const choices = JSON.parse(document.getElementById("link-choices").textContent);
   const attachments = JSON.parse(document.getElementById("attachment-choices").textContent);
 
@@ -186,25 +186,70 @@
     }],
   };
 
-  // Formules $...$ et $$...$$.
+  // Formules LaTeX, reconnues comme sur le wiki : $...$ dans le texte (pas
+  // d'espace contre les $, pas de chiffre après le $ fermant : « 5 $ et 10 $ »
+  // n'est pas une formule) et blocs $$...$$, même collés au texte qui précède.
+  const closesMath = (text) => /\$\$\s*$/.test(text);
   const Math_ = {
-    defineNodes: [{ name: "InlineMath", style: mathTag }],
+    defineNodes: [
+      { name: "InlineMath", style: mathTag },
+      { name: "BlockMath", block: true, style: mathTag },
+      { name: "MathMark", style: tags.processingInstruction },
+    ],
     parseInline: [{
       name: "InlineMath",
       parse(cx, next, pos) {
-        if (next !== 36 || cx.slice(pos - 1, pos) === "\\") return -1;
-        const double = cx.char(pos + 1) === 36;
-        const open = double ? 2 : 1;
-        const rest = cx.slice(pos + open, cx.end);
-        const close = rest.indexOf(double ? "$$" : "$");
-        if (close <= 0) return -1;
-        const body = rest.slice(0, close);
-        if (!double && (/^\s|\s$/.test(body) || body.includes("\n"))) return -1;
-        return cx.addElement(cx.elt("InlineMath", pos, pos + open + close + open));
+        if (next !== 36 || /[\\$]/.test(cx.slice(pos - 1, pos))) return -1;
+        const rest = cx.slice(pos + 1, cx.end);
+        if (rest[0] === "$") {
+          const close = rest.indexOf("$$", 1);
+          return close > 1 ? cx.addElement(cx.elt("InlineMath", pos, pos + close + 3)) : -1;
+        }
+        const m = /^(?=[^\s$])[^$\n]+?(?<=[^\s\\])\$(?!\d)/.exec(rest);
+        return m ? cx.addElement(cx.elt("InlineMath", pos, pos + 1 + m[0].length)) : -1;
       },
       before: "Emphasis",
     }],
+    parseBlock: [{
+      name: "BlockMath",
+      parse(cx, line) {
+        const text = line.text.slice(line.pos);
+        if (!text.startsWith("$$")) return false;
+        const from = cx.lineStart + line.pos;
+        const marks = [cx.elt("MathMark", from, from + 2)];
+        let end = cx.lineStart + line.text.length;
+        if (closesMath(text.slice(2)) && text.slice(2).replace(/\$\$\s*$/, "").trim()) {
+          const at = from + text.lastIndexOf("$$");
+          marks.push(cx.elt("MathMark", at, at + 2));
+          cx.nextLine();
+        } else {
+          // Jusqu'au $$ fermant ; un bloc pas encore fermé s'arrête à la ligne vide.
+          while (cx.nextLine() && line.depth >= cx.depth) {
+            const rest = line.text.slice(line.pos);
+            if (!rest.trim()) break;
+            for (const m of line.markers) marks.push(m);
+            end = cx.lineStart + line.text.length;
+            if (closesMath(rest)) {
+              const at = cx.lineStart + line.pos + rest.lastIndexOf("$$");
+              marks.push(cx.elt("MathMark", at, at + 2));
+              cx.nextLine();
+              break;
+            }
+          }
+        }
+        cx.addElement(cx.elt("BlockMath", from, end, marks));
+        return true;
+      },
+      endLeaf: (cx, line) => line.text.slice(line.pos).startsWith("$$"),
+      before: "HorizontalRule",
+    }],
   };
+
+  // Texte LaTeX d'un bloc $$ (sans les $$ ni les « > » d'un encadré).
+  function mathSource(text) {
+    return text.split("\n").map((l, i) => (i ? l.replace(/^\s*(>\s?)+/, "") : l)).join("\n")
+      .replace(/^\s*\$\$/, "").replace(/\$\$\s*$/, "").trim();
+  }
 
   // Propriétés YAML entre deux lignes --- en tout début de note.
   const Frontmatter = {
@@ -323,6 +368,38 @@
     }
   }
 
+  // Formule rendue par KaTeX (chargé par wiki.js, comme pour les pages) ; un
+  // clic place le curseur dessus et réaffiche le LaTeX.
+  class MathWidget extends WidgetType {
+    constructor(tex, display) {
+      super();
+      this.tex = tex;
+      this.display = display;
+    }
+    eq(other) {
+      return other.tex === this.tex && other.display === this.display;
+    }
+    toDOM(view) {
+      const el = document.createElement(this.display ? "div" : "span");
+      el.className = this.display ? "cm-math-block" : "cm-math-inline";
+      el.textContent = this.display ? `$$${this.tex}$$` : `$${this.tex}$`;
+      if (window.wikiKatex) {
+        window.wikiKatex().then((katex) => {
+          try {
+            katex.render(this.tex, el, { displayMode: this.display, throwOnError: false });
+          } catch (e) {
+            // Formule invalide : le LaTeX reste affiché tel quel.
+          }
+          view.requestMeasure();
+        }).catch(() => {});
+      }
+      return el;
+    }
+    ignoreEvent() {
+      return false;
+    }
+  }
+
   const hidden = Decoration.replace({});
   const bullet = Decoration.replace({ widget: new TextWidget("•", "cm-bullet") });
   const rule = Decoration.replace({ widget: new TextWidget("", "cm-hr") });
@@ -431,6 +508,18 @@
                 out.push(line(cls.join(" ")).range(l.from));
               });
               return;
+            case "InlineMath": {
+              const text = doc.sliceString(from, to);
+              if (!live || touches(from, to) || text.includes("\n")) return false;
+              const double = text.startsWith("$$");
+              const tex = text.slice(double ? 2 : 1, double ? -2 : -1);
+              out.push(Decoration.replace({ widget: new MathWidget(tex, double) }).range(from, to));
+              return false;
+            }
+            case "BlockMath":
+              // Rendu par le champ blockMath (un bloc couvre plusieurs lignes) ; ici, le LaTeX brut.
+              eachLine(from, to, viewFrom, viewTo, (l) => out.push(line("cm-math-line").range(l.from)));
+              return false;
             case "Frontmatter":
               eachLine(from, to, viewFrom, viewTo, (l, first, last) => {
                 out.push(line(`cm-frontmatter${first ? " cm-frontmatter-first" : ""}${last ? " cm-frontmatter-last" : ""}`).range(l.from));
@@ -544,7 +633,38 @@
       }
     }, { decorations: (v) => v.decorations });
   }
-  const livePreview = previewPlugin(true);
+  // Blocs $$ rendus par KaTeX quand le curseur n'y est pas. Un bloc couvre
+  // plusieurs lignes : ce remplacement doit venir d'un champ d'état, pas du plugin.
+  const CONTAINERS = new Set(["Document", "Blockquote", "BulletList", "OrderedList", "ListItem"]);
+
+  function blockMathDecorations(state) {
+    const ranges = state.selection.ranges;
+    const out = [];
+    syntaxTree(state).iterate({
+      enter(node) {
+        if (node.name !== "BlockMath") return CONTAINERS.has(node.name);
+        if (!ranges.some((r) => r.from <= node.to && r.to >= node.from)) {
+          const tex = mathSource(state.sliceDoc(node.from, node.to));
+          if (tex && !looksLikeLatex(tex)) out.push(Decoration.replace({ widget: new MathWidget(tex, true) }).range(node.from, node.to));
+        }
+        return false;
+      },
+    });
+    return Decoration.set(out);
+  }
+
+  const blockMath = StateField.define({
+    create: blockMathDecorations,
+    update(decorations, tr) {
+      if (tr.docChanged || tr.selection || syntaxTree(tr.startState) !== syntaxTree(tr.state)) {
+        return blockMathDecorations(tr.state);
+      }
+      return decorations;
+    },
+    provide: (field) => EditorView.decorations.from(field),
+  });
+
+  const livePreview = [previewPlugin(true), blockMath];
   const sourceView = previewPlugin(false);
 
   // -- Commandes de mise en forme ---------------------------------------------------------
@@ -662,9 +782,27 @@
     view.focus();
   }
 
-  // Avec du texte sélectionné, taper * _ = ~ ou ` l'entoure (« Auto pair Markdown syntax »).
+  // Formule : sur une ligne vide, un bloc $$ ; sinon $...$ autour de la sélection.
+  function mathCommand(view) {
+    const { state } = view;
+    const range = state.selection.main;
+    const current = state.doc.lineAt(range.from);
+    if (range.empty && !current.text.trim()) {
+      view.dispatch({
+        changes: { from: current.from, to: current.to, insert: "$$\n\n$$" },
+        selection: { anchor: current.from + 3 },
+        scrollIntoView: true,
+        userEvent: "input",
+      });
+      view.focus();
+      return true;
+    }
+    return wrap("$", "$", "x")(view);
+  }
+
+  // Avec du texte sélectionné, taper * _ = ~ ` ou $ l'entoure (« Auto pair Markdown syntax »).
   const pairOnSelection = EditorView.inputHandler.of((view, from, to, text) => {
-    if (from === to || text.length !== 1 || !"*_=~`".includes(text)) return false;
+    if (from === to || text.length !== 1 || !"*_=~`$".includes(text)) return false;
     const mark = text === "=" || text === "~" ? text + text : text;
     return wrap(mark)(view);
   });
@@ -786,11 +924,57 @@
       errors.length ? "error" : "ok");
   }
 
-  const isMarkdown = (file) => /\.(md|markdown|txt)$/i.test(file.name);
+  // -- LaTeX : un cours .tex est converti en page (chapitres, formules, encadrés, tableaux) --------
+
+  function looksLikeLatex(text) {
+    return /\\documentclass|\\begin\s*\{document\}/.test(text)
+      || (text.match(/\\(chapter|section|subsection)\*?\{|\\begin\{(itemize|enumerate|tabular|figure|theorem|definition)\}/g) || []).length >= 3;
+  }
+
+  async function convertLatex(source) {
+    const data = new FormData();
+    data.append("csrfmiddlewaretoken", csrf);
+    data.append("source", source);
+    status("Conversion du LaTeX…");
+    const response = await fetch(latexUrl, { method: "POST", body: data, headers: { Accept: "application/json" } });
+    const json = await response.json().catch(() => ({}));
+    if (!response.ok || typeof json.markdown !== "string") {
+      throw new Error(json.error || "Conversion impossible (session expirée ?).");
+    }
+    return json.markdown;
+  }
+
+  async function convertDocument() {
+    const { from, to } = view.state.selection.main;
+    const whole = from === to;
+    const source = whole ? view.state.doc.toString() : view.state.sliceDoc(from, to);
+    if (!source.trim()) return status("Rien à convertir : collez d'abord le LaTeX.", "error");
+    try {
+      const markdown = await convertLatex(source);
+      view.dispatch({
+        changes: whole ? { from: 0, to: view.state.doc.length, insert: markdown } : { from, to, insert: markdown },
+        selection: { anchor: whole ? 0 : from },
+        scrollIntoView: true,
+        userEvent: "input",
+      });
+      status("LaTeX converti : vérifiez puis enregistrez (Ctrl+Z pour annuler).", "dirty");
+      view.focus();
+    } catch (e) {
+      status(e.message, "error");
+    }
+  }
+
+  const isLatexFile = (file) => /\.(tex|latex)$/i.test(file.name);
+  const isMarkdown = (file) => /\.(md|markdown|txt|tex|latex)$/i.test(file.name);
   const readText = (file) => file.text().then((t) => t.replace(/^﻿/, "").replace(/\r\n?/g, "\n"));
 
   async function insertMarkdownFiles(view, list, pos) {
-    const texts = await Promise.all(list.map(readText));
+    let texts;
+    try {
+      texts = await Promise.all(list.map(async (file) => (isLatexFile(file) ? convertLatex(await readText(file)) : readText(file))));
+    } catch (e) {
+      return status(e.message, "error");
+    }
     const at = Math.min(pos, view.state.doc.length);
     const text = texts.join("\n\n");
     view.dispatch({ changes: { from: at, insert: text }, selection: { anchor: at + text.length }, userEvent: "input" });
@@ -807,7 +991,14 @@
   const fileEvents = EditorView.domEventHandlers({
     paste(e, view) {
       const list = [...(e.clipboardData ? e.clipboardData.files : [])];
-      if (!list.length) return false;
+      if (!list.length) {
+        const text = e.clipboardData ? e.clipboardData.getData("text/plain") : "";
+        if (!text || !looksLikeLatex(text)) return false;
+        e.preventDefault();
+        pastedLatex = text;
+        latexDialog.showModal();
+        return true;
+      }
       e.preventDefault();
       uploadFiles(view, list.map((f) => (f.type.startsWith("image/") ? new File([f], pastedName(f), { type: f.type }) : f)));
       return true;
@@ -967,6 +1158,7 @@
     { key: "Mod-k", run: () => (actions["page-link"](), true) },
     { key: "Mod-e", run: () => (setMode("reading"), true), preventDefault: true },
     { key: "Mod-Enter", run: toggleTask },
+    { key: "Mod-Shift-m", run: mathCommand },
   ];
 
   const view = new EditorView({
@@ -1031,7 +1223,10 @@
           refreshState();
           scheduleAutosave();
           clearTimeout(infoTimer);
-          infoTimer = setTimeout(refreshInfo, 300);
+          infoTimer = setTimeout(() => {
+            refreshInfo();
+            refreshLatexNotice();
+          }, 300);
         }),
       ],
     }),
@@ -1214,6 +1409,32 @@
     }
   }));
 
+  // -- Collage de LaTeX : convertir ou coller tel quel -----------------------------------------------
+
+  const latexDialog = document.getElementById("latex-paste-dialog");
+  let pastedLatex = "";
+  latexDialog.querySelectorAll("[data-paste-choice]").forEach((button) => button.addEventListener("click", async () => {
+    latexDialog.close();
+    let text = pastedLatex;
+    if (button.dataset.pasteChoice === "convert") {
+      try {
+        text = await convertLatex(pastedLatex);
+        status("LaTeX converti : vérifiez puis enregistrez (Ctrl+Z pour annuler).", "dirty");
+      } catch (e) {
+        return status(e.message, "error");
+      }
+    }
+    replaceSelection(view, text);
+  }));
+
+  // Page qui contient du LaTeX brut (collé avant cette fonction) : proposer la conversion.
+  const latexNotice = form.querySelector("[data-latex-notice]");
+  function refreshLatexNotice() {
+    latexNotice.hidden = !looksLikeLatex(view.state.doc.toString());
+  }
+  latexNotice.querySelector("[data-action=latex]").addEventListener("click", () => convertDocument());
+  refreshLatexNotice();
+
   // -- Fenêtre « Ouvrir un .md » ---------------------------------------------------------------------
 
   const mdInput = form.querySelector("[data-md-input]");
@@ -1224,7 +1445,11 @@
     const file = mdInput.files[0];
     mdInput.value = "";
     if (!file) return;
-    mdText = await readText(file);
+    try {
+      mdText = isLatexFile(file) ? await convertLatex(await readText(file)) : await readText(file);
+    } catch (e) {
+      return status(e.message, "error");
+    }
     if (!view.state.doc.toString().trim()) return useMarkdown("replace");
     mdDialog.querySelector("[data-md-name]").textContent = `« ${file.name} »`;
     mdDialog.showModal();
@@ -1289,11 +1514,13 @@
       return insertBlock(view, `> [!note] ${title}\n> Texte de l'encadré`, [`> [!note] ${title}\n> `.length, `> [!note] ${title}\n> Texte de l'encadré`.length]);
     },
     table: () => insertBlock(view, "| Colonne 1 | Colonne 2 |\n| --- | --- |\n| Texte | Texte |", [2, 11]),
+    math: () => mathCommand(view),
     codeblock: () => {
       const code = selectedText(view) || "code";
       return insertBlock(view, "```bash\n" + code + "\n```", [3, 7]);
     },
     "open-md": () => mdInput.click(),
+    latex: () => convertDocument(),
     "download-md": download,
     save: () => save(),
     focus: () => setFocus(!document.body.classList.contains("editor-focus")),
@@ -1311,7 +1538,7 @@
       const keepsMode = ["focus", "download-md", "open-md"].includes(action);
       if (mode === "reading" && !keepsMode) setMode(editMode);
       actions[action]();
-      if (!["page-link", "web-link", "attach", "open-md", "download-md", "focus"].includes(action)) view.focus();
+      if (!["page-link", "web-link", "attach", "open-md", "download-md", "focus", "latex"].includes(action)) view.focus();
     });
   });
   form.querySelector("[data-action=save]").addEventListener("click", () => save());
