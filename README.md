@@ -60,6 +60,11 @@ Obsidian lui-même :
   (titres, gras, liens, cases à cocher cliquables, images, encadrés colorés) et la
   syntaxe Markdown ne réapparaît que sur la ligne en cours ; **Source** : le
   Markdown brut ; **Lecture** : la page telle qu'elle sera publiée ;
+- **formules LaTeX** rendues pendant la saisie (KaTeX, comme les pages) :
+  `$…$` dans le texte, blocs `$$…$$` (même collés au texte qui précède) ;
+  un clic sur une formule réaffiche son LaTeX. Bouton ∑ ou
+  <kbd>Ctrl</kbd>+<kbd>Maj</kbd>+<kbd>M</kbd> : bloc `$$` sur une ligne vide,
+  sinon `$…$` autour de la sélection ;
 - `[[` propose les pages (alias compris), `![[` les images et fichiers du coffre ;
   <kbd>Ctrl</kbd>+clic ouvre un lien dans un nouvel onglet ;
 - <kbd>Ctrl</kbd>+<kbd>S</kbd> enregistre sans quitter la page (enregistrement

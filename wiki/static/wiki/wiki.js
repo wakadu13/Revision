@@ -84,16 +84,27 @@
 
     // Formules LaTeX ($...$ et $$...$$).
     if (root.querySelector(".math")) {
-      loadStyle(CDN + "katex@0.16.47/dist/katex.min.css", "sha384-nH0MfJ44wi1dd7w6jinlyBgljjS8EJAh2JBoRad8a3VDw2K69vfaaqm4WnR+gXtA");
-      loadScript(CDN + "katex@0.16.47/dist/katex.min.js", "sha384-CwjPRVHTvLiMBFjEoij+QZViMV5rhTOIp7CJzl24JEqpRDA1sJFHVXXLURktbYYp").then(() => {
+      loadKatex().then((katex) => {
         root.querySelectorAll(".math").forEach((el) => {
           const block = el.classList.contains("math-block");
           const tex = el.textContent.trim().replace(/^\\[\[(]|\\[\])]$/g, "");
-          window.katex.render(tex, el, { displayMode: block, throwOnError: false });
+          katex.render(tex, el, { displayMode: block, throwOnError: false });
         });
       });
     }
   }
+
+  // KaTeX, chargé une seule fois : pour les pages et pour l'aperçu en direct de l'éditeur.
+  let katexReady = null;
+  function loadKatex() {
+    if (!katexReady) {
+      loadStyle(CDN + "katex@0.16.47/dist/katex.min.css", "sha384-nH0MfJ44wi1dd7w6jinlyBgljjS8EJAh2JBoRad8a3VDw2K69vfaaqm4WnR+gXtA");
+      katexReady = loadScript(CDN + "katex@0.16.47/dist/katex.min.js", "sha384-CwjPRVHTvLiMBFjEoij+QZViMV5rhTOIp7CJzl24JEqpRDA1sJFHVXXLURktbYYp")
+        .then(() => window.katex);
+    }
+    return katexReady;
+  }
+  window.wikiKatex = loadKatex;
 
   enhance(document);
   window.wikiEnhance = enhance;

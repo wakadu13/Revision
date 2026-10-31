@@ -26,7 +26,7 @@ import { json } from "@codemirror/legacy-modes/mode/javascript";
 import { c, cpp, java, csharp } from "@codemirror/legacy-modes/mode/clike";
 
 export {
-  EditorState, EditorSelection, Compartment, Prec, Transaction,
+  EditorState, EditorSelection, Compartment, Prec, Transaction, StateField, StateEffect,
 } from "@codemirror/state";
 export {
   EditorView, ViewPlugin, Decoration, WidgetType, keymap, drawSelection, dropCursor, placeholder,

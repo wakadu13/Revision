@@ -411,6 +411,11 @@ table.quiz-stats form { margin: 0; }
 .editor-cm .cmt-comment { color: var(--muted); font-style: italic; }
 .editor-cm .cmt-tag { background: var(--accent-soft); color: var(--accent); border-radius: 1em; padding: 0 .35em; }
 .editor-cm .cmt-math { font-family: var(--mono); font-size: .92em; color: #b45309; }
+.editor-cm .cm-math-inline, .editor-cm .cm-math-block { color: var(--text); font-family: var(--font); font-size: 1rem; font-style: normal; cursor: text; }
+.editor-cm .cm-math-inline { padding: 0 .1em; }
+.editor-cm .cm-math-block { display: block; padding: .5rem 0; overflow-x: auto; overflow-y: hidden; text-align: center; }
+.editor-cm .cm-math-block .katex-display { margin: 0; }
+.editor-cm .cm-line.cm-math-line { font-family: var(--mono); font-size: .9rem; }
 .editor-cm .cm-link, .editor-cm .cm-wikilink { color: var(--accent); text-decoration: underline; text-decoration-color: var(--accent-soft); text-underline-offset: 2px; }
 .editor-cm .cm-wikilink.is-unresolved { color: var(--unresolved); text-decoration-style: dashed; text-decoration-color: currentColor; }
 .editor-cm .cm-line.cm-quote { border-left: 3px solid var(--accent); padding-left: 1rem; color: var(--muted); }

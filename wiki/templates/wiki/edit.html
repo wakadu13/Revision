@@ -33,6 +33,7 @@
         <button type="button" class="button" data-action="callout" title="Encadré (callout)">Encadré</button>
         <button type="button" class="button" data-action="table" title="Tableau">Tableau</button>
         <button type="button" class="button" data-action="codeblock" title="Bloc de code">{ }</button>
+        <button type="button" class="button" data-action="math" title="Formule LaTeX (Ctrl+Maj+M) : $…$ dans le texte, ou bloc $$ sur une ligne vide">∑</button>
       </div>
       <span class="toolbar-fill"></span>
       <div class="segmented" role="radiogroup" aria-label="Mode d'affichage">
@@ -126,6 +127,7 @@
     <li><kbd>Ctrl</kbd>+<kbd>S</kbd> enregistre, <kbd>Ctrl</kbd>+<kbd>E</kbd> bascule en lecture.</li>
     <li><kbd>Ctrl</kbd>+<kbd>B</kbd> / <kbd>I</kbd> gras, italique · <kbd>Ctrl</kbd>+<kbd>K</kbd> lien · <kbd>Ctrl</kbd>+<kbd>Entrée</kbd> coche une tâche.</li>
     <li><kbd>Ctrl</kbd>+<kbd>F</kbd> rechercher et remplacer · <kbd>Tab</kbd> indente une liste.</li>
+    <li>Formules LaTeX : <code>$…$</code> dans le texte, <code>$$…$$</code> en bloc (bouton ∑ ou <kbd>Ctrl</kbd>+<kbd>Maj</kbd>+<kbd>M</kbd>). Elles s'affichent rendues ; cliquez dessus pour modifier le LaTeX.</li>
     <li>Collez ou glissez une image ou un PDF dans le texte : il est ajouté au coffre (<code>![[cours.pdf]]</code> affiche le lecteur PDF dans la page). Glissez un <code>.md</code> pour insérer son contenu.</li>
   </ul>
   <p><a href="{% url 'wiki:import' %}">Importer des fichiers .md →</a></p>
