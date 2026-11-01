@@ -897,6 +897,11 @@
     let response;
     try {
       response = await fetch(importUrl, { method: "POST", body: data, headers: { Accept: "application/json" } });
+      if (response.status === 413) {
+        // Refusé avant le wiki (Cloudflare : 100 Mo au plus par envoi).
+        status("Envoi impossible : fichier trop volumineux pour passer par le réseau (100 Mo au plus par envoi).", "error");
+        return;
+      }
       json = await response.json();
     } catch (e) {
       status("Envoi impossible : serveur injoignable ou session expirée.", "error");

@@ -23,6 +23,7 @@
   const ATTACHMENT = /\.(png|jpe?g|gif|svg|webp|bmp|avif|pdf|mp3|wav|ogg|m4a|flac|webm|3gp|mp4|ogv|mov|mkv)$/i;
   const BATCH_FILES = 20;
   const BATCH_BYTES = 40 * 1024 * 1024;
+  const TOO_BIG = "trop volumineux pour passer par le réseau (100 Mo au plus par envoi avec Cloudflare).";
   let pending = [];
   let skipped = 0;
 
@@ -168,6 +169,8 @@
       let json;
       try {
         const response = await fetch(form.action, { method: "POST", body: data, headers: { Accept: "application/json" } });
+        // Refusé avant le wiki (Cloudflare : 100 Mo au plus par envoi).
+        if (response.status === 413) throw new Error(TOO_BIG);
         json = await response.json();
         if (!response.ok) throw new Error(json.error || "Import refusé.");
       } catch (e) {

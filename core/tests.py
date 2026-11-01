@@ -371,6 +371,44 @@ class AuthenticationTests(SecurityTestCase):
         call_command("axes_reset", verbosity=0)
         self.assertEqual(self.login(self.client, "alice", PASSWORD).status_code, 302)
 
+    def fail_from(self, client, **headers):
+        return client.post("/connexion/", {"username": "alice", "password": "mauvais"}, **headers)
+
+    @override_settings(CLOUDFLARE=True, BEHIND_PROXY=True)
+    def test_brute_force_behind_cloudflare(self):
+        # Cloudflare → Caddy → Django : chaque visiteur a son IP (CF-Connecting-IP).
+        # Changer X-Forwarded-For à chaque essai n'échappe pas au blocage...
+        for i in range(settings.AXES_FAILURE_LIMIT):
+            self.fail_from(self.client, REMOTE_ADDR="127.0.0.1", HTTP_CF_CONNECTING_IP="203.0.113.7",
+                           HTTP_X_FORWARDED_FOR=f"10.0.0.{i}, 172.70.1.1")
+        locked = self.client.post("/connexion/", {"username": "alice", "password": PASSWORD}, REMOTE_ADDR="127.0.0.1",
+                                  HTTP_CF_CONNECTING_IP="203.0.113.7", HTTP_X_FORWARDED_FOR="10.0.0.99, 172.70.1.1")
+        self.assertEqual(locked.status_code, 429)
+        # ... et l'attaquant ne bloque pas le vrai propriétaire du compte.
+        owner = Client().post("/connexion/", {"username": "alice", "password": PASSWORD}, REMOTE_ADDR="127.0.0.1",
+                              HTTP_CF_CONNECTING_IP="198.51.100.9", HTTP_X_FORWARDED_FOR="172.70.1.1")
+        self.assertEqual(owner.status_code, 302)
+
+    @override_settings(BEHIND_PROXY=True)
+    def test_brute_force_forged_forwarded_for(self):
+        # Derrière Caddy : seule compte la dernière adresse, ajoutée par Caddy.
+        for i in range(settings.AXES_FAILURE_LIMIT):
+            self.fail_from(self.client, REMOTE_ADDR="127.0.0.1", HTTP_X_FORWARDED_FOR=f"6.6.6.{i}, 192.0.2.10",
+                           HTTP_CF_CONNECTING_IP=f"7.7.7.{i}")
+        response = self.client.post("/connexion/", {"username": "alice", "password": PASSWORD},
+                                    REMOTE_ADDR="127.0.0.1", HTTP_X_FORWARDED_FOR="6.6.6.99, 192.0.2.10")
+        self.assertEqual(response.status_code, 429)
+        other = Client().post("/connexion/", {"username": "alice", "password": PASSWORD},
+                              REMOTE_ADDR="127.0.0.1", HTTP_X_FORWARDED_FOR="192.0.2.20")
+        self.assertEqual(other.status_code, 302)
+
+    def test_brute_force_headers_ignored_without_proxy(self):
+        for i in range(settings.AXES_FAILURE_LIMIT):
+            self.fail_from(self.client, HTTP_X_FORWARDED_FOR=f"6.6.6.{i}", HTTP_CF_CONNECTING_IP=f"7.7.7.{i}")
+        response = self.client.post("/connexion/", {"username": "alice", "password": PASSWORD},
+                                    HTTP_X_FORWARDED_FOR="6.6.6.99", HTTP_CF_CONNECTING_IP="7.7.7.99")
+        self.assertEqual(response.status_code, 429)
+
     def test_no_user_enumeration(self):
         unknown = self.login(Client(), "personne", "mauvais").content.decode()
         wrong = self.login(Client(), "alice", "mauvais").content.decode()
@@ -444,6 +482,19 @@ class ConfigurationTests(SecurityTestCase):
         for path in ["piege.html", "piege.svg", "qcm/piege.json", "../secret.txt", "..%2fsecret.txt", "absent.pdf"]:
             with self.subTest(path=path):
                 self.assertEqual(c.get(f"/pdf/{path}").status_code, 404)
+
+    def test_private_pages_never_in_shared_cache(self):
+        # Derrière Cloudflare, une réponse sans « private » peut être gardée selon
+        # son extension (.png, .pdf…) et resservie à quelqu'un sans compte.
+        c = self.as_user(self.user)
+        for client, url in [(c, "/wiki/Accueil"), (c, "/fichiers/image.png"), (c, "/fichiers/cours.pdf"),
+                            (c, "/pdf/cours.pdf"), (c, "/qcm/hors-ligne/catalogue/"), (Client(), "/fichiers/image.png"),
+                            (Client(), "/connexion/")]:
+            with self.subTest(url=url, connecte=client is c):
+                response = client.get(url)
+                self.assertIn("private", response["Cache-Control"])
+                self.assertNotIn("public", response["Cache-Control"])
+                response.close()
 
     def test_security_headers(self):
         response = self.as_user(self.user).get("/wiki/Accueil")

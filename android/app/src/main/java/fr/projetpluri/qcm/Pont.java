@@ -74,7 +74,14 @@ class Pont {
      * 401 : jeton révoqué, alors oublié).
      */
     void ouvrirSession(IntConsumer fin) {
-        String serveur = adresse();
+        session(adresse(), statut -> {
+            if (statut == 401) effacer();
+            fin.accept(statut);
+        });
+    }
+
+    /** POST /api/appareil/session/ sur ``serveur`` ; cookies mis dans la WebView si 200. */
+    private void session(String serveur, IntConsumer fin) {
         String jeton = prefs.getString("jeton", "");
         reseau.execute(() -> {
             int statut = 0;
@@ -108,8 +115,6 @@ class Pont {
                     CookieManager cookies = CookieManager.getInstance();
                     for (String cookie : recus) cookies.setCookie(serveur, cookie);
                     cookies.flush();
-                } else if (resultat == 401) {
-                    effacer();
                 }
                 fin.accept(resultat);
             });
@@ -146,6 +151,26 @@ class Pont {
     public void enregistrerCompte(String serveur, String jeton, String joueur) {
         if (!locale) return;
         prefs.edit().putString("serveur", serveur).putString("jeton", jeton).putString("joueur", joueur).apply();
+    }
+
+    /**
+     * Passe à une autre adresse du même wiki (son adresse publique, par exemple)
+     * sans redemander le mot de passe : le jeton n'est envoyé qu'en HTTPS, et
+     * l'adresse n'est gardée que si le serveur l'accepte (session ouverte). Rend
+     * QcmReseau._statut(id, statut) : 200 fait, 401 appareil inconnu de ce
+     * serveur (le jeton reste valable à l'ancienne adresse), 0 injoignable.
+     */
+    @JavascriptInterface
+    public void changerServeur(String id, String nouveau) {
+        String retour = "QcmReseau._statut(" + JSONObject.quote(id) + ",";
+        if (!locale || nouveau == null || !nouveau.startsWith("https://") || prefs.getString("jeton", "").isEmpty()) {
+            rendre(retour + "-1)");
+            return;
+        }
+        ui.post(() -> session(nouveau, statut -> {
+            if (statut == 200) prefs.edit().putString("serveur", nouveau).apply();
+            rendre(retour + statut + ")");
+        }));
     }
 
     /** Oublie le jeton et la session du wiki ; l'adresse du serveur reste proposée. */
