@@ -76,7 +76,20 @@ Obsidian lui-même :
   s'insère au curseur ; on peut aussi glisser le fichier dans le texte) et
   télécharger la page en `.md` ;
 - plan de la page cliquable, compteur de mots, recherche et remplacement
-  (<kbd>Ctrl</kbd>+<kbd>F</kbd>), mode plein écran (⤢).
+  (<kbd>Ctrl</kbd>+<kbd>F</kbd>), plein écran (voir ci-dessous) : la barre
+  d'outils rentre et revient quand la souris touche le haut de l'écran.
+
+### Plein écran
+
+Bouton ⛶ en haut du menu (ou dans la barre de l'éditeur), ou
+<kbd>Ctrl</kbd>+<kbd>Maj</kbd>+<kbd>F</kbd> : il ne reste que le texte. Le
+menu revient quand la souris touche le **bord gauche** de l'écran, le panneau
+de droite (sommaire de la page, rétroliens, plan de l'éditeur) le **bord
+droit**, la barre d'outils de l'éditeur le **bord haut** ; ils se cachent quand
+la souris s'en éloigne. Sur écran tactile, un appui sur le bord. <kbd>Échap</kbd>
+pour quitter. On passe d'une note à l'autre (menu, liens, recherche, retour)
+sans quitter le plein écran ; l'éditeur, les QCM et le lecteur PDF s'ouvrent en
+rechargeant la page, ce qui fait quitter le plein écran au navigateur.
 
 ### Cours écrits en LaTeX
 

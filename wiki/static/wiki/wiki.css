@@ -43,6 +43,12 @@ a:hover { text-decoration: underline; }
 .topbar { display: none; }
 
 /* Barre latérale */
+.sidebar-tete { display: flex; align-items: flex-start; justify-content: space-between; gap: .5rem; }
+.pe-bouton { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; width: 1.9rem; height: 1.9rem; margin-top: -.2rem; padding: 0; border: 0; border-radius: 6px; background: none; color: var(--muted); cursor: pointer; }
+.pe-bouton:hover { background: var(--accent-soft); color: var(--text); }
+.pe-bouton[aria-pressed="true"] { color: var(--accent); }
+.pe-bouton svg, .toolbar [data-plein-ecran] svg { width: 1rem; height: 1rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.toolbar [data-plein-ecran] { padding-top: .38rem; padding-bottom: .38rem; }
 .sidebar { background: var(--bg-alt); border-right: 1px solid var(--border); padding: 1rem .75rem; position: sticky; top: 0; height: 100vh; overflow-y: auto; font-size: .9rem; }
 .brand { display: block; font-weight: 700; font-size: 1.1rem; color: var(--text); margin: 0 .25rem .75rem; }
 .search input { width: 100%; padding: .4rem .6rem; border: 1px solid var(--border); border-radius: 6px; background: var(--bg); color: var(--text); font: inherit; }
@@ -170,9 +176,6 @@ details.callout > summary { cursor: pointer; }
 .editor-state[data-kind="error"] { color: #dc2626; font-weight: 600; }
 .outline ul { list-style: none; margin: 0; padding: 0; }
 .outline .link-button { padding: .1rem .3rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-body.editor-focus .layout { grid-template-columns: minmax(0, 1fr); }
-body.editor-focus .sidebar, body.editor-focus .aside { display: none; }
-body.editor-focus .editor { max-width: 58rem; }
 .suggestions, .choices { list-style: none; margin: 0; padding: .25rem; }
 .suggestions li, .choices li { display: flex; flex-direction: column; padding: .3rem .6rem; border-radius: 5px; cursor: pointer; }
 .suggestions li small, .choices li small { color: var(--muted); font-size: .78rem; }
@@ -311,7 +314,7 @@ table.quiz-stats form { margin: 0; }
   .topbar .brand { margin: 0; }
   .nav-button { cursor: pointer; font-size: 1.3rem; }
   .sidebar { display: none; position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--border); }
-  .sidebar > .brand { display: none; }
+  .sidebar-tete .brand { display: none; }
   .nav-toggle:checked ~ .layout .sidebar { display: block; }
   .content { padding: 1.25rem 16px 3rem; }
   .aside { padding: 1rem 16px; }
@@ -548,7 +551,7 @@ body.pdf-embedded-body { margin: 0; height: 100vh; overflow: hidden; background:
   .app .topbar .nav-button { display: none; }
   .app .topbar { justify-content: center; }
   .app .sidebar { display: block; position: fixed; top: 0; left: 0; bottom: 0; z-index: 30; width: min(85vw, 20rem); height: 100%; padding-bottom: 2rem; overflow-y: auto; border-right: 1px solid var(--border); box-shadow: 4px 0 20px rgba(0, 0, 0, .2); transform: translateX(-105%); transition: transform .22s ease; }
-  .app .sidebar > .brand { display: block; }
+  .app .sidebar-tete .brand { display: block; }
   .app .nav-toggle:checked ~ .layout .sidebar { transform: none; }
   .app .app-backdrop { display: block; position: fixed; inset: 0; z-index: 25; background: rgba(0, 0, 0, .35); opacity: 0; pointer-events: none; transition: opacity .2s; }
   .app .nav-toggle:checked ~ .app-backdrop { opacity: 1; pointer-events: auto; }
@@ -563,4 +566,48 @@ body.pdf-embedded-body { margin: 0; height: 100vh; overflow: hidden; background:
   .quiz-category > summary { gap: .5rem; }
   .quiz-category-meta { white-space: normal; text-align: right; }
   table.quiz-stats { display: block; overflow-x: auto; }
+}
+
+/* Plein écran (plein_ecran.js) : il ne reste que le texte. Le menu, le panneau
+   de droite et la barre d'outils de l'éditeur glissent depuis le bord de l'écran
+   que la souris touche (classes pe-gauche, pe-droite, pe-haut). */
+main.content:focus { outline: none; }
+body.plein-ecran .layout { display: block; }
+body.plein-ecran .topbar, body.plein-ecran .app-nav, body.plein-ecran .app-backdrop { display: none; }
+body.plein-ecran .content { padding: 3rem 2.5rem 4rem; }
+body.plein-ecran .editor { max-width: 58rem; }
+body.plein-ecran .sidebar, body.plein-ecran .aside {
+  display: block; position: fixed; top: 0; bottom: 0; z-index: 40; width: min(300px, 85vw); height: auto;
+  overflow-y: auto; visibility: hidden; box-shadow: none;
+  transition: transform .2s ease, box-shadow .2s ease, visibility 0s linear .2s;
+}
+body.plein-ecran .sidebar { left: 0; transform: translateX(-100%); border-right: 1px solid var(--border); border-bottom: 0; }
+body.plein-ecran .aside { right: 0; transform: translateX(100%); padding: 2rem 1rem; background: var(--bg); border-left: 1px solid var(--border); border-top: 0; }
+body.plein-ecran.pe-gauche .sidebar, body.plein-ecran.pe-droite .aside {
+  transform: none; visibility: visible; box-shadow: 0 0 28px rgba(0, 0, 0, .18);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+body.plein-ecran.editing .toolbar {
+  position: fixed; top: 0; left: 50%; z-index: 35; width: min(60rem, calc(100vw - 2rem));
+  border-top: 0; border-radius: 0 0 10px 10px; visibility: hidden; transform: translate(-50%, -110%);
+  transition: transform .2s ease, visibility 0s linear .2s;
+}
+body.plein-ecran.editing.pe-haut .toolbar {
+  visibility: visible; transform: translate(-50%, 0); box-shadow: 0 6px 24px rgba(0, 0, 0, .15);
+  transition: transform .2s ease;
+}
+.pe-astuce {
+  position: fixed; left: 50%; bottom: 4.5rem; z-index: 50; max-width: calc(100vw - 2rem); padding: .55rem 1.1rem;
+  border-radius: 999px; background: rgba(24, 24, 27, .88); color: #fff; font-size: .85rem; text-align: center;
+  transform: translateX(-50%); pointer-events: none; transition: opacity .6s ease;
+}
+.pe-astuce-fin { opacity: 0; }
+/* Téléphone et application : le plein écran se quitte depuis le menu (bord gauche). */
+@media (max-width: 760px) {
+  body:not(.plein-ecran) .pe-bouton { display: none; }
+  body.plein-ecran .content { padding: 1.5rem 16px 3rem; }
+}
+.app:not(.plein-ecran) .pe-bouton { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  body.plein-ecran .sidebar, body.plein-ecran .aside, body.plein-ecran.editing .toolbar { transition: none; }
 }

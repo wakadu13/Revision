@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.12.0/styles/github.min.css" integrity="sha384-eFTL69TLRZTkNfYZOLM+G04821K1qZao/4QLJbet1pP4tcF+fdXq/9CdqAbWRl/L" crossorigin="anonymous" media="(prefers-color-scheme: light)">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.12.0/styles/github-dark.min.css" integrity="sha384-wH75j6z1lH97ZOpMOInqhgKzFkAInZPPSPlZpYKYTOqsaizPvhQZmAtLcPKXpLyH" crossorigin="anonymous" media="(prefers-color-scheme: dark)">
   <script src="{% static 'wiki/wiki.js' %}" defer></script>
+  <script src="{% static 'wiki/plein_ecran.js' %}" defer></script>
   {% block head %}{% endblock %}
 </head>
 <body class="{% if in_app %}app {% endif %}{% block body_class %}{% endblock %}">
@@ -18,7 +19,14 @@
   </header>
   <div class="layout">
     <nav class="sidebar">
-      <a class="brand" href="{% url 'wiki:home' %}">ProjetPluri</a>
+      <div class="sidebar-tete">
+        <a class="brand" href="{% url 'wiki:home' %}">ProjetPluri</a>
+        {% if user.is_authenticated %}
+        <button type="button" class="pe-bouton" data-plein-ecran aria-pressed="false" aria-label="Plein écran" title="Plein écran (Ctrl+Maj+F)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
+        </button>
+        {% endif %}
+      </div>
       {% if user.is_authenticated %}
       <form class="search" action="{% url 'wiki:search' %}" method="get" role="search">
         <input type="search" name="q" value="{{ query|default:'' }}" placeholder="Rechercher…" aria-label="Rechercher">
@@ -70,7 +78,7 @@
       <p class="vault-count">{{ vault.notes|length }} note{{ vault.notes|length|pluralize }}</p>
       {% endif %}
     </nav>
-    <main class="content">
+    <main class="content" tabindex="-1">
       {% for message in messages %}
       <div class="callout" data-callout="{% if message.level_tag == 'error' %}danger{% else %}{{ message.level_tag }}{% endif %}"><div class="callout-title">{{ message }}</div></div>
       {% endfor %}
