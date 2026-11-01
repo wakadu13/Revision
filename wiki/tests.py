@@ -93,6 +93,35 @@ class WikiTests(WikiTestCase):
         self.assertEqual([note.name for note, _ in results], ["A"])
 
 
+class PleinEcranTests(WikiTestCase):
+    def test_fullscreen_button_and_script(self):
+        self.write("Accueil.md", "Bonjour")
+        html = self.client.get("/wiki/Accueil").content.decode()
+        head, body = html.split("<body", 1)
+        self.assertIn("wiki/plein_ecran.js", head)
+        self.assertIn("data-plein-ecran", body)
+        self.assertIn('<main class="content" tabindex="-1">', body)
+        self.client.logout()
+        self.assertNotContains(self.client.get("/connexion/"), "data-plein-ecran")
+
+    def test_reading_pages_need_no_extra_script(self):
+        # En plein écran, ces pages s'ouvrent sans recharger le document (qui ferait
+        # quitter le plein écran au navigateur) : seulement si leur corps n'a aucun script.
+        self.write("Accueil.md", "# Titre\n\n$$x^2$$\n\n```python\nprint(1)\n```\n\n#cours")
+        for url in ["/wiki/Accueil", "/sommaire/", "/recherche/?q=Titre", "/tags/", "/tags/cours"]:
+            with self.subTest(url=url):
+                body = self.client.get(url).content.decode().split("<body", 1)[1]
+                self.assertNotIn("<script src", body)
+
+    def test_editor_fullscreen_button(self):
+        get_user_model().objects.filter(pk=self.reader.pk).update(is_staff=True)
+        self.write("Accueil.md", "Bonjour")
+        html = self.client.get("/modifier/Accueil").content.decode()
+        toolbar = html.split('class="toolbar"', 1)[1].split("</div>\n    <div class=\"editor-notice\"", 1)[0]
+        self.assertIn("data-plein-ecran", toolbar)
+        self.assertNotIn('data-action="focus"', html)
+
+
 class EditorTests(WikiTestCase):
     def setUp(self):
         super().setUp()

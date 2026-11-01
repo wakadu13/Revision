@@ -26,9 +26,10 @@
   }
 
   // Sommaire : boutons « Tout déplier » / « Tout replier ».
-  const sommaire = document.querySelector(".sommaire");
-  if (sommaire) {
-    document.querySelectorAll("[data-fold]").forEach((button) => {
+  function folds(root) {
+    const sommaire = root.querySelector(".sommaire");
+    if (!sommaire) return;
+    root.querySelectorAll("[data-fold]").forEach((button) => {
       button.addEventListener("click", () => {
         const open = button.dataset.fold === "open";
         sommaire.querySelectorAll("details").forEach((d) => { d.open = open; });
@@ -37,9 +38,11 @@
   }
 
   // Ouvre les dossiers de l'arborescence qui contiennent la note affichée.
-  const active = document.querySelector(".tree-note.active");
-  for (let el = active && active.parentElement; el; el = el.parentElement) {
-    if (el.tagName === "DETAILS") el.open = true;
+  function openActiveFolder() {
+    const active = document.querySelector(".tree-note.active");
+    for (let el = active && active.parentElement; el; el = el.parentElement) {
+      if (el.tagName === "DETAILS") el.open = true;
+    }
   }
 
   // Application Android : le menu latéral est un tiroir (téléphone), ouvert d'un
@@ -77,15 +80,13 @@
   }
 
   // Ctrl+E sur une page : ouvre l'éditeur (comme Obsidian passe de la lecture à l'édition).
-  const editLink = document.querySelector("[data-edit-shortcut]");
-  if (editLink) {
-    document.addEventListener("keydown", (e) => {
-      if (!(e.ctrlKey || e.metaKey) || e.altKey || e.shiftKey || e.key.toLowerCase() !== "e") return;
-      if (e.target.closest("input, textarea, select, [contenteditable]")) return;
-      e.preventDefault();
-      window.location.href = editLink.href;
-    });
-  }
+  document.addEventListener("keydown", (e) => {
+    if (!(e.ctrlKey || e.metaKey) || e.altKey || e.shiftKey || e.key.toLowerCase() !== "e") return;
+    const editLink = document.querySelector("[data-edit-shortcut]");
+    if (!editLink || e.target.closest("input, textarea, select, [contenteditable]")) return;
+    e.preventDefault();
+    window.location.href = editLink.href;
+  });
 
   // Diagrammes, coloration du code et formules d'un morceau de page : appelé au
   // chargement, et par l'éditeur pour son mode « Lecture ».
@@ -140,6 +141,15 @@
   }
   window.wikiKatex = loadKatex;
 
-  enhance(document);
+  // Préparation d'une page : au chargement, et après un changement de page sans
+  // rechargement (plein écran, plein_ecran.js).
+  function initPage(root) {
+    folds(root);
+    openActiveFolder();
+    enhance(root);
+  }
+
+  initPage(document);
   window.wikiEnhance = enhance;
+  window.wikiInitPage = initPage;
 })();

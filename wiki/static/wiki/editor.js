@@ -1159,7 +1159,9 @@
   // -- Création de l'éditeur ---------------------------------------------------------------------
 
   const preview_ = new Compartment();
-  const stickyTop = () => toolbar.getBoundingClientRect().height + (parseFloat(getComputedStyle(form).getPropertyValue("--sticky-top")) || 0);
+  // Hauteur cachée par la barre d'outils collée en haut (aucune en plein écran : elle est rentrée).
+  const stickyTop = () => (document.body.classList.contains("plein-ecran") ? 0
+    : toolbar.getBoundingClientRect().height + (parseFloat(getComputedStyle(form).getPropertyValue("--sticky-top")) || 0));
 
   const appKeymap = [
     { key: "Mod-s", run: () => (save(), true), preventDefault: true },
@@ -1258,8 +1260,9 @@
   function layout() {
     const topbar = document.querySelector(".topbar");
     const top = topbar && getComputedStyle(topbar).display !== "none" ? topbar.getBoundingClientRect().height : 0;
-    form.style.setProperty("--sticky-top", `${top}px`);
-    form.style.setProperty("--toolbar-h", `${toolbar.getBoundingClientRect().height}px`);
+    const pleinEcran = document.body.classList.contains("plein-ecran");
+    form.style.setProperty("--sticky-top", `${pleinEcran ? 0 : top}px`);
+    form.style.setProperty("--toolbar-h", `${pleinEcran ? 0 : toolbar.getBoundingClientRect().height}px`);
   }
   layout();
   window.addEventListener("resize", layout);
@@ -1315,15 +1318,11 @@
     }
   });
 
-  // Panneaux latéraux masqués pour écrire en plein écran.
-  const focusButton = form.querySelector("[data-action=focus]");
-  function setFocus(on) {
-    document.body.classList.toggle("editor-focus", on);
-    focusButton.setAttribute("aria-pressed", String(on));
-    store("wiki-editor-focus", on ? "1" : "0");
+  // Plein écran (plein_ecran.js) : la barre d'outils rentre en haut de l'écran.
+  window.addEventListener("wiki:plein-ecran", (e) => {
     layout();
-  }
-  setFocus(stored("wiki-editor-focus", "0") === "1");
+    if (e.detail.actif && !host.hidden) view.focus();
+  });
 
   // -- Fenêtre « Lien vers une page » ---------------------------------------------------------------
 
@@ -1536,7 +1535,6 @@
     latex: () => convertDocument(),
     "download-md": download,
     save: () => save(),
-    focus: () => setFocus(!document.body.classList.contains("editor-focus")),
   };
 
   const fileMenu = toolbar.querySelector(".toolbar-menu");
@@ -1548,10 +1546,10 @@
     button.addEventListener("click", () => {
       fileMenu.open = false;
       const action = button.dataset.action;
-      const keepsMode = ["focus", "download-md", "open-md"].includes(action);
+      const keepsMode = ["download-md", "open-md"].includes(action);
       if (mode === "reading" && !keepsMode) setMode(editMode);
       actions[action]();
-      if (!["page-link", "web-link", "attach", "open-md", "download-md", "focus", "latex"].includes(action)) view.focus();
+      if (!["page-link", "web-link", "attach", "open-md", "download-md", "latex"].includes(action)) view.focus();
     });
   });
   form.querySelector("[data-action=save]").addEventListener("click", () => save());
