@@ -22,9 +22,16 @@
       <div class="sidebar-tete">
         <a class="brand" href="{% url 'wiki:home' %}">ProjetPluri</a>
         {% if user.is_authenticated %}
-        <button type="button" class="pe-bouton" data-plein-ecran aria-pressed="false" aria-label="Plein écran" title="Plein écran (Ctrl+Maj+F)">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
-        </button>
+        <span class="sidebar-boutons">
+          {% if menu_epingle %}{% firstof "Cacher le menu pendant la lecture" as titre_menu %}{% else %}{% firstof "Garder le menu affiché pendant la lecture" as titre_menu %}{% endif %}
+          <button type="button" class="pe-bouton menu-epingle" data-epingler-menu aria-pressed="{{ menu_epingle|yesno:'true,false' }}"
+                  aria-label="{{ titre_menu }}" title="{{ titre_menu }}">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><path d="M9.5 4.5v15"/></svg>
+          </button>
+          <button type="button" class="pe-bouton" data-plein-ecran aria-pressed="false" aria-label="Plein écran" title="Plein écran (Ctrl+Maj+F)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
+          </button>
+        </span>
         {% endif %}
       </div>
       {% if user.is_authenticated %}
@@ -88,6 +95,12 @@
       {% block aside %}{% endblock %}
     </aside>
   </div>
+  {% if user.is_authenticated %}
+  {# Pages de lecture : le menu est caché ; cette languette (ou le bord de l'écran) le fait revenir. #}
+  <button type="button" class="menu-poignee" data-ouvrir-menu aria-label="Afficher le menu" title="Afficher le menu">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg>
+  </button>
+  {% endif %}
   {% if in_app and user.is_authenticated %}
   {# Application Android : navigation au pouce, menu latéral en tiroir. #}
   <label for="nav-toggle" class="app-backdrop" aria-hidden="true"></label>
@@ -96,7 +109,7 @@
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11 12 4l9 7"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5h4v5"/></svg>
       <span>Accueil</span>
     </a>
-    <label class="app-nav-item app-nav-browse" for="nav-toggle">
+    <label class="app-nav-item app-nav-browse" for="nav-toggle" data-ouvrir-menu>
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
       <span>Parcourir</span>
     </label>

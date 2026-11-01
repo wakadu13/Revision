@@ -1,6 +1,7 @@
 {% extends "wiki/base.html" %}
 {% load static %}
 {% block title %}{{ title }}{% endblock %}
+{% block body_class %}lecture{% if not menu_epingle %} menu-cache{% endif %}{% endblock %}
 {% block head %}<link rel="stylesheet" href="{% static 'wiki/vendor/pdfjs/pdf_viewer.min.css' %}">{% endblock %}
 {% block content %}
 <article class="note pdf-page">

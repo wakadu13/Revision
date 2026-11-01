@@ -1,5 +1,6 @@
 {% extends "wiki/base.html" %}
 {% block title %}{{ note.title }}{% endblock %}
+{% block body_class %}lecture{% if not menu_epingle %} menu-cache{% endif %}{% endblock %}
 {% block content %}
 <article class="note">
   {% if note.folders %}

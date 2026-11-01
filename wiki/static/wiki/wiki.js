@@ -56,7 +56,8 @@
     document.addEventListener("touchstart", (e) => {
       const t = e.touches[0];
       // Bord gauche élargi : les 20 premiers pixels servent au geste « retour » d'Android.
-      start = drawer() && (toggle.checked || t.clientX < 48) ? { x: t.clientX, y: t.clientY } : null;
+      start = drawer() && !document.body.classList.contains("plein-ecran") && (toggle.checked || t.clientX < 48)
+        ? { x: t.clientX, y: t.clientY } : null;
     }, { passive: true });
     document.addEventListener("touchend", (e) => {
       if (!start) return;

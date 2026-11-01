@@ -13,4 +13,6 @@ def wiki(request):
         "tree": SimpleLazyObject(lambda: get_vault().tree),
         # Application Android (WebView) : navigation tactile en bas de l'écran.
         "in_app": "ProjetPluriApp/" in request.headers.get("User-Agent", ""),
+        # Pages de lecture : menu caché, sauf s'il a été épinglé (cookie posé par plein_ecran.js).
+        "menu_epingle": request.COOKIES.get("menu") == "epingle",
     }

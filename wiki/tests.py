@@ -113,6 +113,27 @@ class PleinEcranTests(WikiTestCase):
                 body = self.client.get(url).content.decode().split("<body", 1)[1]
                 self.assertNotIn("<script src", body)
 
+    def test_reading_pages_hide_the_menu_unless_pinned(self):
+        self.write("Accueil.md", "Bonjour")
+        self.write("cours.pdf", "%PDF-1.4\n%%EOF\n")
+        for url in ["/wiki/Accueil", "/pdf/cours.pdf"]:
+            with self.subTest(url=url):
+                html = self.client.get(url).content.decode()
+                self.assertIn('<body class="lecture menu-cache">', html)
+                self.assertIn("data-ouvrir-menu", html)
+                self.assertIn('data-epingler-menu aria-pressed="false"', html)
+        # Menu épinglé (cookie posé par le bouton « Garder le menu affiché »).
+        self.client.cookies["menu"] = "epingle"
+        html = self.client.get("/wiki/Accueil").content.decode()
+        self.assertIn('<body class="lecture">', html)
+        self.assertIn('data-epingler-menu aria-pressed="true"', html)
+        self.assertIn('title="Cacher le menu pendant la lecture"', html)
+        # Les autres pages gardent le menu.
+        del self.client.cookies["menu"]
+        for url in ["/sommaire/", "/recherche/?q=x", "/tags/"]:
+            with self.subTest(url=url):
+                self.assertNotContains(self.client.get(url), "menu-cache")
+
     def test_editor_fullscreen_button(self):
         get_user_model().objects.filter(pk=self.reader.pk).update(is_staff=True)
         self.write("Accueil.md", "Bonjour")
