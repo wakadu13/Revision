@@ -166,6 +166,12 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+# Adresses des fichiers statiques suivies d'une empreinte (?v=…) : après une mise à
+# jour, navigateurs et Cloudflare chargent tout de suite le nouveau CSS/JS.
+STORAGES = {
+    'default': {'BACKEND': 'django.core.files.storage.FileSystemStorage'},
+    'staticfiles': {'BACKEND': 'config.storage.StaticVersionne'},
+}
 
 # WhiteNoise sert les fichiers statiques même sans DEBUG ; sans collectstatic,
 # il les lit directement dans les applications.

@@ -24,6 +24,22 @@ Puis ouvrir http://127.0.0.1:8000/. Sans `DJANGO_DEBUG=1`, le serveur démarre e
 mode production (pas de traces d'erreur) ; en local il reste en HTTP. HTTPS est
 forcé dès que `DJANGO_ALLOWED_HOSTS` contient un vrai nom de domaine (voir « Sécurité »).
 
+### Mettre le serveur à jour
+
+Sur le PC qui sert le wiki (PowerShell, dans le dossier du projet) :
+
+```powershell
+.\scripts\mettre-a-jour.ps1
+```
+
+Le script récupère la dernière version de `main` sans toucher aux notes du
+coffre. Si un fichier du programme a été modifié à la main sur ce PC (et que la
+mise à jour le change aussi), il le signale et propose de remettre sa version
+d'origine. Ensuite, **relancer le serveur** (<kbd>Ctrl</kbd>+<kbd>C</kbd> dans sa
+fenêtre, puis relancer son script) : il ne relit pas le code tout seul. Les
+fichiers CSS et JavaScript portent une empreinte (`wiki.css?v=…`) : navigateurs
+et Cloudflare chargent la nouvelle version tout de suite, sans vider de cache.
+
 ## Écrire des pages
 
 Chaque fichier `.md` du dossier [`vault/`](vault/) devient une page du wiki,
