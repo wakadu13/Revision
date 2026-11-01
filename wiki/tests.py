@@ -143,6 +143,36 @@ class PleinEcranTests(WikiTestCase):
         self.assertNotIn('data-action="focus"', html)
 
 
+class StaticVersionneTests(WikiTestCase):
+    def test_static_urls_change_with_content(self):
+        # Cloudflare et les navigateurs gardent CSS et JS des heures : l'adresse porte
+        # une empreinte du contenu, la nouvelle version est chargée dès la mise à jour.
+        from config import storage
+
+        self.write("Accueil.md", "Bonjour")
+        html = self.client.get("/wiki/Accueil").content.decode()
+        self.assertRegex(html, r'href="/static/wiki/wiki\.css\?v=[0-9a-f]{10}"')
+        self.assertRegex(html, r'src="/static/wiki/wiki\.js\?v=[0-9a-f]{10}" defer')
+        version = storage.empreinte("wiki/wiki.css")
+        response = self.client.get(f"/static/wiki/wiki.css?v={version}")
+        self.assertEqual(response.status_code, 200)
+        response.close()
+        # Dossier (base d'adresses de PDF.js) : sans empreinte.
+        self.assertEqual(storage.StaticVersionne().url("wiki/vendor/pdfjs/wasm/"), "/static/wiki/vendor/pdfjs/wasm/")
+        # Contenu modifié : nouvelle empreinte.
+        with tempfile.TemporaryDirectory() as tmp:
+            fichier = Path(tmp) / "a.css"
+            fichier.write_text("a{}", encoding="utf-8")
+            avant = storage._empreinte(str(fichier), *self._etat(fichier))
+            fichier.write_text("b{color:red}", encoding="utf-8")
+            self.assertNotEqual(avant, storage._empreinte(str(fichier), *self._etat(fichier)))
+
+    @staticmethod
+    def _etat(fichier):
+        etat = fichier.stat()
+        return etat.st_mtime_ns, etat.st_size
+
+
 class EditorTests(WikiTestCase):
     def setUp(self):
         super().setUp()
@@ -207,7 +237,7 @@ class EditorTests(WikiTestCase):
         self.write("doc.pdf", "")
         self.write("qcm/set.json", "{}")
         response = self.client.get("/modifier/Note")
-        self.assertContains(response, 'src="/static/wiki/vendor/codemirror.min.js"')
+        self.assertContains(response, 'src="/static/wiki/vendor/codemirror.min.js?v=')
         files = response.context["attachment_choices"]
         self.assertEqual([f["link"] for f in files], ["autre/schéma.png", "doc.pdf", "img/schéma.png"])
         self.assertEqual(files[1]["url"], "/pdf/doc.pdf")  # un PDF s'ouvre dans le lecteur
@@ -804,7 +834,7 @@ class QuizHorsLigneTests(QuizTests):
         sw = self.client.get("/qcm/sw.js")
         self.assertEqual(sw.status_code, 200)
         self.assertIn("javascript", sw["Content-Type"])
-        self.assertContains(sw, 'importScripts("/static/wiki/qcm_attente.js")')
+        self.assertContains(sw, 'importScripts("/static/wiki/qcm_attente.js?v=')
         self.assertIn("connect-src 'self' https://cdn.jsdelivr.net", sw["Content-Security-Policy"])
         manifest = self.client.get("/qcm/manifest.webmanifest").json()
         self.assertEqual((manifest["start_url"], manifest["scope"]), ("/qcm/hors-ligne/", "/qcm/"))
@@ -1008,7 +1038,7 @@ class PdfReaderTests(WikiTestCase):
     def test_reader_page(self):
         response = self.client.get("/pdf/Cours/Réseau/Poly réseau.pdf")
         self.assertContains(response, 'data-src="/fichiers/Cours/R%C3%A9seau/Poly%20r%C3%A9seau.pdf"')
-        self.assertContains(response, 'src="/static/wiki/lecteur_pdf.js"')
+        self.assertContains(response, 'src="/static/wiki/lecteur_pdf.js?v=')
         self.assertContains(response, "vendor/pdfjs/pdf.worker.min.js")
         self.assertContains(response, "pdf_viewer.min.css")
         self.assertContains(response, "<h1 class=\"note-title\">Poly réseau</h1>", html=False)
