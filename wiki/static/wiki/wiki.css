@@ -44,6 +44,8 @@ a:hover { text-decoration: underline; }
 
 /* Barre latérale */
 .sidebar-tete { display: flex; align-items: flex-start; justify-content: space-between; gap: .5rem; }
+.sidebar-boutons { display: flex; gap: .1rem; }
+body:not(.lecture) .menu-epingle { display: none; }
 .pe-bouton { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; width: 1.9rem; height: 1.9rem; margin-top: -.2rem; padding: 0; border: 0; border-radius: 6px; background: none; color: var(--muted); cursor: pointer; }
 .pe-bouton:hover { background: var(--accent-soft); color: var(--text); }
 .pe-bouton[aria-pressed="true"] { color: var(--accent); }
@@ -602,6 +604,45 @@ body.plein-ecran.editing.pe-haut .toolbar {
   transform: translateX(-50%); pointer-events: none; transition: opacity .6s ease;
 }
 .pe-astuce-fin { opacity: 0; }
+/* Pages de lecture (notes, PDF) : le menu est caché pour lire ; il revient au
+   bord gauche (souris, appui, glissement) ou par la languette, comme en plein
+   écran. « Garder le menu affiché » (cookie menu=epingle) le remet en place. */
+.menu-poignee { display: none; }
+@media (min-width: 761px) {
+  body.menu-cache .layout { grid-template-columns: minmax(0, 1fr) 240px; }
+  body.menu-cache .sidebar {
+    position: fixed; top: 0; bottom: 0; left: 0; z-index: 40; width: min(300px, 85vw); height: auto;
+    overflow-y: auto; visibility: hidden; transform: translateX(-100%); box-shadow: none;
+    transition: transform .2s ease, box-shadow .2s ease, visibility 0s linear .2s;
+  }
+  body.menu-cache.pe-gauche .sidebar {
+    transform: none; visibility: visible; box-shadow: 0 0 28px rgba(0, 0, 0, .18);
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  body.menu-cache .menu-poignee, body.plein-ecran .menu-poignee {
+    display: flex; align-items: center; justify-content: center; position: fixed; left: 0; top: 50%; z-index: 30;
+    width: 1.5rem; height: 4.5rem; padding: 0; transform: translateY(-50%); cursor: pointer;
+    border: 1px solid var(--border); border-left: 0; border-radius: 0 10px 10px 0;
+    background: var(--bg-alt); color: var(--muted); box-shadow: 1px 0 6px rgba(0, 0, 0, .06);
+  }
+  .menu-poignee:hover { color: var(--accent); background: var(--accent-soft); }
+  .menu-poignee svg { width: 1.1rem; height: 1.1rem; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  body.pe-gauche .menu-poignee { display: none; }
+  .app.menu-cache .app-nav-browse { display: flex; }
+}
+@media (min-width: 761px) and (max-width: 1100px) {
+  body.menu-cache .layout { grid-template-columns: minmax(0, 1fr); }
+  body.menu-cache .aside { grid-column: 1; }
+}
+/* Plein écran à la souris : pas de languette, le bord suffit. */
+@media (hover: hover) and (pointer: fine) { body.plein-ecran .menu-poignee { display: none !important; } }
+/* Écran tactile : voile sur le texte quand le menu est ouvert (un appui dessus le referme). */
+@media (hover: none) {
+  body.menu-cache.pe-gauche::before, body.plein-ecran.pe-gauche::before {
+    content: ""; position: fixed; inset: 0; z-index: 39; background: rgba(0, 0, 0, .3);
+  }
+}
+
 /* Téléphone et application : le plein écran se quitte depuis le menu (bord gauche). */
 @media (max-width: 760px) {
   body:not(.plein-ecran) .pe-bouton { display: none; }

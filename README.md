@@ -79,6 +79,16 @@ Obsidian lui-même :
   (<kbd>Ctrl</kbd>+<kbd>F</kbd>), plein écran (voir ci-dessous) : la barre
   d'outils rentre et revient quand la souris touche le haut de l'écran.
 
+### Lecture : le menu se cache
+
+Sur une page de note ou un PDF, le menu de gauche (Accueil, Sommaire, Tags, QCM,
+arborescence) est caché pour laisser toute la largeur au texte. Il revient d'un
+appui sur la languette › du bord gauche, d'un appui ou d'un glissement du doigt
+depuis le bord, ou quand la souris touche le bord ; un appui sur le texte (ou
+<kbd>Échap</kbd>) le referme. Le bouton ▯ en haut du menu le garde affiché
+pendant la lecture (choix retenu sur l'appareil) ; un nouvel appui le cache de
+nouveau. Sur téléphone, le menu reste derrière le bouton ☰.
+
 ### Plein écran
 
 Bouton ⛶ en haut du menu (ou dans la barre de l'éditeur), ou
