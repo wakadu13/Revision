@@ -1,7 +1,9 @@
 """Transformation d'un cours (PDF, LaTeX) en page du wiki par Claude (API Anthropic).
 
-- Clé : variable d'environnement ``ANTHROPIC_API_KEY`` du serveur (jamais dans le
-  dépôt). Modèle : ``WIKI_CLAUDE_MODELE``, Claude Opus 5.5 par défaut.
+- Clé : variable d'environnement ``WIKI_CLAUDE_CLE`` du serveur (sinon
+  ``ANTHROPIC_API_KEY``), jamais dans le dépôt. Un nom propre au wiki : Claude
+  Code, sur le même PC, prendrait ``ANTHROPIC_API_KEY`` au lieu de l'abonnement.
+  Modèle : ``WIKI_CLAUDE_MODELE``, Claude Opus 5.5 par défaut.
 - Les cours passent un par un dans un fil d'exécution du serveur : une
   transformation dure de quelques dizaines de secondes à plusieurs minutes,
   bien plus qu'une requête web (Cloudflare coupe à 100 s). La page
@@ -81,9 +83,14 @@ Réponds uniquement par le contenu de la page, sans bloc de code autour et sans 
 démarche."""
 
 
+def cle():
+    """Clé d'API : WIKI_CLAUDE_CLE, sinon ANTHROPIC_API_KEY."""
+    return (os.environ.get("WIKI_CLAUDE_CLE") or os.environ.get("ANTHROPIC_API_KEY") or "").strip()
+
+
 def disponible():
     """Une clé d'API est configurée sur le serveur."""
-    return bool(os.environ.get("ANTHROPIC_API_KEY"))
+    return bool(cle())
 
 
 def modele():
@@ -217,7 +224,7 @@ class Echec(Exception):
 def _client():
     import anthropic
 
-    return anthropic.Anthropic(max_retries=3)
+    return anthropic.Anthropic(api_key=cle(), max_retries=3)
 
 
 def _transformer(t):
@@ -225,7 +232,7 @@ def _transformer(t):
     import anthropic
 
     if not disponible():
-        raise Echec("Aucune clé ANTHROPIC_API_KEY sur le serveur.")
+        raise Echec("Aucune clé d'API (WIKI_CLAUDE_CLE) sur le serveur.")
     client = _client()
     fichier_id = None
     try:
@@ -259,7 +266,7 @@ def _transformer(t):
         with client.beta.messages.stream(**demande) as flux:
             message = flux.get_final_message()
     except anthropic.AuthenticationError:
-        raise Echec("Clé ANTHROPIC_API_KEY refusée par Anthropic : vérifiez-la.") from None
+        raise Echec("Clé d'API (WIKI_CLAUDE_CLE) refusée par Anthropic : vérifiez-la.") from None
     except anthropic.PermissionDeniedError:
         raise Echec("Cette clé d'API n'a pas accès à ce modèle.") from None
     except anthropic.RateLimitError:

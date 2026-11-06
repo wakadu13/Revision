@@ -1327,7 +1327,7 @@ class _FauxClaude:
 
 
 @override_settings(WIKI_CLAUDE_FIL=False)
-@mock.patch.dict("os.environ", {"ANTHROPIC_API_KEY": "sk-ant-test", "WIKI_CLAUDE_MODELE": "", "WIKI_CLAUDE_EFFORT": ""})
+@mock.patch.dict("os.environ", {"WIKI_CLAUDE_CLE": "sk-ant-test", "ANTHROPIC_API_KEY": "", "WIKI_CLAUDE_MODELE": "", "WIKI_CLAUDE_EFFORT": ""})
 class ClaudeTests(WikiTestCase):
     """Cours (PDF, LaTeX) transformés en pages par Claude, avec un faux client."""
 
@@ -1418,11 +1418,11 @@ class ClaudeTests(WikiTestCase):
     def test_without_api_key_nothing_is_sent(self):
         from .models import Transformation
 
-        with mock.patch.dict("os.environ", {"ANTHROPIC_API_KEY": ""}):
+        with mock.patch.dict("os.environ", {"WIKI_CLAUDE_CLE": ""}):
             self.assertNotContains(self.client.get("/importer/"), 'name="claude"')
             self.upload([("Signal.pdf", self.PDF)], claude="1")
             self.assertFalse(Transformation.objects.exists())
-            self.assertContains(self.client.get("/transformations/"), "ANTHROPIC_API_KEY")
+            self.assertContains(self.client.get("/transformations/"), "WIKI_CLAUDE_CLE")
             self.assertNotContains(self.client.get("/pdf/Signal.pdf"), "Créer une page de cours avec Claude")
 
     def test_unchecked_box_or_editor_upload_do_nothing(self):
@@ -1445,7 +1445,7 @@ class ClaudeTests(WikiTestCase):
         self.traiter(_FauxClaude(erreur=refus))
         t = Transformation.objects.get()
         self.assertEqual(t.statut, "erreur")
-        self.assertIn("Clé ANTHROPIC_API_KEY refusée", t.message)
+        self.assertIn("Clé d'API (WIKI_CLAUDE_CLE) refusée", t.message)
         self.assertFalse((self.root / "Signal.md").exists())
         self.assertContains(self.client.get("/transformations/"), "Relancer")
         self.client.post("/transformations/", {"relancer": t.pk})
@@ -1512,6 +1512,16 @@ class ClaudeTests(WikiTestCase):
         # Modèle sans repli automatique : pas de paramètre « fallbacks ».
         self.assertEqual(faux.demandes[0]["model"], "claude-haiku-5-5")
         self.assertNotIn("fallbacks", faux.demandes[0])
+
+    def test_key_variable_names(self):
+        # Clé propre au wiki d'abord (Claude Code garde l'abonnement), ANTHROPIC_API_KEY sinon.
+        with mock.patch.dict("os.environ", {"WIKI_CLAUDE_CLE": "", "ANTHROPIC_API_KEY": "sk-ant-globale"}):
+            self.assertEqual(self.claude.cle(), "sk-ant-globale")
+        with mock.patch.dict("os.environ", {"WIKI_CLAUDE_CLE": " sk-ant-wiki ", "ANTHROPIC_API_KEY": "sk-ant-globale"}):
+            self.assertEqual(self.claude.cle(), "sk-ant-wiki")
+            with mock.patch("anthropic.Anthropic") as client:
+                self.claude._client()
+            self.assertEqual(client.call_args.kwargs["api_key"], "sk-ant-wiki")
 
     def test_unwraps_markdown_fence(self):
         self.assertEqual(self.claude._sans_cadre("```markdown\n# Titre\n\nTexte\n```"), "# Titre\n\nTexte")

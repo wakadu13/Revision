@@ -278,7 +278,7 @@ def transformations(request):
     vault = get_vault()
     if request.method == "POST":
         if not claude.disponible():
-            messages.error(request, "Aucune clé ANTHROPIC_API_KEY sur le serveur.")
+            messages.error(request, "Aucune clé d'API (WIKI_CLAUDE_CLE) sur le serveur.")
         elif pk := request.POST.get("relancer"):
             claude.relancer(get_object_or_404(Transformation, pk=pk))
         elif chemin := request.POST.get("pdf"):

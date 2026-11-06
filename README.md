@@ -165,9 +165,17 @@ de cours avec Claude »** sur un PDF déjà dans le wiki.
 - Une page modifiée à la main n'est jamais écrasée : la version de Claude est
   enregistrée à côté (« Cours (Claude) »). Pour un `.tex`, la conversion faite
   sur place à l'import est remplacée par celle de Claude.
-- Mise en place : créer une clé d'API sur platform.claude.com, l'ajouter au
-  script qui lance le serveur (`$env:ANTHROPIC_API_KEY = "sk-ant-…"`) et
-  relancer. Ne jamais mettre la clé dans un fichier du dépôt.
+- Mise en place : créer une clé d'API sur platform.claude.com, l'enregistrer
+  dans Windows (PowerShell, une fois pour toutes), fermer et rouvrir PowerShell,
+  puis relancer le serveur. Ne jamais mettre la clé dans un fichier du dépôt.
+
+  ```powershell
+  [Environment]::SetEnvironmentVariable("WIKI_CLAUDE_CLE", "sk-ant-…", "User")
+  ```
+
+  Le wiki lit `WIKI_CLAUDE_CLE` (sinon `ANTHROPIC_API_KEY`) : un nom à part, car
+  Claude Code, sur le même PC, utiliserait une variable `ANTHROPIC_API_KEY`
+  globale à la place de l'abonnement.
 - **Gratuit avec un abonnement Claude Max** : 100 $ de crédits d'API par mois,
   sans moyen de paiement (claude.ai → Paramètres → Facturation → Crédits d'API :
   relier une organisation de la Console, puis y créer la clé). Crédits épuisés :
@@ -301,7 +309,7 @@ Variables d'environnement :
 | `DJANGO_HTTPS` | HTTPS forcé, cookies sécurisés, HSTS | `1` si un vrai domaine est dans `DJANGO_ALLOWED_HOSTS` (hors debug), sinon `0` |
 | `DJANGO_BEHIND_PROXY` | derrière nginx/Caddy (IP et HTTPS transmis par le proxy) | `0` |
 | `DJANGO_CLOUDFLARE` | derrière Cloudflare : IP du visiteur lue dans `CF-Connecting-IP` (inclut `DJANGO_BEHIND_PROXY`) | `0` |
-| `ANTHROPIC_API_KEY` | clé d'API Claude : cours transformés en pages (secret, hors du dépôt) | vide (fonction absente) |
+| `WIKI_CLAUDE_CLE` | clé d'API Claude : cours transformés en pages (secret, hors du dépôt ; `ANTHROPIC_API_KEY` marche aussi) | vide (fonction absente) |
 | `WIKI_CLAUDE_MODELE` | modèle utilisé pour transformer les cours | `claude-opus-5-5` |
 | `WIKI_CLAUDE_EFFORT` | effort de réflexion du modèle (`low` à `max`) | `medium` |
 
