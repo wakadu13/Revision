@@ -8,6 +8,7 @@ from django.core.exceptions import PermissionDenied
 from django.http import FileResponse, Http404, HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
+from django.utils import timezone
 from django.views.decorators.clickjacking import xframe_options_sameorigin
 from django.views.decorators.http import require_POST
 
@@ -16,7 +17,7 @@ from accounts.roles import is_admin
 from . import claude
 from . import latex as latex_converter
 from . import uploads
-from .models import Transformation
+from .models import ReglagesClaude, Transformation
 from .render import Renderer, render_note
 from .vault import CODE_RE, Note, clean_key, get_vault, split_frontmatter
 
@@ -278,7 +279,7 @@ def transformations(request):
     vault = get_vault()
     if request.method == "POST":
         if not claude.disponible():
-            messages.error(request, "Aucune clé d'API (WIKI_CLAUDE_CLE) sur le serveur.")
+            messages.error(request, "Aucune clé d'API : ajoutez-la dans les réglages de Claude.")
         elif pk := request.POST.get("relancer"):
             claude.relancer(get_object_or_404(Transformation, pk=pk))
         elif chemin := request.POST.get("pdf"):
@@ -305,6 +306,56 @@ def transformations(request):
         "transformations": liste,
         "en_cours": en_cours,
         "claude_dispo": claude.disponible(),
+        "modele": claude.modele(),
+    })
+
+
+CLE_RE = re.compile(r"sk-ant-[A-Za-z0-9_\-]{20,}")
+
+
+def reglages_claude(request):
+    """Clé d'API et modèle de Claude, saisis par un admin. La clé est vérifiée
+    auprès d'Anthropic avant d'être enregistrée, et jamais réaffichée en entier."""
+    if not can_edit(request):
+        return _deny(request)
+    reglages = ReglagesClaude.charger()
+    if request.method == "POST":
+        if request.POST.get("action") == "supprimer":
+            reglages.cle = ""
+            reglages.modifie_le, reglages.modifie_par = timezone.now(), request.user.get_username()
+            reglages.save()
+            messages.success(request, "Clé supprimée.")
+            return redirect("wiki:claude_reglages")
+        modele = request.POST.get("modele") or reglages.modele
+        if modele and modele not in {m[0] for m in claude.MODELES}:
+            messages.error(request, "Modèle inconnu.")
+            return redirect("wiki:claude_reglages")
+        nouvelle = "".join(request.POST.get("cle", "").split())
+        if nouvelle:
+            if not CLE_RE.fullmatch(nouvelle):
+                messages.error(request, "Ce n'est pas une clé d'API Anthropic (elle commence par sk-ant-).")
+                return redirect("wiki:claude_reglages")
+            ok, raison = claude.verifier(nouvelle, modele or claude.MODELE_PAR_DEFAUT)
+            if ok is False:
+                messages.error(request, raison)
+                return redirect("wiki:claude_reglages")
+            reglages.cle = nouvelle
+            if ok is None:
+                messages.warning(request, f"{raison} La clé est enregistrée quand même.")
+            else:
+                messages.success(request, "Clé vérifiée et enregistrée.")
+        else:
+            messages.success(request, "Réglages enregistrés.")
+        reglages.modele = modele
+        reglages.modifie_le, reglages.modifie_par = timezone.now(), request.user.get_username()
+        reglages.save()
+        return redirect("wiki:claude_reglages")
+
+    source = "site" if reglages.cle else "env" if claude.cle_env() else None
+    return _render(request, get_vault(), "wiki/claude_reglages.html", {
+        "reglages": reglages,
+        "source": source,
+        "modeles": claude.MODELES,
         "modele": claude.modele(),
     })
 

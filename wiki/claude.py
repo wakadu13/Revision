@@ -1,9 +1,9 @@
 """Transformation d'un cours (PDF, LaTeX) en page du wiki par Claude (API Anthropic).
 
-- Clé : variable d'environnement ``WIKI_CLAUDE_CLE`` du serveur (sinon
-  ``ANTHROPIC_API_KEY``), jamais dans le dépôt. Un nom propre au wiki : Claude
-  Code, sur le même PC, prendrait ``ANTHROPIC_API_KEY`` au lieu de l'abonnement.
-  Modèle : ``WIKI_CLAUDE_MODELE``, Claude Opus 5.5 par défaut.
+- Clé et modèle : saisis par un admin sur la page « Réglages de Claude »
+  (base de données, jamais dans le dépôt) ; sinon variables d'environnement
+  ``WIKI_CLAUDE_CLE`` (ou ``ANTHROPIC_API_KEY``) et ``WIKI_CLAUDE_MODELE``.
+  Modèle par défaut : Claude Opus 5.5.
 - Les cours passent un par un dans un fil d'exécution du serveur : une
   transformation dure de quelques dizaines de secondes à plusieurs minutes,
   bien plus qu'une requête web (Cloudflare coupe à 100 s). La page
@@ -25,7 +25,7 @@ from django.conf import settings
 from django.db import close_old_connections, connection
 from django.utils import timezone
 
-from .models import Transformation
+from .models import ReglagesClaude, Transformation
 from .vault import INVALID_NAME_RE, get_vault
 
 log = logging.getLogger(__name__)
@@ -83,9 +83,40 @@ Réponds uniquement par le contenu de la page, sans bloc de code autour et sans 
 démarche."""
 
 
-def cle():
-    """Clé d'API : WIKI_CLAUDE_CLE, sinon ANTHROPIC_API_KEY."""
+# Modèles proposés sur la page des réglages : (identifiant, nom, aide).
+MODELES = [
+    ("claude-opus-5-5", "Claude Opus 5.5", "recommandé : les pages les plus fidèles, de l'ordre de 0,50 à 1 $ par cours"),
+    ("claude-sonnet-5-5", "Claude Sonnet 5.5", "deux fois moins cher, un peu moins fin sur les cours difficiles"),
+]
+
+
+def cle_env():
+    """Clé des variables d'environnement : WIKI_CLAUDE_CLE, sinon ANTHROPIC_API_KEY."""
     return (os.environ.get("WIKI_CLAUDE_CLE") or os.environ.get("ANTHROPIC_API_KEY") or "").strip()
+
+
+def cle():
+    """Clé d'API : celle saisie dans le site, sinon celle des variables d'environnement."""
+    return ReglagesClaude.charger().cle or cle_env()
+
+
+def verifier(cle_a_tester, modele_a_tester):
+    """Demande à Anthropic si la clé est valable pour ce modèle (gratuit : aucun texte généré).
+
+    Renvoie (True, None) si oui, (False, raison) si la clé est refusée, et
+    (None, raison) si la vérification est impossible pour l'instant (réseau).
+    """
+    import anthropic
+
+    try:
+        anthropic.Anthropic(api_key=cle_a_tester, max_retries=1, timeout=20).models.retrieve(modele_a_tester)
+    except anthropic.AuthenticationError:
+        return False, "Clé refusée par Anthropic : vérifiez-la (elle commence par sk-ant-)."
+    except (anthropic.PermissionDeniedError, anthropic.NotFoundError):
+        return False, "Cette clé n'a pas accès à ce modèle."
+    except (anthropic.APIConnectionError, anthropic.APIStatusError):
+        return None, "Vérification impossible pour l'instant (réseau ou service d'Anthropic indisponible)."
+    return True, None
 
 
 def disponible():
@@ -94,7 +125,7 @@ def disponible():
 
 
 def modele():
-    return os.environ.get("WIKI_CLAUDE_MODELE", "").strip() or MODELE_PAR_DEFAUT
+    return ReglagesClaude.charger().modele or os.environ.get("WIKI_CLAUDE_MODELE", "").strip() or MODELE_PAR_DEFAUT
 
 
 def cout(t):
@@ -232,7 +263,7 @@ def _transformer(t):
     import anthropic
 
     if not disponible():
-        raise Echec("Aucune clé d'API (WIKI_CLAUDE_CLE) sur le serveur.")
+        raise Echec("Aucune clé d'API : ajoutez-la sur la page « Réglages de Claude ».")
     client = _client()
     fichier_id = None
     try:
@@ -266,7 +297,7 @@ def _transformer(t):
         with client.beta.messages.stream(**demande) as flux:
             message = flux.get_final_message()
     except anthropic.AuthenticationError:
-        raise Echec("Clé d'API (WIKI_CLAUDE_CLE) refusée par Anthropic : vérifiez-la.") from None
+        raise Echec("Clé d'API refusée par Anthropic : vérifiez-la sur la page « Réglages de Claude ».") from None
     except anthropic.PermissionDeniedError:
         raise Echec("Cette clé d'API n'a pas accès à ce modèle.") from None
     except anthropic.RateLimitError:

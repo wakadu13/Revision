@@ -1,0 +1,70 @@
+{% extends "wiki/base.html" %}
+{% block title %}Réglages de Claude{% endblock %}
+{% block content %}
+<article class="note">
+  <h1 class="note-title">Réglages de Claude</h1>
+  <p>Claude transforme les cours importés (PDF, LaTeX) en pages du wiki. Il lui faut une clé d'API Anthropic.</p>
+  {% if source == "site" %}
+  <div class="callout" data-callout="success">
+    <div class="callout-title">Clé enregistrée : <code>{{ reglages.cle_masquee }}</code></div>
+    {% if reglages.modifie_le %}<div class="callout-content"><p class="muted">Le {{ reglages.modifie_le|date:"d/m/Y à H:i" }}{% if reglages.modifie_par %} par {{ reglages.modifie_par }}{% endif %}.</p></div>{% endif %}
+  </div>
+  {% elif source == "env" %}
+  <div class="callout" data-callout="info">
+    <div class="callout-title">Clé prise dans les variables d'environnement du serveur</div>
+    <div class="callout-content"><p>Une clé enregistrée ici la remplace.</p></div>
+  </div>
+  {% else %}
+  <div class="callout" data-callout="warning">
+    <div class="callout-title">Pas encore de clé</div>
+    <div class="callout-content">
+      <p>Avec un abonnement Claude Max, l'API est offerte jusqu'à 100 $ par mois, sans moyen de paiement :</p>
+      <ol>
+        <li>sur claude.ai, <b>Paramètres → Facturation</b>, section <b>Crédits d'API</b> : choisir (ou créer) une
+          organisation de la Console et accepter ;</li>
+        <li>sur platform.claude.com, <b>Clés d'API</b> : créer une clé dans cette organisation ;</li>
+        <li>la coller ci-dessous.</li>
+      </ol>
+    </div>
+  </div>
+  {% endif %}
+
+  <form method="post" class="form claude-reglages">
+    {% csrf_token %}
+    <label for="claude-cle">{% if source == "site" %}Remplacer la clé (laisser vide pour la garder){% else %}Clé d'API{% endif %}</label>
+    <input type="password" id="claude-cle" name="cle" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="sk-ant-…">
+    <fieldset class="claude-modeles">
+      <legend>Modèle</legend>
+      {% for id, nom, aide in modeles %}
+      <label class="checkbox"><input type="radio" name="modele" value="{{ id }}"{% if id == modele %} checked{% endif %}>
+        <span><b>{{ nom }}</b> <span class="muted">— {{ aide }}</span></span></label>
+      {% endfor %}
+    </fieldset>
+    <div class="editor-actions">
+      <button type="submit" class="button primary">Vérifier et enregistrer</button>
+      <a class="button" href="{% url 'wiki:transformations' %}">Cours transformés</a>
+    </div>
+  </form>
+  {% if source == "site" %}
+  <form method="post" class="claude-supprimer">
+    {% csrf_token %}
+    <button type="submit" class="button small" name="action" value="supprimer">Supprimer la clé</button>
+  </form>
+  {% endif %}
+  <p class="muted">La clé est vérifiée auprès d'Anthropic avant d'être enregistrée (sans frais). Elle reste sur le
+    serveur, dans la base de données du site : elle n'est jamais réaffichée en entier ni envoyée sur GitHub. Seuls
+    les admins voient cette page.</p>
+</article>
+{% endblock %}
+{% block aside %}
+<section class="panel">
+  <h2>Bon à savoir</h2>
+  <ul class="memo">
+    <li>Avec les crédits d'API de l'abonnement Max : une fois les 100 $ du mois épuisés, les transformations
+      s'arrêtent sans rien facturer, jusqu'au mois suivant.</li>
+    <li>Le coût réel de chaque cours s'affiche sur la page <a href="{% url 'wiki:transformations' %}">Cours
+      transformés par Claude</a>.</li>
+    <li>Cette clé ne sert qu'au wiki : Claude Code, sur le même PC, garde l'abonnement.</li>
+  </ul>
+</section>
+{% endblock %}

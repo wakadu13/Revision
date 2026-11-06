@@ -59,6 +59,7 @@
         <ul class="nav-links">
           {% if is_admin %}
           <li><a href="{% url 'accounts:users' %}">Utilisateurs</a></li>
+          <li><a href="{% url 'wiki:claude_reglages' %}">✦ Claude (clé d'API)</a></li>
           <li><a href="{% url 'admin:index' %}">Administration</a></li>
           {% endif %}
           {% if in_app %}

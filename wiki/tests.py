@@ -1422,7 +1422,7 @@ class ClaudeTests(WikiTestCase):
             self.assertNotContains(self.client.get("/importer/"), 'name="claude"')
             self.upload([("Signal.pdf", self.PDF)], claude="1")
             self.assertFalse(Transformation.objects.exists())
-            self.assertContains(self.client.get("/transformations/"), "WIKI_CLAUDE_CLE")
+            self.assertContains(self.client.get("/transformations/"), "réglages de Claude")
             self.assertNotContains(self.client.get("/pdf/Signal.pdf"), "Créer une page de cours avec Claude")
 
     def test_unchecked_box_or_editor_upload_do_nothing(self):
@@ -1445,7 +1445,7 @@ class ClaudeTests(WikiTestCase):
         self.traiter(_FauxClaude(erreur=refus))
         t = Transformation.objects.get()
         self.assertEqual(t.statut, "erreur")
-        self.assertIn("Clé d'API (WIKI_CLAUDE_CLE) refusée", t.message)
+        self.assertIn("Clé d'API refusée", t.message)
         self.assertFalse((self.root / "Signal.md").exists())
         self.assertContains(self.client.get("/transformations/"), "Relancer")
         self.client.post("/transformations/", {"relancer": t.pk})
@@ -1522,6 +1522,94 @@ class ClaudeTests(WikiTestCase):
             with mock.patch("anthropic.Anthropic") as client:
                 self.claude._client()
             self.assertEqual(client.call_args.kwargs["api_key"], "sk-ant-wiki")
+
+    CLE = "sk-ant-api03-" + "A1b2C3d4E5f6G7h8I9j0" * 3 + "wxyz"
+
+    def test_settings_page_saves_checked_key_without_showing_it(self):
+        from .models import ReglagesClaude
+
+        with mock.patch.dict("os.environ", {"WIKI_CLAUDE_CLE": ""}):
+            page = self.client.get("/claude/reglages/").content.decode()
+            self.assertIn("Pas encore de clé", page)
+            self.assertIn('href="/claude/reglages/"', self.client.get("/sommaire/").content.decode())  # menu des admins
+            with mock.patch.object(self.claude, "verifier", return_value=(True, None)) as verifier:
+                self.client.post("/claude/reglages/", {"cle": f"  {self.CLE} ", "modele": "claude-sonnet-5-5"})
+            verifier.assert_called_once_with(self.CLE, "claude-sonnet-5-5")
+            reglages = ReglagesClaude.charger()
+            self.assertEqual((reglages.cle, reglages.modele, reglages.modifie_par), (self.CLE, "claude-sonnet-5-5", "admin"))
+            self.assertEqual((self.claude.cle(), self.claude.modele()), (self.CLE, "claude-sonnet-5-5"))
+            self.assertTrue(self.claude.disponible())
+            page = self.client.get("/claude/reglages/").content.decode()
+            self.assertIn("Clé enregistrée", page)
+            self.assertIn("sk-ant-api…wxyz", page)
+            self.assertNotIn(self.CLE, page)
+            self.assertNotIn(self.CLE, self.client.get("/transformations/").content.decode())
+            self.assertContains(self.client.get("/importer/"), 'name="claude"')
+            # Changer seulement de modèle garde la clé, sans nouvelle vérification.
+            with mock.patch.object(self.claude, "verifier") as verifier:
+                self.client.post("/claude/reglages/", {"cle": "", "modele": "claude-opus-5-5"})
+            verifier.assert_not_called()
+            self.assertEqual((self.claude.cle(), self.claude.modele()), (self.CLE, "claude-opus-5-5"))
+            # Supprimer.
+            self.client.post("/claude/reglages/", {"action": "supprimer"})
+            self.assertEqual(ReglagesClaude.charger().cle, "")
+            self.assertFalse(self.claude.disponible())
+
+    def test_settings_page_rejects_bad_keys(self):
+        from .models import ReglagesClaude
+
+        with mock.patch.dict("os.environ", {"WIKI_CLAUDE_CLE": ""}):
+            reponse = self.client.post("/claude/reglages/", {"cle": "mot-de-passe", "modele": "claude-opus-5-5"}, follow=True)
+            self.assertContains(reponse, "commence par sk-ant-")
+            with mock.patch.object(self.claude, "verifier", return_value=(False, "Clé refusée par Anthropic")):
+                reponse = self.client.post("/claude/reglages/", {"cle": self.CLE, "modele": "claude-opus-5-5"}, follow=True)
+            self.assertContains(reponse, "Clé refusée par Anthropic")
+            self.assertEqual(ReglagesClaude.charger().cle, "")
+            reponse = self.client.post("/claude/reglages/", {"cle": "", "modele": "gpt-9"}, follow=True)
+            self.assertContains(reponse, "Modèle inconnu")
+            # Vérification impossible (réseau) : enregistrée, avec un avertissement.
+            with mock.patch.object(self.claude, "verifier", return_value=(None, "Vérification impossible pour l'instant.")):
+                reponse = self.client.post("/claude/reglages/", {"cle": self.CLE, "modele": "claude-opus-5-5"}, follow=True)
+            self.assertContains(reponse, "enregistrée quand même")
+            self.assertEqual(ReglagesClaude.charger().cle, self.CLE)
+
+    def test_site_key_wins_over_environment_and_admins_only(self):
+        from .models import ReglagesClaude
+
+        self.assertContains(self.client.get("/claude/reglages/"), "variables d'environnement")
+        ReglagesClaude.objects.create(pk=1, cle=self.CLE)
+        self.assertEqual(self.claude.cle(), self.CLE)
+        self.client.force_login(self.reader)
+        self.assertEqual(self.client.get("/claude/reglages/").status_code, 403)
+        self.assertEqual(self.client.post("/claude/reglages/", {"action": "supprimer"}).status_code, 403)
+        self.assertNotIn('href="/claude/reglages/"', self.client.get("/sommaire/").content.decode())
+        self.assertEqual(ReglagesClaude.charger().cle, self.CLE)
+        self.client.logout()
+        self.assertEqual(self.client.get("/claude/reglages/").status_code, 302)
+
+    def test_verifier_asks_anthropic(self):
+        import anthropic
+        import httpx2
+
+        requete = httpx2.Request("GET", "https://api.anthropic.com/v1/models/claude-opus-5-5")
+        cas = [
+            (None, (True, None)),
+            (anthropic.AuthenticationError("bad", response=httpx2.Response(401, request=requete), body=None), False),
+            (anthropic.NotFoundError("no", response=httpx2.Response(404, request=requete), body=None), False),
+            (anthropic.APIConnectionError(request=requete), None),
+        ]
+        for erreur, attendu in cas:
+            with self.subTest(erreur=type(erreur).__name__), mock.patch("anthropic.Anthropic") as client:
+                if erreur is not None:
+                    client.return_value.models.retrieve.side_effect = erreur
+                resultat = self.claude.verifier(self.CLE, "claude-opus-5-5")
+                self.assertEqual(client.call_args.kwargs["api_key"], self.CLE)
+                client.return_value.models.retrieve.assert_called_once_with("claude-opus-5-5")
+                if isinstance(attendu, tuple):
+                    self.assertEqual(resultat, attendu)
+                else:
+                    self.assertIs(resultat[0], attendu)
+                    self.assertTrue(resultat[1])
 
     def test_unwraps_markdown_fence(self):
         self.assertEqual(self.claude._sans_cadre("```markdown\n# Titre\n\nTexte\n```"), "# Titre\n\nTexte")

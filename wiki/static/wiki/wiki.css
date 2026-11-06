@@ -664,3 +664,8 @@ body.plein-ecran.editing.pe-haut .toolbar {
 .claude-ligne[data-statut="fait"] .claude-etat { color: #16a34a; }
 .claude-ligne[data-statut="erreur"] .claude-etat, .claude-erreur { color: rgb(233, 49, 71); }
 .claude-details { font-size: .82rem; }
+.claude-modeles { border: 0; padding: 0; margin: 1rem 0 0; }
+.claude-modeles legend { font-size: .85rem; color: var(--muted); padding: 0; }
+.claude-modeles .checkbox { align-items: flex-start; margin: .5rem 0; font-size: .95rem; color: var(--text); }
+.claude-modeles input { margin-top: .25rem; }
+.claude-supprimer { margin: 1rem 0; }

@@ -163,3 +163,27 @@ class Transformation(models.Model):
     @property
     def termine(self):
         return self.statut in (self.FAIT, self.ERREUR)
+
+
+class ReglagesClaude(models.Model):
+    """Clé d'API et modèle de Claude, saisis dans le site par un admin (une seule ligne).
+
+    La clé reste dans la base de données (jamais dans le dépôt) et n'est jamais
+    réaffichée en entier.
+    """
+
+    cle = models.CharField(max_length=300, blank=True)
+    modele = models.CharField(max_length=64, blank=True)
+    modifie_le = models.DateTimeField(null=True, blank=True)
+    modifie_par = models.CharField(max_length=150, blank=True)
+
+    def __str__(self):
+        return "Réglages de Claude"
+
+    @classmethod
+    def charger(cls):
+        return cls.objects.filter(pk=1).first() or cls(pk=1)
+
+    @property
+    def cle_masquee(self):
+        return f"{self.cle[:10]}…{self.cle[-4:]}" if len(self.cle) > 16 else "…"
