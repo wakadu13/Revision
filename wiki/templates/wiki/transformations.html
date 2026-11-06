@@ -6,18 +6,10 @@
   <h1 class="note-title">Cours transformés par Claude</h1>
   {% if not claude_dispo %}
   <div class="callout" data-callout="warning">
-    <div class="callout-title">Pas de clé d'API Claude sur le serveur</div>
+    <div class="callout-title">Pas encore de clé d'API Claude</div>
     <div class="callout-content">
-      <p>Avec un abonnement Claude Max, l'API est offerte jusqu'à 100 $ par mois, sans moyen de paiement :</p>
-      <ol>
-        <li>sur claude.ai, <b>Paramètres → Facturation</b>, section <b>Crédits d'API</b> : choisir (ou créer)
-          une organisation de la Console et accepter ;</li>
-        <li>sur platform.claude.com, créer une clé d'API dans cette organisation ;</li>
-        <li>l'enregistrer dans Windows, une fois pour toutes, avec cette commande PowerShell :
-          <code>[Environment]::SetEnvironmentVariable("WIKI_CLAUDE_CLE", "sk-ant-…", "User")</code> ; puis fermer et rouvrir PowerShell, et relancer le serveur. Ne jamais la mettre
-          dans un fichier du dépôt.</li>
-      </ol>
-      <p>Sans abonnement Max : une clé créée sur platform.claude.com, avec des crédits achetés.</p>
+      <p>Ajoutez-la dans les <a href="{% url 'wiki:claude_reglages' %}">réglages de Claude</a> (gratuit jusqu'à
+        100 $ par mois avec un abonnement Claude Max).</p>
     </div>
   </div>
   {% endif %}
@@ -56,7 +48,7 @@
 <section class="panel">
   <h2>Bon à savoir</h2>
   <ul class="memo">
-    <li>Modèle : <code>{{ modele }}</code> (réglable avec <code>WIKI_CLAUDE_MODELE</code>).</li>
+    <li>Modèle : <code>{{ modele }}</code> · <a href="{% url 'wiki:claude_reglages' %}">clé d'API et modèle</a>.</li>
     <li>Coût indicatif avec Claude Opus 5.5 : de l'ordre de 0,50 à 1 $ pour un cours d'une trentaine de pages
       (le coût réel de chaque cours s'affiche ici). Avec un abonnement Max, les 100 $ de crédits d'API offerts
       chaque mois couvrent une centaine de cours ; une fois épuisés, les transformations s'arrêtent sans rien

@@ -165,24 +165,21 @@ de cours avec Claude »** sur un PDF déjà dans le wiki.
 - Une page modifiée à la main n'est jamais écrasée : la version de Claude est
   enregistrée à côté (« Cours (Claude) »). Pour un `.tex`, la conversion faite
   sur place à l'import est remplacée par celle de Claude.
-- Mise en place : créer une clé d'API sur platform.claude.com, l'enregistrer
-  dans Windows (PowerShell, une fois pour toutes), fermer et rouvrir PowerShell,
-  puis relancer le serveur. Ne jamais mettre la clé dans un fichier du dépôt.
-
-  ```powershell
-  [Environment]::SetEnvironmentVariable("WIKI_CLAUDE_CLE", "sk-ant-…", "User")
-  ```
-
-  Le wiki lit `WIKI_CLAUDE_CLE` (sinon `ANTHROPIC_API_KEY`) : un nom à part, car
-  Claude Code, sur le même PC, utiliserait une variable `ANTHROPIC_API_KEY`
-  globale à la place de l'abonnement.
+- Mise en place : créer une clé d'API sur platform.claude.com, puis la coller
+  dans la page **Réglages de Claude** (`/claude/reglages/`, menu des admins,
+  « ✦ Claude (clé d'API) »), qui la vérifie auprès d'Anthropic avant de
+  l'enregistrer et permet de choisir le modèle. La clé reste dans la base de
+  données du site (jamais dans le dépôt) et n'est jamais réaffichée en entier.
+  À défaut, le wiki lit les variables d'environnement `WIKI_CLAUDE_CLE` (sinon
+  `ANTHROPIC_API_KEY`) : un nom à part, car Claude Code, sur le même PC,
+  utiliserait une variable `ANTHROPIC_API_KEY` globale à la place de l'abonnement.
 - **Gratuit avec un abonnement Claude Max** : 100 $ de crédits d'API par mois,
   sans moyen de paiement (claude.ai → Paramètres → Facturation → Crédits d'API :
   relier une organisation de la Console, puis y créer la clé). Crédits épuisés :
   les transformations s'arrêtent sans rien facturer jusqu'au mois suivant
   ([détails](https://platform.claude.com/docs/en/about-claude/api-credits-for-subscribers)).
-- Modèle : Claude Opus 5.5 (`claude-opus-5-5`) par défaut, changeable avec
-  `WIKI_CLAUDE_MODELE` ; coût de l'ordre de 0,50 à 1 $ pour un cours d'une
+- Modèle : Claude Opus 5.5 (`claude-opus-5-5`) par défaut, ou Claude Sonnet 5.5
+  (deux fois moins cher), au choix dans les réglages ; coût de l'ordre de 0,50 à 1 $ pour un cours d'une
   trentaine de pages, facturé sur le compte de la clé. Le contenu des cours est
   envoyé à l'API d'Anthropic.
 - PDF jusqu'à 600 pages ; au-delà de 20 Mo, il passe par l'API Files
@@ -309,8 +306,8 @@ Variables d'environnement :
 | `DJANGO_HTTPS` | HTTPS forcé, cookies sécurisés, HSTS | `1` si un vrai domaine est dans `DJANGO_ALLOWED_HOSTS` (hors debug), sinon `0` |
 | `DJANGO_BEHIND_PROXY` | derrière nginx/Caddy (IP et HTTPS transmis par le proxy) | `0` |
 | `DJANGO_CLOUDFLARE` | derrière Cloudflare : IP du visiteur lue dans `CF-Connecting-IP` (inclut `DJANGO_BEHIND_PROXY`) | `0` |
-| `WIKI_CLAUDE_CLE` | clé d'API Claude : cours transformés en pages (secret, hors du dépôt ; `ANTHROPIC_API_KEY` marche aussi) | vide (fonction absente) |
-| `WIKI_CLAUDE_MODELE` | modèle utilisé pour transformer les cours | `claude-opus-5-5` |
+| `WIKI_CLAUDE_CLE` | clé d'API Claude, si elle n'est pas saisie dans la page Réglages de Claude (`ANTHROPIC_API_KEY` marche aussi) | vide |
+| `WIKI_CLAUDE_MODELE` | modèle, s'il n'est pas choisi dans la page Réglages de Claude | `claude-opus-5-5` |
 | `WIKI_CLAUDE_EFFORT` | effort de réflexion du modèle (`low` à `max`) | `medium` |
 
 ### HTTPS sur le réseau local
@@ -372,6 +369,7 @@ en-têtes) sont dans [`core/tests.py`](core/tests.py) :
 - `/modifier/<chemin>` : éditeur d'une note (admins) ; `/nouvelle/` : nouvelle page
 - `/importer/` : import de fichiers `.md`, de PDF et de pièces jointes (admins)
 - `/transformations/` : cours transformés en pages par Claude (admins)
+- `/claude/reglages/` : clé d'API et modèle de Claude (admins)
 - `/pdf/<chemin>` : lecteur de PDF (`?integre=1` : version intégrée dans les notes)
 - `/sommaire/` : sommaire de toutes les notes
 - `/tags/` et `/tags/<tag>` : les tags

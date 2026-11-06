@@ -19,6 +19,7 @@ urlpatterns = [
     path("importer/", views.import_files, name="import"),
     path("latex/", views.latex, name="latex"),
     path("transformations/", views.transformations, name="transformations"),
+    path("claude/reglages/", views.reglages_claude, name="claude_reglages"),
     path("modifier/<path:path>", views.edit, name="edit"),
     path("apercu/<path:path>", views.preview, name="preview"),
     path("qcm/", quiz_views.index, name="quiz_index"),
