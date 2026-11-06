@@ -1,0 +1,61 @@
+{% extends "wiki/base.html" %}
+{% block title %}Cours transformés par Claude{% endblock %}
+{% block head %}{% if en_cours %}<meta http-equiv="refresh" content="8">{% endif %}{% endblock %}
+{% block content %}
+<article class="note">
+  <h1 class="note-title">Cours transformés par Claude</h1>
+  {% if not claude_dispo %}
+  <div class="callout" data-callout="warning">
+    <div class="callout-title">Pas de clé d'API Claude sur le serveur</div>
+    <div class="callout-content">
+      <p>Créez une clé sur la console d'Anthropic (console.anthropic.com), puis ajoutez-la au script qui lance
+        le serveur : <code>$env:ANTHROPIC_API_KEY = "sk-ant-…"</code>, et relancez-le. Ne la mettez jamais dans
+        un fichier du dépôt.</p>
+    </div>
+  </div>
+  {% endif %}
+  <p>Chaque cours importé (PDF ou LaTeX) devient une page du wiki : plan du cours, formules, encadrés pour les
+    définitions et théorèmes. {% if en_cours %}<b>Transformation en cours</b> : cette page se met à jour toute seule
+    (compter de quelques dizaines de secondes à quelques minutes par cours).{% endif %}</p>
+  {% if transformations %}
+  <ul class="claude-liste">
+    {% for t in transformations %}
+    <li class="claude-ligne" data-statut="{{ t.statut }}">
+      <div class="claude-titre">
+        <span class="claude-etat">{% if t.statut == "fait" %}✓{% elif t.statut == "erreur" %}✗{% elif t.statut == "en_cours" %}⏳{% else %}…{% endif %}</span>
+        <b>{{ t.nom }}</b>
+        <span class="muted">· {{ t.get_statut_display }}{% if t.statut == "en_cours" and t.debut %} depuis {{ t.debut|timesince }}{% endif %}</span>
+      </div>
+      {% if t.url_page %}<p>Page : <a href="{{ t.url_page }}">{{ t.page_ecrite }}</a></p>{% endif %}
+      {% if t.message %}<p class="{% if t.statut == 'erreur' %}claude-erreur{% else %}muted{% endif %}">{{ t.message }}</p>{% endif %}
+      <p class="muted claude-details">{{ t.cree_le|date:"d/m/Y H:i" }}{% if t.demande_par %} · {{ t.demande_par }}{% endif %}
+        {% if t.cout is not None %} · {{ t.modele }} · environ {{ t.cout|floatformat:2 }} $ ({{ t.jetons_entree }} jetons lus, {{ t.jetons_sortie }} écrits){% endif %}</p>
+      {% if t.statut == "erreur" and claude_dispo %}
+      <form method="post">{% csrf_token %}
+        <button type="submit" class="button small" name="relancer" value="{{ t.pk }}">Relancer</button>
+      </form>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p class="muted">Aucun cours transformé pour l'instant. Importez un PDF ou un fichier .tex depuis la page
+    <a href="{% url 'wiki:import' %}">Importer</a>, ou ouvrez un PDF du wiki et choisissez « Créer une page de cours
+    avec Claude ».</p>
+  {% endif %}
+</article>
+{% endblock %}
+{% block aside %}
+<section class="panel">
+  <h2>Bon à savoir</h2>
+  <ul class="memo">
+    <li>Modèle : <code>{{ modele }}</code> (réglable avec <code>WIKI_CLAUDE_MODELE</code>).</li>
+    <li>Coût indicatif avec Claude Opus 5.5 : de l'ordre de 0,50 à 1 $ pour un cours d'une trentaine de pages,
+      facturé sur le compte de la clé d'API (le coût réel de chaque cours s'affiche ici).</li>
+    <li>Une page déjà modifiée à la main n'est jamais écrasée : la version de Claude est enregistrée à côté,
+      avec « (Claude) » dans son nom.</li>
+    <li>Le PDF d'origine reste en bas de la page créée.</li>
+    <li>Vérifiez la page avant de réviser : Claude peut se tromper, surtout sur un PDF scanné ou des schémas.</li>
+  </ul>
+</section>
+{% endblock %}

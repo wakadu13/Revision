@@ -8,7 +8,7 @@ Tout le reste est refusé (HTML, scripts, JSON de QCM...). On n'écrit jamais
 hors du coffre, ni dans ses dossiers cachés (``.obsidian``, ``.trash``).
 """
 
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, field
 from pathlib import PurePosixPath
 
 from django.urls import reverse
@@ -35,9 +35,14 @@ class Result:
     url: str = ""
     link: str = ""  # texte à mettre entre [[ ]]
     is_note: bool = False
+    claude: str = ""  # adresse du suivi, si Claude transforme ce cours
+    # Cours LaTeX : son texte d'origine (le coffre ne garde que la page convertie).
+    source_latex: str = field(default="", repr=False)
 
     def as_dict(self):
-        return asdict(self)
+        d = asdict(self)
+        del d["source_latex"]
+        return d
 
 
 def _parts(raw):
@@ -100,6 +105,7 @@ def import_file(vault, upload, relative, folder="", replace=False, rename=False)
         except UnicodeDecodeError:
             return Result(shown, False, "ce n'est pas un fichier texte UTF-8")
         text = text.replace("\r\n", "\n")
+        source_latex = text if suffix in LATEX_EXTS else ""
         if suffix in LATEX_EXTS:
             try:
                 text = latex.convert(text)
@@ -138,7 +144,8 @@ def import_file(vault, upload, relative, folder="", replace=False, rename=False)
     except OSError:
         # Ex. : un fichier porte le nom d'un des dossiers du chemin.
         return Result(shown, False, "écriture impossible à cet emplacement")
-    return Result(shown, True, message, path=path.as_posix(), is_note=is_note)
+    return Result(shown, True, message, path=path.as_posix(), is_note=is_note,
+                  source_latex=source_latex if is_note else "")
 
 
 def finish(vault, results):

@@ -18,6 +18,8 @@
   const resultsText = document.querySelector("[data-results-text]");
   const resultsList = document.querySelector("[data-results-list]");
   const csrf = form.querySelector("[name=csrfmiddlewaretoken]").value;
+  const claudeBox = form.querySelector("[data-claude]");
+  const COURS = /\.(pdf|tex|latex)$/i;
 
   const NOTE = /\.(md|markdown|tex|latex)$/i;
   const ATTACHMENT = /\.(png|jpe?g|gif|svg|webp|bmp|avif|pdf|mp3|wav|ogg|m4a|flac|webm|3gp|mp4|ogv|mov|mkv)$/i;
@@ -59,7 +61,9 @@
     if (notes) parts.push(plural(notes, "page"));
     if (others) parts.push(plural(others, "pièce jointe").replace("pièce jointes", "pièces jointes"));
     const dest = destination();
+    const cours = claudeBox && claudeBox.checked ? pending.filter((p) => COURS.test(p.path)).length : 0;
     summaryText.textContent = (parts.length ? `${parts.join(" et ")} à importer ${dest ? `dans « ${dest} »` : "à la racine du wiki"}.` : "Aucun fichier à importer.")
+      + (cours ? ` Claude en fera ${plural(cours, "page")} de cours.` : "")
       + (skipped ? ` ${plural(skipped, "fichier")} d'un autre type ${skipped > 1 ? "seront ignorés" : "sera ignoré"}.` : "");
     pendingList.replaceChildren(...pending.slice(0, 200).map((p) => {
       const li = document.createElement("li");
@@ -143,6 +147,12 @@
       li.appendChild(document.createTextNode(r.path || r.name));
     }
     li.appendChild(document.createTextNode(` — ${r.message}`));
+    if (r.claude) {
+      const suivi = document.createElement("a");
+      suivi.href = r.claude;
+      suivi.textContent = "suivre";
+      li.append(" (", suivi, ")");
+    }
     resultsList.appendChild(li);
   }
 
@@ -162,6 +172,7 @@
       data.append("csrfmiddlewaretoken", csrf);
       data.append("dossier", destination());
       if (form.elements.remplacer.checked) data.append("remplacer", "1");
+      if (claudeBox && claudeBox.checked) data.append("claude", "1");
       for (const p of group) {
         data.append("fichiers", p.file, p.file.name);
         data.append("chemins", p.path);
@@ -198,6 +209,14 @@
   folderInput.addEventListener("change", () => add([...folderInput.files].map((file) => ({ file, path: file.webkitRelativePath || file.name }))));
   folderButton.addEventListener("click", () => folderInput.click());
   form.elements.dossier.addEventListener("input", () => pending.length && show());
+  // Case « Transformer avec Claude » : le choix est retenu sur l'appareil.
+  if (claudeBox) {
+    try { if (localStorage.getItem("wiki-import-claude") === "0") claudeBox.checked = false; } catch (e) { /* stockage bloqué */ }
+    claudeBox.addEventListener("change", () => {
+      try { localStorage.setItem("wiki-import-claude", claudeBox.checked ? "1" : "0"); } catch (e) { /* stockage bloqué */ }
+      if (pending.length) show();
+    });
+  }
   form.querySelector("[data-clear]").addEventListener("click", clear);
   form.addEventListener("submit", (e) => {
     e.preventDefault();

@@ -122,3 +122,44 @@ class QuizDeck(models.Model):
     def pour(cls, decks: dict, player: str, set_id: str):
         """Réglages du set, ou réglages vides (non enregistrés) s'il n'en a pas."""
         return decks.get(set_id) or cls(player=player, set_id=set_id)
+
+
+class Transformation(models.Model):
+    """Cours (PDF ou LaTeX) transformé en page du wiki par Claude, en arrière-plan (claude.py)."""
+
+    ATTENTE, EN_COURS, FAIT, ERREUR = "attente", "en_cours", "fait", "erreur"
+    STATUTS = [(ATTENTE, "En attente"), (EN_COURS, "En cours"), (FAIT, "Terminée"), (ERREUR, "Échec")]
+
+    # PDF : son chemin dans le coffre. LaTeX : le nom du fichier envoyé, et son
+    # texte (le coffre ne garde que la page convertie sur place).
+    source = models.CharField(max_length=500)
+    texte_source = models.TextField(blank=True)
+    # Page à écrire (chemin .md dans le coffre). Si elle existe déjà (page
+    # convertie à l'import), elle n'est remplacée que si personne ne l'a
+    # modifiée entre-temps (même empreinte) ; sinon la page part à côté.
+    page = models.CharField(max_length=500)
+    empreinte_page = models.CharField(max_length=64, blank=True)
+    page_ecrite = models.CharField(max_length=500, blank=True)
+    statut = models.CharField(max_length=10, choices=STATUTS, default=ATTENTE)
+    message = models.TextField(blank=True)
+    modele = models.CharField(max_length=64, blank=True)
+    jetons_entree = models.PositiveIntegerField(default=0)
+    jetons_sortie = models.PositiveIntegerField(default=0)
+    demande_par = models.CharField(max_length=150, blank=True)
+    cree_le = models.DateTimeField(auto_now_add=True)
+    debut = models.DateTimeField(null=True, blank=True)
+    fin = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        ordering = ["-cree_le", "-pk"]
+
+    def __str__(self):
+        return f"{self.source} → {self.page} ({self.statut})"
+
+    @property
+    def nom(self):
+        return self.source.rsplit("/", 1)[-1]
+
+    @property
+    def termine(self):
+        return self.statut in (self.FAIT, self.ERREUR)

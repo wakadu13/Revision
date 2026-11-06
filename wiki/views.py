@@ -6,15 +6,17 @@ from django.contrib import messages
 from django.contrib.auth.views import redirect_to_login
 from django.core.exceptions import PermissionDenied
 from django.http import FileResponse, Http404, HttpResponse, JsonResponse
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.views.decorators.clickjacking import xframe_options_sameorigin
 from django.views.decorators.http import require_POST
 
 from accounts.roles import is_admin
 
+from . import claude
 from . import latex as latex_converter
 from . import uploads
+from .models import Transformation
 from .render import Renderer, render_note
 from .vault import CODE_RE, Note, clean_key, get_vault, split_frontmatter
 
@@ -201,6 +203,7 @@ def import_files(request):
             "folder": request.GET.get("dossier", ""),
             "max_note": uploads.MAX_NOTE_SIZE // 1024 // 1024,
             "max_attachment": uploads.MAX_ATTACHMENT_SIZE // 1024 // 1024,
+            "claude_dispo": claude.disponible(),
         })
 
     files = request.FILES.getlist("fichiers")
@@ -225,6 +228,9 @@ def import_files(request):
         for i, upload in enumerate(files)
     ]
     results = uploads.finish(get_vault(), results)
+    lances = 0
+    if request.POST.get("claude") == "1" and not rename and claude.disponible():
+        lances = _transformer_cours(request, get_vault(), results)
     if _wants_json(request):
         return JsonResponse({"results": [r.as_dict() for r in results]})
 
@@ -236,9 +242,71 @@ def import_files(request):
     for r in results:
         if not r.ok and not r.ignored:
             messages.error(request, f"{r.name} : {r.message}")
+    if lances:
+        messages.info(request, f"{lances} cours en cours de transformation par Claude.")
+        return redirect("wiki:transformations")
     if len(done) == 1 and done[0].url and (done[0].is_note or done[0].path.lower().endswith(".pdf")):
         return redirect(done[0].url)
     return redirect("wiki:import")
+
+
+def _transformer_cours(request, vault, results):
+    """Cours importés (PDF, LaTeX) confiés à Claude, qui les transforme en pages en
+    arrière-plan. Renvoie le nombre de transformations lancées."""
+    suivi = reverse("wiki:transformations")
+    qui = request.user.get_username()
+    lances = 0
+    for r in results:
+        if not r.ok:
+            continue
+        if r.source_latex:
+            claude.demander_latex(r.name, r.source_latex, r.path, qui)
+        elif r.path.lower().endswith(".pdf") and (pdf := vault.attachments.get(r.path.lower())) is not None:
+            claude.demander_pdf(pdf, qui)
+        else:
+            continue
+        r.message += " · transformation par Claude lancée"
+        r.claude = suivi
+        lances += 1
+    return lances
+
+
+def transformations(request):
+    """Suivi des cours transformés par Claude ; relancer un échec ; transformer un PDF du coffre."""
+    if not can_edit(request):
+        return _deny(request)
+    vault = get_vault()
+    if request.method == "POST":
+        if not claude.disponible():
+            messages.error(request, "Aucune clé ANTHROPIC_API_KEY sur le serveur.")
+        elif pk := request.POST.get("relancer"):
+            claude.relancer(get_object_or_404(Transformation, pk=pk))
+        elif chemin := request.POST.get("pdf"):
+            pdf = vault.attachments.get(chemin.lower())
+            if pdf is None or pdf.suffix != ".pdf":
+                raise Http404("PDF introuvable")
+            source = pdf.path.as_posix()
+            if Transformation.objects.filter(source=source, statut__in=[Transformation.ATTENTE, Transformation.EN_COURS]).exists():
+                messages.info(request, f"{pdf.name} est déjà en cours de transformation.")
+            else:
+                claude.demander_pdf(pdf, request.user.get_username())
+                messages.success(request, f"Transformation de {pdf.name} lancée.")
+        return redirect("wiki:transformations")
+
+    liste = list(Transformation.objects.all()[:50])
+    en_cours = any(not t.termine for t in liste)
+    if en_cours:
+        claude.lancer()  # reprend après un redémarrage du serveur
+    for t in liste:
+        t.cout = claude.cout(t)
+        note = vault.notes.get(t.page_ecrite.removesuffix(".md").lower()) if t.page_ecrite else None
+        t.url_page = reverse("wiki:page", args=[note.key]) if note else ""
+    return _render(request, vault, "wiki/transformations.html", {
+        "transformations": liste,
+        "en_cours": en_cours,
+        "claude_dispo": claude.disponible(),
+        "modele": claude.modele(),
+    })
 
 
 # Pièces jointes affichées dans la page ; tout le reste (HTML, SVG, JS...) est
@@ -267,7 +335,10 @@ def pdf(request, path):
     if request.GET.get("integre") == "1":
         return render(request, "wiki/pdf_integre.html", context)
     backlinks = sorted(vault.attachment_backlinks.get(str(attachment.path).lower(), ()), key=lambda n: n.title.lower())
-    return _render(request, vault, "wiki/pdf.html", {**context, "backlinks": backlinks})
+    page_cours = vault.notes.get(str(attachment.path.with_suffix("")).lower())
+    return _render(request, vault, "wiki/pdf.html", {
+        **context, "backlinks": backlinks, "page_cours": page_cours, "claude_dispo": claude.disponible(),
+    })
 
 
 @xframe_options_sameorigin  # PDF intégrés dans les notes (iframe du même site)
