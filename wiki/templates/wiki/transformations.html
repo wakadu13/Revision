@@ -8,9 +8,15 @@
   <div class="callout" data-callout="warning">
     <div class="callout-title">Pas de clé d'API Claude sur le serveur</div>
     <div class="callout-content">
-      <p>Créez une clé sur la console d'Anthropic (console.anthropic.com), puis ajoutez-la au script qui lance
-        le serveur : <code>$env:ANTHROPIC_API_KEY = "sk-ant-…"</code>, et relancez-le. Ne la mettez jamais dans
-        un fichier du dépôt.</p>
+      <p>Avec un abonnement Claude Max, l'API est offerte jusqu'à 100 $ par mois, sans moyen de paiement :</p>
+      <ol>
+        <li>sur claude.ai, <b>Paramètres → Facturation</b>, section <b>Crédits d'API</b> : choisir (ou créer)
+          une organisation de la Console et accepter ;</li>
+        <li>sur platform.claude.com, créer une clé d'API dans cette organisation ;</li>
+        <li>l'ajouter au script qui lance le serveur : <code>$env:ANTHROPIC_API_KEY = "sk-ant-…"</code>, puis le
+          relancer. Ne jamais la mettre dans un fichier du dépôt.</li>
+      </ol>
+      <p>Sans abonnement Max : une clé créée sur platform.claude.com, avec des crédits achetés.</p>
     </div>
   </div>
   {% endif %}
@@ -50,8 +56,10 @@
   <h2>Bon à savoir</h2>
   <ul class="memo">
     <li>Modèle : <code>{{ modele }}</code> (réglable avec <code>WIKI_CLAUDE_MODELE</code>).</li>
-    <li>Coût indicatif avec Claude Opus 5.5 : de l'ordre de 0,50 à 1 $ pour un cours d'une trentaine de pages,
-      facturé sur le compte de la clé d'API (le coût réel de chaque cours s'affiche ici).</li>
+    <li>Coût indicatif avec Claude Opus 5.5 : de l'ordre de 0,50 à 1 $ pour un cours d'une trentaine de pages
+      (le coût réel de chaque cours s'affiche ici). Avec un abonnement Max, les 100 $ de crédits d'API offerts
+      chaque mois couvrent une centaine de cours ; une fois épuisés, les transformations s'arrêtent sans rien
+      facturer, jusqu'au mois suivant.</li>
     <li>Une page déjà modifiée à la main n'est jamais écrasée : la version de Claude est enregistrée à côté,
       avec « (Claude) » dans son nom.</li>
     <li>Le PDF d'origine reste en bas de la page créée.</li>

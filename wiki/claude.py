@@ -265,6 +265,9 @@ def _transformer(t):
     except anthropic.RateLimitError:
         raise Echec("Limite d'utilisation de l'API atteinte : relancez plus tard.") from None
     except anthropic.BadRequestError as e:
+        if "credit balance" in str(e.message).lower():
+            raise Echec("Plus de crédits d'API sur ce compte : relancez quand les crédits du mois suivant seront "
+                        "arrivés (abonnement Max : 100 $ par mois), ou après un achat de crédits.") from None
         raise Echec(f"Document refusé par l'API : {e.message}") from None
     except anthropic.APIStatusError as e:
         raise Echec(f"Service de Claude indisponible (erreur {e.status_code}) : relancez plus tard.") from None

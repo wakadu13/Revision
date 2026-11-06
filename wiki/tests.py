@@ -1454,6 +1454,14 @@ class ClaudeTests(WikiTestCase):
         self.traiter(_FauxClaude(erreur=anthropic.APIConnectionError(request=requete)))
         t.refresh_from_db()
         self.assertIn("injoignable", t.message)
+        # Crédits du mois épuisés (abonnement Max : 100 $ par mois) : message clair.
+        self.client.post("/transformations/", {"relancer": t.pk})
+        epuise = anthropic.BadRequestError(
+            "Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.",
+            response=httpx2.Response(400, request=requete), body=None)
+        self.traiter(_FauxClaude(erreur=epuise))
+        t.refresh_from_db()
+        self.assertIn("Plus de crédits d'API", t.message)
 
     def test_refusal_and_truncated_page(self):
         from .models import Transformation
