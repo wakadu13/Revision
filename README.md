@@ -165,9 +165,14 @@ de cours avec Claude »** sur un PDF déjà dans le wiki.
 - Une page modifiée à la main n'est jamais écrasée : la version de Claude est
   enregistrée à côté (« Cours (Claude) »). Pour un `.tex`, la conversion faite
   sur place à l'import est remplacée par celle de Claude.
-- Mise en place : créer une clé sur la console d'Anthropic, l'ajouter au script
-  qui lance le serveur (`$env:ANTHROPIC_API_KEY = "sk-ant-…"`) et relancer. Ne
-  jamais mettre la clé dans un fichier du dépôt.
+- Mise en place : créer une clé d'API sur platform.claude.com, l'ajouter au
+  script qui lance le serveur (`$env:ANTHROPIC_API_KEY = "sk-ant-…"`) et
+  relancer. Ne jamais mettre la clé dans un fichier du dépôt.
+- **Gratuit avec un abonnement Claude Max** : 100 $ de crédits d'API par mois,
+  sans moyen de paiement (claude.ai → Paramètres → Facturation → Crédits d'API :
+  relier une organisation de la Console, puis y créer la clé). Crédits épuisés :
+  les transformations s'arrêtent sans rien facturer jusqu'au mois suivant
+  ([détails](https://platform.claude.com/docs/en/about-claude/api-credits-for-subscribers)).
 - Modèle : Claude Opus 5.5 (`claude-opus-5-5`) par défaut, changeable avec
   `WIKI_CLAUDE_MODELE` ; coût de l'ordre de 0,50 à 1 $ pour un cours d'une
   trentaine de pages, facturé sur le compte de la clé. Le contenu des cours est
