@@ -200,7 +200,7 @@ WIKI_DIR = BASE_DIR / 'vault'
 WIKI_HOME = 'Accueil'
 
 # Cours (PDF, LaTeX) transformés en pages par Claude (wiki/claude.py) : clé
-# d'API dans la variable d'environnement ANTHROPIC_API_KEY, modèle dans
+# d'API dans la variable d'environnement WIKI_CLAUDE_CLE, modèle dans
 # WIKI_CLAUDE_MODELE (Claude Opus 5.5 par défaut). Traitement dans un fil
 # d'exécution du serveur (False : seulement à la demande, pour les tests).
 WIKI_CLAUDE_FIL = True

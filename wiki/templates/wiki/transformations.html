@@ -13,8 +13,9 @@
         <li>sur claude.ai, <b>Paramètres → Facturation</b>, section <b>Crédits d'API</b> : choisir (ou créer)
           une organisation de la Console et accepter ;</li>
         <li>sur platform.claude.com, créer une clé d'API dans cette organisation ;</li>
-        <li>l'ajouter au script qui lance le serveur : <code>$env:ANTHROPIC_API_KEY = "sk-ant-…"</code>, puis le
-          relancer. Ne jamais la mettre dans un fichier du dépôt.</li>
+        <li>l'enregistrer dans Windows, une fois pour toutes, avec cette commande PowerShell :
+          <code>[Environment]::SetEnvironmentVariable("WIKI_CLAUDE_CLE", "sk-ant-…", "User")</code> ; puis fermer et rouvrir PowerShell, et relancer le serveur. Ne jamais la mettre
+          dans un fichier du dépôt.</li>
       </ol>
       <p>Sans abonnement Max : une clé créée sur platform.claude.com, avec des crédits achetés.</p>
     </div>
