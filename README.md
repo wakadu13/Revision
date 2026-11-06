@@ -148,6 +148,33 @@ choisit le dossier de destination ; un fichier existant n'est remplacé que si
 autres types de fichiers (HTML, scripts…) sont ignorés. Limites : 5 Mo par note,
 100 Mo par pièce jointe (derrière nginx, augmenter `client_max_body_size`).
 
+### Transformer un cours en page avec Claude (admins)
+
+Avec une clé d'API Claude sur le serveur, chaque cours importé (PDF ou `.tex`)
+devient une page du wiki rédigée par Claude : plan du cours en sections,
+formules en LaTeX, encadrés pour les définitions, théorèmes, démonstrations
+(repliées), méthodes et pièges, tableaux. Le PDF d'origine reste en bas de la
+page. Case **« Transformer les cours avec Claude »** sur la page d'import
+(cochée par défaut, choix retenu sur l'appareil), ou bouton **« Créer une page
+de cours avec Claude »** sur un PDF déjà dans le wiki.
+
+- La transformation se fait en arrière-plan (de quelques dizaines de secondes à
+  quelques minutes par cours) ; la page **Cours transformés par Claude**
+  (`/transformations/`) suit l'avancement, se met à jour toute seule, affiche
+  le coût de chaque cours et permet de relancer un échec.
+- Une page modifiée à la main n'est jamais écrasée : la version de Claude est
+  enregistrée à côté (« Cours (Claude) »). Pour un `.tex`, la conversion faite
+  sur place à l'import est remplacée par celle de Claude.
+- Mise en place : créer une clé sur la console d'Anthropic, l'ajouter au script
+  qui lance le serveur (`$env:ANTHROPIC_API_KEY = "sk-ant-…"`) et relancer. Ne
+  jamais mettre la clé dans un fichier du dépôt.
+- Modèle : Claude Opus 5.5 (`claude-opus-5-5`) par défaut, changeable avec
+  `WIKI_CLAUDE_MODELE` ; coût de l'ordre de 0,50 à 1 $ pour un cours d'une
+  trentaine de pages, facturé sur le compte de la clé. Le contenu des cours est
+  envoyé à l'API d'Anthropic.
+- PDF jusqu'à 600 pages ; au-delà de 20 Mo, il passe par l'API Files
+  d'Anthropic (supprimé juste après). Les PDF scannés sont lus aussi.
+
 ### Lire les PDF dans le wiki
 
 Les PDF du coffre s'ouvrent dans un lecteur intégré (`/pdf/<chemin>`, construit
@@ -269,6 +296,9 @@ Variables d'environnement :
 | `DJANGO_HTTPS` | HTTPS forcé, cookies sécurisés, HSTS | `1` si un vrai domaine est dans `DJANGO_ALLOWED_HOSTS` (hors debug), sinon `0` |
 | `DJANGO_BEHIND_PROXY` | derrière nginx/Caddy (IP et HTTPS transmis par le proxy) | `0` |
 | `DJANGO_CLOUDFLARE` | derrière Cloudflare : IP du visiteur lue dans `CF-Connecting-IP` (inclut `DJANGO_BEHIND_PROXY`) | `0` |
+| `ANTHROPIC_API_KEY` | clé d'API Claude : cours transformés en pages (secret, hors du dépôt) | vide (fonction absente) |
+| `WIKI_CLAUDE_MODELE` | modèle utilisé pour transformer les cours | `claude-opus-5-5` |
+| `WIKI_CLAUDE_EFFORT` | effort de réflexion du modèle (`low` à `max`) | `medium` |
 
 ### HTTPS sur le réseau local
 
@@ -328,6 +358,7 @@ en-têtes) sont dans [`core/tests.py`](core/tests.py) :
 - `/wiki/<chemin>` : une note
 - `/modifier/<chemin>` : éditeur d'une note (admins) ; `/nouvelle/` : nouvelle page
 - `/importer/` : import de fichiers `.md`, de PDF et de pièces jointes (admins)
+- `/transformations/` : cours transformés en pages par Claude (admins)
 - `/pdf/<chemin>` : lecteur de PDF (`?integre=1` : version intégrée dans les notes)
 - `/sommaire/` : sommaire de toutes les notes
 - `/tags/` et `/tags/<tag>` : les tags

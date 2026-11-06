@@ -652,3 +652,15 @@ body.plein-ecran.editing.pe-haut .toolbar {
 @media (prefers-reduced-motion: reduce) {
   body.plein-ecran .sidebar, body.plein-ecran .aside, body.plein-ecran.editing .toolbar { transition: none; }
 }
+
+/* Cours transformés par Claude */
+.claude-pdf { margin: -.4rem 0 1rem; }
+.claude-liste { list-style: none; padding: 0; margin: 1.5rem 0; display: grid; gap: .75rem; }
+.claude-ligne { padding: .75rem 1rem; border: 1px solid var(--border); border-radius: 8px; }
+.claude-ligne p { margin: .35rem 0 0; }
+.claude-ligne form { margin-top: .5rem; }
+.claude-titre { display: flex; flex-wrap: wrap; align-items: baseline; gap: .35rem; overflow-wrap: anywhere; }
+.claude-etat { width: 1.2rem; text-align: center; }
+.claude-ligne[data-statut="fait"] .claude-etat { color: #16a34a; }
+.claude-ligne[data-statut="erreur"] .claude-etat, .claude-erreur { color: rgb(233, 49, 71); }
+.claude-details { font-size: .82rem; }

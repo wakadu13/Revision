@@ -1,3 +1,4 @@
+import base64
 import json
 import tempfile
 from pathlib import Path
@@ -1283,3 +1284,227 @@ class ApplicationTests(TestCase):
         self.assertNotContains(navigateur, 'class="app-nav"')
         self.assertNotContains(navigateur, "appassets")
         self.assertContains(navigateur, 'action="/deconnexion/"')
+
+
+class _FauxFlux:
+    def __init__(self, message):
+        self.message = message
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *exc):
+        return False
+
+    def get_final_message(self):
+        return self.message
+
+
+class _FauxClaude:
+    """Remplace le client Anthropic : aucune requête réseau, aucun coût."""
+
+    def __init__(self, texte="---\ntags: [cours]\n---\n# Cours\n\nUne **notion** : $x^2$.", stop="end_turn", erreur=None):
+        from types import SimpleNamespace
+
+        self.demandes, self.envois, self.suppressions = [], [], []
+        faux = self
+
+        class Messages:
+            def stream(self, **demande):
+                faux.demandes.append(demande)
+                if erreur is not None:
+                    raise erreur
+                contenu = [SimpleNamespace(type="thinking", thinking=""), SimpleNamespace(type="text", text=texte)]
+                usage = SimpleNamespace(input_tokens=1000, output_tokens=500)
+                return _FauxFlux(SimpleNamespace(content=contenu, stop_reason=stop, usage=usage))
+
+        def upload(file):
+            faux.envois.append(file)
+            return SimpleNamespace(id="file_1")
+
+        self.beta = SimpleNamespace(messages=Messages())
+        self.files = SimpleNamespace(upload=upload, delete=faux.suppressions.append)
+
+
+@override_settings(WIKI_CLAUDE_FIL=False)
+@mock.patch.dict("os.environ", {"ANTHROPIC_API_KEY": "sk-ant-test", "WIKI_CLAUDE_MODELE": "", "WIKI_CLAUDE_EFFORT": ""})
+class ClaudeTests(WikiTestCase):
+    """Cours (PDF, LaTeX) transformés en pages par Claude, avec un faux client."""
+
+    PDF = b"%PDF-1.4\n%%EOF\n"
+
+    def setUp(self):
+        super().setUp()
+        from . import claude
+
+        self.claude = claude
+        claude._repris = False
+        self.admin = get_user_model().objects.create_user("admin", password="x", is_staff=True)
+        self.client.force_login(self.admin)
+
+    def upload(self, files, **extra):
+        data = {
+            "fichiers": [SimpleUploadedFile(name.rsplit("/", 1)[-1], body) for name, body in files],
+            "chemins": [name for name, _ in files],
+            **extra,
+        }
+        return self.client.post("/importer/", data, HTTP_ACCEPT="application/json")
+
+    def traiter(self, faux):
+        with mock.patch.object(self.claude, "_client", return_value=faux):
+            self.claude.traiter_en_attente()
+
+    def test_pdf_import_becomes_course_page(self):
+        from .models import Transformation
+
+        self.assertContains(self.client.get("/importer/"), 'name="claude"')
+        results = self.upload([("Cours/Signal.pdf", self.PDF)], dossier="", claude="1").json()["results"]
+        self.assertEqual(results[0]["claude"], "/transformations/")
+        self.assertIn("Claude", results[0]["message"])
+        t = Transformation.objects.get()
+        self.assertEqual((t.source, t.page, t.statut), ("Cours/Signal.pdf", "Cours/Signal.md", "attente"))
+
+        faux = _FauxClaude()
+        self.traiter(faux)
+        t.refresh_from_db()
+        self.assertEqual(t.statut, "fait", t.message)
+        self.assertEqual(t.page_ecrite, "Cours/Signal.md")
+        page = (self.root / "Cours/Signal.md").read_text(encoding="utf-8")
+        self.assertTrue(page.startswith("---\ntags: [cours]\n---\n# Cours"))
+        self.assertIn("## Document d'origine\n\n![[Signal.pdf]]", page)
+        self.assertEqual((t.jetons_entree, t.jetons_sortie), (1000, 500))
+        demande = faux.demandes[0]
+        self.assertEqual(demande["model"], "claude-opus-5-5")
+        self.assertEqual(demande["fallbacks"], "default")
+        self.assertEqual(demande["betas"], ["server-side-fallback-2026-07-01"])
+        self.assertEqual(demande["output_config"], {"effort": "medium"})
+        self.assertEqual(demande["max_tokens"], 128000)
+        self.assertIn("Markdown d'Obsidian", demande["system"])
+        document = demande["messages"][0]["content"][0]
+        self.assertEqual(document["type"], "document")
+        self.assertEqual(document["source"]["media_type"], "application/pdf")
+        self.assertEqual(base64.b64decode(document["source"]["data"]), self.PDF)
+        # Suivi : page écrite et coût estimé (1000 × 4 $ + 500 × 20 $ par million de jetons).
+        suivi = self.client.get("/transformations/").content.decode()
+        self.assertIn('href="/wiki/Cours/Signal"', suivi)
+        self.assertRegex(suivi, r"environ 0[,.]01 \$")
+        self.assertNotIn('http-equiv="refresh"', suivi)
+        # Le PDF mène à sa page de cours.
+        self.assertContains(self.client.get("/pdf/Cours/Signal.pdf"), "Page du cours")
+
+    def test_latex_import_replaces_local_conversion(self):
+        from .models import Transformation
+
+        tex = rb"\documentclass{article}\begin{document}\section{Intro}Bonjour $x$.\end{document}"
+        self.upload([("Analyse.tex", tex)], claude="1")
+        locale = (self.root / "Analyse.md").read_text(encoding="utf-8")
+        self.assertIn("Intro", locale)  # conversion sur place, en attendant Claude
+        faux = _FauxClaude(texte="# Analyse\n\nVersion de Claude.")
+        self.traiter(faux)
+        self.assertEqual(Transformation.objects.get().statut, "fait")
+        self.assertEqual((self.root / "Analyse.md").read_text(encoding="utf-8"), "# Analyse\n\nVersion de Claude.\n")
+        bloc = faux.demandes[0]["messages"][0]["content"][0]
+        self.assertEqual(bloc["type"], "text")
+        self.assertIn(r"\section{Intro}", bloc["text"])
+
+    def test_page_edited_meanwhile_is_kept(self):
+        tex = rb"\documentclass{article}\begin{document}Texte\end{document}"
+        self.upload([("Cours.tex", tex)], claude="1")
+        self.write("Cours.md", "Mes notes à moi")
+        self.traiter(_FauxClaude(texte="# Version Claude"))
+        self.assertEqual((self.root / "Cours.md").read_text(encoding="utf-8"), "Mes notes à moi")
+        self.assertEqual((self.root / "Cours (Claude).md").read_text(encoding="utf-8"), "# Version Claude\n")
+
+    def test_without_api_key_nothing_is_sent(self):
+        from .models import Transformation
+
+        with mock.patch.dict("os.environ", {"ANTHROPIC_API_KEY": ""}):
+            self.assertNotContains(self.client.get("/importer/"), 'name="claude"')
+            self.upload([("Signal.pdf", self.PDF)], claude="1")
+            self.assertFalse(Transformation.objects.exists())
+            self.assertContains(self.client.get("/transformations/"), "ANTHROPIC_API_KEY")
+            self.assertNotContains(self.client.get("/pdf/Signal.pdf"), "Créer une page de cours avec Claude")
+
+    def test_unchecked_box_or_editor_upload_do_nothing(self):
+        from .models import Transformation
+
+        self.upload([("A.pdf", self.PDF)])
+        self.write("Note.md", "x")
+        self.upload([("B.pdf", self.PDF)], pour_note="Note", claude="1")
+        self.assertFalse(Transformation.objects.exists())
+
+    def test_errors_are_reported_and_can_be_retried(self):
+        import anthropic
+        import httpx2
+
+        from .models import Transformation
+
+        requete = httpx2.Request("POST", "https://api.anthropic.com/v1/messages")
+        self.upload([("Signal.pdf", self.PDF)], claude="1")
+        refus = anthropic.AuthenticationError("invalid x-api-key", response=httpx2.Response(401, request=requete), body=None)
+        self.traiter(_FauxClaude(erreur=refus))
+        t = Transformation.objects.get()
+        self.assertEqual(t.statut, "erreur")
+        self.assertIn("Clé ANTHROPIC_API_KEY refusée", t.message)
+        self.assertFalse((self.root / "Signal.md").exists())
+        self.assertContains(self.client.get("/transformations/"), "Relancer")
+        self.client.post("/transformations/", {"relancer": t.pk})
+        t.refresh_from_db()
+        self.assertEqual(t.statut, "attente")
+        self.traiter(_FauxClaude(erreur=anthropic.APIConnectionError(request=requete)))
+        t.refresh_from_db()
+        self.assertIn("injoignable", t.message)
+
+    def test_refusal_and_truncated_page(self):
+        from .models import Transformation
+
+        self.upload([("A.pdf", self.PDF)], claude="1")
+        self.traiter(_FauxClaude(stop="refusal", texte=""))
+        self.assertEqual(Transformation.objects.get().statut, "erreur")
+        self.upload([("B.pdf", self.PDF)], claude="1")
+        self.traiter(_FauxClaude(stop="max_tokens", texte="# B\n\nDébut"))
+        t = Transformation.objects.get(source="B.pdf")
+        self.assertEqual(t.statut, "fait")
+        self.assertIn("fin de la page manque", t.message)
+        self.assertIn("> [!warning]", (self.root / "B.md").read_text(encoding="utf-8"))
+
+    def test_large_pdf_goes_through_files_api(self):
+        self.upload([("Gros.pdf", self.PDF)], claude="1")
+        faux = _FauxClaude()
+        with mock.patch.object(self.claude, "PDF_EN_LIGNE_MAX", 4):
+            self.traiter(faux)
+        self.assertEqual(faux.envois[0][0], "Gros.pdf")
+        self.assertEqual(faux.demandes[0]["messages"][0]["content"][0]["source"], {"type": "file", "file_id": "file_1"})
+        self.assertEqual(faux.suppressions, ["file_1"])
+
+    def test_existing_pdf_button_and_permissions(self):
+        from .models import Transformation
+
+        self.write("Vieux.pdf", "%PDF-1.4\n%%EOF\n")
+        self.assertContains(self.client.get("/pdf/Vieux.pdf"), "Créer une page de cours avec Claude")
+        self.client.post("/transformations/", {"pdf": "Vieux.pdf"})
+        self.client.post("/transformations/", {"pdf": "Vieux.pdf"})  # déjà en attente : pas de doublon
+        self.assertEqual(Transformation.objects.filter(source="Vieux.pdf").count(), 1)
+        self.assertContains(self.client.get("/transformations/"), 'http-equiv="refresh"')
+        self.assertEqual(self.client.post("/transformations/", {"pdf": "../secret.pdf"}).status_code, 404)
+        self.client.force_login(self.reader)
+        self.assertEqual(self.client.get("/transformations/").status_code, 403)
+        self.assertEqual(self.client.post("/transformations/", {"pdf": "Vieux.pdf"}).status_code, 403)
+        self.assertNotContains(self.client.get("/pdf/Vieux.pdf"), "Créer une page de cours avec Claude")
+
+    def test_interrupted_job_resumes_and_model_setting(self):
+        from .models import Transformation
+
+        self.write("A.pdf", "%PDF-1.4\n%%EOF\n")
+        Transformation.objects.create(source="A.pdf", page="A.md", statut="en_cours")
+        faux = _FauxClaude()
+        with mock.patch.dict("os.environ", {"WIKI_CLAUDE_MODELE": "claude-haiku-5-5"}):
+            self.traiter(faux)
+        self.assertEqual(Transformation.objects.get().statut, "fait")
+        # Modèle sans repli automatique : pas de paramètre « fallbacks ».
+        self.assertEqual(faux.demandes[0]["model"], "claude-haiku-5-5")
+        self.assertNotIn("fallbacks", faux.demandes[0])
+
+    def test_unwraps_markdown_fence(self):
+        self.assertEqual(self.claude._sans_cadre("```markdown\n# Titre\n\nTexte\n```"), "# Titre\n\nTexte")
+        self.assertEqual(self.claude._sans_cadre("# Titre\n```py\nx\n```"), "# Titre\n```py\nx\n```")

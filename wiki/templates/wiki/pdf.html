@@ -9,6 +9,14 @@
   <p class="breadcrumb">{% for part in attachment.path.parent.parts %}{{ part }} / {% endfor %}</p>
   {% endif %}
   <h1 class="note-title">{{ title }}</h1>
+  {% if page_cours %}
+  <p class="claude-pdf"><a class="button small" href="{{ page_cours.url }}">Page du cours : {{ page_cours.title }}</a></p>
+  {% elif can_edit and claude_dispo %}
+  <form class="claude-pdf" method="post" action="{% url 'wiki:transformations' %}">{% csrf_token %}
+    <button type="submit" class="button small" name="pdf" value="{{ attachment.path }}"
+            title="Claude lit le PDF et en fait une page du wiki (plan, formules, encadrés), en quelques minutes">✦ Créer une page de cours avec Claude</button>
+  </form>
+  {% endif %}
   {% include "wiki/_pdf_lecteur.html" %}
   <footer class="note-footer">PDF · {{ size|filesizeformat }} · <code>{{ attachment.path }}</code>
     · pour l'intégrer à une note : <code>![[{{ attachment.name }}]]</code></footer>
