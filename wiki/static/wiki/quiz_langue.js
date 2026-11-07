@@ -4,6 +4,8 @@
 // Un exercice raté revient 4 positions plus loin (2 nouvelles tentatives au
 // plus) ; seule la 1re tentative est enregistrée, en quittant l'exercice (la
 // touche F peut entre-temps la passer en « Facile »).
+// Révision intensive : un exercice raté revient (3 positions plus loin) jusqu'à
+// être réussi 2 fois de suite ; un exercice réussi du premier coup est su.
 (function () {
   const root = document.getElementById("quiz-langue");
   const stage = document.getElementById("quiz-stage");
@@ -14,6 +16,8 @@
   const corrigerUrl = root.dataset.corrigerUrl;
   const recordUrl = root.dataset.recordUrl;
   const backUrl = root.dataset.backUrl;
+  const intensif = root.dataset.mode === "intensif";
+  const REUSSITES_REQUISES = 2;
   const csrf = root.dataset.csrf;
   const progressText = document.getElementById("quiz-progress");
   const barFill = document.getElementById("quiz-bar-fill");
@@ -25,6 +29,9 @@
 
   // File de la session : une entrée par passage (les réessais sont des copies).
   const file = exercices.map((e, i) => ({ i, tentative: 0, nouveau: e.nouveau, melange: (e.melange || []).slice() }));
+  // Révision intensive : suivi de chaque exercice (ratés, réussites d'affilée, su).
+  const suivi = exercices.map(() => ({ rates: 0, serie: 0, su: false }));
+  let maitrises = 0;
   let index = 0, score = 0, premiers = 0;
   let s = null; // état de l'exercice courant
 
@@ -103,6 +110,12 @@
   function exo() { return exercices[current().i]; }
 
   function updateHeader() {
+    if (intensif) {
+      const reste = file.length - index;
+      progressText.textContent = `Sus ${maitrises} / ${exercices.length} · ${reste} passage${reste > 1 ? "s" : ""} restant${reste > 1 ? "s" : ""}`;
+      barFill.style.width = (maitrises / exercices.length * 100) + "%";
+      return;
+    }
     progressText.textContent = `Exercice ${index + 1} / ${file.length} · score ${score} / ${premiers}`;
     barFill.style.width = (index / file.length * 100) + "%";
   }
@@ -445,11 +458,28 @@
     file.splice(Math.min(index + 4, file.length), 0, copie);
   }
 
+  // Révision intensive : raté → revient vite ; réussi après une erreur → revient
+  // plus tard, jusqu'à 2 réussites d'affilée.
+  function reprogrammerIntensif() {
+    const c = current(), t = suivi[c.i];
+    if (t.su) return;
+    if (s.note === A_REVOIR) { t.rates++; t.serie = 0; } else t.serie++;
+    if (s.note !== A_REVOIR && (t.rates === 0 || t.serie >= REUSSITES_REQUISES)) {
+      t.su = true;
+      maitrises++;
+      return;
+    }
+    const ecart = s.note === A_REVOIR ? 3 : 6;
+    const copie = { i: c.i, tentative: c.tentative + 1, nouveau: false, melange: c.melange.length ? shuffle(c.melange.length) : [] };
+    file.splice(Math.min(index + 1 + ecart, file.length), 0, copie);
+  }
+
   function suivante() {
     if (!s.note) return;
     const echec = s.note === A_REVOIR && !s.enregistre;
     enregistrer();
-    if (echec) reprogrammer();
+    if (intensif) reprogrammerIntensif();
+    else if (echec) reprogrammer();
     index++;
     if (index < file.length) build(); else resultats();
   }
@@ -468,10 +498,33 @@
     progressText.textContent = "Terminé";
     const pct = premiers ? Math.round(score / premiers * 100) : 0;
     const box = el("div", "quiz-results");
-    box.appendChild(text("div", "quiz-score", score + " / " + premiers));
-    box.appendChild(el("div", "mastery", '<div class="mastery-fill" style="width:' + pct + '%"></div>'));
+    box.appendChild(text("div", "quiz-score", intensif ? "Tout est su ✓" : score + " / " + premiers));
+    box.appendChild(el("div", "mastery", '<div class="mastery-fill" style="width:' + (intensif ? 100 : pct) + '%"></div>'));
     const msg = pct >= 80 ? "Excellent 🎉" : pct >= 50 ? "Bien, continue !" : "À retravailler 💪";
-    box.appendChild(text("p", "muted", msg + " (premiers essais) — la progression a été enregistrée."));
+    if (intensif) {
+      box.appendChild(text("p", "", `Du premier coup : ${score} / ${premiers} · ${file.length} réponses au total pour tout savoir.`));
+      const difficiles = exercices
+        .map((e, i) => ({ e, rates: suivi[i].rates }))
+        .filter((d) => d.rates)
+        .sort((a, b) => b.rates - a.rates)
+        .slice(0, 10);
+      if (difficiles.length) {
+        const liste = el("div", "quiz-hardest");
+        liste.appendChild(text("h3", "", "Les plus difficiles"));
+        const ul = el("ul");
+        difficiles.forEach((d) => {
+          const li = el("li");
+          li.appendChild(text("span", "quiz-oublis", "×" + d.rates));
+          li.appendChild(document.createTextNode(" " + (d.e.resume || d.e.etiquette)));
+          ul.appendChild(li);
+        });
+        liste.appendChild(ul);
+        box.appendChild(liste);
+      }
+      box.appendChild(text("p", "muted", "Seuls les premiers essais comptent pour la révision espacée."));
+    } else {
+      box.appendChild(text("p", "muted", msg + " (premiers essais) — la progression a été enregistrée."));
+    }
     const actions = el("div", "quiz-actions");
     const back = text("a", "button primary", "Retour au menu");
     back.href = backUrl;

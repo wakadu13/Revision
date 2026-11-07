@@ -123,6 +123,7 @@
         <p class="muted quiz-set-desc">{{ l.resume.a_revoir }} à revoir · {{ l.resume.nouveaux_disponibles }} nouveau{{ l.resume.nouveaux_disponibles|pluralize:"x" }} disponible{{ l.resume.nouveaux_disponibles|pluralize }}</p>
         <span class="quiz-set-buttons">
           <a class="button small primary" href="{% url 'wiki:langue_play' l.nom %}?mode=quotidien">Session du jour</a>
+          <a class="button small" href="{% url 'wiki:langue_play' l.nom %}?mode=intensif" title="Tous les exercices ; ceux ratés reviennent jusqu'à être sus">Révision intensive</a>
           <a class="button small" href="{% url 'wiki:langue_menu' l.nom %}">Modes et statistiques</a>
         </span>
       </li>

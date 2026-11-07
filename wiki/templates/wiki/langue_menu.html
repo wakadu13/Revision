@@ -15,7 +15,7 @@
       <button class="button{% if forloop.first %} primary{% endif %}" type="submit" name="mode" value="{{ cle }}">{{ nom }}{% if forloop.first %} (recommandé : tout mélangé){% endif %}</button>
       {% endfor %}
     </div>
-    <label class="muted quiz-langue-taille">Exercices par session
+    <label class="muted quiz-langue-taille">Exercices par session (la révision intensive prend tout)
       <input type="number" name="n" min="1" max="200" value="{{ taille }}">
     </label>
   </form>
@@ -58,6 +58,7 @@
       <li><b>Entrelacement</b> : vocabulaire, conjugaison et grammaire sont mélangés ; un exercice raté revient quelques questions plus tard.</li>
       <li><b>Tolérance</b> : en vocabulaire, un accent oublié ou une faute de frappe compte comme « presque » ; en conjugaison et en grammaire, la réponse doit être exacte.</li>
       <li>Au plus {{ resume.nouveaux_disponibles }} nouveaux éléments restent à découvrir aujourd'hui (quota journalier) ; les révisions dues passent toujours en premier.</li>
+      <li><b>Révision intensive</b> (avant un examen) : tous les exercices, sans attendre leur échéance ; chaque exercice raté revient dans la session jusqu'à être réussi 2 fois de suite. Seule la première réponse compte pour la répétition espacée.</li>
     </ul>
   </details>
 </article>

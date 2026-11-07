@@ -6,6 +6,7 @@
   </summary>
   <div class="quiz-category-actions">
     <a class="button small primary" href="{% url 'wiki:langue_play' cat.langue %}?mode=quotidien&dossier={{ cat.nom|urlencode }}">Session du jour du dossier</a>
+    <a class="button small" href="{% url 'wiki:langue_play' cat.langue %}?mode=intensif&dossier={{ cat.nom|urlencode }}" title="Tous les exercices ; ceux ratés reviennent jusqu'à être sus">Révision intensive du dossier</a>
     <a class="button small" href="{% url 'wiki:langue_menu' cat.langue %}?dossier={{ cat.nom|urlencode }}">Modes et statistiques</a>
     {% if can_edit %}{% include "wiki/_quiz_supprimer_dossier.html" %}{% endif %}
   </div>
@@ -20,6 +21,7 @@
       {% if entry.set.noms_types %}<p class="muted quiz-set-desc">Cartes : {{ entry.set.noms_types|join:" · " }}</p>{% endif %}
       <span class="quiz-set-buttons">
         <a class="button small primary" href="{% url 'wiki:langue_play' cat.langue %}?mode=quotidien&amp;fichier={{ entry.set.id|urlencode }}">Réviser ce paquet</a>
+        <a class="button small" href="{% url 'wiki:langue_play' cat.langue %}?mode=intensif&amp;fichier={{ entry.set.id|urlencode }}" title="Tous les exercices ; ceux ratés reviennent jusqu'à être sus">Intensif</a>
         <a class="button small" href="{% url 'wiki:langue_menu' cat.langue %}?fichier={{ entry.set.id|urlencode }}">Modes et statistiques</a>
       </span>
       {% if can_edit %}{% include "wiki/_quiz_gerer.html" with set=entry.set %}{% endif %}

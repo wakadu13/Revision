@@ -87,6 +87,7 @@ def _payload(vault, item, st, now):
     p = {
         "set_id": item.set.id,
         "exo_id": exo.id,
+        "resume": exo.resume,
         "etiquette": exo.etiquette,
         "genre": exo.genre,
         "forme": exo.forme,
@@ -125,7 +126,7 @@ def play(request, langue):
     titre = f"{langues.MODES[mode]} · {langue}" + (f" · {sets[0].titre}" if fichier else f" · {dossier}" if dossier else "")
     return render(request, "wiki/langue_play.html", _ctx(
         request, langue=langue, titre=titre, mode=mode,
-        exercices=payload, count=len(payload),
+        exercices=payload, count=len(payload), intensif=mode == langues.INTENSIF,
         corriger_url=reverse("wiki:langue_corriger"), record_url=reverse("wiki:langue_record"),
         back_url=menu_url,
     ))
