@@ -46,9 +46,11 @@ VOCABULAIRE, CONJUGAISON, GRAMMAIRE = "vocabulaire", "conjugaison", "grammaire"
 GENRES = (VOCABULAIRE, CONJUGAISON, GRAMMAIRE)
 NOMS_GENRES = {VOCABULAIRE: "Vocabulaire", CONJUGAISON: "Conjugaison", GRAMMAIRE: "Grammaire"}
 
-# Modes de session : session du jour (tout mélangé), un seul genre, points faibles.
-QUOTIDIEN, FAIBLES = "quotidien", "faibles"
-MODES = {QUOTIDIEN: "Session du jour", **NOMS_GENRES, FAIBLES: "Points faibles"}
+# Modes de session : session du jour (tout mélangé), un seul genre, points faibles,
+# révision intensive (tout, jusqu'à tout savoir : avant un examen).
+QUOTIDIEN, FAIBLES, INTENSIF = "quotidien", "faibles", "intensif"
+MODES = {QUOTIDIEN: "Session du jour", **NOMS_GENRES, FAIBLES: "Points faibles", INTENSIF: "Révision intensive"}
+TAILLE_MAX_INTENSIF = 200
 
 # Quota par défaut de nouveaux éléments par jour : au-delà, la charge de
 # révisions des jours suivants devient difficile à tenir.
@@ -719,8 +721,53 @@ def entrelacer(items):
         dernier = g
 
 
+def session_intensive(sets, prog, now, hasard=random, limite=TAILLE_MAX_INTENSIF):
+    """Révision intensive : tous les exercices de la sélection, sans échéance, ni
+    quota de nouveautés, ni limite de facettes par élément.
+
+    Les facettes d'un même élément se suivent dans l'ordre (la carte qui fait
+    découvrir le mot d'abord), par tours : la 1re facette de chaque élément, puis
+    la 2e, etc., chaque tour mélangé. Au-delà de `limite` exercices, les éléments
+    les plus fragiles passent d'abord (oubliés, ratés, peu retenus, puis nouveaux).
+    """
+    par_entree = {}
+    for s in sets:
+        for exo in s.exercices:
+            par_entree.setdefault((s.id, exo.entree), []).append(ExoSession(s, exo, est_nouveau(prog.get((s.id, exo.id)))))
+
+    def fragilite(items):
+        stats = [prog.get((i.set.id, i.exo.id)) for i in items]
+        vus = [st for st in stats if st is not None and st.stabilite is not None]
+        if not vus:
+            return (1, 0, 1.0)  # jamais vu : après les éléments déjà travaillés
+        oublis = sum(st.oublis or 0 for st in vus) + sum(st.last_correct is False for st in vus)
+        return (0, -oublis, min(retention(st, now) for st in vus))
+
+    entrees = list(par_entree.values())
+    hasard.shuffle(entrees)
+    entrees.sort(key=fragilite)
+    retenues, total = [], 0
+    for items in entrees:
+        if total and total + len(items) > limite:
+            continue
+        # La facette sans prérequis (découverte) d'abord, puis les autres dans l'ordre du fichier.
+        retenues.append(sorted(items, key=lambda i: i.exo.prerequis is not None))
+        total += len(items)
+
+    session = []
+    for rang in range(max((len(items) for items in retenues), default=0)):
+        tour = [items[rang] for items in retenues if rang < len(items)]
+        hasard.shuffle(tour)
+        session += tour
+    for e in session:
+        if e.exo.forme == ORDRE:
+            e.melange = melanger_mots(len(e.exo.donnees["mots"]), hasard)
+    return session
+
+
 def construire_session(sets, prog, mode, n, now, hasard=random):
-    """Construit une session d'au plus `n` exercices.
+    """Construit une session d'au plus `n` exercices (révision intensive : voir
+    session_intensive, qui prend tout).
 
     1. révisions dues (échéance passée), les plus menacées d'oubli d'abord ;
     2. nouveautés débloquées, réparties à parts égales entre les genres, dans la
@@ -729,6 +776,8 @@ def construire_session(sets, prog, mode, n, now, hasard=random):
     4. entrelacement des genres.
     En mode « points faibles » : éléments souvent oubliés ou ratés la dernière fois.
     """
+    if mode == INTENSIF:
+        return session_intensive(sets, prog, now, hasard)
     revues, nouveaux, faibles = [], [], []
     for s in sets:
         for exo in s.exercices:

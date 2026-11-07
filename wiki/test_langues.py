@@ -189,6 +189,26 @@ class SessionTests(TestCase):
         self.assertEqual(st.oublis, 1)
         self.assertEqual(self.session(langues.FAIBLES, 10)[0].exo.id, "v1#rec")
 
+    def test_session_intensive(self):
+        # Tout, sans prérequis ni quota ni limite de facettes : 9 exercices.
+        self.set.nouveaux_par_jour = 1
+        ids = [e.exo.id for e in self.session(langues.INTENSIF, n=2)]
+        self.assertEqual(sorted(ids), sorted(e.id for e in self.set.exercices))
+        # La carte qui fait découvrir le mot passe avant ses autres facettes.
+        self.assertLess(ids.index("v1#rec"), ids.index("v1#prod"))
+        self.assertLess(ids.index("v1#rec"), ids.index("v1#ctx"))
+        # Déjà su et pas encore dû : revu quand même.
+        self.enregistrer("v1#rec", fsrs.FACILE)
+        self.assertIn("v1#rec", [e.exo.id for e in self.session(langues.INTENSIF)])
+        # Au-delà de la limite : les éléments fragiles (oubliés) d'abord.
+        self.enregistrer("g2", fsrs.BIEN)
+        self.enregistrer("g2", fsrs.A_REVOIR)
+        petite = langues.session_intensive([self.set], self.prog, self.now, limite=1)
+        self.assertEqual([e.exo.id for e in petite], ["g2"])
+        # Remise en ordre : mots mélangés comme dans les autres modes.
+        g1 = next(e for e in self.session(langues.INTENSIF) if e.exo.id == "g1")
+        self.assertNotEqual(g1.melange, sorted(g1.melange))
+
     def test_quota_de_nouveautes(self):
         self.set.nouveaux_par_jour = 3
         self.assertEqual(len(self.session()), 3)
@@ -246,6 +266,21 @@ class LangueViewTests(TestCase):
         # Les réponses des saisies ne sont pas envoyées au navigateur.
         self.assertNotIn("reponses", next(e for e in exos if e["forme"] == "saisie"))
         self.assertEqual(self.client.get("/qcm/langues/Anglais/jouer/?mode=xyz").status_code, 404)
+
+    def test_revision_intensive(self):
+        self.assertContains(self.client.get("/qcm/langues/Anglais/"), "Révision intensive")
+        index = self.client.get("/qcm/").content.decode()
+        self.assertIn("/qcm/langues/Anglais/jouer/?mode=intensif", index)
+        self.assertIn("/qcm/langues/Anglais/jouer/?mode=intensif&dossier=langues", index)
+        self.assertIn("mode=intensif&amp;fichier=langues/t", index)
+        response = self.client.get("/qcm/langues/Anglais/jouer/?mode=intensif&n=3")
+        self.assertEqual(len(response.context["exercices"]), 9)  # tout, malgré n=3
+        self.assertContains(response, 'data-mode="intensif"')
+        self.assertContains(response, "2 fois de suite")
+        self.assertEqual(response.context["exercices"][0]["resume"].split(" ")[0] != "", True)
+        paquet = self.client.get("/qcm/langues/Anglais/jouer/?mode=intensif&fichier=langues/t")
+        self.assertEqual(len(paquet.context["exercices"]), 9)
+        self.assertContains(self.client.get("/qcm/langues/Anglais/jouer/?mode=quotidien"), 'data-mode="normal"')
 
     def test_corriger_et_enregistrer(self):
         r = self.post("/qcm/langue/corriger/", {"set_id": "langues/t", "exo_id": "c1#I", "reponse": "is"}).json()

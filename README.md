@@ -195,7 +195,7 @@ dans les réglages de Claude) :
   cartes**, choisir la langue (anglais par défaut). Claude ajoute la
   traduction, une phrase d'exemple et la prononciation de chaque mot. Chaque
   envoi crée un **paquet à part** (un fichier de langue), révisable seul
-  (« Réviser ce paquet ») ou avec le reste de la langue. Types de cartes :
+  (« Réviser ce paquet ») ou avec le reste de la langue, ou en **révision intensive** (« Intensif »). Types de cartes :
   carte FR → EN, traduction à taper FR → EN, QCM FR → EN (le bon mot parmi
   ceux du paquet), phrase à compléter, carte EN → FR, traduction à taper
   EN → FR ; cochés par défaut : les trois premiers du français vers l'anglais
@@ -253,6 +253,10 @@ dans la barre latérale ou sur `/qcm/`.
   personne, remise en ordre de mots, correction d'erreurs, exercices entrelacés,
   réessai des erreurs dans la session, quota de 20 nouveautés par jour,
   tolérance aux accents/fautes de frappe en vocabulaire. Pages `/qcm/langues/<langue>/`.
+  **Révision intensive** (toute la langue, un dossier ou un paquet) : tous les
+  exercices sans attendre leur échéance, et chaque exercice raté revient dans la
+  session jusqu'à être réussi 2 fois de suite ; seule la première réponse compte
+  pour la répétition espacée.
 - **Prompts IA** : `prompts_ia/` contient un prompt prêt à copier-coller par
   type de carte (QCM, QCR, TROU, FLASHCARD, set mixte, vocabulaire, conjugaison,
   grammaire). Vérifier ensuite le fichier produit :
