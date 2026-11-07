@@ -17,6 +17,11 @@
         <span class="muted">{{ entry.set|length }} exercice{{ entry.set|length|pluralize }}</span>
       </div>
       {% if entry.set.description %}<p class="muted quiz-set-desc">{{ entry.set.description }}</p>{% endif %}
+      {% if entry.set.noms_types %}<p class="muted quiz-set-desc">Cartes : {{ entry.set.noms_types|join:" · " }}</p>{% endif %}
+      <span class="quiz-set-buttons">
+        <a class="button small primary" href="{% url 'wiki:langue_play' cat.langue %}?mode=quotidien&amp;fichier={{ entry.set.id|urlencode }}">Réviser ce paquet</a>
+        <a class="button small" href="{% url 'wiki:langue_menu' cat.langue %}?fichier={{ entry.set.id|urlencode }}">Modes et statistiques</a>
+      </span>
       {% if can_edit %}{% include "wiki/_quiz_gerer.html" with set=entry.set %}{% endif %}
     </li>
     {% endfor %}

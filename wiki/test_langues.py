@@ -64,6 +64,47 @@ class FacettesCorrectionTests(SimpleTestCase):
         self.assertEqual(s.exercices[1].prerequis, "v1#rec")
         self.assertEqual(s.id, "langues/t")
 
+    def test_types_de_cartes_choisis(self):
+        mots = [{"id": "v1", "mot": "to achieve", "traductions": ["réussir"], "exemple": "She [achieved] it.",
+                 "prononciation": "/əˈtʃiːv/"},
+                {"id": "v2", "mot": "a kitchen", "traductions": ["une cuisine"]},
+                {"id": "v3", "mot": "a job", "traductions": ["un emploi"]},
+                {"id": "v4", "mot": "to cook", "traductions": ["cuisiner"]}]
+        tous = ["decouverte", "production", "choix", "contexte", "reconnaissance", "traduction"]
+        s = langues.set_depuis_json({"langue": "Anglais", "exercices": tous, "vocabulaire": mots}, PurePosixPath("t.json"))
+        v1 = {e.id: e for e in s.exercices if e.entree == "v1"}
+        self.assertEqual(list(v1), ["v1#dec", "v1#prod", "v1#qcm", "v1#ctx", "v1#rec", "v1#trad"])
+        # La carte français → anglais fait découvrir le mot ; les autres attendent qu'elle soit réussie.
+        self.assertIsNone(v1["v1#dec"].prerequis)
+        self.assertTrue(all(e.prerequis == "v1#dec" for i, e in v1.items() if i != "v1#dec"))
+        self.assertEqual(v1["v1#dec"].donnees, {"recto": "réussir", "verso": "to achieve   /əˈtʃiːv/"})
+        self.assertEqual(v1["v1#dec"].etiquette, "Vocabulaire · carte (FR → EN)")
+        self.assertEqual(v1["v1#prod"].donnees["reponses"], ["to achieve"])
+        self.assertEqual(v1["v1#trad"].donnees["reponses"], ["réussir"])
+        qcm = v1["v1#qcm"].donnees
+        self.assertEqual(len(qcm["choix"]), 4)
+        self.assertEqual(qcm["choix"][qcm["reponses"][0]], "to achieve")
+        self.assertEqual(sorted(qcm["choix"]), ["a job", "a kitchen", "to achieve", "to cook"])
+        # Même ordre des choix à chaque chargement.
+        s2 = langues.set_depuis_json({"langue": "Anglais", "exercices": tous, "vocabulaire": mots}, PurePosixPath("t.json"))
+        self.assertEqual(s2.exercice("v1#qcm").donnees, qcm)
+        # Sans exemple, pas de phrase à compléter.
+        self.assertNotIn("v2#ctx", [e.id for e in s.exercices])
+        self.assertEqual(s.noms_types[0], "Carte FR → EN")
+
+        # Une seule sorte de carte : elle fait découvrir le mot.
+        s = langues.set_depuis_json({"langue": "Anglais", "exercices": ["production"], "vocabulaire": mots[:1]},
+                                    PurePosixPath("t.json"))
+        self.assertEqual([(e.id, e.prerequis) for e in s.exercices], [("v1#prod", None)])
+        # QCM impossible avec un seul mot dans le paquet.
+        s = langues.set_depuis_json({"langue": "Anglais", "exercices": ["choix", "production"], "vocabulaire": mots[:1]},
+                                    PurePosixPath("t.json"))
+        self.assertEqual([(e.id, e.prerequis) for e in s.exercices], [("v1#prod", None)])
+        with self.assertRaisesMessage(ValueError, "'exercices' doit lister"):
+            langues.set_depuis_json({"langue": "Anglais", "exercices": ["lecture"], "vocabulaire": mots}, PurePosixPath("t.json"))
+        # Sans clé « exercices » : comme avant.
+        self.assertEqual(set_test().types_vocabulaire, ["reconnaissance", "production", "contexte"])
+
     def test_erreurs_de_format(self):
         rel = PurePosixPath("t.json")
         with self.assertRaisesMessage(ValueError, "'traductions' manquante"):

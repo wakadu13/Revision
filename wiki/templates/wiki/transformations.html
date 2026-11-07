@@ -1,9 +1,9 @@
 {% extends "wiki/base.html" %}
-{% block title %}Cours transformés par Claude{% endblock %}
+{% block title %}Travaux de Claude{% endblock %}
 {% block head %}{% if en_cours %}<meta http-equiv="refresh" content="8">{% endif %}{% endblock %}
 {% block content %}
 <article class="note">
-  <h1 class="note-title">Cours transformés par Claude</h1>
+  <h1 class="note-title">Travaux de Claude</h1>
   {% if not claude_dispo %}
   <div class="callout" data-callout="warning">
     <div class="callout-title">Pas encore de clé d'API Claude</div>
@@ -13,8 +13,8 @@
     </div>
   </div>
   {% endif %}
-  <p>Chaque cours importé (PDF ou LaTeX) devient une page du wiki : plan du cours, formules, encadrés pour les
-    définitions et théorèmes. {% if en_cours %}<b>Transformation en cours</b> : cette page se met à jour toute seule
+  <p>Cours importés (PDF ou LaTeX) transformés en pages, QCM écrits d'après un cours et paquets de vocabulaire
+    préparés d'après vos mots. {% if en_cours %}<b>Transformation en cours</b> : cette page se met à jour toute seule
     (compter de quelques dizaines de secondes à quelques minutes par cours).{% endif %}</p>
   {% if transformations %}
   <ul class="claude-liste">
@@ -22,10 +22,11 @@
     <li class="claude-ligne" data-statut="{{ t.statut }}">
       <div class="claude-titre">
         <span class="claude-etat">{% if t.statut == "fait" %}✓{% elif t.statut == "erreur" %}✗{% elif t.statut == "en_cours" %}⏳{% else %}…{% endif %}</span>
+        <span class="claude-genre">{{ t.get_genre_display }}</span>
         <b>{{ t.nom }}</b>
         <span class="muted">· {{ t.get_statut_display }}{% if t.statut == "en_cours" and t.debut %} depuis {{ t.debut|timesince }}{% endif %}</span>
       </div>
-      {% if t.url_page %}<p>Page : <a href="{{ t.url_page }}">{{ t.page_ecrite }}</a></p>{% endif %}
+      {% if t.url_page %}<p><a class="button small primary" href="{{ t.url_page }}">{{ t.lien }}</a> <span class="muted">{{ t.page_ecrite }}</span></p>{% endif %}
       {% if t.message %}<p class="{% if t.statut == 'erreur' %}claude-erreur{% else %}muted{% endif %}">{{ t.message }}</p>{% endif %}
       <p class="muted claude-details">{{ t.cree_le|date:"d/m/Y H:i" }}{% if t.demande_par %} · {{ t.demande_par }}{% endif %}
         {% if t.cout is not None %} · {{ t.modele }} · environ {{ t.cout|floatformat:2 }} $ ({{ t.jetons_entree }} jetons lus, {{ t.jetons_sortie }} écrits){% endif %}</p>

@@ -231,12 +231,17 @@ def traiter_en_attente():
 
 
 def traiter(t):
-    """Fait une transformation et enregistre son résultat (page écrite, ou erreur)."""
+    """Fait un travail et enregistre son résultat (fichier écrit, ou erreur)."""
     t.modele = modele()
     try:
-        texte, avertissement, usage = _transformer(t)
+        if t.genre == Transformation.QCM:
+            t.page_ecrite, avertissement, usage = _generer_qcm(t)
+        elif t.genre == Transformation.VOCABULAIRE:
+            t.page_ecrite, avertissement, usage = _generer_vocabulaire(t)
+        else:
+            texte, avertissement, usage = _transformer(t)
+            t.page_ecrite = _ecrire(t, texte, avertissement)
         t.jetons_entree, t.jetons_sortie = usage
-        t.page_ecrite = _ecrire(t, texte, avertissement)
         t.statut = Transformation.FAIT
         t.message = avertissement or ""
     except Echec as e:
@@ -258,42 +263,28 @@ def _client():
     return anthropic.Anthropic(api_key=cle(), max_retries=3)
 
 
-def _transformer(t):
-    """(texte de la page, avertissement ou None, (jetons en entrée, en sortie))."""
+def _demande(t, systeme, contenu, *, schema=None, max_tokens=MAX_TOKENS):
+    """Requête à l'API : réponse en continu, effort réglable, repli automatique en cas de refus."""
+    output_config = {"effort": os.environ.get("WIKI_CLAUDE_EFFORT", "").strip() or "medium"}
+    if schema is not None:
+        output_config["format"] = {"type": "json_schema", "schema": schema}
+    demande = {
+        "model": t.modele,
+        "max_tokens": max_tokens,
+        "system": systeme,
+        "output_config": output_config,
+        "messages": [{"role": "user", "content": contenu}],
+    }
+    if t.modele in REPLI:
+        demande.update(betas=[BETA_REPLI], fallbacks="default")
+    return demande
+
+
+def _appeler(client, demande):
+    """Envoie la requête ; les erreurs de l'API deviennent des Echec lisibles."""
     import anthropic
 
-    if not disponible():
-        raise Echec("Aucune clé d'API : ajoutez-la sur la page « Réglages de Claude ».")
-    client = _client()
-    fichier_id = None
     try:
-        if t.texte_source:
-            document = {"type": "text", "text": f"Source LaTeX du cours « {t.nom} » :\n\n{t.texte_source}"}
-        else:
-            vault = get_vault()
-            pdf = vault.attachments.get(t.source.lower())
-            if pdf is None or not (vault.root / pdf.path).is_file():
-                raise Echec("Le PDF n'est plus dans le wiki.")
-            donnees = (vault.root / pdf.path).read_bytes()
-            if len(donnees) > PDF_EN_LIGNE_MAX:
-                fichier_id = client.files.upload(file=(pdf.path.name, donnees, "application/pdf")).id
-                source = {"type": "file", "file_id": fichier_id}
-            else:
-                source = {"type": "base64", "media_type": "application/pdf",
-                          "data": base64.standard_b64encode(donnees).decode("ascii")}
-            document = {"type": "document", "source": source, "title": pdf.path.name}
-        demande = {
-            "model": t.modele,
-            "max_tokens": MAX_TOKENS,
-            "system": CONSIGNE,
-            "output_config": {"effort": os.environ.get("WIKI_CLAUDE_EFFORT", "").strip() or "medium"},
-            "messages": [{"role": "user", "content": [
-                document,
-                {"type": "text", "text": f"Transforme ce cours ({t.nom}) en page du wiki."},
-            ]}],
-        }
-        if t.modele in REPLI:
-            demande.update(betas=[BETA_REPLI], fallbacks="default")
         with client.beta.messages.stream(**demande) as flux:
             message = flux.get_final_message()
     except anthropic.AuthenticationError:
@@ -311,6 +302,54 @@ def _transformer(t):
         raise Echec(f"Service de Claude indisponible (erreur {e.status_code}) : relancez plus tard.") from None
     except anthropic.APIConnectionError:
         raise Echec("Serveur de Claude injoignable depuis le wiki : relancez plus tard.") from None
+    if message.stop_reason == "refusal":
+        raise Echec("Claude a refusé ce travail.")
+    return message
+
+
+def _usage(message):
+    return (message.usage.input_tokens or 0, message.usage.output_tokens or 0)
+
+
+def _texte_reponse(message):
+    return "".join(b.text for b in message.content if b.type == "text").strip()
+
+
+def _client_pret():
+    if not disponible():
+        raise Echec("Aucune clé d'API : ajoutez-la sur la page « Réglages de Claude ».")
+    return _client()
+
+
+def _transformer(t):
+    """(texte de la page, avertissement ou None, (jetons en entrée, en sortie))."""
+    import anthropic
+
+    client = _client_pret()
+    fichier_id = None
+    try:
+        if t.texte_source:
+            document = {"type": "text", "text": f"Source LaTeX du cours « {t.nom} » :\n\n{t.texte_source}"}
+        else:
+            vault = get_vault()
+            pdf = vault.attachments.get(t.source.lower())
+            if pdf is None or not (vault.root / pdf.path).is_file():
+                raise Echec("Le PDF n'est plus dans le wiki.")
+            donnees = (vault.root / pdf.path).read_bytes()
+            if len(donnees) > PDF_EN_LIGNE_MAX:
+                try:
+                    fichier_id = client.files.upload(file=(pdf.path.name, donnees, "application/pdf")).id
+                except anthropic.APIError:
+                    raise Echec("Envoi du PDF à Anthropic impossible : relancez plus tard.") from None
+                source = {"type": "file", "file_id": fichier_id}
+            else:
+                source = {"type": "base64", "media_type": "application/pdf",
+                          "data": base64.standard_b64encode(donnees).decode("ascii")}
+            document = {"type": "document", "source": source, "title": pdf.path.name}
+        message = _appeler(client, _demande(t, CONSIGNE, [
+            document,
+            {"type": "text", "text": f"Transforme ce cours ({t.nom}) en page du wiki."},
+        ]))
     finally:
         if fichier_id:
             try:
@@ -318,17 +357,11 @@ def _transformer(t):
             except anthropic.APIError:
                 log.warning("Fichier %s non supprimé de l'API Files", fichier_id)
 
-    usage = (message.usage.input_tokens or 0, message.usage.output_tokens or 0)
-    if message.stop_reason == "refusal":
-        raise Echec("Claude a refusé de transformer ce document.")
-    texte = "".join(b.text for b in message.content if b.type == "text").strip()
-    texte = _sans_cadre(texte)
+    texte = _sans_cadre(_texte_reponse(message))
     if not texte:
         raise Echec("Claude n'a renvoyé aucun texte.")
-    avertissement = None
-    if message.stop_reason == "max_tokens":
-        avertissement = "Cours trop long : la fin de la page manque."
-    return texte, avertissement, usage
+    avertissement = "Cours trop long : la fin de la page manque." if message.stop_reason == "max_tokens" else None
+    return texte, avertissement, _usage(message)
 
 
 def _sans_cadre(texte):
@@ -367,3 +400,268 @@ def _ecrire(t, texte, avertissement):
     cible.parent.mkdir(parents=True, exist_ok=True)
     cible.write_text(texte + "\n", encoding="utf-8", newline="\n")
     return page.as_posix()
+
+
+# -- QCM et vocabulaire générés -------------------------------------------------------------------
+
+DOSSIER_QCM = "QCM"
+MAX_TOKENS_GENERATION = 64000
+NOMBRES_QUESTIONS = (10, 20, 30, 40)
+MAX_MOTS = 150
+# Cartes cochées d'office pour un paquet de vocabulaire : du français vers la langue apprise.
+CARTES_PAR_DEFAUT = ("decouverte", "production", "contexte")
+CATEGORIE_GENEREE = "Générés"
+DOSSIER_VOCABULAIRE = "Vocabulaire"
+
+CONSIGNE_QCM = """Tu écris des questions de révision à partir d'un cours, pour qu'un étudiant vérifie \
+qu'il le connaît.
+
+- Les questions sont fidèles au cours : rien qui n'y figure pas, aucune erreur. Elles couvrent tout le \
+cours, des définitions aux applications, sans poser deux fois la même chose.
+- Types (champ type) : QCM, une seule bonne réponse parmi 4 choix ; QCR, 2 ou 3 bonnes réponses parmi \
+4 ou 5 choix ; TROU, une phrase du cours où un mot clé est remplacé par _____ ; QRC, une question à \
+réponse courte (un mot, un nombre, une formule courte) ; FLASHCARD, une notion au recto, son explication \
+au verso. Surtout des QCM, puis quelques QCR, TROU, QRC et FLASHCARD.
+- choix : les choix (QCM et QCR ; sinon liste vide). reponses : les indices des bonnes réponses, à partir \
+de 0 (QCM et QCR ; sinon liste vide). reponses_texte : les réponses acceptées, variantes d'écriture \
+comprises (TROU et QRC ; sinon liste vide). verso : le dos de la carte (FLASHCARD ; sinon vide). \
+consigne : une précision pour une QRC, sinon vide. explication : une phrase qui justifie la réponse.
+- Mauvais choix plausibles, de longueur proche de la bonne réponse ; pas de « toutes les réponses » ni \
+d'« aucune ». Varie la place de la bonne réponse.
+- Formules en LaTeX entre $...$.
+- titre : un nom court pour le QCM ; description : une phrase sur ce qu'il couvre.
+Écris dans la langue du cours."""
+
+_TEXTES = {"type": "array", "items": {"type": "string"}}
+SCHEMA_QCM = {
+    "type": "object",
+    "properties": {
+        "titre": {"type": "string"},
+        "description": {"type": "string"},
+        "questions": {"type": "array", "items": {
+            "type": "object",
+            "properties": {
+                "type": {"type": "string", "enum": ["QCM", "QCR", "TROU", "QRC", "FLASHCARD"]},
+                "question": {"type": "string"},
+                "choix": _TEXTES,
+                "reponses": {"type": "array", "items": {"type": "integer"}},
+                "reponses_texte": _TEXTES,
+                "consigne": {"type": "string"},
+                "verso": {"type": "string"},
+                "explication": {"type": "string"},
+            },
+            "required": ["type", "question", "choix", "reponses", "reponses_texte", "consigne", "verso", "explication"],
+            "additionalProperties": False,
+        }},
+    },
+    "required": ["titre", "description", "questions"],
+    "additionalProperties": False,
+}
+
+CONSIGNE_VOCABULAIRE = """Tu prépares des fiches de vocabulaire en {langue} pour un francophone qui révise.
+
+On te donne une liste de mots ou d'expressions, un par ligne, en français ou en {langue}, parfois avec \
+leur traduction. Pour chaque ligne, dans l'ordre, une fiche :
+- mot : le mot en {langue}, sous sa forme de dictionnaire. En anglais : « a » ou « an » devant les noms \
+dénombrables, « to » devant les verbes.
+- traductions : une à trois traductions françaises usuelles, avec l'article pour les noms (« un emploi »).
+- variantes : d'autres façons correctes de dire le mot en {langue} (orthographe britannique ou \
+américaine, synonyme très proche), sinon liste vide.
+- exemple : une phrase simple et naturelle en {langue} où le mot à retrouver est entre crochets, comme \
+« She [achieved] her goal. ».
+- exemple_traduction : la traduction française de l'exemple.
+- prononciation : la prononciation en alphabet phonétique international, entre barres obliques.
+- note : un piège, un registre, un faux ami ou une construction utile, sinon vide.
+Ignore les lignes qui ne sont pas des mots (titres, numéros). Une fiche par mot.
+titre : un nom court pour le paquet (le thème des mots) ; description : une phrase."""
+
+SCHEMA_VOCABULAIRE = {
+    "type": "object",
+    "properties": {
+        "titre": {"type": "string"},
+        "description": {"type": "string"},
+        "vocabulaire": {"type": "array", "items": {
+            "type": "object",
+            "properties": {
+                "mot": {"type": "string"},
+                "traductions": _TEXTES,
+                "variantes": _TEXTES,
+                "exemple": {"type": "string"},
+                "exemple_traduction": {"type": "string"},
+                "prononciation": {"type": "string"},
+                "note": {"type": "string"},
+            },
+            "required": ["mot", "traductions", "variantes", "exemple", "exemple_traduction", "prononciation", "note"],
+            "additionalProperties": False,
+        }},
+    },
+    "required": ["titre", "description", "vocabulaire"],
+    "additionalProperties": False,
+}
+
+
+def dossier_valide(nom):
+    """Nom de dossier sous QCM/ (un seul niveau), ou None s'il est invalide."""
+    nom = " ".join(str(nom).split())
+    if not nom or "/" in nom or "\\" in nom or nom.startswith(".") or INVALID_NAME_RE.search(nom):
+        return None
+    return nom
+
+
+def demander_qcm(*, note=None, texte="", nombre=20, categorie="", titre="", utilisateur=""):
+    """QCM généré d'après une note du wiki (``note``) ou un texte collé."""
+    source = note.path.as_posix() if note is not None else "Texte collé"
+    if not categorie:
+        categorie = (note.path.parent.name if note is not None else "") or CATEGORIE_GENEREE
+    t = Transformation.objects.create(
+        genre=Transformation.QCM, source=source, texte_source="" if note is not None else texte,
+        page=f"{DOSSIER_QCM}/{categorie}", demande_par=utilisateur,
+        options={"nombre": nombre, "categorie": categorie, "titre": titre,
+                 "nom": note.title if note is not None else ""})
+    lancer()
+    return t
+
+
+def demander_vocabulaire(*, mots, langue="Anglais", types=(), dossier="", titre="", utilisateur=""):
+    """Paquet de vocabulaire (un fichier de langue à lui) d'après une liste de mots collée."""
+    dossier = dossier or DOSSIER_VOCABULAIRE
+    t = Transformation.objects.create(
+        genre=Transformation.VOCABULAIRE, source=titre or f"Vocabulaire ({langue})", texte_source=mots,
+        page=f"{DOSSIER_QCM}/{dossier}", demande_par=utilisateur,
+        options={"langue": langue, "exercices": list(types), "dossier": dossier, "titre": titre})
+    lancer()
+    return t
+
+
+def _json_reponse(message, trop_long):
+    import json
+
+    if message.stop_reason == "max_tokens":
+        raise Echec(trop_long)
+    try:
+        data = json.loads(_texte_reponse(message))
+    except ValueError:
+        raise Echec("Réponse de Claude illisible : relancez.") from None
+    if not isinstance(data, dict):
+        raise Echec("Réponse de Claude illisible : relancez.")
+    return data
+
+
+def _sans_vides(o):
+    return {k: v for k, v in o.items() if v not in ("", [], None)}
+
+
+def _chemin_libre(dossier, titre, defaut):
+    """QCM/<dossier>/<titre en minuscules>.json, avec « -2 », « -3 »… si le nom est pris."""
+    from django.utils.text import slugify
+
+    racine = get_vault().root
+    base = (slugify(titre) or defaut)[:60]
+    for i in range(1, 1000):
+        rel = PurePosixPath(DOSSIER_QCM, dossier, f"{base}.json" if i == 1 else f"{base}-{i}.json")
+        if not (racine / rel).exists():
+            return rel
+    raise Echec("Aucun nom de fichier libre.")
+
+
+def _enregistrer_json(rel, donnees):
+    import json
+
+    cible = get_vault().root / rel
+    if not cible.resolve().is_relative_to(get_vault().root.resolve()):
+        raise Echec("Dossier invalide.")
+    cible.parent.mkdir(parents=True, exist_ok=True)
+    cible.write_text(json.dumps(donnees, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
+
+
+def _generer_qcm(t):
+    """(chemin du set écrit, avertissement ou None, usage)."""
+    from . import quiz
+
+    options = t.options or {}
+    categorie = dossier_valide(options.get("categorie", "")) or CATEGORIE_GENEREE
+    nombre = options.get("nombre") if options.get("nombre") in NOMBRES_QUESTIONS else 20
+    if t.texte_source:
+        cours, nom = t.texte_source, "texte collé"
+    else:
+        fichier = get_vault().root / t.source
+        if not fichier.is_file():
+            raise Echec("La page du cours n'est plus dans le wiki.")
+        cours, nom = fichier.read_text(encoding="utf-8"), options.get("nom") or PurePosixPath(t.source).stem
+    client = _client_pret()
+    message = _appeler(client, _demande(t, CONSIGNE_QCM, [
+        {"type": "text", "text": f"Cours « {nom} » :\n\n{cours}"},
+        {"type": "text", "text": f"Écris {nombre} questions sur ce cours."},
+    ], schema=SCHEMA_QCM, max_tokens=MAX_TOKENS_GENERATION))
+    data = _json_reponse(message, "Réponse trop longue : demandez moins de questions.")
+
+    questions, ecartees = [], 0
+    for i, q in enumerate(data.get("questions") or [], start=1):
+        q = _sans_vides(q if isinstance(q, dict) else {})
+        q["id"] = f"ia{i:03d}"
+        try:
+            quiz.question_depuis_json(q, i, "question")
+        except ValueError:
+            ecartees += 1
+            continue
+        questions.append(q)
+    if not questions:
+        raise Echec("Claude n'a renvoyé aucune question utilisable : relancez.")
+    titre = str(options.get("titre") or data.get("titre") or nom).strip()
+    set_json = {"titre": titre, "description": str(data.get("description", "")).strip(),
+                "genere_par": f"Claude ({t.modele})", "questions": questions}
+    rel = _chemin_libre(categorie, titre, "qcm")
+    try:
+        quiz.set_depuis_json(set_json, rel)
+    except ValueError as e:
+        raise Echec(f"QCM invalide : {e}") from None
+    _enregistrer_json(rel, set_json)
+    avertissement = f"{ecartees} question{'s' if ecartees > 1 else ''} mal formée{'s' if ecartees > 1 else ''} écartée{'s' if ecartees > 1 else ''}." if ecartees else None
+    return rel.as_posix(), avertissement, _usage(message)
+
+
+def _generer_vocabulaire(t):
+    """(chemin du paquet écrit, avertissement ou None, usage)."""
+    from django.utils.text import slugify
+
+    from . import langues
+
+    options = t.options or {}
+    langue = str(options.get("langue") or "Anglais").strip()
+    dossier = dossier_valide(options.get("dossier", "")) or DOSSIER_VOCABULAIRE
+    types = [x for x in options.get("exercices") or [] if x in langues.TYPES_VOCABULAIRE] or list(langues.VOCABULAIRE_PAR_DEFAUT)
+    client = _client_pret()
+    message = _appeler(client, _demande(t, CONSIGNE_VOCABULAIRE.format(langue=langue.lower()), [
+        {"type": "text", "text": f"Mots à préparer en {langue.lower()} :\n\n{t.texte_source}"},
+    ], schema=SCHEMA_VOCABULAIRE, max_tokens=MAX_TOKENS_GENERATION))
+    data = _json_reponse(message, "Réponse trop longue : envoyez moins de mots à la fois.")
+
+    titre = str(options.get("titre") or data.get("titre") or f"Vocabulaire ({langue})").strip()
+    prefixe = (slugify(titre) or "voc")[:30]
+    fiches, vus = [], set()
+    for v in data.get("vocabulaire") or []:
+        v = _sans_vides(v if isinstance(v, dict) else {})
+        mot, trads = str(v.get("mot", "")).strip(), v.get("traductions") or []
+        if not mot or not trads or mot.lower() in vus:
+            continue
+        vus.add(mot.lower())
+        fiches.append({"id": f"{prefixe}-{len(fiches) + 1:03d}", **v})
+    if not fiches:
+        raise Echec("Claude n'a renvoyé aucun mot utilisable : vérifiez la liste et relancez.")
+    paquet = {
+        "langue": langue,
+        "titre": titre,
+        "description": str(data.get("description", "")).strip(),
+        "genere_par": f"Claude ({t.modele})",
+        "exercices": types,
+        "vocabulaire": fiches,
+    }
+    if langues.abreviation(langue) == "EN":
+        paquet["particules_optionnelles"] = ["to", "a", "an", "the"]
+    rel = _chemin_libre(dossier, titre, "vocabulaire")
+    try:
+        langues.set_depuis_json(paquet, rel)
+    except ValueError as e:
+        raise Echec(f"Paquet invalide : {e}") from None
+    _enregistrer_json(rel, paquet)
+    return rel.as_posix(), None, _usage(message)

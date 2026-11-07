@@ -257,6 +257,7 @@ d'une même langue sont regroupés. Exemples complets :
 | `particules_optionnelles` | mots facultatifs en tête de réponse (« achieve » accepté pour « to achieve ») |
 | `caracteres_speciaux` | boutons d'insertion sous le champ (ex. `["á", "ñ", "¿"]`) |
 | `nouveaux_par_jour` | quota de nouveautés par jour (défaut 20) |
+| `exercices` | types de cartes de vocabulaire, parmi `decouverte` (carte FR → langue), `production` (traduction à taper FR → langue), `choix` (QCM : le bon mot parmi ceux du fichier), `contexte` (phrase à compléter), `reconnaissance` (carte langue → FR), `traduction` (traduction à taper langue → FR). La première de la liste, dans cet ordre, fait découvrir le mot. Absent : `["reconnaissance", "production", "contexte"]` |
 
 Les `id` servent au suivi : garde-les **stables** et uniques. Des prompts prêts
 à l'emploi pour chaque type sont dans `prompts_ia/` (à la racine du projet).

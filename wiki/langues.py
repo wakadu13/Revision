@@ -32,6 +32,7 @@ from __future__ import annotations
 
 import random
 import re
+import zlib
 from collections import deque
 from dataclasses import dataclass, field
 from datetime import timedelta
@@ -99,9 +100,15 @@ class SetLangue:
     caracteres_speciaux: list[str] = field(default_factory=list)  # boutons sous le champ de saisie
     nouveaux_par_jour: int | None = None
     path: PurePosixPath | None = None
+    types_vocabulaire: list[str] = field(default_factory=list)  # cartes de vocabulaire du paquet
 
     def __len__(self):
         return len(self.exercices)
+
+    @property
+    def noms_types(self):
+        """Types de cartes de vocabulaire, en clair (« Carte FR → EN »…)."""
+        return [nom_type(t, self.langue) for t in self.types_vocabulaire]
 
     def exercice(self, exo_id):
         return next((e for e in self.exercices if e.id == exo_id), None)
@@ -190,6 +197,117 @@ def mots_a_ordonner(phrase: str) -> list[str]:
     return mots
 
 
+# Types de cartes de vocabulaire, choisis par fichier (clé « exercices ») :
+# L = langue apprise, M = langue maternelle.
+RECONNAISSANCE = "reconnaissance"  # carte L → M
+DECOUVERTE = "decouverte"          # carte M → L
+PRODUCTION = "production"          # traduction à taper M → L
+TRADUCTION = "traduction"          # traduction à taper L → M
+CHOIX_MOT = "choix"                # QCM M → L : le bon mot parmi ceux du paquet
+CONTEXTE = "contexte"              # phrase d'exemple à compléter
+TYPES_VOCABULAIRE = {
+    DECOUVERTE: "Carte {M} → {L}",
+    PRODUCTION: "Traduction à taper {M} → {L}",
+    CHOIX_MOT: "QCM {M} → {L} (choisir le bon mot)",
+    CONTEXTE: "Phrase à compléter (en {langue})",
+    RECONNAISSANCE: "Carte {L} → {M}",
+    TRADUCTION: "Traduction à taper {L} → {M}",
+}
+# Sans clé « exercices » : le fonctionnement d'origine.
+VOCABULAIRE_PAR_DEFAUT = [RECONNAISSANCE, PRODUCTION, CONTEXTE]
+# La première carte retenue (dans cet ordre) fait découvrir le mot ; les autres
+# ne viennent qu'une fois celle-ci réussie.
+ORDRE_DECOUVERTE = [DECOUVERTE, RECONNAISSANCE, CHOIX_MOT, PRODUCTION, TRADUCTION, CONTEXTE]
+SUFFIXES = {RECONNAISSANCE: "rec", DECOUVERTE: "dec", PRODUCTION: "prod", TRADUCTION: "trad",
+            CHOIX_MOT: "qcm", CONTEXTE: "ctx"}
+
+
+def types_vocabulaire(data, rel="") -> list[str]:
+    """Types de cartes de vocabulaire d'un fichier (clé « exercices »), validés."""
+    valeur = data.get("exercices")
+    if valeur is None:
+        return list(VOCABULAIRE_PAR_DEFAUT)
+    types = _textes(valeur)
+    inconnus = [t for t in types if t not in TYPES_VOCABULAIRE]
+    if inconnus or not types:
+        raise ValueError(f"{rel} : 'exercices' doit lister des types parmi {', '.join(TYPES_VOCABULAIRE)}.")
+    return types
+
+
+def nom_type(t, langue, maternelle="Français") -> str:
+    return TYPES_VOCABULAIRE[t].format(L=abreviation(langue), M=abreviation(maternelle), langue=langue.lower())
+
+
+def _distracteurs(id_, mot, autres_mots, n=3):
+    """Choix du QCM : le mot et jusqu'à `n` autres mots du paquet, dans un ordre
+    stable (le même à chaque chargement). Renvoie (choix, indice du bon mot)."""
+    hasard = random.Random(zlib.crc32(id_.encode("utf-8")))
+    autres = sorted({m for m in autres_mots if m.strip().lower() != mot.strip().lower()})
+    choix = hasard.sample(autres, min(n, len(autres))) + [mot]
+    hasard.shuffle(choix)
+    return choix, choix.index(mot)
+
+
+def _facettes_vocabulaire(id_, mot, trads, o, types, langue, abr_l, abr_m, autres_mots):
+    """Exercices d'un mot selon les types de cartes choisis."""
+    trad = ", ".join(trads)
+    exemple = _texte(o.get("exemple"))
+    ex_trad = _texte(o.get("exemple_traduction"))
+    prononciation = _texte(o.get("prononciation"))
+    reponses = [mot] + _textes(o.get("variantes"))
+    avec_prononciation = f"{mot}   {prononciation}" if prononciation else mot
+
+    details = []
+    if exemple:
+        d = f"Ex. : « {_sans_crochets(exemple)} »"
+        if ex_trad:
+            d += f" = « {ex_trad} »"
+        details.append(d)
+    details += [_texte(o[c]) for c in ("note", "explication") if _texte(o.get(c))]
+
+    troue = trouer(exemple)
+    possibles = [t for t in types
+                 if not (t == CONTEXTE and not troue) and not (t == CHOIX_MOT and not autres_mots)]
+    entree = next((t for t in ORDRE_DECOUVERTE if t in possibles), None)
+    facettes = []
+    for t in possibles:
+        exo_id = f"{id_}#{SUFFIXES[t]}"
+        prerequis = None if t == entree else f"{id_}#{SUFFIXES[entree]}"
+        commun = {"entree": id_, "genre": VOCABULAIRE, "details": list(details), "prerequis": prerequis}
+        if t == RECONNAISSANCE:
+            facettes.append(Exercice(id=exo_id, etiquette=f"Vocabulaire · reconnaissance ({abr_l} → {abr_m})",
+                                     resume=f"{mot} → {trad}", forme=CARTE,
+                                     donnees={"recto": avec_prononciation, "verso": trad}, **commun))
+        elif t == DECOUVERTE:
+            facettes.append(Exercice(id=exo_id, etiquette=f"Vocabulaire · carte ({abr_m} → {abr_l})",
+                                     resume=f"{trad} → {mot}", forme=CARTE,
+                                     donnees={"recto": trad, "verso": avec_prononciation}, **commun))
+        elif t == PRODUCTION:
+            facettes.append(Exercice(id=exo_id, etiquette=f"Vocabulaire · production ({abr_m} → {abr_l})",
+                                     resume=f"{trad} → {mot}", forme=SAISIE,
+                                     donnees=_saisie(f"Comment dit-on « {trad} » en {langue.lower()} ?", reponses, tolerant=True),
+                                     **commun))
+        elif t == TRADUCTION:
+            facettes.append(Exercice(id=exo_id, etiquette=f"Vocabulaire · compréhension ({abr_l} → {abr_m})",
+                                     resume=f"{mot} → {trad}", forme=SAISIE,
+                                     donnees=_saisie(f"Que veut dire « {mot} » ?", trads, tolerant=True), **commun))
+        elif t == CHOIX_MOT:
+            choix, bon = _distracteurs(id_, mot, autres_mots)
+            facettes.append(Exercice(id=exo_id, etiquette=f"Vocabulaire · QCM ({abr_m} → {abr_l})",
+                                     resume=f"{trad} → {mot}", forme=CHOIX,
+                                     donnees={"enonce": f"Comment dit-on « {trad} » en {langue.lower()} ?",
+                                              "choix": choix, "reponses": [bon], "multiple": False},
+                                     **commun))
+        elif t == CONTEXTE:
+            phrase, attendu = troue
+            facettes.append(Exercice(id=exo_id, etiquette="Vocabulaire · en contexte",
+                                     resume=f"{mot} (en contexte)", forme=SAISIE,
+                                     donnees=_saisie(f"Complète : {phrase}\n(indice : {trad})",
+                                                     [a.strip() for a in attendu.split("|")], tolerant=True),
+                                     **commun))
+    return facettes
+
+
 def set_depuis_json(data, rel: PurePosixPath) -> SetLangue:
     """Construit un fichier de langue et ses facettes. Lève ValueError si malformé."""
     nom = rel.name
@@ -201,7 +319,13 @@ def set_depuis_json(data, rel: PurePosixPath) -> SetLangue:
     exercices: list[Exercice] = []
 
     # --- Vocabulaire ---
-    for i, v in enumerate(_section(data, "vocabulaire", rel), start=1):
+    types = types_vocabulaire(data, rel)
+    entrees = _section(data, "vocabulaire", rel)
+    tous_les_mots = []
+    for i, v in enumerate(entrees, start=1):
+        o = _objet(v, f"{rel} » vocabulaire #{i}")
+        tous_les_mots.append(_requis(o, "mot", f"{rel} » vocabulaire #{i}"))
+    for i, v in enumerate(entrees, start=1):
         contexte = f"{rel} » vocabulaire #{i}"
         o = _objet(v, contexte)
         mot = _requis(o, "mot", contexte)
@@ -209,51 +333,10 @@ def set_depuis_json(data, rel: PurePosixPath) -> SetLangue:
         if not trads:
             raise ValueError(f"{contexte} : clé 'traductions' manquante ou vide.")
         id_ = _texte(o["id"]) if "id" in o else f"voc{i}"
-        trad = ", ".join(trads)
-        exemple = _texte(o.get("exemple"))
-        ex_trad = _texte(o.get("exemple_traduction"))
-        prononciation = _texte(o.get("prononciation"))
-        reponses = [mot] + _textes(o.get("variantes"))
-
-        details = []
-        if exemple:
-            d = f"Ex. : « {_sans_crochets(exemple)} »"
-            if ex_trad:
-                d += f" = « {ex_trad} »"
-            details.append(d)
-        details += [_texte(o[c]) for c in ("note", "explication") if _texte(o.get(c))]
-
-        id_rec = f"{id_}#rec"
-        exercices.append(Exercice(
-            id=id_rec, entree=id_, genre=VOCABULAIRE,
-            etiquette=f"Vocabulaire · reconnaissance ({abr_l} → {abr_m})",
-            resume=f"{mot} → {trad}",
-            forme=CARTE,
-            donnees={"recto": f"{mot}   {prononciation}" if prononciation else mot, "verso": trad},
-            details=list(details),
-        ))
-        exercices.append(Exercice(
-            id=f"{id_}#prod", entree=id_, genre=VOCABULAIRE,
-            etiquette=f"Vocabulaire · production ({abr_m} → {abr_l})",
-            resume=f"{trad} → {mot}",
-            forme=SAISIE,
-            donnees=_saisie(f"Comment dit-on « {trad} » en {langue.lower()} ?", reponses, tolerant=True),
-            details=list(details),
-            prerequis=id_rec,
-        ))
-        troue = trouer(exemple)
-        if troue:
-            phrase, attendu = troue
-            exercices.append(Exercice(
-                id=f"{id_}#ctx", entree=id_, genre=VOCABULAIRE,
-                etiquette="Vocabulaire · en contexte",
-                resume=f"{mot} (en contexte)",
-                forme=SAISIE,
-                donnees=_saisie(f"Complète : {phrase}\n(indice : {trad})",
-                                [a.strip() for a in attendu.split("|")], tolerant=True),
-                details=details,
-                prerequis=id_rec,
-            ))
+        exercices += _facettes_vocabulaire(
+            id_, mot, trads, o, types, langue, abr_l, abr_m,
+            autres_mots=[m for m in tous_les_mots if m != mot],
+        )
 
     # --- Conjugaison ---
     for i, c in enumerate(_section(data, "conjugaison", rel), start=1):
@@ -355,6 +438,7 @@ def set_depuis_json(data, rel: PurePosixPath) -> SetLangue:
         caracteres_speciaux=_textes(data.get("caracteres_speciaux")),
         nouveaux_par_jour=quota if isinstance(quota, int) and not isinstance(quota, bool) and quota >= 0 else None,
         path=rel,
+        types_vocabulaire=types if entrees else [],
     )
 
 
