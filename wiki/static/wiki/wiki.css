@@ -669,3 +669,16 @@ body.plein-ecran.editing.pe-haut .toolbar {
 .claude-modeles .checkbox { align-items: flex-start; margin: .5rem 0; font-size: .95rem; color: var(--text); }
 .claude-modeles input { margin-top: .25rem; }
 .claude-supprimer { margin: 1rem 0; }
+.claude-genre { font-size: .72rem; padding: 0 .45rem; border-radius: 999px; background: var(--accent-soft); color: var(--accent); }
+
+/* Générer avec Claude (page des QCM) */
+.claude-generer { margin: 1.5rem 0 2rem; }
+.claude-bloc { margin: .75rem 0; padding: .6rem 1rem; border: 1px solid var(--border); border-radius: 10px; }
+.claude-bloc > summary { cursor: pointer; padding: .2rem 0; }
+.claude-form { max-width: none; }
+.claude-form textarea { display: block; width: 100%; padding: .5rem .6rem; border: 1px solid var(--border); border-radius: 6px; background: var(--bg); color: var(--text); font: inherit; resize: vertical; }
+.claude-cartes { border: 0; padding: 0; margin: .9rem 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: .1rem 1rem; }
+.claude-cartes legend { font-size: .85rem; color: var(--muted); padding: 0; margin-bottom: .3rem; }
+.claude-cartes .checkbox { margin: .3rem 0; font-size: .95rem; }
+.claude-champs { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: 0 1rem; }
+.claude-form .button[type=submit] { margin-top: .5rem; }

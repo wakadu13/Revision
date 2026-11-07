@@ -202,8 +202,26 @@ def index(request):
                         "liste": "dossiers-" + slugify(nom),
                         "noms_dossiers": sorted({d["nom"] for d in dossiers} | {c["nom"] for c in par_langue.get(nom, [])}, key=str.lower),
                         "categories": par_langue.get(nom, [])})
+    generation = None
+    if _can_edit(request):
+        from . import claude
+        from . import langues as module_langues
+
+        vault = get_vault()
+        dossiers_langue = sorted({d["nom"] for l in langues for d in l["dossiers"]} | {claude.DOSSIER_VOCABULAIRE}, key=str.lower)
+        generation = {
+            "dispo": claude.disponible(),
+            "pages": sorted(((n.key, n.title) for n in vault.notes.values() if not n.key.startswith("QCM/")), key=lambda p: p[0].lower()),
+            "nombres": claude.NOMBRES_QUESTIONS,
+            "langues": sorted(set(library.noms_langues()) | {"Anglais"}, key=str.lower),
+            "dossiers_langue": dossiers_langue,
+            "cartes": [(t, module_langues.nom_type(t, "Anglais"), t in claude.CARTES_PAR_DEFAUT)
+                       for t in module_langues.TYPES_VOCABULAIRE],
+            "max_mots": claude.MAX_MOTS,
+        }
     context = _ctx(
         request,
+        generation=generation,
         langues=langues,
         categories=categories,
         categories_import=_categories_import(),

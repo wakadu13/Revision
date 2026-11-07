@@ -30,6 +30,66 @@
   </form>
   {% endif %}
 
+  {% if generation %}
+  <section class="claude-generer" id="generer">
+    <h2>✦ Générer avec Claude</h2>
+    {% if not generation.dispo %}
+    <p class="muted">Claude peut préparer des paquets de vocabulaire d'après vos mots et écrire des QCM d'après vos
+      cours : <a href="{% url 'wiki:claude_reglages' %}">ajoutez une clé d'API</a> (gratuit jusqu'à 100 $ par mois avec
+      un abonnement Claude Max).</p>
+    {% else %}
+    <details class="claude-bloc" open>
+      <summary><b>Vocabulaire</b> <span class="muted">— collez vos mots, Claude prépare un paquet de cartes</span></summary>
+      <form method="post" action="{% url 'wiki:quiz_generer' %}" class="form claude-form" data-claude-vocabulaire>
+        {% csrf_token %}
+        <input type="hidden" name="genre" value="vocabulaire">
+        <label for="generer-mots">Mots ou expressions, un par ligne (en français ou dans la langue apprise)</label>
+        <textarea id="generer-mots" name="mots" rows="8" required spellcheck="false"
+                  placeholder="un emploi&#10;to achieve&#10;la cuisine = the kitchen&#10;…"></textarea>
+        <fieldset class="claude-cartes">
+          <legend>Types de cartes</legend>
+          {% for cle, nom, coche in generation.cartes %}
+          <label class="checkbox"><input type="checkbox" name="cartes" value="{{ cle }}"{% if coche %} checked{% endif %}> {{ nom }}</label>
+          {% endfor %}
+        </fieldset>
+        <div class="claude-champs">
+          <label>Langue <input name="langue" list="generer-langues" value="Anglais" required></label>
+          <label>Nom du paquet <span class="muted">(facultatif)</span> <input name="titre" placeholder="choisi par Claude"></label>
+          <label>Dossier <input name="dossier" list="generer-dossiers" placeholder="{{ generation.dossiers_langue.0|default:'Vocabulaire' }}"></label>
+        </div>
+        <datalist id="generer-langues">{% for l in generation.langues %}<option value="{{ l }}">{% endfor %}</datalist>
+        <datalist id="generer-dossiers">{% for d in generation.dossiers_langue %}<option value="{{ d }}">{% endfor %}</datalist>
+        <p class="muted">Chaque envoi crée un paquet à part, révisable seul (au plus {{ generation.max_mots }} mots). Claude
+          ajoute la traduction, un exemple et la prononciation de chaque mot.</p>
+        <button type="submit" class="button primary">✦ Créer le paquet</button>
+      </form>
+    </details>
+    <details class="claude-bloc">
+      <summary><b>QCM</b> <span class="muted">— Claude écrit des questions sur un cours</span></summary>
+      <form method="post" action="{% url 'wiki:quiz_generer' %}" class="form claude-form">
+        {% csrf_token %}
+        <input type="hidden" name="genre" value="qcm">
+        <label for="generer-page">Page du cours</label>
+        <input id="generer-page" name="page" list="generer-pages" placeholder="Rechercher une page du wiki…" autocomplete="off">
+        <datalist id="generer-pages">{% for key, title in generation.pages %}<option value="{{ key }}">{{ title }}</option>{% endfor %}</datalist>
+        <label for="generer-texte">ou texte du cours, collé</label>
+        <textarea id="generer-texte" name="texte" rows="4"></textarea>
+        <div class="claude-champs">
+          <label>Questions
+            <select name="nombre">{% for n in generation.nombres %}<option value="{{ n }}"{% if n == 20 %} selected{% endif %}>{{ n }}</option>{% endfor %}</select>
+          </label>
+          <label>Catégorie <input name="categorie" list="quiz-categories" placeholder="dossier de la page"></label>
+          <label>Titre <span class="muted">(facultatif)</span> <input name="titre" placeholder="choisi par Claude"></label>
+        </div>
+        <p class="muted">QCM à une ou plusieurs réponses, textes à trous, réponses courtes et cartes, fidèles au cours.</p>
+        <button type="submit" class="button primary">✦ Générer le QCM</button>
+      </form>
+    </details>
+    <p class="muted">Suivi et coût de chaque demande : <a href="{% url 'wiki:transformations' %}">travaux de Claude</a>.</p>
+    {% endif %}
+  </section>
+  {% endif %}
+
   {% if errors %}
   <div class="callout" data-callout="warning">
     <div class="callout-title">Sets ignorés (JSON invalide)</div>

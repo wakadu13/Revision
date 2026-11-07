@@ -24,6 +24,18 @@
 </article>
 {% endblock %}
 {% block aside %}
+  {% if can_edit and claude_dispo %}
+  <section class="panel">
+    <h2>Réviser ce cours</h2>
+    <form method="post" action="{% url 'wiki:quiz_generer' %}">
+      {% csrf_token %}
+      <input type="hidden" name="genre" value="qcm">
+      <input type="hidden" name="page" value="{{ note.key }}">
+      <button type="submit" class="button small" name="nombre" value="20"
+              title="Claude écrit 20 questions sur cette page ; le QCM apparaît dans la page des QCM">✦ Générer un QCM (20 questions)</button>
+    </form>
+  </section>
+  {% endif %}
   {% if toc %}
   <section class="panel">
     <h2>Sommaire</h2>

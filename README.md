@@ -185,6 +185,32 @@ de cours avec Claude »** sur un PDF déjà dans le wiki.
 - PDF jusqu'à 600 pages ; au-delà de 20 Mo, il passe par l'API Files
   d'Anthropic (supprimé juste après). Les PDF scannés sont lus aussi.
 
+### Générer des QCM et du vocabulaire avec Claude (admins)
+
+Sur la page des QCM, bloc **« ✦ Générer avec Claude »** (avec une clé d'API
+dans les réglages de Claude) :
+
+- **Vocabulaire** : coller des mots ou expressions, un par ligne (en français
+  ou dans la langue apprise, avec ou sans traduction), cocher les **types de
+  cartes**, choisir la langue (anglais par défaut). Claude ajoute la
+  traduction, une phrase d'exemple et la prononciation de chaque mot. Chaque
+  envoi crée un **paquet à part** (un fichier de langue), révisable seul
+  (« Réviser ce paquet ») ou avec le reste de la langue. Types de cartes :
+  carte FR → EN, traduction à taper FR → EN, QCM FR → EN (le bon mot parmi
+  ceux du paquet), phrase à compléter, carte EN → FR, traduction à taper
+  EN → FR ; cochés par défaut : les trois premiers du français vers l'anglais
+  hors QCM (choix retenu sur l'appareil). La première carte cochée fait
+  découvrir le mot, les autres viennent ensuite.
+- **QCM** : choisir une page du wiki (ou coller un texte) et un nombre de
+  questions ; Claude écrit un set (QCM, QCR, textes à trous, réponses courtes,
+  cartes), rangé dans la catégorie de la page. Bouton **« Générer un QCM »**
+  aussi dans la marge de chaque page de cours.
+
+Le suivi (et le coût) de chaque demande est sur la page **Travaux de Claude**.
+Dans un fichier de langue écrit à la main, la clé `"exercices"` choisit de la
+même façon les cartes de vocabulaire (`decouverte`, `production`, `choix`,
+`contexte`, `reconnaissance`, `traduction`) ; sans elle, rien ne change.
+
 ### Lire les PDF dans le wiki
 
 Les PDF du coffre s'ouvrent dans un lecteur intégré (`/pdf/<chemin>`, construit
@@ -370,6 +396,7 @@ en-têtes) sont dans [`core/tests.py`](core/tests.py) :
 - `/importer/` : import de fichiers `.md`, de PDF et de pièces jointes (admins)
 - `/transformations/` : cours transformés en pages par Claude (admins)
 - `/claude/reglages/` : clé d'API et modèle de Claude (admins)
+- `/qcm/generer/` : QCM et paquets de vocabulaire générés par Claude (admins, POST)
 - `/pdf/<chemin>` : lecteur de PDF (`?integre=1` : version intégrée dans les notes)
 - `/sommaire/` : sommaire de toutes les notes
 - `/tags/` et `/tags/<tag>` : les tags

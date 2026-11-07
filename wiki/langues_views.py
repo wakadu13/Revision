@@ -31,19 +31,28 @@ def dossier_de(set_langue):
     return (set_langue.path.parent.name if set_langue.path else "") or quiz.CATEGORIE_DEFAUT
 
 
-def _sets(langue, dossier=""):
-    """Fichiers d'une langue, restreints à un dossier si `dossier` est donné."""
+def _sets(langue, dossier="", fichier=""):
+    """Fichiers d'une langue, restreints à un dossier ou à un seul fichier (paquet)."""
     sets = quiz.get_library().sets_langue(langue)
-    if dossier:
+    if fichier:
+        sets = [s for s in sets if s.id == fichier]
+    elif dossier:
         sets = [s for s in sets if dossier_de(s) == dossier]
     if not sets:
         raise Http404("Langue introuvable")
     return sets
 
 
-def _url_menu(langue, dossier=""):
+def _filtre(request):
+    """(dossier, fichier) demandés : un fichier l'emporte sur un dossier."""
+    fichier = request.GET.get("fichier", "")
+    return ("" if fichier else request.GET.get("dossier", "")), fichier
+
+
+def _url_menu(langue, dossier="", fichier=""):
     url = reverse("wiki:langue_menu", args=[langue])
-    return f"{url}?{urlencode({'dossier': dossier})}" if dossier else url
+    filtre = {"fichier": fichier} if fichier else {"dossier": dossier} if dossier else {}
+    return f"{url}?{urlencode(filtre)}" if filtre else url
 
 
 def resume_langue(player, langue, sets, now):
@@ -53,14 +62,15 @@ def resume_langue(player, langue, sets, now):
 
 @login_required
 def menu(request, langue):
-    dossier = request.GET.get("dossier", "")
-    sets = _sets(langue, dossier)
+    dossier, fichier = _filtre(request)
+    sets = _sets(langue, dossier, fichier)
     now = timezone.now()
     r = langues.resume(sets, QuizProgress.map_langue(player_id(request), sets), now)
     modes = [(cle, nom) for cle, nom in langues.MODES.items()
              if cle not in langues.GENRES or any(g["nom"] == nom for g in r["genres"])]
     return render(request, "wiki/langue_menu.html", _ctx(
-        request, langue=langue, dossier=dossier, sets=sets, resume=r, modes=modes,
+        request, langue=langue, dossier=dossier, fichier=fichier, paquet=sets[0] if fichier else None,
+        sets=sets, resume=r, modes=modes,
         taille=langues.TAILLE_SESSION,
     ))
 
@@ -99,8 +109,8 @@ def _payload(vault, item, st, now):
 
 @login_required
 def play(request, langue):
-    dossier = request.GET.get("dossier", "")
-    sets = _sets(langue, dossier)
+    dossier, fichier = _filtre(request)
+    sets = _sets(langue, dossier, fichier)
     mode = request.GET.get("mode", langues.QUOTIDIEN)
     if mode not in langues.MODES:
         raise Http404("Mode inconnu")
@@ -111,8 +121,8 @@ def play(request, langue):
     session = langues.construire_session(sets, prog, mode, n, now)
     vault = get_vault()
     payload = [_payload(vault, e, prog.get((e.set.id, e.exo.id)), now) for e in session]
-    menu_url = _url_menu(langue, dossier)
-    titre = f"{langues.MODES[mode]} · {langue}" + (f" · {dossier}" if dossier else "")
+    menu_url = _url_menu(langue, dossier, fichier)
+    titre = f"{langues.MODES[mode]} · {langue}" + (f" · {sets[0].titre}" if fichier else f" · {dossier}" if dossier else "")
     return render(request, "wiki/langue_play.html", _ctx(
         request, langue=langue, titre=titre, mode=mode,
         exercices=payload, count=len(payload),
@@ -182,8 +192,10 @@ def record(request):
 @require_POST
 @login_required
 def reset(request, langue):
-    dossier = request.POST.get("dossier", "")
-    sets = _sets(langue, dossier)
+    fichier = request.POST.get("fichier", "")
+    dossier = "" if fichier else request.POST.get("dossier", "")
+    sets = _sets(langue, dossier, fichier)
     QuizProgress.objects.filter(player=player_id(request), set_id__in=[s.id for s in sets]).delete()
-    messages.success(request, f"Progression en {langue}{f' ({dossier})' if dossier else ''} réinitialisée.")
-    return redirect(_url_menu(langue, dossier))
+    precision = f" ({sets[0].titre})" if fichier else f" ({dossier})" if dossier else ""
+    messages.success(request, f"Progression en {langue}{precision} réinitialisée.")
+    return redirect(_url_menu(langue, dossier, fichier))

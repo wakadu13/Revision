@@ -80,3 +80,24 @@
 
   filter();
 })();
+
+// Générer avec Claude : les types de cartes cochés sont retenus sur l'appareil.
+(function () {
+  const form = document.querySelector("[data-claude-vocabulaire]");
+  if (!form) return;
+  const CLE = "wiki-claude-cartes";
+  const cases = [...form.querySelectorAll("input[name=cartes]")];
+  try {
+    const memo = JSON.parse(localStorage.getItem(CLE) || "null");
+    if (Array.isArray(memo) && memo.length) cases.forEach((c) => { c.checked = memo.includes(c.value); });
+  } catch (e) { /* stockage bloqué */ }
+  form.addEventListener("change", () => {
+    try { localStorage.setItem(CLE, JSON.stringify(cases.filter((c) => c.checked).map((c) => c.value))); } catch (e) { /* stockage bloqué */ }
+  });
+  form.addEventListener("submit", (e) => {
+    if (!cases.some((c) => c.checked)) {
+      e.preventDefault();
+      window.alert("Cochez au moins un type de carte.");
+    }
+  });
+})();

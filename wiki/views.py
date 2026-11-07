@@ -52,6 +52,7 @@ def _note_page(request, vault, note):
         "content": content,
         "toc": toc,
         "backlinks": backlinks,
+        "claude_dispo": can_edit(request) and claude.disponible(),
     })
 
 
@@ -272,6 +273,23 @@ def _transformer_cours(request, vault, results):
     return lances
 
 
+def _resultat(vault, t):
+    """(adresse, texte du lien) du résultat d'un travail de Claude, ou ("", "")."""
+    from urllib.parse import quote
+
+    if t.statut != Transformation.FAIT or not t.page_ecrite:
+        return "", ""
+    if t.genre == Transformation.QCM:
+        set_id = t.page_ecrite.removesuffix(".json")
+        return f"{reverse('wiki:quiz_play')}?set={quote(set_id)}&mode=all", "Jouer ce QCM"
+    if t.genre == Transformation.VOCABULAIRE:
+        set_id = t.page_ecrite.removesuffix(".json")
+        langue = (t.options or {}).get("langue", "Anglais")
+        return f"{reverse('wiki:langue_play', args=[langue])}?mode=quotidien&fichier={quote(set_id)}", "Réviser ce paquet"
+    note = vault.notes.get(t.page_ecrite.removesuffix(".md").lower())
+    return (reverse("wiki:page", args=[note.key]), "Ouvrir la page") if note else ("", "")
+
+
 def transformations(request):
     """Suivi des cours transformés par Claude ; relancer un échec ; transformer un PDF du coffre."""
     if not can_edit(request):
@@ -300,8 +318,7 @@ def transformations(request):
         claude.lancer()  # reprend après un redémarrage du serveur
     for t in liste:
         t.cout = claude.cout(t)
-        note = vault.notes.get(t.page_ecrite.removesuffix(".md").lower()) if t.page_ecrite else None
-        t.url_page = reverse("wiki:page", args=[note.key]) if note else ""
+        t.url_page, t.lien = _resultat(vault, t)
     return _render(request, vault, "wiki/transformations.html", {
         "transformations": liste,
         "en_cours": en_cours,
@@ -311,6 +328,74 @@ def transformations(request):
 
 
 CLE_RE = re.compile(r"sk-ant-[A-Za-z0-9_\-]{20,}")
+LANGUE_RE = re.compile(r"[^\W\d_][^\W\d_ '-]*(?:[ '-][^\W\d_]+)*")
+
+
+@require_POST
+def generer(request):
+    """QCM (d'après une page du wiki ou un texte collé) ou paquet de vocabulaire
+    (d'après des mots collés), générés par Claude en arrière-plan."""
+    from . import langues
+
+    if not can_edit(request):
+        return _deny(request)
+    if not claude.disponible():
+        messages.error(request, "Ajoutez d'abord une clé d'API dans les réglages de Claude.")
+        return redirect("wiki:claude_reglages")
+    qui = request.user.get_username()
+    genre = request.POST.get("genre")
+    retour = redirect(reverse("wiki:quiz_index") + "#generer")
+
+    if genre == "qcm":
+        cle = request.POST.get("page", "").strip().removesuffix(".md")
+        texte = request.POST.get("texte", "").strip()
+        nombre = request.POST.get("nombre", "")
+        nombre = int(nombre) if nombre.isdigit() and int(nombre) in claude.NOMBRES_QUESTIONS else 20
+        categorie = request.POST.get("categorie", "").strip()
+        if categorie and claude.dossier_valide(categorie) is None:
+            messages.error(request, 'Catégorie invalide : un seul nom de dossier, sans / \\ : * ? " < > | # ^ [ ].')
+            return retour
+        note = None
+        if cle:
+            note = get_vault().notes.get(cle.lower())
+            if note is None:
+                messages.error(request, f"Page introuvable : « {cle} ».")
+                return retour
+        elif not texte:
+            messages.error(request, "Choisissez une page du wiki ou collez le texte du cours.")
+            return retour
+        elif len(texte) > 300_000:
+            messages.error(request, "Texte trop long (300 000 caractères au plus) : générez le QCM d'une partie à la fois.")
+            return retour
+        claude.demander_qcm(note=note, texte="" if note else texte, nombre=nombre,
+                            categorie=claude.dossier_valide(categorie) or "", titre=request.POST.get("titre", "").strip()[:120],
+                            utilisateur=qui)
+        messages.success(request, f"Claude écrit {nombre} questions sur « {note.title if note else 'le texte collé'} ».")
+    elif genre == "vocabulaire":
+        mots = request.POST.get("mots", "").strip()
+        lignes = [l for l in mots.splitlines() if l.strip()]
+        langue = " ".join(request.POST.get("langue", "").split()) or "Anglais"
+        types = [t for t in request.POST.getlist("cartes") if t in langues.TYPES_VOCABULAIRE]
+        dossier = request.POST.get("dossier", "").strip()
+        erreur = (
+            "Collez au moins un mot." if not lignes
+            else f"Trop de mots ({len(lignes)}) : {claude.MAX_MOTS} au plus par paquet." if len(lignes) > claude.MAX_MOTS
+            else "Langue invalide." if len(langue) > 40 or not LANGUE_RE.fullmatch(langue)
+            else "Cochez au moins un type de carte." if not types
+            else 'Dossier invalide : un seul nom de dossier, sans / \\ : * ? " < > | # ^ [ ].' if dossier and claude.dossier_valide(dossier) is None
+            else ""
+        )
+        if erreur:
+            messages.error(request, erreur)
+            return retour
+        claude.demander_vocabulaire(mots="\n".join(l.strip() for l in lignes)[:20_000], langue=langue[0].upper() + langue[1:],
+                                    types=types, dossier=claude.dossier_valide(dossier) or "",
+                                    titre=request.POST.get("titre", "").strip()[:120], utilisateur=qui)
+        messages.success(request, f"Claude prépare un paquet de {len(lignes)} mot{'s' if len(lignes) > 1 else ''} en {langue.lower()}.")
+    else:
+        messages.error(request, "Demande inconnue.")
+        return retour
+    return redirect("wiki:transformations")
 
 
 def reglages_claude(request):

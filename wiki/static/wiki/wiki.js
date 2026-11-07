@@ -80,6 +80,13 @@
     };
   }
 
+  // Formulaires à confirmer (suppression, réinitialisation) : data-confirm, car la
+  // politique de sécurité du site bloque les « onsubmit » écrits dans la page.
+  document.addEventListener("submit", (e) => {
+    const message = e.target.dataset && e.target.dataset.confirm;
+    if (message && !window.confirm(message)) e.preventDefault();
+  });
+
   // Ctrl+E sur une page : ouvre l'éditeur (comme Obsidian passe de la lecture à l'édition).
   document.addEventListener("keydown", (e) => {
     if (!(e.ctrlKey || e.metaKey) || e.altKey || e.shiftKey || e.key.toLowerCase() !== "e") return;

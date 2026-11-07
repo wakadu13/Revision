@@ -1,14 +1,15 @@
 {% extends "wiki/base.html" %}
-{% block title %}{{ langue }}{% if dossier %} · {{ dossier }}{% endif %} · Langues{% endblock %}
+{% block title %}{{ langue }}{% if paquet %} · {{ paquet.titre }}{% elif dossier %} · {{ dossier }}{% endif %} · Langues{% endblock %}
 {% block content %}
 <article class="note">
   <p><a class="button small" href="{% url 'wiki:quiz_index' %}">← QCM</a></p>
-  <h1 class="note-title">Langues — {{ langue }}{% if dossier %} · {{ dossier }}{% endif %}</h1>
-  {% if dossier %}<p class="muted">Dossier « {{ dossier }} » seulement · <a href="{% url 'wiki:langue_menu' langue %}">toute la langue</a></p>{% endif %}
+  <h1 class="note-title">Langues — {{ langue }}{% if paquet %} · {{ paquet.titre }}{% elif dossier %} · {{ dossier }}{% endif %}</h1>
+  {% if paquet %}<p class="muted">Ce paquet seulement · <a href="{% url 'wiki:langue_menu' langue %}">toute la langue</a></p>
+  {% elif dossier %}<p class="muted">Dossier « {{ dossier }} » seulement · <a href="{% url 'wiki:langue_menu' langue %}">toute la langue</a></p>{% endif %}
   <p class="muted">{{ resume.a_revoir }} à revoir · {{ resume.nouveaux_disponibles }} nouveau{{ resume.nouveaux_disponibles|pluralize:"x" }} disponible{{ resume.nouveaux_disponibles|pluralize }} aujourd'hui</p>
 
   <form class="quiz-langue-modes" method="get" action="{% url 'wiki:langue_play' langue %}">
-    {% if dossier %}<input type="hidden" name="dossier" value="{{ dossier }}">{% endif %}
+    {% if fichier %}<input type="hidden" name="fichier" value="{{ fichier }}">{% elif dossier %}<input type="hidden" name="dossier" value="{{ dossier }}">{% endif %}
     <div class="quiz-actions">
       {% for cle, nom in modes %}
       <button class="button{% if forloop.first %} primary{% endif %}" type="submit" name="mode" value="{{ cle }}">{{ nom }}{% if forloop.first %} (recommandé : tout mélangé){% endif %}</button>
@@ -42,17 +43,17 @@
   {% endif %}
   <p class="muted">Contenu : {% for s in sets %}{{ s.titre }} ({{ s|length }} exercices){% if not forloop.last %} · {% endif %}{% endfor %}</p>
 
-  <form method="post" action="{% url 'wiki:langue_reset' langue %}" onsubmit="return confirm('Effacer toute la progression en {{ langue|escapejs }}{% if dossier %} ({{ dossier|escapejs }}){% endif %} ?');">
+  <form method="post" action="{% url 'wiki:langue_reset' langue %}" data-confirm="Effacer toute la progression en {{ langue }}{% if paquet %} (paquet « {{ paquet.titre }} »){% elif dossier %} ({{ dossier }}){% endif %} ?">
     {% csrf_token %}
-    {% if dossier %}<input type="hidden" name="dossier" value="{{ dossier }}">{% endif %}
-    <button type="submit" class="button small danger">Réinitialiser la progression {% if dossier %}de ce dossier{% else %}de cette langue{% endif %}</button>
+    {% if fichier %}<input type="hidden" name="fichier" value="{{ fichier }}">{% elif dossier %}<input type="hidden" name="dossier" value="{{ dossier }}">{% endif %}
+    <button type="submit" class="button small danger">Réinitialiser la progression {% if paquet %}de ce paquet{% elif dossier %}de ce dossier{% else %}de cette langue{% endif %}</button>
   </form>
 
   <details class="quiz-plan">
     <summary>Comment ça marche ?</summary>
     <ul>
       <li><b>Répétition espacée FSRS</b> : chaque élément revient quand la probabilité de s'en souvenir tombe à 90 %.</li>
-      <li><b>Rappel actif</b> : un mot est d'abord découvert en reconnaissance (carte), puis revient en production (on tape le mot) et en contexte (phrase à compléter) — jamais deux facettes d'un même mot dans la même session.</li>
+      <li><b>Rappel actif</b> : un mot est d'abord découvert par une carte, puis revient sous les autres formes choisies pour son paquet (traduction à taper, QCM, phrase à compléter) — jamais deux facettes d'un même mot dans la même session.</li>
       <li><b>Conjugaison</b> personne par personne, avec le tableau complet à la correction ; <b>grammaire</b> par phrases à trous, remise en ordre et correction d'erreurs.</li>
       <li><b>Entrelacement</b> : vocabulaire, conjugaison et grammaire sont mélangés ; un exercice raté revient quelques questions plus tard.</li>
       <li><b>Tolérance</b> : en vocabulaire, un accent oublié ou une faute de frappe compte comme « presque » ; en conjugaison et en grammaire, la réponse doit être exacte.</li>

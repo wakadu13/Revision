@@ -7,7 +7,7 @@
     <input type="text" name="dossier" list="{{ liste }}" placeholder="Dossier (nouveau ou existant)" aria-label="Dossier de destination" autocomplete="off" required>
     <button type="submit" class="button small">Déplacer</button>
   </form>
-  <form method="post" action="{% url 'wiki:quiz_delete' %}" onsubmit="return confirm('Supprimer « {{ set.titre|escapejs }} » et sa progression ? Le fichier sera effacé du coffre.');">
+  <form method="post" action="{% url 'wiki:quiz_delete' %}" data-confirm="Supprimer « {{ set.titre }} » et sa progression ? Le fichier sera effacé du coffre.">
     {% csrf_token %}
     <input type="hidden" name="set" value="{{ set.id }}">
     <button type="submit" class="button small danger">Supprimer ce set</button>

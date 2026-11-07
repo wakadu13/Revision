@@ -125,10 +125,18 @@ class QuizDeck(models.Model):
 
 
 class Transformation(models.Model):
-    """Cours (PDF ou LaTeX) transformé en page du wiki par Claude, en arrière-plan (claude.py)."""
+    """Travail confié à Claude, fait en arrière-plan (claude.py) : un cours (PDF ou
+    LaTeX) transformé en page, un QCM ou un paquet de vocabulaire généré."""
 
     ATTENTE, EN_COURS, FAIT, ERREUR = "attente", "en_cours", "fait", "erreur"
     STATUTS = [(ATTENTE, "En attente"), (EN_COURS, "En cours"), (FAIT, "Terminée"), (ERREUR, "Échec")]
+    PAGE, QCM, VOCABULAIRE = "page", "qcm", "vocabulaire"
+    GENRES = [(PAGE, "Page de cours"), (QCM, "QCM"), (VOCABULAIRE, "Vocabulaire")]
+
+    genre = models.CharField(max_length=12, choices=GENRES, default=PAGE)
+    # QCM : nombre de questions, catégorie, titre ; vocabulaire : langue, types de
+    # cartes, dossier, titre.
+    options = models.JSONField(default=dict, blank=True)
 
     # PDF : son chemin dans le coffre. LaTeX : le nom du fichier envoyé, et son
     # texte (le coffre ne garde que la page convertie sur place).
@@ -158,6 +166,8 @@ class Transformation(models.Model):
 
     @property
     def nom(self):
+        if self.genre == self.QCM:
+            return (self.options or {}).get("nom") or self.source.rsplit("/", 1)[-1].removesuffix(".md")
         return self.source.rsplit("/", 1)[-1]
 
     @property
