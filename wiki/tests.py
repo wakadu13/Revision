@@ -2606,3 +2606,20 @@ class LotsTuteurTests(WikiTestCase):
         self.assertEqual(self.client.post("/claude/tuteur/", data=json.dumps({"page": "Cours/Signal", "question": "?"}),
                                           content_type="application/json").status_code, 429)
         self.assertContains(self.client.get("/wiki/Cours/Signal"), "Plafond mensuel de Claude atteint")
+
+
+class EditeurConvivialTests(WikiTestCase):
+    """Éditeur : menus Encadré et Insérer, annuler/rétablir, aide, côte à côte, brouillon, tags."""
+
+    def test_outils_de_l_editeur(self):
+        get_user_model().objects.filter(pk=self.reader.pk).update(is_staff=True)
+        self.write("Cours/Signal.md", "---\ntags: [signal, maths]\n---\n# Signal\n\nTexte #physique.\n")
+        page = self.client.get("/modifier/Cours/Signal")
+        html = page.content.decode()
+        for attendu in ('data-action="undo"', 'data-action="redo"', 'data-menu="encadre"', 'data-menu="inserer"',
+                        'data-mode="split"', 'data-action="aide"', 'id="aide-dialog"', 'data-brouillon-notice',
+                        'id="tag-choices"'):
+            self.assertIn(attendu, html)
+        self.assertEqual(page.context["tag_choices"], ["maths", "physique", "signal"])
+        # L'ancien bouton « Encadré » unique a laissé la place au menu.
+        self.assertNotIn('data-action="callout"', html)

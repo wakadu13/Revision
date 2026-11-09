@@ -244,6 +244,7 @@ def edit(request, path):
         "error": error,
         "link_choices": vault.link_choices(),
         "attachment_choices": vault.attachment_choices(uploads.ATTACHMENT_EXTS),
+        "tag_choices": [t for t, _ in vault.all_tags()],
         "preview_url": reverse("wiki:preview", args=[key]),
         "import_url": reverse("wiki:import"),
         "latex_url": reverse("wiki:latex"),

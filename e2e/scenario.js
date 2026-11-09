@@ -98,6 +98,35 @@ const texte = async (sel) => ((await page.textContent(sel)) || "").replace(/\s+/
   const tsv = await page.request.get(BASE + `/qcm/exporter/?set=${encodeURIComponent(SET)}&format=tsv`);
   await verifier("export texte tabulé", (await tsv.text()).split("\n").filter(Boolean).length === 2);
 
+  console.log("Éditeur");
+  page.on("dialog", (d) => d.accept()); // « quitter sans enregistrer ? » pendant le rechargement
+  const doc = () => page.evaluate(() => window.CM.EditorView.findFromDOM(document.querySelector(".editor-cm .cm-editor")).state.doc.toString());
+  await page.goto(BASE + "/modifier/Cours/Signal");
+  await page.waitForSelector(".editor-cm .cm-content");
+  await verifier("barre d'outils : annuler, menus, côte à côte, aide",
+    !!(await page.$("[data-action=undo]")) && !!(await page.$("[data-menu=inserer]")) && !!(await page.$("[data-mode=split]")) && !!(await page.$("[data-action=aide]")));
+  await page.click(".editor-cm .cm-content");
+  await page.keyboard.press("Control+End");
+  await page.keyboard.type("\n\nTexte ajouté e2e");
+  await page.waitForTimeout(1200); // brouillon gardé sur l'appareil
+  await page.reload();
+  await page.waitForSelector(".editor-cm .cm-content");
+  await verifier("brouillon non enregistré retrouvé", await page.isVisible("[data-brouillon-notice]"));
+  await page.click("[data-brouillon=reprendre]");
+  await verifier("brouillon repris", (await doc()).includes("Texte ajouté e2e"));
+  await page.click("[data-mode=split]");
+  await page.waitForFunction(() => /Texte ajouté e2e/.test(document.querySelector(".preview")?.textContent || ""));
+  await verifier("côte à côte : rendu à jour", await page.isVisible(".preview"));
+  await page.click("[data-menu=encadre] summary");
+  await page.click("[data-callout=definition]");
+  await verifier("encadré « définition » inséré", (await doc()).includes("> [!definition] Titre"));
+  await page.click("[data-action=undo]");
+  await verifier("annuler depuis la barre", !(await doc()).includes("[!definition] Titre"));
+  await page.click("[data-action=aide]");
+  await verifier("aide ouverte", await page.$eval("#aide-dialog", (d) => d.open));
+  await page.keyboard.press("Escape");
+  await page.evaluate(() => localStorage.removeItem("wiki-brouillon:Cours/Signal"));
+
   console.log("Hors ligne : paquet de langue");
   await page.goto(BASE + "/qcm/hors-ligne/");
   await page.waitForSelector("#hl-liste fieldset", { state: "attached" });
