@@ -5,7 +5,7 @@
 <article class="note quiz" id="quiz"
          data-record-url="{{ record_url }}"
          data-back-url="{{ back_url }}"
-         data-mode="{% if intensif %}intensif{% else %}normal{% endif %}"
+         data-mode="{% if examen %}examen{% elif intensif %}intensif{% else %}normal{% endif %}"{% if examen %} data-duree="{{ duree_s }}"{% endif %}
          data-csrf="{{ csrf_token }}"
          data-joueur="{{ user.get_username }}">
   <div class="quiz-topbar">
@@ -16,6 +16,18 @@
   {% if intensif and count %}
   <p class="muted quiz-intensif-info">Révision intensive : chaque question ratée revient plus loin dans la session,
     jusqu'à être réussie <b>2 fois de suite</b>. Seule la première réponse compte pour la révision espacée.</p>
+  {% endif %}
+  {% if examen and count %}
+  <details class="quiz-examen-info">
+    <summary class="muted">Examen blanc : <b>{{ count }} question{{ count|pluralize }}</b> en <b>{{ duree_min }} min</b>, sans correction avant la fin ; note sur 20. <span class="quiz-examen-regler">Régler…</span></summary>
+    <form method="get" class="quiz-examen-form">
+      <input type="hidden" name="mode" value="examen">
+      {% for k, v in examen_params.items %}<input type="hidden" name="{{ k }}" value="{{ v }}">{% endfor %}
+      <label>Questions <input type="number" name="n" min="1" max="{{ total_dispo }}" value="{{ count }}"> <span class="muted">/ {{ total_dispo }}</span></label>
+      <label>Durée (min) <input type="number" name="duree" min="1" max="180" value="{{ duree_min }}"></label>
+      <button type="submit" class="button small">Relancer l'examen</button>
+    </form>
+  </details>
   {% endif %}
 
   {% if count %}

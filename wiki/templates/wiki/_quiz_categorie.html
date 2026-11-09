@@ -6,6 +6,7 @@
   </summary>
   <div class="quiz-category-actions">
     <a class="button small" href="{% url 'wiki:quiz_play' %}?categorie={{ cat.nom|urlencode }}{% if cat.langue %}&langue={{ cat.langue|urlencode }}{% endif %}&mode=intensif" title="Répéter les questions ratées jusqu'à tout savoir">Révision intensive de la catégorie</a>
+    <a class="button small" href="{% url 'wiki:quiz_play' %}?categorie={{ cat.nom|urlencode }}{% if cat.langue %}&langue={{ cat.langue|urlencode }}{% endif %}&mode=examen" title="20 questions de la catégorie, chronométrées, corrigées à la fin, note sur 20">Examen blanc</a>
     {% if can_edit %}{% include "wiki/_quiz_supprimer_dossier.html" %}{% endif %}
   </div>
   <ul class="quiz-sets">
@@ -29,6 +30,7 @@
           {% if entry.summary.a_reviser %}<a class="button small primary" href="{% url 'wiki:quiz_play' %}?set={{ entry.set.id|urlencode }}&mode=review">Réviser ({{ entry.summary.a_reviser }})</a>{% endif %}
           <a class="button small" href="{% url 'wiki:quiz_play' %}?set={{ entry.set.id|urlencode }}&mode=all">Tout ({{ entry.summary.total }})</a>
           <a class="button small" href="{% url 'wiki:quiz_play' %}?set={{ entry.set.id|urlencode }}&mode=intensif" title="Répéter les questions ratées jusqu'à tout savoir">Intensif</a>
+          <a class="button small" href="{% url 'wiki:quiz_play' %}?set={{ entry.set.id|urlencode }}&mode=examen" title="Questions chronométrées, corrigées à la fin, note sur 20">Examen</a>
         </span>
       </div>
       {% include "wiki/_quiz_plan.html" with deck=entry.deck e=entry.estimation set=entry.set %}

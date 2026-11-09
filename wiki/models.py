@@ -197,3 +197,102 @@ class ReglagesClaude(models.Model):
     @property
     def cle_masquee(self):
         return f"{self.cle[:10]}…{self.cle[-4:]}" if len(self.cle) > 16 else "…"
+
+
+class Activite(models.Model):
+    """Réponses d'un joueur par jour (QCM et langues) : série de jours, calendrier."""
+
+    player = models.CharField(max_length=150)
+    jour = models.DateField()
+    reponses = models.PositiveIntegerField(default=0)
+    justes = models.PositiveIntegerField(default=0)
+    nouveaux = models.PositiveIntegerField(default=0)  # questions ou mots vus pour la 1re fois
+
+    class Meta:
+        unique_together = ("player", "jour")
+        ordering = ["jour"]
+
+    # Paliers du calendrier : 0 réponse, puis 1-9, 10-29, 30-59, 60 et plus.
+    PALIERS = (1, 10, 30, 60)
+
+    @classmethod
+    def noter(cls, player, correct, nouveau=False, quand=None):
+        """Compte une réponse (à la date `quand`, maintenant par défaut)."""
+        from django.db.models import F
+
+        jour = timezone.localdate(quand or timezone.now())
+        obj, _ = cls.objects.get_or_create(player=player, jour=jour)
+        cls.objects.filter(pk=obj.pk).update(
+            reponses=F("reponses") + 1, justes=F("justes") + (1 if correct else 0), nouveaux=F("nouveaux") + (1 if nouveau else 0))
+
+    @classmethod
+    def jours_actifs(cls, player):
+        return set(cls.objects.filter(player=player, reponses__gt=0).values_list("jour", flat=True))
+
+    @classmethod
+    def serie(cls, player, aujourdhui=None, jours=None):
+        """(série en cours, record) : jours consécutifs avec au moins une réponse.
+        La série tient encore si la dernière réponse date d'hier."""
+        from datetime import timedelta
+
+        aujourdhui = aujourdhui or timezone.localdate()
+        jours = cls.jours_actifs(player) if jours is None else jours
+        courante = 0
+        depart = aujourdhui if aujourdhui in jours else aujourdhui - timedelta(days=1)
+        while depart in jours:
+            courante += 1
+            depart -= timedelta(days=1)
+        record = 0
+        for j in jours:
+            if j - timedelta(days=1) not in jours:
+                n, k = 0, j
+                while k in jours:
+                    n += 1
+                    k += timedelta(days=1)
+                record = max(record, n)
+        return courante, record
+
+    @classmethod
+    def calendrier(cls, player, aujourdhui=None, semaines=26):
+        """Semaines (lundi → dimanche) des `semaines` dernières semaines, pour le
+        calendrier d'activité : [{jour, reponses, justes, niveau}] par semaine."""
+        from datetime import timedelta
+
+        aujourdhui = aujourdhui or timezone.localdate()
+        fin = aujourdhui + timedelta(days=6 - aujourdhui.weekday())  # dimanche de la semaine
+        debut = fin - timedelta(weeks=semaines) + timedelta(days=1)
+        par_jour = {a.jour: a for a in cls.objects.filter(player=player, jour__gte=debut, jour__lte=fin)}
+        grille = []
+        jour = debut
+        while jour <= fin:
+            semaine = []
+            for _ in range(7):
+                a = par_jour.get(jour)
+                n = a.reponses if a else 0
+                semaine.append({"jour": jour, "reponses": n, "justes": a.justes if a else 0,
+                                "niveau": sum(n >= p for p in cls.PALIERS), "futur": jour > aujourdhui})
+                jour += timedelta(days=1)
+            grille.append(semaine)
+        return grille
+
+    @classmethod
+    def resume(cls, player, aujourdhui=None):
+        """Série, record, réponses du jour et des 30 derniers jours, jours actifs sur 30."""
+        from datetime import timedelta
+
+        from django.db.models import Sum
+
+        aujourdhui = aujourdhui or timezone.localdate()
+        jours = cls.jours_actifs(player)
+        courante, record = cls.serie(player, aujourdhui, jours)
+        depuis = aujourdhui - timedelta(days=29)
+        recents = cls.objects.filter(player=player, jour__gte=depuis)
+        totaux = recents.aggregate(reponses=Sum("reponses"), justes=Sum("justes"))
+        auj = recents.filter(jour=aujourdhui).first()
+        return {
+            "serie": courante, "record": record,
+            "aujourdhui": auj.reponses if auj else 0,
+            "trente_jours": totaux["reponses"] or 0,
+            "justes_trente_jours": totaux["justes"] or 0,
+            "jours_actifs_trente": sum(1 for j in jours if j >= depuis),
+        }

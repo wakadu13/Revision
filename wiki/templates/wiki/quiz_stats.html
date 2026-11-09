@@ -5,6 +5,22 @@
   <h1 class="note-title">Statistiques</h1>
   <p><a class="button small" href="{% url 'wiki:quiz_index' %}">← Sets</a></p>
 
+  <section class="quiz-activite">
+    <h2>Activité</h2>
+    <div class="quiz-activite-chiffres">
+      <div class="quiz-chiffre"><b>🔥 {{ activite.serie }}</b><span>jour{{ activite.serie|pluralize }} d'affilée{% if activite.record > activite.serie %} · record {{ activite.record }}{% endif %}</span></div>
+      <div class="quiz-chiffre"><b>{{ activite.aujourdhui }}</b><span>réponse{{ activite.aujourdhui|pluralize }} aujourd'hui</span></div>
+      <div class="quiz-chiffre"><b>{{ activite.trente_jours }}</b><span>réponses sur 30 jours ({{ activite.jours_actifs_trente }} jour{{ activite.jours_actifs_trente|pluralize }} actif{{ activite.jours_actifs_trente|pluralize }})</span></div>
+    </div>
+    <div class="quiz-calendrier" role="img" aria-label="Calendrier d'activité des 26 dernières semaines">
+      <div class="quiz-calendrier-mois">{% for colonne, nom in mois %}<span style="grid-column: {{ colonne }}">{{ nom }}</span>{% endfor %}</div>
+      <div class="quiz-calendrier-grille">
+        {% for semaine in calendrier %}{% for j in semaine %}<span class="quiz-jour{% if j.futur %} futur{% endif %}" data-niveau="{{ j.niveau }}" title="{{ j.jour|date:'l j F' }} : {{ j.reponses }} réponse{{ j.reponses|pluralize }}{% if j.reponses %}, {{ j.justes }} juste{{ j.justes|pluralize }}{% endif %}"></span>{% endfor %}{% endfor %}
+      </div>
+      <p class="muted quiz-calendrier-legende">Moins <span class="quiz-jour" data-niveau="0"></span><span class="quiz-jour" data-niveau="1"></span><span class="quiz-jour" data-niveau="2"></span><span class="quiz-jour" data-niveau="3"></span><span class="quiz-jour" data-niveau="4"></span> Plus · QCM et langues confondus, une case par jour.</p>
+    </div>
+  </section>
+
   {% for cat in categories %}
   <section class="quiz-category">
     <h2>{{ cat.nom }}</h2>

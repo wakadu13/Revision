@@ -24,7 +24,7 @@ from django.utils.text import slugify
 from django.views.decorators.http import require_POST
 
 from . import planning, quiz
-from .models import _JAMAIS, QuizDeck, QuizProgress
+from .models import _JAMAIS, Activite, QuizDeck, QuizProgress
 from .render import Renderer
 from .vault import Note, clean_key, get_vault
 
@@ -33,6 +33,8 @@ DOSSIER_QCM = "QCM"
 CATEGORIE_IMPORT = "Importés"
 TAILLE_MAX_IMPORT = 2 * 1024 * 1024  # 2 Mo par fichier
 QUOTA_MAX = 9999
+EXAMEN_QUESTIONS = 20   # questions d'un examen blanc par défaut
+EXAMEN_DUREE_MAX = 180  # minutes
 DUREE_MAX_MS = 120_000  # au-delà, le joueur s'est sans doute absenté
 
 
@@ -219,8 +221,10 @@ def index(request):
                        for t in module_langues.TYPES_VOCABULAIRE],
             "max_mots": claude.MAX_MOTS,
         }
+    serie, _ = Activite.serie(player, timezone.localdate(now))
     context = _ctx(
         request,
+        serie=serie,
         generation=generation,
         langues=langues,
         categories=categories,
@@ -277,6 +281,32 @@ def play(request):
             progress = QuizProgress.map_for(player, qset.id)
             selection += [(qset, q, progress) for q in qset.questions]
         selection = _shuffled(selection)
+    elif mode == "examen":
+        # Examen blanc : n questions tirées au sort (pas de flashcards : elles
+        # s'auto-évaluent), chronométrées, corrigées à la fin.
+        if request.GET.get("categorie"):
+            categorie = request.GET["categorie"]
+            langue = request.GET.get("langue", "")
+            sets = [s for s in library.categories().get(categorie, []) if s.langue == langue]
+            if not sets:
+                raise Http404("Catégorie de QCM introuvable")
+            titre = f"Examen blanc · {categorie}"
+        else:
+            qset = library.get(set_id)
+            if qset is None:
+                raise Http404("Set de QCM introuvable")
+            sets, titre = [qset], f"Examen blanc · {qset.titre}"
+        selection = []
+        for qset in sets:
+            progress = QuizProgress.map_for(player, qset.id)
+            selection += [(qset, q, progress) for q in qset.questions if not q.est_flashcard]
+        selection = _shuffled(selection)
+        total_dispo = len(selection)
+        n = int(limite) if limite and limite.isdigit() else EXAMEN_QUESTIONS
+        n = max(1, min(n, total_dispo)) if total_dispo else 0
+        selection, limite = selection[:n], None
+        duree = request.GET.get("duree", "")
+        duree_min = max(1, min(int(duree) if duree.isdigit() else n, EXAMEN_DUREE_MAX))
     else:
         qset = library.get(set_id)
         if qset is None:
@@ -302,9 +332,13 @@ def play(request):
         questions=payload,
         count=len(payload),
         intensif=mode == "intensif" and not request.GET.get("revision"),
+        examen=mode == "examen",
         record_url=reverse("wiki:quiz_record"),
         back_url=reverse("wiki:quiz_index"),
     )
+    if mode == "examen":
+        context.update(duree_min=duree_min, duree_s=duree_min * 60, total_dispo=total_dispo,
+                       examen_params={k: request.GET[k] for k in ("set", "categorie", "langue") if request.GET.get(k)})
     return render(request, "wiki/quiz_play.html", context)
 
 
@@ -330,6 +364,7 @@ def record(request):
     )
     obj.record(reponse)
     obj.save()
+    Activite.noter(obj.player, obj.last_correct, nouveau=obj.seen == 1)
 
     chronometrer(obj.player, set_id, data.get("duree_ms"))
     return JsonResponse({"box": obj.box, "seen": obj.seen, "correct": obj.correct})
@@ -356,7 +391,26 @@ def stats(request):
         entries = [{"set": qset, "summary": _set_summary(qset, QuizProgress.map_for(player, qset.id), now, decks.get(qset.id))}
                    for qset in sets]
         categories.append({"nom": cat, "sets": entries})
-    return render(request, "wiki/quiz_stats.html", _ctx(request, categories=categories, boites=range(quiz.BOITE_MAX + 1)))
+    aujourdhui = timezone.localdate(now)
+    return render(request, "wiki/quiz_stats.html", _ctx(
+        request, categories=categories, boites=range(quiz.BOITE_MAX + 1),
+        activite=Activite.resume(player, aujourdhui), calendrier=Activite.calendrier(player, aujourdhui),
+        mois=_mois_du_calendrier(Activite.calendrier(player, aujourdhui)),
+    ))
+
+
+MOIS_COURTS = ["Jan", "Fév", "Mars", "Avr", "Mai", "Juin", "Juil", "Août", "Sep", "Oct", "Nov", "Déc"]
+
+
+def _mois_du_calendrier(grille):
+    """Étiquettes de mois au-dessus du calendrier : (colonne, nom) à chaque changement de mois."""
+    etiquettes, precedent = [], None
+    for i, semaine in enumerate(grille):
+        mois = semaine[0]["jour"].month
+        if mois != precedent:
+            etiquettes.append((i + 1, MOIS_COURTS[mois - 1]))
+            precedent = mois
+    return etiquettes
 
 
 def _ancre(set_id):

@@ -19,7 +19,7 @@ from django.utils import timezone
 from django.views.decorators.http import require_POST
 
 from . import fsrs, langues, quiz
-from .models import QuizProgress
+from .models import Activite, QuizProgress
 from .quiz_views import _ctx, _render_html, player_id
 from .vault import get_vault
 
@@ -189,8 +189,10 @@ def record(request):
     obj, _ = QuizProgress.objects.get_or_create(
         player=player_id(request), set_id=set_langue.id, question_id=exo.id
     )
+    nouveau = obj.decouverte is None
     obj.record_langue(data["note"])
     obj.save()
+    Activite.noter(obj.player, data["note"] != fsrs.A_REVOIR, nouveau=nouveau)
     return JsonResponse({"stabilite": obj.stabilite, "echeance": obj.echeance.isoformat()})
 
 
