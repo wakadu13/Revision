@@ -58,13 +58,19 @@ jobs:
           mkdir -p "$RUNNER_TEMP/data"
           export E2E_VAULT="$RUNNER_TEMP/vault" DJANGO_DATA_DIR="$RUNNER_TEMP/data"
           export DJANGO_SETTINGS_MODULE=settings_e2e PYTHONPATH="$PWD/e2e"
-          uv run python manage.py migrate --noinput -v 0
-          uv run python manage.py shell -c "from django.contrib.auth import get_user_model; get_user_model().objects.create_user('testeur', password='Test-pass-1234!', is_staff=True)"
-          nohup uv run python manage.py runserver 127.0.0.1:8765 --noreload > "$RUNNER_TEMP/serveur.log" 2>&1 &
+          # Python de l'environnement directement : un « uv run » qui resterait en
+          # arrière-plan garderait le verrou du cache d'uv (nettoyage de fin de job).
+          .venv/bin/python manage.py migrate --noinput -v 0
+          .venv/bin/python manage.py shell -c "from django.contrib.auth import get_user_model; get_user_model().objects.create_user('testeur', password='Test-pass-1234!', is_staff=True)"
+          nohup .venv/bin/python manage.py runserver 127.0.0.1:8765 --noreload > "$RUNNER_TEMP/serveur.log" 2>&1 &
           for i in $(seq 1 40); do curl -sf -o /dev/null http://127.0.0.1:8765/connexion/ && break; sleep 1; done
 
       - name: Scénario
         run: node e2e/scenario.js "$RUNNER_TEMP"
+
+      - name: Arrêt du serveur
+        if: always()
+        run: pkill -f "manage.py runserver" || true
 
       - name: Journal du serveur
         if: failure()
