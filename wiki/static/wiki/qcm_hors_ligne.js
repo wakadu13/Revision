@@ -1,5 +1,6 @@
 // QCM hors ligne : sets téléchargés sur l'appareil, révision sans connexion et
-// synchronisation avec le serveur quand la connexion revient.
+// synchronisation avec le serveur quand la connexion revient. Les paquets du
+// module Langues (FSRS) passent par langues_hors_ligne.js, même file d'attente.
 //
 // La progression (boîtes de Leitner) est recalculée sur l'appareil avec les
 // mêmes règles que quiz.py, pour savoir quelles questions sont à réviser sans
@@ -10,6 +11,8 @@
   const app = document.getElementById("hl");
   if (!app || !A) return;
   const $ = (id) => document.getElementById(id);
+  const L = window.LanguesHorsLigne || null;
+  const estLangue = (s) => s.type === "langue";
 
   // --- Révision espacée : mêmes règles que quiz.py ---
   const INTERVALLES_JOURS = [0, 1, 3, 7, 14, 30];
@@ -132,7 +135,8 @@
   function parCategorie(sets) {
     const cats = new Map();
     for (const s of sets) {
-      const nom = s.langue ? s.langue + " · " + s.categorie : s.categorie;
+      const nom = estLangue(s) ? "Langues · " + s.langue + (s.dossier ? " · " + s.dossier : "")
+        : s.langue ? s.langue + " · " + s.categorie : s.categorie;
       if (!cats.has(nom)) cats.set(nom, []);
       cats.get(nom).push(s);
     }
@@ -147,9 +151,14 @@
       zone.append(el("p", "muted", "Aucun set sur cet appareil : ouvrez « Télécharger des sets » ci-dessous (connexion nécessaire)."));
       return;
     }
+    const qcm = [...etat.sets.values()].filter((s) => !estLangue(s));
+    if (!qcm.length) {
+      if (L) L.afficher(zone, el, lien, pluriel);
+      return;
+    }
     let total = 0;
     const sections = [];
-    for (const [nom, sets] of parCategorie(etat.sets.values())) {
+    for (const [nom, sets] of parCategorie(qcm)) {
       const details = el("details", "quiz-category");
       details.open = true;
       const summary = el("summary");
@@ -187,6 +196,7 @@
     const actions = el("div", "quiz-actions");
     actions.append(lien("Révision intelligente (" + total + ")", "#jouer?revision=1", "primary"));
     zone.append(actions, ...sections);
+    if (L) L.afficher(zone, el, lien, pluriel);
   }
 
   function afficherCatalogue() {
@@ -199,6 +209,7 @@
     }
     $("hl-catalogue-meta").textContent = pluriel(etat.catalogue.length, "set");
     for (const [nom, sets] of parCategorie(etat.catalogue)) {
+      if (sets.some(estLangue) && !L) continue; // page sans module Langues
       const bloc = el("fieldset", "hl-categorie");
       const legende = el("legend");
       const toutes = el("input");
@@ -223,9 +234,13 @@
     }
   }
 
+  const enSession = () => !$("quiz").hidden || ($("quiz-langue") && !$("quiz-langue").hidden);
+
   function afficherAccueil(message) {
     if (window.QuizMoteur) window.QuizMoteur.arreter();
+    if (window.LangueMoteur) window.LangueMoteur.arreter();
     $("quiz").hidden = true;
+    if ($("quiz-langue")) $("quiz-langue").hidden = true;
     $("hl-accueil").hidden = false;
     afficherReseau();
     afficherEtat(message);
@@ -248,6 +263,7 @@
       // Comme la révision intelligente du serveur : dues d'abord, boîtes basses, plus anciennes.
       const paires = [];
       for (const s of etat.sets.values()) {
+        if (estLangue(s)) continue;
         for (const q of fileDuJour(s, now)) {
           const st = s.progression[q.id];
           paires.push({ q, prio: st ? [estDue(st, now) ? 0 : 1, st.box, Date.parse(st.last_review || 0)] : [0, -1, 0] });
@@ -257,7 +273,7 @@
       return { titre: "Révision intelligente", questions: paires.map((p) => p.q), intensif: false };
     }
     const set = etat.sets.get(params.get("set"));
-    if (!set) return null;
+    if (!set || estLangue(set)) return null;
     const mode = params.get("mode");
     const questions = mode === "review" ? fileDuJour(set, now) : set.questions.slice();
     return { titre: set.titre, questions: melanger(questions), intensif: mode === "intensif" };
@@ -298,9 +314,21 @@
     });
   }
 
+  // Session de langue (langues_hors_ligne.js), dans le moteur du wiki (quiz_langue.js).
+  function lancerLangue(params) {
+    const root = $("quiz-langue");
+    if (!root || !L || !window.LangueMoteur) { location.hash = ""; return; }
+    if (window.QuizMoteur) window.QuizMoteur.arreter();
+    $("hl-accueil").hidden = true;
+    $("quiz").hidden = true;
+    root.hidden = false;
+    if (!L.lancer(params, root)) location.hash = "";
+  }
+
   function router() {
     const hash = location.hash;
     if (hash.startsWith("#jouer?")) lancer(new URLSearchParams(hash.slice(7)));
+    else if (hash.startsWith("#langue?")) lancerLangue(new URLSearchParams(hash.slice(8)));
     else {
       document.title = "QCM hors ligne · ProjetPluri";
       afficherAccueil();
@@ -329,14 +357,19 @@
       ids.slice(i, i + 40).forEach((id) => params.append("id", id));
       const data = await A.lireJson(await A.requete(app.dataset.setsUrl + "?" + params, { credentials: "same-origin", cache: "no-store" }));
       for (const set of data.sets) {
-        attente.filter((r) => r.set_id === set.id && (!r.joueur || r.joueur === data.joueur))
-          .sort((a, b) => Date.parse(a.date) - Date.parse(b.date))
-          .forEach((r) => appliquer(set, r));
+        const miennes = attente.filter((r) => r.set_id === set.id && (!r.joueur || r.joueur === data.joueur))
+          .sort((a, b) => Date.parse(a.date) - Date.parse(b.date));
+        if (estLangue(set)) {
+          if (!L) continue;
+          miennes.forEach((r) => { if (r.exo_id) L.appliquer(set, r.exo_id, r.note, r.date); });
+        } else {
+          miennes.forEach((r) => appliquer(set, r));
+          if (window.QcmReseau) await integrerImages(set);
+        }
         set.telecharge = new Date().toISOString();
-        if (window.QcmReseau) await integrerImages(set);
         await A.ecrire("sets", set);
         etat.sets.set(set.id, set);
-        if (!window.QcmReseau) mettreImagesEnCache(set);
+        if (!estLangue(set) && !window.QcmReseau) mettreImagesEnCache(set);
       }
       for (const id of data.manquants) {
         const set = etat.sets.get(id);
@@ -408,7 +441,7 @@
       // remplace la progression de l'appareil par la sienne.
       const cat = await A.catalogue();
       etat.meta.joueur = cat.joueur;
-      etat.catalogue = cat.sets;
+      etat.catalogue = cat.sets.concat(cat.langues || []);
       const envoi = await A.envoyer(cat);
       const retires = etat.sets.size ? await telecharger([...etat.sets.keys()]) : [];
       etat.meta.derniereSynchro = new Date().toISOString();
@@ -423,8 +456,8 @@
     } finally {
       synchroEnCours = false;
     }
-    if ($("quiz").hidden) afficherAccueil(message);
-    if (message) setTimeout(() => { if ($("quiz").hidden) afficherEtat(); }, 4000);
+    if (!enSession()) afficherAccueil(message);
+    if (message) setTimeout(() => { if (!enSession()) afficherEtat(); }, 4000);
   }
 
   async function telechargerSelection() {
@@ -461,6 +494,15 @@
   }
 
   // --- Démarrage ---
+  if (L) {
+    L.init({
+      sets: () => etat.sets, // rechargé par charger()
+      joueur: () => etat.meta.joueur || "",
+      sauver: (set) => A.ecrire("sets", set),
+      repondu: () => { etat.attente++; if (navigator.onLine) envoyerDiscretement(); },
+      retirer: retirerSet,
+    });
+  }
   $("hl-synchroniser").addEventListener("click", synchroniser);
   $("hl-telecharger").addEventListener("click", telechargerSelection);
   $("hl-tout-cocher").addEventListener("click", () => {

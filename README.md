@@ -314,8 +314,10 @@ dans la barre latérale ou sur `/qcm/`.
   `uv run python manage.py verifier_qcm vault/QCM/<catégorie>/<fichier>.json`
   (sans argument : tout `vault/QCM`).
 - **Hors ligne** : `/qcm/hors-ligne/` (installable depuis Chrome, HTTPS requis), ou
-  l'**application Android** : sets téléchargés sur le téléphone, révision sans
-  réseau, réponses synchronisées au retour de la connexion.
+  l'**application Android** : sets de QCM et paquets de langue téléchargés sur le
+  téléphone, révision sans réseau (les sessions de langue sont corrigées et
+  planifiées sur l'appareil avec les règles FSRS du serveur), réponses
+  synchronisées au retour de la connexion.
 - La progression est enregistrée en base de données, par utilisateur (il faut
   être connecté pour faire les QCM). Après un `git pull` qui ajoute
   le module, lancer `uv run python manage.py migrate`.
@@ -328,9 +330,14 @@ bas de l'écran (Accueil, Parcourir, Rechercher, QCM, Hors ligne), menu latéral
 en tiroir, import et téléchargement de fichiers, PDF en plein écran, zoom au
 pincement. On se connecte une fois (identifiant, mot de passe ; l'adresse
 publique `https://wiki.airhiterofprovence.fr` est proposée) ; le wiki s'ouvre
-ensuite directement, partout. Les QCM restent disponibles sans réseau. Marche
-aussi avec l'adresse du réseau local (HTTP, ou HTTPS avec Caddy). Détails :
-[`android/README.md`](android/README.md).
+ensuite directement, partout. Les QCM et les paquets de langue restent
+disponibles sans réseau. L'appli peut envoyer un **rappel quotidien**
+(notification à l'heure choisie dans ses réglages, avec ce qu'il reste à réviser
+et la série de jours ; rien si tout est déjà fait) et recevoir un PDF ou une
+note depuis une autre application (« **Partager** » vers ProjetPluri : le fichier
+est importé dans le dossier Importés et, pour un cours, transformé en page par
+Claude ; admins). Marche aussi avec l'adresse du réseau local (HTTP, ou HTTPS
+avec Caddy). Détails : [`android/README.md`](android/README.md).
 
 ## Comptes et rôles
 
@@ -469,6 +476,7 @@ en-têtes) sont dans [`core/tests.py`](core/tests.py) :
 - `/utilisateurs/` : gestion des comptes (admins)
 - `/api/status/` : statut du serveur en JSON
 - `/api/appareil/connexion/`, `/api/appareil/deconnexion/` et `/api/appareil/session/` : jeton de l'application Android
+- `/api/rappel/` : ce qu'il reste à réviser et la série de jours (JSON, notification de l'application)
 - `/qcm/hors-ligne/` : QCM hors ligne (PWA)
 - `/admin/` : administration Django (créer un compte avec `uv run python manage.py createsuperuser`)
 

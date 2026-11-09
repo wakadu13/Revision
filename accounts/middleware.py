@@ -17,7 +17,8 @@ from django.utils.cache import patch_cache_control
 from .models import JetonAppareil
 
 CHEMINS_AUTORISES = ("/qcm/hors-ligne/catalogue/", "/qcm/hors-ligne/sets/", "/qcm/hors-ligne/synchro/",
-                     "/fichiers/", "/api/appareil/deconnexion/", "/api/appareil/session/")
+                     "/fichiers/", "/api/appareil/deconnexion/", "/api/appareil/session/",
+                     "/importer/", "/api/rappel/")
 # Clé de session : le jeton dont vient la session ouverte par l'application.
 SESSION_JETON = "jeton_appareil"
 PREFIXE = "Bearer "

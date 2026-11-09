@@ -1082,6 +1082,24 @@ class AppareilTests(TestCase):
         self.assertEqual(QuizProgress.objects.get().player, "alice")
         self.assertIsNotNone(JetonAppareil.objects.get().utilise)
 
+    def test_rappel_et_import_par_jeton(self):
+        from django.core.files.uploadedfile import SimpleUploadedFile
+        jeton = self._connexion().json()["jeton"]
+        r = self.client.get("/api/rappel/", **self._auth(jeton)).json()
+        self.assertEqual((r["a_revoir"], r["qcm"], r["serie"]), (4, 4, 0))
+        # « Partager vers le wiki » depuis Android : import en JSON, réservé aux admins.
+        envoi = lambda: self.client_class(enforce_csrf_checks=True).post(  # noqa: E731
+            "/importer/", {"fichiers": SimpleUploadedFile("Cours.md", "# Cours\n".encode()), "chemins": "Cours.md",
+                           "dossier": "Importés", "claude": "1"},
+            HTTP_ACCEPT="application/json", **self._auth(jeton))
+        self.assertEqual(envoi().status_code, 403)
+        self.user.is_staff = True
+        self.user.save()
+        data = envoi().json()
+        self.assertTrue(data["results"][0]["ok"], data)
+        self.assertEqual(data["results"][0]["url"], "/wiki/Import%C3%A9s/Cours")
+        self.assertTrue((self.root / "Importés" / "Cours.md").is_file())
+
     def test_jeton_limite_a_l_api_hors_ligne(self):
         jeton = self._connexion().json()["jeton"]
         self.assertEqual(self.client.get("/qcm/", **self._auth(jeton)).status_code, 403)

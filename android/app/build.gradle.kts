@@ -56,6 +56,8 @@ android {
 
 dependencies {
     implementation("androidx.webkit:webkit:1.13.0")
+    implementation("androidx.core:core:1.13.1")
+    implementation("androidx.work:work-runtime:2.9.1")
 }
 
 // Le moteur des QCM est celui du wiki (wiki/static/wiki/) : copié à chaque build,
@@ -78,7 +80,7 @@ val preparerWeb by tasks.registering(Sync::class) {
     dependsOn(telechargerKatex)
     into(webGenere)
     from(rootProject.file("../wiki/static/wiki")) {
-        include("quiz.js", "qcm_attente.js", "qcm_hors_ligne.js", "wiki.css")
+        include("quiz.js", "qcm_attente.js", "qcm_hors_ligne.js", "quiz_langue.js", "langues_hors_ligne.js", "wiki.css")
         into("web")
     }
     from(tarTree(resources.gzip(layout.buildDirectory.file("katex-$katexVersion.tgz")))) {

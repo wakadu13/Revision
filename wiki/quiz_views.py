@@ -414,6 +414,25 @@ def _mois_du_calendrier(grille):
     return etiquettes
 
 
+def rappel(request):
+    """Pour le rappel quotidien de l'application : à réviser (QCM, langues), série, réponses du jour."""
+    from .langues_views import resume_langue
+
+    library = quiz.get_library()
+    player = player_id(request)
+    now = timezone.now()
+    decks = QuizDeck.map_for(player)
+    qcm = sum(_set_summary(s, QuizProgress.map_for(player, s.id), now, decks.get(s.id))["a_reviser"] for s in library.sets.values())
+    langues_dues = 0
+    for nom in library.noms_langues():
+        fichiers = library.sets_langue(nom)
+        if fichiers:
+            langues_dues += resume_langue(player, nom, fichiers, now)["a_revoir"]
+    activite = Activite.resume(player, timezone.localdate(now))
+    return JsonResponse({"a_revoir": qcm + langues_dues, "qcm": qcm, "langues": langues_dues,
+                         "serie": activite["serie"], "aujourdhui": activite["aujourdhui"]})
+
+
 def _ancre(set_id):
     return "set-" + slugify(set_id.replace("/", "-"))
 

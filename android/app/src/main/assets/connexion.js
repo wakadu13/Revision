@@ -15,6 +15,7 @@
     $("cx-joueur").textContent = R.joueur();
     if (!connecte) $("cx-adresse").value = R.serveur() || ADRESSE_PUBLIQUE;
     $("cx-conseil").hidden = !connecte || !R.locale(R.serveur());
+    if (connecte) afficherRappel();
     suggerer();
   }
 
@@ -112,6 +113,29 @@
       : (statut > 0 ? "Le serveur a répondu " + statut + " (pas à jour ?). " : "")
         + "« Se déconnecter », puis se reconnecter avec cette adresse.";
   });
+
+  // Rappel quotidien (notification) : réglé dans l'application, mémorisé par Android.
+  function afficherRappel() {
+    let r = {};
+    try { r = JSON.parse(window.QcmNatif.rappel ? window.QcmNatif.rappel() : "{}") || {}; } catch (e) { r = {}; }
+    const bloc = $("cx-rappel");
+    if (!window.QcmNatif.reglerRappel) { bloc.hidden = true; return; }
+    $("cx-rappel-actif").checked = !!r.actif;
+    const h = String(r.heure == null ? 19 : r.heure).padStart(2, "0"), m = String(r.minute || 0).padStart(2, "0");
+    $("cx-rappel-heure").value = h + ":" + m;
+    $("cx-rappel-etat").textContent = r.actif
+      ? (r.autorise === false ? "Les notifications sont bloquées pour l'application : autorisez-les dans les réglages d'Android."
+        : "Rappel prévu chaque jour à " + h + ":" + m + " ; rien si tout est déjà révisé.")
+      : "La notification indique ce qu'il reste à réviser et votre série de jours ; rien si tout est déjà fait.";
+  }
+  function reglerRappel() {
+    const [h, m] = ($("cx-rappel-heure").value || "19:00").split(":").map(Number);
+    window.QcmNatif.reglerRappel($("cx-rappel-actif").checked, h, m);
+    setTimeout(afficherRappel, 100);
+  }
+  $("cx-rappel-actif").addEventListener("change", reglerRappel);
+  $("cx-rappel-heure").addEventListener("change", reglerRappel);
+  window.rappelPermission = afficherRappel;
 
   $("cx-adresse").addEventListener("input", suggerer);
   $("cx-adresse-publique").addEventListener("click", () => {

@@ -37,6 +37,7 @@ urlpatterns = [
     path("qcm/planning/", quiz_views.plan, name="quiz_plan"),
     path("qcm/stats/", quiz_views.stats, name="quiz_stats"),
     path("qcm/reinitialiser/", quiz_views.reset, name="quiz_reset"),
+    path("api/rappel/", quiz_views.rappel, name="rappel"),
     path("qcm/hors-ligne/", hors_ligne_views.page, name="quiz_offline"),
     path("qcm/hors-ligne/catalogue/", hors_ligne_views.catalogue, name="quiz_offline_catalogue"),
     path("qcm/hors-ligne/sets/", hors_ligne_views.telecharger, name="quiz_offline_sets"),

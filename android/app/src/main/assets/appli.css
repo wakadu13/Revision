@@ -8,3 +8,7 @@
 .appli-actions { flex-direction: column; align-items: stretch; max-width: 22rem; }
 .appli-actions .button { justify-content: center; padding: .65rem; }
 .hl-entete { flex-wrap: wrap; gap: .5rem; }
+.appli-rappel { border: 1px solid var(--border); border-radius: 8px; padding: .5rem .9rem .7rem; margin: .5rem 0 1rem; }
+.appli-rappel legend { font-weight: 600; padding: 0 .3rem; }
+.appli-ligne { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; }
+.appli-ligne input[type=time] { padding: .3rem .5rem; border: 1px solid var(--border); border-radius: 6px; background: var(--bg); color: var(--text); font: inherit; }

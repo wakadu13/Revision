@@ -4,6 +4,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- navigator.onLine dans la WebView -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- Rappel quotidien de révision (demandée à l'utilisateur sur Android 13 et plus) -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:allowBackup="true"
@@ -15,10 +17,22 @@
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden|uiMode"
             android:exported="true"
+            android:launchMode="singleTop"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <!-- « Partager » un PDF ou une note vers le wiki : importé (et transformé en page par Claude). -->
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <action android:name="android.intent.action.SEND_MULTIPLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="application/pdf" />
+                <data android:mimeType="text/markdown" />
+                <data android:mimeType="text/x-tex" />
+                <data android:mimeType="text/plain" />
+                <data android:mimeType="application/x-tex" />
             </intent-filter>
         </activity>
     </application>

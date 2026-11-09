@@ -1,8 +1,9 @@
 # Application Android « ProjetPluri »
 
 APK pour téléphone et tablette : le **wiki complet** (pages, éditeur, lecteur
-PDF, QCM en ligne) avec une navigation pensée pour le tactile, et les **QCM hors
-ligne** (`/qcm/hors-ligne/` embarqué) qui se synchronisent avec le serveur.
+PDF, QCM en ligne) avec une navigation pensée pour le tactile, et les **QCM et
+paquets de langue hors ligne** (`/qcm/hors-ligne/` embarqué) qui se
+synchronisent avec le serveur.
 
 - **Connexion une seule fois** : au premier lancement, identifiant et mot de
   passe (l'adresse publique `https://wiki.airhiterofprovence.fr` est déjà
@@ -19,6 +20,18 @@ ligne** (`/qcm/hors-ligne/` embarqué) qui se synchronisent avec le serveur.
 - **Sans réseau** : la dernière version enregistrée des pages déjà vues si elle
   existe, sinon une page qui propose de réessayer ou de réviser hors ligne
   (les QCM téléchargés restent disponibles et se synchronisent au retour).
+- **Langues hors ligne** : les paquets du module Langues se téléchargent comme
+  les sets de QCM ; cartes, saisies, dictées… sont corrigées et planifiées
+  (FSRS) sur le téléphone avec les règles du serveur (`langues_hors_ligne.js`),
+  et les notes rejoignent la même file de synchronisation que les QCM.
+- **Rappel quotidien** : dans les réglages de l'appli, une notification à
+  l'heure choisie, avec ce qu'il reste à réviser et la série de jours
+  (`/api/rappel/`, avec le jeton) ; rien si tout est déjà révisé. Android 13 et
+  plus demande la permission d'afficher des notifications.
+- **Partager vers le wiki** : depuis un lecteur PDF, un mail, Drive…,
+  « Partager » un PDF, un `.md` ou un `.tex` vers ProjetPluri l'importe dans le
+  dossier « Importés » du wiki (admins) et lance la transformation du cours en
+  page par Claude ; l'appli ouvre ensuite le suivi des travaux de Claude.
 
 La version 2 s'installe par-dessus l'ancienne appli « QCM » (même identifiant,
 même clé de signature) : sets téléchargés et réponses en attente sont gardés.
@@ -129,4 +142,14 @@ pas encore envoyées sont perdues.
 - `assets/appli.js` : `QcmReseau.fetch()`, même interface que `fetch()`, que
   les scripts du wiki utilisent quand ils tournent dans l'appli. Les images des
   questions sont copiées dans les sets téléchargés (affichées hors ligne).
-- Les QCM du module Langues (FSRS) restent en ligne seulement, comme sur le site.
+- `langues_hors_ligne.js` (partagé avec `/qcm/hors-ligne/` du wiki) : FSRS,
+  correction tolérante et construction des sessions du module Langues en
+  JavaScript, mêmes règles que `fsrs.py` et `langues.py` ; les sessions
+  tournent dans le moteur du wiki (`quiz_langue.js`, `LangueMoteur`).
+- `Rappel.java` : tâche WorkManager quotidienne (relancée après un redémarrage
+  du téléphone) qui interroge `/api/rappel/` avec le jeton et affiche la
+  notification ; réglée depuis `connexion.html` (`QcmNatif.rappel`,
+  `QcmNatif.reglerRappel`).
+- `Pont.envoyerFichiers` : fichiers reçus par « Partager » (intention `SEND`)
+  envoyés en multipart à `/importer/` avec le jeton d'appareil (dossier
+  « Importés », transformation par Claude demandée).
