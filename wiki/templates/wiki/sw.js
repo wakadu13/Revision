@@ -13,6 +13,8 @@ const A_PRECHARGER = [
   "{% static 'wiki/wiki.css' %}",
   "{% static 'wiki/quiz.js' %}",
   "{% static 'wiki/qcm_attente.js' %}",
+  "{% static 'wiki/quiz_langue.js' %}",
+  "{% static 'wiki/langues_hors_ligne.js' %}",
   "{% static 'wiki/qcm_hors_ligne.js' %}",
   "{% static 'wiki/icone-192.png' %}",
   KATEX + "katex.min.css",

@@ -53,13 +53,14 @@ class QuizProgress(models.Model):
         if self.premiere_revue is None:
             self.premiere_revue = self.last_review
 
-    def record_langue(self, note: int) -> None:
+    def record_langue(self, note: int, quand=None) -> None:
         """Enregistre une révision du module Langues (note FSRS 1 à 4) : statistiques,
-        boîte de Leitner et état FSRS."""
-        now = timezone.now()
+        boîte de Leitner et état FSRS. `quand` : date de la réponse si elle a été
+        faite hors ligne ; maintenant par défaut."""
+        now = quand or timezone.now()
         deja_appris = not langues.est_nouveau(self)
         etat = langues.etat_suivant(self, note, now)  # avant record(), qui change last_review
-        self.record(quiz.NOTES[note - 1])
+        self.record(quiz.NOTES[note - 1], now)
         self.last_review = now
         self.stabilite = round(etat.stabilite, 3)
         self.difficulte = round(etat.difficulte, 3)

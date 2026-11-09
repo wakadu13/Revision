@@ -11,6 +11,8 @@
   <script src="appli.js"></script>
   <script src="web/qcm_attente.js" defer></script>
   <script src="web/quiz.js" defer></script>
+  <script src="web/quiz_langue.js" defer></script>
+  <script src="web/langues_hors_ligne.js" defer></script>
   <script src="web/qcm_hors_ligne.js" defer></script>
 </head>
 <body class="hl-body">
@@ -40,7 +42,7 @@
       <details class="quiz-category hl-catalogue" id="hl-catalogue">
         <summary><span class="quiz-category-name">Télécharger des sets</span><span class="muted quiz-category-meta" id="hl-catalogue-meta"></span></summary>
         <div class="hl-catalogue-corps">
-          <p class="muted">Cochez les sets à garder sur ce téléphone, puis téléchargez-les. Les QCM du module Langues (FSRS) restent disponibles en ligne seulement.</p>
+          <p class="muted">Cochez les sets de QCM et les paquets de langue à garder sur ce téléphone, puis téléchargez-les. Les sessions de langue (cartes, saisie, dictée…) sont corrigées et planifiées sur le téléphone, puis synchronisées.</p>
           <div class="quiz-actions">
             <button type="button" class="button primary" id="hl-telecharger">Télécharger la sélection</button>
             <button type="button" class="button small" id="hl-tout-cocher">Tout cocher</button>
@@ -59,6 +61,19 @@
       <p class="muted quiz-intensif-info" id="hl-intensif-info" hidden>Révision intensive : chaque question ratée revient plus loin dans la session,
         jusqu'à être réussie <b>2 fois de suite</b>. Seule la première réponse compte pour la révision espacée.</p>
       <div id="quiz-stage" class="quiz-stage"></div>
+    </article>
+
+    <article class="note quiz" id="quiz-langue" hidden>
+      <div class="quiz-topbar">
+        <a class="button small" href="#">← Langues</a>
+        <span class="quiz-progress-text"></span>
+      </div>
+      <div class="quiz-bar"><div class="quiz-bar-fill"></div></div>
+      <p class="muted quiz-intensif-info" hidden>Révision intensive : tous les exercices, et chaque exercice raté revient plus
+        loin dans la session jusqu'à être réussi <b>2 fois de suite</b>. Seule la première réponse compte pour la
+        révision espacée.</p>
+      <div class="quiz-stage"></div>
+      <p class="muted quiz-aide"></p>
     </article>
   </main>
 </body>

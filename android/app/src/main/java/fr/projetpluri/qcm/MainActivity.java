@@ -57,6 +57,9 @@ public class MainActivity extends Activity {
     static final String LOCAL = "https://" + HOTE + "/";
     static final int CHOIX_FICHIERS = 1;
     static final int ENREGISTRER = 2;
+    static final int NOTIFICATIONS = 3;
+    /** Page du wiki à ouvrir au lancement (notification de rappel). */
+    static final String EXTRA_CHEMIN = "fr.projetpluri.qcm.CHEMIN";
 
     private FrameLayout cadre;
     private WebView vue;
@@ -131,7 +134,79 @@ public class MainActivity extends Activity {
         });
 
         if (etat != null) vue.restoreState(etat);
-        else ouvrirWiki("/");
+        else if (!traiterIntention(getIntent())) ouvrirWiki("/");
+    }
+
+    @Override
+    protected void onNewIntent(Intent intention) {
+        super.onNewIntent(intention);
+        setIntent(intention);
+        traiterIntention(intention);
+    }
+
+    /** Fichiers partagés par une autre application, ou page demandée par une notification. */
+    private boolean traiterIntention(Intent intention) {
+        if (intention == null) return false;
+        String action = intention.getAction();
+        if (Intent.ACTION_SEND.equals(action) || Intent.ACTION_SEND_MULTIPLE.equals(action)) {
+            List<Uri> fichiers = new ArrayList<>();
+            if (Intent.ACTION_SEND.equals(action)) {
+                Uri u = intention.getParcelableExtra(Intent.EXTRA_STREAM);
+                if (u != null) fichiers.add(u);
+            } else {
+                List<Uri> liste = intention.getParcelableArrayListExtra(Intent.EXTRA_STREAM);
+                if (liste != null) fichiers.addAll(liste);
+            }
+            // Évite de ré-importer si l'activité est recréée (rotation).
+            intention.setAction(Intent.ACTION_MAIN);
+            intention.removeExtra(Intent.EXTRA_STREAM);
+            partager(fichiers);
+            return true;
+        }
+        String chemin = intention.getStringExtra(EXTRA_CHEMIN);
+        if (chemin != null && chemin.startsWith("/")) {
+            intention.removeExtra(EXTRA_CHEMIN);
+            ouvrirWiki(chemin);
+            return true;
+        }
+        return false;
+    }
+
+    /** Envoie au wiki des fichiers reçus par « Partager » (PDF, .md, .tex). */
+    private void partager(List<Uri> fichiers) {
+        if (fichiers.isEmpty()) {
+            toast("Rien à importer dans ce partage.");
+            ouvrirWiki("/");
+            return;
+        }
+        if (!pont.aUnCompte()) {
+            toast("Connectez d'abord l'application au wiki, puis partagez de nouveau le fichier.");
+            vue.loadUrl(LOCAL + "connexion.html");
+            return;
+        }
+        toast("Envoi au wiki de " + fichiers.size() + (fichiers.size() > 1 ? " fichiers…" : " fichier…"));
+        if (vue.getUrl() == null) ouvrirWiki("/importer/");
+        pont.envoyerFichiers(fichiers, resultat -> {
+            toast(resultat.message);
+            if (resultat.chemin != null) ouvrirWiki(resultat.chemin);
+        });
+    }
+
+    /** Rappel quotidien : permission d'afficher des notifications (Android 13 et plus). */
+    void demanderNotifications() {
+        if (Build.VERSION.SDK_INT >= 33 && !Rappel.notificationsAutorisees(this)) {
+            requestPermissions(new String[]{"android.permission.POST_NOTIFICATIONS"}, NOTIFICATIONS);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int code, String[] permissions, int[] resultats) {
+        super.onRequestPermissionsResult(code, permissions, resultats);
+        if (code == NOTIFICATIONS) {
+            boolean ok = Rappel.notificationsAutorisees(this);
+            if (!ok) toast("Sans cette permission, le rappel quotidien ne peut pas s'afficher.");
+            vue.evaluateJavascript("window.rappelPermission && window.rappelPermission(" + ok + ")", null);
+        }
     }
 
     private String version() {

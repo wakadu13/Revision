@@ -19,6 +19,7 @@ from django.utils import timezone
 from django.views.decorators.http import require_POST
 
 from . import fsrs, langues, quiz
+from .langues import ExoSession
 from .models import Activite, QuizProgress
 from .quiz_views import _ctx, _render_html, player_id
 from .vault import get_vault
@@ -109,6 +110,25 @@ def _payload(vault, item, st, now):
         p.update(enonce=html(d["enonce"]), choix=[html(c) for c in d["choix"]], multiple=d["multiple"])
     elif exo.forme == langues.ORDRE:
         p.update(consigne=html(d["consigne"]), mots=d["mots"], melange=item.melange)
+    return p
+
+
+def payload_hors_ligne(vault, set_langue, exo):
+    """Exercice complet pour l'application hors ligne : affichage pré-rendu comme
+    _payload, plus ce qu'il faut pour corriger et planifier sur l'appareil
+    (réponses, tolérance, prérequis, facettes par session)."""
+    item = ExoSession(set_langue, exo, False)
+    p = _payload(vault, item, None, timezone.now())
+    p.pop("previsions", None)
+    p.pop("nouveau", None)
+    d = exo.donnees
+    p.update(entree=exo.entree, prerequis=exo.prerequis, max_par_session=exo.max_par_session, resume=exo.resume)
+    if exo.forme == langues.SAISIE:
+        p.update(reponses=d["reponses"], tolerant=d["tolerant"])
+    elif exo.forme == langues.CHOIX:
+        p.update(reponses=d["reponses"])
+    elif exo.forme == langues.ORDRE:
+        p.update(reponses=d["reponses"])
     return p
 
 

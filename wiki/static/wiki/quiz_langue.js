@@ -8,22 +8,26 @@
 // être réussi 2 fois de suite ; un exercice réussi du premier coup est su.
 // Son : les mots en langue apprise sont lus par la synthèse vocale du navigateur
 // (gratuite, hors ligne) ; la dictée fait écrire un mot entendu.
+// Le moteur sert aussi hors ligne (LangueMoteur.demarrer, langues_hors_ligne.js) :
+// la correction et l'enregistrement lui sont alors fournis par l'appareil.
 (function () {
-  const root = document.getElementById("quiz-langue");
-  const stage = document.getElementById("quiz-stage");
-  const dataTag = document.getElementById("quiz-data");
-  if (!root || !stage || !dataTag) return;
+  let sessionPrecedente = null; // arrête les raccourcis clavier de la session précédente
 
-  const exercices = JSON.parse(dataTag.textContent);
-  const corrigerUrl = root.dataset.corrigerUrl;
-  const recordUrl = root.dataset.recordUrl;
-  const backUrl = root.dataset.backUrl;
-  const intensif = root.dataset.mode === "intensif";
-  const REUSSITES_REQUISES = 2;
-  const csrf = root.dataset.csrf;
-  const progressText = document.getElementById("quiz-progress");
-  const barFill = document.getElementById("quiz-bar-fill");
-  const aide = document.getElementById("quiz-aide");
+  // options : root (l'article .quiz), exercices, intensif, backUrl, quitter(),
+  // corriger(exercice, réponse) → Promise<verdict>, enregistrer(exercice, note) → Promise.
+  function demarrer(options) {
+    if (sessionPrecedente) sessionPrecedente.abort();
+    const session = new AbortController();
+    sessionPrecedente = session;
+    const root = options.root;
+    const stage = root.querySelector(".quiz-stage");
+    const exercices = options.exercices;
+    const backUrl = options.backUrl || "#";
+    const intensif = !!options.intensif;
+    const REUSSITES_REQUISES = 2;
+    const progressText = root.querySelector(".quiz-progress-text");
+    const barFill = root.querySelector(".quiz-bar-fill");
+    const aide = root.querySelector(".quiz-aide");
 
   const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -63,6 +67,7 @@
 
   // Bouton « son automatique » dans la barre du haut.
   const topbar = root.querySelector(".quiz-topbar");
+  if (topbar) topbar.querySelectorAll(".quiz-son-auto").forEach((b) => b.remove());
   if (topbar && synthese && exercices.some((e) => e.audio)) {
     const auto = el("button", "button small quiz-son-auto");
     auto.type = "button";
@@ -96,7 +101,8 @@
   let s = null; // état de l'exercice courant
 
   // -- LaTeX : rendu des $...$ (déjà transformés en spans .math par le serveur) --
-  const CDN = "https://cdn.jsdelivr.net/npm/";
+  // L'application Android embarque KaTeX (window.QUIZ_CDN = "lib/").
+  const CDN = window.QUIZ_CDN || "https://cdn.jsdelivr.net/npm/";
   let katexReady = null;
 
   function loadScript(src, integrity) {
@@ -154,16 +160,6 @@
       if (m.some((x, i) => x !== i)) break;
     }
     return m;
-  }
-
-  async function post(url, body) {
-    const r = await fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "X-CSRFToken": csrf },
-      body: JSON.stringify(body),
-    });
-    if (!r.ok) throw new Error(r.status);
-    return r.json();
   }
 
   function current() { return file[index]; }
@@ -439,7 +435,7 @@
     if (s.validateBtn) s.validateBtn.disabled = true;
     let v;
     try {
-      v = await post(corrigerUrl, { set_id: e.set_id, exo_id: e.exo_id, reponse });
+      v = await options.corriger(e, reponse);
     } catch (err) {
       s.envoi = false;
       if (s.validateBtn) s.validateBtn.disabled = false;
@@ -531,7 +527,7 @@
     s.enregistre = true;
     const c = current(), e = exo();
     if (!c.tentative) {
-      post(recordUrl, { set_id: e.set_id, exo_id: e.exo_id, note: s.note })
+      Promise.resolve(options.enregistrer(e, s.note))
         .catch(() => { /* enregistrement au mieux ; l'échec n'interrompt pas la session */ });
     }
   }
@@ -573,7 +569,7 @@
   function quitter() {
     if (!confirm("Quitter la session ? Les réponses déjà données sont enregistrées.")) return;
     enregistrer();
-    window.location.href = backUrl;
+    if (options.quitter) options.quitter(); else window.location.href = backUrl;
   }
 
   function resultats() {
@@ -622,6 +618,7 @@
   // -- Clavier --
   document.addEventListener("keydown", (ev) => {
     if (!s || ev.ctrlKey || ev.metaKey || ev.altKey) return;
+    if (root.hidden || !document.body.contains(root)) return;
     const e = exo();
     const key = ev.key;
     const k = key.toLowerCase();
@@ -649,7 +646,44 @@
       else if (key === "Backspace") { ev.preventDefault(); retirer(s.places.length - 1); }
       else if (/^[1-9]$/.test(key) && Number(key) <= e.mots.length) { ev.preventDefault(); placer(Number(key) - 1); }
     }
-  });
+  }, { signal: session.signal });
 
   if (exercices.length) build();
+  else {
+    progressText.textContent = "";
+    stage.replaceChildren(text("p", "", "Rien à réviser ni à découvrir pour l'instant ✓"));
+  }
+  }
+
+  function arreter() {
+    if (sessionPrecedente) sessionPrecedente.abort();
+    sessionPrecedente = null;
+  }
+
+  window.LangueMoteur = { demarrer, arreter };
+
+  // Page « jouer » du wiki : session fournie par le serveur, qui corrige et enregistre.
+  const root = document.getElementById("quiz-langue");
+  const dataTag = document.getElementById("quiz-data");
+  if (!root || !dataTag) return;
+  const csrf = root.dataset.csrf;
+
+  async function post(url, body) {
+    const r = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "X-CSRFToken": csrf },
+      body: JSON.stringify(body),
+    });
+    if (!r.ok) throw new Error(r.status);
+    return r.json();
+  }
+
+  demarrer({
+    root,
+    exercices: JSON.parse(dataTag.textContent),
+    intensif: root.dataset.mode === "intensif",
+    backUrl: root.dataset.backUrl,
+    corriger: (e, reponse) => post(root.dataset.corrigerUrl, { set_id: e.set_id, exo_id: e.exo_id, reponse }),
+    enregistrer: (e, note) => post(root.dataset.recordUrl, { set_id: e.set_id, exo_id: e.exo_id, note }),
+  });
 })();

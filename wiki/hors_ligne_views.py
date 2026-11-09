@@ -25,8 +25,9 @@ from django.views.decorators.cache import never_cache
 from django.views.decorators.csp import csp_override
 from django.views.decorators.http import require_POST
 
-from . import quiz
+from . import fsrs, quiz
 from .models import Activite, QuizDeck, QuizProgress
+from .langues_views import dossier_de, payload_hors_ligne
 from .quiz_views import _question_payload, chronometrer, player_id
 from .vault import get_vault
 
@@ -47,10 +48,14 @@ def page(request):
 @never_cache
 def catalogue(request):
     """Sets disponibles (sans les questions), jeton CSRF et joueur connecté."""
+    library = quiz.get_library()
     sets = [{"id": s.id, "titre": s.titre, "description": s.description, "categorie": s.categorie,
              "langue": s.langue, "total": len(s)}
-            for s in quiz.get_library().sorted_sets()]
-    return JsonResponse({"joueur": player_id(request), "csrf": get_token(request), "sets": sets})
+            for s in library.sorted_sets()]
+    fichiers = [{"id": f.id, "titre": f.titre, "description": f.description, "langue": f.langue,
+                 "dossier": dossier_de(f), "total": len(f), "type": "langue"}
+                for _, f in sorted(library.langues.items())]
+    return JsonResponse({"joueur": player_id(request), "csrf": get_token(request), "sets": sets, "langues": fichiers})
 
 
 @never_cache
@@ -62,6 +67,10 @@ def telecharger(request):
     vault = get_vault()
     sets, manquants = [], []
     for set_id in request.GET.getlist("id")[:MAX_SETS]:
+        fichier = library.langues.get(set_id)
+        if fichier is not None:
+            sets.append(_fichier_langue(vault, player, fichier))
+            continue
         qset = library.get(set_id)
         if qset is None:
             manquants.append(set_id)
@@ -84,6 +93,30 @@ def telecharger(request):
                        "revisions_jour": deck.revisions_jour if deck else None},
         })
     return JsonResponse({"joueur": player, "sets": sets, "manquants": manquants})
+
+
+def _fichier_langue(vault, player, fichier):
+    """Fichier de langue pour l'appareil : exercices complets et état FSRS du joueur."""
+    prog = QuizProgress.map_langue(player, [fichier])
+    return {
+        "id": fichier.id,
+        "type": "langue",
+        "langue": fichier.langue,
+        "titre": fichier.titre,
+        "description": fichier.description,
+        "dossier": dossier_de(fichier),
+        "code_langue": fichier.code_langue,
+        "particules": fichier.particules,
+        "caracteres": fichier.caracteres_speciaux,
+        "nouveaux_par_jour": fichier.nouveaux_par_jour,
+        "exercices": [payload_hors_ligne(vault, fichier, e) for e in fichier.exercices],
+        "progression": {
+            exo_id: {"stabilite": p.stabilite, "difficulte": p.difficulte, "echeance": _date_iso(p.echeance),
+                     "decouverte": _date_iso(p.decouverte), "oublis": p.oublis, "last_review": _date_iso(p.last_review),
+                     "last_correct": p.last_correct}
+            for (_, exo_id), p in prog.items()
+        },
+    }
 
 
 def _date_reponse(valeur, now):
@@ -122,23 +155,39 @@ def synchro(request):
         traitees.append(str(r["uid"]))
         try:
             quand = _date_reponse(r["date"], now)
+            if "exo_id" in r:
+                # Module Langues : note FSRS 1 à 4.
+                note = int(r["note"])
+                if note not in fsrs.NOTES:
+                    continue
+                set_id, exo_id = str(r["set_id"]), str(r["exo_id"])
+                fichier = library.langues.get(set_id)
+                if fichier is not None and fichier.exercice(exo_id) is not None:
+                    valides.append((quand, set_id, exo_id, note, None, True))
+                continue
             reponse = r["note"] if r.get("note") in quiz.NOTES else bool(r["correct"])
             set_id, question_id = str(r["set_id"]), str(r["question_id"])
         except (KeyError, ValueError, TypeError):
             continue
         qset = library.get(set_id)
         if qset is not None and any(q.id == question_id for q in qset.questions):
-            valides.append((quand, set_id, question_id, reponse, r.get("duree_ms")))
+            valides.append((quand, set_id, question_id, reponse, r.get("duree_ms"), False))
 
     enregistrees = 0
-    for quand, set_id, question_id, reponse, duree in sorted(valides, key=lambda v: v[0]):
+    for quand, set_id, question_id, reponse, duree, langue in sorted(valides, key=lambda v: v[0]):
         obj, _ = QuizProgress.objects.get_or_create(player=player, set_id=set_id, question_id=question_id)
         if obj.last_review and quand <= obj.last_review:
             continue
-        obj.record(reponse, quand)
-        obj.save()
-        Activite.noter(player, obj.last_correct, nouveau=obj.seen == 1, quand=quand)
-        chronometrer(player, set_id, duree)
+        if langue:
+            nouveau = obj.decouverte is None
+            obj.record_langue(reponse, quand)
+            obj.save()
+            Activite.noter(player, reponse != fsrs.A_REVOIR, nouveau=nouveau, quand=quand)
+        else:
+            obj.record(reponse, quand)
+            obj.save()
+            Activite.noter(player, obj.last_correct, nouveau=obj.seen == 1, quand=quand)
+            chronometrer(player, set_id, duree)
         enregistrees += 1
     return JsonResponse({"traitees": traitees, "enregistrees": enregistrees})
 

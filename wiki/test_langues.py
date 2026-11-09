@@ -379,3 +379,100 @@ class VerifierTests(SimpleTestCase):
                                                 for p in Path(settings.WIKI_DIR, "QCM").rglob("*.json")])
         self.assertEqual(lib.errors, [])
         self.assertIn("Anglais", lib.noms_langues())
+
+
+class LangueHorsLigneTests(TestCase):
+    """Paquets de langue sur l'appareil : téléchargement complet, réponses rejouées."""
+
+    def setUp(self):
+        LangueViewTests.setUp(self)
+
+    def _synchro(self, *reponses):
+        return self.client.post("/qcm/hors-ligne/synchro/", data=json.dumps({"reponses": list(reponses)}),
+                                content_type="application/json")
+
+    def test_catalogue_et_telechargement(self):
+        cat = self.client.get("/qcm/hors-ligne/catalogue/").json()
+        self.assertEqual(cat["sets"], [])
+        self.assertEqual(cat["langues"], [{"id": "langues/t", "titre": "t", "description": "", "langue": "Anglais",
+                                           "dossier": "langues", "total": 9, "type": "langue"}])
+        self.client.post("/qcm/langue/reponse/", data=json.dumps({"set_id": "langues/t", "exo_id": "v1#rec", "note": 3}),
+                         content_type="application/json")
+        data = self.client.get("/qcm/hors-ligne/sets/", {"id": ["langues/t", "inconnu"]}).json()
+        self.assertEqual(data["manquants"], ["inconnu"])
+        (s,) = data["sets"]
+        self.assertEqual((s["type"], s["langue"], s["code_langue"], s["particules"]), ("langue", "Anglais", "en-GB", ["to"]))
+        self.assertEqual([e["exo_id"] for e in s["exercices"]][:3], ["v1#rec", "v1#prod", "v1#ctx"])
+        prod = s["exercices"][1]
+        # Tout ce qu'il faut pour corriger et planifier sans le serveur.
+        self.assertEqual((prod["forme"], prod["reponses"], prod["tolerant"], prod["entree"], prod["prerequis"]),
+                         ("saisie", ["to achieve"], True, "v1", "v1#rec"))
+        self.assertEqual(prod["max_par_session"], 1)
+        self.assertNotIn("previsions", s["exercices"][0])
+        self.assertEqual(s["exercices"][6]["reponses"], ["She has never been to London."])
+        self.assertEqual(s["exercices"][3]["reponses"], ["am"])
+        p = s["progression"]["v1#rec"]
+        self.assertGreater(p["stabilite"], 0)
+        self.assertEqual(p["oublis"], 0)
+        self.assertTrue(p["last_correct"])
+        self.assertTrue(p["echeance"] and p["decouverte"] and p["last_review"])
+        self.assertEqual(list(s["progression"]), ["v1#rec"])
+
+    def test_synchro_rejoue_les_notes_fsrs(self):
+        from .models import Activite
+        r = self._synchro(
+            {"uid": "b", "set_id": "langues/t", "exo_id": "v1#rec", "note": 1, "date": "2026-10-02T08:00:00Z"},
+            {"uid": "a", "set_id": "langues/t", "exo_id": "v1#rec", "note": 3, "date": "2026-10-01T08:00:00Z"},
+            {"uid": "x", "set_id": "langues/t", "exo_id": "inconnu", "note": 3, "date": "2026-10-01T08:00:00Z"},
+            {"uid": "y", "set_id": "langues/t", "exo_id": "v1#prod", "note": 7, "date": "2026-10-01T08:00:00Z"},
+            {"uid": "z", "set_id": "langues/t", "exo_id": "v1#prod", "note": "bien", "date": "2026-10-01T08:00:00Z"},
+        )
+        self.assertEqual(r.json(), {"traitees": ["b", "a", "x", "y", "z"], "enregistrees": 2})
+        p = QuizProgress.objects.get(player="alice", set_id="langues/t", question_id="v1#rec")
+        self.assertEqual(p.last_review.isoformat(), "2026-10-02T08:00:00+00:00")
+        self.assertEqual(p.decouverte.isoformat(), "2026-10-01T08:00:00+00:00")
+        self.assertEqual((p.oublis, p.last_correct, p.seen), (1, False, 2))
+        self.assertEqual(p.echeance, p.last_review + timedelta(minutes=10))
+        self.assertFalse(QuizProgress.objects.filter(question_id="v1#prod").exists())
+        self.assertEqual(Activite.objects.filter(player="alice").count(), 2)  # 1er et 2 octobre
+        # Renvoi : déjà reçue, ignorée.
+        r = self._synchro({"uid": "a", "set_id": "langues/t", "exo_id": "v1#rec", "note": 3, "date": "2026-10-01T08:00:00Z"})
+        self.assertEqual(r.json()["enregistrees"], 0)
+        self.assertEqual(QuizProgress.objects.get(question_id="v1#rec").seen, 2)
+
+    def test_page_hors_ligne_embarque_le_module_langues(self):
+        page = self.client.get("/qcm/hors-ligne/").content.decode()
+        self.assertIn('id="quiz-langue"', page)
+        self.assertIn("langues_hors_ligne.js", page)
+        self.assertIn("quiz_langue.js", page)
+        sw = self.client.get("/qcm/sw.js").content.decode()
+        self.assertIn("langues_hors_ligne.js", sw)
+
+
+class RappelTests(TestCase):
+    """/api/rappel/ : ce qu'il reste à réviser, pour la notification quotidienne de l'application."""
+
+    def setUp(self):
+        LangueViewTests.setUp(self)
+        (self.root / "reseaux").mkdir()
+        (self.root / "reseaux" / "s.json").write_text(json.dumps({"titre": "S", "questions": [
+            {"id": "q1", "type": "QCM", "question": "2+2 ?", "choix": ["3", "4"], "reponses": [1]}]}), encoding="utf-8")
+
+    def test_compte_les_elements_dus(self):
+        r = self.client.get("/api/rappel/").json()
+        # Une question jamais vue est à réviser ; un mot jamais vu n'est pas « dû ».
+        self.assertEqual(r, {"a_revoir": 1, "qcm": 1, "langues": 0, "serie": 0, "aujourdhui": 0})
+        now = timezone.now()
+        QuizProgress.objects.create(player="alice", set_id="langues/t", question_id="v1#rec", stabilite=2.0, difficulte=5.0,
+                                    echeance=now - timedelta(days=1), last_review=now - timedelta(days=3), decouverte=now - timedelta(days=3))
+        QuizProgress.objects.create(player="alice", set_id="langues/t", question_id="v1#prod", stabilite=30.0, difficulte=5.0,
+                                    echeance=now + timedelta(days=20), last_review=now - timedelta(days=3), decouverte=now - timedelta(days=3))
+        self.client.post("/qcm/reponse/", data=json.dumps({"set_id": "reseaux/s", "question_id": "q1", "correct": True}),
+                         content_type="application/json")
+        r = self.client.get("/api/rappel/").json()
+        self.assertEqual((r["qcm"], r["langues"], r["a_revoir"]), (0, 1, 1))
+        self.assertEqual((r["serie"], r["aujourdhui"]), (1, 1))
+
+    def test_connexion_requise(self):
+        self.client.logout()
+        self.assertEqual(self.client.get("/api/rappel/").status_code, 302)
