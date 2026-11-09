@@ -34,8 +34,8 @@ synchronisent avec le serveur.
   l'icône) : Révision du jour, QCM, Hors ligne.
 - **Alerte serveur** (admins) : si le téléphone a du réseau mais que le wiki ne
   répond pas au rappel quotidien, une notification « Le wiki ne répond pas »
-  prévient ; sur le PC, `scripts/surveiller-serveur.ps1` (Planificateur de tâches)
-  fait de même en local.
+  prévient ; sur le serveur, `scripts/surveiller-serveur.sh` (cron) fait de même
+  en local.
 - **Partager vers le wiki** : depuis un lecteur PDF, un mail, Drive…,
   « Partager » un PDF, un `.md` ou un `.tex` vers ProjetPluri l'importe dans le
   dossier « Importés » du wiki (admins) et lance la transformation du cours en
