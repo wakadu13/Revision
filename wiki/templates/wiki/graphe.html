@@ -1,0 +1,29 @@
+{% extends "wiki/base.html" %}
+{% load static %}
+{% block title %}Graphe{% if centre %} · {{ centre.title }}{% endif %}{% endblock %}
+{% block content %}
+<article class="note graphe-page">
+  <h1 class="note-title">Graphe des liens{% if centre %} <span class="muted">autour de « {{ centre.title }} »</span>{% endif %}</h1>
+  <div class="graphe-outils">
+    <input type="search" data-graphe-recherche placeholder="Trouver une page…" aria-label="Trouver une page dans le graphe">
+    <label>Afficher
+      <select data-graphe-portee>
+        {% if centre %}<option value="1">les voisines de la page</option><option value="2">les voisines sur 2 niveaux</option>{% endif %}
+        <option value="tout">tout le wiki</option>
+      </select>
+    </label>
+    <label class="checkbox"><input type="checkbox" data-graphe-isolees checked> pages sans lien</label>
+    <span class="muted" data-graphe-compte></span>
+  </div>
+  <div class="graphe-cadre">
+    <canvas data-graphe data-url="{% url 'wiki:graphe_donnees' %}" data-centre="{{ centre.key|default:'' }}"
+            role="img" aria-label="Graphe des liens entre les pages du wiki : cliquez une page pour l'ouvrir"></canvas>
+    <div class="graphe-info" data-graphe-info hidden></div>
+  </div>
+  <p class="muted">Faites glisser pour déplacer, molette ou deux doigts pour zoomer ; survolez une page pour voir ses liens,
+    cliquez pour l'ouvrir (sur écran tactile : touchez une fois pour la choisir, puis « Ouvrir »). La couleur indique le
+    dossier principal.</p>
+  <ul class="graphe-legende" data-graphe-legende></ul>
+</article>
+<script src="{% static 'wiki/graphe.js' %}" defer></script>
+{% endblock %}

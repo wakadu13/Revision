@@ -15,9 +15,17 @@ def wiki(request):
         "in_app": "ProjetPluriApp/" in request.headers.get("User-Agent", ""),
         # Pages de lecture : menu caché, sauf s'il a été épinglé (cookie posé par plein_ecran.js).
         "menu_epingle": request.COOKIES.get("menu") == "epingle",
+        # « Demander au wiki » : seulement avec une clé d'API Claude.
+        "demander_dispo": SimpleLazyObject(_demander_dispo),
         # Admins : nombre d'erreurs du serveur à regarder (menu du compte).
         "erreurs_ouvertes": SimpleLazyObject(lambda: _erreurs_ouvertes(request)),
     }
+
+
+def _demander_dispo():
+    from . import claude
+
+    return claude.disponible()
 
 
 def _erreurs_ouvertes(request):

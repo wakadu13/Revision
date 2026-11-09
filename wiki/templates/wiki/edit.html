@@ -98,6 +98,7 @@
         <button type="submit" class="button" data-submit>Enregistrer et fermer</button>
         <a class="button" href="{% if note %}{{ note.url }}{% else %}{% url 'wiki:home' %}{% endif %}">Fermer</a>
       </div>
+      <div class="editor-liens" data-suggestions-liens role="status" hidden></div>
       <div class="editor-status" hidden>
         <label class="editor-autosave" title="Enregistre tout seul quelques secondes après la dernière frappe, comme Obsidian"><input type="checkbox" data-autosave> Enregistrement auto</label>
         <span class="editor-count" data-count></span>

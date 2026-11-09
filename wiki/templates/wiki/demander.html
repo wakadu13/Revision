@@ -1,0 +1,40 @@
+{% extends "wiki/base.html" %}
+{% load static %}
+{% block title %}Demander au wiki{% endblock %}
+{% block content %}
+<article class="note demander" id="demander" data-url="{% url 'wiki:demander' %}" data-csrf="{{ csrf_token }}">
+  <h1 class="note-title">Demander au wiki</h1>
+  <p class="muted">Claude répond d'après vos pages et le texte de vos PDF, et cite ses sources : chaque [1], [2]… mène
+    à la page ou à la page du PDF concernée. Il dit quand le wiki n'en parle pas.</p>
+  {% if not dispo %}
+  <div class="callout" data-callout="info"><div class="callout-title">Pas de clé d'API Claude sur le serveur : un admin peut l'ajouter dans « Claude (clé d'API) ».</div></div>
+  {% else %}
+  {% if plafond %}<div class="callout" data-callout="warning"><div class="callout-title">Plafond mensuel de Claude atteint : réessayez le mois prochain.</div></div>{% endif %}
+  <form class="tuteur-form demander-form" data-demander-form>
+    <label for="demander-question" class="sr-only">Votre question</label>
+    <textarea id="demander-question" name="question" rows="3" maxlength="2000" required
+              placeholder="Ex. : quelle différence entre la transformée de Fourier et la transformée en Z ?">{{ question }}</textarea>
+    <div class="demander-actions">
+      <button type="submit" class="button primary">Demander</button>
+      <span class="muted">Ctrl+Entrée pour envoyer. Les questions de suite tiennent compte des précédentes.</span>
+    </div>
+  </form>
+  {% endif %}
+  <div class="demander-echanges" data-demander-echanges>
+    {% for e in echanges %}
+    <div class="tuteur-echange demander-echange">
+      <p class="tuteur-question">{{ e.question }}</p>
+      <div class="tuteur-reponse markdown">{{ e.html|safe }}</div>
+      {% if e.sources %}
+      <details class="demander-sources"{% if forloop.first %} open{% endif %}>
+        <summary>Sources ({{ e.sources|length }})</summary>
+        <ol>{% for s in e.sources %}<li value="{{ s.n }}"{% if s.cite %} class="cite"{% endif %}><a href="{{ s.url }}">{{ s.titre }}</a></li>{% endfor %}</ol>
+      </details>
+      {% endif %}
+      <p class="muted demander-quand">{{ e.quand|date:"d/m/Y à H:i" }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</article>
+<script src="{% static 'wiki/demander.js' %}" defer></script>
+{% endblock %}

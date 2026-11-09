@@ -735,6 +735,8 @@ def palette(request):
         {"t": "Statistiques des QCM", "u": reverse("wiki:quiz_stats")},
         {"t": "Planning des révisions", "u": reverse("wiki:quiz_plan")},
         {"t": "Rechercher dans le wiki", "u": reverse("wiki:search")},
+        {"t": "Demander au wiki (Claude)", "u": reverse("wiki:demander")},
+        {"t": "Graphe des liens entre pages", "u": reverse("wiki:graphe")},
         {"t": "Documentation", "u": reverse("wiki:documentation")},
         {"t": "Mon compte", "u": reverse("accounts:profile")},
         {"t": "Thème : clair, sombre ou automatique", "a": "theme"},
@@ -1014,12 +1016,20 @@ def tag(request, tag):
 
 
 def search(request):
+    """Recherche dans les notes et dans le texte des PDF (page par page)."""
+    from . import texte_pdf
+
     vault = get_vault()
     query = request.GET.get("q", "").strip()
     results = vault.search(query) if query else []
-    if len(results) == 1 and results[0][0].title.lower() == query.lower():
+    pdfs = texte_pdf.chercher(vault, query) if query else []
+    if len(results) == 1 and not pdfs and results[0][0].title.lower() == query.lower():
         return redirect(results[0][0].url)
-    return _render(request, vault, "wiki/search.html", {"query": query, "results": results})
+    restants = len(texte_pdf.a_indexer(vault))
+    if restants:
+        texte_pdf.lancer()
+    return _render(request, vault, "wiki/search.html", {
+        "query": query, "results": results, "pdfs": pdfs, "pdf_restants": restants, "demander_dispo": claude.disponible()})
 
 
 # Documentation du projet : les README à la racine du dépôt (hors du coffre),

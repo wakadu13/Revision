@@ -146,6 +146,11 @@ Obsidian lui-même :
   <kbd>Ctrl</kbd>+clic ouvre un lien dans un nouvel onglet ;
 - <kbd>Ctrl</kbd>+<kbd>S</kbd> enregistre sans quitter la page (enregistrement
   automatique en option), avec détection des modifications faites ailleurs ;
+- **liens suggérés** : à l'enregistrement, les titres (ou alias) de pages
+  existantes cités dans le texte sans lien sont proposés sous l'éditeur ; un
+  clic change la première mention en `[[lien]]`. Le code, les formules, les
+  liens et les titres de section sont ignorés. « Enregistrer et fermer » les
+  montre une fois avant de fermer s'ils n'ont pas encore été proposés ;
 - une image **collée** ou **glissée** dans le texte est ajoutée au coffre et
   intégrée (`![[Pasted image ….png]]`), rangée comme dans Obsidian (réglage
   « Dossier des pièces jointes » de `.obsidian/app.json`, racine par défaut) ;
@@ -202,6 +207,27 @@ n'imprime que le contenu, en clair même en thème sombre, sans menus ni boutons
 encadrés repliés ouverts ; « Enregistrer au format PDF » du navigateur donne une
 fiche à garder. Dans l'application Android, le bouton passe par l'impression
 d'Android.
+
+### Recherche, « Demander au wiki » et graphe
+
+- **Recherche** (`/recherche/`, champ du menu) : dans les notes et dans le
+  **texte des PDF**, page par page, avec un lien qui ouvre le lecteur à la bonne
+  page. Le texte des PDF est lu une fois, en arrière-plan, à la première
+  recherche (puis seulement pour les PDF nouveaux ou modifiés) ; la commande
+  `python manage.py indexer_pdf` fait tout d'un coup. Un PDF scanné (images
+  sans texte) n'est pas trouvable.
+- **✦ Demander au wiki** (`/demander/`, menu et palette, avec une clé d'API) :
+  le tuteur étendu à tout le wiki. Le serveur choisit les pages et les pages de
+  PDF qui parlent le plus de la question, Claude (Haiku) répond d'après elles en
+  citant ses sources [1], [2]… : chaque numéro mène à la page ou à la page du
+  PDF. Il dit quand le wiki n'en parle pas. Les questions de suite tiennent
+  compte des précédentes ; l'historique reste sur la page. Même plafond mensuel
+  que le tuteur.
+- **Graphe** (`/graphe/`, menu, et « Voir dans le graphe » sous les rétroliens
+  d'une page) : les pages et leurs liens, colorés par dossier ; glisser pour se
+  déplacer, molette ou deux doigts pour zoomer, survol pour voir les liens d'une
+  page, clic pour l'ouvrir ; recherche d'une page, vue limitée aux voisines
+  d'une page (1 ou 2 niveaux).
 
 ### Thème et palette de commandes
 
@@ -679,7 +705,8 @@ en-têtes) sont dans [`core/tests.py`](core/tests.py) :
 - `/pdf/<chemin>` : lecteur de PDF (`?integre=1` : version intégrée dans les notes)
 - `/sommaire/` : sommaire de toutes les notes
 - `/tags/` et `/tags/<tag>` : les tags
-- `/recherche/?q=...` : recherche plein texte (insensible aux accents)
+- `/recherche/?q=...` : recherche plein texte (insensible aux accents), notes et texte des PDF
+- `/demander/` : « Demander au wiki » (Claude, sources citées) ; `/graphe/` et `/graphe.json` : graphe des liens
 - `/historique/<page>` : versions précédentes d'une page (admins) ; `/pdf-annotation/` (POST, admins) : passage d'un PDF → carte ou citation
 - `/sw.js`, `/manifest.webmanifest`, `/hors-connexion/`, `/hors-ligne/dossier.json` : lecture hors ligne du wiki (PWA)
 - `/qcm/exporter/?set=…` : export d'un set ou d'un paquet en `.apkg` (Anki) ou `.tsv` (`&format=tsv`)

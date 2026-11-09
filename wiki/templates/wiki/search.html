@@ -8,7 +8,8 @@
     <button type="submit" class="button primary">Rechercher</button>
   </form>
   {% if query %}
-  <p class="muted">{{ results|length }} résultat{{ results|length|pluralize }} pour « {{ query }} »</p>
+  <p class="muted">{{ results|length }} page{{ results|length|pluralize }}{% if pdfs %} et {{ pdfs|length }} PDF{% endif %} pour « {{ query }} »
+    {% if demander_dispo %} · <a href="{% url 'wiki:demander' %}?q={{ query|urlencode }}">✦ Demander au wiki</a>{% endif %}</p>
   <ul class="results">
     {% for n, snippet in results %}
     <li>
@@ -19,8 +20,22 @@
     <li class="muted">Aucune note ne correspond. Essayez d'autres mots, ou consultez le <a href="{% url 'wiki:sommaire' %}">sommaire</a>.</li>
     {% endfor %}
   </ul>
+  {% if pdfs or pdf_restants %}
+  <h2>Dans les PDF</h2>
+  {% if pdf_restants %}<p class="muted">Lecture du texte des PDF en cours ({{ pdf_restants }} restant{{ pdf_restants|pluralize }}) : relancez la recherche dans un moment pour tout voir.</p>{% endif %}
+  <ul class="results results-pdf">
+    {% for r in pdfs %}
+    <li>
+      <a href="{{ r.pdf.view_url }}">{{ r.pdf.path.stem }}</a> <span class="muted">— PDF{% if r.pdf.path.parent.parts %} · {{ r.pdf.path.parent }}{% endif %} · {{ r.nombre }} page{{ r.nombre|pluralize }}</span>
+      {% for numero, extrait in r.pages %}
+      <p><a class="results-page" href="{{ r.pdf.view_url }}#page={{ numero }}">p. {{ numero }}</a> {{ extrait|safe }}</p>
+      {% endfor %}
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
   {% else %}
-  <p class="muted">Saisissez un ou plusieurs mots. La recherche ignore les accents et la casse. Vous pouvez aussi parcourir le <a href="{% url 'wiki:sommaire' %}">sommaire</a>.</p>
+  <p class="muted">Saisissez un ou plusieurs mots. La recherche ignore les accents et la casse, et fouille aussi le texte des PDF. Vous pouvez aussi parcourir le <a href="{% url 'wiki:sommaire' %}">sommaire</a> ou le <a href="{% url 'wiki:graphe' %}">graphe</a>.</p>
   {% endif %}
 </article>
 {% endblock %}
