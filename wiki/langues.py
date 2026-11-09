@@ -87,6 +87,7 @@ class Exercice:
     details: list[str] = field(default_factory=list)  # montrés après la réponse
     prerequis: str | None = None                      # facette à connaître avant celle-ci
     max_par_session: int = 1
+    audio: dict | None = None                         # {texte, quand} lu par la synthèse vocale
 
 
 @dataclass
@@ -103,6 +104,7 @@ class SetLangue:
     nouveaux_par_jour: int | None = None
     path: PurePosixPath | None = None
     types_vocabulaire: list[str] = field(default_factory=list)  # cartes de vocabulaire du paquet
+    code_langue: str = ""  # synthèse vocale (ex. "en-GB")
 
     def __len__(self):
         return len(self.exercices)
@@ -207,21 +209,36 @@ PRODUCTION = "production"          # traduction à taper M → L
 TRADUCTION = "traduction"          # traduction à taper L → M
 CHOIX_MOT = "choix"                # QCM M → L : le bon mot parmi ceux du paquet
 CONTEXTE = "contexte"              # phrase d'exemple à compléter
+DICTEE = "dictee"                  # le mot est lu (synthèse vocale), on l'écrit en L
 TYPES_VOCABULAIRE = {
     DECOUVERTE: "Carte {M} → {L}",
     PRODUCTION: "Traduction à taper {M} → {L}",
     CHOIX_MOT: "QCM {M} → {L} (choisir le bon mot)",
     CONTEXTE: "Phrase à compléter (en {langue})",
+    DICTEE: "Dictée : écouter le mot et l'écrire (en {langue})",
     RECONNAISSANCE: "Carte {L} → {M}",
     TRADUCTION: "Traduction à taper {L} → {M}",
 }
+# Code de langue (BCP 47) pour la synthèse vocale du navigateur ; la clé
+# « code_langue » d'un fichier l'impose (ex. "en-US").
+CODES_LANGUE = {
+    "EN": "en-GB", "FR": "fr-FR", "ES": "es-ES", "DE": "de-DE", "IT": "it-IT", "PT": "pt-PT",
+    "RO": "ro-RO", "NL": "nl-NL", "RU": "ru-RU", "JA": "ja-JP", "ZH": "zh-CN", "AR": "ar-SA",
+}
+
+
+def code_langue(langue: str) -> str:
+    abr = abreviation(langue)
+    return CODES_LANGUE.get(abr, abr.lower())
 # Sans clé « exercices » : le fonctionnement d'origine.
 VOCABULAIRE_PAR_DEFAUT = [RECONNAISSANCE, PRODUCTION, CONTEXTE]
 # La première carte retenue (dans cet ordre) fait découvrir le mot ; les autres
 # ne viennent qu'une fois celle-ci réussie.
-ORDRE_DECOUVERTE = [DECOUVERTE, RECONNAISSANCE, CHOIX_MOT, PRODUCTION, TRADUCTION, CONTEXTE]
+ORDRE_DECOUVERTE = [DECOUVERTE, RECONNAISSANCE, CHOIX_MOT, PRODUCTION, TRADUCTION, CONTEXTE, DICTEE]
 SUFFIXES = {RECONNAISSANCE: "rec", DECOUVERTE: "dec", PRODUCTION: "prod", TRADUCTION: "trad",
-            CHOIX_MOT: "qcm", CONTEXTE: "ctx"}
+            CHOIX_MOT: "qcm", CONTEXTE: "ctx", DICTEE: "dict"}
+# Quand lire le mot à voix haute : à l'affichage, au retournement de la carte, après la correction.
+DEBUT, VERSO, FIN = "debut", "verso", "fin"
 
 
 def types_vocabulaire(data, rel="") -> list[str]:
@@ -271,11 +288,15 @@ def _facettes_vocabulaire(id_, mot, trads, o, types, langue, abr_l, abr_m, autre
     possibles = [t for t in types
                  if not (t == CONTEXTE and not troue) and not (t == CHOIX_MOT and not autres_mots)]
     entree = next((t for t in ORDRE_DECOUVERTE if t in possibles), None)
+    # Son : le mot (ou la phrase d'exemple) en langue apprise, lu par le navigateur.
+    sons = {RECONNAISSANCE: (mot, DEBUT), DECOUVERTE: (mot, VERSO), PRODUCTION: (mot, FIN), TRADUCTION: (mot, DEBUT),
+            CHOIX_MOT: (mot, FIN), CONTEXTE: (_sans_crochets(exemple), FIN), DICTEE: (mot, DEBUT)}
     facettes = []
     for t in possibles:
         exo_id = f"{id_}#{SUFFIXES[t]}"
         prerequis = None if t == entree else f"{id_}#{SUFFIXES[entree]}"
-        commun = {"entree": id_, "genre": VOCABULAIRE, "details": list(details), "prerequis": prerequis}
+        commun = {"entree": id_, "genre": VOCABULAIRE, "details": list(details), "prerequis": prerequis,
+                  "audio": {"texte": sons[t][0], "quand": sons[t][1]}}
         if t == RECONNAISSANCE:
             facettes.append(Exercice(id=exo_id, etiquette=f"Vocabulaire · reconnaissance ({abr_l} → {abr_m})",
                                      resume=f"{mot} → {trad}", forme=CARTE,
@@ -306,6 +327,13 @@ def _facettes_vocabulaire(id_, mot, trads, o, types, langue, abr_l, abr_m, autre
                                      resume=f"{mot} (en contexte)", forme=SAISIE,
                                      donnees=_saisie(f"Complète : {phrase}\n(indice : {trad})",
                                                      [a.strip() for a in attendu.split("|")], tolerant=True),
+                                     **commun))
+        elif t == DICTEE:
+            commun["details"] = [f"Sens : « {trad} »"] + commun["details"]
+            facettes.append(Exercice(id=exo_id, etiquette=f"Vocabulaire · dictée ({abr_l})",
+                                     resume=f"{mot} (dictée)", forme=SAISIE,
+                                     donnees={**_saisie(f"Écoute le mot et écris-le en {langue.lower()}.", reponses, tolerant=True),
+                                              "indice": trad},
                                      **commun))
     return facettes
 
@@ -441,6 +469,7 @@ def set_depuis_json(data, rel: PurePosixPath) -> SetLangue:
         nouveaux_par_jour=quota if isinstance(quota, int) and not isinstance(quota, bool) and quota >= 0 else None,
         path=rel,
         types_vocabulaire=types if entrees else [],
+        code_langue=_texte(data.get("code_langue")).strip() or code_langue(langue),
     )
 
 

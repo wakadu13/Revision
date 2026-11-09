@@ -6,6 +6,8 @@
 // touche F peut entre-temps la passer en « Facile »).
 // Révision intensive : un exercice raté revient (3 positions plus loin) jusqu'à
 // être réussi 2 fois de suite ; un exercice réussi du premier coup est su.
+// Son : les mots en langue apprise sont lus par la synthèse vocale du navigateur
+// (gratuite, hors ligne) ; la dictée fait écrire un mot entendu.
 (function () {
   const root = document.getElementById("quiz-langue");
   const stage = document.getElementById("quiz-stage");
@@ -24,6 +26,64 @@
   const aide = document.getElementById("quiz-aide");
 
   const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+  // -- Synthèse vocale --
+  const synthese = window.speechSynthesis && window.SpeechSynthesisUtterance ? window.speechSynthesis : null;
+  let lectureAuto = true;
+  try { lectureAuto = localStorage.getItem("wiki-langue-audio") !== "0"; } catch (e) { /* stockage bloqué */ }
+  if (synthese) synthese.getVoices(); // déclenche le chargement des voix
+
+  function voixPour(lang) {
+    const voix = synthese.getVoices();
+    const base = lang.split("-")[0].toLowerCase();
+    return voix.find((v) => v.lang.toLowerCase() === lang.toLowerCase())
+      || voix.find((v) => v.lang.toLowerCase().startsWith(base))
+      || null;
+  }
+
+  function parler(audio) {
+    if (!synthese || !audio || !audio.texte) return false;
+    synthese.cancel();
+    const u = new SpeechSynthesisUtterance(audio.texte);
+    u.lang = audio.lang || "en-GB";
+    u.rate = 0.9;
+    const v = voixPour(u.lang);
+    if (v) u.voice = v;
+    synthese.speak(u);
+    return true;
+  }
+
+  function boutonSon(audio, libelle) {
+    const b = text("button", "button small quiz-son", libelle || "🔊 Écouter");
+    b.type = "button";
+    b.title = "Lire à voix haute (synthèse vocale du navigateur)";
+    b.addEventListener("click", (ev) => { ev.stopPropagation(); parler(audio); });
+    return b;
+  }
+
+  // Bouton « son automatique » dans la barre du haut.
+  const topbar = root.querySelector(".quiz-topbar");
+  if (topbar && synthese && exercices.some((e) => e.audio)) {
+    const auto = el("button", "button small quiz-son-auto");
+    auto.type = "button";
+    const majAuto = () => {
+      auto.textContent = lectureAuto ? "🔊 Son auto" : "🔇 Son coupé";
+      auto.title = lectureAuto ? "Les mots sont lus à voix haute ; clic pour couper" : "Clic pour lire les mots à voix haute";
+      auto.setAttribute("aria-pressed", String(lectureAuto));
+    };
+    auto.addEventListener("click", () => {
+      lectureAuto = !lectureAuto;
+      try { localStorage.setItem("wiki-langue-audio", lectureAuto ? "1" : "0"); } catch (e) { /* stockage bloqué */ }
+      if (!lectureAuto) synthese.cancel();
+      majAuto();
+    });
+    majAuto();
+    topbar.insertBefore(auto, topbar.lastElementChild);
+  }
+
+  function lireSi(e, quand) {
+    if (e.audio && e.audio.quand === quand && lectureAuto) parler(e.audio);
+  }
   const A_REVOIR = 1, DIFFICILE = 2, BIEN = 3, FACILE = 4;
   const NOTES = [[A_REVOIR, "À revoir"], [DIFFICILE, "Difficile"], [BIEN, "Bien"], [FACILE, "Facile"]];
 
@@ -125,7 +185,7 @@
     let t;
     if (s.verdict) t = s.verdict.verdict === "juste" ? "Entrée Suivant · F C'était trop facile · Q Quitter" : "Entrée / Espace Suivant · Q Quitter";
     else if (e.forme === "carte") t = s.revele ? "1 À revoir · 2 Difficile · 3 Bien (Espace) · 4 Facile" : "Espace Retourner la carte · Q Quitter";
-    else if (e.forme === "saisie") t = "Tape ta réponse · Entrée Valider · Échap Quitter";
+    else if (e.forme === "saisie") t = (e.audio && e.audio.quand === "debut" && synthese ? "🔊 Réécouter avec le bouton · " : "") + "Tape ta réponse · Entrée Valider · Échap Quitter";
     else if (e.forme === "choix") t = (e.multiple ? "Lettres : cocher plusieurs réponses" : "Lettre : choisir") + " · Entrée Valider · Q Quitter";
     else t = "Clique les mots (ou tape leur numéro) · ⌫ Retirer le dernier · Entrée Valider · Q Quitter";
     if (aide) aide.textContent = t;
@@ -166,7 +226,12 @@
   }
 
   function buildCarte(e, zone) {
-    zone.appendChild(el("div", "quiz-recto markdown", e.recto));
+    const recto = el("div", "quiz-recto markdown", e.recto);
+    zone.appendChild(recto);
+    if (synthese && e.audio && e.audio.quand === "debut") {
+      zone.appendChild(boutonSon(e.audio));
+      lireSi(e, "debut");
+    }
     const flip = el("button", "button primary", "Retourner la carte (Espace)");
     flip.type = "button";
     flip.addEventListener("click", reveler);
@@ -181,6 +246,10 @@
     s.flip.remove();
     const verso = el("div", "quiz-verso markdown", e.verso);
     stage.insertBefore(verso, s.actions);
+    if (synthese && e.audio && e.audio.quand === "verso") {
+      stage.insertBefore(boutonSon(e.audio), s.actions);
+      lireSi(e, "verso");
+    }
     stage.insertBefore(details(e), s.actions);
     const notes = el("div", "quiz-notes");
     for (const [n, libelle] of NOTES) {
@@ -206,6 +275,19 @@
 
   function buildSaisie(e, zone) {
     zone.appendChild(el("div", "quiz-enonce markdown", e.consigne));
+    if (e.audio && e.audio.quand === "debut") {
+      if (synthese) {
+        const ecouter = boutonSon(e.audio, "🔊 Écouter le mot");
+        ecouter.classList.remove("small");
+        ecouter.classList.add("quiz-dictee");
+        zone.appendChild(ecouter);
+        lireSi(e, "debut");
+        // Toujours lire une dictée au moins une fois, même son coupé.
+        if (!lectureAuto) setTimeout(() => parler(e.audio), 0);
+      } else if (e.indice) {
+        zone.appendChild(text("p", "muted", "Synthèse vocale indisponible sur cet appareil — indice : « " + e.indice + " »"));
+      }
+    }
     const row = el("div", "quiz-saisie-row");
     if (e.invite) row.appendChild(text("span", "quiz-invite", e.invite + " →"));
     const input = el("input", "quiz-input");
@@ -412,6 +494,10 @@
         fb.appendChild(p);
       }
     }
+    if (synthese && e.audio && e.audio.quand === "fin") {
+      fb.appendChild(boutonSon(e.audio));
+      lireSi(e, "fin");
+    }
     fb.appendChild(details(e));
     renderMath(fb);
     s.nextBtn.style.display = "";
@@ -549,6 +635,7 @@
       return;
     }
     if (k === "q" || key === "Escape") { ev.preventDefault(); quitter(); return; }
+    if (k === "r" && e.audio && synthese) { ev.preventDefault(); parler(e.audio); return; }
     if (e.forme === "carte") {
       if (!s.revele) { if (key === " " || key === "Enter") { ev.preventDefault(); reveler(); } return; }
       if ("1234".includes(key) && key.length === 1) { ev.preventDefault(); noter(Number(key)); }

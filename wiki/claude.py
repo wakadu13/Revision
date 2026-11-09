@@ -25,6 +25,7 @@ from django.conf import settings
 from django.db import close_old_connections, connection
 from django.utils import timezone
 
+from . import paquets
 from .models import ReglagesClaude, Transformation
 from .vault import INVALID_NAME_RE, get_vault
 
@@ -404,7 +405,7 @@ def _ecrire(t, texte, avertissement):
 
 # -- QCM et vocabulaire générés -------------------------------------------------------------------
 
-DOSSIER_QCM = "QCM"
+DOSSIER_QCM = paquets.DOSSIER_QCM
 MAX_TOKENS_GENERATION = 64000
 NOMBRES_QUESTIONS = (10, 20, 30, 40)
 MAX_MOTS = 150
@@ -500,12 +501,7 @@ SCHEMA_VOCABULAIRE = {
 }
 
 
-def dossier_valide(nom):
-    """Nom de dossier sous QCM/ (un seul niveau), ou None s'il est invalide."""
-    nom = " ".join(str(nom).split())
-    if not nom or "/" in nom or "\\" in nom or nom.startswith(".") or INVALID_NAME_RE.search(nom):
-        return None
-    return nom
+dossier_valide = paquets.dossier_valide
 
 
 def demander_qcm(*, note=None, texte="", nombre=20, categorie="", titre="", utilisateur=""):
@@ -551,29 +547,6 @@ def _sans_vides(o):
     return {k: v for k, v in o.items() if v not in ("", [], None)}
 
 
-def _chemin_libre(dossier, titre, defaut):
-    """QCM/<dossier>/<titre en minuscules>.json, avec « -2 », « -3 »… si le nom est pris."""
-    from django.utils.text import slugify
-
-    racine = get_vault().root
-    base = (slugify(titre) or defaut)[:60]
-    for i in range(1, 1000):
-        rel = PurePosixPath(DOSSIER_QCM, dossier, f"{base}.json" if i == 1 else f"{base}-{i}.json")
-        if not (racine / rel).exists():
-            return rel
-    raise Echec("Aucun nom de fichier libre.")
-
-
-def _enregistrer_json(rel, donnees):
-    import json
-
-    cible = get_vault().root / rel
-    if not cible.resolve().is_relative_to(get_vault().root.resolve()):
-        raise Echec("Dossier invalide.")
-    cible.parent.mkdir(parents=True, exist_ok=True)
-    cible.write_text(json.dumps(donnees, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
-
-
 def _generer_qcm(t):
     """(chemin du set écrit, avertissement ou None, usage)."""
     from . import quiz
@@ -610,20 +583,18 @@ def _generer_qcm(t):
     titre = str(options.get("titre") or data.get("titre") or nom).strip()
     set_json = {"titre": titre, "description": str(data.get("description", "")).strip(),
                 "genere_par": f"Claude ({t.modele})", "questions": questions}
-    rel = _chemin_libre(categorie, titre, "qcm")
+    if not t.texte_source:
+        set_json["source_page"] = t.source.removesuffix(".md")
     try:
-        quiz.set_depuis_json(set_json, rel)
-    except ValueError as e:
-        raise Echec(f"QCM invalide : {e}") from None
-    _enregistrer_json(rel, set_json)
+        rel = PurePosixPath(paquets.ecrire_set_qcm(categorie, set_json))
+    except paquets.PaquetInvalide as e:
+        raise Echec(str(e)) from None
     avertissement = f"{ecartees} question{'s' if ecartees > 1 else ''} mal formée{'s' if ecartees > 1 else ''} écartée{'s' if ecartees > 1 else ''}." if ecartees else None
     return rel.as_posix(), avertissement, _usage(message)
 
 
 def _generer_vocabulaire(t):
     """(chemin du paquet écrit, avertissement ou None, usage)."""
-    from django.utils.text import slugify
-
     from . import langues
 
     options = t.options or {}
@@ -637,31 +608,12 @@ def _generer_vocabulaire(t):
     data = _json_reponse(message, "Réponse trop longue : envoyez moins de mots à la fois.")
 
     titre = str(options.get("titre") or data.get("titre") or f"Vocabulaire ({langue})").strip()
-    prefixe = (slugify(titre) or "voc")[:30]
-    fiches, vus = [], set()
-    for v in data.get("vocabulaire") or []:
-        v = _sans_vides(v if isinstance(v, dict) else {})
-        mot, trads = str(v.get("mot", "")).strip(), v.get("traductions") or []
-        if not mot or not trads or mot.lower() in vus:
-            continue
-        vus.add(mot.lower())
-        fiches.append({"id": f"{prefixe}-{len(fiches) + 1:03d}", **v})
-    if not fiches:
+    fiches = [_sans_vides(v) for v in data.get("vocabulaire") or [] if isinstance(v, dict)]
+    paquet = paquets.paquet_vocabulaire(langue, titre, str(data.get("description", "")).strip(), types, fiches,
+                                        f"Claude ({t.modele})")
+    if not paquet["vocabulaire"]:
         raise Echec("Claude n'a renvoyé aucun mot utilisable : vérifiez la liste et relancez.")
-    paquet = {
-        "langue": langue,
-        "titre": titre,
-        "description": str(data.get("description", "")).strip(),
-        "genere_par": f"Claude ({t.modele})",
-        "exercices": types,
-        "vocabulaire": fiches,
-    }
-    if langues.abreviation(langue) == "EN":
-        paquet["particules_optionnelles"] = ["to", "a", "an", "the"]
-    rel = _chemin_libre(dossier, titre, "vocabulaire")
     try:
-        langues.set_depuis_json(paquet, rel)
-    except ValueError as e:
-        raise Echec(f"Paquet invalide : {e}") from None
-    _enregistrer_json(rel, paquet)
-    return rel.as_posix(), None, _usage(message)
+        return paquets.ecrire_paquet_langue(dossier, paquet), None, _usage(message)
+    except paquets.PaquetInvalide as e:
+        raise Echec(str(e)) from None

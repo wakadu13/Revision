@@ -57,8 +57,6 @@
           <label>Nom du paquet <span class="muted">(facultatif)</span> <input name="titre" placeholder="choisi par Claude"></label>
           <label>Dossier <input name="dossier" list="generer-dossiers" placeholder="{{ generation.dossiers_langue.0|default:'Vocabulaire' }}"></label>
         </div>
-        <datalist id="generer-langues">{% for l in generation.langues %}<option value="{{ l }}">{% endfor %}</datalist>
-        <datalist id="generer-dossiers">{% for d in generation.dossiers_langue %}<option value="{{ d }}">{% endfor %}</datalist>
         <p class="muted">Chaque envoi crée un paquet à part, révisable seul (au plus {{ generation.max_mots }} mots). Claude
           ajoute la traduction, un exemple et la prononciation de chaque mot.</p>
         <button type="submit" class="button primary">✦ Créer le paquet</button>
@@ -87,6 +85,38 @@
     </details>
     <p class="muted">Suivi et coût de chaque demande : <a href="{% url 'wiki:transformations' %}">travaux de Claude</a>.</p>
     {% endif %}
+  </section>
+  <section class="claude-generer" id="importer-vocabulaire">
+    <datalist id="generer-langues">{% for l in generation.langues %}<option value="{{ l }}">{% endfor %}</datalist>
+    <datalist id="generer-dossiers">{% for d in generation.dossiers_langue %}<option value="{{ d }}">{% endfor %}</datalist>
+    <details class="claude-bloc">
+      <summary><b>Importer une liste de mots</b> <span class="muted">— Quizlet, Anki, tableur ou liste tapée, sans Claude</span></summary>
+      <form method="post" action="{% url 'wiki:quiz_importer_vocabulaire' %}" enctype="multipart/form-data" class="form claude-form">
+        {% csrf_token %}
+        <label for="importer-liste">Une ligne par mot : mot, puis traduction (tabulation, virgule ou « = » entre les deux)</label>
+        <textarea id="importer-liste" name="liste" rows="6" spellcheck="false"
+                  placeholder="a job&#9;un emploi, un travail&#10;to achieve = réussir&#10;kitchen, cuisine"></textarea>
+        <label>ou un fichier exporté (.csv, .txt, .tsv) <input type="file" name="fichier" accept=".csv,.txt,.tsv,text/plain,text/csv"></label>
+        <div class="claude-champs">
+          <label class="checkbox"><input type="radio" name="ordre" value="langue_fr" checked> mot en langue apprise, puis traduction</label>
+          <label class="checkbox"><input type="radio" name="ordre" value="fr_langue"> français d'abord, puis le mot</label>
+        </div>
+        <fieldset class="claude-cartes">
+          <legend>Types de cartes</legend>
+          {% for cle, nom, coche in generation.cartes %}
+          <label class="checkbox"><input type="checkbox" name="cartes" value="{{ cle }}"{% if coche %} checked{% endif %}> {{ nom }}</label>
+          {% endfor %}
+        </fieldset>
+        <div class="claude-champs">
+          <label>Langue <input name="langue" list="generer-langues" value="Anglais" required></label>
+          <label>Nom du paquet <span class="muted">(facultatif)</span> <input name="titre" placeholder="Vocabulaire anglais du …"></label>
+          <label>Dossier <input name="dossier" list="generer-dossiers" placeholder="Vocabulaire"></label>
+        </div>
+        <p class="muted">Un 3e champ sur la ligne devient la phrase d'exemple, un 4e la note. Les lignes « # » des exports Anki et le
+          HTML sont ignorés. Chaque import crée un paquet à part (au plus 500 lignes).</p>
+        <button type="submit" class="button primary">Créer le paquet</button>
+      </form>
+    </details>
   </section>
   {% endif %}
 

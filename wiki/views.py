@@ -16,6 +16,7 @@ from accounts.roles import is_admin
 
 from . import claude
 from . import latex as latex_converter
+from . import paquets
 from . import uploads
 from .models import ReglagesClaude, Transformation
 from .render import Renderer, render_note
@@ -331,6 +332,73 @@ CLE_RE = re.compile(r"sk-ant-[A-Za-z0-9_\-]{20,}")
 LANGUE_RE = re.compile(r"[^\W\d_][^\W\d_ '-]*(?:[ '-][^\W\d_]+)*")
 
 
+def _options_vocabulaire(request):
+    """Langue, types de cartes, dossier et titre d'un paquet de vocabulaire demandé
+    par formulaire : ({langue, types, dossier, titre}, message d'erreur ou "")."""
+    from . import langues
+
+    langue = " ".join(request.POST.get("langue", "").split()) or "Anglais"
+    types = [t for t in request.POST.getlist("cartes") if t in langues.TYPES_VOCABULAIRE]
+    dossier = request.POST.get("dossier", "").strip()
+    erreur = (
+        "Langue invalide." if len(langue) > 40 or not LANGUE_RE.fullmatch(langue)
+        else "Cochez au moins un type de carte." if not types
+        else 'Dossier invalide : un seul nom de dossier, sans / \\ : * ? " < > | # ^ [ ].' if dossier and paquets.dossier_valide(dossier) is None
+        else ""
+    )
+    options = {"langue": langue[0].upper() + langue[1:], "types": types, "dossier": paquets.dossier_valide(dossier) or "",
+               "titre": request.POST.get("titre", "").strip()[:120]}
+    return options, erreur
+
+
+@require_POST
+def importer_vocabulaire(request):
+    """Paquet de vocabulaire d'après une liste collée ou un fichier exporté (Quizlet,
+    Anki, tableur), sans Claude : un paquet à part, prêt à réviser."""
+    if not can_edit(request):
+        return _deny(request)
+    retour = redirect(reverse("wiki:quiz_index") + "#importer-vocabulaire")
+    options, erreur = _options_vocabulaire(request)
+    texte = request.POST.get("liste", "")
+    fichier = request.FILES.get("fichier")
+    if fichier is not None:
+        if fichier.size > 1024 * 1024:
+            erreur = erreur or "Fichier trop gros (1 Mo au plus)."
+        else:
+            brut = fichier.read()
+            try:
+                texte = brut.decode("utf-8-sig")
+            except UnicodeDecodeError:
+                texte = brut.decode("cp1252", errors="replace")
+    ordre = request.POST.get("ordre", paquets.LANGUE_PUIS_FR)
+    if ordre not in paquets.ORDRES:
+        ordre = paquets.LANGUE_PUIS_FR
+    if not erreur:
+        try:
+            fiches, ignorees = paquets.analyser_liste(texte, ordre)
+        except paquets.PaquetInvalide as e:
+            erreur = str(e)
+        else:
+            if not fiches:
+                erreur = "Aucune ligne « mot – traduction » reconnue : une ligne par mot, séparés par une tabulation, une virgule ou « = »."
+    if erreur:
+        messages.error(request, erreur)
+        return retour
+    titre = options["titre"] or f"Vocabulaire {options['langue'].lower()} du {timezone.localdate():%d/%m/%Y}"
+    paquet = paquets.paquet_vocabulaire(options["langue"], titre, "", options["types"], fiches, "Import de liste")
+    try:
+        rel = paquets.ecrire_paquet_langue(options["dossier"] or claude.DOSSIER_VOCABULAIRE, paquet)
+    except paquets.PaquetInvalide as e:
+        messages.error(request, str(e))
+        return retour
+    n = len(paquet["vocabulaire"])
+    messages.success(request, f"Paquet « {titre} » créé : {n} mot{'s' if n > 1 else ''}"
+                     + (f", {ignorees} ligne{'s' if ignorees > 1 else ''} ignorée{'s' if ignorees > 1 else ''}" if ignorees else "") + ".")
+    from urllib.parse import urlencode
+
+    return redirect(reverse("wiki:langue_menu", args=[options["langue"]]) + "?" + urlencode({"fichier": rel.removesuffix(".json")}))
+
+
 @require_POST
 def generer(request):
     """QCM (d'après une page du wiki ou un texte collé) ou paquet de vocabulaire
@@ -374,24 +442,16 @@ def generer(request):
     elif genre == "vocabulaire":
         mots = request.POST.get("mots", "").strip()
         lignes = [l for l in mots.splitlines() if l.strip()]
-        langue = " ".join(request.POST.get("langue", "").split()) or "Anglais"
-        types = [t for t in request.POST.getlist("cartes") if t in langues.TYPES_VOCABULAIRE]
-        dossier = request.POST.get("dossier", "").strip()
-        erreur = (
-            "Collez au moins un mot." if not lignes
-            else f"Trop de mots ({len(lignes)}) : {claude.MAX_MOTS} au plus par paquet." if len(lignes) > claude.MAX_MOTS
-            else "Langue invalide." if len(langue) > 40 or not LANGUE_RE.fullmatch(langue)
-            else "Cochez au moins un type de carte." if not types
-            else 'Dossier invalide : un seul nom de dossier, sans / \\ : * ? " < > | # ^ [ ].' if dossier and claude.dossier_valide(dossier) is None
-            else ""
-        )
+        options, erreur = _options_vocabulaire(request)
+        if not lignes:
+            erreur = "Collez au moins un mot."
+        elif len(lignes) > claude.MAX_MOTS:
+            erreur = f"Trop de mots ({len(lignes)}) : {claude.MAX_MOTS} au plus par paquet."
         if erreur:
             messages.error(request, erreur)
             return retour
-        claude.demander_vocabulaire(mots="\n".join(l.strip() for l in lignes)[:20_000], langue=langue[0].upper() + langue[1:],
-                                    types=types, dossier=claude.dossier_valide(dossier) or "",
-                                    titre=request.POST.get("titre", "").strip()[:120], utilisateur=qui)
-        messages.success(request, f"Claude prépare un paquet de {len(lignes)} mot{'s' if len(lignes) > 1 else ''} en {langue.lower()}.")
+        claude.demander_vocabulaire(mots="\n".join(l.strip() for l in lignes)[:20_000], utilisateur=qui, **options)
+        messages.success(request, f"Claude prépare un paquet de {len(lignes)} mot{'s' if len(lignes) > 1 else ''} en {options['langue'].lower()}.")
     else:
         messages.error(request, "Demande inconnue.")
         return retour

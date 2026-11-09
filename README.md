@@ -208,8 +208,8 @@ dans les réglages de Claude) :
   envoi crée un **paquet à part** (un fichier de langue), révisable seul
   (« Réviser ce paquet ») ou avec le reste de la langue, ou en **révision intensive** (« Intensif »). Types de cartes :
   carte FR → EN, traduction à taper FR → EN, QCM FR → EN (le bon mot parmi
-  ceux du paquet), phrase à compléter, carte EN → FR, traduction à taper
-  EN → FR ; cochés par défaut : les trois premiers du français vers l'anglais
+  ceux du paquet), phrase à compléter, **dictée** (le mot est lu à voix haute,
+  on l'écrit), carte EN → FR, traduction à taper EN → FR ; cochés par défaut : les trois premiers du français vers l'anglais
   hors QCM (choix retenu sur l'appareil). La première carte cochée fait
   découvrir le mot, les autres viennent ensuite.
 - **QCM** : choisir une page du wiki (ou coller un texte) et un nombre de
@@ -220,7 +220,21 @@ dans les réglages de Claude) :
 Le suivi (et le coût) de chaque demande est sur la page **Travaux de Claude**.
 Dans un fichier de langue écrit à la main, la clé `"exercices"` choisit de la
 même façon les cartes de vocabulaire (`decouverte`, `production`, `choix`,
-`contexte`, `reconnaissance`, `traduction`) ; sans elle, rien ne change.
+`contexte`, `dictee`, `reconnaissance`, `traduction`) ; sans elle, rien ne change.
+
+**Son** : les mots en langue apprise sont lus par la synthèse vocale du
+navigateur (gratuite, hors ligne) : à l'affichage d'une carte EN → FR, au
+retournement d'une carte FR → EN, après la correction d'une traduction tapée ou
+d'un QCM. Bouton 🔊 sur chaque exercice (touche <kbd>R</kbd> sur une carte),
+« Son auto » en haut de la session pour couper la lecture automatique (retenu
+sur l'appareil). La voix suit le nom de la langue (`code_langue` dans le
+fichier pour l'imposer, ex. `"en-US"`).
+
+**Importer une liste de mots sans Claude** (page des QCM, admins) : coller une
+liste (une ligne par mot : mot, puis traduction, séparés par une tabulation,
+une virgule ou « = ») ou envoyer un export Quizlet, Anki ou tableur (`.csv`,
+`.txt`, `.tsv` ; lignes « # » et HTML ignorés), choisir l'ordre des colonnes,
+la langue et les types de cartes : un paquet à part est créé, prêt à réviser.
 
 ### Lire les PDF dans le wiki
 
@@ -412,6 +426,7 @@ en-têtes) sont dans [`core/tests.py`](core/tests.py) :
 - `/transformations/` : cours transformés en pages par Claude (admins)
 - `/claude/reglages/` : clé d'API et modèle de Claude (admins)
 - `/qcm/generer/` : QCM et paquets de vocabulaire générés par Claude (admins, POST)
+- `/qcm/importer-vocabulaire/` : paquet de vocabulaire d'après une liste ou un export (admins, POST)
 - `/pdf/<chemin>` : lecteur de PDF (`?integre=1` : version intégrée dans les notes)
 - `/sommaire/` : sommaire de toutes les notes
 - `/tags/` et `/tags/<tag>` : les tags
