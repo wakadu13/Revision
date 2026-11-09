@@ -138,7 +138,7 @@ public class Rappel extends Worker {
                 .putExtra(MainActivity.EXTRA_CHEMIN, "/")
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent clic = PendingIntent.getActivity(contexte, 2, ouvrir, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
-        String texte = serveur.replaceFirst("^https?://", "") + " n'a pas répondu au rappel. Vérifiez le serveur (scripts/surveiller-serveur.ps1).";
+        String texte = serveur.replaceFirst("^https?://", "") + " n'a pas répondu au rappel. Vérifiez le serveur.";
         Notification n = new NotificationCompat.Builder(contexte, CANAL_ALERTES)
                 .setSmallIcon(android.R.drawable.stat_notify_error)
                 .setContentTitle("Le wiki ne répond pas")

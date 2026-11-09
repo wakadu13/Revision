@@ -106,7 +106,7 @@ jobs:
             echo
             echo "Télécharger l'APK sur l'appareil, l'ouvrir et autoriser l'installation depuis cette source : elle se met à jour par-dessus la version déjà installée, sans perdre les sets téléchargés ni les réponses en attente."
             echo
-            echo "Au premier lancement : identifiant et mot de passe du wiki (adresse proposée : https://wiki.airhiterofprovence.fr, qui marche partout, Wi-Fi ou 4G). Le wiki s'ouvre ensuite sans redemander le mot de passe. Le serveur doit être à jour (scripts/mettre-a-jour.ps1) : voir android/README.md."
+            echo "Au premier lancement : identifiant et mot de passe du wiki (adresse proposée : https://wiki.airhiterofprovence.fr, qui marche partout, Wi-Fi ou 4G). Le wiki s'ouvre ensuite sans redemander le mot de passe. Le serveur doit être à jour : voir « Mettre le serveur à jour » dans le README."
           } > notes.md
 
       - name: Release

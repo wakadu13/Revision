@@ -204,5 +204,3 @@ node_modules/
 # Versions précédentes des pages (historique), hors du coffre
 /versions/
 
-# Journal du script de surveillance du serveur
-/scripts/surveillance.log

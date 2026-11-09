@@ -26,7 +26,27 @@ forcé dès que `DJANGO_ALLOWED_HOSTS` contient un vrai nom de domaine (voir « 
 
 ### Mettre le serveur à jour
 
-Sur le PC qui sert le wiki (PowerShell, dans le dossier du projet) :
+Sur le serveur Linux (Raspberry Pi, Docker Compose, voir les chemins dans
+[`README-IA.md`](README-IA.md)) :
+
+```bash
+cd /home/pi/ProjetPluri/ProjetPluri && git pull --ff-only
+```
+
+```bash
+cd /home/pi/deploy && docker compose exec -T web python manage.py migrate
+```
+
+```bash
+cd /home/pi/deploy && docker compose restart web
+```
+
+Quand `pyproject.toml` ou `uv.lock` ont changé (nouvelle dépendance, par
+exemple Pillow pour les images allégées), reconstruire d'abord l'image si elle
+installe les dépendances (`docker compose build`, puis `docker compose up -d`).
+La configuration Docker est dans `/home/pi/deploy`, hors de ce dépôt.
+
+Sur un PC Windows (PowerShell, dans le dossier du projet) :
 
 ```powershell
 .\scripts\mettre-a-jour.ps1
@@ -460,13 +480,19 @@ avec l'adresse du réseau local (HTTP, ou HTTPS avec Caddy). Détails :
 
 - **Depuis l'extérieur** : un moniteur gratuit (UptimeRobot, Better Stack…) qui
   appelle `https://wiki.airhiterofprovence.fr/api/status/` toutes les 5 minutes
-  prévient par mail ou notification quand le wiki ne répond plus, même si le PC
-  est éteint.
-- **Sur le PC** : `scripts/surveiller-serveur.ps1` vérifie `/api/status/` en
-  local, affiche une notification Windows et note l'incident dans
-  `scripts/surveillance.log` (option `-Relance` pour relancer le script du
-  serveur) ; à planifier toutes les 5 minutes dans le Planificateur de tâches
-  (commande `schtasks` en tête du script).
+  prévient par mail ou notification quand le wiki ne répond plus, même si le
+  serveur est éteint.
+- **Sur le serveur** : `scripts/surveiller-serveur.sh`, lancé toutes les 5
+  minutes par cron, vérifie `/api/status/` en local, note l'incident dans le
+  journal système (`journalctl -t wiki-surveillance`), envoie une notification
+  au téléphone par [ntfy](https://ntfy.sh) si un sujet est réglé, une seule par
+  panne et une au retour, et peut relancer le conteneur. Réglages et ligne de
+  crontab en tête du script :
+
+  ```bash
+  */5 * * * * WIKI_NTFY=projetpluri-alertes-a1b2c3 /home/pi/ProjetPluri/ProjetPluri/scripts/surveiller-serveur.sh
+  ```
+
 - **Sur le téléphone** : l'application Android avertit les admins quand le
   rappel quotidien ne joint pas le serveur alors que le réseau est là.
 
