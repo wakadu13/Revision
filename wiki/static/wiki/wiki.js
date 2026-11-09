@@ -25,6 +25,48 @@
     document.head.appendChild(l);
   }
 
+  // Thème clair / sombre / automatique (réglage du système), retenu sur l'appareil.
+  // Le choix est appliqué avant le rendu par un petit script de base.html ; ici :
+  // le bouton, les feuilles de coloration du code et l'annonce aux autres scripts.
+  const systemeSombre = window.matchMedia("(prefers-color-scheme: dark)");
+  const theme = {
+    get() {
+      try { return localStorage.getItem("wiki-theme") || "auto"; } catch (e) { return "auto"; }
+    },
+    resolved() {
+      const t = document.documentElement.dataset.theme;
+      return t === "dark" || t === "light" ? t : systemeSombre.matches ? "dark" : "light";
+    },
+    set(valeur) {
+      try { localStorage.setItem("wiki-theme", valeur); } catch (e) { /* stockage bloqué */ }
+      if (valeur === "auto") delete document.documentElement.dataset.theme;
+      else document.documentElement.dataset.theme = valeur;
+      theme.apply();
+    },
+    cycle() {
+      const suivant = { auto: "light", light: "dark", dark: "auto" };
+      theme.set(suivant[theme.get()] || "auto");
+    },
+    apply() {
+      const choix = theme.get();
+      const actuel = theme.resolved();
+      document.querySelectorAll("link[data-theme-css]").forEach((l) => { l.media = l.dataset.themeCss === actuel ? "all" : "not all"; });
+      const noms = { auto: "automatique", light: "clair", dark: "sombre" };
+      document.querySelectorAll("[data-theme-toggle]").forEach((b) => {
+        b.dataset.themeState = choix;
+        b.title = `Thème : ${noms[choix]} (clic : clair, sombre, automatique)`;
+        b.querySelectorAll("svg").forEach((svg) => { svg.hidden = !svg.classList.contains("theme-ico-" + choix); });
+      });
+      window.dispatchEvent(new CustomEvent("wiki:theme", { detail: { theme: actuel, choix } }));
+    },
+  };
+  window.wikiTheme = theme;
+  theme.apply();
+  systemeSombre.addEventListener("change", () => { if (theme.get() === "auto") theme.apply(); });
+  document.addEventListener("click", (e) => {
+    if (e.target.closest("[data-theme-toggle]")) theme.cycle();
+  });
+
   // Sommaire : boutons « Tout déplier » / « Tout replier ».
   function folds(root) {
     const sommaire = root.querySelector(".sommaire");
@@ -111,8 +153,7 @@
         nodes.push(div);
       });
       loadScript(CDN + "mermaid@11.17.2/dist/mermaid.min.js", "sha384-EOXBFmc3gx5mb+vn0vPvvGqACToJD24hhacX5Yx+8NUUQrHIle/Qi5Bg9o3zKwW2").then(() => {
-        const dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        window.mermaid.initialize({ startOnLoad: false, theme: dark ? "dark" : "default" });
+        window.mermaid.initialize({ startOnLoad: false, theme: theme.resolved() === "dark" ? "dark" : "default" });
         window.mermaid.run({ nodes });
       });
     }

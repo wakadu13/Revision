@@ -1,0 +1,30 @@
+# Tests du wiki (Django) et vérification de la syntaxe des scripts, à chaque
+# push et sur chaque pull request. L'APK a son propre workflow (apk.yml).
+name: Tests
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  django:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+
+      - name: Dépendances (uv installe Python 3.14 s'il manque)
+        run: uv sync --frozen
+
+      - name: Tests Django
+        run: uv run python manage.py test --noinput
+
+      - name: Syntaxe des scripts
+        run: |
+          for f in wiki/static/wiki/*.js android/app/src/main/assets/*.js; do
+            node --check "$f"
+          done
