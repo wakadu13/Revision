@@ -207,5 +207,6 @@ node_modules/
 
 # Clé privée des notifications web (wiki/push.py)
 /vapid_prive.pem
-# Espaces personnels des comptes (sets et paquets importés)
+# Espaces personnels des comptes (sets et paquets importés) et photos des copies corrigées
 /perso/
+/copies/

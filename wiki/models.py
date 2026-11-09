@@ -373,7 +373,7 @@ class UsageClaude(models.Model):
     """Appels à Claude hors transformations (correction d'une réponse rédigée, tuteur) :
     jetons consommés, pour le coût du mois et le plafond."""
 
-    QRC, TUTEUR, WIKI = "qrc", "tuteur", "wiki"
+    QRC, TUTEUR, WIKI, COPIE = "qrc", "tuteur", "wiki", "copie"
     genre = models.CharField(max_length=12)
     player = models.CharField(max_length=150, blank=True, default="")
     modele = models.CharField(max_length=64, blank=True)
@@ -513,3 +513,24 @@ class TextePdf(models.Model):
 
     def __str__(self):
         return self.chemin
+
+
+class CorrectionCopie(models.Model):
+    """Copie manuscrite photographiée et sa correction par Claude, étape par étape
+    (wiki/copie.py). Les photos, allégées, sont gardées hors du coffre (copies/)."""
+
+    player = models.CharField(max_length=150)
+    enonce = models.TextField(blank=True)
+    page = models.CharField(max_length=500, blank=True)  # page du cours donnée comme référence
+    photos = models.PositiveSmallIntegerField(default=0)
+    correction = models.TextField()
+    modele = models.CharField(max_length=64, blank=True)
+    jetons_entree = models.PositiveIntegerField(default=0)
+    jetons_sortie = models.PositiveIntegerField(default=0)
+    cree_le = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-cree_le", "-pk"]
+
+    def __str__(self):
+        return f"{self.player} · {self.cree_le:%d/%m/%Y %H:%M}"

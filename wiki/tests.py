@@ -3592,3 +3592,112 @@ class ImageMasqueeTests(QuizTests):
                 r = self._enregistrer(**{"image": "coeur.png", **champs})
                 self.assertEqual(r.status_code, 400)
                 self.assertIn(message, r.json()["error"])
+
+
+class PrononciationTests(WikiTestCase):
+    """Langues : cartes de prononciation, vérifiées par la reconnaissance vocale de l'appareil."""
+
+    def setUp(self):
+        super().setUp()
+        paquet = {"langue": "Anglais", "titre": "Verbes", "exercices": ["decouverte", "prononciation"],
+                  "particules_optionnelles": ["to"],
+                  "vocabulaire": [{"id": "v1", "mot": "to achieve", "traductions": ["réussir"], "prononciation": "/əˈtʃiːv/",
+                                   "variantes": ["achieve"]}]}
+        self.write("QCM/Anglais/verbes.json", json.dumps(paquet))
+
+    def test_carte_de_prononciation(self):
+        from wiki import langues
+        s = quiz.get_library().langues["QCM/Anglais/verbes"]
+        oral = next(e for e in s.exercices if e.id == "v1#oral")
+        self.assertEqual((oral.forme, oral.prerequis, oral.audio["quand"]), (langues.CARTE, "v1#dec", langues.VERSO))
+        self.assertEqual(oral.donnees["oral"], {"reponses": ["to achieve", "achieve"]})
+        self.assertIn("Prononciation", langues.nom_type("prononciation", "Anglais"))
+        # Dans la session (après la découverte) et hors ligne : de quoi vérifier sur l'appareil.
+        from wiki.langues_views import payload_hors_ligne
+        p = payload_hors_ligne(get_vault(), s, oral)
+        self.assertEqual(p["oral"], {"reponses": ["to achieve", "achieve"], "particules": ["to"], "lang": "en-GB"})
+        self.assertIn("<strong>to achieve</strong>", p["recto"])
+        self.assertIn("/əˈtʃiːv/", p["verso"])
+        # Choix proposé à l'import de listes et à la génération par Claude.
+        self.assertContains(self.client.get("/qcm/mon-espace/"), 'value="prononciation"')
+
+
+@override_settings(WIKI_CLAUDE_FIL=False)
+@mock.patch.dict("os.environ", {"WIKI_CLAUDE_CLE": "sk-ant-test", "ANTHROPIC_API_KEY": "", "WIKI_CLAUDE_MODELE": "", "WIKI_CLAUDE_EFFORT": ""})
+class CopieTests(WikiTestCase):
+    """« Corriger ma copie » : photos d'une copie manuscrite corrigées par Claude."""
+
+    def setUp(self):
+        super().setUp()
+        self.data = tempfile.TemporaryDirectory()
+        self.addCleanup(self.data.cleanup)
+        override = override_settings(DATA_DIR=Path(self.data.name))
+        override.enable()
+        self.addCleanup(override.disable)
+        self.write("Cours/Fourier.md", "# Fourier\n\nLa transformée de $e^{-a|t|}$ vaut $\\frac{2a}{a^2+\\omega^2}$.\n")
+
+    @staticmethod
+    def _photo(nom="copie.png", taille=(3000, 2000)):
+        import io
+        from PIL import Image
+        tampon = io.BytesIO()
+        Image.new("RGB", taille, "white").save(tampon, "PNG")
+        return SimpleUploadedFile(nom, tampon.getvalue(), content_type="image/png")
+
+    def test_correction(self):
+        import base64
+        import io
+        from PIL import Image
+        from wiki import claude
+        from wiki.models import CorrectionCopie, UsageClaude
+        self.assertContains(self.client.get("/copie/", {"page": "Cours/Fourier"}), 'value="Cours/Fourier"')
+        faux = _FauxClaude("### Ce que tu as écrit\n1. $X(\\omega) = \\frac{1}{a}$\n\n### Correction pas à pas\n1. ❌ Il manque le facteur $2a$.")
+        with mock.patch.object(claude, "_client", return_value=faux):
+            r = self.client.post("/copie/", {"photos": [self._photo("p1.png"), self._photo("p2.png", (800, 600))],
+                                             "enonce": "Transformée de e^{-a|t|}", "page": "Cours/Fourier"})
+        self.assertEqual(r.status_code, 200, r.content)
+        self.assertIn("Il manque le facteur", r.json()["bloc"])
+        demande = faux.demandes[0]
+        self.assertEqual(demande["model"], "claude-sonnet-5-5")
+        self.assertIn("Cours de référence « Fourier »", demande["system"])
+        contenu = demande["messages"][0]["content"]
+        self.assertEqual([b["type"] for b in contenu], ["image", "image", "text"])
+        self.assertIn("Transformée de e^{-a|t|}", contenu[2]["text"])
+        # Photos réduites (côté ≤ 1568 px) et converties en JPEG pour Claude.
+        image = Image.open(io.BytesIO(base64.b64decode(contenu[0]["source"]["data"])))
+        self.assertEqual((image.format, image.size), ("JPEG", (1568, 1045)))
+        c = CorrectionCopie.objects.get()
+        self.assertEqual((c.player, c.page, c.photos, c.modele), ("lecteur", "Cours/Fourier", 2, "claude-sonnet-5-5"))
+        self.assertEqual(UsageClaude.objects.get().genre, "copie")
+        # Historique et photos : visibles de leur seul auteur.
+        self.assertContains(self.client.get("/copie/"), "Il manque le facteur")
+        self.assertEqual(self.client.get(f"/copie/photo/{c.pk}/1").status_code, 200)
+        self.assertEqual(self.client.get(f"/copie/photo/{c.pk}/2").status_code, 404)
+        autre = get_user_model().objects.create_user("bob", password="x")
+        self.client.force_login(autre)
+        self.assertNotContains(self.client.get("/copie/"), "Il manque le facteur")
+        self.assertEqual(self.client.get(f"/copie/photo/{c.pk}/0").status_code, 404)
+        self.assertEqual(self.client.post(f"/copie/{c.pk}/supprimer/").status_code, 404)
+        self.client.force_login(self.reader)
+        self.assertEqual(self.client.post(f"/copie/{c.pk}/supprimer/").status_code, 200)
+        self.assertFalse(CorrectionCopie.objects.exists())
+        self.assertFalse(any((Path(self.data.name) / "copies").rglob("*.jpg")))
+        self.assertContains(self.client.get("/wiki/Cours/Fourier"), "/copie/?page=Cours/Fourier")
+
+    def test_erreurs(self):
+        from wiki import claude
+        for donnees, message in [
+            ({}, "Ajoutez au moins une photo"),
+            ({"photos": [self._photo(f"p{i}.png", (10, 10)) for i in range(5)]}, "4 photos au plus"),
+            ({"photos": [SimpleUploadedFile("faux.jpg", b"pas une image")]}, "pas une photo lisible"),
+            ({"photos": [self._photo(taille=(10, 10))], "page": "Inconnue"}, "Page inconnue"),
+        ]:
+            with self.subTest(message=message):
+                r = self.client.post("/copie/", donnees)
+                self.assertEqual(r.status_code, 400)
+                self.assertIn(message, r.json()["error"])
+        with mock.patch.object(claude, "plafond_atteint", return_value=True):
+            self.assertEqual(self.client.post("/copie/", {"photos": [self._photo(taille=(10, 10))]}).status_code, 429)
+        with mock.patch.dict("os.environ", {"WIKI_CLAUDE_CLE": ""}):
+            self.assertEqual(self.client.post("/copie/", {"photos": [self._photo(taille=(10, 10))]}).status_code, 503)
+            self.assertContains(self.client.get("/copie/"), "Pas de clé d'API Claude")

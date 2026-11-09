@@ -101,6 +101,9 @@ def _payload(vault, item, st, now):
     if exo.forme == langues.CARTE:
         p.update(recto=html(d["recto"]), verso=html(d["verso"]),
                  previsions={str(n): t for n, t in langues.previsions(st, now).items()})
+        if d.get("oral"):
+            # Prononciation : vérifiée sur l'appareil (reconnaissance vocale), puis note FSRS.
+            p["oral"] = {"reponses": d["oral"]["reponses"], "particules": item.set.particules, "lang": item.set.code_langue}
     elif exo.forme == langues.SAISIE:
         p.update(consigne=html(d["consigne"]), invite=d["invite"],
                  prerempli=d["prerempli"], tableau=d["tableau"],

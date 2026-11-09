@@ -11,6 +11,8 @@ import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.speech.RecognizerIntent;
 import android.util.Base64;
 import android.view.View;
 import android.view.WindowInsets;
@@ -31,8 +33,14 @@ import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import androidx.core.content.FileProvider;
 import androidx.webkit.WebViewAssetLoader;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -58,6 +66,7 @@ public class MainActivity extends Activity {
     static final int CHOIX_FICHIERS = 1;
     static final int ENREGISTRER = 2;
     static final int NOTIFICATIONS = 3;
+    static final int ECOUTE = 4;
     /** Page du wiki à ouvrir au lancement (notification de rappel). */
     static final String EXTRA_CHEMIN = "fr.projetpluri.qcm.CHEMIN";
 
@@ -69,6 +78,9 @@ public class MainActivity extends Activity {
     private String agent;
     private Interface chrome;
     private ValueCallback<Uri[]> choixEnAttente;
+    /** Photo prise par l'appareil photo depuis le choix de fichiers (« Corriger ma copie »). */
+    private File photoEnAttente;
+    private Uri adressePhoto;
     private View pleinEcran;
     private WebChromeClient.CustomViewCallback finPleinEcran;
     private boolean sessionTentee;
@@ -379,8 +391,12 @@ public class MainActivity extends Activity {
             String[] types = typesMime(params.getAcceptTypes());
             if (types.length > 0) choix.putExtra(Intent.EXTRA_MIME_TYPES, types);
             if (params.getMode() == FileChooserParams.MODE_OPEN_MULTIPLE) choix.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+            Intent choisir = Intent.createChooser(choix, null);
+            // Images demandées : l'appareil photo est proposé avec la galerie et les fichiers.
+            Intent photo = acceptePhotos(types) ? intentionPhoto() : null;
+            if (photo != null) choisir.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[]{photo});
             try {
-                startActivityForResult(Intent.createChooser(choix, null), CHOIX_FICHIERS);
+                startActivityForResult(choisir, CHOIX_FICHIERS);
             } catch (ActivityNotFoundException e) {
                 choixEnAttente = null;
                 return false;
@@ -414,6 +430,28 @@ public class MainActivity extends Activity {
     }
 
     /** Types acceptés par le champ (« .pdf,image/* ») ; vide si une extension est inconnue (tout accepter). */
+    private static boolean acceptePhotos(String[] types) {
+        for (String type : types) if (type.startsWith("image/")) return true;
+        return false;
+    }
+
+    private Intent intentionPhoto() {
+        try {
+            File dossier = new File(getCacheDir(), "photos");
+            if (!dossier.isDirectory() && !dossier.mkdirs()) return null;
+            File[] anciennes = dossier.listFiles();
+            if (anciennes != null) for (File f : anciennes) f.delete();
+            photoEnAttente = File.createTempFile("copie-", ".jpg", dossier);
+            adressePhoto = FileProvider.getUriForFile(this, getPackageName() + ".fichiers", photoEnAttente);
+            Intent photo = new Intent(MediaStore.ACTION_IMAGE_CAPTURE).putExtra(MediaStore.EXTRA_OUTPUT, adressePhoto)
+                    .addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION | Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            return photo.resolveActivity(getPackageManager()) != null ? photo : null;
+        } catch (IOException | IllegalArgumentException e) {
+            photoEnAttente = null;
+            return null;
+        }
+    }
+
     private static String[] typesMime(String[] acceptes) {
         List<String> types = new ArrayList<>();
         for (String accepte : acceptes) {
@@ -462,11 +500,31 @@ public class MainActivity extends Activity {
                     choisis = new Uri[]{donnees.getData()};
                 }
             }
+            if (choisis == null && resultat == RESULT_OK && photoEnAttente != null && photoEnAttente.length() > 0) {
+                choisis = new Uri[]{adressePhoto};
+            }
+            photoEnAttente = null;
             choixEnAttente.onReceiveValue(choisis);
             choixEnAttente = null;
         } else if (code == ENREGISTRER) {
             fichiers.resultat(resultat, donnees);
+        } else if (code == ECOUTE) {
+            ArrayList<String> textes = resultat == RESULT_OK && donnees != null
+                    ? donnees.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS) : null;
+            renvoyerEcoute(textes, textes == null ? "annule" : null);
         }
+    }
+
+    /** Résultat de la reconnaissance vocale vers la page : window.resultatEcoute({textes} ou {erreur}). */
+    private void renvoyerEcoute(List<String> textes, String erreur) {
+        JSONObject reponse = new JSONObject();
+        try {
+            if (erreur != null) reponse.put("erreur", erreur);
+            else reponse.put("textes", new JSONArray(textes));
+        } catch (org.json.JSONException e) {
+            return;
+        }
+        vue.evaluateJavascript("window.resultatEcoute && window.resultatEcoute(" + JSONObject.quote(reponse.toString()) + ")", null);
     }
 
     // -- Pont pour toutes les pages (rien de sensible : pas de jeton) ------------------------
@@ -492,6 +550,25 @@ public class MainActivity extends Activity {
         @JavascriptInterface
         public void ouvrirWiki() {
             runOnUiThread(() -> MainActivity.this.ouvrirWiki("/"));
+        }
+
+        /** Reconnaissance vocale d'Android (la WebView n'a pas celle des navigateurs) : écran
+         *  d'écoute du système, langue BCP 47 (ex. « en-GB ») ; le résultat revient par
+         *  window.resultatEcoute. Le micro est celui de l'application de reconnaissance. */
+        @JavascriptInterface
+        public void ecouter(String langue) {
+            runOnUiThread(() -> {
+                Intent ecoute = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
+                        .putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+                        .putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 5)
+                        .putExtra(RecognizerIntent.EXTRA_PROMPT, "Prononcez le mot");
+                if (langue != null && !langue.isEmpty()) ecoute.putExtra(RecognizerIntent.EXTRA_LANGUAGE, langue);
+                try {
+                    startActivityForResult(ecoute, ECOUTE);
+                } catch (ActivityNotFoundException e) {
+                    renvoyerEcoute(null, "indisponible");
+                }
+            });
         }
 
         /** Fichier produit par la page (ex. « Télécharger la page en .md » de l'éditeur). */

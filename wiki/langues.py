@@ -70,7 +70,7 @@ class Exercice:
     """Une facette d'un élément (mot, forme verbale, point de grammaire).
 
     `donnees` dépend de `forme` :
-      carte  : recto, verso
+      carte  : recto, verso (et oral = {reponses} : prononciation vérifiée au micro)
       saisie : consigne, invite, reponses, tolerant, prerempli, tableau
                (tableau = {titre, lignes: [[personne, forme]], surligne} ou None)
       choix  : enonce, choix, reponses, multiple
@@ -212,6 +212,7 @@ TRADUCTION = "traduction"          # traduction à taper L → M
 CHOIX_MOT = "choix"                # QCM M → L : le bon mot parmi ceux du paquet
 CONTEXTE = "contexte"              # phrase d'exemple à compléter
 DICTEE = "dictee"                  # le mot est lu (synthèse vocale), on l'écrit en L
+PRONONCIATION = "prononciation"    # le mot est à dire : vérifié par la reconnaissance vocale
 TYPES_VOCABULAIRE = {
     DECOUVERTE: "Carte {M} → {L}",
     PRODUCTION: "Traduction à taper {M} → {L}",
@@ -220,6 +221,7 @@ TYPES_VOCABULAIRE = {
     DICTEE: "Dictée : écouter le mot et l'écrire (en {langue})",
     RECONNAISSANCE: "Carte {L} → {M}",
     TRADUCTION: "Traduction à taper {L} → {M}",
+    PRONONCIATION: "Prononciation : dire le mot (en {langue}), vérifiée au micro",
 }
 # Code de langue (BCP 47) pour la synthèse vocale du navigateur ; la clé
 # « code_langue » d'un fichier l'impose (ex. "en-US").
@@ -236,9 +238,9 @@ def code_langue(langue: str) -> str:
 VOCABULAIRE_PAR_DEFAUT = [RECONNAISSANCE, PRODUCTION, CONTEXTE]
 # La première carte retenue (dans cet ordre) fait découvrir le mot ; les autres
 # ne viennent qu'une fois celle-ci réussie.
-ORDRE_DECOUVERTE = [DECOUVERTE, RECONNAISSANCE, CHOIX_MOT, PRODUCTION, TRADUCTION, CONTEXTE, DICTEE]
+ORDRE_DECOUVERTE = [DECOUVERTE, RECONNAISSANCE, CHOIX_MOT, PRODUCTION, TRADUCTION, CONTEXTE, DICTEE, PRONONCIATION]
 SUFFIXES = {RECONNAISSANCE: "rec", DECOUVERTE: "dec", PRODUCTION: "prod", TRADUCTION: "trad",
-            CHOIX_MOT: "qcm", CONTEXTE: "ctx", DICTEE: "dict"}
+            CHOIX_MOT: "qcm", CONTEXTE: "ctx", DICTEE: "dict", PRONONCIATION: "oral"}
 # Quand lire le mot à voix haute : à l'affichage, au retournement de la carte, après la correction.
 DEBUT, VERSO, FIN = "debut", "verso", "fin"
 
@@ -292,7 +294,8 @@ def _facettes_vocabulaire(id_, mot, trads, o, types, langue, abr_l, abr_m, autre
     entree = next((t for t in ORDRE_DECOUVERTE if t in possibles), None)
     # Son : le mot (ou la phrase d'exemple) en langue apprise, lu par le navigateur.
     sons = {RECONNAISSANCE: (mot, DEBUT), DECOUVERTE: (mot, VERSO), PRODUCTION: (mot, FIN), TRADUCTION: (mot, DEBUT),
-            CHOIX_MOT: (mot, FIN), CONTEXTE: (_sans_crochets(exemple), FIN), DICTEE: (mot, DEBUT)}
+            CHOIX_MOT: (mot, FIN), CONTEXTE: (_sans_crochets(exemple), FIN), DICTEE: (mot, DEBUT),
+            PRONONCIATION: (mot, VERSO)}
     facettes = []
     for t in possibles:
         exo_id = f"{id_}#{SUFFIXES[t]}"
@@ -336,6 +339,12 @@ def _facettes_vocabulaire(id_, mot, trads, o, types, langue, abr_l, abr_m, autre
                                      resume=f"{mot} (dictée)", forme=SAISIE,
                                      donnees={**_saisie(f"Écoute le mot et écris-le en {langue.lower()}.", reponses, tolerant=True),
                                               "indice": trad},
+                                     **commun))
+        elif t == PRONONCIATION:
+            facettes.append(Exercice(id=exo_id, etiquette=f"Vocabulaire · prononciation ({abr_l})",
+                                     resume=f"{mot} (à l'oral)", forme=CARTE,
+                                     donnees={"recto": f"Dis à voix haute : **{mot}**\n({trad})", "verso": avec_prononciation,
+                                              "oral": {"reponses": reponses}},
                                      **commun))
     return facettes
 

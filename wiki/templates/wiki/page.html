@@ -92,6 +92,7 @@
       <button type="submit" class="button small primary">Demander</button>
     </form>
     <p class="muted tuteur-aide">Claude répond d'après cette page ; il dit quand la réponse n'y est pas. Les échanges restent dans ce panneau.</p>
+    <p><a class="button small" href="{% url 'wiki:copie' %}?page={{ note.key|urlencode }}">📷 Corriger ma copie sur ce cours</a></p>
     {% endif %}
   </section>
   {% endif %}
