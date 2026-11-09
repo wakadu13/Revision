@@ -711,6 +711,7 @@ def palette(request):
         {"t": "Accueil", "u": reverse("wiki:home")},
         {"t": "Sommaire", "u": reverse("wiki:sommaire")},
         {"t": "Tags", "u": reverse("wiki:tags")},
+        {"t": "Aujourd'hui", "u": reverse("wiki:aujourdhui")},
         {"t": "QCM", "u": reverse("wiki:quiz_index")},
         {"t": "Révision intelligente (QCM)", "u": f"{jouer}?revision=1"},
         {"t": "Statistiques des QCM", "u": reverse("wiki:quiz_stats")},

@@ -24,7 +24,7 @@ from django.utils.text import slugify
 from django.views.decorators.http import require_POST
 
 from . import anki, claude, paquets, planning, quiz
-from .models import _JAMAIS, Activite, QuizDeck, QuizProgress, Signalement
+from .models import _JAMAIS, Activite, ObjectifRevision, QuizDeck, QuizProgress, Signalement, TempsRevision
 from .render import Renderer
 from .vault import Note, clean_key, get_vault
 
@@ -387,13 +387,20 @@ def record(request):
     obj.save()
     Activite.noter(obj.player, obj.last_correct, nouveau=obj.seen == 1)
 
-    chronometrer(obj.player, set_id, data.get("duree_ms"))
+    chronometrer(obj.player, set_id, data.get("duree_ms"), matiere_de(qset))
     return JsonResponse({"box": obj.box, "seen": obj.seen, "correct": obj.correct,
                          "stabilite": obj.stabilite, "echeance": obj.echeance.isoformat()})
 
 
-def chronometrer(player, set_id, duree):
-    """Cumule un temps de réponse : sert à estimer la durée quotidienne des révisions."""
+def matiere_de(qset):
+    """Matière d'un set pour les temps de révision : sa langue, sinon sa catégorie."""
+    return qset.langue or qset.categorie
+
+
+def chronometrer(player, set_id, duree, matiere="", quand=None):
+    """Cumule un temps de réponse : estimation de la durée quotidienne des révisions
+    (par set), et temps de révision par matière et par jour (statistiques)."""
+    TempsRevision.noter(player, matiere, duree, quand)
     if isinstance(duree, (int, float)) and not isinstance(duree, bool) and duree > 0:
         deck, _ = QuizDeck.objects.get_or_create(player=player, set_id=set_id)
         QuizDeck.objects.filter(pk=deck.pk).update(
@@ -415,10 +422,12 @@ def stats(request):
         categories.append({"nom": cat, "sets": entries})
     aujourdhui = timezone.localdate(now)
     previsions = _previsions(player, library, now)
+    semaines, temps, temps_totaux = TempsRevision.tableau(player, aujourdhui)
     return render(request, "wiki/quiz_stats.html", _ctx(
         request, categories=categories, boites=range(quiz.BOITE_MAX + 1), claude_dispo=claude.disponible(),
         previsions=previsions, previsions_max=max([p["n"] for p in previsions] + [1]),
         previsions_total=sum(p["n"] for p in previsions),
+        semaines=semaines, temps=temps, temps_totaux=temps_totaux,
         activite=Activite.resume(player, aujourdhui), calendrier=Activite.calendrier(player, aujourdhui),
         mois=_mois_du_calendrier(Activite.calendrier(player, aujourdhui)),
     ))
@@ -454,13 +463,13 @@ def _mois_du_calendrier(grille):
     return etiquettes
 
 
-def rappel(request):
-    """Pour le rappel quotidien de l'application : à réviser (QCM, langues), série, réponses du jour."""
+def etat_rappel(player, library=None, now=None):
+    """Ce qu'il reste à réviser (QCM, langues), série et réponses du jour : rappel de
+    l'application Android, notifications web, page « Aujourd'hui »."""
     from .langues_views import resume_langue
 
-    library = quiz.get_library()
-    player = player_id(request)
-    now = timezone.now()
+    library = library or quiz.get_library()
+    now = now or timezone.now()
     decks = QuizDeck.map_for(player)
     qcm = sum(_set_summary(s, QuizProgress.map_for(player, s.id), now, decks.get(s.id))["a_reviser"] for s in library.sets.values())
     langues_dues = 0
@@ -469,8 +478,77 @@ def rappel(request):
         if fichiers:
             langues_dues += resume_langue(player, nom, fichiers, now)["a_revoir"]
     activite = Activite.resume(player, timezone.localdate(now))
-    return JsonResponse({"a_revoir": qcm + langues_dues, "qcm": qcm, "langues": langues_dues,
-                         "serie": activite["serie"], "aujourdhui": activite["aujourdhui"], "admin": _can_edit(request)})
+    return {"a_revoir": qcm + langues_dues, "qcm": qcm, "langues": langues_dues,
+            "serie": activite["serie"], "aujourdhui": activite["aujourdhui"]}
+
+
+def texte_rappel(etat):
+    """Texte de la notification de rappel, ou None s'il n'y a rien à rappeler (tout est
+    révisé et on a déjà travaillé aujourd'hui)."""
+    n, serie, auj = etat["a_revoir"], etat["serie"], etat["aujourdhui"]
+    if n == 0 and auj > 0:
+        return None
+    texte = (f"{n} élément{'s' if n > 1 else ''} à réviser" if n else "Rien d'urgent : quelques nouveaux mots ?")
+    if serie > 0:
+        texte += f" · série de {serie} jour{'s' if serie > 1 else ''}" + (" à prolonger" if auj == 0 else "")
+    return texte
+
+
+def rappel(request):
+    """Pour le rappel quotidien de l'application : à réviser (QCM, langues), série, réponses du jour."""
+    return JsonResponse({**etat_rappel(player_id(request)), "admin": _can_edit(request)})
+
+
+@login_required
+def aujourdhui(request):
+    """Page « Aujourd'hui » : tout ce qui est dû, les examens à venir, la série, l'objectif du jour."""
+    from .langues_views import resume_langue
+
+    player = player_id(request)
+    if request.method == "POST":
+        valeur = request.POST.get("objectif", "").strip()
+        objectif = int(valeur) if valeur.isdigit() and 0 < int(valeur) <= 2000 else None
+        ObjectifRevision.objects.update_or_create(player=player, defaults={"reponses_jour": objectif})
+        return redirect("wiki:aujourdhui")
+    library = quiz.get_library()
+    now = timezone.now()
+    jour = timezone.localdate(now)
+    decks = QuizDeck.map_for(player)
+    sets_dus, total_qcm = [], 0
+    for qset in library.sorted_sets():
+        progress = QuizProgress.map_for(player, qset.id)
+        summary = _set_summary(qset, progress, now, decks.get(qset.id))
+        total_qcm += summary["a_reviser"]
+        if summary["a_reviser"]:
+            sets_dus.append({"set": qset, "summary": summary})
+    sets_dus.sort(key=lambda e: (-e["summary"]["a_reviser"], e["set"].titre.lower()))
+    langues = []
+    for nom in library.noms_langues():
+        fichiers = library.sets_langue(nom)
+        if fichiers:
+            r = resume_langue(player, nom, fichiers, now)
+            langues.append({"nom": nom, "a_revoir": r["a_revoir"], "nouveaux": r["nouveaux_disponibles"]})
+    examens = []
+    for deck in decks.values():
+        if deck.date_objectif is None or deck.date_objectif < jour:
+            continue
+        qset = library.get(deck.set_id)
+        if qset is None:
+            continue
+        e = planning.estimer(qset, QuizProgress.map_for(player, qset.id), deck, now)
+        examens.append({"set": qset, "date": deck.date_objectif, "jours": (deck.date_objectif - jour).days, "e": e})
+    examens.sort(key=lambda x: (x["date"], x["set"].titre.lower()))
+    activite = Activite.resume(player, jour)
+    objectif = ObjectifRevision.objects.filter(player=player).values_list("reponses_jour", flat=True).first()
+    previsions = _previsions(player, library, now, 7)
+    return render(request, "wiki/aujourdhui.html", _ctx(
+        request, jour=jour, total_qcm=total_qcm, sets_dus=sets_dus[:8], autres_sets=max(0, len(sets_dus) - 8),
+        langues=langues, examens=examens, activite=activite, objectif=objectif,
+        pct_objectif=min(100, round(activite["aujourdhui"] / objectif * 100)) if objectif else 0,
+        minutes=TempsRevision.minutes_du_jour(player, jour), previsions=previsions,
+        previsions_max=max([p["n"] for p in previsions] + [1]),
+        push_cle_url=reverse("wiki:push_cle"),
+    ))
 
 
 def _ancre(set_id):
@@ -841,3 +919,73 @@ def signalements(request):
     traites = Signalement.objects.filter(traite=True).order_by("-traite_le")[:20]
     return render(request, "wiki/quiz_signalements.html", _ctx(
         request, ouverts=ouverts, traites=traites, claude_dispo=claude.disponible()))
+
+
+# ---------------------------------------------------------------------------
+# Notifications web : abonnement de l'appareil, test
+# ---------------------------------------------------------------------------
+@login_required
+def push_cle(request):
+    from . import push
+
+    abonnements = {a.endpoint: {"heure": a.heure, "minute": a.minute} for a in request.user.abonnements_push.all()}
+    return JsonResponse({"cle": push.cle_publique(), "abonnements": abonnements})
+
+
+def _json_post(request):
+    try:
+        data = json.loads(request.body)
+        return data if isinstance(data, dict) else None
+    except ValueError:
+        return None
+
+
+@login_required
+@require_POST
+def push_abonner(request):
+    from .models import AbonnementPush
+
+    data = _json_post(request)
+    try:
+        sub = data["subscription"]
+        endpoint, p256dh, auth = str(sub["endpoint"]), str(sub["keys"]["p256dh"]), str(sub["keys"]["auth"])
+        heure, minute = int(data.get("heure", 19)), int(data.get("minute", 0))
+        if not endpoint.startswith("https://") or not (0 <= heure <= 23 and 0 <= minute <= 59):
+            raise ValueError
+    except (KeyError, TypeError, ValueError):
+        return JsonResponse({"error": "abonnement invalide"}, status=400)
+    maintenant = timezone.localtime()
+    # Heure déjà passée aujourd'hui : premier rappel demain (pas tout de suite).
+    deja = (heure, minute) <= (maintenant.hour, maintenant.minute)
+    AbonnementPush.objects.update_or_create(endpoint=endpoint, defaults={
+        "user": request.user, "p256dh": p256dh, "auth": auth, "heure": heure, "minute": minute,
+        "agent": request.headers.get("User-Agent", "")[:300], "dernier_envoi": maintenant.date() if deja else None})
+    return JsonResponse({"ok": True, "heure": heure, "minute": minute})
+
+
+@login_required
+@require_POST
+def push_desabonner(request):
+    data = _json_post(request) or {}
+    request.user.abonnements_push.filter(endpoint=str(data.get("endpoint", ""))).delete()
+    return JsonResponse({"ok": True})
+
+
+@login_required
+@require_POST
+def push_tester(request):
+    from . import push
+
+    data = _json_post(request) or {}
+    abonnement = request.user.abonnements_push.filter(endpoint=str(data.get("endpoint", ""))).first()
+    if abonnement is None:
+        return JsonResponse({"error": "appareil non abonné"}, status=404)
+    texte = texte_rappel(etat_rappel(player_id(request))) or "Tout est à jour ✓"
+    try:
+        push.envoyer(abonnement, "ProjetPluri · test", texte)
+    except push.AbonnementExpire:
+        abonnement.delete()
+        return JsonResponse({"error": "abonnement expiré : réactivez le rappel"}, status=410)
+    except Exception as e:  # noqa: BLE001
+        return JsonResponse({"error": f"envoi impossible : {e}"}, status=502)
+    return JsonResponse({"ok": True})

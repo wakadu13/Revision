@@ -891,3 +891,17 @@ body.plein-ecran.editing.pe-haut .toolbar {
   pre, code { white-space: pre-wrap; word-break: break-word; }
   @page { margin: 1.6cm 1.4cm; }
 }
+
+/* Page « Aujourd'hui », temps de révision */
+.aujourdhui-date { font-size: 1rem; font-weight: 400; margin-left: .4rem; }
+.aujourdhui-liste { padding-left: 1.1rem; }
+.aujourdhui-liste li { margin: .3rem 0; }
+.aujourdhui-previsions { grid-template-columns: repeat(7, 1fr); height: 6rem; }
+.aujourdhui-objectif { display: flex; flex-wrap: wrap; gap: .4rem; align-items: end; }
+.aujourdhui-objectif input { width: 6rem; padding: .3rem .4rem; border: 1px solid var(--border); border-radius: 6px; background: var(--bg); color: var(--text); font: inherit; }
+.quiz-chiffre .mastery { margin-top: .35rem; }
+.rappel-controles { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; }
+.rappel-controles input[type=time] { padding: .25rem .4rem; border: 1px solid var(--border); border-radius: 6px; background: var(--bg); color: var(--text); font: inherit; }
+.tableau-defilant { overflow-x: auto; }
+.quiz-temps-table td, .quiz-temps-table th { text-align: right; white-space: nowrap; }
+.quiz-temps-table td:first-child, .quiz-temps-table th:first-child { text-align: left; white-space: normal; }

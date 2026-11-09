@@ -13,6 +13,7 @@ dependencies = [
     "pillow>=13.0.0",
     "pymdown-extensions>=12.1",
     "pypdf>=7.0.0",
+    "pywebpush>=2.5.0",
     "pyyaml>=6.0.3",
     "whitenoise>=6.12.0",
 ]

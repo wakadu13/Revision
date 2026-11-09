@@ -17,6 +17,7 @@ const A_PRECHARGER = [
   "{% static 'wiki/palette.js' %}",
   "{% static 'wiki/tuteur.js' %}",
   "{% static 'wiki/hors_ligne_wiki.js' %}",
+  "{% static 'wiki/rappel_web.js' %}",
   "{% static 'wiki/icone-192.png' %}",
   "{% static 'wiki/icone-512.png' %}",
   CDN + "katex@0.16.47/dist/katex.min.css",
@@ -87,6 +88,31 @@ async function navigation(request) {
     return page || Response.error();
   }
 }
+
+// Notifications web (rappel quotidien, commande envoyer_rappels) : affichées par le
+// service worker ; un clic ouvre (ou ramène au premier plan) la page indiquée.
+self.addEventListener("push", (event) => {
+  let d = {};
+  try { d = event.data ? event.data.json() : {}; } catch (e) { d = { texte: event.data ? event.data.text() : "" }; }
+  event.waitUntil(self.registration.showNotification(d.titre || "ProjetPluri", {
+    body: d.texte || "C'est l'heure de réviser un peu.",
+    icon: "{% static 'wiki/icone-192.png' %}",
+    badge: "{% static 'wiki/icone-192.png' %}",
+    tag: "rappel-quotidien",
+    data: { url: d.url || "/aujourdhui/" },
+  }));
+});
+
+self.addEventListener("notificationclick", (event) => {
+  event.notification.close();
+  const url = new URL((event.notification.data && event.notification.data.url) || "/", self.location.origin).href;
+  event.waitUntil((async () => {
+    for (const c of await self.clients.matchAll({ type: "window", includeUncontrolled: true })) {
+      if (c.url === url && "focus" in c) return c.focus();
+    }
+    return self.clients.openWindow(url);
+  })());
+});
 
 self.addEventListener("fetch", (event) => {
   const request = event.request;
