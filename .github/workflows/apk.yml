@@ -84,6 +84,30 @@ jobs:
           name: projetpluri-${{ env.QCM_VERSION_NAME }}
           path: projetpluri-*.apk
 
+      # Notes : la description de la pull request fusionnée par ce commit (sinon le
+      # message du commit), la liste des PR depuis la release précédente
+      # (--generate-notes) et le mode d'emploi.
+      - name: Notes de la release
+        if: env.QCM_RELEASE != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          nouveautes="$(gh api "repos/$GITHUB_REPOSITORY/commits/$GITHUB_SHA/pulls" --jq '.[0].body // empty' 2>/dev/null || true)"
+          if [[ -z "$nouveautes" ]]; then nouveautes="$(git log -1 --format=%B "$GITHUB_SHA")"; fi
+          # Signatures d'outils retirées du texte.
+          nouveautes="$(printf '%s\n' "$nouveautes" | sed -e '/Generated with \[Claude Code\]/d' -e '/claude.ai\/code\//d' -e '/^Co-Authored-By:/d' -e '/^Claude-Session:/d')"
+          {
+            echo "## Nouveautés"
+            echo
+            printf '%s\n' "$nouveautes"
+            echo
+            echo "## Installation"
+            echo
+            echo "Télécharger l'APK sur l'appareil, l'ouvrir et autoriser l'installation depuis cette source : elle se met à jour par-dessus la version déjà installée, sans perdre les sets téléchargés ni les réponses en attente."
+            echo
+            echo "Au premier lancement : identifiant et mot de passe du wiki (adresse proposée : https://wiki.airhiterofprovence.fr, qui marche partout, Wi-Fi ou 4G). Le wiki s'ouvre ensuite sans redemander le mot de passe. Le serveur doit être à jour (scripts/mettre-a-jour.ps1) : voir android/README.md."
+          } > notes.md
+
       - name: Release
         if: env.QCM_RELEASE != ''
         env:
@@ -91,8 +115,4 @@ jobs:
         run: |
           gh release create "$QCM_RELEASE" projetpluri-*.apk --target "$GITHUB_SHA" --latest \
             --title "ProjetPluri Android $QCM_VERSION_NAME" \
-            --notes "Application Android du wiki ProjetPluri, pour téléphone et tablette : le wiki complet (pages, éditeur, PDF, QCM) avec une navigation tactile, et les QCM hors ligne synchronisés avec le serveur.
-
-          Installation : télécharger l'APK sur l'appareil, l'ouvrir et autoriser l'installation depuis cette source (elle se met à jour par-dessus l'appli QCM déjà installée, sans perdre les réponses gardées).
-          Au premier lancement : identifiant et mot de passe du wiki (adresse proposée : https://wiki.airhiterofprovence.fr, qui marche partout, Wi-Fi ou 4G). Le wiki s'ouvre ensuite sans redemander le mot de passe. Appli déjà connectée à une adresse locale (192.168.…) : « Passer à wiki.airhiterofprovence.fr » dans les Réglages, sans retaper le mot de passe.
-          Le serveur doit être à jour (git pull, puis redémarrer) : voir android/README.md."
+            --notes-file notes.md --generate-notes

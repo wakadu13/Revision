@@ -316,3 +316,24 @@ class Explication(models.Model):
 
     class Meta:
         unique_together = ("set_id", "question_id")
+
+
+class Signalement(models.Model):
+    """Question de QCM signalée par un joueur (erreur, ambiguïté, coquille). L'admin la
+    corrige à la main, la retire, ou applique la correction proposée par Claude."""
+
+    set_id = models.CharField(max_length=500)
+    question_id = models.CharField(max_length=255)
+    player = models.CharField(max_length=150, blank=True, default="")
+    commentaire = models.TextField(blank=True)
+    cree_le = models.DateTimeField(auto_now_add=True)
+    traite = models.BooleanField(default=False)
+    traite_le = models.DateTimeField(null=True, blank=True)
+    proposition = models.JSONField(null=True, blank=True)  # question corrigée proposée par Claude
+    proposition_note = models.TextField(blank=True)        # ce que Claude a changé, et pourquoi
+
+    class Meta:
+        ordering = ["traite", "-cree_le"]
+
+    def __str__(self):
+        return f"{self.set_id} » {self.question_id}"

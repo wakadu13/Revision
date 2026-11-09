@@ -285,8 +285,29 @@
         (explicationHtml ? '<div class="quiz-explication markdown">' + explicationHtml + "</div>" : "");
       renderMath(feedback);
       if (options.expliquer) ajouterExpliqueMoi(feedback, state._els.q);
+      if (options.signaler) ajouterSignaler(feedback, state._els.q);
       nextBtn.style.display = "";
       nextBtn.focus();
+    }
+
+    // « Signaler » : question fausse ou ambiguë, transmise aux admins (corrigée ensuite, avec Claude au besoin).
+    function ajouterSignaler(feedback, q) {
+      const b = el("button", "button small quiz-signaler", "⚑ Signaler un problème");
+      b.type = "button";
+      b.title = "Erreur, ambiguïté, coquille : prévenir les admins du wiki";
+      b.addEventListener("click", async () => {
+        const commentaire = prompt("Qu'est-ce qui ne va pas avec cette question ?", "");
+        if (commentaire === null) return;
+        b.disabled = true;
+        try {
+          await options.signaler(q, commentaire.trim());
+          b.textContent = "⚑ Signalée, merci ✓";
+        } catch (e) {
+          b.disabled = false;
+          b.textContent = "⚑ Signaler (réessayer)";
+        }
+      });
+      feedback.appendChild(b);
     }
 
     // « Explique-moi » : Claude explique la réponse (d'après le cours quand le set en vient).
@@ -553,6 +574,16 @@
     if (window.QcmAttente) window.QcmAttente.ajouter({ ...reponse, date: date, joueur: root.dataset.joueur }).catch(() => {});
   }
 
+  async function signaler(q, commentaire) {
+    const r = await fetch(root.dataset.signalerUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "X-CSRFToken": root.dataset.csrf },
+      body: JSON.stringify({ set_id: q.set_id, question_id: q.id, commentaire }),
+    });
+    if (!r.ok) throw new Error(r.status);
+    return r.json();
+  }
+
   async function expliquer(q) {
     const r = await fetch(root.dataset.expliquerUrl, {
       method: "POST",
@@ -568,6 +599,7 @@
     stage: stage,
     questions: JSON.parse(dataTag.textContent),
     expliquer: root.dataset.expliquerUrl && root.dataset.mode !== "examen" ? expliquer : null,
+    signaler: root.dataset.signalerUrl ? signaler : null,
     intensif: root.dataset.mode === "intensif",
     examen: root.dataset.mode === "examen" ? { duree: Number(root.dataset.duree) || 0 } : null,
     backUrl: root.dataset.backUrl,

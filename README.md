@@ -158,6 +158,9 @@ choisit le dossier de destination ; un fichier existant n'est remplacé que si
 « Remplacer » est coché. Les dossiers cachés (`.obsidian`, `.trash`) et les
 autres types de fichiers (HTML, scripts…) sont ignorés. Limites : 5 Mo par note,
 100 Mo par pièce jointe (derrière nginx, augmenter `client_max_body_size`).
+Les images (PNG, JPEG, WebP) de plus de 2000 pixels de côté sont réduites et
+recompressées à l'import, sous le même nom : une photo de téléphone de 4 Mo
+tient en quelques centaines de Ko, sans toucher aux liens des notes.
 
 ### Transformer un cours en page avec Claude (admins)
 
@@ -313,6 +316,19 @@ dans la barre latérale ou sur `/qcm/`.
   grammaire). Vérifier ensuite le fichier produit :
   `uv run python manage.py verifier_qcm vault/QCM/<catégorie>/<fichier>.json`
   (sans argument : tout `vault/QCM`).
+- **Réviser une page** : quand un QCM a été écrit d'après une page du wiki (par
+  Claude, ou avec `"source_page"` dans le JSON), la page affiche dans « Réviser
+  ce cours » sa maîtrise et les boutons Réviser, Tout, Examen ; le set indique
+  « d'après la page… ».
+- **Signaler une question** : pendant un QCM, « ⚑ Signaler un problème » envoie
+  la question et un commentaire aux admins (`/qcm/signalements/`), qui peuvent
+  demander une correction à Claude (d'après le cours), l'appliquer, retirer la
+  question ou clore. La question corrigée garde son identifiant : la progression
+  de chacun est conservée.
+- **Export Anki** : bouton « ⬇ Anki » sur chaque set et paquet de langue :
+  fichier `.apkg` (notes recto/verso, carte inversée pour les flashcards, le
+  vocabulaire et les QRC, formules en MathJax) à importer dans Anki ; avec
+  `&format=tsv`, texte tabulé pour Quizlet ou un tableur.
 - **Hors ligne** : `/qcm/hors-ligne/` (installable depuis Chrome, HTTPS requis), ou
   l'**application Android** : sets de QCM et paquets de langue téléchargés sur le
   téléphone, révision sans réseau (les sessions de langue sont corrigées et
@@ -466,6 +482,8 @@ en-têtes) sont dans [`core/tests.py`](core/tests.py) :
 - `/sommaire/` : sommaire de toutes les notes
 - `/tags/` et `/tags/<tag>` : les tags
 - `/recherche/?q=...` : recherche plein texte (insensible aux accents)
+- `/qcm/exporter/?set=…` : export d'un set ou d'un paquet en `.apkg` (Anki) ou `.tsv` (`&format=tsv`)
+- `/qcm/signaler/` (POST) et `/qcm/signalements/` (admins) : questions signalées
 - `/qcm/` : QCM de révision (`/qcm/stats/` pour les statistiques, `/qcm/importer/`
   pour l'import de sets JSON par glisser-déposer, admins)
 - `/qcm/langues/<langue>/` : module Langues (session du jour, modes, statistiques)
@@ -483,8 +501,28 @@ en-têtes) sont dans [`core/tests.py`](core/tests.py) :
 ## Tests
 
 Ils tournent sur GitHub à chaque push et chaque pull request (workflow
-« Tests » : tests Django et syntaxe des scripts), en plus de l'APK.
+« Tests » : tests Django, syntaxe des scripts, et un scénario de bout en bout
+dans Chromium avec Playwright), en plus de l'APK.
 
 ```bash
 uv run python manage.py test
+```
+
+Le scénario navigateur (`e2e/scenario.js`) lance le wiki sur le coffre de test
+`e2e/vault` : connexion, lecture d'une page et de son panneau « Réviser ce
+cours », thème, palette, session de QCM avec signalement puis traitement par
+l'admin, export Anki, paquet de langue téléchargé et révisé sans réseau puis
+synchronisé. En local, après `npm install playwright` et
+`npx playwright install chromium` :
+
+```bash
+cp -r e2e/vault /tmp/coffre && mkdir -p /tmp/donnees
+export E2E_VAULT=/tmp/coffre DJANGO_DATA_DIR=/tmp/donnees DJANGO_SETTINGS_MODULE=settings_e2e PYTHONPATH=e2e
+uv run python manage.py migrate
+uv run python manage.py shell -c "from django.contrib.auth import get_user_model; get_user_model().objects.create_user('testeur', password='Test-pass-1234!', is_staff=True)"
+uv run python manage.py runserver 127.0.0.1:8765
+```
+
+```bash
+node e2e/scenario.js /tmp
 ```

@@ -1,0 +1,82 @@
+{% extends "wiki/base.html" %}
+{% block title %}Questions signalées · QCM{% endblock %}
+{% block content %}
+<article class="note">
+  <h1 class="note-title">Questions signalées</h1>
+  <p class="muted">Pendant un QCM, le bouton « ⚑ Signaler un problème » envoie ici la question et le commentaire du
+    joueur. Corrigez le fichier à la main, retirez la question, ou demandez une correction à Claude puis appliquez-la :
+    la question garde son identifiant, la progression de chacun est conservée.</p>
+  {% if not ouverts %}
+  <div class="callout" data-callout="success">
+    <div class="callout-title">Aucun signalement en attente ✓</div>
+  </div>
+  {% endif %}
+  {% for l in ouverts %}
+  <section class="signalement" id="signalement-{{ l.s.pk }}">
+    <p><b>{% if l.set %}{{ l.set.titre }}{% else %}{{ l.s.set_id }}{% endif %}</b>
+      <span class="muted">· question <code>{{ l.s.question_id }}</code> · signalée {{ l.s.cree_le|date:"d/m/Y H:i" }}{% if l.s.player %} par {{ l.s.player }}{% endif %}</span></p>
+    {% if l.s.commentaire %}<blockquote class="signalement-commentaire">{{ l.s.commentaire }}</blockquote>{% else %}<p class="muted">Sans commentaire.</p>{% endif %}
+    {% if l.question %}
+    <div class="signalement-question markdown">
+      <p class="muted">{{ l.question.type }}{% if l.question.consigne %} · {{ l.question.consigne }}{% endif %}</p>
+      {{ l.html.enonce|safe }}
+      {% if l.html.choix %}
+      <ul>{% for c in l.html.choix %}<li{% if forloop.counter0 in l.question.reponses %} class="bonne"{% endif %}>{{ c|safe }}{% if forloop.counter0 in l.question.reponses %} ✓{% endif %}</li>{% endfor %}</ul>
+      {% endif %}
+      {% if l.question.reponses_texte %}<p>Réponse(s) : <b>{{ l.question.reponses_texte|join:" / " }}</b></p>{% endif %}
+      {% if l.question.verso %}<p>Verso : {{ l.html.verso|safe }}</p>{% endif %}
+      {% if l.question.explication %}<p class="muted">Explication : {{ l.html.explication|safe }}</p>{% endif %}
+    </div>
+    {% if l.proposition %}
+    <div class="signalement-proposition markdown">
+      <p><b>✦ Correction proposée par Claude</b>{% if l.s.proposition_note %} <span class="muted">— {{ l.s.proposition_note }}</span>{% endif %}</p>
+      <p class="muted">{{ l.proposition.type }}{% if l.proposition.consigne %} · {{ l.proposition.consigne }}{% endif %}</p>
+      {{ l.proposition.enonce|safe }}
+      {% if l.proposition.choix %}
+      <ul>{% for c, bonne in l.proposition.choix %}<li{% if bonne %} class="bonne"{% endif %}>{{ c|safe }}{% if bonne %} ✓{% endif %}</li>{% endfor %}</ul>
+      {% endif %}
+      {% if l.proposition.reponses_texte %}<p>Réponse(s) : <b>{{ l.proposition.reponses_texte|join:" / " }}</b></p>{% endif %}
+      {% if l.proposition.verso %}<p>Verso : {{ l.proposition.verso|safe }}</p>{% endif %}
+      {% if l.proposition.explication %}<p class="muted">Explication : {{ l.proposition.explication|safe }}</p>{% endif %}
+    </div>
+    {% endif %}
+    <div class="signalement-actions">
+      {% if l.proposition %}
+      <form method="post">{% csrf_token %}<input type="hidden" name="pk" value="{{ l.s.pk }}">
+        <button type="submit" class="button small primary" name="action" value="appliquer">Appliquer la correction</button></form>
+      {% endif %}
+      {% if claude_dispo %}
+      <form method="post">{% csrf_token %}<input type="hidden" name="pk" value="{{ l.s.pk }}">
+        <button type="submit" class="button small" name="action" value="proposer">✦ {% if l.proposition %}Nouvelle proposition{% else %}Corriger avec Claude{% endif %}</button></form>
+      {% endif %}
+      <a class="button small" href="{% url 'wiki:quiz_play' %}?set={{ l.s.set_id|urlencode }}&mode=all">Rejouer le set</a>
+      <form method="post" data-confirm="Retirer définitivement cette question du set ?">{% csrf_token %}<input type="hidden" name="pk" value="{{ l.s.pk }}">
+        <button type="submit" class="button small danger" name="action" value="retirer">Retirer la question</button></form>
+      <form method="post">{% csrf_token %}<input type="hidden" name="pk" value="{{ l.s.pk }}">
+        <button type="submit" class="button small" name="action" value="clore" title="Déjà corrigée à la main, ou signalement infondé">Clore</button></form>
+    </div>
+    {% else %}
+    <p class="muted">Cette question n'existe plus dans le set (ou le set a été supprimé).</p>
+    <form method="post" class="signalement-actions">{% csrf_token %}<input type="hidden" name="pk" value="{{ l.s.pk }}">
+      <button type="submit" class="button small" name="action" value="clore">Clore</button></form>
+    {% endif %}
+  </section>
+  {% endfor %}
+  {% if traites %}
+  <details class="hl-aide">
+    <summary>Derniers signalements traités ({{ traites|length }})</summary>
+    <ul>{% for s in traites %}<li>{{ s.set_id }} · <code>{{ s.question_id }}</code> · {{ s.traite_le|date:"d/m/Y H:i" }}{% if s.commentaire %} — {{ s.commentaire|truncatechars:80 }}{% endif %}</li>{% endfor %}</ul>
+  </details>
+  {% endif %}
+</article>
+{% endblock %}
+{% block aside %}
+<section class="panel">
+  <h2>Bon à savoir</h2>
+  <ul class="memo">
+    <li>Le fichier JSON du set est modifié sur place ; la question corrigée garde son identifiant.</li>
+    <li>« Retirer » fige les identifiants des questions suivantes pour ne pas décaler leur progression.</li>
+    <li>La correction de Claude s'appuie sur la page du cours quand le set en vient (« d'après la page… »).</li>
+  </ul>
+</section>
+{% endblock %}

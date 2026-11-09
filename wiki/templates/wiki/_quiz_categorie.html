@@ -17,6 +17,7 @@
         <span class="muted">{{ entry.summary.total }} question{{ entry.summary.total|pluralize }}</span>
       </div>
       {% if entry.set.description %}<p class="muted quiz-set-desc">{{ entry.set.description }}</p>{% endif %}
+      {% if entry.set.source_page %}<p class="muted quiz-set-desc">D'après la page <a href="{% url 'wiki:page' entry.set.source_page %}">{{ entry.set.source_page }}</a></p>{% endif %}
       <div class="mastery" title="Maîtrise {{ entry.summary.pct_maitrise|floatformat:0 }} %">
         <div class="mastery-fill" style="width: {{ entry.summary.pct_maitrise|floatformat:0 }}%"></div>
       </div>
@@ -31,6 +32,7 @@
           <a class="button small" href="{% url 'wiki:quiz_play' %}?set={{ entry.set.id|urlencode }}&mode=all">Tout ({{ entry.summary.total }})</a>
           <a class="button small" href="{% url 'wiki:quiz_play' %}?set={{ entry.set.id|urlencode }}&mode=intensif" title="Répéter les questions ratées jusqu'à tout savoir">Intensif</a>
           <a class="button small" href="{% url 'wiki:quiz_play' %}?set={{ entry.set.id|urlencode }}&mode=examen" title="Questions chronométrées, corrigées à la fin, note sur 20">Examen</a>
+          <a class="button small quiz-export" href="{% url 'wiki:quiz_export' %}?set={{ entry.set.id|urlencode }}" title="Exporter pour Anki (.apkg) ; ajoutez &amp;format=tsv pour Quizlet ou un tableur">⬇ Anki</a>
         </span>
       </div>
       {% include "wiki/_quiz_plan.html" with deck=entry.deck e=entry.estimation set=entry.set %}

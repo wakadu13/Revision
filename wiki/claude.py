@@ -762,3 +762,64 @@ def ameliorer(texte):
     if message.stop_reason == "max_tokens":
         raise Echec("Passage trop long pour une seule relecture : sélectionnez-en une partie.")
     return resultat, _usage(message)
+
+
+# ---------------------------------------------------------------------------
+# Correction d'une question signalée
+# ---------------------------------------------------------------------------
+CONSIGNE_CORRECTION = """Tu corriges une question de révision (QCM) qu'un étudiant a signalée : erreur, ambiguïté, \
+coquille ou réponse discutable. Appuie-toi sur le cours fourni quand il y en a un. Renvoie la question corrigée \
+complète, du même type si possible, avec une bonne réponse sans ambiguïté et une explication courte ; et dans \
+« modification », en une ou deux phrases, ce que tu as changé et pourquoi. Si le signalement est infondé, renvoie \
+la question inchangée et explique en quoi elle est juste. Les formules s'écrivent en LaTeX entre $."""
+
+_QUESTION_SCHEMA = SCHEMA_QCM["properties"]["questions"]["items"]
+SCHEMA_CORRECTION = {
+    "type": "object",
+    "properties": {**_QUESTION_SCHEMA["properties"], "modification": {"type": "string"}},
+    "required": [*_QUESTION_SCHEMA["required"], "modification"],
+    "additionalProperties": False,
+}
+CHAMPS_QUESTION = ("type", "question", "choix", "reponses", "reponses_texte", "consigne", "verso", "explication")
+
+
+def question_en_json(question):
+    """Une question du set sous la forme du JSON des fichiers de QCM."""
+    return {"type": question.type, "question": question.enonce, "choix": question.choix, "reponses": question.reponses,
+            "reponses_texte": question.reponses_texte, "consigne": question.consigne, "verso": question.verso,
+            "explication": question.explication}
+
+
+def corriger_question(qset, question, commentaires):
+    """Correction d'une question signalée, proposée par Claude d'après le cours quand le
+    set en vient. Renvoie (question JSON corrigée, note de modification, usage, modèle) ;
+    la question est validée comme à l'import d'un set."""
+    import json as json_module
+
+    from . import quiz
+
+    client = _client_pret()
+    vault = get_vault()
+    note = vault.notes.get(qset.source_page.lower()) if qset.source_page else None
+    contenu = []
+    if note is not None:
+        contexte = (vault.root / note.path).read_text(encoding="utf-8")[:MAX_CHARS_COURS]
+        contenu.append({"type": "text", "text": f"Cours « {note.title} » :\n\n{contexte}"})
+    texte = f"Question signalée (set « {qset.titre} ») :\n{json_module.dumps(question_en_json(question), ensure_ascii=False, indent=1)}"
+    texte += "\n\nSignalement(s) :\n" + "\n".join(f"- {c}" for c in commentaires if c) if any(commentaires) else "\n\nAucun commentaire : vérifie la question."
+    if note is None:
+        texte += "\n\nAucun cours fourni."
+    contenu.append({"type": "text", "text": texte})
+    message = _appeler(client, _demande(modele(), CONSIGNE_CORRECTION, contenu, schema=SCHEMA_CORRECTION,
+                                        max_tokens=4000, effort="medium"))
+    try:
+        data = json_module.loads(_texte_reponse(message))
+    except ValueError as e:
+        raise Echec(f"Réponse de Claude illisible : {e}") from e
+    modification = str(data.pop("modification", "")).strip()
+    nouvelle = {k: v for k, v in data.items() if k in CHAMPS_QUESTION and v not in ("", [], None)}
+    try:
+        quiz.question_depuis_json({**nouvelle, "id": question.id}, 0, "correction")
+    except ValueError as e:
+        raise Echec(f"Correction invalide : {e}") from e
+    return nouvelle, modification, _usage(message), modele()

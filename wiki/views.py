@@ -45,6 +45,22 @@ def _render(request, vault, template, context, status=200):
     return render(request, template, context, status=status)
 
 
+def _qcm_de_la_page(request, note):
+    """Sets de QCM écrits d'après cette page (source_page), avec la progression du joueur."""
+    from . import quiz
+    from .models import QuizDeck, QuizProgress
+    from .quiz_views import _ancre, _set_summary, player_id
+
+    cle = note.key.lower()
+    sets = [s for s in quiz.get_library().sets.values() if s.source_page.lower() == cle]
+    if not sets:
+        return []
+    player, now, decks = player_id(request), timezone.now(), QuizDeck.map_for(player_id(request))
+    return [{"set": s, "ancre": _ancre(s.id),
+             "summary": _set_summary(s, QuizProgress.map_for(player, s.id), now, decks.get(s.id))}
+            for s in sorted(sets, key=lambda s: s.titre.lower())]
+
+
 def _note_page(request, vault, note):
     content, toc = vault.render(note)
     backlinks = sorted(vault.backlinks.get(note.key.lower(), ()), key=lambda n: n.title.lower())
@@ -56,6 +72,7 @@ def _note_page(request, vault, note):
         "backlinks": backlinks,
         "claude_dispo": can_edit(request) and claude.disponible(),
         "fiche": fiche,
+        "qcm_page": _qcm_de_la_page(request, note),
         "fiche_en_cours": fiche is None and Transformation.objects.filter(
             genre=Transformation.FICHE, source=note.path.as_posix(),
             statut__in=[Transformation.ATTENTE, Transformation.EN_COURS]).exists(),

@@ -1,0 +1,10 @@
+{
+  "titre": "Signal — QCM",
+  "description": "Questions sur la page Traitement du signal.",
+  "source_page": "Cours/Signal",
+  "questions": [
+    {"id": "s1", "type": "QCM", "question": "Fréquence minimale d'échantillonnage ?", "choix": ["$f_{max}$", "$2 f_{max}$", "$f_{max} / 2$"], "reponses": [1], "explication": "Théorème de Shannon."},
+    {"id": "s2", "type": "TROU", "question": "La fréquence de _____ vaut $f_e / 2$.", "reponses_texte": ["Nyquist"]},
+    {"id": "s3", "type": "FLASHCARD", "question": "Échantillonnage", "verso": "Prélèvement régulier d'un signal continu."}
+  ]
+}

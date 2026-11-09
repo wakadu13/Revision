@@ -2133,3 +2133,193 @@ class ClaudeTests(WikiTestCase):
     def test_unwraps_markdown_fence(self):
         self.assertEqual(self.claude._sans_cadre("```markdown\n# Titre\n\nTexte\n```"), "# Titre\n\nTexte")
         self.assertEqual(self.claude._sans_cadre("# Titre\n```py\nx\n```"), "# Titre\n```py\nx\n```")
+
+
+class ImagesAllegeesTests(WikiTestCase):
+    """Images réduites et recompressées à l'import, sous le même nom."""
+
+    def _jpeg(self, largeur, hauteur):
+        import io
+        from PIL import Image
+        image = Image.linear_gradient("L").resize((largeur, hauteur)).convert("RGB")
+        tampon = io.BytesIO()
+        image.save(tampon, "JPEG", quality=98)
+        return tampon.getvalue()
+
+    def test_grande_photo_reduite(self):
+        from PIL import Image
+        from wiki import uploads
+        chemin = self.root / "photo.jpg"
+        chemin.write_bytes(self._jpeg(3000, 1500))
+        avant = chemin.stat().st_size
+        gain = uploads.alleger_image(chemin)
+        self.assertIsNotNone(gain)
+        self.assertEqual(gain[0], avant)
+        self.assertLess(gain[1], avant)
+        with Image.open(chemin) as image:
+            self.assertEqual(image.size, (2000, 1000))
+        # Petite image déjà compressée, GIF, fichier corrompu : gardés tels quels.
+        petite = self.root / "icone.png"
+        Image.new("RGB", (40, 40), "red").save(petite, optimize=True)
+        self.assertIsNone(uploads.alleger_image(petite))
+        gif = self.root / "anim.gif"
+        gif.write_bytes(b"GIF89a")
+        self.assertIsNone(uploads.alleger_image(gif))
+        casse = self.root / "casse.jpg"
+        casse.write_bytes(b"pas une image")
+        self.assertIsNone(uploads.alleger_image(casse))
+        self.assertEqual(casse.read_bytes(), b"pas une image")
+        self.assertEqual(uploads.taille_lisible(3 * 1024 * 1024), "3,0 Mo")
+
+    def test_import_signale_le_gain(self):
+        from django.core.files.uploadedfile import SimpleUploadedFile
+        admin = get_user_model().objects.create_user("admin", password="x", is_staff=True)
+        self.client.force_login(admin)
+        r = self.client.post("/importer/", {"fichiers": SimpleUploadedFile("photo.jpg", self._jpeg(2600, 2600)),
+                                            "chemins": "photo.jpg", "dossier": "images"}, HTTP_ACCEPT="application/json")
+        resultat = r.json()["results"][0]
+        self.assertTrue(resultat["ok"], resultat)
+        self.assertIn("image allégée", resultat["message"])
+        self.assertTrue((self.root / "images" / "photo.jpg").is_file())
+
+
+class ExportAnkiTests(QuizTests):
+    def test_apkg(self):
+        import sqlite3, tempfile, zipfile, io
+        r = self.client.get("/qcm/exporter/", {"set": self.SET if hasattr(self, "SET") else "reseaux/test_set"})
+        self.assertEqual(r.status_code, 200)
+        self.assertIn('filename="set-de-test.apkg"', r["Content-Disposition"])
+        archive = zipfile.ZipFile(io.BytesIO(r.content))
+        self.assertEqual(sorted(archive.namelist()), ["collection.anki2", "media"])
+        with tempfile.TemporaryDirectory() as d:
+            chemin = Path(d) / "c.anki2"
+            chemin.write_bytes(archive.read("collection.anki2"))
+            base = sqlite3.connect(chemin)
+            self.assertEqual(base.execute("SELECT count(*) FROM notes").fetchone()[0], 4)
+            # Flashcard et QRC : carte inversée en plus.
+            self.assertEqual(base.execute("SELECT count(*) FROM cards").fetchone()[0], 5)
+            champs = [f.split("\x1f") for (f,) in base.execute("SELECT flds FROM notes ORDER BY id")]
+            self.assertIn("2+2 ?", champs[0][0])
+            self.assertIn("B. 4", champs[0][1])
+            self.assertIn("Paris", champs[2][1])
+            col = base.execute("SELECT ver, models, decks FROM col").fetchone()
+            self.assertEqual(col[0], 11)
+            import json
+            self.assertEqual(len(json.loads(col[1])), 2)
+            self.assertIn("ProjetPluri::Set de test", json.dumps(json.loads(col[2]), ensure_ascii=False))
+            base.close()
+        # Deux exports : mêmes identifiants (Anki met à jour au lieu de dupliquer).
+        self.assertEqual(self.client.get("/qcm/exporter/", {"set": "reseaux/test_set"}).content[:4], b"PK\x03\x04")
+        self.assertEqual(self.client.get("/qcm/exporter/", {"set": "inconnu"}).status_code, 404)
+
+    def test_tsv_et_formatage(self):
+        from wiki import anki
+        r = self.client.get("/qcm/exporter/", {"set": "reseaux/test_set", "format": "tsv"})
+        lignes = r.content.decode().splitlines()
+        self.assertEqual(len(lignes), 4)
+        self.assertTrue(lignes[0].startswith("2+2 ? A. 3 B. 4\t"), lignes[0])
+        self.assertEqual(lignes[3], "chat\tcat")
+        self.assertEqual(anki.formater("Soit $x^2$ et **gras** `code`"), "Soit \\(x^2\\) et <b>gras</b> <code>code</code>")
+        self.assertEqual(anki.formater("a <b> c\nd"), "a &lt;b&gt; c<br>d")
+
+
+class SignalementTests(QuizTests):
+    SET = "reseaux/test_set"
+
+    def _signaler(self, question="q-qcm", commentaire="La réponse est fausse"):
+        import json
+        return self.client.post("/qcm/signaler/", data=json.dumps(
+            {"set_id": self.SET, "question_id": question, "commentaire": commentaire}), content_type="application/json")
+
+    def _admin(self):
+        self.user.is_staff = True
+        self.user.save()
+
+    def test_signaler_et_lister(self):
+        from wiki.models import Signalement
+        self.assertContains(self.client.get("/qcm/jouer/?set=reseaux/test_set&mode=all"), "data-signaler-url")
+        self.assertEqual(self._signaler().json(), {"ok": True, "nouveau": True})
+        self.assertEqual(self._signaler(commentaire="Ambiguë").json()["nouveau"], False)
+        self.assertEqual(Signalement.objects.get().commentaire, "Ambiguë")
+        self.assertEqual(self._signaler(question="nope").status_code, 404)
+        self.assertEqual(self.client.get("/qcm/signalements/").status_code, 403)
+        self.assertNotContains(self.client.get("/qcm/"), "Signalements")
+        self._admin()
+        self.assertContains(self.client.get("/qcm/"), "Signalements <b>(1)</b>")
+        page = self.client.get("/qcm/signalements/")
+        self.assertContains(page, "Ambiguë")
+        self.assertContains(page, "2+2 ?")
+        self.assertContains(page, "Retirer la question")
+
+    def test_retirer_et_clore(self):
+        import json
+        from wiki.models import Signalement
+        from wiki.quiz import get_library
+        # Set sans identifiants explicites : ceux des questions suivantes sont figés.
+        (self.root / "reseaux" / "sans_id.json").write_text(json.dumps({"titre": "Sans id", "questions": [
+            {"type": "FLASHCARD", "question": "a", "verso": "A"}, {"type": "FLASHCARD", "question": "b", "verso": "B"},
+            {"type": "FLASHCARD", "question": "c", "verso": "C"}]}), encoding="utf-8")
+        self.client.post("/qcm/signaler/", data=json.dumps({"set_id": "reseaux/sans_id", "question_id": "q2", "commentaire": ""}),
+                         content_type="application/json")
+        self._admin()
+        pk = Signalement.objects.get().pk
+        r = self.client.post("/qcm/signalements/", {"pk": pk, "action": "retirer"})
+        self.assertRedirects(r, "/qcm/signalements/")
+        data = json.loads((self.root / "reseaux" / "sans_id.json").read_text(encoding="utf-8"))
+        self.assertEqual([q["question"] for q in data["questions"]], ["a", "c"])
+        self.assertEqual(data["questions"][1]["id"], "q3")
+        self.assertEqual([q.id for q in get_library().get("reseaux/sans_id").questions], ["q1", "q3"])
+        self.assertTrue(Signalement.objects.get().traite)
+        # Clore sans toucher au set.
+        self._signaler()
+        pk = Signalement.objects.get(traite=False).pk
+        self.client.post("/qcm/signalements/", {"pk": pk, "action": "clore"})
+        self.assertEqual(Signalement.objects.filter(traite=False).count(), 0)
+        self.assertEqual(len(get_library().get(self.SET).questions), 4)
+
+    def test_correction_par_claude(self):
+        import json
+        from unittest.mock import patch
+        from wiki.models import Signalement
+        from wiki.quiz import get_library
+        self._signaler()
+        self._admin()
+        pk = Signalement.objects.get().pk
+        self.assertContains(self.client.post("/qcm/signalements/", {"pk": pk, "action": "proposer"}, follow=True), "Pas de clé")
+        nouvelle = {"type": "QCM", "question": "Combien font 2 + 2 ?", "choix": ["3", "4"], "reponses": [1], "explication": "Addition."}
+        with patch("wiki.claude.disponible", return_value=True), \
+             patch("wiki.claude.corriger_question", return_value=(nouvelle, "Énoncé reformulé.", (10, 5), "claude-opus-5-5")) as corr:
+            page = self.client.post("/qcm/signalements/", {"pk": pk, "action": "proposer"}, follow=True)
+        self.assertEqual(corr.call_args.args[1].id, "q-qcm")
+        self.assertEqual(corr.call_args.args[2], ["La réponse est fausse"])
+        self.assertContains(page, "Correction proposée par Claude")
+        self.assertContains(page, "Énoncé reformulé.")
+        self.assertContains(page, "Combien font 2 + 2 ?")
+        self.client.post("/qcm/signalements/", {"pk": pk, "action": "appliquer"})
+        data = json.loads((self.root / "reseaux" / "test_set.json").read_text(encoding="utf-8"))
+        self.assertEqual(data["questions"][0], {"id": "q-qcm", **nouvelle})
+        self.assertEqual(get_library().get(self.SET).questions[0].enonce, "Combien font 2 + 2 ?")
+        self.assertTrue(Signalement.objects.get().traite)
+
+    def test_schema_et_json_question(self):
+        from wiki import claude
+        self.assertIn("modification", claude.SCHEMA_CORRECTION["required"])
+        from wiki.quiz import get_library
+        q = get_library().get(self.SET).questions[0]
+        self.assertEqual(claude.question_en_json(q)["question"], "2+2 ?")
+
+
+class PageQcmTests(QuizTests):
+    def test_panneau_reviser_la_page(self):
+        import json
+        (self.root / "Cours").mkdir()
+        (self.root / "Cours" / "Signal.md").write_text("# Signal\n\nTexte.\n", encoding="utf-8")
+        (self.root / "reseaux" / "signal.json").write_text(json.dumps({
+            "titre": "Signal — QCM", "source_page": "Cours/Signal",
+            "questions": [{"id": "s1", "type": "FLASHCARD", "question": "a", "verso": "A"}]}), encoding="utf-8")
+        page = self.client.get("/wiki/Cours/Signal")
+        self.assertContains(page, "Réviser ce cours")
+        self.assertContains(page, "Signal — QCM")
+        self.assertContains(page, "Réviser (1)")
+        self.assertContains(self.client.get("/qcm/"), "D'après la page <a href=\"/wiki/Cours/Signal\">")
+        self.assertContains(page, 'href="/qcm/#')
