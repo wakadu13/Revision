@@ -445,6 +445,55 @@ def reglages_claude(request):
     })
 
 
+def palette(request):
+    """Données de la palette de commandes (Ctrl+K) : pages, PDF, QCM, langues et commandes."""
+    from urllib.parse import quote
+
+    from . import quiz
+
+    vault = get_vault()
+    library = quiz.get_library()
+    pages = [{"t": n.title, "s": str(n.path.parent) if n.path.parent.parts else "", "u": reverse("wiki:page", args=[n.key])}
+             for n in vault.notes.values()]
+    pages += [{"t": a.path.stem, "s": "PDF" + (f" · {a.path.parent}" if a.path.parent.parts else ""), "u": a.view_url}
+              for a in vault.attachments.values() if a.suffix == ".pdf"]
+    pages.sort(key=lambda x: x["t"].lower())
+    jouer = reverse("wiki:quiz_play")
+    qcm = [{"t": s.titre, "s": s.categorie, "u": f"{jouer}?set={quote(s.id)}&mode=all"} for s in library.sorted_sets()]
+    langues = []
+    for nom in library.noms_langues():
+        base = reverse("wiki:langue_play", args=[nom])
+        langues += [{"t": f"Session du jour · {nom}", "u": f"{base}?mode=quotidien"},
+                    {"t": f"Révision intensive · {nom}", "u": f"{base}?mode=intensif"},
+                    {"t": f"Modes et statistiques · {nom}", "u": reverse("wiki:langue_menu", args=[nom])}]
+    commandes = [
+        {"t": "Accueil", "u": reverse("wiki:home")},
+        {"t": "Sommaire", "u": reverse("wiki:sommaire")},
+        {"t": "Tags", "u": reverse("wiki:tags")},
+        {"t": "QCM", "u": reverse("wiki:quiz_index")},
+        {"t": "Révision intelligente (QCM)", "u": f"{jouer}?revision=1"},
+        {"t": "Statistiques des QCM", "u": reverse("wiki:quiz_stats")},
+        {"t": "Planning des révisions", "u": reverse("wiki:quiz_plan")},
+        {"t": "Rechercher dans le wiki", "u": reverse("wiki:search")},
+        {"t": "Documentation", "u": reverse("wiki:documentation")},
+        {"t": "Mon compte", "u": reverse("accounts:profile")},
+        {"t": "Thème : clair, sombre ou automatique", "a": "theme"},
+        {"t": "Plein écran", "a": "fullscreen"},
+    ]
+    if can_edit(request):
+        commandes += [
+            {"t": "Modifier cette page", "a": "edit"},
+            {"t": "Nouvelle page", "u": reverse("wiki:new")},
+            {"t": "Importer des fichiers (.md, PDF)", "u": reverse("wiki:import")},
+            {"t": "Travaux de Claude", "u": reverse("wiki:transformations")},
+            {"t": "Réglages de Claude", "u": reverse("wiki:claude_reglages")},
+            {"t": "Utilisateurs", "u": reverse("accounts:users")},
+        ]
+    response = JsonResponse({"pages": pages, "qcm": qcm, "langues": langues, "commandes": commandes})
+    response["Cache-Control"] = "private, max-age=60"
+    return response
+
+
 # Pièces jointes affichées dans la page ; tout le reste (HTML, SVG, JS...) est
 # téléchargé, pour qu'un fichier déposé dans le coffre ne puisse pas exécuter
 # de script au nom du site.

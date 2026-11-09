@@ -175,6 +175,43 @@ class StaticVersionneTests(WikiTestCase):
         return etat.st_mtime_ns, etat.st_size
 
 
+class InterfaceTests(WikiTestCase):
+    def test_theme_toggle_and_palette_in_base(self):
+        self.write("Accueil.md", "Bonjour")
+        html = self.client.get("/wiki/Accueil").content.decode()
+        self.assertIn('localStorage.getItem("wiki-theme")', html)  # appliqué avant le rendu (nonce CSP)
+        self.assertRegex(html, r'<script nonce="[^"]+">try\{var t=localStorage')
+        self.assertIn("data-theme-toggle", html)
+        self.assertIn('data-theme-css="dark"', html)
+        self.assertIn("wiki/palette.js", html)
+        self.assertIn("data-palette", html)
+        css = (Path(__file__).resolve().parent / "static/wiki/wiki.css").read_text(encoding="utf-8")
+        self.assertIn(':root[data-theme="dark"] {', css)
+        self.assertIn(':root:not([data-theme="light"]) {', css)
+        self.client.logout()
+        self.assertNotIn("palette.js", self.client.get("/connexion/").content.decode())
+
+    def test_palette_data(self):
+        self.write("Cours/Signal.md", "# Signal")
+        self.write("cours.pdf", "%PDF-1.4\n%%EOF\n")
+        self.write("QCM/Linux/base.json", json.dumps({"titre": "Linux de base", "questions": [
+            {"type": "QCM", "question": "?", "choix": ["a", "b"], "reponses": [0]}]}))
+        self.write("QCM/langues/en.json", json.dumps({"langue": "Anglais", "vocabulaire": [{"mot": "a job", "traductions": ["un emploi"]}]}))
+        data = self.client.get("/palette.json").json()
+        self.assertIn({"t": "Signal", "s": "Cours", "u": "/wiki/Cours/Signal"}, data["pages"])
+        self.assertIn({"t": "cours", "s": "PDF", "u": "/pdf/cours.pdf"}, data["pages"])
+        self.assertEqual(data["qcm"], [{"t": "Linux de base", "s": "Linux", "u": "/qcm/jouer/?set=QCM/Linux/base&mode=all"}])
+        self.assertEqual(data["langues"][0], {"t": "Session du jour · Anglais", "u": "/qcm/langues/Anglais/jouer/?mode=quotidien"})
+        titres = [c["t"] for c in data["commandes"]]
+        self.assertIn("Thème : clair, sombre ou automatique", titres)
+        self.assertNotIn("Nouvelle page", titres)  # lecteur : pas de commandes d'admin
+        get_user_model().objects.filter(pk=self.reader.pk).update(is_staff=True)
+        titres = [c["t"] for c in self.client.get("/palette.json").json()["commandes"]]
+        self.assertIn("Nouvelle page", titres)
+        self.client.logout()
+        self.assertEqual(self.client.get("/palette.json").status_code, 302)
+
+
 class EditorTests(WikiTestCase):
     def setUp(self):
         super().setUp()

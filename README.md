@@ -105,6 +105,17 @@ depuis le bord, ou quand la souris touche le bord ; un appui sur le texte (ou
 pendant la lecture (choix retenu sur l'appareil) ; un nouvel appui le cache de
 nouveau. Sur téléphone, le menu reste derrière le bouton ☰.
 
+### Thème et palette de commandes
+
+- **Thème** : bouton ☀/☾ en haut du menu (clair, sombre, ou automatique selon
+  le réglage de l'appareil). Le choix est retenu sur l'appareil et appliqué
+  avant le premier affichage, sans scintillement.
+- **Palette de commandes** : <kbd>Ctrl</kbd>+<kbd>K</kbd> (ou le bouton ≡✓ du
+  menu) ouvre une page, un PDF ou un QCM, lance une session de langue ou une
+  commande (nouvelle page, importer, thème, plein écran…), au clavier, avec
+  une recherche tolérante aux accents. Dans l'éditeur, <kbd>Ctrl</kbd>+<kbd>K</kbd>
+  reste le lien vers une page : utiliser <kbd>Ctrl</kbd>+<kbd>P</kbd>.
+
 ### Plein écran
 
 Bouton ⛶ en haut du menu (ou dans la barre de l'éditeur), ou
@@ -419,6 +430,9 @@ en-têtes) sont dans [`core/tests.py`](core/tests.py) :
 - `/admin/` : administration Django (créer un compte avec `uv run python manage.py createsuperuser`)
 
 ## Tests
+
+Ils tournent sur GitHub à chaque push et chaque pull request (workflow
+« Tests » : tests Django et syntaxe des scripts), en plus de l'APK.
 
 ```bash
 uv run python manage.py test

@@ -1159,6 +1159,8 @@
   // -- Création de l'éditeur ---------------------------------------------------------------------
 
   const preview_ = new Compartment();
+  const theme_ = new Compartment();
+  const sombre = () => (window.wikiTheme ? window.wikiTheme.resolved() : (document.documentElement.dataset.theme || "light")) === "dark";
   // Hauteur cachée par la barre d'outils collée en haut (aucune en plein écran : elle est rentrée).
   const stickyTop = () => (document.body.classList.contains("plein-ecran") ? 0
     : toolbar.getBoundingClientRect().height + (parseFloat(getComputedStyle(form).getPropertyValue("--sticky-top")) || 0));
@@ -1203,7 +1205,7 @@
         placeholder("Écrivez ici… Tapez [[ pour lier une page."),
         EditorView.contentAttributes.of({ spellcheck: "true", lang: "fr", autocapitalize: "sentences", "aria-label": "Contenu de la page" }),
         EditorView.scrollMargins.of(() => ({ top: stickyTop(), bottom: footer.getBoundingClientRect().height })),
-        EditorView.darkTheme.of(window.matchMedia("(prefers-color-scheme: dark)").matches),
+        theme_.of(EditorView.darkTheme.of(sombre())),
         EditorView.theme({
           "&": { color: "var(--text)", backgroundColor: "transparent", fontSize: "1rem" },
           "&.cm-focused": { outline: "none" },
@@ -1317,6 +1319,8 @@
       save();
     }
   });
+
+  window.addEventListener("wiki:theme", () => view.dispatch({ effects: theme_.reconfigure(EditorView.darkTheme.of(sombre())) }));
 
   // Plein écran (plein_ecran.js) : la barre d'outils rentre en haut de l'écran.
   window.addEventListener("wiki:plein-ecran", (e) => {

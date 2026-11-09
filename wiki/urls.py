@@ -13,6 +13,7 @@ urlpatterns = [
     path("tags/<path:tag>", views.tag, name="tag"),
     path("sommaire/", views.sommaire, name="sommaire"),
     path("recherche/", views.search, name="search"),
+    path("palette.json", views.palette, name="palette"),
     path("documentation/", views.documentation, name="documentation"),
     path("documentation/<slug:doc>/", views.documentation, name="documentation_doc"),
     path("nouvelle/", views.new, name="new"),
