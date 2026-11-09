@@ -221,6 +221,113 @@ async function openReader(reader) {
       panel.hidden = false;
     }
   }
+  if (!embedded && reader.dataset.canEdit) annotations(reader, container, key);
+}
+
+// -- Passage sélectionné → carte de révision ou citation dans une page (admins) ----------------
+
+function annotations(reader, container, key) {
+  const frame = reader.querySelector(".pdf-frame");
+  const dialog = document.getElementById("pdf-annotation-dialog");
+  if (!frame || !dialog) return;
+  const outils = document.createElement("div");
+  outils.className = "pdf-selection-outils";
+  outils.hidden = true;
+  const bouton = document.createElement("button");
+  bouton.type = "button";
+  bouton.className = "button small primary";
+  bouton.textContent = "🃏 Garder ce passage";
+  bouton.title = "Carte de révision ou citation dans une page du wiki";
+  outils.append(bouton);
+  frame.append(outils);
+  let selection = { texte: "", page: 0 };
+  let timer = null;
+
+  document.addEventListener("selectionchange", () => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      const sel = window.getSelection();
+      const texte = sel && sel.rangeCount ? sel.toString().replace(/\s+/g, " ").trim() : "";
+      const noeud = sel && sel.rangeCount ? sel.getRangeAt(0).commonAncestorContainer : null;
+      const el = noeud && (noeud.nodeType === 1 ? noeud : noeud.parentElement);
+      if (!texte || !el || !container.contains(el)) {
+        outils.hidden = true;
+        return;
+      }
+      const pageEl = el.closest(".page");
+      selection = { texte, page: pageEl ? Number(pageEl.dataset.pageNumber) || 0 : 0 };
+      const rect = sel.getRangeAt(0).getBoundingClientRect();
+      const cadre = frame.getBoundingClientRect();
+      outils.style.left = `${Math.max(8, Math.min(rect.left - cadre.left, cadre.width - 220))}px`;
+      outils.style.top = `${Math.max(8, rect.top - cadre.top - 40)}px`;
+      outils.hidden = false;
+    }, 150);
+  });
+
+  const champ = (s) => dialog.querySelector(s);
+  const cible = () => dialog.querySelector("input[name=annotation-cible]:checked").value;
+  function basculer() {
+    const carte = cible() === "carte";
+    champ("[data-annotation-recto-label]").hidden = !carte;
+    champ("[data-annotation-recto]").hidden = !carte;
+    champ("[data-annotation-page-label]").hidden = carte;
+    champ("[data-annotation-page]").hidden = carte;
+  }
+  dialog.querySelectorAll("input[name=annotation-cible]").forEach((r) => r.addEventListener("change", basculer));
+  champ("[data-annotation-fermer]").addEventListener("click", () => dialog.close());
+  bouton.addEventListener("mousedown", (e) => e.preventDefault()); // garde la sélection
+  bouton.addEventListener("click", () => {
+    champ("[data-annotation-extrait]").textContent = selection.texte;
+    champ("[data-annotation-page-pdf]").textContent = selection.page || "?";
+    champ("[data-annotation-recto]").value = "";
+    if (!champ("[data-annotation-page]").value) champ("[data-annotation-page]").value = reader.dataset.pageCours || "";
+    basculer();
+    outils.hidden = true;
+    dialog.showModal();
+  });
+
+  function retour(message, url, erreur) {
+    let toast = frame.querySelector(".pdf-annotation-retour");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.className = "pdf-annotation-retour";
+      frame.append(toast);
+    }
+    toast.replaceChildren(document.createTextNode(message + " "));
+    if (url) {
+      const a = document.createElement("a");
+      a.href = url;
+      a.textContent = "Voir";
+      toast.append(a);
+    }
+    toast.classList.toggle("is-error", !!erreur);
+    toast.hidden = false;
+    clearTimeout(toast._t);
+    toast._t = setTimeout(() => { toast.hidden = true; }, 7000);
+  }
+
+  champ("[data-annotation-ok]").addEventListener("click", async () => {
+    const ok = champ("[data-annotation-ok]");
+    ok.disabled = true;
+    try {
+      const r = await fetch(reader.dataset.annotationUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "X-CSRFToken": reader.dataset.csrf },
+        body: JSON.stringify({
+          pdf: key, page: selection.page, texte: selection.texte, cible: cible(),
+          recto: champ("[data-annotation-recto]").value.trim(), page_wiki: champ("[data-annotation-page]").value.trim(),
+        }),
+      });
+      const data = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error(data.error || `Enregistrement impossible (${r.status}).`);
+      dialog.close();
+      retour(data.message, data.url);
+    } catch (e) {
+      retour(e.message, null, true);
+    } finally {
+      ok.disabled = false;
+    }
+  });
 }
 
 function outlineList(items, linkService) {

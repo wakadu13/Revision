@@ -1,0 +1,53 @@
+{% extends "wiki/base.html" %}
+{% block title %}Historique · {{ note.title }}{% endblock %}
+{% block content %}
+<article class="note">
+  <p class="breadcrumb"><a href="{{ note.url }}">{{ note.title }}</a> · historique</p>
+  <h1 class="note-title">Historique de « {{ note.title }} »</h1>
+  <p class="muted">Chaque enregistrement qui modifie la page garde le texte précédent ({{ max_versions }} versions au plus,
+    hors du coffre). Choisissez une version pour voir ce qui a changé depuis, et la restaurer au besoin.</p>
+  {% if not versions %}
+  <div class="callout" data-callout="info"><div class="callout-title">Aucune version précédente : la page n'a pas encore été modifiée depuis l'éditeur.</div></div>
+  {% else %}
+  <div class="historique">
+    <ul class="historique-versions">
+      {% for v in versions %}
+      <li{% if v.id == choisie.id %} class="active"{% endif %}>
+        <a href="?v={{ v.id }}">{{ v.date|date:"d/m/Y à H:i:s" }}</a>
+        <span class="muted">{% if v.auteur %}{{ v.auteur }} · {% endif %}{{ v.taille|filesizeformat }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+    <section class="historique-diff">
+      <h2>Du {{ choisie.date|date:"d/m/Y à H:i" }} à aujourd'hui</h2>
+      {% if not diff %}
+      <p class="muted">Aucune différence : cette version est identique à la page actuelle.</p>
+      {% else %}
+      <p class="muted"><span class="diff-suppr">— retiré</span> · <span class="diff-ajout">+ ajouté</span></p>
+      <pre class="diff">{% for l in diff %}<span class="diff-{{ l.type }}">{{ l.texte }}</span>
+{% endfor %}</pre>
+      {% endif %}
+      <details class="hl-aide">
+        <summary>Texte complet de cette version</summary>
+        <pre class="diff">{{ contenu_version }}</pre>
+      </details>
+      <form method="post" class="historique-actions" data-confirm="Remplacer la page actuelle par cette version ? La page actuelle est gardée dans l'historique.">
+        {% csrf_token %}
+        <input type="hidden" name="v" value="{{ choisie.id }}">
+        <button type="submit" class="button primary" name="action" value="restaurer">Restaurer cette version</button>
+        <a class="button" href="{% url 'wiki:edit' note.key %}">Modifier la page</a>
+      </form>
+    </section>
+  </div>
+  {% endif %}
+</article>
+{% endblock %}
+{% block aside %}
+<section class="panel">
+  <h2>Bon à savoir</h2>
+  <ul class="memo">
+    <li>Restaurer garde d'abord la page actuelle dans l'historique : rien n'est perdu.</li>
+    <li>Les versions sont dans <code>versions/</code> du dossier de données du serveur (hors coffre et hors Git) : à inclure dans la sauvegarde.</li>
+  </ul>
+</section>
+{% endblock %}

@@ -2,7 +2,7 @@
   {% for folder in node.folders %}
   <li class="sommaire-folder">
     <details open>
-      <summary>{{ folder.name }} <span class="count">{{ folder.count }}</span></summary>
+      <summary data-dossier="{{ folder.path }}">{{ folder.name }} <span class="count">{{ folder.count }}</span></summary>
       {% include "wiki/sommaire_tree.html" with node=folder %}
     </details>
   </li>

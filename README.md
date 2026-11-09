@@ -106,7 +106,25 @@ Obsidian lui-même :
   avec la syntaxe et les raccourcis, temps de lecture estimé ;
 - plan de la page cliquable, compteur de mots, recherche et remplacement
   (<kbd>Ctrl</kbd>+<kbd>F</kbd>), plein écran (voir ci-dessous) : la barre
-  d'outils rentre et revient quand la souris touche le haut de l'écran.
+  d'outils rentre et revient quand la souris touche le haut de l'écran ;
+- **historique des versions** (`/historique/<page>`, lien « Historique » au bas
+  de chaque page et dans le menu Fichier de l'éditeur) : chaque enregistrement
+  qui modifie une page (éditeur, import avec remplacement, page réécrite par
+  Claude) garde le texte précédent, hors du coffre (`versions/` du dossier de
+  données, 50 versions par page au plus) ; différences ligne à ligne avec la page
+  actuelle, texte complet, **restauration** (la page actuelle est gardée avant).
+
+### Lire hors ligne, installer le wiki sur un téléphone
+
+Le wiki est une application installable (PWA, manifeste à la racine) : depuis
+Chrome ou Safari, « Ajouter à l'écran d'accueil » l'installe sur Android comme
+sur iPhone. Un service worker garde en cache les pages lues, les images et les
+fichiers statiques : sans connexion, une page déjà ouverte s'affiche encore ;
+sinon la page « hors connexion » liste ce qui est disponible. Sur le
+**sommaire**, « ⤓ Hors ligne » sur un dossier met en cache d'un coup ses pages,
+ses images et ses PDF (clic de nouveau pour les retirer). Les QCM hors ligne
+gardent leur propre application (`/qcm/hors-ligne/`). L'application Android
+n'utilise pas ce service worker : elle a sa propre gestion du hors ligne.
 
 ### Lecture : le menu se cache
 
@@ -310,6 +328,13 @@ reprise à la dernière page lue, téléchargement.
 Les bibliothèques de l'éditeur et du lecteur sont regroupées dans
 `wiki/static/wiki/vendor/` (servies par le site, sans CDN). Pour les mettre à
 jour : voir [`bibliotheques/README.md`](bibliotheques/README.md).
+
+**Garder un passage** (admins) : sélectionner du texte dans le lecteur fait
+apparaître « 🃏 Garder ce passage » : soit une **carte de révision** recto/verso
+(verso : le passage et sa source « PDF, p. n ») dans le set « <PDF> —
+annotations » (`QCM/Annotations/<PDF>.json`, lié à la page du cours s'il y en a
+une), soit une **citation** ajoutée au bas d'une page du wiki (par défaut la
+page du cours, créée au besoin), en encadré avec le numéro de page.
 
 ## QCM de révision
 
@@ -537,6 +562,8 @@ en-têtes) sont dans [`core/tests.py`](core/tests.py) :
 - `/sommaire/` : sommaire de toutes les notes
 - `/tags/` et `/tags/<tag>` : les tags
 - `/recherche/?q=...` : recherche plein texte (insensible aux accents)
+- `/historique/<page>` : versions précédentes d'une page (admins) ; `/pdf-annotation/` (POST, admins) : passage d'un PDF → carte ou citation
+- `/sw.js`, `/manifest.webmanifest`, `/hors-connexion/`, `/hors-ligne/dossier.json` : lecture hors ligne du wiki (PWA)
 - `/qcm/exporter/?set=…` : export d'un set ou d'un paquet en `.apkg` (Anki) ou `.tsv` (`&format=tsv`)
 - `/qcm/cartes-de-la-page/` (POST, admins) : cartes tirées d'une page ; `/qcm/corriger-qrc/` (POST) : réponse rédigée jugée par Claude
 - `/claude/tuteur/` (POST) : question au tuteur de la page

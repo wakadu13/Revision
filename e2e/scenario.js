@@ -125,7 +125,28 @@ const texte = async (sel) => ((await page.textContent(sel)) || "").replace(/\s+/
   await page.click("[data-action=aide]");
   await verifier("aide ouverte", await page.$eval("#aide-dialog", (d) => d.open));
   await page.keyboard.press("Escape");
+  // Enregistrement (Ctrl+S) : la version précédente part dans l'historique.
+  await page.click(".editor-cm .cm-content");
+  await page.keyboard.press("Control+s");
+  await page.waitForFunction(() => /Enregistré/.test(document.querySelector("[data-state]")?.textContent || ""));
+  await page.goto(BASE + "/historique/Cours/Signal");
+  await verifier("historique : une version et le texte ajouté en différence",
+    (await page.$$(".historique-versions li")).length === 1 && (await page.content()).includes("diff-ajout"));
+  await Promise.all([page.waitForNavigation(), page.click("button[value=restaurer]")]);
+  await verifier("version restaurée", !(await page.content()).includes("Texte ajouté e2e") && (await page.content()).includes("Version restaurée"));
   await page.evaluate(() => localStorage.removeItem("wiki-brouillon:Cours/Signal"));
+
+  console.log("Hors ligne : lecture du wiki");
+  const sw = await page.evaluate(async () => { const r = await navigator.serviceWorker.ready; return r.active ? r.active.state : ""; });
+  await verifier("service worker du wiki actif", sw === "activated", sw);
+  await page.goto(BASE + "/wiki/Cours/Signal");
+  await page.waitForTimeout(400);
+  await contexte.setOffline(true);
+  await page.goto(BASE + "/wiki/Cours/Signal");
+  await verifier("page lue disponible sans réseau", (await page.content()).includes("Shannon"));
+  await page.goto(BASE + "/wiki/Accueil");
+  await verifier("page jamais lue : page « hors connexion »", (await texte("h1")).includes("Pas de connexion"), await texte("h1"));
+  await contexte.setOffline(false);
 
   console.log("Hors ligne : paquet de langue");
   await page.goto(BASE + "/qcm/hors-ligne/");

@@ -67,6 +67,7 @@
           <button type="button" role="menuitem" data-action="open-md">Ouvrir un fichier .md ou .tex…</button>
           <button type="button" role="menuitem" data-action="latex">Convertir du LaTeX en Markdown</button>
           <button type="button" role="menuitem" data-action="download-md">Télécharger la page en .md</button>
+          {% if note %}<a role="menuitem" href="{% url 'wiki:historique' note.key %}">Historique des versions</a>{% endif %}
           <a role="menuitem" href="{{ import_url }}">Importer des fichiers .md…</a>
         </div>
       </details>

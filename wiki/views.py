@@ -15,11 +15,12 @@ from django.views.decorators.http import require_POST
 from accounts.roles import is_admin
 
 from . import claude
+from . import historique
 from . import latex as latex_converter
 from . import paquets
 from . import uploads
 from .models import EchangeTuteur, Explication, QuizProgress, ReglagesClaude, Transformation, UsageClaude
-from .render import Renderer, render_note
+from .render import IMAGE_EXTS, Renderer, render_note
 from .vault import CODE_RE, Note, clean_key, get_vault, split_frontmatter
 
 
@@ -225,6 +226,10 @@ def edit(request, path):
                 return JsonResponse({"error": error}, status=409)
         else:
             file.parent.mkdir(parents=True, exist_ok=True)
+            if file.is_file():
+                ancien = file.read_text(encoding="utf-8")
+                if ancien != content:
+                    historique.sauvegarder(f"{key}.md", ancien, request.user.get_username())
             file.write_text(content, encoding="utf-8", newline="\n")
             if _wants_json(request):
                 # Ctrl+S dans l'éditeur : on reste sur la page, avec la nouvelle version.
@@ -340,7 +345,8 @@ def import_files(request):
 
     replace = request.POST.get("remplacer") == "1"
     results = [
-        uploads.import_file(vault, upload, paths[i] if i < len(paths) else "", folder, replace=replace, rename=rename)
+        uploads.import_file(vault, upload, paths[i] if i < len(paths) else "", folder, replace=replace, rename=rename,
+                            auteur=request.user.get_username())
         for i, upload in enumerate(files)
     ]
     results = uploads.finish(get_vault(), results)
@@ -940,6 +946,7 @@ def pdf(request, path):
     page_cours = vault.notes.get(str(attachment.path.with_suffix("")).lower())
     return _render(request, vault, "wiki/pdf.html", {
         **context, "backlinks": backlinks, "page_cours": page_cours, "claude_dispo": claude.disponible(),
+        "pages_wiki": sorted((n.key for n in vault.notes.values()), key=str.lower) if can_edit(request) else [],
     })
 
 
@@ -1048,3 +1055,184 @@ def documentation(request, doc=""):
         "toc": toc,
         "onglets": [(cle, titre, cle == doc) for cle, (_, titre) in DOCS.items()],
     })
+
+
+# ---------------------------------------------------------------------------
+# Historique des pages
+# ---------------------------------------------------------------------------
+def historique_page(request, path):
+    """Versions précédentes d'une page (admins) : différences avec la page actuelle, restauration."""
+    if not can_edit(request):
+        return _deny(request)
+    vault = get_vault()
+    note = vault.notes.get(path.lower().removesuffix(".md"))
+    if note is None:
+        raise Http404("Page introuvable")
+    rel = note.path.as_posix()
+    fichier = vault.root / note.path
+    versions = historique.lister(rel)
+    if request.method == "POST" and request.POST.get("action") == "restaurer":
+        contenu = historique.lire(rel, request.POST.get("v", ""))
+        if contenu is None:
+            raise Http404("Version introuvable")
+        actuel = fichier.read_text(encoding="utf-8")
+        if actuel != contenu:
+            historique.sauvegarder(rel, actuel, request.user.get_username())
+            fichier.write_text(contenu, encoding="utf-8", newline="\n")
+        messages.success(request, "Version restaurée ; la version précédente reste dans l'historique.")
+        return redirect(note.url)
+    choisie = next((v for v in versions if v["id"] == request.GET.get("v")), versions[0] if versions else None)
+    contenu_version = historique.lire(rel, choisie["id"]) if choisie else ""
+    actuel = fichier.read_text(encoding="utf-8") if fichier.is_file() else ""
+    return _render(request, vault, "wiki/historique.html", {
+        "note": note, "versions": versions, "choisie": choisie, "contenu_version": contenu_version or "",
+        "diff": historique.differences(contenu_version or "", actuel) if choisie else [],
+        "max_versions": historique.MAX_VERSIONS,
+    })
+
+
+# ---------------------------------------------------------------------------
+# Lecture hors ligne du wiki (service worker à la racine, dossiers gardés)
+# ---------------------------------------------------------------------------
+from django.contrib.auth.decorators import login_not_required  # noqa: E402
+from django.utils.csp import CSP  # noqa: E402
+from django.views.decorators.csp import csp_override  # noqa: E402
+
+
+@login_not_required
+@csp_override({**settings.SECURE_CSP, "connect-src": [CSP.SELF, settings.CDN]})
+def sw_wiki(request):
+    """Service worker du wiki entier (sans secret), servi à la racine pour contrôler tout le site."""
+    response = render(request, "wiki/sw_wiki.js", content_type="text/javascript; charset=utf-8")
+    response["Cache-Control"] = "no-cache"
+    return response
+
+
+@login_not_required
+def manifest_wiki(request):
+    """Manifeste de l'application installable : le wiki entier (écran d'accueil d'un téléphone, iPhone compris)."""
+    import json
+
+    from django.templatetags.static import static
+
+    data = {
+        "name": "ProjetPluri", "short_name": "ProjetPluri",
+        "description": "Le wiki de révision : cours, PDF, QCM, lisible même sans connexion.",
+        "start_url": "/", "scope": "/", "display": "standalone", "background_color": "#ffffff",
+        "theme_color": "#7852ee", "lang": "fr",
+        "icons": [
+            {"src": static("wiki/icone-192.png"), "sizes": "192x192", "type": "image/png", "purpose": "any maskable"},
+            {"src": static("wiki/icone-512.png"), "sizes": "512x512", "type": "image/png", "purpose": "any maskable"},
+        ],
+    }
+    return HttpResponse(json.dumps(data, ensure_ascii=False), content_type="application/manifest+json")
+
+
+@login_not_required
+def hors_connexion(request):
+    """Page servie par le service worker quand une page n'est ni accessible ni en cache."""
+    return render(request, "wiki/hors_connexion.html")
+
+
+def dossier_hors_ligne(request):
+    """Adresses à mettre en cache pour lire un dossier sans connexion : ses pages, images et PDF."""
+    vault = get_vault()
+    dossier = request.GET.get("dossier", "").replace("\\", "/").strip("/")
+    prefixe = f"{dossier}/" if dossier else ""
+    pages = [n.url for n in vault.sorted_notes() if n.path.as_posix().startswith(prefixe)]
+    fichiers, pdf = [], 0
+    for a in sorted(vault.attachments.values(), key=lambda a: str(a.path).lower()):
+        if not a.path.as_posix().startswith(prefixe) or a.suffix not in IMAGE_EXTS | {".pdf"}:
+            continue
+        fichiers.append(a.url)
+        if a.suffix == ".pdf":
+            fichiers.append(a.view_url)
+            pdf += 1
+    if not pages and not fichiers:
+        raise Http404("Dossier introuvable ou vide")
+    return JsonResponse({"dossier": dossier, "urls": pages + fichiers, "pages": len(pages), "pdf": pdf})
+
+
+# ---------------------------------------------------------------------------
+# Annotations depuis le lecteur PDF : carte de révision ou citation dans une page
+# ---------------------------------------------------------------------------
+DOSSIER_ANNOTATIONS = "Annotations"
+MAX_CHARS_ANNOTATION = 2000
+
+
+@require_POST
+def pdf_annotation(request):
+    """Passage sélectionné dans un PDF → carte recto/verso (set « <PDF> — annotations ») ou
+    citation ajoutée à une page du wiki (créée au besoin). Admins."""
+    import hashlib
+    import json
+    from urllib.parse import quote
+
+    from . import quiz
+
+    if not can_edit(request):
+        return _deny(request)
+    try:
+        data = json.loads(request.body)
+        chemin, cible = str(data["pdf"]), str(data.get("cible", "carte"))
+        texte = " ".join(str(data.get("texte", "")).split())[:MAX_CHARS_ANNOTATION]
+        page_pdf = int(data.get("page") or 0)
+    except (KeyError, ValueError, TypeError):
+        return JsonResponse({"error": "requête invalide"}, status=400)
+    vault = get_vault()
+    pdf = vault.attachments.get(chemin.lower())
+    if pdf is None or pdf.suffix != ".pdf":
+        return JsonResponse({"error": "PDF introuvable"}, status=404)
+    if not texte:
+        return JsonResponse({"error": "Sélectionnez d'abord un passage du PDF."}, status=400)
+    stem = pdf.path.stem
+    source = f"{stem}, p. {page_pdf}" if page_pdf else stem
+    page_cours = vault.notes.get(str(pdf.path.with_suffix("")).lower())
+    qui = request.user.get_username()
+
+    if cible == "carte":
+        rel = f"{paquets.DOSSIER_QCM}/{DOSSIER_ANNOTATIONS}/{stem}.json"
+        fichier = vault.root / rel
+        if fichier.is_file():
+            try:
+                set_json = json.loads(fichier.read_text(encoding="utf-8"))
+            except ValueError:
+                return JsonResponse({"error": f"Le fichier {rel} est illisible."}, status=500)
+        else:
+            set_json = {"titre": f"{stem} — annotations", "description": f"Passages gardés depuis le PDF {pdf.name}.",
+                        "genere_par": "Annotations du lecteur PDF", "questions": []}
+            if page_cours is not None:
+                set_json["source_page"] = page_cours.key
+        recto = str(data.get("recto") or "").strip()[:500] or f"{source} : que dit ce passage ?"
+        empreinte = hashlib.sha1(f"{page_pdf}\x1f{texte}".encode("utf-8")).hexdigest()[:10]
+        set_json.setdefault("questions", []).append({
+            "id": f"a{empreinte}", "type": "FLASHCARD", "question": recto, "verso": f"{texte}\n\n— *{source}*"})
+        try:
+            quiz.set_depuis_json(set_json, PurePosixPath(rel))
+            paquets.enregistrer_json(rel, set_json)
+        except (ValueError, paquets.PaquetInvalide) as e:
+            return JsonResponse({"error": str(e)}, status=400)
+        n = len(set_json["questions"])
+        return JsonResponse({"ok": True, "message": f"Carte ajoutée à « {set_json['titre']} » ({n} carte{'s' if n > 1 else ''}).",
+                             "url": reverse("wiki:quiz_play") + "?set=" + quote(rel.removesuffix(".json")) + "&mode=all"})
+
+    if cible == "note":
+        voulue = str(data.get("page_wiki") or "").strip().removesuffix(".md")
+        cle = clean_key(voulue) if voulue else (page_cours.key if page_cours else clean_key(str(pdf.path.with_suffix(""))))
+        if cle is None:
+            return JsonResponse({"error": "Nom de page invalide."}, status=400)
+        note = vault.notes.get(cle.lower())
+        fichier = vault.root / (note.path if note is not None else PurePosixPath(f"{cle}.md"))
+        citation = f"> [!quote] {source}\n> {texte}\n> — [[{vault.link_for(pdf)}]]\n"
+        if fichier.is_file():
+            ancien = fichier.read_text(encoding="utf-8")
+            historique.sauvegarder(fichier.relative_to(vault.root).as_posix(), ancien, qui)
+            nouveau = ancien.rstrip("\n") + "\n\n" + citation
+            titre = note.title if note is not None else cle.rsplit("/", 1)[-1]
+        else:
+            fichier.parent.mkdir(parents=True, exist_ok=True)
+            titre = cle.rsplit("/", 1)[-1]
+            nouveau = f"# {titre}\n\n{citation}"
+        fichier.write_text(nouveau, encoding="utf-8", newline="\n")
+        return JsonResponse({"ok": True, "message": f"Citation ajoutée à « {titre} ».", "url": reverse("wiki:page", args=[cle])})
+    return JsonResponse({"error": "cible inconnue"}, status=400)

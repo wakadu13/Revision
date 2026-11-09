@@ -20,7 +20,7 @@
   <div class="markdown">
     {{ content|safe }}
   </div>
-  <footer class="note-footer">Modifiée le {{ note.modified|date:"d/m/Y à H:i" }} · <code>{{ note.path }}</code></footer>
+  <footer class="note-footer">Modifiée le {{ note.modified|date:"d/m/Y à H:i" }} · <code>{{ note.path }}</code>{% if can_edit %} · <a href="{% url 'wiki:historique' note.key %}">Historique</a>{% endif %}</footer>
 </article>
 {% endblock %}
 {% block aside %}

@@ -1,6 +1,7 @@
 {% load static %}<div class="pdf-reader{% if integre %} is-embedded{% endif %}" data-pdf-reader
   data-src="{{ attachment.url }}" data-key="{{ attachment.path }}"
-  data-worker="{% static 'wiki/vendor/pdfjs/pdf.worker.min.js' %}" data-wasm="{% static 'wiki/vendor/pdfjs/wasm/' %}">
+  data-worker="{% static 'wiki/vendor/pdfjs/pdf.worker.min.js' %}" data-wasm="{% static 'wiki/vendor/pdfjs/wasm/' %}"{% if can_edit and not integre %}
+  data-can-edit="1" data-annotation-url="{% url 'wiki:pdf_annotation' %}" data-csrf="{{ csrf_token }}" data-page-cours="{{ page_cours.key|default:'' }}"{% endif %}>
   <div class="pdf-toolbar" role="toolbar" aria-label="Lecteur PDF">
     <div class="pdf-group">
       <button type="button" class="button" data-pdf="prev" title="Page précédente (←)" disabled>‹</button>
@@ -41,4 +42,24 @@
   </div>
   <noscript><p>Le lecteur a besoin de JavaScript : <a href="{{ attachment.url }}">ouvrir le fichier PDF</a>.</p></noscript>
 </div>
+{% if can_edit and not integre %}
+<dialog id="pdf-annotation-dialog" class="dialog">
+  <h2>Garder ce passage</h2>
+  <blockquote class="pdf-annotation-extrait" data-annotation-extrait></blockquote>
+  <div class="pdf-annotation-choix">
+    <label class="checkbox"><input type="radio" name="annotation-cible" value="carte" checked> Carte de révision (recto/verso) dans « {{ attachment.path.stem }} — annotations »</label>
+    <label class="checkbox"><input type="radio" name="annotation-cible" value="note"> Citation dans une page du wiki</label>
+  </div>
+  <label data-annotation-recto-label>Recto : la question posée (facultatif)</label>
+  <input type="text" data-annotation-recto placeholder="Ex. : Que dit le cours sur … ?" maxlength="500">
+  <label data-annotation-page-label hidden>Page du wiki (créée si besoin)</label>
+  <input type="text" data-annotation-page list="annotation-pages" hidden placeholder="{{ page_cours.key|default:attachment.path.stem }}">
+  <datalist id="annotation-pages">{% for key in pages_wiki %}<option value="{{ key }}">{% endfor %}</datalist>
+  <p class="muted">Source notée : {{ attachment.name }}, page <span data-annotation-page-pdf></span>.</p>
+  <div class="dialog-actions">
+    <button type="button" class="button" data-annotation-fermer>Annuler</button>
+    <button type="button" class="button primary" data-annotation-ok>Ajouter</button>
+  </div>
+</dialog>
+{% endif %}
 <script type="module" src="{% static 'wiki/lecteur_pdf.js' %}"></script>

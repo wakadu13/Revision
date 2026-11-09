@@ -1,0 +1,29 @@
+{% load static %}<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#7852ee">
+  <title>Hors connexion · ProjetPluri</title>
+  <link rel="manifest" href="{% url 'wiki:manifest_wiki' %}">
+  <link rel="icon" href="{% static 'wiki/icone-192.png' %}">
+  <link rel="stylesheet" href="{% static 'wiki/wiki.css' %}">
+  <script src="{% static 'wiki/hors_ligne_wiki.js' %}" defer></script>
+</head>
+<body class="hl-body">
+  <main class="content hl">
+    <header class="hl-entete">
+      <a class="button small" href="/">← Accueil</a>
+      <span class="hl-reseau hors-ligne" id="hl-reseau">○ Hors ligne</span>
+    </header>
+    <section>
+      <h1 class="note-title">Pas de connexion</h1>
+      <p>Cette page du wiki n'est pas disponible hors connexion. Voici ce qui l'est sur cet appareil : les pages déjà
+        lues et les dossiers gardés hors ligne depuis le <a href="{% url 'wiki:sommaire' %}">sommaire</a>.</p>
+      <div id="hc-liste" data-pages-hors-ligne><p class="muted">Lecture du cache…</p></div>
+      <p class="muted">Les QCM hors ligne ont leur propre page : <a href="{% url 'wiki:quiz_offline' %}">QCM hors ligne</a>.</p>
+      <p><a class="button primary" href="javascript:location.reload()">Réessayer</a></p>
+    </section>
+  </main>
+</body>
+</html>
