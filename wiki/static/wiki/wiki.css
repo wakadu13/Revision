@@ -844,3 +844,25 @@ body.plein-ecran.editing.pe-haut .toolbar {
 .quiz-prevision-n { margin-bottom: .15rem; }
 .quiz-prevision-jour { margin-top: .25rem; white-space: nowrap; }
 @media (max-width: 760px) { .quiz-prevision-jour { font-size: .6rem; } }
+
+/* Historique des pages, dossiers hors ligne, annotations PDF */
+.sommaire-hors-ligne { float: right; margin-left: .6rem; font-size: .72rem; font-weight: 400; }
+.sommaire-hors-ligne.is-garde { color: #16a34a; border-color: #16a34a; }
+.historique { display: grid; grid-template-columns: minmax(12rem, 16rem) minmax(0, 1fr); gap: 1.2rem; align-items: start; }
+.historique-versions { list-style: none; margin: 0; padding: 0; border: 1px solid var(--border); border-radius: 8px; max-height: 60vh; overflow: auto; }
+.historique-versions li { display: flex; flex-direction: column; padding: .4rem .7rem; border-bottom: 1px solid var(--border); font-size: .9rem; }
+.historique-versions li:last-child { border-bottom: 0; }
+.historique-versions li.active { background: var(--accent-soft); }
+.diff { white-space: pre-wrap; word-break: break-word; font-size: .85rem; line-height: 1.45; padding: .6rem .8rem; border: 1px solid var(--border); border-radius: 8px; max-height: 60vh; overflow: auto; }
+.diff-ajout { display: block; background: rgba(22, 163, 74, .16); }
+.diff-suppr { display: block; background: rgba(220, 38, 38, .16); }
+.diff-info { display: block; color: var(--muted); margin-top: .4rem; }
+.diff-contexte { display: block; }
+.historique-actions { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: .8rem; }
+@media (max-width: 760px) { .historique { grid-template-columns: 1fr; } }
+.pdf-selection-outils { position: absolute; z-index: 5; }
+.pdf-annotation-retour { position: absolute; left: 50%; bottom: 1rem; z-index: 6; transform: translateX(-50%); max-width: calc(100% - 2rem); padding: .5rem 1rem; border-radius: 999px; background: rgba(24, 24, 27, .9); color: #fff; font-size: .9rem; }
+.pdf-annotation-retour a { color: #fff; font-weight: 600; margin-left: .3rem; }
+.pdf-annotation-retour.is-error { background: rgba(185, 28, 28, .95); }
+.pdf-annotation-extrait { max-height: 9rem; overflow: auto; margin: 0 0 .6rem; font-size: .9rem; }
+.pdf-annotation-choix { display: flex; flex-direction: column; gap: .3rem; margin-bottom: .4rem; }

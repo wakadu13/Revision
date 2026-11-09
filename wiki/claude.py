@@ -468,6 +468,10 @@ def _ecrire(t, texte, avertissement):
     if not cible.resolve().is_relative_to(vault.root.resolve()):
         raise Echec("Nom de page invalide.")
     cible.parent.mkdir(parents=True, exist_ok=True)
+    if cible.is_file():
+        from . import historique
+
+        historique.sauvegarder(page.as_posix(), cible.read_text(encoding="utf-8"), "Claude")
     cible.write_text(texte + "\n", encoding="utf-8", newline="\n")
     return page.as_posix()
 

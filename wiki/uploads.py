@@ -14,7 +14,7 @@ from pathlib import Path, PurePosixPath
 
 from django.urls import reverse
 
-from . import latex
+from . import historique, latex
 from .render import AUDIO_EXTS, IMAGE_EXTS, VIDEO_EXTS
 from .vault import IGNORED_DIRS, INVALID_NAME_RE
 
@@ -78,11 +78,12 @@ def _free_path(root, vault, path, is_note):
     raise ValueError("aucun nom libre")
 
 
-def import_file(vault, upload, relative, folder="", replace=False, rename=False):
+def import_file(vault, upload, relative, folder="", replace=False, rename=False, auteur=""):
     """Écrit un fichier envoyé dans ``folder/relative``. Renvoie un :class:`Result`.
 
-    Un fichier qui existe déjà est refusé, sauf avec ``replace`` (écrasé) ou
-    ``rename`` (enregistré sous un nom libre, comme Obsidian pour les images collées).
+    Un fichier qui existe déjà est refusé, sauf avec ``replace`` (écrasé : pour une
+    note, l'ancien texte part dans l'historique) ou ``rename`` (enregistré sous un
+    nom libre, comme Obsidian pour les images collées).
     """
     root = vault.root
     parts = _parts(relative or upload.name)
@@ -142,6 +143,8 @@ def import_file(vault, upload, relative, folder="", replace=False, rename=False)
     try:
         target.parent.mkdir(parents=True, exist_ok=True)
         if is_note:
+            if target.is_file():
+                historique.sauvegarder(path.as_posix(), target.read_text(encoding="utf-8", errors="replace"), auteur)
             target.write_text(text, encoding="utf-8", newline="\n")
         else:
             with open(target, "wb") as out:

@@ -6,6 +6,10 @@
   <title>{% block title %}Wiki{% endblock %} · ProjetPluri</title>
   {# Thème choisi (clair/sombre) appliqué avant le premier rendu, sans scintillement. #}
   <script nonce="{{ csp_nonce }}">try{var t=localStorage.getItem("wiki-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}</script>
+  <meta name="theme-color" content="#7852ee">
+  <link rel="manifest" href="{% url 'wiki:manifest_wiki' %}">
+  <link rel="icon" href="{% static 'wiki/icone-192.png' %}">
+  <link rel="apple-touch-icon" href="{% static 'wiki/icone-192.png' %}">
   <link rel="stylesheet" href="{% static 'wiki/wiki.css' %}">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.12.0/styles/github.min.css" integrity="sha384-eFTL69TLRZTkNfYZOLM+G04821K1qZao/4QLJbet1pP4tcF+fdXq/9CdqAbWRl/L" crossorigin="anonymous" media="(prefers-color-scheme: light)" data-theme-css="light">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.12.0/styles/github-dark.min.css" integrity="sha384-wH75j6z1lH97ZOpMOInqhgKzFkAInZPPSPlZpYKYTOqsaizPvhQZmAtLcPKXpLyH" crossorigin="anonymous" media="(prefers-color-scheme: dark)" data-theme-css="dark">
@@ -15,7 +19,7 @@
   <script src="{% static 'wiki/tuteur.js' %}" defer></script>{% endif %}
   {% block head %}{% endblock %}
 </head>
-<body class="{% if in_app %}app {% endif %}{% block body_class %}{% endblock %}">
+<body class="{% if in_app %}app {% endif %}{% block body_class %}{% endblock %}"{% if user.is_authenticated and not in_app %} data-sw="{% url 'wiki:sw_wiki' %}"{% endif %}>
   <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden>
   <header class="topbar">
     <label for="nav-toggle" class="nav-button" aria-label="Afficher le menu">☰</label>

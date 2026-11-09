@@ -1,5 +1,7 @@
 {% extends "wiki/base.html" %}
+{% load static %}
 {% block title %}Sommaire{% endblock %}
+{% block head %}<script src="{% static 'wiki/hors_ligne_wiki.js' %}" defer></script>{% endblock %}
 {% block content %}
 <article class="note">
   <h1 class="note-title">Sommaire</h1>
@@ -15,7 +17,9 @@
     <button type="button" class="button" data-fold="close">Tout replier</button>
   </div>
 
-  <div class="sommaire">
+  <p class="muted">« ⤓ Hors ligne » sur un dossier garde ses pages, images et PDF sur cet appareil, pour les lire sans
+    connexion (les pages déjà ouvertes le sont aussi).</p>
+  <div class="sommaire" data-dossier-url="{% url 'wiki:dossier_hors_ligne' %}">
     {% include "wiki/sommaire_tree.html" with node=root %}
   </div>
 </article>

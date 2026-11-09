@@ -201,4 +201,9 @@
   initPage(document);
   window.wikiEnhance = enhance;
   window.wikiInitPage = initPage;
+
+  // Lecture hors ligne : service worker du wiki (sw_wiki.js), hors application Android.
+  if ("serviceWorker" in navigator && document.body.dataset.sw) {
+    navigator.serviceWorker.register(document.body.dataset.sw, { scope: "/" }).catch(() => { /* HTTP simple : pas de hors ligne */ });
+  }
 })();

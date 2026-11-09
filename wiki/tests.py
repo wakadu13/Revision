@@ -122,13 +122,13 @@ class PleinEcranTests(WikiTestCase):
         for url in ["/wiki/Accueil", "/pdf/cours.pdf"]:
             with self.subTest(url=url):
                 html = self.client.get(url).content.decode()
-                self.assertIn('<body class="lecture menu-cache">', html)
+                self.assertIn('<body class="lecture menu-cache"', html)
                 self.assertIn("data-ouvrir-menu", html)
                 self.assertIn('data-epingler-menu aria-pressed="false"', html)
         # Menu épinglé (cookie posé par le bouton « Garder le menu affiché »).
         self.client.cookies["menu"] = "epingle"
         html = self.client.get("/wiki/Accueil").content.decode()
-        self.assertIn('<body class="lecture">', html)
+        self.assertIn('<body class="lecture" data-sw', html)
         self.assertIn('data-epingler-menu aria-pressed="true"', html)
         self.assertIn('title="Cacher le menu pendant la lecture"', html)
         # Les autres pages gardent le menu.
@@ -2760,3 +2760,189 @@ class FsrsQcmTests(TestCase):
         self.assertTrue(p["echeance"])
         self.assertContains(self.client.get("/qcm/hors-ligne/"), "fsrs.js")
         self.assertContains(self.client.get("/qcm/sw.js"), "fsrs.js")
+
+
+class HistoriqueTests(WikiTestCase):
+    """Versions précédentes des pages : gardées à chaque modification, comparées, restaurées."""
+
+    def setUp(self):
+        super().setUp()
+        self.admin = get_user_model().objects.create_user("admin", password="x", is_staff=True)
+        self.client.force_login(self.admin)
+        self.versions = tempfile.TemporaryDirectory()
+        self.addCleanup(self.versions.cleanup)
+        override = override_settings(DATA_DIR=Path(self.versions.name))
+        override.enable()
+        self.addCleanup(override.disable)
+
+    def _modifier(self, key, contenu):
+        from wiki.vault import get_vault
+        version = str((get_vault().root / f"{key}.md").stat().st_mtime_ns)
+        return self.client.post(f"/modifier/{key}", {"content": contenu, "version": version}, HTTP_ACCEPT="application/json")
+
+    def test_versions_differences_restauration(self):
+        import time
+        from wiki import historique
+        self.write("Cours/Signal.md", "# Signal\n\nPremière version.\n")
+        self.assertEqual(historique.lister("Cours/Signal.md"), [])
+        self.assertEqual(self._modifier("Cours/Signal", "# Signal\n\nDeuxième version.\n").status_code, 200)
+        time.sleep(0.01)
+        self.assertEqual(self._modifier("Cours/Signal", "# Signal\n\nTroisième version.\n").status_code, 200)
+        self._modifier("Cours/Signal", "# Signal\n\nTroisième version.\n")  # texte identique : pas de version
+        versions = historique.lister("Cours/Signal.md")
+        self.assertEqual(len(versions), 2)
+        self.assertEqual(versions[0]["auteur"], "admin")
+        self.assertEqual(historique.lire("Cours/Signal.md", versions[1]["id"]), "# Signal\n\nPremière version.\n")
+        self.assertIsNone(historique.lire("Cours/Signal.md", "../../x.md"))
+        self.assertTrue((Path(self.versions.name) / "versions" / "Cours" / "Signal.md").is_dir())
+        page = self.client.get("/historique/Cours/Signal")
+        self.assertContains(page, "Historique de « Signal »")
+        self.assertContains(page, "Deuxième version.")   # version la plus récente, retirée depuis
+        self.assertContains(page, "Troisième version.")  # page actuelle, ajoutée
+        self.assertContains(page, 'class="diff-suppr">')
+        self.assertContains(page, 'class="diff-ajout">')
+        self.assertContains(self.client.get("/wiki/Cours/Signal"), 'href="/historique/Cours/Signal"')
+        self.assertContains(self.client.get("/modifier/Cours/Signal"), "Historique des versions")
+        # Restauration de la première version : la page actuelle part dans l'historique.
+        r = self.client.post("/historique/Cours/Signal", {"action": "restaurer", "v": versions[1]["id"]})
+        self.assertRedirects(r, "/wiki/Cours/Signal")
+        self.assertEqual((self.root / "Cours" / "Signal.md").read_text(encoding="utf-8"), "# Signal\n\nPremière version.\n")
+        self.assertEqual(len(historique.lister("Cours/Signal.md")), 3)
+        self.assertEqual(self.client.post("/historique/Cours/Signal", {"action": "restaurer", "v": "nope"}).status_code, 404)
+        self.assertEqual(self.client.get("/historique/Inconnue").status_code, 404)
+        # Lecteur simple : pas d'accès.
+        self.client.force_login(self.reader)
+        self.assertEqual(self.client.get("/historique/Cours/Signal").status_code, 403)
+        self.assertNotContains(self.client.get("/wiki/Cours/Signal"), "/historique/")
+
+    def test_import_et_claude_gardent_la_version(self):
+        from django.core.files.uploadedfile import SimpleUploadedFile
+        from wiki import historique
+        self.write("Cours/Signal.md", "# Ancien\n")
+        self.client.post("/importer/", {"fichiers": SimpleUploadedFile("Signal.md", b"# Nouveau\n"), "chemins": "Signal.md",
+                                        "dossier": "Cours", "remplacer": "1"}, HTTP_ACCEPT="application/json")
+        self.assertEqual((self.root / "Cours" / "Signal.md").read_text(encoding="utf-8"), "# Nouveau\n")
+        versions = historique.lister("Cours/Signal.md")
+        self.assertEqual([v["auteur"] for v in versions], ["admin"])
+        self.assertEqual(historique.lire("Cours/Signal.md", versions[0]["id"]), "# Ancien\n")
+
+    def test_limite_et_differences(self):
+        from wiki import historique
+        with override_settings(DATA_DIR=Path(self.versions.name)):
+            for i in range(historique.MAX_VERSIONS + 5):
+                historique.sauvegarder("Note.md", f"v{i}", "alice")
+            self.assertEqual(len(historique.lister("Note.md")), historique.MAX_VERSIONS)
+        diff = historique.differences("a\nb\nc\n", "a\nB\nc\nd\n")
+        self.assertEqual([(l["type"], l["texte"]) for l in diff if l["type"] != "info"],
+                         [("contexte", "a"), ("suppr", "b"), ("ajout", "B"), ("contexte", "c"), ("ajout", "d")])
+        with self.assertRaises(ValueError):
+            historique.sauvegarder("../hors.md", "x")
+
+
+class HorsLigneWikiTests(WikiTestCase):
+    """Service worker du wiki entier, manifeste, page hors connexion, dossiers à garder."""
+
+    def test_service_worker_manifeste_et_page(self):
+        self.client.logout()
+        sw = self.client.get("/sw.js")
+        self.assertEqual(sw.status_code, 200)
+        self.assertIn("javascript", sw["Content-Type"])
+        self.assertContains(sw, 'const CACHE = "wiki-hors-ligne-v1"')
+        self.assertContains(sw, "/hors-connexion/")
+        self.assertContains(sw, "/static/wiki/wiki.css?v=")
+        self.assertContains(sw, "/^\\/qcm\\//")  # le QCM garde son propre service worker
+        manifest = self.client.get("/manifest.webmanifest").json()
+        self.assertEqual((manifest["name"], manifest["start_url"], manifest["scope"], manifest["display"]),
+                         ("ProjetPluri", "/", "/", "standalone"))
+        page = self.client.get("/hors-connexion/")
+        self.assertEqual(page.status_code, 200)
+        self.assertContains(page, "data-pages-hors-ligne")
+        self.assertContains(page, "hors_ligne_wiki.js")
+
+    def test_base_et_sommaire(self):
+        self.write("Cours/Signal.md", "# Signal\n")
+        self.write("Cours/schema.png", "")
+        self.write("Cours/poly.pdf", "%PDF-1.4")
+        self.write("Autre/Note.md", "# Note\n")
+        page = self.client.get("/wiki/Cours/Signal")
+        self.assertContains(page, 'rel="manifest" href="/manifest.webmanifest"')
+        self.assertContains(page, 'data-sw="/sw.js"')
+        sommaire = self.client.get("/sommaire/")
+        self.assertContains(sommaire, 'data-dossier="Cours/"')
+        self.assertContains(sommaire, 'data-dossier-url="/hors-ligne/dossier.json"')
+        self.assertContains(sommaire, "hors_ligne_wiki.js")
+        data = self.client.get("/hors-ligne/dossier.json", {"dossier": "Cours/"}).json()
+        self.assertEqual(data["pages"], 1)
+        self.assertEqual(data["pdf"], 1)
+        self.assertEqual(data["urls"], ["/wiki/Cours/Signal", "/fichiers/Cours/poly.pdf", "/pdf/Cours/poly.pdf", "/fichiers/Cours/schema.png"])
+        self.assertEqual(self.client.get("/hors-ligne/dossier.json", {"dossier": ""}).json()["pages"], 2)
+        self.assertEqual(self.client.get("/hors-ligne/dossier.json", {"dossier": "Vide"}).status_code, 404)
+        # Application Android : pas de service worker du site (elle gère son propre hors ligne).
+        self.assertNotContains(self.client.get("/wiki/Cours/Signal", HTTP_USER_AGENT="Mozilla/5.0 ProjetPluriApp/2"), 'data-sw=')
+
+
+class AnnotationPdfTests(WikiTestCase):
+    """Passage d'un PDF → carte de révision ou citation dans une page (admins)."""
+
+    def setUp(self):
+        super().setUp()
+        self.admin = get_user_model().objects.create_user("admin", password="x", is_staff=True)
+        self.client.force_login(self.admin)
+        self.write("Cours/Signal.pdf", "%PDF-1.4")
+        self.versions = tempfile.TemporaryDirectory()
+        self.addCleanup(self.versions.cleanup)
+        override = override_settings(DATA_DIR=Path(self.versions.name))
+        override.enable()
+        self.addCleanup(override.disable)
+
+    def _poster(self, **data):
+        import json
+        return self.client.post("/pdf-annotation/", data=json.dumps({"pdf": "Cours/Signal.pdf", "page": 3,
+                                                                      "texte": "Le théorème de Shannon impose f_e > 2 f_max.", **data}),
+                                content_type="application/json")
+
+    def test_carte(self):
+        import json
+        from wiki.quiz import get_library
+        page = self.client.get("/pdf/Cours/Signal.pdf")
+        self.assertContains(page, 'data-can-edit="1"')
+        self.assertContains(page, 'id="pdf-annotation-dialog"')
+        r = self._poster(cible="carte", recto="Que dit Shannon ?")
+        self.assertEqual(r.status_code, 200, r.content)
+        self.assertIn("Carte ajoutée", r.json()["message"])
+        data = json.loads((self.root / "QCM" / "Annotations" / "Signal.json").read_text(encoding="utf-8"))
+        self.assertEqual(data["titre"], "Signal — annotations")
+        self.assertEqual(data["questions"][0]["question"], "Que dit Shannon ?")
+        self.assertIn("— *Signal, p. 3*", data["questions"][0]["verso"])
+        self.assertNotIn("source_page", data)
+        self._poster(cible="carte", texte="Autre passage", recto="")
+        data = json.loads((self.root / "QCM" / "Annotations" / "Signal.json").read_text(encoding="utf-8"))
+        self.assertEqual(len(data["questions"]), 2)
+        self.assertEqual(data["questions"][1]["question"], "Signal, p. 3 : que dit ce passage ?")
+        self.assertEqual(len(get_library().get("QCM/Annotations/Signal").questions), 2)
+        self.assertEqual(self._poster(cible="carte", texte="   ").status_code, 400)
+        self.assertEqual(self._poster(cible="carte", pdf="Nope.pdf").status_code, 404)
+
+    def test_citation_dans_une_page(self):
+        from wiki import historique
+        self.write("Cours/Signal.md", "# Signal\n\nIntro.\n")
+        r = self._poster(cible="note")  # page du cours par défaut (même nom que le PDF)
+        self.assertEqual(r.json()["url"], "/wiki/Cours/Signal")
+        texte = (self.root / "Cours" / "Signal.md").read_text(encoding="utf-8")
+        self.assertTrue(texte.endswith("Intro.\n\n> [!quote] Signal, p. 3\n> Le théorème de Shannon impose f_e > 2 f_max.\n> — [[Signal.pdf]]\n"))
+        self.assertEqual(len(historique.lister("Cours/Signal.md")), 1)
+        # Page nommée, créée au besoin.
+        r = self._poster(cible="note", page_wiki="Notes/Citations")
+        self.assertEqual(r.json()["url"], "/wiki/Notes/Citations")
+        self.assertTrue((self.root / "Notes" / "Citations.md").read_text(encoding="utf-8").startswith("# Citations\n\n> [!quote]"))
+        # La page du PDF reçoit la citation (source_page du set d'annotations).
+        self._poster(cible="carte")
+        import json
+        self.assertEqual(json.loads((self.root / "QCM" / "Annotations" / "Signal.json").read_text(encoding="utf-8"))["source_page"], "Cours/Signal")
+
+    def test_reserve_aux_admins(self):
+        self.client.force_login(self.reader)
+        self.assertEqual(self._poster(cible="carte").status_code, 403)
+        page = self.client.get("/pdf/Cours/Signal.pdf")
+        self.assertNotContains(page, "data-can-edit")
+        self.assertNotContains(page, "pdf-annotation-dialog")

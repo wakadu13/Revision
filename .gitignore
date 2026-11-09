@@ -200,3 +200,6 @@ staticfiles/
 
 # Dépendances de construction de l'éditeur (editeur/)
 node_modules/
+
+# Versions précédentes des pages (historique), hors du coffre
+/versions/
