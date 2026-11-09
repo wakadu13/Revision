@@ -373,7 +373,7 @@ class UsageClaude(models.Model):
     """Appels à Claude hors transformations (correction d'une réponse rédigée, tuteur) :
     jetons consommés, pour le coût du mois et le plafond."""
 
-    QRC, TUTEUR = "qrc", "tuteur"
+    QRC, TUTEUR, WIKI = "qrc", "tuteur", "wiki"
     genre = models.CharField(max_length=12)
     player = models.CharField(max_length=150, blank=True, default="")
     modele = models.CharField(max_length=64, blank=True)
@@ -387,13 +387,16 @@ class EchangeTuteur(models.Model):
     de l'utilisateur sur la page nourrit la conversation suivante."""
 
     player = models.CharField(max_length=150, blank=True, default="")
-    page = models.CharField(max_length=500)  # clé de la note
+    page = models.CharField(max_length=500)  # clé de la note (PAGE_WIKI : « Demander au wiki »)
     question = models.TextField()
     reponse = models.TextField()
+    sources = models.JSONField(default=list, blank=True)  # « Demander au wiki » : extraits cités [{titre, url, type}]
     modele = models.CharField(max_length=64, blank=True)
     jetons_entree = models.PositiveIntegerField(default=0)
     jetons_sortie = models.PositiveIntegerField(default=0)
     cree_le = models.DateTimeField(auto_now_add=True)
+
+    PAGE_WIKI = "*"  # questions posées à tout le wiki
 
     class Meta:
         ordering = ["cree_le", "pk"]
@@ -497,3 +500,16 @@ class AbonnementPush(models.Model):
 
     def __str__(self):
         return f"{self.user} · {self.heure:02d}:{self.minute:02d}"
+
+
+class TextePdf(models.Model):
+    """Texte d'un PDF du coffre, page par page, pour la recherche (wiki/texte_pdf.py)."""
+
+    chemin = models.CharField(max_length=500, unique=True)
+    signature = models.CharField(max_length=64)  # date de modification et taille du fichier lu
+    pages = models.JSONField(default=list)
+    erreur = models.CharField(max_length=300, blank=True)
+    indexe_le = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.chemin

@@ -4,7 +4,8 @@
 //   cours (titres en grand, gras, liens, cases à cocher cliquables, images,
 //   encadrés colorés) ; « Source » : Markdown brut ; « Lecture » : rendu final ;
 // - [[ propose les pages, ![[ les images ; Ctrl+clic ouvre un lien ;
-// - Ctrl+S enregistre sans quitter (enregistrement auto en option) ;
+// - Ctrl+S enregistre sans quitter (enregistrement auto en option) ; les titres de
+//   pages existantes cités sans lien sont alors proposés (un clic : [[lien]]) ;
 // - images collées ou glissées : ajoutées au coffre ; .md glissé ou ouvert :
 //   son texte est inséré ; bouton « Télécharger » : la page en .md.
 // Si CodeMirror ne se charge pas, la zone de texte simple reste utilisable.
@@ -1207,7 +1208,7 @@
     if (isDirty()) status("Modifications non enregistrées", "dirty");
   }
 
-  function save() {
+  function save(manuel) {
     if (saving) {
       saveAgain = true;
       return saving;
@@ -1229,6 +1230,7 @@
           if (json.url) closeLink.href = json.url;
           const now = new Date().toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
           status(`Enregistré à ${now}`, "ok");
+          if (manuel) afficherLiens(false);
         } else {
           conflict = response.status === 409;
           status(json.error || "Échec de l'enregistrement (session expirée ?).", "error");
@@ -1315,7 +1317,7 @@
     : toolbar.getBoundingClientRect().height + (parseFloat(getComputedStyle(form).getPropertyValue("--sticky-top")) || 0));
 
   const appKeymap = [
-    { key: "Mod-s", run: () => (save(), true), preventDefault: true },
+    { key: "Mod-s", run: () => (save(true), true), preventDefault: true },
     { key: "Mod-b", run: wrap("**", "**", "texte en gras") },
     { key: "Mod-i", run: wrap("*", "*", "texte en italique") },
     { key: "Mod-Shift-h", run: wrap("==", "==", "texte surligné") },
@@ -1550,7 +1552,7 @@
       setMode(mode === "reading" ? (avantLecture || editMode) : "reading");
     } else if (key === "s") {
       e.preventDefault();
-      save();
+      save(true);
     }
   });
 
@@ -1776,7 +1778,7 @@
     latex: () => convertDocument(),
     ameliorer: () => ameliorerTexte(),
     "download-md": download,
-    save: () => save(),
+    save: () => save(true),
   };
 
   const menus = [...toolbar.querySelectorAll(".toolbar-menu")];
@@ -1846,15 +1848,156 @@
       if (!["page-link", "web-link", "attach", "open-md", "download-md", "latex", "ameliorer", "aide"].includes(action)) view.focus();
     });
   });
-  form.querySelector("[data-action=save]").addEventListener("click", () => save());
+  form.querySelector("[data-action=save]").addEventListener("click", () => save(true));
 
   autosaveBox.addEventListener("change", () => {
     store("wiki-editor-autosave", autosaveBox.checked ? "1" : "0");
     if (autosaveBox.checked && isDirty()) save();
   });
 
+  // -- Liens suggérés ---------------------------------------------------------
+  // À l'enregistrement, les titres (ou alias) de pages existantes cités sans lien
+  // sont proposés ; un clic change la première mention en [[lien]]. Le code, les
+  // formules, les liens, les titres de section et les propriétés sont ignorés.
+  const zoneLiens = form.querySelector("[data-suggestions-liens]");
+  const LETTRE = /[\p{L}\p{N}_]/u;
+  const dejaProposes = new Set();
+  let fermerSansLier = false;
+
+  function plagesExclues(texte) {
+    const plages = [];
+    if (texte.startsWith("---\n")) {
+      const fin = texte.indexOf("\n---", 4);
+      if (fin > 0) plages.push([0, fin + 4]);
+    }
+    const re = /```[\s\S]*?(?:```|(?![\s\S]))|~~~[\s\S]*?(?:~~~|(?![\s\S]))|`[^`\n]*`|\$\$[\s\S]*?\$\$|\$[^$\n]+\$|!?\[\[[^\]\n]*\]\]|!?\[[^\]\n]*\]\([^)\n]*\)|<[^>\n]*>|https?:\/\/\S+|^#{1,6}[ \t].*$|%%[\s\S]*?%%/gm;
+    for (const m of texte.matchAll(re)) plages.push([m.index, m.index + m[0].length]);
+    return plages;
+  }
+
+  function replierAvecPositions(texte) {
+    // Texte replié (minuscules sans accents) et, pour chaque caractère replié, sa place d'origine.
+    let replie = "";
+    const pos = [];
+    for (let i = 0; i < texte.length; i++) {
+      const r = normalize(texte[i]);
+      replie += r;
+      for (let k = 0; k < r.length; k++) pos.push(i);
+    }
+    pos.push(texte.length);
+    return { replie, pos };
+  }
+
+  function nomsDe(choix) {
+    const noms = new Set([choix.title, ...(choix.aliases || []), choix.link.split("/").pop()]);
+    return [...noms].map((n) => (n || "").trim()).filter((n) => n.length >= 4 && !/^\d+$/.test(n));
+  }
+
+  function suggestionsDeLiens() {
+    const texte = view.state.doc.toString();
+    const cibles = new Set();
+    for (const m of texte.matchAll(/\[\[([^\]|#^\n]+)/g)) {
+      const cible = normalize(m[1].trim());
+      cibles.add(cible);
+      cibles.add(cible.split("/").pop());
+    }
+    const parNom = new Map();
+    for (const choix of choices) {
+      if (choix.link === noteName || choix.link === noteKey) continue;
+      const noms = nomsDe(choix);
+      const lien = normalize(choix.link);
+      if (cibles.has(lien) || cibles.has(lien.split("/").pop()) || noms.some((n) => cibles.has(normalize(n)))) continue;
+      for (const n of noms) if (!parNom.has(normalize(n))) parNom.set(normalize(n), choix);
+    }
+    if (!parNom.size) return [];
+    const { replie, pos } = replierAvecPositions(texte);
+    const echapper = (x) => x.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const motif = new RegExp([...parNom.keys()].sort((a, b) => b.length - a.length).map(echapper).join("|"), "g");
+    const exclues = plagesExclues(texte);
+    const trouvees = new Map();
+    let m;
+    while ((m = motif.exec(replie))) {
+      const debut = m.index, fin = debut + m[0].length;
+      if ((debut > 0 && LETTRE.test(replie[debut - 1])) || (fin < replie.length && LETTRE.test(replie[fin]))) {
+        motif.lastIndex = debut + 1;
+        continue;
+      }
+      const de = pos[debut], a = pos[fin];
+      if (exclues.some(([x, y]) => de < y && a > x)) continue;
+      const choix = parNom.get(m[0]);
+      const t = trouvees.get(choix.link) || { choix, nombre: 0, premiere: { de, a, texte: texte.slice(de, a) } };
+      t.nombre++;
+      trouvees.set(choix.link, t);
+    }
+    return [...trouvees.values()]
+      .sort((x, y) => y.nombre - x.nombre || x.choix.title.localeCompare(y.choix.title, "fr"))
+      .slice(0, 8);
+  }
+
+  function lier(link) {
+    const s = suggestionsDeLiens().find((x) => x.choix.link === link);
+    if (s) {
+      const { de, a, texte } = s.premiere;
+      const insert = texte.toLowerCase() === s.choix.link.toLowerCase() ? `[[${texte}]]` : `[[${s.choix.link}|${texte}]]`;
+      view.dispatch({ changes: { from: de, to: a, insert }, userEvent: "input" });
+      status("Lien ajouté : pensez à enregistrer.", "dirty");
+    }
+    afficherLiens(false);
+  }
+
+  function afficherLiens(avantFermeture) {
+    if (!zoneLiens) return [];
+    const liste = suggestionsDeLiens();
+    zoneLiens.replaceChildren();
+    if (!liste.length) {
+      zoneLiens.hidden = true;
+      return liste;
+    }
+    const intro = document.createElement("span");
+    intro.textContent = avantFermeture ? "Avant de fermer : ces pages existent, les lier ?" : "Pages existantes citées sans lien :";
+    zoneLiens.append(intro);
+    for (const s of liste) {
+      dejaProposes.add(s.choix.link);
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "button small";
+      b.dataset.lier = s.choix.link;
+      b.title = `Changer « ${s.premiere.texte} » en lien vers « ${s.choix.title} »` + (s.nombre > 1 ? ` (première des ${s.nombre} mentions)` : "");
+      b.textContent = `🔗 ${s.choix.title}` + (s.nombre > 1 ? ` ×${s.nombre}` : "");
+      b.addEventListener("click", () => lier(s.choix.link));
+      zoneLiens.append(b);
+    }
+    if (avantFermeture) {
+      const fermer = document.createElement("button");
+      fermer.type = "button";
+      fermer.className = "button small primary";
+      fermer.textContent = "Enregistrer et fermer sans lier";
+      fermer.addEventListener("click", () => {
+        fermerSansLier = true;
+        form.requestSubmit(form.querySelector("[data-submit]"));
+      });
+      zoneLiens.append(fermer);
+    }
+    const masquer = document.createElement("button");
+    masquer.type = "button";
+    masquer.className = "link-button editor-liens-masquer";
+    masquer.setAttribute("aria-label", "Masquer les suggestions de liens");
+    masquer.textContent = "✕";
+    masquer.addEventListener("click", () => { zoneLiens.hidden = true; });
+    zoneLiens.append(masquer);
+    zoneLiens.hidden = false;
+    return liste;
+  }
+
   // « Enregistrer et fermer » : le formulaire classique, avec le texte de l'éditeur.
-  form.addEventListener("submit", () => {
+  // S'il reste des pages citées sans lien jamais proposées, on les montre d'abord (une fois).
+  form.addEventListener("submit", (e) => {
+    if (!fermerSansLier && zoneLiens && suggestionsDeLiens().some((x) => !dejaProposes.has(x.choix.link))) {
+      e.preventDefault();
+      afficherLiens(true);
+      zoneLiens.scrollIntoView({ block: "nearest" });
+      return;
+    }
     textarea.value = view.state.doc.toString();
     submitting = true;
     oublierBrouillon();

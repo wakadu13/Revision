@@ -1202,3 +1202,25 @@ def tuteur(note, question, historique=()):
     if not texte:
         raise Echec("Claude n'a renvoyé aucune réponse.")
     return texte, _usage(message), MODELE_EXPLICATIONS
+
+
+CONSIGNE_WIKI = """Tu réponds à un étudiant à partir de son wiki de cours : des extraits numérotés de ses pages et \
+de ses PDF te sont fournis. Réponds en français, en 3 à 12 phrases, en Markdown léger (gras pour les mots clés, listes \
+courtes, formules en LaTeX entre $). Appuie-toi d'abord sur les extraits et cite-les par leur numéro entre crochets, \
+par exemple [2] ou [1, 3], juste après l'idée qu'ils appuient. Si les extraits ne contiennent pas la réponse, dis-le \
+clairement (« Le wiki n'en parle pas »), puis réponds avec prudence d'après tes connaissances, sans citation. \
+N'invente jamais de numéro de source."""
+
+
+def demander_wiki(question, sources, historique=()):
+    """Réponse (Haiku) à une question sur tout le wiki, d'après les extraits numérotés :
+    (texte Markdown, usage, modèle)."""
+    client = _client_pret()
+    extraits = "\n\n".join(f"[{i}] {s['titre']}\n{s['texte']}" for i, s in enumerate(sources, 1))
+    systeme = f"{CONSIGNE_WIKI}\n\nExtraits du wiki :\n\n{extraits or '(aucun extrait ne correspond à la question)'}"
+    message = _appeler(client, _demande(MODELE_EXPLICATIONS, systeme, question[:MAX_CHARS_QUESTION],
+                                        max_tokens=MAX_TOKENS_TUTEUR, effort="low", historique=historique))
+    texte = _texte_reponse(message)
+    if not texte:
+        raise Echec("Claude n'a renvoyé aucune réponse.")
+    return texte, _usage(message), MODELE_EXPLICATIONS

@@ -28,7 +28,7 @@ const A_PRECHARGER = [
 // Pages jamais mises en cache : édition, comptes, API, et le QCM (autre service worker).
 const EXCLUS = [/^\/modifier\//, /^\/apercu\//, /^\/nouvelle\//, /^\/importer\//, /^\/transformations/, /^\/claude\//,
   /^\/historique\//, /^\/admin\//, /^\/connexion/, /^\/deconnexion/, /^\/compte/, /^\/utilisateurs/, /^\/inscription/,
-  /^\/api\//, /^\/qcm\//, /^\/hors-ligne\//, /^\/palette\.json/, /^\/recherche\//];
+  /^\/api\//, /^\/qcm\//, /^\/hors-ligne\//, /^\/palette\.json/, /^\/recherche\//, /^\/demander\//];
 const DELAI_RESEAU_MS = 5000;
 
 self.addEventListener("install", (event) => {

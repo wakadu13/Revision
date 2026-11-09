@@ -58,6 +58,8 @@
         <li><a href="{% url 'wiki:home' %}">Accueil</a></li>
         <li><a href="{% url 'wiki:sommaire' %}">Sommaire</a></li>
         <li><a href="{% url 'wiki:tags' %}">Tags</a></li>
+        <li><a href="{% url 'wiki:graphe' %}">Graphe</a></li>
+        {% if demander_dispo %}<li><a href="{% url 'wiki:demander' %}">✦ Demander au wiki</a></li>{% endif %}
         <li><a href="{% url 'wiki:aujourdhui' %}">Aujourd'hui</a></li>
         <li><a href="{% url 'wiki:quiz_index' %}">QCM</a></li>
         <li><a href="{% url 'wiki:documentation' %}">Documentation</a></li>

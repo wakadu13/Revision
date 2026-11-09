@@ -3312,3 +3312,148 @@ class EspacePersoTests(QuizTests):
     def test_nom_de_dossier_sur(self):
         self.assertEqual(quiz.nom_perso("jean/../x"), "jean_.._x")
         self.assertEqual(quiz.nom_perso("é.a@b+c-d"), "é.a@b+c-d")
+
+
+def _pdf_texte(*pages):
+    """PDF minimal (Helvetica) : une page par texte, une ligne par « \\n »."""
+    objets = [b"<< /Type /Catalog /Pages 2 0 R >>",
+              f"<< /Type /Pages /Kids [{' '.join(f'{4 + 2 * i} 0 R' for i in range(len(pages)))}] /Count {len(pages)} >>".encode(),
+              b"<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>"]
+    for i, texte in enumerate(pages):
+        lignes = " ".join(f"({ligne}) Tj 0 -16 Td" for ligne in texte.split("\n"))
+        flux = f"BT /F1 12 Tf 72 720 Td {lignes} ET".encode("cp1252")
+        objets.append(f"<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents {5 + 2 * i} 0 R >>".encode())
+        objets.append(b"<< /Length %d >>\nstream\n" % len(flux) + flux + b"\nendstream")
+    sortie, positions = bytearray(b"%PDF-1.4\n"), []
+    for i, objet in enumerate(objets, 1):
+        positions.append(len(sortie))
+        sortie += f"{i} 0 obj\n".encode() + objet + b"\nendobj\n"
+    xref = len(sortie)
+    sortie += f"xref\n0 {len(objets) + 1}\n0000000000 65535 f \n".encode() + b"".join(f"{p:010d} 00000 n \n".encode() for p in positions)
+    sortie += f"trailer\n<< /Size {len(objets) + 1} /Root 1 0 R >>\nstartxref\n{xref}\n%%EOF\n".encode()
+    return bytes(sortie)
+
+
+@override_settings(WIKI_CLAUDE_FIL=False)
+@mock.patch.dict("os.environ", {"WIKI_CLAUDE_CLE": "sk-ant-test", "ANTHROPIC_API_KEY": "", "WIKI_CLAUDE_MODELE": "", "WIKI_CLAUDE_EFFORT": ""})
+class ExplorerTests(WikiTestCase):
+    """Recherche dans le texte des PDF, « Demander au wiki », graphe des liens."""
+
+    def setUp(self):
+        super().setUp()
+        (self.root / "Cours").mkdir()
+        (self.root / "Cours/Poly signal.pdf").write_bytes(_pdf_texte(
+            "Introduction au signal", "La transformée de Fourier\ndécompose un signal en fréquences.",
+            "Annexe : trans-\nformée en Z"))
+        self.write("Cours/Fourier.md", "# Fourier\n\nLa **transformée de Fourier** passe du temps aux fréquences.\n\n"
+                                       "Voir [[Échantillonnage]] et [[Fourier]].\n")
+        self.write("Cours/Échantillonnage.md", "# Échantillonnage\n\nShannon : $f_e > 2 f_{max}$. Lien vers [[Fourier]].\n")
+        self.write("Divers/Isolée.md", "Rien à voir.\n")
+
+    def test_recherche_dans_les_pdf(self):
+        from wiki import texte_pdf
+        from wiki.models import TextePdf
+        # Avant lecture des PDF : la page le signale (le fil d'arrière-plan est coupé en test).
+        self.assertContains(self.client.get("/recherche/", {"q": "fréquences"}), "Lecture du texte des PDF en cours (1 restant)")
+        self.assertEqual(texte_pdf.indexer(get_vault()), 1)
+        self.assertEqual(texte_pdf.indexer(get_vault()), 0)  # rien de neuf : rien n'est relu
+        self.assertEqual(TextePdf.objects.get().pages[2], "Annexe : transformée en Z")
+        page = self.client.get("/recherche/", {"q": "frequences"}).content.decode()
+        self.assertIn("Dans les PDF", page)
+        self.assertIn('href="/pdf/Cours/Poly%20signal.pdf#page=2"', page)
+        self.assertIn("<mark>fréquences</mark>", page)
+        self.assertNotIn("Lecture du texte des PDF en cours", page)
+        # Un mot coupé en fin de ligne est retrouvé ; les mots doivent être sur la même page.
+        self.assertIn("#page=3", self.client.get("/recherche/", {"q": "transformée en z"}).content.decode())
+        self.assertNotIn("Dans les PDF", self.client.get("/recherche/", {"q": "introduction fourier"}).content.decode())
+        # PDF supprimé : oublié à la lecture suivante ; PDF illisible : noté, sans erreur.
+        (self.root / "Cours/Poly signal.pdf").unlink()
+        (self.root / "abime.pdf").write_bytes(b"%PDF-1.4\npas un vrai pdf")
+        from wiki.vault import invalider
+        invalider()
+        texte_pdf.indexer(get_vault())
+        self.assertEqual(list(TextePdf.objects.values_list("chemin", flat=True)), ["abime.pdf"])
+        self.assertNotIn("Dans les PDF", self.client.get("/recherche/", {"q": "fréquences"}).content.decode())
+
+    def test_commande_indexer_pdf(self):
+        from io import StringIO
+        from django.core.management import call_command
+        sortie = StringIO()
+        call_command("indexer_pdf", stdout=sortie)
+        self.assertIn("1 PDF lu ; 1 dans l'index.", sortie.getvalue())
+
+    def test_mots_cles_passages_et_citations(self):
+        from wiki import demander
+        self.assertEqual(demander.mots_cles("Qu'est-ce que la transformée de Fourier ? Explique la FFT"),
+                         ["transformee", "fourier", "fft"])
+        texte = "Intro générale.\n\nLe temps.\n\nLa transformée de Fourier.\n\nConclusion."
+        self.assertEqual(demander.passages(texte, ["fourier"], 30), "La transformée de Fourier.")
+        self.assertEqual(demander.passages(texte, ["fourier"], 1000), texte)
+        sources = [{"titre": "A", "url": "/wiki/A", "type": "page"}, {"titre": "B", "url": "/pdf/b.pdf#page=2", "type": "pdf"}]
+        html, cites = demander.lier_citations(
+            '<p>Vrai [1, 2], faux [7].</p><pre><code>t[1]</code></pre><span class="math math-inline">\\(x[2]\\)</span><p>[2]</p>', sources)
+        self.assertEqual(cites, [1, 2])
+        self.assertIn('<a class="citation" href="/wiki/A" title="A">[1]</a><a class="citation" href="/pdf/b.pdf#page=2" title="B">[2]</a>', html)
+        self.assertIn("faux [7]", html)
+        self.assertIn("<code>t[1]</code>", html)
+        self.assertIn("\\(x[2]\\)", html)
+        self.assertTrue(html.endswith('<p><a class="citation" href="/pdf/b.pdf#page=2" title="B">[2]</a></p>'))
+
+    def test_demander_au_wiki(self):
+        from wiki import claude, texte_pdf
+        from wiki.models import EchangeTuteur, UsageClaude
+        texte_pdf.indexer(get_vault())
+        self.assertContains(self.client.get("/demander/", {"q": "Fourier ?"}), "Fourier ?</textarea>")
+        self.assertContains(self.client.get("/"), "Demander au wiki")
+        faux = _FauxClaude("La transformée de **Fourier** décompose un signal [1][3]. Voir aussi [9].")
+        with mock.patch.object(claude, "_client", return_value=faux):
+            r = self.client.post("/demander/", data=json.dumps({"question": "À quoi sert la transformée de Fourier ?"}),
+                                 content_type="application/json")
+        self.assertEqual(r.status_code, 200, r.content)
+        donnees = r.json()
+        demande = faux.demandes[0]
+        self.assertEqual(demande["model"], "claude-haiku-5-5")
+        self.assertIn("[1] Fourier\n", demande["system"])
+        self.assertIn("(PDF, page 2)\nLa transformée de Fourier décompose un signal en fréquences.", demande["system"])
+        # Pages d'abord (la plus pertinente en tête), puis les pages de PDF ; la page sans rapport est écartée.
+        self.assertEqual([s["titre"] for s in donnees["sources"]], ["Fourier", "Échantillonnage", "Poly signal (PDF, page 2)"])
+        self.assertIn('href="/wiki/Cours/Fourier"', donnees["html"])
+        self.assertIn('href="/pdf/Cours/Poly%20signal.pdf#page=2"', donnees["html"])
+        self.assertIn("[9]", donnees["html"])  # numéro inventé : laissé tel quel
+        self.assertEqual([s["n"] for s in donnees["sources"] if s["cite"]], [1, 3])
+        e = EchangeTuteur.objects.get()
+        self.assertEqual((e.page, e.player), (EchangeTuteur.PAGE_WIKI, "lecteur"))
+        self.assertEqual(e.sources[0], {"titre": "Fourier", "url": "/wiki/Cours/Fourier", "type": "page"})
+        self.assertEqual(UsageClaude.objects.get().genre, "wiki")
+        # Question de suite : l'échange précédent est rejoué, la question précédente aide la recherche.
+        with mock.patch.object(claude, "_client", return_value=faux):
+            self.client.post("/demander/", data=json.dumps({"question": "Et son inverse ?"}), content_type="application/json")
+        self.assertEqual(len(faux.demandes[1]["messages"]), 3)
+        self.assertIn("[1] Fourier\n", faux.demandes[1]["system"])
+        page = self.client.get("/demander/").content.decode()
+        self.assertLess(page.index("Et son inverse ?"), page.index("À quoi sert la transformée"))
+        self.assertIn('class="citation"', page)
+        # Les échanges du tuteur d'une page restent à part.
+        self.assertNotContains(self.client.get("/wiki/Cours/Fourier"), "Et son inverse ?")
+        # Rien de pertinent : Claude est prévenu qu'aucun extrait ne correspond.
+        with mock.patch.object(claude, "_client", return_value=faux):
+            self.client.post("/demander/", data=json.dumps({"question": "Recette du gâteau basque"}), content_type="application/json")
+        self.assertIn("(aucun extrait ne correspond à la question)", faux.demandes[2]["system"])
+        # Erreurs : question vide, sans clé d'API.
+        self.assertEqual(self.client.post("/demander/", data=json.dumps({"question": " "}), content_type="application/json").status_code, 400)
+        with mock.patch.dict("os.environ", {"WIKI_CLAUDE_CLE": ""}):
+            self.assertEqual(self.client.post("/demander/", data=json.dumps({"question": "x"}), content_type="application/json").status_code, 503)
+            self.assertNotContains(self.client.get("/"), "Demander au wiki")
+
+    def test_graphe(self):
+        donnees = self.client.get("/graphe.json").json()
+        titres = [n["t"] for n in donnees["noeuds"]]
+        self.assertEqual(sorted(titres), ["Fourier", "Isolée", "Échantillonnage"])
+        i, j = titres.index("Fourier"), titres.index("Échantillonnage")
+        self.assertEqual(donnees["liens"], [[min(i, j), max(i, j)]])  # un seul lien, sans boucle sur soi
+        self.assertEqual(donnees["noeuds"][i]["d"], "Cours")
+        self.assertContains(self.client.get("/graphe/"), "graphe.js")
+        page = self.client.get("/graphe/", {"page": "Cours/Fourier"})
+        self.assertContains(page, 'data-centre="Cours/Fourier"')
+        self.assertContains(page, "les voisines de la page")
+        self.assertContains(self.client.get("/wiki/Cours/Fourier"), "/graphe/?page=Cours/Fourier")

@@ -210,6 +210,9 @@ WIKI_VERIF_INTERVALLE = float(os.environ.get('WIKI_VERIF_INTERVALLE', '2'))
 if len(sys.argv) > 1 and sys.argv[1] == 'test':
     WIKI_VERIF_INTERVALLE = 0.0
 
+# Texte des PDF (recherche, « Demander au wiki ») : extrait en arrière-plan.
+WIKI_INDEX_PDF_FIL = not (len(sys.argv) > 1 and sys.argv[1] == 'test')
+
 # Cours (PDF, LaTeX) transformés en pages par Claude (wiki/claude.py) : clé
 # d'API dans la variable d'environnement WIKI_CLAUDE_CLE, modèle dans
 # WIKI_CLAUDE_MODELE (Claude Opus 5.5 par défaut). Traitement dans un fil

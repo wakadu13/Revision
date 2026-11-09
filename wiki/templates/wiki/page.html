@@ -110,5 +110,6 @@
     {% else %}
     <p class="muted">Aucune note ne pointe ici.</p>
     {% endif %}
+    <p><a class="button small" href="{% url 'wiki:graphe' %}?page={{ note.key|urlencode }}">Voir dans le graphe</a></p>
   </section>
 {% endblock %}
