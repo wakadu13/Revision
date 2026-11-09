@@ -204,3 +204,8 @@ node_modules/
 # Versions précédentes des pages (historique), hors du coffre
 /versions/
 
+
+# Clé privée des notifications web (wiki/push.py)
+/vapid_prive.pem
+# Espaces personnels des comptes (sets et paquets importés)
+/perso/
