@@ -101,6 +101,7 @@ class Question:
     consigne: str = ""                                       # ex. « Traduire en anglais », QRC
     verso: str = ""                                          # dos de carte, FLASHCARD
     explication: str = ""
+    masque: dict | None = None                               # carte d'image masquée (wiki/masque.py)
 
     @property
     def est_qcr(self) -> bool:
@@ -142,6 +143,11 @@ class QuestionSet:
     def __len__(self) -> int:
         return len(self.questions)
 
+    @property
+    def est_masque(self) -> bool:
+        """Set de cartes à image masquée (modifiable dans l'éditeur de zones)."""
+        return any(q.masque for q in self.questions)
+
     @cached_property
     def texte_recherche(self) -> str:
         """Titre, description, catégorie et énoncés, normalisés pour la recherche."""
@@ -175,7 +181,7 @@ def question_depuis_json(q, i: int, contexte: str) -> Question:
         raise ValueError(f"{contexte} : clé 'question' manquante.")
     type_q = str(q.get("type", "QCM")).upper()
     if type_q not in TYPES_VALIDES:
-        raise ValueError(f"{contexte} : type '{type_q}' inconnu (QCM, QCR, TROU, QRC, FLASHCARD).")
+        raise ValueError(f"{contexte} : type '{type_q}' inconnu (QCM, QCR, TROU, QRC, FLASHCARD, MASQUE).")
 
     choix, reponses, reponses_texte, verso, consigne = [], [], [], "", ""
     if type_q in ("QCM", "QCR"):
@@ -223,6 +229,11 @@ def set_depuis_json(data, rel: PurePosixPath) -> QuestionSet:
 
     questions: list[Question] = []
     for i, q in enumerate(data["questions"], start=1):
+        if isinstance(q, dict) and str(q.get("type", "")).upper() == "MASQUE":
+            from .masque import questions as questions_masque
+
+            questions.extend(questions_masque(q, i, f"{rel} » question #{i}"))
+            continue
         question = question_depuis_json(q, i, f"{rel} » question #{i}")
         questions.append(question)
         # QRC « inverse » : on pose aussi la question dans l'autre sens

@@ -448,9 +448,20 @@ dans la barre latérale ou sur `/qcm/`.
   page « Aujourd'hui ». Un autre compte, même admin, ne les voit nulle part.
   Limite : 200 fichiers et 20 Mo par compte. Fichiers rangés hors du coffre,
   dans `perso/<compte>/` du dossier de données.
-- 5 types de questions : **QCM**, **QCR** (plusieurs réponses), **TROU** (texte à
+- **Cartes à image masquée** (`/qcm/image-masquee/`, bouton « 🖼 Image
+  masquée » sur la page des QCM et dans « Mon espace ») : un schéma (image du
+  coffre ou envoyée), des rectangles tracés à la souris ou au doigt, un nom pour
+  chacun ; chaque zone devient une carte où elle est cachée (en couleur, les
+  autres zones cachées en gris si « Cacher aussi les autres zones » est coché),
+  qui se découvre en retournant la carte. Rangées dans « Mon espace » (tout
+  compte) ou dans le coffre sous `QCM/<dossier>/` (admins) ; « 🖼 Modifier les
+  zones » sur le set pour les reprendre. Format JSON : question de type
+  `MASQUE` (voir `wiki/masque.py`). Révision FSRS et hors ligne comme les
+  autres ; pas d'export Anki (l'image reste sur le wiki).
+- 6 types de questions : **QCM**, **QCR** (plusieurs réponses), **TROU** (texte à
   trous), **QRC** (réponse courte tapée : traduction, synonyme…, avec sens inverse
-  optionnel) et **FLASHCARD** (recto/verso). Markdown et formules LaTeX `$...$` gérés.
+  optionnel), **FLASHCARD** (recto/verso) et **MASQUE** (image masquée, voir plus
+  bas). Markdown et formules LaTeX `$...$` gérés.
 - Feedback immédiat, navigation clavier, et **révision espacée FSRS** (le même
   planificateur que le module Langues) : chaque question revient juste avant
   d'être oubliée, les plus menacées d'abord ; statistiques de maîtrise et de

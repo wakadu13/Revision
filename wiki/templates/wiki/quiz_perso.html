@@ -6,7 +6,8 @@
   <p class="muted">Vos propres sets de QCM et paquets de vocabulaire : <b>vous seul les voyez</b>. Ils apparaissent
     avec les autres sur la page des QCM (marqués 🔒), se révisent pareil, en ligne comme hors ligne, et s'exportent
     vers Anki. {{ nombre }} fichier{{ nombre|pluralize }} sur {{ max_fichiers }}.</p>
-  <p><a class="button small" href="{% url 'wiki:quiz_index' %}">← QCM</a></p>
+  <p><a class="button small" href="{% url 'wiki:quiz_index' %}">← QCM</a>
+    <a class="button small primary" href="{% url 'wiki:quiz_masque' %}">🖼 Cartes à image masquée</a></p>
 
   {% if erreurs %}
   <div class="callout" data-callout="warning">
@@ -24,7 +25,8 @@
         <a href="{{ x.jouer }}"><b>{{ x.set.titre }}</b></a>
         <span class="muted">· {% if x.langue %}{{ x.set.langue }} · {% endif %}{{ x.dossier }} · {{ x.taille }} {% if x.langue %}exercice{{ x.taille|pluralize }}{% else %}question{{ x.taille|pluralize }}{% endif %}</span>
         <span class="perso-actions">
-          <a class="button small" href="{% url 'wiki:quiz_export' %}?set={{ x.set.id|urlencode }}">⬇ Anki</a>
+          {% if x.set.est_masque %}<a class="button small" href="{% url 'wiki:quiz_masque' %}?set={{ x.set.id|urlencode }}">🖼 Zones</a>
+          {% else %}<a class="button small" href="{% url 'wiki:quiz_export' %}?set={{ x.set.id|urlencode }}">⬇ Anki</a>{% endif %}
           <form method="post" data-confirm="Supprimer « {{ x.set.titre }} » et sa progression ?">{% csrf_token %}
             <input type="hidden" name="action" value="supprimer"><input type="hidden" name="set" value="{{ x.set.id }}">
             <button type="submit" class="button small danger">Supprimer</button></form>

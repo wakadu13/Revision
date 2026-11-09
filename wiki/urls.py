@@ -1,6 +1,6 @@
 from django.urls import path
 
-from . import explorer_views, hors_ligne_views, langues_views, quiz_views, views
+from . import explorer_views, hors_ligne_views, langues_views, masque_views, quiz_views, views
 
 app_name = "wiki"
 
@@ -51,6 +51,8 @@ urlpatterns = [
     path("qcm/stats/", quiz_views.stats, name="quiz_stats"),
     path("qcm/exporter/", quiz_views.exporter, name="quiz_export"),
     path("qcm/mon-espace/", quiz_views.perso, name="quiz_perso"),
+    path("qcm/mon-espace/images/<str:nom>", masque_views.image_perso, name="quiz_perso_image"),
+    path("qcm/image-masquee/", masque_views.editeur, name="quiz_masque"),
     path("qcm/signaler/", quiz_views.signaler, name="quiz_signaler"),
     path("qcm/signalements/", quiz_views.signalements, name="quiz_signalements"),
     path("qcm/reinitialiser/", quiz_views.reset, name="quiz_reset"),

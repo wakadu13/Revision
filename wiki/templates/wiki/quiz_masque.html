@@ -1,0 +1,64 @@
+{% extends "wiki/base.html" %}
+{% load static %}
+{% block title %}{% if donnees %}Modifier les zones · {{ donnees.titre }}{% else %}Cartes à image masquée{% endif %}{% endblock %}
+{% block content %}
+<article class="note masque-page" id="masque-editeur" data-url="{% url 'wiki:quiz_masque' %}" data-csrf="{{ csrf_token }}"
+         data-perso-url="{% url 'wiki:quiz_perso' %}">
+  <h1 class="note-title">{% if donnees %}Modifier les zones{% else %}Cartes à image masquée{% endif %}</h1>
+  <p class="muted">Un schéma, des zones à retenir : chaque zone tracée devient une carte où elle est cachée, et il faut
+    dire ce qu'elle cache. Les cartes se révisent comme les autres (FSRS, hors ligne).</p>
+  <p><a class="button small" href="{% url 'wiki:quiz_perso' %}">← Mon espace</a>
+    {% if donnees %}<a class="button small" href="{{ donnees.jouer }}">Réviser ce set</a>{% endif %}</p>
+
+  <div class="masque-image-choix">
+    <label>Image du wiki
+      <input list="masque-images" data-image-choix placeholder="Chercher une image…" autocomplete="off"></label>
+    <span class="muted">ou</span>
+    <label class="button">📷 Envoyer une image
+      <input type="file" accept="image/png,image/jpeg,image/webp,image/gif" data-image-fichier class="sr-only"></label>
+  </div>
+  <datalist id="masque-images">{% for i in images %}<option value="{{ i.lien }}">{{ i.dossier }}</option>{% endfor %}</datalist>
+
+  <div class="masque-travail">
+    <div class="masque-scene-cadre">
+      <p class="masque-vide muted" data-vide>Choisissez d'abord une image, puis tracez des rectangles dessus.</p>
+      <div class="masque-scene" data-scene hidden>
+        <img data-image alt="Image à masquer">
+        <div class="masque-calque" data-calque aria-label="Zone de dessin : glissez pour tracer un rectangle"></div>
+      </div>
+    </div>
+    <div class="masque-liste">
+      <h2>Zones <span class="muted" data-compte></span></h2>
+      <ol data-zones></ol>
+      <p class="muted">Glissez sur l'image pour tracer une zone ; touchez une zone pour la choisir, la déplacer ou
+        l'agrandir (coin en bas à droite) ; <kbd>Suppr</kbd> l'efface. {{ max_zones }} zones au plus.</p>
+    </div>
+  </div>
+
+  <form data-masque-form class="form claude-form masque-form">
+    <div class="claude-champs">
+      <label>Titre <input name="titre" required maxlength="120" placeholder="Ex. : Le cœur"></label>
+      <label>Consigne <input name="question" maxlength="300" placeholder="{{ enonce_defaut }}"></label>
+    </div>
+    <label class="checkbox"><input type="checkbox" name="masquer_tout" value="1" checked> Cacher aussi les autres zones (plus difficile)</label>
+    {% if not donnees %}
+    <div class="claude-champs">
+      {% if can_edit %}
+      <label>Ranger dans
+        <select name="destination">
+          <option value="perso">Mon espace (visible de moi seul)</option>
+          <option value="coffre">le coffre, sous QCM/ (visible de tous)</option>
+        </select></label>
+      {% else %}<input type="hidden" name="destination" value="perso">{% endif %}
+      <label>Dossier <input name="dossier" list="masque-dossiers" placeholder="Images masquées"></label>
+    </div>
+    <datalist id="masque-dossiers">{% for d in dossiers %}<option value="{{ d }}">{% endfor %}</datalist>
+    {% endif %}
+    <p class="masque-actions"><button type="submit" class="button primary">Enregistrer les cartes</button>
+      <span data-masque-etat role="status"></span></p>
+  </form>
+  {{ donnees|json_script:"masque-donnees" }}
+  {{ images|json_script:"masque-images-json" }}
+</article>
+<script src="{% static 'wiki/masque.js' %}" defer></script>
+{% endblock %}

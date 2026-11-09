@@ -730,6 +730,7 @@ def palette(request):
         {"t": "Tags", "u": reverse("wiki:tags")},
         {"t": "Aujourd'hui", "u": reverse("wiki:aujourdhui")},
         {"t": "Mon espace (QCM personnels)", "u": reverse("wiki:quiz_perso")},
+        {"t": "Cartes à image masquée (schéma)", "u": reverse("wiki:quiz_masque")},
         {"t": "QCM", "u": reverse("wiki:quiz_index")},
         {"t": "Révision intelligente (QCM)", "u": f"{jouer}?revision=1"},
         {"t": "Statistiques des QCM", "u": reverse("wiki:quiz_stats")},

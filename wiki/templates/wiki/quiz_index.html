@@ -10,6 +10,7 @@
     <a class="button primary" href="{% url 'wiki:quiz_play' %}?revision=1">Révision intelligente</a>
     <a class="button" href="{% url 'wiki:aujourdhui' %}">Aujourd'hui</a>
     <a class="button" href="{% url 'wiki:quiz_perso' %}" title="Vos propres sets et listes de mots, visibles de vous seul">🔒 Mon espace</a>
+    <a class="button" href="{% url 'wiki:quiz_masque' %}" title="Schéma dont il faut retrouver les zones cachées">🖼 Image masquée</a>
     <a class="button" href="{% url 'wiki:quiz_stats' %}">Statistiques</a>
     <a class="button" href="{% url 'wiki:quiz_offline' %}">Hors ligne (téléphone)</a>
     {% if can_edit %}<a class="button" href="{% url 'wiki:quiz_signalements' %}" title="Questions signalées par les joueurs">⚑ Signalements{% if signalements_ouverts %} <b>({{ signalements_ouverts }})</b>{% endif %}</a>{% endif %}
