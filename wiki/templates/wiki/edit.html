@@ -14,6 +14,11 @@
     <input type="hidden" name="version" value="{{ version }}">
     <div class="toolbar" role="toolbar" aria-label="Mise en forme" hidden>
       <div class="toolbar-group">
+        <button type="button" class="button" data-action="undo" title="Annuler (Ctrl+Z)" aria-label="Annuler">↶</button>
+        <button type="button" class="button" data-action="redo" title="Rétablir (Ctrl+Y)" aria-label="Rétablir">↷</button>
+      </div>
+      <span class="toolbar-sep"></span>
+      <div class="toolbar-group">
         <button type="button" class="button primary" data-action="page-link" title="Lien vers une page (Ctrl+K, ou tapez [[)">[[ Lien ]]</button>
         <button type="button" class="button" data-action="web-link" title="Lien web">Lien web</button>
         <button type="button" class="button" data-action="attach" title="Insérer une image ou un PDF, ajouté au coffre (vous pouvez aussi le coller ou le glisser dans le texte)">Image / PDF</button>
@@ -31,11 +36,20 @@
         <button type="button" class="button" data-action="heading" title="Titre : un clic de plus pour descendre d'un niveau">Titre</button>
         <button type="button" class="button" data-action="list" title="Liste à puces">Liste</button>
         <button type="button" class="button" data-action="task" title="Case à cocher (Ctrl+Entrée pour la cocher)">☐</button>
-        <button type="button" class="button" data-action="callout" title="Encadré (callout)">Encadré</button>
-        <button type="button" class="button" data-action="table" title="Tableau">Tableau</button>
+        <details class="toolbar-menu" data-menu="encadre">
+          <summary class="button" title="Encadré (callout) : définition, théorème, méthode, attention…">Encadré ▾</summary>
+          <div class="menu" role="menu" data-menu-encadres></div>
+        </details>
+        <button type="button" class="button" data-action="table" title="Tableau (« Insérer » pour l'aligner)">Tableau</button>
         <button type="button" class="button" data-action="codeblock" title="Bloc de code">{ }</button>
         <button type="button" class="button" data-action="math" title="Formule LaTeX (Ctrl+Maj+M) : $…$ dans le texte, ou bloc $$ sur une ligne vide">∑</button>
+        <details class="toolbar-menu" data-menu="inserer">
+          <summary class="button" title="Symboles, formules types, date, séparateur, alignement d'un tableau">Insérer ▾</summary>
+          <div class="menu menu-inserer" role="menu" data-menu-inserer></div>
+        </details>
       </div>
+      <span class="toolbar-sep"></span>
+      <button type="button" class="button" data-action="aide" title="Aide : syntaxe Markdown et raccourcis" aria-label="Aide">?</button>
       {% if ameliorer_url %}
       <span class="toolbar-sep"></span>
       <button type="button" class="button" data-action="ameliorer" title="Claude corrige l'orthographe et rend le passage sélectionné (ou toute la page) plus clair, sans changer le sens ni le balisage ; Ctrl+Z annule">✦ Améliorer</button>
@@ -44,6 +58,7 @@
       <div class="segmented" role="radiogroup" aria-label="Mode d'affichage">
         <button type="button" class="button" role="radio" data-mode="live" aria-checked="true" title="Aperçu en direct : la mise en forme s'affiche pendant la saisie, la syntaxe réapparaît sur la ligne en cours">Édition</button>
         <button type="button" class="button" role="radio" data-mode="source" aria-checked="false" title="Source : le Markdown brut">Source</button>
+        <button type="button" class="button" role="radio" data-mode="split" aria-checked="false" title="Côte à côte : le texte à gauche, la page rendue à droite, mise à jour pendant la saisie">Côte à côte</button>
         <button type="button" class="button" role="radio" data-mode="reading" aria-checked="false" title="Lecture : la page telle qu'elle sera publiée (Ctrl+E)">Lecture</button>
       </div>
       <details class="toolbar-menu">
@@ -62,6 +77,13 @@
     <div class="editor-notice" data-latex-notice hidden>
       <span>Ce texte est un document <b>LaTeX</b> : le wiki ne peut pas l'afficher tel quel.</span>
       <button type="button" class="button primary small" data-action="latex">Le convertir en page</button>
+    </div>
+    <div class="editor-notice" data-brouillon-notice hidden>
+      <span>Un <b>brouillon non enregistré</b> du <span data-brouillon-date></span> a été retrouvé sur cet appareil<span data-brouillon-autre hidden> (la page a changé depuis)</span>.</span>
+      <span class="editor-notice-actions">
+        <button type="button" class="button primary small" data-brouillon="reprendre">Reprendre le brouillon</button>
+        <button type="button" class="button small" data-brouillon="ignorer">Ignorer</button>
+      </span>
     </div>
     <div class="editor-area">
       <textarea name="content" id="editor" rows="22" spellcheck="true" autofocus
@@ -130,8 +152,38 @@
   </div>
 </dialog>
 
+<dialog id="aide-dialog" class="dialog dialog-large">
+  <h2>Écrire dans le wiki</h2>
+  <div class="aide-colonnes">
+    <table class="aide-table">
+      <tbody>
+        <tr><td><code># Titre</code>, <code>## Sous-titre</code></td><td>titres (bouton « Titre » : un clic de plus descend d'un niveau)</td></tr>
+        <tr><td><code>**gras**</code> · <code>*italique*</code> · <code>==surligné==</code> · <code>~~barré~~</code></td><td>mise en forme ; le surlignage devient un texte à trous dans « Cartes de la page »</td></tr>
+        <tr><td><code>- élément</code> · <code>1. élément</code> · <code>- [ ] tâche</code></td><td>listes, cases à cocher (Ctrl+Entrée coche)</td></tr>
+        <tr><td><code>[[Page]]</code> · <code>[[Page|texte]]</code> · <code>![[image.png]]</code></td><td>lien vers une page, texte affiché, image ou PDF intégré</td></tr>
+        <tr><td><code>&gt; [!definition] Titre</code></td><td>encadré (définition, théorème, méthode, warning, retenir…) ; <code>[!type]-</code> le replie</td></tr>
+        <tr><td><code>$x^2$</code> · <code>$$ … $$</code></td><td>formule dans le texte, formule en bloc (LaTeX)</td></tr>
+        <tr><td><code>| a | b |</code></td><td>tableau (bouton « Tableau » ; « Insérer → Aligner le tableau » pour ranger les colonnes)</td></tr>
+        <tr><td><code>```python</code></td><td>bloc de code coloré</td></tr>
+        <tr><td><code>#tag</code> · <code>%%commentaire%%</code></td><td>tag (proposé en tapant #), commentaire invisible à la lecture</td></tr>
+      </tbody>
+    </table>
+    <ul class="memo">
+      <li><kbd>Ctrl</kbd>+<kbd>S</kbd> enregistrer · <kbd>Ctrl</kbd>+<kbd>E</kbd> lecture · <kbd>Ctrl</kbd>+<kbd>Z</kbd> / <kbd>Y</kbd> annuler, rétablir</li>
+      <li><kbd>Ctrl</kbd>+<kbd>B</kbd> gras · <kbd>Ctrl</kbd>+<kbd>I</kbd> italique · <kbd>Ctrl</kbd>+<kbd>Maj</kbd>+<kbd>H</kbd> surligner · <kbd>Ctrl</kbd>+<kbd>Maj</kbd>+<kbd>M</kbd> formule</li>
+      <li><kbd>Ctrl</kbd>+<kbd>K</kbd> lien vers une page · <kbd>Ctrl</kbd>+<kbd>F</kbd> rechercher et remplacer · <kbd>Tab</kbd> indenter</li>
+      <li><kbd>Ctrl</kbd>+<kbd>Maj</kbd>+<kbd>F</kbd> plein écran · « Côte à côte » : texte et rendu ensemble</li>
+      <li>Collez ou glissez une image, un PDF ou un <code>.md</code> dans le texte. Un brouillon est gardé sur l'appareil tant que la page n'est pas enregistrée.</li>
+    </ul>
+  </div>
+  <div class="dialog-actions">
+    <button type="button" class="button primary" data-close>Fermer</button>
+  </div>
+</dialog>
+
 {{ link_choices|json_script:"link-choices" }}
 {{ attachment_choices|json_script:"attachment-choices" }}
+{{ tag_choices|json_script:"tag-choices" }}
 <script src="{% static 'wiki/vendor/codemirror.min.js' %}" defer></script>
 <script src="{% static 'wiki/editor.js' %}" defer></script>
 {% endblock %}
@@ -145,7 +197,8 @@
   <ul class="memo">
     <li>Tapez <kbd>[[</kbd> pour lier une page, <kbd>![[</kbd> pour intégrer une image ou une note.</li>
     <li><kbd>Ctrl</kbd>+clic sur un lien l'ouvre dans un nouvel onglet.</li>
-    <li><kbd>Ctrl</kbd>+<kbd>S</kbd> enregistre, <kbd>Ctrl</kbd>+<kbd>E</kbd> bascule en lecture.</li>
+    <li><kbd>Ctrl</kbd>+<kbd>S</kbd> enregistre, <kbd>Ctrl</kbd>+<kbd>E</kbd> bascule en lecture ; « Côte à côte » montre le rendu pendant la saisie.</li>
+    <li>Tapez <kbd>#</kbd> pour un tag, <kbd>[!</kbd> dans un encadré pour son type. Un brouillon non enregistré est retrouvé à la prochaine ouverture.</li>
     <li><kbd>Ctrl</kbd>+<kbd>B</kbd> / <kbd>I</kbd> gras, italique · <kbd>Ctrl</kbd>+<kbd>K</kbd> lien · <kbd>Ctrl</kbd>+<kbd>Entrée</kbd> coche une tâche.</li>
     <li><kbd>Ctrl</kbd>+<kbd>F</kbd> rechercher et remplacer · <kbd>Tab</kbd> indente une liste.</li>
     <li><kbd>Ctrl</kbd>+<kbd>Maj</kbd>+<kbd>F</kbd> plein écran : la barre d'outils revient en touchant le haut de l'écran avec la souris, le menu à gauche, ce panneau à droite. <kbd>Échap</kbd> pour quitter.</li>

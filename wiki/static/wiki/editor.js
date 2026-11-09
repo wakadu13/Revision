@@ -36,6 +36,7 @@
   const { previewUrl, importUrl, latexUrl, ameliorerUrl, noteKey, noteName } = form.dataset;
   const choices = JSON.parse(document.getElementById("link-choices").textContent);
   const attachments = JSON.parse(document.getElementById("attachment-choices").textContent);
+  const tagChoices = JSON.parse((document.getElementById("tag-choices") || { textContent: "[]" }).textContent);
 
   // -- Outils -----------------------------------------------------------------
 
@@ -868,6 +869,117 @@
     return { from, options, filter: false };
   }
 
+  // -- Autocomplétion des tags (#) et des types d'encadré ([!) ------------------------------------
+
+  // Types d'encadrés proposés (menu « Encadré », complétion après [!).
+  const CALLOUTS = [
+    ["note", "Note"], ["abstract", "Résumé"], ["info", "Info"], ["tip", "Astuce"], ["definition", "Définition"],
+    ["theoreme", "Théorème"], ["propriete", "Propriété"], ["methode", "Méthode"], ["exemple", "Exemple"],
+    ["demonstration", "Démonstration (repliée)"], ["warning", "Attention, piège"], ["question", "Question"],
+    ["retenir", "À retenir"], ["quote", "Citation"],
+  ];
+
+  function tagCompletion(context) {
+    const match = context.matchBefore(/(?:^|\s)#[\p{L}\p{N}_\/-]*/u);
+    if (!match || !tagChoices.length) return null;
+    const hash = match.text.indexOf("#");
+    const from = match.from + hash + 1;
+    const query = normalize(match.text.slice(hash + 1));
+    if (/^\d*$/.test(match.text.slice(hash + 1)) && match.text.slice(hash + 1)) return null; // #1, numéro
+    const options = tagChoices.filter((t) => normalize(t).includes(query)).slice(0, 12)
+      .map((t) => ({ label: t, type: "keyword", apply: t + " " }));
+    return options.length ? { from, options, filter: false } : null;
+  }
+
+  function calloutCompletion(context) {
+    const match = context.matchBefore(/>\s?\[!\w*/);
+    if (!match) return null;
+    const from = match.from + match.text.indexOf("[!") + 2;
+    const query = match.text.slice(match.text.indexOf("[!") + 2).toLowerCase();
+    const options = CALLOUTS.filter(([type]) => type.startsWith(query))
+      .map(([type, label]) => ({ label: type, detail: label, type: "type", apply: (view, c, f, to) => {
+        const after = view.state.sliceDoc(to, to + 1) === "]" ? to + 1 : to;
+        view.dispatch({ changes: { from: f, to: after, insert: type + "] " }, selection: { anchor: f + type.length + 2 }, userEvent: "input.complete" });
+      } }));
+    return options.length ? { from, options, filter: false } : null;
+  }
+
+  // -- Menus « Encadré » et « Insérer » -------------------------------------------------------------
+
+  const SYMBOLES = "→ ← ⇒ ⇔ ≤ ≥ ≠ ≈ ≡ ± × ÷ · ° ∞ √ ∑ ∫ ∂ ∇ ∈ ∉ ⊂ ∪ ∩ ∅ ∀ ∃ α β γ δ ε θ λ μ π ρ σ τ φ ω Δ Σ Ω".split(" ");
+  const FORMULES = [
+    ["Fraction", "\\frac{a}{b}"], ["Racine", "\\sqrt{x}"], ["Puissance, indice", "x^{2}_{i}"], ["Somme", "\\sum_{i=1}^{n} a_i"],
+    ["Intégrale", "\\int_{a}^{b} f(x)\\,dx"], ["Limite", "\\lim_{x \\to 0} f(x)"], ["Dérivée", "\\frac{df}{dx}"],
+    ["Vecteur", "\\vec{u}"], ["Matrice", "\\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}"],
+    ["Système", "\\begin{cases} x + y = 1 \\\\ x - y = 0 \\end{cases}"],
+  ];
+
+  function insererFormule(view, tex) {
+    const { state } = view;
+    const range = state.selection.main;
+    const current = state.doc.lineAt(range.from);
+    if (range.empty && !current.text.trim()) {
+      view.dispatch({
+        changes: { from: current.from, to: current.to, insert: "$$\n" + tex + "\n$$" },
+        selection: EditorSelection.range(current.from + 3, current.from + 3 + tex.length),
+        scrollIntoView: true, userEvent: "input",
+      });
+    } else {
+      view.dispatch({
+        changes: { from: range.from, to: range.to, insert: "$" + tex + "$" },
+        selection: EditorSelection.range(range.from + 1, range.from + 1 + tex.length),
+        scrollIntoView: true, userEvent: "input",
+      });
+    }
+    view.focus();
+  }
+
+  function insererEncadre(view, type) {
+    const title = selectedText(view).trim() || "Titre";
+    const fold = type === "demonstration" ? "-" : "";
+    const head = `> [!${type}]${fold} ${title}\n> `;
+    return insertBlock(view, head + "Texte de l'encadré", [head.length, head.length + "Texte de l'encadré".length]);
+  }
+
+  // Aligne les colonnes du tableau où se trouve le curseur.
+  function formaterTableau(view) {
+    const { state } = view;
+    const doc = state.doc;
+    const estLigne = (n) => /^\s*\|/.test(doc.line(n).text);
+    let first = doc.lineAt(state.selection.main.head).number;
+    if (!estLigne(first)) {
+      status("Placez le curseur dans un tableau pour l'aligner.", "dirty");
+      return false;
+    }
+    let last = first;
+    while (first > 1 && estLigne(first - 1)) first--;
+    while (last < doc.lines && estLigne(last + 1)) last++;
+    const rows = [];
+    for (let n = first; n <= last; n++) {
+      rows.push(doc.line(n).text.trim().replace(/^\|/, "").replace(/\|$/, "").split("|").map((c) => c.trim()));
+    }
+    const cols = Math.max(...rows.map((r) => r.length));
+    rows.forEach((r) => { while (r.length < cols) r.push(""); });
+    const sep = rows.findIndex((r, i) => i > 0 && r.every((c) => /^:?-+:?$/.test(c)));
+    const largeur = (c) => [...c].length;
+    const widths = rows[0].map((_, i) => Math.max(3, ...rows.map((r, k) => (k === sep ? 0 : largeur(r[i])))));
+    const lignes = rows.map((r, k) => {
+      if (k === sep) {
+        return "| " + r.map((c, i) => {
+          const w = widths[i];
+          if (c.startsWith(":") && c.endsWith(":")) return ":" + "-".repeat(w - 2) + ":";
+          if (c.endsWith(":")) return "-".repeat(w - 1) + ":";
+          if (c.startsWith(":")) return ":" + "-".repeat(w - 1);
+          return "-".repeat(w);
+        }).join(" | ") + " |";
+      }
+      return "| " + r.map((c, i) => c + " ".repeat(widths[i] - largeur(c))).join(" | ") + " |";
+    });
+    view.dispatch({ changes: { from: doc.line(first).from, to: doc.line(last).to, insert: lignes.join("\n") }, userEvent: "input" });
+    view.focus();
+    return true;
+  }
+
   // -- Fichiers : images collées ou glissées, .md ouverts ou glissés, téléchargement --------------
 
   function status(text, kind) {
@@ -1112,6 +1224,7 @@
         if (response.ok && json.version) {
           versionInput.value = json.version;
           savedDoc = doc;
+          oublierBrouillon();
           conflict = false;
           if (json.url) closeLink.href = json.url;
           const now = new Date().toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
@@ -1163,7 +1276,9 @@
     const text = view.state.doc.toString();
     const body = text.replace(/^---\n[\s\S]*?\n---(\n|$)/, "");
     const words = (body.match(/[\p{L}\p{N}][\p{L}\p{N}'’-]*/gu) || []).length;
-    countLabel.textContent = `${words} mot${words > 1 ? "s" : ""} · ${text.length} caractère${text.length > 1 ? "s" : ""}`;
+    const minutes = Math.max(1, Math.round(words / 200));
+    countLabel.textContent = `${words} mot${words > 1 ? "s" : ""} · ${text.length} caractère${text.length > 1 ? "s" : ""}`
+      + (words ? ` · ~${minutes} min de lecture` : "");
     if (!outline) return;
     const list = headings(text);
     if (!list.length) {
@@ -1230,7 +1345,7 @@
         markdownLanguage.data.of({ closeBrackets: { brackets: ["(", "[", "{"] } }),
         syntaxHighlighting(obsidianHighlight),
         closeBrackets(),
-        autocompletion({ override: [linkCompletion], icons: false, activateOnTyping: true }),
+        autocompletion({ override: [linkCompletion, calloutCompletion, tagCompletion], icons: false, activateOnTyping: true }),
         highlightSelectionMatches(),
         search({ top: true }),
         pairOnSelection,
@@ -1273,6 +1388,8 @@
           if (stateLabel.dataset.kind !== "error" || !conflict) status("", "");
           refreshState();
           scheduleAutosave();
+          garderBrouillon();
+          if (mode === "split") planifierRendu();
           clearTimeout(infoTimer);
           infoTimer = setTimeout(() => {
             refreshInfo();
@@ -1292,6 +1409,51 @@
   autosaveBox.checked = stored("wiki-editor-autosave", "0") === "1";
   refreshInfo();
 
+  // -- Brouillon de secours sur l'appareil --------------------------------------------------------
+  // Le texte non enregistré est gardé dans le navigateur (onglet fermé, batterie à plat,
+  // session expirée) et proposé à la prochaine ouverture de la page.
+
+  const brouillonCle = "wiki-brouillon:" + noteKey;
+  const brouillonNotice = form.querySelector("[data-brouillon-notice]");
+  let brouillonTimer = null;
+
+  function garderBrouillon() {
+    clearTimeout(brouillonTimer);
+    brouillonTimer = setTimeout(() => {
+      if (!isDirty()) return oublierBrouillon();
+      store(brouillonCle, JSON.stringify({ texte: view.state.doc.toString(), version: versionInput.value, date: Date.now() }));
+    }, 800);
+  }
+
+  function oublierBrouillon() {
+    clearTimeout(brouillonTimer);
+    try { localStorage.removeItem(brouillonCle); } catch (e) { /* stockage indisponible */ }
+  }
+
+  (function proposerBrouillon() {
+    let b = null;
+    try { b = JSON.parse(stored(brouillonCle, "null")); } catch (e) { b = null; }
+    if (!b || typeof b.texte !== "string" || b.texte === textarea.value) {
+      if (b) oublierBrouillon();
+      return;
+    }
+    brouillonNotice.querySelector("[data-brouillon-date]").textContent =
+      new Date(b.date).toLocaleString("fr-FR", { dateStyle: "short", timeStyle: "short" });
+    brouillonNotice.querySelector("[data-brouillon-autre]").hidden = b.version === versionInput.value;
+    brouillonNotice.hidden = false;
+    brouillonNotice.querySelector("[data-brouillon=reprendre]").addEventListener("click", () => {
+      view.dispatch({ changes: { from: 0, to: view.state.doc.length, insert: b.texte }, userEvent: "input" });
+      brouillonNotice.hidden = true;
+      status("Brouillon repris : pensez à enregistrer.", "dirty");
+      view.focus();
+    });
+    brouillonNotice.querySelector("[data-brouillon=ignorer]").addEventListener("click", () => {
+      oublierBrouillon();
+      brouillonNotice.hidden = true;
+      view.focus();
+    });
+  })();
+
   // Barre d'outils et recherche collées en haut de l'écran (sous la barre du téléphone).
   function layout() {
     const topbar = document.querySelector(".topbar");
@@ -1308,29 +1470,66 @@
 
   let mode = stored("wiki-editor-mode", "live") === "source" ? "source" : "live";
   let editMode = mode;
+  let avantLecture = null; // mode affiché avant « Lecture » (pour y revenir)
   host.classList.toggle("is-source", mode === "source");
 
-  async function showReading() {
+  // Rendu de la page par le serveur (mode Lecture, et panneau de droite en Côte à côte).
+  let rendusEnCours = 0;
+  async function rendre(attente) {
     const data = new FormData();
     data.append("content", view.state.doc.toString());
     data.append("csrfmiddlewaretoken", csrf);
-    preview.innerHTML = '<p class="muted">Chargement…</p>';
-    host.hidden = true;
-    preview.hidden = false;
+    const numero = ++rendusEnCours;
+    if (attente) preview.innerHTML = '<p class="muted">Chargement…</p>';
+    let html;
     try {
       const response = await fetch(previewUrl, { method: "POST", body: data });
-      preview.innerHTML = response.ok ? await response.text() : "<p>Aperçu indisponible.</p>";
+      html = response.ok ? await response.text() : "<p>Aperçu indisponible.</p>";
     } catch (e) {
-      preview.innerHTML = "<p>Aperçu indisponible : serveur injoignable.</p>";
+      html = "<p>Aperçu indisponible : serveur injoignable.</p>";
     }
+    if (numero !== rendusEnCours) return; // un rendu plus récent est parti
+    preview.innerHTML = html;
     if (window.wikiEnhance) window.wikiEnhance(preview);
   }
 
+  async function showReading() {
+    host.hidden = true;
+    preview.hidden = false;
+    return rendre(true);
+  }
+
+  // Côte à côte : rendu rafraîchi pendant la saisie, défilement du rendu calé sur le texte.
+  let renduTimer = null;
+  function planifierRendu() {
+    clearTimeout(renduTimer);
+    renduTimer = setTimeout(() => rendre(false), 700);
+  }
+  view.scrollDOM.addEventListener("scroll", () => {
+    if (mode !== "split") return;
+    const s = view.scrollDOM;
+    const ratio = s.scrollTop / Math.max(1, s.scrollHeight - s.clientHeight);
+    preview.scrollTop = ratio * (preview.scrollHeight - preview.clientHeight);
+  });
+
   function setMode(next, focus = true) {
-    if (next === "reading" && mode === "reading") next = editMode;
+    if (next === "reading" && mode === "reading") next = avantLecture || editMode;
+    if (next === "split" && mode === "split") next = editMode;
+    if (next === "reading") avantLecture = mode === "reading" ? avantLecture : mode;
     mode = next;
     form.querySelectorAll("[data-mode]").forEach((b) => b.setAttribute("aria-checked", String(b.dataset.mode === next)));
+    form.classList.toggle("is-split", next === "split");
+    store("wiki-editor-split", next === "split" ? "1" : "0");
     if (next === "reading") return showReading();
+    if (next === "split") {
+      preview.hidden = false;
+      host.hidden = false;
+      host.classList.toggle("is-source", editMode === "source");
+      view.dispatch({ effects: preview_.reconfigure(editMode === "source" ? sourceView : livePreview) });
+      rendre(true);
+      if (focus) view.focus();
+      return;
+    }
     editMode = next;
     store("wiki-editor-mode", next);
     preview.hidden = true;
@@ -1340,6 +1539,7 @@
     if (focus) view.focus();
   }
   setMode(mode, !textarea.value.trim());
+  if (stored("wiki-editor-split", "0") === "1" && window.matchMedia("(min-width: 900px)").matches) setMode("split", false);
 
   form.querySelectorAll("[data-mode]").forEach((b) => b.addEventListener("click", () => setMode(b.dataset.mode)));
   document.addEventListener("keydown", (e) => {
@@ -1347,7 +1547,7 @@
     const key = e.key.toLowerCase();
     if (key === "e") {
       e.preventDefault();
-      setMode(mode === "reading" ? editMode : "reading");
+      setMode(mode === "reading" ? (avantLecture || editMode) : "reading");
     } else if (key === "s") {
       e.preventDefault();
       save();
@@ -1559,11 +1759,14 @@
     heading: () => headingCommand(view),
     list: () => listCommand("- ")(view),
     task: () => listCommand("- [ ] ")(view),
-    callout: () => {
-      const title = selectedText(view).trim() || "Titre";
-      return insertBlock(view, `> [!note] ${title}\n> Texte de l'encadré`, [`> [!note] ${title}\n> `.length, `> [!note] ${title}\n> Texte de l'encadré`.length]);
-    },
+    callout: () => insererEncadre(view, "note"),
     table: () => insertBlock(view, "| Colonne 1 | Colonne 2 |\n| --- | --- |\n| Texte | Texte |", [2, 11]),
+    "format-table": () => formaterTableau(view),
+    undo: () => (CM.undo ? CM.undo(view) : historyKeymap.find((k) => k.key === "Mod-z").run(view)),
+    redo: () => (CM.redo ? CM.redo(view) : historyKeymap.find((k) => k.key === "Mod-y").run(view)),
+    aide: () => document.getElementById("aide-dialog").showModal(),
+    date: () => replaceSelection(view, new Date().toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" })),
+    separateur: () => insertBlock(view, "---"),
     math: () => mathCommand(view),
     codeblock: () => {
       const code = selectedText(view) || "code";
@@ -1576,19 +1779,71 @@
     save: () => save(),
   };
 
-  const fileMenu = toolbar.querySelector(".toolbar-menu");
+  const menus = [...toolbar.querySelectorAll(".toolbar-menu")];
+  const fermerMenus = () => menus.forEach((m) => { m.open = false; });
   document.addEventListener("click", (e) => {
-    if (fileMenu.open && !fileMenu.contains(e.target)) fileMenu.open = false;
+    menus.forEach((m) => { if (m.open && !m.contains(e.target)) m.open = false; });
   });
+  // Un seul menu ouvert à la fois.
+  menus.forEach((m) => m.addEventListener("toggle", () => { if (m.open) menus.forEach((o) => { if (o !== m) o.open = false; }); }));
+
+  // Menu « Encadré » : un bouton par type.
+  const menuEncadres = toolbar.querySelector("[data-menu-encadres]");
+  for (const [type, label] of CALLOUTS) {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.setAttribute("role", "menuitem");
+    b.dataset.callout = type;
+    b.innerHTML = `<span class="callout-pastille" data-callout="${type}"></span>${label} <small class="muted">[!${type}]</small>`;
+    b.addEventListener("click", () => { fermerMenus(); if (mode === "reading") setMode(avantLecture || editMode); insererEncadre(view, type); });
+    menuEncadres.appendChild(b);
+  }
+
+  // Menu « Insérer » : symboles, formules types, date, séparateur, alignement d'un tableau.
+  const menuInserer = toolbar.querySelector("[data-menu-inserer]");
+  const grille = document.createElement("div");
+  grille.className = "symboles";
+  for (const s of SYMBOLES) {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.textContent = s;
+    b.title = "Insérer " + s;
+    b.addEventListener("click", () => { fermerMenus(); if (mode === "reading") setMode(avantLecture || editMode); replaceSelection(view, s); });
+    grille.appendChild(b);
+  }
+  menuInserer.appendChild(grille);
+  const titreFormules = document.createElement("p");
+  titreFormules.className = "muted menu-titre";
+  titreFormules.textContent = "Formules (LaTeX)";
+  menuInserer.appendChild(titreFormules);
+  const listeFormules = document.createElement("div");
+  listeFormules.className = "formules";
+  for (const [label, tex] of FORMULES) {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.setAttribute("role", "menuitem");
+    b.innerHTML = `${label} <code>${tex.replace(/</g, "&lt;")}</code>`;
+    b.addEventListener("click", () => { fermerMenus(); if (mode === "reading") setMode(avantLecture || editMode); insererFormule(view, tex); });
+    listeFormules.appendChild(b);
+  }
+  menuInserer.appendChild(listeFormules);
+  for (const [action, label] of [["date", "Date du jour"], ["separateur", "Ligne de séparation"], ["format-table", "Aligner le tableau (curseur dedans)"]]) {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.setAttribute("role", "menuitem");
+    b.dataset.action = action;
+    b.textContent = label;
+    menuInserer.appendChild(b);
+  }
 
   toolbar.querySelectorAll("[data-action]").forEach((button) => {
     button.addEventListener("click", () => {
-      fileMenu.open = false;
+      fermerMenus();
       const action = button.dataset.action;
-      const keepsMode = ["download-md", "open-md"].includes(action);
-      if (mode === "reading" && !keepsMode) setMode(editMode);
+      const keepsMode = ["download-md", "open-md", "aide"].includes(action);
+      if (mode === "reading" && !keepsMode) setMode(avantLecture || editMode);
       actions[action]();
-      if (!["page-link", "web-link", "attach", "open-md", "download-md", "latex", "ameliorer"].includes(action)) view.focus();
+      if (!["page-link", "web-link", "attach", "open-md", "download-md", "latex", "ameliorer", "aide"].includes(action)) view.focus();
     });
   });
   form.querySelector("[data-action=save]").addEventListener("click", () => save());
@@ -1602,6 +1857,7 @@
   form.addEventListener("submit", () => {
     textarea.value = view.state.doc.toString();
     submitting = true;
+    oublierBrouillon();
   });
   window.addEventListener("beforeunload", (e) => {
     if (!submitting && isDirty()) e.preventDefault();

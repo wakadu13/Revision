@@ -810,3 +810,26 @@ body.plein-ecran.editing.pe-haut .toolbar {
 .tuteur-aide { margin: .4rem 0 0; font-size: .85em; }
 .claude-lots { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; margin: .6rem 0 1rem; }
 .claude-lot { margin-left: .6rem; font-size: .9em; }
+
+/* Éditeur : menus Encadré et Insérer, aide, brouillon, côte à côte */
+.menu-inserer { min-width: 19rem; max-height: 70vh; overflow: auto; }
+.symboles { display: grid; grid-template-columns: repeat(10, 1fr); gap: .1rem; margin-bottom: .3rem; }
+.symboles button { padding: .25rem 0 !important; text-align: center !important; font-size: 1.05rem !important; }
+.menu-titre { margin: .4rem .6rem .1rem; font-size: .78rem; }
+.formules button code { float: right; font-size: .75rem; color: var(--muted); max-width: 55%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.callout-pastille { display: inline-block; width: .7rem; height: .7rem; border-radius: 50%; margin-right: .5rem; background: rgb(var(--callout, 120, 82, 238)); vertical-align: -1px; }
+.dialog-large { width: min(46rem, calc(100vw - 32px)); }
+.aide-table { width: 100%; border-collapse: collapse; font-size: .88rem; margin-bottom: .8rem; }
+.aide-table td { padding: .3rem .5rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+.aide-table td:first-child { white-space: nowrap; }
+.editor-notice-actions { display: flex; gap: .4rem; }
+.editor:has(form.is-split) { max-width: none; }
+.is-split .editor-area { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1rem; align-items: start; }
+.is-split .editor-cm .cm-editor { height: calc(100vh - var(--sticky-top, 0px) - var(--toolbar-h, 0px) - 9rem); min-height: 18rem; }
+.is-split .editor-cm .cm-scroller { overflow: auto; }
+.is-split .preview { height: calc(100vh - var(--sticky-top, 0px) - var(--toolbar-h, 0px) - 9rem); min-height: 18rem; overflow: auto; margin-top: .5rem; padding: .25rem 1rem; border: 1px solid var(--border); border-radius: 8px; }
+@media (max-width: 899px) {
+  .is-split .editor-area { grid-template-columns: 1fr; }
+  .is-split .editor-cm .cm-editor, .is-split .preview { height: auto; max-height: 45vh; }
+  .aide-table td:first-child { white-space: normal; }
+}

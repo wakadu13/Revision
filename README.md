@@ -91,6 +91,19 @@ Obsidian lui-même :
 - menu **Fichier** : ouvrir un `.md` de son ordinateur (remplace le texte ou
   s'insère au curseur ; on peut aussi glisser le fichier dans le texte) et
   télécharger la page en `.md` ;
+- **Côte à côte** : le texte à gauche, la page rendue à droite, mise à jour
+  pendant la saisie et qui défile avec le texte (quatrième mode, à côté
+  d'Édition, Source et Lecture) ;
+- **brouillon de secours** : le texte non enregistré est gardé sur l'appareil ;
+  onglet fermé, batterie à plat ou session expirée, il est proposé à la
+  prochaine ouverture de la page (« Reprendre le brouillon » ou « Ignorer ») ;
+- menu **Encadré** (définition, théorème, propriété, méthode, exemple,
+  démonstration repliée, attention, question, à retenir…) et complétion du type
+  en tapant `[!` ; menu **Insérer** : symboles (→ ≤ ∞ α π…), formules types
+  (fraction, somme, intégrale, matrice…), date du jour, séparateur, **aligner le
+  tableau** où se trouve le curseur ; `#` propose les tags du wiki ;
+- boutons **Annuler / Rétablir** (utiles sur tablette), bouton **?** : aide
+  avec la syntaxe et les raccourcis, temps de lecture estimé ;
 - plan de la page cliquable, compteur de mots, recherche et remplacement
   (<kbd>Ctrl</kbd>+<kbd>F</kbd>), plein écran (voir ci-dessous) : la barre
   d'outils rentre et revient quand la souris touche le haut de l'écran.
