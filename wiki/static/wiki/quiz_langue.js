@@ -190,7 +190,7 @@
   // -- Construction d'un exercice --
   function build() {
     const e = exo(), c = current();
-    s = { revele: false, verdict: null, note: null, enregistre: false, selection: [], places: [], envoi: false };
+    s = { revele: false, verdict: null, note: null, enregistre: false, selection: [], places: [], envoi: false, debut: performance.now() };
     stage.replaceChildren();
     updateHeader();
 
@@ -527,7 +527,7 @@
     s.enregistre = true;
     const c = current(), e = exo();
     if (!c.tentative) {
-      Promise.resolve(options.enregistrer(e, s.note))
+      Promise.resolve(options.enregistrer(e, s.note, Math.round(performance.now() - s.debut)))
         .catch(() => { /* enregistrement au mieux ; l'échec n'interrompt pas la session */ });
     }
   }
@@ -684,6 +684,6 @@
     intensif: root.dataset.mode === "intensif",
     backUrl: root.dataset.backUrl,
     corriger: (e, reponse) => post(root.dataset.corrigerUrl, { set_id: e.set_id, exo_id: e.exo_id, reponse }),
-    enregistrer: (e, note) => post(root.dataset.recordUrl, { set_id: e.set_id, exo_id: e.exo_id, note }),
+    enregistrer: (e, note, duree) => post(root.dataset.recordUrl, { set_id: e.set_id, exo_id: e.exo_id, note, duree_ms: duree }),
   });
 })();

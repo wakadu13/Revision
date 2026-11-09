@@ -3042,3 +3042,151 @@ class ProductionTests(WikiTestCase):
         self.assertIn("@media print", css)
         deps = yaml.safe_load((settings.BASE_DIR / ".github" / "dependabot.yml").read_text(encoding="utf-8"))
         self.assertEqual({u["package-ecosystem"] for u in deps["updates"]}, {"uv", "gradle", "github-actions"})
+
+
+class TempsAujourdhuiTests(TestCase):
+    """Temps de révision par matière, page « Aujourd'hui », objectif du jour."""
+
+    def setUp(self):
+        QuizTests.setUp(self)
+
+    def _reponse(self, qid, duree, correct=True):
+        import json
+        return self.client.post("/qcm/reponse/", data=json.dumps({"set_id": "reseaux/test_set", "question_id": qid,
+                                                                  "correct": correct, "duree_ms": duree}), content_type="application/json")
+
+    def test_temps_par_matiere(self):
+        import json
+        from django.utils import timezone
+        from wiki.models import TempsRevision
+        self._reponse("q-qcm", 30_000)
+        self._reponse("q-qcr", 500_000)  # plafonné à 2 minutes
+        t = TempsRevision.objects.get()
+        self.assertEqual((t.matiere, t.temps_ms, t.reponses), ("reseaux", 150_000, 2))
+        # Hors ligne : la durée est rejouée avec la date de la réponse.
+        self.client.post("/qcm/hors-ligne/synchro/", data=json.dumps({"reponses": [
+            {"uid": "a", "set_id": "reseaux/test_set", "question_id": "q-trou", "correct": True, "duree_ms": 60_000,
+             "date": "2026-10-01T08:00:00Z"}]}), content_type="application/json")
+        self.assertEqual(TempsRevision.objects.get(jour="2026-10-01").temps_ms, 60_000)
+        semaines, lignes, totaux = TempsRevision.tableau("alice", timezone.localdate())
+        self.assertEqual(len(semaines), 8)
+        self.assertEqual(lignes[0]["matiere"], "reseaux")
+        self.assertEqual(lignes[0]["minutes"][-1], 2)  # 2,5 min arrondies
+        page = self.client.get("/qcm/stats/")
+        self.assertContains(page, "Temps de révision")
+        self.assertContains(page, "<td>reseaux</td>")
+        self.assertEqual(TempsRevision.minutes_du_jour("alice", timezone.localdate()), 2)
+
+    def test_page_aujourdhui(self):
+        from datetime import timedelta
+        from django.utils import timezone
+        from wiki.models import ObjectifRevision, QuizDeck
+        QuizDeck.objects.create(player="alice", set_id="reseaux/test_set", date_objectif=timezone.localdate() + timedelta(days=10))
+        page = self.client.get("/aujourdhui/")
+        self.assertContains(page, "Révision intelligente (4)")
+        self.assertContains(page, "dans 10 jours")
+        self.assertContains(page, "Set de test")
+        self.assertContains(page, 'id="rappel-web"')
+        self.assertContains(self.client.get("/qcm/"), 'href="/aujourdhui/"')
+        # Objectif du jour.
+        self.client.post("/aujourdhui/", {"objectif": "2"})
+        self.assertEqual(ObjectifRevision.objects.get(player="alice").reponses_jour, 2)
+        self._reponse("q-qcm", 5000)
+        page = self.client.get("/aujourdhui/")
+        self.assertContains(page, "<b>1 / 2</b>")
+        self._reponse("q-qcr", 5000)
+        self.assertContains(self.client.get("/aujourdhui/"), "Objectif du jour atteint")
+        self.client.post("/aujourdhui/", {"objectif": ""})
+        self.assertIsNone(ObjectifRevision.objects.get(player="alice").reponses_jour)
+        # Application Android : pas de notification web (l'appli a son propre rappel).
+        self.assertContains(self.client.get("/aujourdhui/", HTTP_USER_AGENT="ProjetPluriApp/2"), 'id="rappel-web" data-cle-url')
+        self.assertIn(' hidden>', self.client.get("/aujourdhui/", HTTP_USER_AGENT="ProjetPluriApp/2").content.decode().split('id="rappel-web"')[1].split("\n")[1])
+
+    def test_texte_rappel(self):
+        from wiki.quiz_views import texte_rappel
+        self.assertIsNone(texte_rappel({"a_revoir": 0, "serie": 3, "aujourdhui": 5}))
+        self.assertEqual(texte_rappel({"a_revoir": 4, "serie": 3, "aujourdhui": 0}), "4 éléments à réviser · série de 3 jours à prolonger")
+        self.assertEqual(texte_rappel({"a_revoir": 0, "serie": 0, "aujourdhui": 0}), "Rien d'urgent : quelques nouveaux mots ?")
+
+
+class NotificationsWebTests(TestCase):
+    """Abonnement d'un appareil aux notifications web et envoi du rappel quotidien."""
+
+    SUB = {"endpoint": "https://push.exemple.org/abc", "keys": {"p256dh": "BOrdLfZ", "auth": "k3y"}}
+
+    def setUp(self):
+        QuizTests.setUp(self)
+        self.donnees = tempfile.TemporaryDirectory()
+        self.addCleanup(self.donnees.cleanup)
+        override = override_settings(DATA_DIR=Path(self.donnees.name), ALLOWED_HOSTS=["testserver", "wiki.exemple.org", "192.168.1.20"])
+        override.enable()
+        self.addCleanup(override.disable)
+
+    def _post(self, url, data):
+        import json
+        return self.client.post(url, data=json.dumps(data), content_type="application/json")
+
+    def test_cle_abonnement_et_envoi(self):
+        import base64
+        from datetime import datetime
+        from io import StringIO
+        from unittest import mock
+        from django.core.management import call_command
+        from django.utils import timezone
+        from wiki import push
+        from wiki.models import AbonnementPush
+        cle = self.client.get("/api/push/cle/").json()["cle"]
+        self.assertEqual(len(base64.urlsafe_b64decode(cle + "==")), 65)  # point non compressé P-256
+        self.assertTrue((Path(self.donnees.name) / "vapid_prive.pem").is_file())
+        self.assertEqual(self.client.get("/api/push/cle/").json()["cle"], cle)  # clé gardée
+        self.assertEqual(push.contact(), "https://wiki.exemple.org")
+        self.assertEqual(self._post("/api/push/abonner/", {"subscription": {"endpoint": "http://x"}}).status_code, 400)
+        with mock.patch("wiki.quiz_views.timezone.localtime", return_value=timezone.make_aware(datetime(2026, 11, 10, 8, 0))):
+            r = self._post("/api/push/abonner/", {"subscription": self.SUB, "heure": 18, "minute": 30})
+        self.assertEqual(r.json(), {"ok": True, "heure": 18, "minute": 30})
+        a = AbonnementPush.objects.get()
+        self.assertEqual((a.user.username, a.heure, a.minute, a.dernier_envoi), ("alice", 18, 30, None))
+        self.assertEqual(self.client.get("/api/push/cle/").json()["abonnements"], {self.SUB["endpoint"]: {"heure": 18, "minute": 30}})
+        envois = []
+        with mock.patch("pywebpush.webpush", side_effect=lambda **kw: envois.append(kw)):
+            # Avant l'heure : rien.
+            with mock.patch("wiki.management.commands.envoyer_rappels.timezone.localtime",
+                            return_value=timezone.make_aware(datetime(2026, 11, 10, 18, 0))):
+                call_command("envoyer_rappels", stdout=StringIO())
+            self.assertEqual(envois, [])
+            # À l'heure : un rappel, une seule fois dans la journée.
+            with mock.patch("wiki.management.commands.envoyer_rappels.timezone.localtime",
+                            return_value=timezone.make_aware(datetime(2026, 11, 10, 18, 45))):
+                call_command("envoyer_rappels", stdout=StringIO())
+                call_command("envoyer_rappels", stdout=StringIO())
+        self.assertEqual(len(envois), 1)
+        import json
+        corps = json.loads(envois[0]["data"])
+        self.assertEqual(corps, {"titre": "ProjetPluri", "texte": "4 éléments à réviser", "url": "/aujourdhui/"})
+        self.assertEqual(envois[0]["subscription_info"]["keys"], self.SUB["keys"])
+        self.assertEqual(envois[0]["vapid_claims"], {"sub": "https://wiki.exemple.org"})
+        self.assertEqual(str(AbonnementPush.objects.get().dernier_envoi), "2026-11-10")
+
+    def test_abonnement_expire_et_test(self):
+        from unittest import mock
+        from pywebpush import WebPushException
+        from types import SimpleNamespace
+        from wiki.models import AbonnementPush
+        self._post("/api/push/abonner/", {"subscription": self.SUB, "heure": 0, "minute": 0})
+        with mock.patch("pywebpush.webpush") as envoi:
+            self.assertEqual(self._post("/api/push/tester/", {"endpoint": self.SUB["endpoint"]}).json(), {"ok": True})
+        self.assertIn("4 éléments à réviser", envoi.call_args.kwargs["data"])
+        expire = WebPushException("gone", response=SimpleNamespace(status_code=410, text=""))
+        with mock.patch("pywebpush.webpush", side_effect=expire):
+            self.assertEqual(self._post("/api/push/tester/", {"endpoint": self.SUB["endpoint"]}).status_code, 410)
+        self.assertFalse(AbonnementPush.objects.exists())
+        self._post("/api/push/abonner/", {"subscription": self.SUB})
+        self._post("/api/push/desabonner/", {"endpoint": self.SUB["endpoint"]})
+        self.assertFalse(AbonnementPush.objects.exists())
+        self.assertEqual(self._post("/api/push/tester/", {"endpoint": "x"}).status_code, 404)
+
+    def test_service_worker_gere_les_notifications(self):
+        sw = self.client.get("/sw.js").content.decode()
+        self.assertIn('addEventListener("push"', sw)
+        self.assertIn("notificationclick", sw)
+        self.assertIn("rappel_web.js", sw)

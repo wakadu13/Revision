@@ -20,7 +20,7 @@ from django.views.decorators.http import require_POST
 
 from . import fsrs, langues, quiz
 from .langues import ExoSession
-from .models import Activite, QuizProgress
+from .models import Activite, QuizProgress, TempsRevision
 from .quiz_views import _ctx, _render_html, player_id
 from .vault import get_vault
 
@@ -213,6 +213,7 @@ def record(request):
     obj.record_langue(data["note"])
     obj.save()
     Activite.noter(obj.player, data["note"] != fsrs.A_REVOIR, nouveau=nouveau)
+    TempsRevision.noter(obj.player, set_langue.langue, data.get("duree_ms"))
     return JsonResponse({"stabilite": obj.stabilite, "echeance": obj.echeance.isoformat()})
 
 

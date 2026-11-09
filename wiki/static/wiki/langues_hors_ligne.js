@@ -304,8 +304,8 @@
         if (e.forme === "choix") v.reponses = e.reponses;
         return v;
       },
-      enregistrer: async (e, note) => {
-        const rep = await A.ajouter({ set_id: e.set_id, exo_id: e.exo_id, note, joueur: contexte.joueur() });
+      enregistrer: async (e, note, duree) => {
+        const rep = await A.ajouter({ set_id: e.set_id, exo_id: e.exo_id, note, duree_ms: duree, joueur: contexte.joueur() });
         const set = parId.get(e.set_id);
         if (set) { appliquer(set, e.exo_id, note, rep.date); await contexte.sauver(set); }
         contexte.repondu();

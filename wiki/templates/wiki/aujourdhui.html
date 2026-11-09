@@ -1,0 +1,92 @@
+{% extends "wiki/base.html" %}
+{% load static %}
+{% block title %}Aujourd'hui{% endblock %}
+{% block content %}
+<article class="note aujourdhui">
+  <h1 class="note-title">Aujourd'hui <span class="muted aujourdhui-date">{{ jour|date:"l j F" }}</span></h1>
+
+  <div class="quiz-activite-chiffres">
+    <div class="quiz-chiffre"><b>🔥 {{ activite.serie }}</b><span>jour{{ activite.serie|pluralize }} d'affilée{% if activite.serie and not activite.aujourdhui %} · à prolonger aujourd'hui{% endif %}</span></div>
+    <div class="quiz-chiffre"><b>{{ activite.aujourdhui }}{% if objectif %} / {{ objectif }}{% endif %}</b><span>réponse{{ activite.aujourdhui|pluralize }} aujourd'hui{% if minutes %} · {{ minutes }} min{% endif %}</span>
+      {% if objectif %}<div class="mastery" title="Objectif du jour : {{ pct_objectif }} %"><div class="mastery-fill" style="width: {{ pct_objectif }}%"></div></div>{% endif %}</div>
+    <div class="quiz-chiffre"><b>{{ total_qcm }}</b><span>question{{ total_qcm|pluralize }} de QCM à réviser</span></div>
+  </div>
+  {% if objectif and activite.aujourdhui >= objectif %}
+  <div class="callout" data-callout="success"><div class="callout-title">Objectif du jour atteint ✓</div></div>
+  {% endif %}
+
+  <section>
+    <h2>À réviser maintenant</h2>
+    {% if total_qcm or langues %}
+    <div class="quiz-actions">
+      {% if total_qcm %}<a class="button primary" href="{% url 'wiki:quiz_play' %}?revision=1">Révision intelligente ({{ total_qcm }})</a>{% endif %}
+      {% for l in langues %}{% if l.a_revoir or l.nouveaux %}<a class="button" href="{% url 'wiki:langue_play' l.nom %}?mode=quotidien">{{ l.nom }} : session du jour{% if l.a_revoir %} ({{ l.a_revoir }}){% endif %}</a>{% endif %}{% endfor %}
+    </div>
+    {% endif %}
+    {% if sets_dus %}
+    <ul class="aujourdhui-liste">
+      {% for entry in sets_dus %}
+      <li><a href="{% url 'wiki:quiz_play' %}?set={{ entry.set.id|urlencode }}&mode=review">{{ entry.set.titre }}</a>
+        <span class="muted">· {{ entry.set.categorie }} · {{ entry.summary.a_reviser }} à réviser</span></li>
+      {% endfor %}
+      {% if autres_sets %}<li class="muted">et {{ autres_sets }} autre{{ autres_sets|pluralize }} set{{ autres_sets|pluralize }} : <a href="{% url 'wiki:quiz_index' %}">tous les QCM</a></li>{% endif %}
+    </ul>
+    {% elif not total_qcm %}
+    <p class="muted">Rien à réviser en QCM pour l'instant ✓{% if not langues %} · <a href="{% url 'wiki:quiz_index' %}">tous les QCM</a>{% endif %}</p>
+    {% endif %}
+  </section>
+
+  <section>
+    <h2>Examens à venir</h2>
+    {% if examens %}
+    <ul class="aujourdhui-liste">
+      {% for x in examens %}
+      <li><b>{% if x.jours == 0 %}aujourd'hui{% elif x.jours == 1 %}demain{% else %}dans {{ x.jours }} jours{% endif %}</b>
+        <span class="muted">· {{ x.date|date:"l j F" }}</span> · <a href="{% url 'wiki:quiz_index' %}#set-{{ x.set.id|slugify }}">{{ x.set.titre }}</a>
+        {% if x.e.su %}<span class="quiz-plan-badge">prêt ✓</span>
+        {% elif x.e.statut == "ok" %}<span class="quiz-plan-badge{% if x.e.commencer_maintenant %} urgent{% endif %}">{% if x.e.commencer_maintenant %}à commencer maintenant{% else %}commencer le {{ x.e.debut|date:"j F" }} au plus tard{% endif %}</span>
+        {% elif x.e.statut == "retard" or x.e.statut == "impossible" %}<span class="quiz-plan-badge urgent">en retard</span>{% endif %}</li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p class="muted">Aucune date d'examen : on en fixe une dans le planning d'un set, ou pour toute une catégorie (« Examen le … » sur la page des QCM).</p>
+    {% endif %}
+  </section>
+
+  <section class="quiz-previsions">
+    <h2>Les 7 prochains jours</h2>
+    <div class="quiz-previsions-barres aujourdhui-previsions" role="img" aria-label="Révisions prévues par jour">
+      {% for p in previsions %}
+      <div class="quiz-prevision" title="{{ p.jour|date:'l j F' }} : {{ p.n }} révision{{ p.n|pluralize }}">
+        <span class="quiz-prevision-n">{{ p.n|default:"" }}</span>
+        <div class="quiz-prevision-barre" style="height: {% widthratio p.n previsions_max 100 %}%"></div>
+        <span class="quiz-prevision-jour">{% if forloop.first %}auj.{% else %}{{ p.jour|date:"D j" }}{% endif %}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+</article>
+{% endblock %}
+{% block aside %}
+<section class="panel">
+  <h2>Objectif du jour</h2>
+  <form method="post" class="aujourdhui-objectif">
+    {% csrf_token %}
+    <label>Réponses par jour <input type="number" name="objectif" min="1" max="2000" value="{{ objectif|default_if_none:'' }}" placeholder="aucun"></label>
+    <button type="submit" class="button small">Enregistrer</button>
+  </form>
+  <p class="muted">QCM et langues confondus. Vide : pas d'objectif.</p>
+</section>
+<section class="panel" id="rappel-web" data-cle-url="{{ push_cle_url }}" data-abonner-url="{% url 'wiki:push_abonner' %}"
+         data-desabonner-url="{% url 'wiki:push_desabonner' %}" data-tester-url="{% url 'wiki:push_tester' %}" data-csrf="{{ csrf_token }}"{% if in_app %} hidden{% endif %}>
+  <h2>Rappel quotidien</h2>
+  <p class="muted" data-rappel-etat>Notification sur cet appareil à l'heure choisie, avec ce qu'il reste à réviser.</p>
+  <div class="rappel-controles" data-rappel-controles hidden>
+    <label>Heure <input type="time" value="19:00" data-rappel-heure></label>
+    <button type="button" class="button small primary" data-rappel-activer>Activer</button>
+    <button type="button" class="button small" data-rappel-tester hidden>Tester</button>
+    <button type="button" class="button small" data-rappel-desactiver hidden>Désactiver</button>
+  </div>
+</section>
+<script src="{% static 'wiki/rappel_web.js' %}" defer></script>
+{% endblock %}

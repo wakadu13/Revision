@@ -21,6 +21,27 @@
     </div>
   </section>
 
+  <section class="quiz-temps">
+    <h2>Temps de révision</h2>
+    {% if temps %}
+    <p class="muted">Minutes passées par matière (catégorie de QCM, ou langue), semaine par semaine ; mesuré depuis
+      l'affichage de chaque question jusqu'à la suivante, 2 minutes au plus par question.</p>
+    <div class="tableau-defilant">
+    <table class="quiz-stats quiz-temps-table">
+      <thead><tr><th>Matière</th>{% for l in semaines %}<th title="Semaine du {{ l|date:'j F' }}">{% if forloop.last %}Cette sem.{% else %}{{ l|date:"j/m" }}{% endif %}</th>{% endfor %}<th>Total</th></tr></thead>
+      <tbody>
+        {% for ligne in temps %}
+        <tr><td>{{ ligne.matiere }}</td>{% for m in ligne.minutes %}<td>{% if m %}{{ m }}{% else %}<span class="muted">·</span>{% endif %}</td>{% endfor %}<td><b>{{ ligne.total }}</b></td></tr>
+        {% endfor %}
+      </tbody>
+      <tfoot><tr><th>Toutes</th>{% for m in temps_totaux %}<th>{{ m }}</th>{% endfor %}<th></th></tr></tfoot>
+    </table>
+    </div>
+    {% else %}
+    <p class="muted">Le temps de révision s'affichera ici, matière par matière, dès les prochaines réponses.</p>
+    {% endif %}
+  </section>
+
   <section class="quiz-previsions">
     <h2>Révisions à venir</h2>
     <p class="muted">{{ previsions_total }} révision{{ previsions_total|pluralize }} prévue{{ previsions_total|pluralize }} sur {{ previsions|length }} jours (QCM et langues),

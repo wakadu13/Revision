@@ -26,9 +26,9 @@ from django.views.decorators.csp import csp_override
 from django.views.decorators.http import require_POST
 
 from . import fsrs, quiz
-from .models import Activite, QuizDeck, QuizProgress
+from .models import Activite, QuizDeck, QuizProgress, TempsRevision
 from .langues_views import dossier_de, payload_hors_ligne
-from .quiz_views import _question_payload, chronometrer, player_id
+from .quiz_views import _question_payload, chronometrer, matiere_de, player_id
 from .vault import get_vault
 
 MAX_REPONSES = 5000  # par requête de synchronisation
@@ -165,7 +165,7 @@ def synchro(request):
                 set_id, exo_id = str(r["set_id"]), str(r["exo_id"])
                 fichier = library.langues.get(set_id)
                 if fichier is not None and fichier.exercice(exo_id) is not None:
-                    valides.append((quand, set_id, exo_id, note, None, True))
+                    valides.append((quand, set_id, exo_id, note, r.get("duree_ms"), True))
                 continue
             reponse = r["note"] if r.get("note") in quiz.NOTES else bool(r["correct"])
             set_id, question_id = str(r["set_id"]), str(r["question_id"])
@@ -185,11 +185,12 @@ def synchro(request):
             obj.record_langue(reponse, quand)
             obj.save()
             Activite.noter(player, reponse != fsrs.A_REVOIR, nouveau=nouveau, quand=quand)
+            TempsRevision.noter(player, library.langues[set_id].langue, duree, quand)
         else:
             obj.record(reponse, quand)
             obj.save()
             Activite.noter(player, obj.last_correct, nouveau=obj.seen == 1, quand=quand)
-            chronometrer(player, set_id, duree)
+            chronometrer(player, set_id, duree, matiere_de(library.get(set_id)), quand)
         enregistrees += 1
     return JsonResponse({"traitees": traitees, "enregistrees": enregistrees})
 

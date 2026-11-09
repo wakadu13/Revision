@@ -62,6 +62,21 @@ pourraient reprendre deux fois un même travail. gunicorn étant une dépendance
 projet, reconstruire l'image avant de changer la commande. Les journaux restent
 lisibles avec `docker compose logs web`.
 
+**Rappels par notification web** : la commande `envoyer_rappels` envoie les
+rappels dus ; à lancer toutes les 15 minutes par cron sur le serveur
+(`crontab -e`) :
+
+```bash
+*/15 * * * * cd /home/pi/deploy && docker compose exec -T web python manage.py envoyer_rappels
+```
+
+Les clés du serveur pour ces notifications sont créées au premier usage dans
+`vapid_prive.pem` du dossier de données (le dossier du projet sans
+`DJANGO_DATA_DIR`) : à sauvegarder, car les changer oblige chaque appareil à
+réactiver le rappel. `WIKI_PUSH_CONTACT` (une adresse `mailto:` ou `https://`)
+remplace au besoin le contact donné aux services de notifications, par défaut
+l'adresse publique du wiki.
+
 **Fichiers du coffre** : le wiki vérifie au plus toutes les 2 secondes si des
 fichiers ont changé (`WIKI_VERIF_INTERVALLE`, en secondes) au lieu de parcourir
 tout le coffre à chaque requête ; une page déposée à la main ou par Obsidian
@@ -404,6 +419,22 @@ dans la barre latérale ou sur `/qcm/`.
   rétention par set, **révisions à venir** sur 14 jours dans les statistiques.
   La progression faite avant FSRS (boîtes de Leitner) est reprise telle quelle
   à la prochaine réponse.
+- **Page « Aujourd'hui »** (`/aujourdhui/`, lien dans le menu) : la série de
+  jours, les réponses et les minutes du jour face à un **objectif quotidien**
+  (nombre de réponses, réglable), tout ce qui est dû (révision intelligente,
+  session du jour de chaque langue, sets les plus chargés), les **examens à
+  venir** avec le compte à rebours et l'état du planning, et les révisions
+  prévues sur 7 jours. On y active aussi le **rappel par notification web**.
+- **Temps de révision** : chaque réponse est chronométrée (de l'affichage de la
+  question à la suivante, 2 minutes au plus), QCM et langues, en ligne comme hors
+  ligne ; les statistiques montrent les minutes par matière (catégorie de QCM ou
+  langue) sur les 8 dernières semaines.
+- **Rappel par notification web** : sur la page « Aujourd'hui », « Activer » et
+  une heure ; chaque jour à cette heure, une notification dit ce qu'il reste à
+  réviser (rien si tout est fait). Marche sur ordinateur et sur Android dans le
+  navigateur, et sur iPhone quand le wiki est ajouté à l'écran d'accueil. L'envoi
+  se fait par une commande à lancer par cron sur le serveur (voir « Mettre le
+  serveur à jour ») ; l'application Android garde son propre rappel.
 - **Planning** par set (quotas de nouvelles et de révisions par jour, date
   d'examen, estimation de la durée) ; **date d'examen par catégorie** en un
   clic (« Examen le … » en tête de catégorie) ; case « Ajuster automatiquement
@@ -653,6 +684,8 @@ en-têtes) sont dans [`core/tests.py`](core/tests.py) :
 - `/api/status/` : statut du serveur en JSON
 - `/api/appareil/connexion/`, `/api/appareil/deconnexion/` et `/api/appareil/session/` : jeton de l'application Android
 - `/api/rappel/` : ce qu'il reste à réviser et la série de jours (JSON, notification de l'application)
+- `/aujourdhui/` : page « Aujourd'hui » ; `/api/push/cle/`, `/api/push/abonner/`, `/api/push/desabonner/`, `/api/push/tester/` : notifications web
+- `/erreurs/` : erreurs du serveur (admins)
 - `/qcm/hors-ligne/` : QCM hors ligne (PWA)
 - `/admin/` : administration Django (créer un compte avec `uv run python manage.py createsuperuser`)
 

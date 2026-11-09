@@ -420,3 +420,80 @@ class ErreurServeur(models.Model):
 
     def __str__(self):
         return f"{self.type}: {self.message[:60]}"
+
+
+class TempsRevision(models.Model):
+    """Temps passé à réviser, par joueur, jour et matière (catégorie de QCM, ou langue)."""
+
+    player = models.CharField(max_length=150)
+    jour = models.DateField()
+    matiere = models.CharField(max_length=200)
+    temps_ms = models.PositiveBigIntegerField(default=0)
+    reponses = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        unique_together = ("player", "jour", "matiere")
+
+    DUREE_MAX_MS = 120_000  # au-delà, le joueur s'est sans doute absenté
+
+    @classmethod
+    def noter(cls, player, matiere, duree, quand=None):
+        """Ajoute une durée de réponse (ms) ; ignore une durée absente ou invalide."""
+        from django.db.models import F
+
+        if not matiere or not isinstance(duree, (int, float)) or isinstance(duree, bool) or duree <= 0:
+            return
+        jour = timezone.localdate(quand or timezone.now())
+        obj, _ = cls.objects.get_or_create(player=player, jour=jour, matiere=str(matiere)[:200])
+        cls.objects.filter(pk=obj.pk).update(temps_ms=F("temps_ms") + int(min(duree, cls.DUREE_MAX_MS)),
+                                             reponses=F("reponses") + 1)
+
+    @classmethod
+    def minutes_du_jour(cls, player, jour):
+        from django.db.models import Sum
+
+        total = cls.objects.filter(player=player, jour=jour).aggregate(t=Sum("temps_ms"))["t"] or 0
+        return round(total / 60000)
+
+    @classmethod
+    def tableau(cls, player, aujourdhui=None, semaines=8):
+        """Minutes par matière et par semaine (lundi), les `semaines` dernières :
+        (semaines [lundis], lignes [{matiere, minutes: [..], total}], totaux [..])."""
+        from datetime import timedelta
+
+        aujourdhui = aujourdhui or timezone.localdate()
+        lundi = aujourdhui - timedelta(days=aujourdhui.weekday())
+        lundis = [lundi - timedelta(weeks=k) for k in range(semaines - 1, -1, -1)]
+        par_matiere = {}
+        for t in cls.objects.filter(player=player, jour__gte=lundis[0]):
+            k = (t.jour - lundis[0]).days // 7
+            par_matiere.setdefault(t.matiere, [0] * semaines)[k] += t.temps_ms
+        lignes = [{"matiere": m, "minutes": [round(ms / 60000) for ms in v], "total": round(sum(v) / 60000)}
+                  for m, v in par_matiere.items()]
+        lignes.sort(key=lambda l: (-l["total"], l["matiere"].lower()))
+        totaux = [sum(l["minutes"][k] for l in lignes) for k in range(semaines)]
+        return lundis, lignes, totaux
+
+
+class ObjectifRevision(models.Model):
+    """Objectif quotidien d'un joueur : nombre de réponses par jour (page « Aujourd'hui »)."""
+
+    player = models.CharField(max_length=150, unique=True)
+    reponses_jour = models.PositiveIntegerField(null=True, blank=True)
+
+
+class AbonnementPush(models.Model):
+    """Notifications web (navigateur, application installée) : un abonnement par appareil."""
+
+    user = models.ForeignKey("auth.User", on_delete=models.CASCADE, related_name="abonnements_push")
+    endpoint = models.URLField(max_length=1000, unique=True)
+    p256dh = models.CharField(max_length=200)
+    auth = models.CharField(max_length=100)
+    heure = models.PositiveSmallIntegerField(default=19)
+    minute = models.PositiveSmallIntegerField(default=0)
+    agent = models.CharField(max_length=300, blank=True)
+    cree_le = models.DateTimeField(auto_now_add=True)
+    dernier_envoi = models.DateField(null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.user} · {self.heure:02d}:{self.minute:02d}"
