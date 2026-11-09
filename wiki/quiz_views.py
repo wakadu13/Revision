@@ -24,7 +24,7 @@ from django.utils import timezone
 from django.utils.text import slugify
 from django.views.decorators.http import require_POST
 
-from . import anki, claude, paquets, planning, quiz
+from . import anki, claude, masque, paquets, planning, quiz
 from .models import _JAMAIS, Activite, ObjectifRevision, QuizDeck, QuizProgress, Signalement, TempsRevision
 from .render import Renderer
 from .vault import Note, clean_key, get_vault, invalider
@@ -75,7 +75,7 @@ def _question_payload(vault, qset, question, progress):
         "set_titre": qset.titre,
         "id": question.id,
         "type": question.type,
-        "enonce": _render_html(vault, question.enonce),
+        "enonce": _render_html(vault, question.enonce) + (masque.html(vault, qset, question.masque) if question.masque else ""),
         "choix": [_render_html(vault, c, block=False) for c in question.choix],
         "reponses": question.reponses,
         "reponses_texte": question.reponses_texte,
@@ -1015,7 +1015,9 @@ def _fichiers_perso(player):
 
 
 def _taille_perso(player):
-    return sum(f.stat().st_size for f in _fichiers_perso(player))
+    """Octets occupés par l'espace personnel (sets, paquets et images)."""
+    dossier = quiz.dossier_perso(player)
+    return sum(f.stat().st_size for f in dossier.rglob("*") if f.is_file()) if dossier.is_dir() else 0
 
 
 def _ecrire_paquet_perso(player, dossier, paquet):
@@ -1023,7 +1025,7 @@ def _ecrire_paquet_perso(player, dossier, paquet):
     from . import langues
 
     racine = quiz.dossier_perso(player)
-    base = (slugify(paquet.get("titre", "")) or "vocabulaire")[:60]
+    base = (paquets.slug(paquet.get("titre", "")) or "vocabulaire")[:60]
     for i in range(1, 1000):
         rel = PurePosixPath(dossier, f"{base}.json" if i == 1 else f"{base}-{i}.json")
         if not (racine / rel).exists():

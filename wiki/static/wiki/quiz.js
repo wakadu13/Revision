@@ -406,6 +406,8 @@
       state.answered = true;
       verso.style.display = "";
       flip.style.display = "none";
+      // Image masquée : la zone à deviner se découvre.
+      verso.parentNode.querySelectorAll("[data-masque]").forEach((m) => m.classList.add("revele"));
       renderMath(verso);
       // Auto-évaluation : à revoir (repart de zéro), difficile (même intervalle),
       // bien (intervalle suivant) ou facile (saute un intervalle).

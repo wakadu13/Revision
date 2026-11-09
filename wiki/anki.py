@@ -93,6 +93,8 @@ def notes_qcm(qset):
     la réponse et l'explication derrière."""
     notes = []
     for q in qset.questions:
+        if q.masque:
+            continue  # image masquée : l'image reste sur le wiki (pas de médias dans l'export)
         recto = formater(q.enonce)
         if q.consigne:
             recto = f"<i>{formater(q.consigne)}</i><br>{recto}"

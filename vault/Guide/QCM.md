@@ -35,7 +35,7 @@ les erreurs (JSON invalide, champ manquant…) s'affichent en haut de la page. U
 fichier du même nom n'est remplacé que si « Remplacer les sets existants » est
 coché.
 
-## Les 5 types
+## Les 6 types
 
 - **QCM** — une seule bonne réponse.
 - **QCR** — plusieurs bonnes réponses.
@@ -43,6 +43,9 @@ coché.
 - **QRC** — question à réponse courte : un mot ou une phrase à retrouver en le
   tapant (traduction, synonyme…). Voir ci-dessous.
 - **FLASHCARD** — recto/verso auto-évalué.
+- **MASQUE** — image masquée : un schéma et des zones ; chaque zone devient une
+  carte où elle est cachée. Le plus simple est de les tracer dans l'éditeur
+  (QCM → « 🖼 Image masquée »). Voir ci-dessous.
 
 ### QRC : traduction, synonyme
 
@@ -58,6 +61,20 @@ coché.
   sont ignorés, pour les QRC comme pour les TROU.
 
 > Attention à ne pas confondre **QRC** (réponse tapée) et **QCR** (cases à cocher).
+
+### MASQUE : image masquée
+
+```json
+{"id": "coeur", "type": "MASQUE", "question": "Que cache la zone colorée ?",
+ "image": "Images/coeur.png", "masquer_tout": true,
+ "zones": [{"id": "z1", "x": 12.5, "y": 30, "l": 20, "h": 6, "reponse": "Aorte"}]}
+```
+
+- `image` : une image du coffre (chemin ou nom, comme un lien `![[…]]`).
+- `zones` : position (`x`, `y`) et taille (`l`, `h`) en **% de l'image**, et la
+  `reponse` attendue. Une carte par zone, d'identifiant `coeur#z1` : garde les
+  `id` des zones pour garder la progression quand tu les modifies.
+- `masquer_tout` : les autres zones sont cachées aussi (gris) ; sinon visibles.
 
 Les `reponses` sont les **indices** des bons choix (à partir de 0). Le texte des
 questions et des choix accepte le **Markdown** et les **formules LaTeX** `$...$`.

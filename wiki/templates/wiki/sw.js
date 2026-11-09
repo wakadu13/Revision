@@ -95,6 +95,7 @@ self.addEventListener("fetch", (event) => {
   if (local && url.pathname.startsWith(API) && url.pathname !== COQUILLE) return;
   // Fichiers statiques, images des questions (/fichiers/), KaTeX et ses polices.
   if ((local && (url.pathname.startsWith("/static/") || url.pathname.startsWith("/fichiers/")
+      || url.pathname.startsWith("{% url 'wiki:quiz_perso' %}images/")
       || url.pathname === "{% url 'wiki:quiz_manifest' %}")) || request.url.startsWith(KATEX)) {
     event.respondWith(reseauPuisCache(request));
   }

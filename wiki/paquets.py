@@ -28,10 +28,18 @@ def dossier_valide(nom):
     return nom
 
 
+_LIGATURES = str.maketrans({"œ": "oe", "Œ": "Oe", "æ": "ae", "Æ": "Ae", "ß": "ss"})
+
+
+def slug(texte):
+    """Nom de fichier tiré d'un titre (« Le cœur » → « le-coeur ») : slugify, ligatures comprises."""
+    return slugify(str(texte).translate(_LIGATURES))
+
+
 def chemin_libre(dossier, titre, defaut):
     """QCM/<dossier>/<titre en minuscules>.json, avec « -2 », « -3 »… si le nom est pris."""
     racine = get_vault().root
-    base = (slugify(titre) or defaut)[:60]
+    base = (slug(titre) or defaut)[:60]
     for i in range(1, 1000):
         rel = PurePosixPath(DOSSIER_QCM, dossier, f"{base}.json" if i == 1 else f"{base}-{i}.json")
         if not (racine / rel).exists():

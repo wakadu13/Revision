@@ -3457,3 +3457,138 @@ class ExplorerTests(WikiTestCase):
         self.assertContains(page, 'data-centre="Cours/Fourier"')
         self.assertContains(page, "les voisines de la page")
         self.assertContains(self.client.get("/wiki/Cours/Fourier"), "/graphe/?page=Cours/Fourier")
+
+
+class ImageMasqueeTests(QuizTests):
+    """Cartes à image masquée : format MASQUE, rendu des cartes, éditeur de zones."""
+
+    ZONES = [{"id": "z1", "x": 10, "y": 20, "l": 30, "h": 10, "reponse": "Aorte"},
+             {"id": "z2", "x": 50, "y": 60, "l": 20, "h": 15, "reponse": "Ventricule gauche"}]
+
+    def setUp(self):
+        super().setUp()
+        self.data = tempfile.TemporaryDirectory()
+        self.addCleanup(self.data.cleanup)
+        override = override_settings(DATA_DIR=Path(self.data.name))
+        override.enable()
+        self.addCleanup(override.disable)
+        (self.root / "Images").mkdir()
+        (self.root / "Images/coeur.png").write_bytes(self._png())
+        self.admin = get_user_model().objects.create_user("admin", password="x", is_staff=True)
+        self.bob = get_user_model().objects.create_user("bob", password="x")
+
+    @staticmethod
+    def _png(couleur="red"):
+        import io
+        from PIL import Image
+        tampon = io.BytesIO()
+        Image.new("RGB", (40, 30), couleur).save(tampon, "PNG")
+        return tampon.getvalue()
+
+    def _set(self, **question):
+        q = {"id": "coeur", "type": "MASQUE", "image": "coeur.png", "zones": self.ZONES, **question}
+        (self.root / "Bio").mkdir(exist_ok=True)
+        (self.root / "Bio/coeur.json").write_text(json.dumps({"titre": "Le cœur", "questions": [q]}), encoding="utf-8")
+        from wiki.vault import invalider
+        invalider()
+
+    def test_une_carte_par_zone(self):
+        self._set(masquer_tout=False)
+        qset = quiz.get_library().get("Bio/coeur")
+        self.assertTrue(qset.est_masque)
+        self.assertEqual([(q.id, q.type, q.verso) for q in qset.questions],
+                         [("coeur#z1", "FLASHCARD", "Aorte"), ("coeur#z2", "FLASHCARD", "Ventricule gauche")])
+        self.assertEqual(qset.questions[0].enonce, "Que cache la zone colorée ?")
+        page = self.client.get("/qcm/jouer/", {"set": "Bio/coeur", "mode": "all"}).content.decode()
+        self.assertIn('src=\\"/fichiers/Images/coeur.png\\"', page)
+        self.assertIn('x=\\"10.0%\\" y=\\"20.0%\\" width=\\"30.0%\\" height=\\"10.0%\\" rx=\\"3\\" class=\\"masque-cible\\"', page)
+        self.assertNotIn("masque-autre", page)  # autres zones visibles
+        self._set(masquer_tout=True)
+        self.assertIn("masque-autre", self.client.get("/qcm/jouer/", {"set": "Bio/coeur", "mode": "all"}).content.decode())
+        # Les réponses comptent comme celles des flashcards ; l'export Anki les laisse de côté (images).
+        r = self.client.post("/qcm/reponse/", {"set_id": "Bio/coeur", "question_id": "coeur#z2", "note": "bien"},
+                             content_type="application/json")
+        self.assertEqual(r.status_code, 200)
+        from wiki import anki
+        self.assertEqual(anki.notes_qcm(qset), [])
+        self.assertContains(self.client.get("/qcm/"), "🖼 Image masquée")
+
+    def test_validation(self):
+        for question, message in [
+            ({"image": ""}, "'image' manquante"),
+            ({"zones": []}, "au moins une zone"),
+            ({"zones": [{"x": 10, "y": 10, "l": 5, "h": 5}]}, "'reponse' manquante"),
+            ({"zones": [{"x": 120, "y": 10, "l": 5, "h": 5, "reponse": "a"}]}, "hors de l'image"),
+            ({"zones": [{"x": "a", "y": 10, "l": 5, "h": 5, "reponse": "a"}]}, "x, y, l et h"),
+            ({"zones": [dict(self.ZONES[0]), dict(self.ZONES[0])]}, "en double"),
+        ]:
+            with self.subTest(message=message):
+                self._set(**question)
+                self.assertTrue(any(message in e for e in quiz.get_library().errors), quiz.get_library().errors)
+        # Zone qui déborde : ramenée dans l'image ; image introuvable : signalée dans la carte.
+        self._set(image="absente.png", zones=[{"x": 90, "y": 95, "l": 30, "h": 30, "reponse": "a"}])
+        q = quiz.get_library().get("Bio/coeur").questions[0]
+        self.assertEqual((q.masque["zones"][0]["l"], q.masque["zones"][0]["h"]), (10, 5))
+        self.assertContains(self.client.get("/qcm/jouer/", {"set": "Bio/coeur", "mode": "all"}), "Image introuvable : absente.png")
+
+    def _enregistrer(self, **champs):
+        donnees = {"titre": "Le cœur", "question": "", "masquer_tout": "1", "zones": json.dumps(self.ZONES), **champs}
+        return self.client.post("/qcm/image-masquee/", donnees)
+
+    def test_editeur_dans_mon_espace(self):
+        self.assertContains(self.client.get("/qcm/image-masquee/"), "masque.js")
+        r = self._enregistrer(fichier=SimpleUploadedFile("Mon schéma.png", self._png()), destination="coffre")
+        self.assertEqual(r.status_code, 403)  # le coffre est réservé aux admins
+        r = self._enregistrer(fichier=SimpleUploadedFile("Mon schéma.png", self._png()), dossier="Bio")
+        self.assertEqual(r.status_code, 200, r.content)
+        donnees = r.json()
+        self.assertEqual((donnees["set"], donnees["image"]), ("~alice/Bio/le-coeur", "perso:mon-schema.png"))
+        self.assertEqual(donnees["message"], "« Le cœur » enregistré : 2 cartes.")
+        perso = Path(self.data.name) / "perso/alice"
+        self.assertTrue((perso / "_images/mon-schema.png").is_file())
+        contenu = json.loads((perso / "Bio/le-coeur.json").read_text(encoding="utf-8"))
+        self.assertEqual(contenu["questions"][0]["image"], "perso:mon-schema.png")
+        # L'image n'est servie qu'à son propriétaire ; la carte la montre.
+        self.assertEqual(self.client.get("/qcm/mon-espace/images/mon-schema.png").status_code, 200)
+        page = self.client.get("/qcm/jouer/", {"set": "~alice/Bio/le-coeur", "mode": "all"}).content.decode()
+        self.assertIn("/qcm/mon-espace/images/mon-schema.png", page)
+        self.assertContains(self.client.get("/qcm/mon-espace/"), "🖼 Zones")
+        # Modification : mêmes fichier et identifiants, zones changées.
+        self.assertContains(self.client.get("/qcm/image-masquee/", {"set": "~alice/Bio/le-coeur"}), "Ventricule gauche")
+        zones = [dict(self.ZONES[0], reponse="Aorte (crosse)")]
+        r = self._enregistrer(set="~alice/Bio/le-coeur", image="perso:mon-schema.png", zones=json.dumps(zones), masquer_tout="0")
+        self.assertEqual(r.json()["set"], "~alice/Bio/le-coeur")
+        qset = quiz.get_library().pour("alice").get("~alice/Bio/le-coeur")
+        self.assertEqual([q.verso for q in qset.questions], ["Aorte (crosse)"])
+        self.assertFalse(qset.questions[0].masque["tout"])
+        # Un autre compte : ni l'image, ni le set, ni l'éditeur.
+        self.client.force_login(self.bob)
+        self.assertEqual(self.client.get("/qcm/mon-espace/images/mon-schema.png").status_code, 404)
+        self.assertEqual(self.client.get("/qcm/image-masquee/", {"set": "~alice/Bio/le-coeur"}).status_code, 404)
+        self.assertEqual(self._enregistrer(set="~alice/Bio/le-coeur", image="perso:mon-schema.png").status_code, 404)
+
+    def test_editeur_admin_et_erreurs(self):
+        self.client.force_login(self.admin)
+        r = self._enregistrer(image="coeur.png", destination="coffre", dossier="Bio")
+        self.assertEqual(r.status_code, 200, r.content)
+        self.assertEqual(r.json()["set"], "QCM/Bio/le-coeur")
+        self.assertTrue((self.root / "QCM/Bio/le-coeur.json").is_file())
+        page = self.client.get("/qcm/").content.decode()
+        self.assertIn("🖼 Modifier les zones", page)
+        # Image envoyée dans le coffre : rangée comme les pièces jointes (racine par défaut).
+        r = self._enregistrer(fichier=SimpleUploadedFile("schema.png", self._png("blue")), destination="coffre", titre="Autre")
+        self.assertEqual(r.json()["image"], "schema.png")
+        self.assertTrue((self.root / "schema.png").is_file())
+        for champs, message in [
+            ({"zones": json.dumps([dict(self.ZONES[0], reponse="")])}, "'reponse' manquante"),
+            ({"image": ""}, "Choisissez une image"),
+            ({"image": "absente.png"}, "Image introuvable dans le coffre"),
+            ({"image": "perso:x.png", "destination": "coffre"}, "ne peut servir qu'à un set de votre espace"),
+            ({"titre": " "}, "Donnez un titre"),
+            ({"fichier": SimpleUploadedFile("faux.png", b"pas une image")}, "pas une image lisible"),
+            ({"fichier": SimpleUploadedFile("page.svg", b"<svg/>")}, "PNG, JPEG, WebP ou GIF"),
+        ]:
+            with self.subTest(message=message):
+                r = self._enregistrer(**{"image": "coeur.png", **champs})
+                self.assertEqual(r.status_code, 400)
+                self.assertIn(message, r.json()["error"])
