@@ -112,6 +112,11 @@ def _file_du_jour(qset, progress, deck, now):
     return reapprendre + vues + nouvelles, detail
 
 
+def question_ratee(st):
+    """Question à retravailler : ratée la dernière fois, ou réussie une fois sur deux au plus."""
+    return st.last_correct is False or (st.seen >= 2 and st.correct * 2 <= st.seen)
+
+
 def _set_summary(qset, progress, now, deck=None):
     """Statistiques d'un set (maîtrise, à réviser, précision, répartition)."""
     seen = corrects = total_rep = 0
@@ -128,10 +133,12 @@ def _set_summary(qset, progress, now, deck=None):
     file, detail = _file_du_jour(qset, progress, deck, now)
     maitrise = sum(b * n for b, n in repartition.items())
     maitrise_max = quiz.BOITE_MAX * len(qset) or 1
+    ids = {q.id for q in qset.questions}
     return {
         "total": len(qset),
         "rencontrees": seen,
         "a_reviser": len(file),
+        "ratees": sum(1 for qid, st in progress.items() if qid in ids and question_ratee(st)),
         **detail,
         "quota_atteint": detail["dues"] > 0 and not file,
         "precision": (corrects / total_rep * 100) if total_rep else 0.0,
@@ -336,6 +343,7 @@ def play(request):
         examen=mode == "examen",
         record_url=reverse("wiki:quiz_record"),
         expliquer_url=reverse("wiki:quiz_expliquer") if claude.disponible() else "",
+        corriger_qrc_url=reverse("wiki:quiz_corriger_qrc") if claude.disponible() else "",
         back_url=reverse("wiki:quiz_index"),
     )
     if mode == "examen":
@@ -395,7 +403,7 @@ def stats(request):
         categories.append({"nom": cat, "sets": entries})
     aujourdhui = timezone.localdate(now)
     return render(request, "wiki/quiz_stats.html", _ctx(
-        request, categories=categories, boites=range(quiz.BOITE_MAX + 1),
+        request, categories=categories, boites=range(quiz.BOITE_MAX + 1), claude_dispo=claude.disponible(),
         activite=Activite.resume(player, aujourdhui), calendrier=Activite.calendrier(player, aujourdhui),
         mois=_mois_du_calendrier(Activite.calendrier(player, aujourdhui)),
     ))

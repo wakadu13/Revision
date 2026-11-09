@@ -26,7 +26,7 @@
     <h2>{{ cat.nom }}</h2>
     <table class="quiz-stats">
       <thead>
-        <tr><th>Set</th><th>Maîtrise</th><th>Vues</th><th>Précision</th><th>À réviser</th><th></th></tr>
+        <tr><th>Set</th><th>Maîtrise</th><th>Vues</th><th>Précision</th><th>À réviser</th><th>Ratées</th><th></th></tr>
       </thead>
       <tbody>
         {% for entry in cat.sets %}
@@ -39,6 +39,15 @@
           <td>{{ entry.summary.rencontrees }}/{{ entry.summary.total }}</td>
           <td>{{ entry.summary.precision|floatformat:0 }} %</td>
           <td>{% if entry.summary.a_reviser %}{{ entry.summary.a_reviser }}{% else %}<span class="muted">à jour ✓</span>{% endif %}</td>
+          <td>{% if entry.summary.ratees %}{{ entry.summary.ratees }}
+            {% if can_edit and claude_dispo %}
+            <form method="post" action="{% url 'wiki:quiz_generer' %}" class="quiz-variantes">
+              {% csrf_token %}
+              <input type="hidden" name="genre" value="variantes">
+              <input type="hidden" name="set" value="{{ entry.set.id }}">
+              <button type="submit" class="button small" title="Claude écrit une variante de chaque question ratée, pour retravailler la notion ; brouillon à relire">✦ Variantes</button>
+            </form>
+            {% endif %}{% else %}<span class="muted">—</span>{% endif %}</td>
           <td>
             <form method="post" action="{% url 'wiki:quiz_reset' %}" data-confirm="Réinitialiser la progression de « {{ entry.set.titre }} » ?">
               {% csrf_token %}

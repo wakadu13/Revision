@@ -269,7 +269,7 @@
       state._toggle = toggle;
     }
 
-    function showFeedback(correct, explicationHtml) {
+    function showFeedback(correct, explicationHtml, verdict) {
       const { feedback, nextBtn } = state._els;
       if (examen) {
         // Pas de correction avant la fin : juste un accusé.
@@ -280,8 +280,8 @@
         return;
       }
       feedback.innerHTML =
-        '<div class="quiz-verdict ' + (correct ? "ok" : "ko") + '">' +
-        (correct ? "✓ Correct" : "✗ Incorrect") + "</div>" +
+        '<div class="quiz-verdict ' + (verdict ? verdict.classe : correct ? "ok" : "ko") + '">' +
+        (verdict ? verdict.texte : correct ? "✓ Correct" : "✗ Incorrect") + "</div>" +
         (explicationHtml ? '<div class="quiz-explication markdown">' + explicationHtml + "</div>" : "");
       renderMath(feedback);
       if (options.expliquer) ajouterExpliqueMoi(feedback, state._els.q);
@@ -361,6 +361,10 @@
       input.disabled = true;
       const correct = q.reponses_texte.some((r) => normalize(r) === normalize(input.value));
       track[queue[pos]].reponse = input.value.trim();
+      if (!correct && q.type === "QRC" && options.corrigerQrc && !examen) {
+        corrigerAvecClaude(q, input);
+        return;
+      }
       if (!examen) input.classList.add(correct ? "is-correct" : "is-wrong");
       let exp = q.explication;
       if (!correct) {
@@ -372,6 +376,28 @@
       }
       showFeedback(correct, exp);
       answered(q, correct);
+    }
+
+    // Réponse rédigée (QRC) différente du corrigé : Claude (Haiku) juge le fond ;
+    // sans Claude (plafond, panne), correction stricte.
+    async function corrigerAvecClaude(q, input) {
+      const { feedback } = state._els;
+      feedback.innerHTML = '<div class="quiz-verdict muted">✦ Claude lit ta réponse…</div>';
+      const attendu = '<p>Réponse attendue : <b>' + q.reponses_texte.map(escapeHtml).join(" / ") + "</b></p>";
+      let r = null;
+      try { r = await options.corrigerQrc(q, input.value.trim()); } catch (e) { r = null; }
+      if (!r || !r.verdict) {
+        input.classList.add("is-wrong");
+        showFeedback(false, attendu + q.explication);
+        answered(q, false);
+        return;
+      }
+      const ok = r.verdict === "juste";
+      input.classList.add(ok ? "is-correct" : r.verdict === "partiel" ? "is-close" : "is-wrong");
+      const retour = '<p class="quiz-retour-claude">✦ ' + escapeHtml(r.retour || "") + "</p>";
+      showFeedback(ok, retour + (ok ? "" : attendu) + q.explication,
+        r.verdict === "partiel" ? { texte: "≈ Partiel", classe: "close" } : null);
+      answered(q, ok);
     }
 
     function revealCard(verso, flip) {
@@ -584,6 +610,16 @@
     return r.json();
   }
 
+  async function corrigerQrc(q, reponse) {
+    const r = await fetch(root.dataset.corrigerQrcUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "X-CSRFToken": root.dataset.csrf },
+      body: JSON.stringify({ set_id: q.set_id, question_id: q.id, reponse }),
+    });
+    if (!r.ok) throw new Error(r.status);
+    return r.json();
+  }
+
   async function expliquer(q) {
     const r = await fetch(root.dataset.expliquerUrl, {
       method: "POST",
@@ -600,6 +636,7 @@
     questions: JSON.parse(dataTag.textContent),
     expliquer: root.dataset.expliquerUrl && root.dataset.mode !== "examen" ? expliquer : null,
     signaler: root.dataset.signalerUrl ? signaler : null,
+    corrigerQrc: root.dataset.corrigerQrcUrl && root.dataset.mode !== "examen" ? corrigerQrc : null,
     intensif: root.dataset.mode === "intensif",
     examen: root.dataset.mode === "examen" ? { duree: Number(root.dataset.duree) || 0 } : null,
     backUrl: root.dataset.backUrl,

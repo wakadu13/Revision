@@ -198,6 +198,12 @@ de cours avec Claude »** sur un PDF déjà dans le wiki.
   envoyé à l'API d'Anthropic.
 - PDF jusqu'à 600 pages ; au-delà de 20 Mo, il passe par l'API Files
   d'Anthropic (supprimé juste après). Les PDF scannés sont lus aussi.
+- **Sans urgence : en lot, moitié prix.** Case « ⧗ Sans urgence » à l'import,
+  sur un PDF du wiki et dans les formulaires de génération : la demande part
+  dans un lot (Message Batches d'Anthropic), facturé 50 % du prix normal et
+  traité sous 24 heures, souvent bien moins. La page Travaux de Claude montre
+  « Dans un lot », vérifie toutes les 10 minutes et propose « Vérifier
+  maintenant » ; le résultat arrive comme pour une transformation directe.
 
 ### Générer des QCM et du vocabulaire avec Claude (admins)
 
@@ -232,6 +238,25 @@ dans les réglages de Claude) :
 - **Fiche de révision** : dans la marge d'une page, « ✦ Fiche de révision »
   fait rédiger par Claude l'essentiel de la page (définitions, formules,
   méthodes, pièges, « à retenir ») dans « Page (Fiche).md », liée à la page.
+- **Variantes des questions ratées** : sur la page des statistiques, colonne
+  « Ratées » (ratée la dernière fois, ou réussie une fois sur deux au plus),
+  bouton « ✦ Variantes » : Claude écrit une question nouvelle par question
+  ratée (autre angle, autre type), d'après le cours quand le set en vient, en
+  brouillon à relire ; pour retravailler la notion au lieu d'apprendre la
+  réponse par cœur.
+- **Réponses rédigées corrigées par Claude** : pour une question à réponse
+  courte (QRC), une réponse qui n'est pas mot pour mot celle attendue est
+  soumise à Claude (Haiku), qui juge le fond : juste, partiel ou faux, avec un
+  retour d'une à trois phrases. Hors examen blanc ; correction stricte si
+  Claude n'est pas disponible.
+- **Tuteur de la page** : dans la marge de chaque page de cours, « ✦ Demander
+  au tuteur » : une question, une réponse de Claude (Haiku) ancrée sur la page,
+  qui dit quand la réponse n'y est pas ; les échanges restent dans le panneau
+  et nourrissent les questions suivantes. Ouvert à tous les comptes.
+- **Plafond mensuel** (réglages de Claude, 5 $ par défaut) : explications,
+  corrections de réponses rédigées et tuteur s'arrêtent pour le mois une fois
+  le plafond atteint (le coût du mois s'affiche dans les réglages) ; les
+  transformations demandées par un admin ne sont pas plafonnées.
 - **« ✦ Améliorer »** dans la barre de l'éditeur : Claude corrige
   l'orthographe et rend plus clair le passage sélectionné (ou toute la page,
   12 000 caractères au plus) sans toucher au sens ni au balisage ;
@@ -320,6 +345,12 @@ dans la barre latérale ou sur `/qcm/`.
   Claude, ou avec `"source_page"` dans le JSON), la page affiche dans « Réviser
   ce cours » sa maîtrise et les boutons Réviser, Tout, Examen ; le set indique
   « d'après la page… ».
+- **Cartes de la page, sans Claude** (admins) : bouton « 🃏 Créer les cartes de
+  la page » dans « Réviser ce cours » : chaque encadré à titre (`> [!definition]
+  Titre`, théorème, méthode, formule…) devient une carte recto/verso et chaque
+  surlignage `==texte==` un texte à trous, dans « Page — cartes » (`QCM/<dossier
+  de la page>/Page (cartes).json`). Régénérer après modification de la page
+  garde la progression des cartes inchangées.
 - **Signaler une question** : pendant un QCM, « ⚑ Signaler un problème » envoie
   la question et un commentaire aux admins (`/qcm/signalements/`), qui peuvent
   demander une correction à Claude (d'après le cours), l'appliquer, retirer la
@@ -483,6 +514,8 @@ en-têtes) sont dans [`core/tests.py`](core/tests.py) :
 - `/tags/` et `/tags/<tag>` : les tags
 - `/recherche/?q=...` : recherche plein texte (insensible aux accents)
 - `/qcm/exporter/?set=…` : export d'un set ou d'un paquet en `.apkg` (Anki) ou `.tsv` (`&format=tsv`)
+- `/qcm/cartes-de-la-page/` (POST, admins) : cartes tirées d'une page ; `/qcm/corriger-qrc/` (POST) : réponse rédigée jugée par Claude
+- `/claude/tuteur/` (POST) : question au tuteur de la page
 - `/qcm/signaler/` (POST) et `/qcm/signalements/` (admins) : questions signalées
 - `/qcm/` : QCM de révision (`/qcm/stats/` pour les statistiques, `/qcm/importer/`
   pour l'import de sets JSON par glisser-déposer, admins)

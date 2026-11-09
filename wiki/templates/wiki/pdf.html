@@ -15,6 +15,7 @@
   <form class="claude-pdf" method="post" action="{% url 'wiki:transformations' %}">{% csrf_token %}
     <button type="submit" class="button small" name="pdf" value="{{ attachment.path }}"
             title="Claude lit le PDF et en fait une page du wiki (plan, formules, encadrés), en quelques minutes">✦ Créer une page de cours avec Claude</button>
+    <label class="checkbox claude-lot" title="Dans un lot traité à moitié prix, résultat sous 24 heures"><input type="checkbox" name="lot" value="1"> sans urgence (lot, moitié prix)</label>
   </form>
   {% endif %}
   {% include "wiki/_pdf_lecteur.html" %}

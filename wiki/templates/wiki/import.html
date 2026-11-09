@@ -25,6 +25,7 @@
       <label class="quiz-import-check"><input type="checkbox" name="remplacer" value="1"> Remplacer les fichiers existants</label>
       {% if claude_dispo %}
       <label class="quiz-import-check" title="Claude lit chaque PDF ou fichier .tex importé et en fait une page de cours (plan, formules, encadrés), en arrière-plan"><input type="checkbox" name="claude" value="1" checked data-claude> ✦ Transformer les cours (PDF, LaTeX) en pages avec Claude</label>
+      <label class="quiz-import-check" title="Les cours partent dans un lot traité par Anthropic à moitié prix, résultat sous 24 heures (souvent moins)"><input type="checkbox" name="lot" value="1" data-lot> ⧗ Sans urgence : en lot, moitié prix, résultat sous 24 h</label>
       {% endif %}
     </div>
     <div class="md-import-summary" data-summary hidden>

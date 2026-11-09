@@ -17,12 +17,19 @@
     de vocabulaire préparés d'après vos mots. Les QCM et paquets arrivent en <b>brouillon</b> : relisez, corrigez,
     puis publiez. {% if en_cours %}<b>Transformation en cours</b> : cette page se met à jour toute seule
     (compter de quelques dizaines de secondes à quelques minutes par cours).{% endif %}</p>
+  {% if lots %}
+  <form method="post" class="claude-lots">{% csrf_token %}
+    <span>⧗ Des travaux attendent dans un <b>lot</b> (moitié prix) : Anthropic les traite sous 24 heures, souvent bien
+      moins ; le wiki vérifie toutes les 10 minutes.</span>
+    <button type="submit" class="button small" name="verifier_lots" value="1">Vérifier maintenant</button>
+  </form>
+  {% endif %}
   {% if transformations %}
   <ul class="claude-liste">
     {% for t in transformations %}
     <li class="claude-ligne" data-statut="{{ t.statut }}">
       <div class="claude-titre">
-        <span class="claude-etat">{% if t.statut == "fait" %}✓{% elif t.statut == "erreur" %}✗{% elif t.statut == "en_cours" %}⏳{% elif t.statut == "brouillon" %}✎{% else %}…{% endif %}</span>
+        <span class="claude-etat">{% if t.statut == "fait" %}✓{% elif t.statut == "erreur" %}✗{% elif t.statut == "en_cours" %}⏳{% elif t.statut == "lot" %}⧗{% elif t.statut == "brouillon" %}✎{% else %}…{% endif %}</span>
         <span class="claude-genre">{{ t.get_genre_display }}</span>
         <b>{{ t.nom }}</b>
         <span class="muted">· {{ t.get_statut_display }}{% if t.statut == "en_cours" and t.debut %} depuis {{ t.debut|timesince }}{% endif %}</span>
@@ -30,7 +37,7 @@
       {% if t.url_page %}<p><a class="button small primary" href="{{ t.url_page }}">{{ t.lien }}</a> <span class="muted">{{ t.page_ecrite }}</span></p>{% endif %}
       {% if t.message %}<p class="{% if t.statut == 'erreur' %}claude-erreur{% else %}muted{% endif %}">{{ t.message }}</p>{% endif %}
       <p class="muted claude-details">{{ t.cree_le|date:"d/m/Y H:i" }}{% if t.demande_par %} · {{ t.demande_par }}{% endif %}
-        {% if t.cout is not None %} · {{ t.modele }} · environ {{ t.cout|floatformat:2 }} $ ({{ t.jetons_entree }} jetons lus, {{ t.jetons_sortie }} écrits){% endif %}</p>
+        {% if t.cout is not None %} · {{ t.modele }} · environ {{ t.cout|floatformat:2 }} $ ({{ t.jetons_entree }} jetons lus, {{ t.jetons_sortie }} écrits{% if t.options.lot %}, lot à moitié prix{% endif %}){% endif %}</p>
       {% if t.statut == "erreur" and claude_dispo %}
       <form method="post">{% csrf_token %}
         <button type="submit" class="button small" name="relancer" value="{{ t.pk }}">Relancer</button>

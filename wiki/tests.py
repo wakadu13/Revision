@@ -1919,7 +1919,7 @@ class ClaudeTests(WikiTestCase):
         t = Transformation.objects.get()
         self.assertEqual((t.genre, t.texte_source), ("vocabulaire", "un emploi\nto achieve\nla cuisine"))
         self.assertEqual(t.options, {"langue": "Anglais", "exercices": ["decouverte", "production", "choix"],
-                                     "dossier": "Voc perso", "titre": "", "publier": True})
+                                     "dossier": "Voc perso", "titre": "", "publier": True, "lot": False})
         fiches = [
             {"mot": "a job", "traductions": ["un emploi"], "variantes": [], "exemple": "I found a new [job].",
              "exemple_traduction": "J'ai trouvé un nouvel emploi.", "prononciation": "/dʒɒb/", "note": ""},
@@ -2183,7 +2183,10 @@ class ImagesAllegeesTests(WikiTestCase):
         self.assertTrue((self.root / "images" / "photo.jpg").is_file())
 
 
-class ExportAnkiTests(QuizTests):
+class ExportAnkiTests(TestCase):
+    def setUp(self):
+        QuizTests.setUp(self)
+
     def test_apkg(self):
         import sqlite3, tempfile, zipfile, io
         r = self.client.get("/qcm/exporter/", {"set": self.SET if hasattr(self, "SET") else "reseaux/test_set"})
@@ -2223,8 +2226,11 @@ class ExportAnkiTests(QuizTests):
         self.assertEqual(anki.formater("a <b> c\nd"), "a &lt;b&gt; c<br>d")
 
 
-class SignalementTests(QuizTests):
+class SignalementTests(TestCase):
     SET = "reseaux/test_set"
+
+    def setUp(self):
+        QuizTests.setUp(self)
 
     def _signaler(self, question="q-qcm", commentaire="La réponse est fausse"):
         import json
@@ -2309,7 +2315,10 @@ class SignalementTests(QuizTests):
         self.assertEqual(claude.question_en_json(q)["question"], "2+2 ?")
 
 
-class PageQcmTests(QuizTests):
+class PageQcmTests(TestCase):
+    def setUp(self):
+        QuizTests.setUp(self)
+
     def test_panneau_reviser_la_page(self):
         import json
         (self.root / "Cours").mkdir()
@@ -2323,3 +2332,277 @@ class PageQcmTests(QuizTests):
         self.assertContains(page, "Réviser (1)")
         self.assertContains(self.client.get("/qcm/"), "D'après la page <a href=\"/wiki/Cours/Signal\">")
         self.assertContains(page, 'href="/qcm/#')
+
+
+class CartesPageTests(TestCase):
+    """Cartes tirées des encadrés et surlignages d'une page, sans Claude."""
+
+    def setUp(self):
+        QuizTests.setUp(self)
+
+    MD = ("---\ntags: [x]\n---\n# Signal\n\n> [!definition] Échantillonnage\n> Prélèvement ==régulier== d'un signal.\n\n"
+          "La fréquence de ==Nyquist== vaut $f_e/2$ et le ==repliement== apparaît au-delà.\n\n"
+          "> [!warning] Piège\n> Rien.\n\n```python\n==pas une carte==\n```\n\n> [!theoreme]\n> Sans titre : pas de carte.\n")
+
+    def test_extraction(self):
+        from wiki import cartes
+        qs = cartes.extraire(self.MD)
+        types = [(q["type"], q["question"]) for q in qs]
+        self.assertEqual(types[0], ("FLASHCARD", "Définition : Échantillonnage"))
+        self.assertEqual(qs[0]["verso"], "Prélèvement **régulier** d'un signal.")
+        self.assertIn(("TROU", "Prélèvement _____ d'un signal."), types)
+        self.assertIn(("TROU", "La fréquence de _____ vaut $f_e/2$ et le repliement apparaît au-delà."), types)
+        self.assertIn(("TROU", "La fréquence de Nyquist vaut $f_e/2$ et le _____ apparaît au-delà."), types)
+        self.assertEqual(len(qs), 4)
+        self.assertEqual(qs[2]["reponses_texte"], ["Nyquist"])
+        self.assertEqual(qs, cartes.extraire(self.MD))  # identifiants stables
+        self.assertTrue(all(q["id"].startswith("c") and len(q["id"]) == 11 for q in qs))
+        self.assertEqual(cartes.extraire("# Rien\n\nTexte sans rien.\n"), [])
+
+    def test_vue(self):
+        import json
+        (self.root / "Cours").mkdir()
+        (self.root / "Cours" / "Signal.md").write_text(self.MD, encoding="utf-8")
+        self.assertEqual(self.client.post("/qcm/cartes-de-la-page/", {"page": "Cours/Signal"}).status_code, 403)
+        self.user.is_staff = True
+        self.user.save()
+        self.assertContains(self.client.get("/wiki/Cours/Signal"), "Créer les cartes de la page (4)")
+        r = self.client.post("/qcm/cartes-de-la-page/", {"page": "Cours/Signal"}, follow=True)
+        self.assertContains(r, "Cartes créées : 4 questions")
+        data = json.loads((self.root / "QCM" / "Cours" / "Signal (cartes).json").read_text(encoding="utf-8"))
+        self.assertEqual((data["source_page"], len(data["questions"]), data["titre"]), ("Cours/Signal", 4, "Signal — cartes"))
+        page = self.client.get("/wiki/Cours/Signal")
+        self.assertContains(page, "Mettre à jour les cartes de la page (4)")
+        self.assertContains(page, "Signal — cartes")  # listé dans « Réviser ce cours »
+        self.assertContains(self.client.get("/qcm/jouer/?set=QCM/Cours/Signal (cartes)&mode=all"), "quiz-data")
+        (self.root / "Vide.md").write_text("# Vide\n\nRien.\n", encoding="utf-8")
+        self.assertContains(self.client.post("/qcm/cartes-de-la-page/", {"page": "Vide"}, follow=True), "Rien à tirer")
+        self.assertNotContains(self.client.get("/wiki/Vide"), "cartes de la page")
+
+
+@override_settings(WIKI_CLAUDE_FIL=False)
+@mock.patch.dict("os.environ", {"WIKI_CLAUDE_CLE": "sk-ant-test", "ANTHROPIC_API_KEY": "", "WIKI_CLAUDE_MODELE": "", "WIKI_CLAUDE_EFFORT": ""})
+class VariantesQrcTests(TestCase):
+    """Réponses rédigées corrigées par Claude, variantes des questions ratées, plafond mensuel."""
+
+    def setUp(self):
+        import json
+        QuizTests.setUp(self)
+        from . import claude
+        self.claude = claude
+        claude._repris = False
+        self.user.is_staff = True
+        self.user.save()
+        (self.root / "reseaux" / "qrc.json").write_text(json.dumps({"titre": "QRC", "questions": [
+            {"id": "r1", "type": "QRC", "question": "Définir l'échantillonnage.",
+             "reponses_texte": ["Prélèvement régulier d'un signal"], "explication": "Voir le cours."}]}), encoding="utf-8")
+
+    def _post_json(self, url, data):
+        import json
+        return self.client.post(url, data=json.dumps(data), content_type="application/json")
+
+    def test_qrc_corrigee_par_claude(self):
+        import json
+        from wiki.models import ReglagesClaude, UsageClaude
+        faux = _FauxClaude(texte=json.dumps({"verdict": "partiel", "retour": "Il manque la régularité du prélèvement."}))
+        with mock.patch.object(self.claude, "_client", return_value=faux):
+            r = self._post_json("/qcm/corriger-qrc/", {"set_id": "reseaux/qrc", "question_id": "r1", "reponse": "On prélève le signal"})
+        self.assertEqual(r.json(), {"verdict": "partiel", "retour": "Il manque la régularité du prélèvement.",
+                                    "correct": False, "modele": "claude-haiku-5-5"})
+        demande = faux.demandes[0]
+        self.assertEqual(demande["model"], "claude-haiku-5-5")
+        self.assertEqual(demande["output_config"]["format"]["schema"], self.claude.SCHEMA_QRC)
+        self.assertIn("Réponse de l'étudiant : On prélève le signal", demande["messages"][0]["content"][0]["text"])
+        self.assertEqual((UsageClaude.objects.get().genre, UsageClaude.objects.get().player), ("qrc", "alice"))
+        self.assertGreater(self.claude.cout_a_la_demande_du_mois(), 0)
+        self.assertEqual(self._post_json("/qcm/corriger-qrc/", {"set_id": "reseaux/test_set", "question_id": "q-trou", "reponse": "x"}).status_code, 404)
+        self.assertContains(self.client.get("/qcm/jouer/?set=reseaux/qrc&mode=all"), "data-corriger-qrc-url")
+        # Plafond mensuel atteint : correction stricte côté navigateur.
+        reglages = ReglagesClaude.charger()
+        reglages.plafond_mensuel = 0.0000001
+        reglages.save()
+        self.assertEqual(self._post_json("/qcm/corriger-qrc/", {"set_id": "reseaux/qrc", "question_id": "r1", "reponse": "x"}).status_code, 429)
+        reglages.plafond_mensuel = 0
+        reglages.save()
+        self.assertFalse(self.claude.plafond_atteint())
+
+    def test_variantes_des_questions_ratees(self):
+        import json
+        from wiki.models import Transformation
+        r = self.client.post("/qcm/generer/", {"genre": "variantes", "set": "reseaux/test_set"}, follow=True)
+        self.assertContains(r, "Aucune question ratée")
+        for qid, correct in (("q-qcm", False), ("q-trou", False), ("q-qcr", True)):
+            self._post_json("/qcm/reponse/", {"set_id": "reseaux/test_set", "question_id": qid, "correct": correct})
+        self.assertContains(self.client.get("/qcm/stats/"), "✦ Variantes")
+        r = self.client.post("/qcm/generer/", {"genre": "variantes", "set": "reseaux/test_set"}, follow=True)
+        self.assertContains(r, "2 variantes")
+        t = Transformation.objects.get()
+        self.assertEqual((t.genre, t.nom, sorted(t.options["variantes"])), ("qcm", "Variantes · Set de test", ["q-qcm", "q-trou"]))
+        faux = _FauxClaude(texte=json.dumps({"titre": "x", "description": "d", "questions": [
+            {"type": "QCM", "question": "3+3 ?", "choix": ["5", "6"], "reponses": [1], "reponses_texte": [], "consigne": "", "verso": "", "explication": ""},
+            {"type": "TROU", "question": "Capitale de l'Italie ?", "choix": [], "reponses": [], "reponses_texte": ["Rome"], "consigne": "", "verso": "", "explication": ""},
+            {"type": "QCM", "question": "mal formée", "choix": [], "reponses": [], "reponses_texte": [], "consigne": "", "verso": "", "explication": ""}]}))
+        with mock.patch.object(self.claude, "_client", return_value=faux):
+            self.claude.traiter_en_attente()
+        t.refresh_from_db()
+        self.assertEqual(t.statut, "brouillon", t.message)
+        self.assertIn("1 question mal formée écartée", t.message)
+        self.assertEqual(t.resultat["dossier"], "reseaux")
+        self.assertEqual(t.resultat["contenu"]["titre"], "Variantes · Set de test")
+        self.assertEqual([q["question"] for q in t.resultat["contenu"]["questions"]], ["3+3 ?", "Capitale de l'Italie ?"])
+        demande = faux.demandes[0]
+        self.assertEqual(demande["system"], self.claude.CONSIGNE_VARIANTES)
+        texte = demande["messages"][0]["content"][-1]["text"]
+        self.assertIn("2+2 ?", texte)
+        self.assertIn("Écris 2 variantes", texte)
+        self.assertContains(self.client.get(f"/transformations/{t.pk}/relire/"), "3+3 ?")
+
+    def test_reglage_du_plafond(self):
+        from wiki.models import ReglagesClaude
+        self.assertContains(self.client.get("/claude/reglages/"), 'name="plafond"')
+        self.client.post("/claude/reglages/", {"plafond": "12,5", "modele": "claude-opus-5-5"})
+        self.assertEqual(ReglagesClaude.charger().plafond_mensuel, 12.5)
+        self.assertContains(self.client.post("/claude/reglages/", {"plafond": "abc"}, follow=True), "Plafond invalide")
+
+
+class _FauxLots:
+    """Faux « client.beta.messages.batches » : un lot créé, puis terminé quand on le décide."""
+
+    def __init__(self, texte, statut="in_progress", type_resultat="succeeded"):
+        from types import SimpleNamespace
+        self.SimpleNamespace = SimpleNamespace
+        self.texte, self.statut, self.type_resultat = texte, statut, type_resultat
+        self.creations = []
+
+    def create(self, requests, **extra):
+        self.creations.append({"requests": requests, **extra})
+        return self.SimpleNamespace(id="msgbatch_1")
+
+    def retrieve(self, lot_id):
+        return self.SimpleNamespace(id=lot_id, processing_status=self.statut)
+
+    def results(self, lot_id):
+        S = self.SimpleNamespace
+        for demande in self.creations[0]["requests"]:
+            if self.type_resultat == "succeeded":
+                message = S(content=[S(type="text", text=self.texte)], stop_reason="end_turn",
+                            usage=S(input_tokens=2000, output_tokens=800))
+                yield S(custom_id=demande["custom_id"], result=S(type="succeeded", message=message))
+            else:
+                yield S(custom_id=demande["custom_id"], result=S(type="errored", error=S(message="Quota dépassé")))
+
+
+@override_settings(WIKI_CLAUDE_FIL=False)
+@mock.patch.dict("os.environ", {"WIKI_CLAUDE_CLE": "sk-ant-test", "ANTHROPIC_API_KEY": "", "WIKI_CLAUDE_MODELE": "", "WIKI_CLAUDE_EFFORT": ""})
+class LotsTuteurTests(WikiTestCase):
+    """Transformations en lot (Message Batches) et tuteur de la page."""
+
+    PDF = b"%PDF-1.4\n%%EOF\n"
+
+    def setUp(self):
+        super().setUp()
+        from . import claude
+        self.claude = claude
+        claude._repris = False
+        self.admin = get_user_model().objects.create_user("admin", password="x", is_staff=True)
+        self.client.force_login(self.admin)
+
+    def _faux(self, texte="# Cours\n\nContenu.", **lots):
+        faux = _FauxClaude(texte)
+        faux.lots = _FauxLots(texte, **lots)
+        faux.beta.messages.batches = faux.lots
+        return faux
+
+    def test_pdf_en_lot(self):
+        from .models import Transformation
+        r = self.client.post("/importer/", {"fichiers": SimpleUploadedFile("Signal.pdf", self.PDF), "chemins": "Signal.pdf",
+                                            "dossier": "Cours", "claude": "1", "lot": "1"}, HTTP_ACCEPT="application/json")
+        self.assertIn("dans un lot", r.json()["results"][0]["message"])
+        t = Transformation.objects.get()
+        self.assertEqual((t.statut, t.options["lot"]), ("attente", True))
+        faux = self._faux()
+        with mock.patch.object(self.claude, "_client", return_value=faux):
+            self.claude.traiter_en_attente()
+        t.refresh_from_db()
+        self.assertEqual((t.statut, t.lot_id), ("lot", "msgbatch_1"))
+        self.assertEqual(faux.demandes, [])  # rien d'envoyé en direct
+        creation = faux.lots.creations[0]
+        self.assertEqual(creation["requests"][0]["custom_id"], f"t{t.pk}")
+        self.assertNotIn("betas", creation["requests"][0]["params"])
+        self.assertEqual(creation["betas"], ["server-side-fallback-2026-07-01"])
+        self.assertEqual(creation["requests"][0]["params"]["fallbacks"], "default")
+        page = self.client.get("/transformations/")
+        self.assertContains(page, "Vérifier maintenant")
+        self.assertContains(page, "⧗")
+        # Lot pas encore traité : rien ne change.
+        with mock.patch.object(self.claude, "_client", return_value=faux):
+            self.assertEqual(self.claude.verifier_lots(), 0)
+        t.refresh_from_db()
+        self.assertEqual(t.statut, "lot")
+        # Lot terminé : la page est écrite, coût à moitié prix.
+        faux.lots.statut = "ended"
+        with mock.patch.object(self.claude, "_client", return_value=faux):
+            self.assertContains(self.client.post("/transformations/", {"verifier_lots": "1"}, follow=True), "1 travail terminé")
+        t.refresh_from_db()
+        self.assertEqual((t.statut, t.page_ecrite, t.jetons_entree, t.jetons_sortie), ("fait", "Cours/Signal.md", 2000, 800))
+        self.assertTrue((self.root / "Cours" / "Signal.md").read_text(encoding="utf-8").startswith("# Cours"))
+        self.assertAlmostEqual(self.claude.cout(t), (2000 * 4.0 + 800 * 20.0) / 1_000_000 * 0.5)
+        self.assertContains(self.client.get("/transformations/"), "lot à moitié prix")
+
+    def test_lot_en_echec_et_qcm_en_lot(self):
+        from .models import Transformation
+        self.write("Cours/Signal.md", "# Signal\n\nShannon.\n")
+        r = self.client.post("/qcm/generer/", {"genre": "qcm", "page": "Cours/Signal", "nombre": "10", "lot": "1"}, follow=True)
+        self.assertEqual(r.status_code, 200)
+        t = Transformation.objects.get()
+        self.assertTrue(t.options["lot"])
+        faux = self._faux(type_resultat="errored")
+        with mock.patch.object(self.claude, "_client", return_value=faux):
+            self.claude.traiter_en_attente()
+            faux.lots.statut = "ended"
+            self.assertEqual(self.claude.verifier_lots(), 1)
+        t.refresh_from_db()
+        self.assertEqual((t.statut, t.message), ("erreur", "Lot : Quota dépassé"))
+        self.assertEqual(faux.lots.creations[0]["requests"][0]["params"]["output_config"]["format"]["schema"], self.claude.SCHEMA_QCM)
+
+    def test_tuteur(self):
+        import json
+        from .models import EchangeTuteur, UsageClaude
+        self.write("Cours/Signal.md", "# Signal\n\nLe théorème de Shannon impose $f_e > 2 f_{max}$.\n")
+        page = self.client.get("/wiki/Cours/Signal")
+        self.assertContains(page, 'id="tuteur"')
+        self.assertContains(page, "tuteur.js")
+        faux = _FauxClaude("D'après la page, il faut **échantillonner** à plus de $2 f_{max}$.")
+        with mock.patch.object(self.claude, "_client", return_value=faux):
+            r = self.client.post("/claude/tuteur/", data=json.dumps({"page": "Cours/Signal", "question": "Pourquoi 2 fois ?"}),
+                                 content_type="application/json")
+        self.assertEqual(r.status_code, 200, r.content)
+        self.assertIn("<strong>échantillonner</strong>", r.json()["html"])
+        demande = faux.demandes[0]
+        self.assertEqual(demande["model"], "claude-haiku-5-5")
+        self.assertIn("Le théorème de Shannon", demande["system"])
+        self.assertEqual(demande["messages"], [{"role": "user", "content": "Pourquoi 2 fois ?"}])
+        e = EchangeTuteur.objects.get()
+        self.assertEqual((e.player, e.page, e.jetons_entree), ("admin", "Cours/Signal", 1000))
+        self.assertEqual(UsageClaude.objects.get().genre, "tuteur")
+        # Deuxième question : l'échange précédent est rejoué ; l'historique s'affiche dans la page.
+        with mock.patch.object(self.claude, "_client", return_value=faux):
+            self.client.post("/claude/tuteur/", data=json.dumps({"page": "Cours/Signal", "question": "Et sinon ?"}),
+                             content_type="application/json")
+        self.assertEqual(len(faux.demandes[1]["messages"]), 3)
+        self.assertEqual(faux.demandes[1]["messages"][1]["role"], "assistant")
+        self.assertContains(self.client.get("/wiki/Cours/Signal"), "Pourquoi 2 fois ?")
+        # Lecteur simple : le tuteur lui est ouvert aussi ; page inconnue : 404 ; plafond : 429.
+        self.client.force_login(self.reader)
+        with mock.patch.object(self.claude, "_client", return_value=faux):
+            self.assertEqual(self.client.post("/claude/tuteur/", data=json.dumps({"page": "Cours/Signal", "question": "?"}),
+                                              content_type="application/json").status_code, 200)
+        self.assertEqual(self.client.post("/claude/tuteur/", data=json.dumps({"page": "Nope", "question": "?"}),
+                                          content_type="application/json").status_code, 404)
+        from .models import ReglagesClaude
+        reglages = ReglagesClaude.charger()
+        reglages.plafond_mensuel = 0.0000001
+        reglages.save()
+        self.assertEqual(self.client.post("/claude/tuteur/", data=json.dumps({"page": "Cours/Signal", "question": "?"}),
+                                          content_type="application/json").status_code, 429)
+        self.assertContains(self.client.get("/wiki/Cours/Signal"), "Plafond mensuel de Claude atteint")
