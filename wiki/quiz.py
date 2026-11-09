@@ -130,6 +130,7 @@ class QuestionSet:
     categorie: str = CATEGORIE_DEFAUT
     path: PurePosixPath | None = None
     langue: str = ""   # set rangé dans la section Langues (ex. "Anglais")
+    source_page: str = ""  # page du wiki dont le set a été généré (clé), s'il y en a une
 
     def __len__(self) -> int:
         return len(self.questions)
@@ -239,6 +240,7 @@ def set_depuis_json(data, rel: PurePosixPath) -> QuestionSet:
         categorie=rel.parent.name or CATEGORIE_DEFAUT,
         path=rel,
         langue=str(data.get("langue", "")).strip(),
+        source_page=str(data.get("source_page", "")).strip(),
     )
 
 

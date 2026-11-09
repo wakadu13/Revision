@@ -24,16 +24,32 @@
 </article>
 {% endblock %}
 {% block aside %}
-  {% if can_edit and claude_dispo %}
+  {% if fiche or can_edit and claude_dispo %}
   <section class="panel">
     <h2>Réviser ce cours</h2>
-    <form method="post" action="{% url 'wiki:quiz_generer' %}">
-      {% csrf_token %}
-      <input type="hidden" name="genre" value="qcm">
-      <input type="hidden" name="page" value="{{ note.key }}">
-      <button type="submit" class="button small" name="nombre" value="20"
-              title="Claude écrit 20 questions sur cette page ; le QCM apparaît dans la page des QCM">✦ Générer un QCM (20 questions)</button>
-    </form>
+    {% if fiche %}<p><a class="button small" href="{{ fiche.url }}">📄 Fiche de révision</a></p>{% endif %}
+    {% if can_edit and claude_dispo %}
+    <div class="panel-actions">
+      <form method="post" action="{% url 'wiki:quiz_generer' %}">
+        {% csrf_token %}
+        <input type="hidden" name="genre" value="qcm">
+        <input type="hidden" name="page" value="{{ note.key }}">
+        <button type="submit" class="button small" name="nombre" value="20"
+                title="Claude écrit 20 questions sur cette page ; à relire puis publier depuis les travaux de Claude">✦ Générer un QCM (20 questions)</button>
+      </form>
+      {% if not fiche %}
+      <form method="post" action="{% url 'wiki:transformations' %}">
+        {% csrf_token %}
+        {% if fiche_en_cours %}
+        <span class="muted">⏳ Fiche de révision en préparation…</span>
+        {% else %}
+        <button type="submit" class="button small" name="fiche" value="{{ note.key }}"
+                title="Claude résume la page en une fiche d'une page : définitions, formules, méthodes, pièges">✦ Fiche de révision</button>
+        {% endif %}
+      </form>
+      {% endif %}
+    </div>
+    {% endif %}
   </section>
   {% endif %}
   {% if toc %}

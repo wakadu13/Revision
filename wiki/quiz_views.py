@@ -23,7 +23,7 @@ from django.utils import timezone
 from django.utils.text import slugify
 from django.views.decorators.http import require_POST
 
-from . import planning, quiz
+from . import claude, planning, quiz
 from .models import _JAMAIS, Activite, QuizDeck, QuizProgress
 from .render import Renderer
 from .vault import Note, clean_key, get_vault
@@ -334,6 +334,7 @@ def play(request):
         intensif=mode == "intensif" and not request.GET.get("revision"),
         examen=mode == "examen",
         record_url=reverse("wiki:quiz_record"),
+        expliquer_url=reverse("wiki:quiz_expliquer") if claude.disponible() else "",
         back_url=reverse("wiki:quiz_index"),
     )
     if mode == "examen":

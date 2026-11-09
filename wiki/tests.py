@@ -1839,9 +1839,10 @@ class ClaudeTests(WikiTestCase):
         index = self.client.get("/qcm/").content.decode()
         self.assertIn('id="generer"', index)
         self.assertIn('<option value="Cours/Signal">Signal</option>', index)
-        self.client.post("/qcm/generer/", {"genre": "qcm", "page": "Cours/Signal", "nombre": "10"})
+        self.client.post("/qcm/generer/", {"genre": "qcm", "page": "Cours/Signal", "nombre": "10", "publier": "1"})
         t = Transformation.objects.get()
         self.assertEqual((t.genre, t.source, t.options["categorie"], t.options["nombre"]), ("qcm", "Cours/Signal.md", "Cours", 10))
+        self.assertTrue(t.options["publier"])
 
         faux = _FauxClaude(texte=self._qcm_json())
         self.traiter(faux)
@@ -1856,6 +1857,7 @@ class ClaudeTests(WikiTestCase):
         self.assertIn("Théorème de Shannon", textes[0])
         self.assertEqual(textes[1], "Écris 10 questions sur ce cours.")
         donnees = json.loads((self.root / t.page_ecrite).read_text(encoding="utf-8"))
+        self.assertEqual(donnees["source_page"], "Cours/Signal")
         self.assertEqual([q["id"] for q in donnees["questions"]], ["ia001", "ia002", "ia003", "ia005"])
         self.assertNotIn("verso", donnees["questions"][0])  # champs vides retirés
         qset = quiz.get_library().get("QCM/Cours/signal-echantillonnage")
@@ -1874,7 +1876,7 @@ class ClaudeTests(WikiTestCase):
         reponse = self.client.post("/qcm/generer/", {"genre": "qcm", "texte": "x", "categorie": "a/b"}, follow=True)
         self.assertContains(reponse, "Catégorie invalide")
         self.assertFalse(Transformation.objects.exists())
-        self.client.post("/qcm/generer/", {"genre": "qcm", "texte": "Le cours collé", "nombre": "999", "titre": "Mon QCM"})
+        self.client.post("/qcm/generer/", {"genre": "qcm", "texte": "Le cours collé", "nombre": "999", "titre": "Mon QCM", "publier": "1"})
         t = Transformation.objects.get()
         self.assertEqual((t.options["nombre"], t.options["categorie"], t.texte_source), (20, "Générés", "Le cours collé"))
         self.traiter(_FauxClaude(texte=self._qcm_json()))
@@ -1882,7 +1884,7 @@ class ClaudeTests(WikiTestCase):
         self.assertEqual(t.page_ecrite, "QCM/Générés/mon-qcm.json")
         self.assertEqual(json.loads((self.root / t.page_ecrite).read_text(encoding="utf-8"))["titre"], "Mon QCM")
         # Réponse coupée (trop de questions) : erreur claire.
-        self.client.post("/qcm/generer/", {"genre": "qcm", "texte": "Autre cours"})
+        self.client.post("/qcm/generer/", {"genre": "qcm", "texte": "Autre cours", "publier": "1"})
         self.traiter(_FauxClaude(texte='{"titre": "x", "questions": [', stop="max_tokens"))
         self.assertIn("moins de questions", Transformation.objects.latest("pk").message)
 
@@ -1895,11 +1897,11 @@ class ClaudeTests(WikiTestCase):
         self.assertIn('name="cartes" value="reconnaissance">', index)
         self.client.post("/qcm/generer/", {"genre": "vocabulaire", "mots": "un emploi\n\nto achieve\nla cuisine",
                                            "langue": "anglais", "cartes": ["decouverte", "production", "choix"],
-                                           "dossier": "Voc perso"})
+                                           "dossier": "Voc perso", "publier": "1"})
         t = Transformation.objects.get()
         self.assertEqual((t.genre, t.texte_source), ("vocabulaire", "un emploi\nto achieve\nla cuisine"))
         self.assertEqual(t.options, {"langue": "Anglais", "exercices": ["decouverte", "production", "choix"],
-                                     "dossier": "Voc perso", "titre": ""})
+                                     "dossier": "Voc perso", "titre": "", "publier": True})
         fiches = [
             {"mot": "a job", "traductions": ["un emploi"], "variantes": [], "exemple": "I found a new [job].",
              "exemple_traduction": "J'ai trouvé un nouvel emploi.", "prononciation": "/dʒɒb/", "note": ""},
@@ -1960,6 +1962,155 @@ class ClaudeTests(WikiTestCase):
             self.assertContains(self.client.get("/qcm/"), "ajoutez une clé d'API")
             self.assertRedirects(self.client.post("/qcm/generer/", {"genre": "vocabulaire", "mots": "a", "cartes": ["production"]}),
                                  "/claude/reglages/")
+
+    def test_draft_review_and_publish(self):
+        from .models import Transformation
+
+        self.write("Cours/Signal.md", "# Signal\n\nThéorème de Shannon.")
+        self.client.post("/qcm/generer/", {"genre": "qcm", "page": "Cours/Signal", "nombre": "10"})
+        self.traiter(_FauxClaude(texte=self._qcm_json()))
+        t = Transformation.objects.get()
+        self.assertEqual((t.statut, t.page_ecrite), ("brouillon", ""))
+        self.assertTrue(t.termine)
+        self.assertEqual(t.resultat["dossier"], "Cours")
+        self.assertEqual(len(t.resultat["contenu"]["questions"]), 4)
+        self.assertIn("À relire avant publication", t.message)
+        self.assertFalse((self.root / "QCM").exists())
+        suivi = self.client.get("/transformations/").content.decode()
+        self.assertIn("Relire et publier", suivi)
+        self.assertNotIn('http-equiv="refresh"', suivi)  # un brouillon n'est plus « en cours »
+        page = self.client.get(f"/transformations/{t.pk}/relire/").content.decode()
+        self.assertIn('name="q0-garder"', page)
+        self.assertIn('name="q0-bonne" value="1" checked', page)
+        self.assertIn('name="q1-bonne-0" value="1" checked', page)  # QCR : cases à cocher
+        self.assertIn('value="repliement / aliasing"', page)
+        # Relecture : on écarte la 2e question, on corrige la 1re et on vide un choix.
+        donnees = {"titre": "Signal relu", "description": "Relu.",
+                   "q0-garder": "1", "q0-question": "Fréquence minimale d'échantillonnage (corrigée) ?",
+                   "q0-choix-0": "f", "q0-choix-1": "", "q0-choix-2": "f/2", "q0-choix-3": "2 f_max", "q0-bonne": "3",
+                   "q0-explication": "Shannon-Nyquist.",
+                   "q2-garder": "1", "q2-question": "Le _____ apparaît si f_e < 2 f_max.", "q2-reponses": "repliement / aliasing / recouvrement",
+                   "q3-garder": "1", "q3-question": "Théorème de Shannon", "q3-verso": "f_e > 2 f_max (corrigé)"}
+        reponse = self.client.post(f"/transformations/{t.pk}/relire/", donnees)
+        self.assertRedirects(reponse, "/qcm/jouer/?set=QCM/Cours/signal-relu&mode=all", fetch_redirect_response=False)
+        t.refresh_from_db()
+        self.assertEqual((t.statut, t.page_ecrite, t.resultat), ("fait", "QCM/Cours/signal-relu.json", None))
+        self.assertIn("3 sur 4 gardés", t.message)
+        publie = json.loads((self.root / t.page_ecrite).read_text(encoding="utf-8"))
+        self.assertEqual([q["id"] for q in publie["questions"]], ["ia001", "ia003", "ia005"])
+        q0 = publie["questions"][0]
+        self.assertEqual((q0["question"], q0["choix"], q0["reponses"], q0["explication"]),
+                         ("Fréquence minimale d'échantillonnage (corrigée) ?", ["f", "f/2", "2 f_max"], [2], "Shannon-Nyquist."))
+        self.assertEqual(publie["questions"][1]["reponses_texte"], ["repliement", "aliasing", "recouvrement"])
+        self.assertEqual(publie["questions"][2]["verso"], "f_e > 2 f_max (corrigé)")
+        self.assertEqual(len(quiz.get_library().get("QCM/Cours/signal-relu")), 3)
+        # Déjà publié : la relecture renvoie au suivi.
+        self.assertRedirects(self.client.get(f"/transformations/{t.pk}/relire/"), "/transformations/")
+
+    def test_draft_publish_as_is_and_delete(self):
+        from .models import Transformation
+
+        self.client.post("/qcm/generer/", {"genre": "vocabulaire", "mots": "a job", "cartes": ["production"]})
+        fiches = [{"mot": "a job", "traductions": ["un emploi"], "variantes": [], "exemple": "", "exemple_traduction": "",
+                   "prononciation": "", "note": ""}]
+        self.traiter(_FauxClaude(texte=json.dumps({"titre": "Travail", "description": "", "vocabulaire": fiches})))
+        t = Transformation.objects.get()
+        self.assertEqual(t.statut, "brouillon")
+        self.client.post("/transformations/", {"publier": t.pk})
+        t.refresh_from_db()
+        self.assertEqual((t.statut, t.page_ecrite), ("fait", "QCM/Vocabulaire/travail.json"))
+        self.assertIn("QCM/Vocabulaire/travail", quiz.get_library().langues)
+        # Un second brouillon, supprimé.
+        self.client.post("/qcm/generer/", {"genre": "vocabulaire", "mots": "to cook", "cartes": ["production"]})
+        self.traiter(_FauxClaude(texte=json.dumps({"titre": "Cuisine", "description": "", "vocabulaire": fiches})))
+        t2 = Transformation.objects.latest("pk")
+        self.client.post("/transformations/", {"supprimer": t2.pk})
+        t2.refresh_from_db()
+        self.assertEqual((t2.statut, t2.resultat), ("erreur", None))
+        self.assertFalse((self.root / "QCM/Vocabulaire/cuisine.json").exists())
+        # Relecture d'un paquet : mot corrigé, fiche écartée.
+        self.client.post("/qcm/generer/", {"genre": "vocabulaire", "mots": "a job\nto cook", "cartes": ["production"]})
+        deux = fiches + [{"mot": "to cook", "traductions": ["cuisiner"], "variantes": [], "exemple": "", "exemple_traduction": "",
+                          "prononciation": "", "note": ""}]
+        self.traiter(_FauxClaude(texte=json.dumps({"titre": "Mix", "description": "", "vocabulaire": deux})))
+        t3 = Transformation.objects.latest("pk")
+        self.client.post(f"/transformations/{t3.pk}/relire/", {"titre": "Mix", "v0-garder": "1", "v0-mot": "a job",
+                                                                "v0-traductions": "un emploi ; un travail", "v0-note": "Courant."})
+        paquet = json.loads((self.root / "QCM/Vocabulaire/mix.json").read_text(encoding="utf-8"))
+        self.assertEqual(paquet["vocabulaire"], [{"id": "mix-001", "mot": "a job", "traductions": ["un emploi", "un travail"], "note": "Courant."}])
+
+    def test_fiche_de_revision(self):
+        from .models import Transformation
+
+        self.write("Cours/Signal.md", "# Signal\n\nShannon : $f_e > 2 f_{max}$.")
+        page = self.client.get("/wiki/Cours/Signal").content.decode()
+        self.assertIn('name="fiche" value="Cours/Signal"', page)
+        self.client.post("/transformations/", {"fiche": "Cours/Signal"})
+        self.assertContains(self.client.get("/wiki/Cours/Signal"), "Fiche de révision en préparation")
+        faux = _FauxClaude(texte="## Définitions\n\n- **Échantillonnage**…\n\n> [!retenir] L'essentiel\n> Shannon.")
+        self.traiter(faux)
+        t = Transformation.objects.get()
+        self.assertEqual((t.genre, t.statut, t.page_ecrite), ("fiche", "fait", "Cours/Signal (Fiche).md"))
+        texte = (self.root / "Cours/Signal (Fiche).md").read_text(encoding="utf-8")
+        self.assertTrue(texte.startswith("> [!abstract] Fiche de révision de [[Cours/Signal|Signal]]"))
+        self.assertIn("fiche de révision", faux.demandes[0]["system"].lower())
+        self.assertIn("Shannon", faux.demandes[0]["messages"][0]["content"][0]["text"])
+        page = self.client.get("/wiki/Cours/Signal").content.decode()
+        self.assertIn("📄 Fiche de révision", page)
+        self.assertNotIn('name="fiche"', page)
+        self.assertIn("Ouvrir la fiche", self.client.get("/transformations/").content.decode())
+
+    def test_explique_moi(self):
+        from .models import Explication
+
+        self.write("Cours/Signal.md", "# Signal\n\nLe théorème de Shannon impose f_e > 2 f_max.")
+        self.write("QCM/Cours/signal.json", json.dumps({"titre": "Signal", "source_page": "Cours/Signal", "questions": [
+            {"id": "q1", "type": "QCM", "question": "Fréquence minimale ?", "choix": ["f_max", "2 f_max"], "reponses": [1]}]}))
+        self.assertContains(self.client.get("/qcm/jouer/?set=QCM/Cours/signal&mode=all"), "data-expliquer-url=\"/qcm/expliquer/\"")
+        faux = _FauxClaude(texte="Parce que **Shannon** : il faut $f_e > 2 f_{max}$.")
+        with mock.patch.object(self.claude, "_client", return_value=faux):
+            r = self.client.post("/qcm/expliquer/", json.dumps({"set_id": "QCM/Cours/signal", "question_id": "q1"}),
+                                 content_type="application/json").json()
+        self.assertIn("<strong>Shannon</strong>", r["html"])
+        self.assertEqual((r["modele"], r["gardee"]), ("claude-haiku-5-5", False))
+        demande = faux.demandes[0]
+        self.assertEqual((demande["model"], demande["max_tokens"], demande["output_config"]["effort"]), ("claude-haiku-5-5", 1500, "low"))
+        self.assertNotIn("fallbacks", demande)
+        textes = [b["text"] for b in demande["messages"][0]["content"]]
+        self.assertIn("théorème de Shannon impose", textes[0])  # le cours
+        self.assertIn("Bonne(s) réponse(s) : B", textes[1])
+        self.assertEqual(Explication.objects.count(), 1)
+        # Deuxième demande : servie depuis la base, sans appel.
+        faux2 = _FauxClaude(texte="autre")
+        with mock.patch.object(self.claude, "_client", return_value=faux2):
+            r = self.client.post("/qcm/expliquer/", json.dumps({"set_id": "QCM/Cours/signal", "question_id": "q1"}),
+                                 content_type="application/json").json()
+        self.assertTrue(r["gardee"])
+        self.assertEqual(faux2.demandes, [])
+        # Lecteur simple : autorisé ; question inconnue : 404 ; examen : pas de bouton.
+        self.client.force_login(self.reader)
+        self.assertEqual(self.client.post("/qcm/expliquer/", json.dumps({"set_id": "QCM/Cours/signal", "question_id": "zz"}),
+                                          content_type="application/json").status_code, 404)
+        self.assertEqual(self.client.post("/qcm/expliquer/", json.dumps({"set_id": "QCM/Cours/signal", "question_id": "q1"}),
+                                          content_type="application/json").status_code, 200)
+        with mock.patch.dict("os.environ", {"WIKI_CLAUDE_CLE": ""}):
+            self.assertNotContains(self.client.get("/qcm/jouer/?set=QCM/Cours/signal&mode=all"), "data-expliquer-url")
+
+    def test_ameliorer_la_redaction(self):
+        self.write("Accueil.md", "x")
+        self.assertContains(self.client.get("/modifier/Accueil"), 'data-action="ameliorer"')
+        with mock.patch.dict("os.environ", {"WIKI_CLAUDE_CLE": ""}):
+            self.assertNotContains(self.client.get("/modifier/Accueil"), 'data-action="ameliorer"')
+        faux = _FauxClaude(texte="```markdown\nUn texte **corrigé**.\n```")
+        with mock.patch.object(self.claude, "_client", return_value=faux):
+            r = self.client.post("/claude/ameliorer/", {"texte": "Un texte **corigé**."}).json()
+        self.assertEqual(r["texte"], "Un texte **corrigé**.")
+        self.assertEqual(faux.demandes[0]["output_config"]["effort"], "low")
+        self.assertIn("balisage", faux.demandes[0]["system"])
+        self.assertEqual(self.client.post("/claude/ameliorer/", {"texte": ""}).status_code, 400)
+        self.assertEqual(self.client.post("/claude/ameliorer/", {"texte": "x" * 20000}).status_code, 400)
+        self.client.force_login(self.reader)
+        self.assertEqual(self.client.post("/claude/ameliorer/", {"texte": "x"}).status_code, 403)
 
     def test_unwraps_markdown_fence(self):
         self.assertEqual(self.claude._sans_cadre("```markdown\n# Titre\n\nTexte\n```"), "# Titre\n\nTexte")

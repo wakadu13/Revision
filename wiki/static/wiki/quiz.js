@@ -284,8 +284,33 @@
         (correct ? "✓ Correct" : "✗ Incorrect") + "</div>" +
         (explicationHtml ? '<div class="quiz-explication markdown">' + explicationHtml + "</div>" : "");
       renderMath(feedback);
+      if (options.expliquer) ajouterExpliqueMoi(feedback, state._els.q);
       nextBtn.style.display = "";
       nextBtn.focus();
+    }
+
+    // « Explique-moi » : Claude explique la réponse (d'après le cours quand le set en vient).
+    function ajouterExpliqueMoi(feedback, q) {
+      const b = el("button", "button small quiz-expliquer", "✦ Explique-moi");
+      b.type = "button";
+      b.addEventListener("click", async () => {
+        b.disabled = true;
+        b.textContent = "Claude réfléchit…";
+        try {
+          const r = await options.expliquer(q);
+          const box = el("div", "quiz-explication quiz-explication-claude markdown", r.html);
+          box.prepend(el("p", "muted quiz-explication-source", "✦ Explication de Claude" + (r.gardee ? "" : " (nouvelle)")));
+          b.replaceWith(box);
+          renderMath(box);
+        } catch (e) {
+          b.disabled = false;
+          b.textContent = "✦ Explique-moi";
+          const err = el("p", "quiz-verdict ko", e.message || "Explication impossible pour l'instant.");
+          b.after(err);
+          setTimeout(() => err.remove(), 4000);
+        }
+      });
+      feedback.appendChild(b);
     }
 
     function submitChoices() {
@@ -528,9 +553,21 @@
     if (window.QcmAttente) window.QcmAttente.ajouter({ ...reponse, date: date, joueur: root.dataset.joueur }).catch(() => {});
   }
 
+  async function expliquer(q) {
+    const r = await fetch(root.dataset.expliquerUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "X-CSRFToken": root.dataset.csrf },
+      body: JSON.stringify({ set_id: q.set_id, question_id: q.id }),
+    });
+    const json = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(json.error || "Explication impossible pour l'instant.");
+    return json;
+  }
+
   demarrer({
     stage: stage,
     questions: JSON.parse(dataTag.textContent),
+    expliquer: root.dataset.expliquerUrl && root.dataset.mode !== "examen" ? expliquer : null,
     intensif: root.dataset.mode === "intensif",
     examen: root.dataset.mode === "examen" ? { duree: Number(root.dataset.duree) || 0 } : null,
     backUrl: root.dataset.backUrl,
