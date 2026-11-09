@@ -1224,3 +1224,43 @@ def demander_wiki(question, sources, historique=()):
     if not texte:
         raise Echec("Claude n'a renvoyé aucune réponse.")
     return texte, _usage(message), MODELE_EXPLICATIONS
+
+
+MODELE_COPIE = "claude-sonnet-5-5"  # lecture d'écriture manuscrite et raisonnement : bon rapport qualité-prix
+MAX_TOKENS_COPIE = 6000
+CONSIGNE_COPIE = """Tu corriges la copie manuscrite d'un étudiant, photographiée (images jointes, dans l'ordre des \
+pages). Réponds en français, en Markdown (titres ###, listes, formules en LaTeX entre $), en suivant ce plan :
+
+### Ce que tu as écrit
+La démarche de l'étudiant, transcrite brièvement étape par étape (numérotées).
+
+### Correction pas à pas
+Pour chaque étape : ✅ juste, ⚠️ imprécis ou incomplet, ❌ faux ; une phrase d'explication et, si c'est faux, \
+la correction (le bon calcul ou le bon raisonnement).
+
+### Bilan
+Ce qui est acquis, l'erreur principale à retenir, et une note indicative sur 20 si l'exercice s'y prête.
+
+Appuie-toi sur l'énoncé et sur le cours fournis s'il y en a. Si une partie est illisible, dis-le au lieu de \
+deviner. Si les images ne montrent pas une copie (photo floue, autre chose), dis-le simplement. Sois exigeant \
+mais bienveillant."""
+
+
+def corriger_copie(images, enonce="", cours="", titre_cours=""):
+    """Correction (Sonnet) d'une copie manuscrite : ``images`` = JPEG (octets), dans
+    l'ordre des pages. Renvoie (texte Markdown, usage, modèle)."""
+    import base64
+
+    client = _client_pret()
+    systeme = CONSIGNE_COPIE
+    if cours:
+        systeme += f"\n\nCours de référence « {titre_cours} » :\n\n{cours[:MAX_CHARS_COURS // 2]}"
+    contenu = [{"type": "image", "source": {"type": "base64", "media_type": "image/jpeg",
+                                            "data": base64.b64encode(image).decode("ascii")}} for image in images]
+    contenu.append({"type": "text", "text": f"Énoncé de l'exercice :\n{enonce[:MAX_CHARS_QUESTION * 2]}" if enonce.strip()
+                    else "Pas d'énoncé fourni : déduis-le de la copie si possible."})
+    message = _appeler(client, _demande(MODELE_COPIE, systeme, contenu, max_tokens=MAX_TOKENS_COPIE, effort="medium"))
+    texte = _texte_reponse(message)
+    if not texte:
+        raise Echec("Claude n'a renvoyé aucune correction.")
+    return texte, _usage(message), MODELE_COPIE

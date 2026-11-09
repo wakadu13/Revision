@@ -737,6 +737,7 @@ def palette(request):
         {"t": "Planning des révisions", "u": reverse("wiki:quiz_plan")},
         {"t": "Rechercher dans le wiki", "u": reverse("wiki:search")},
         {"t": "Demander au wiki (Claude)", "u": reverse("wiki:demander")},
+        {"t": "Corriger ma copie (photo, Claude)", "u": reverse("wiki:copie")},
         {"t": "Graphe des liens entre pages", "u": reverse("wiki:graphe")},
         {"t": "Documentation", "u": reverse("wiki:documentation")},
         {"t": "Mon compte", "u": reverse("accounts:profile")},

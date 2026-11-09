@@ -991,3 +991,27 @@ a.citation { font-size: .78em; font-weight: 600; vertical-align: super; line-hei
 @media (max-width: 760px) {
   .masque-travail { grid-template-columns: 1fr; }
 }
+
+/* Langues : prononciation vérifiée au micro */
+.quiz-micro { margin: .6rem 0 .2rem; font-size: 1.05rem; }
+.quiz-oral-resultat { min-height: 1.4em; margin: .3rem 0; font-weight: 500; }
+.quiz-oral-resultat.juste { color: #15803d; }
+.quiz-oral-resultat.faux { color: #b91c1c; }
+.quiz-notes .suggere { box-shadow: 0 0 0 3px var(--accent); }
+
+/* Corriger ma copie */
+.copie-form { margin: 1rem 0 1.5rem; }
+.copie-ajouter { align-self: flex-start; }
+.copie-apercu { display: flex; flex-wrap: wrap; gap: .6rem; }
+.copie-apercu:empty { display: none; }
+.copie-apercu figure { margin: 0; width: 7.5rem; }
+.copie-apercu img { width: 100%; height: 9rem; object-fit: cover; border: 1px solid var(--border); border-radius: 6px; }
+.copie-apercu figcaption { font-size: .8rem; color: var(--muted); display: flex; justify-content: space-between; }
+.copie-actions { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
+[data-copie-etat].erreur { color: #b91c1c; }
+[data-copie-etat].ok { color: #15803d; }
+.copie-correction { border: 1px solid var(--border); border-radius: 8px; padding: .6rem .9rem; margin-bottom: .8rem; }
+.copie-correction > summary { cursor: pointer; }
+.copie-photos { display: flex; flex-wrap: wrap; gap: .5rem; margin: .6rem 0; }
+.copie-photos img { height: 8rem; width: auto; max-width: 100%; border: 1px solid var(--border); border-radius: 6px; }
+.copie-enonce { white-space: normal; }

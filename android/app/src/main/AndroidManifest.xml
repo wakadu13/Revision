@@ -7,6 +7,16 @@
     <!-- Rappel quotidien de révision (demandée à l'utilisateur sur Android 13 et plus) -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
+    <!-- Prononciation (module Langues) : l'écran de reconnaissance vocale du système. -->
+    <queries>
+        <intent>
+            <action android:name="android.speech.action.RECOGNIZE_SPEECH" />
+        </intent>
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE" />
+        </intent>
+    </queries>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -37,6 +47,15 @@
             <!-- Raccourcis d'application (appui long sur l'icône). -->
             <meta-data android:name="android.app.shortcuts" android:resource="@xml/shortcuts" />
         </activity>
+        <!-- Photos prises depuis le choix de fichiers (« Corriger ma copie ») : l'appareil photo
+             écrit dans le cache de l'application. -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fichiers"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/chemins_fichiers" />
+        </provider>
         <!-- Widget d'écran d'accueil : à réviser et série de jours. -->
         <receiver
             android:name=".Widget"

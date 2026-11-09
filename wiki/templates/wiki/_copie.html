@@ -1,0 +1,14 @@
+<details class="copie-correction" data-copie="{{ b.c.pk }}"{% if ouvert %} open{% endif %}>
+  <summary>
+    <b>{{ b.c.cree_le|date:"d/m/Y à H:i" }}</b>
+    {% if b.page %}<span class="muted">· {{ b.page.title }}</span>{% endif %}
+    {% if b.c.enonce %}<span class="muted">· {{ b.c.enonce|truncatechars:70 }}</span>{% endif %}
+  </summary>
+  <div class="copie-photos">
+    {% for n in b.photos %}<a href="{% url 'wiki:copie_photo' b.c.pk n %}" target="_blank" rel="noopener"><img src="{% url 'wiki:copie_photo' b.c.pk n %}" alt="Photo {{ forloop.counter }} de la copie" loading="lazy"></a>{% endfor %}
+  </div>
+  {% if b.c.enonce %}<p class="copie-enonce"><b>Énoncé :</b> {{ b.c.enonce|linebreaksbr }}</p>{% endif %}
+  {% if b.page %}<p class="muted">Cours de référence : <a href="{{ b.page.url }}">{{ b.page.title }}</a></p>{% endif %}
+  <div class="markdown copie-texte">{{ b.html|safe }}</div>
+  <p><button type="button" class="link-button" data-copie-supprimer>Supprimer cette correction</button></p>
+</details>

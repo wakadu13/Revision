@@ -1,0 +1,33 @@
+{% extends "wiki/base.html" %}
+{% load static %}
+{% block title %}Corriger ma copie{% endblock %}
+{% block content %}
+<article class="note copie-page" id="copie" data-url="{% url 'wiki:copie' %}" data-csrf="{{ csrf_token }}" data-max="{{ max_photos }}">
+  <h1 class="note-title">Corriger ma copie</h1>
+  <p class="muted">Photographiez votre copie (1 à {{ max_photos }} pages), ajoutez l'énoncé si vous l'avez : Claude
+    transcrit votre démarche et la corrige étape par étape (✅ juste, ⚠️ imprécis, ❌ faux), puis fait le bilan.
+    Les photos sont gardées avec la correction, visibles de vous seul.</p>
+  {% if not dispo %}
+  <div class="callout" data-callout="info"><div class="callout-title">Pas de clé d'API Claude sur le serveur : un admin peut l'ajouter dans « Claude (clé d'API) ».</div></div>
+  {% else %}
+  {% if plafond %}<div class="callout" data-callout="warning"><div class="callout-title">Plafond mensuel de Claude atteint : réessayez le mois prochain.</div></div>{% endif %}
+  <form class="form claude-form copie-form" data-copie-form>
+    <label class="button primary copie-ajouter">📷 Photos de la copie
+      <input type="file" name="photos" accept="image/*" multiple class="sr-only" data-copie-photos></label>
+    <div class="copie-apercu" data-copie-apercu></div>
+    <label for="copie-enonce">Énoncé <span class="muted">(facultatif, mais la correction est meilleure avec)</span></label>
+    <textarea id="copie-enonce" name="enonce" rows="3" maxlength="4000" placeholder="Ex. : Calculer la transformée de Fourier de x(t) = e^{-a|t|}."></textarea>
+    <label>Page du cours <span class="muted">(facultatif : Claude s'appuie dessus)</span>
+      <input name="page" list="copie-pages" value="{{ page.key|default:'' }}" autocomplete="off"></label>
+    <datalist id="copie-pages">{% for p in pages %}<option value="{{ p }}">{% endfor %}</datalist>
+    <p class="copie-actions"><button type="submit" class="button primary">Corriger</button>
+      <span data-copie-etat role="status"></span></p>
+  </form>
+  {% endif %}
+  <section class="copie-historique" data-copie-historique>
+    {% if corrections %}<h2>Mes corrections</h2>{% endif %}
+    {% for b in corrections %}{% include "wiki/_copie.html" with b=b ouvert=forloop.first %}{% endfor %}
+  </section>
+</article>
+<script src="{% static 'wiki/copie.js' %}" defer></script>
+{% endblock %}

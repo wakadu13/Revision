@@ -89,6 +89,83 @@
   function lireSi(e, quand) {
     if (e.audio && e.audio.quand === quand && lectureAuto) parler(e.audio);
   }
+
+  // -- Prononciation : reconnaissance vocale du navigateur, ou d'Android dans l'appli --
+  const Reconnaissance = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const ecouteNative = !!(window.AppliNatif && typeof window.AppliNatif.ecouter === "function");
+  const peutEcouter = !!(Reconnaissance || ecouteNative);
+
+  function ecouter(lang) {
+    // → Promise<string[]> : les transcriptions possibles, la plus probable d'abord.
+    if (ecouteNative) {
+      return new Promise((res, rej) => {
+        window.resultatEcoute = (json) => {
+          window.resultatEcoute = null;
+          let r = {};
+          try { r = typeof json === "string" ? JSON.parse(json) : json; } catch (err) { /* réponse illisible */ }
+          if (r.erreur) rej(new Error(r.erreur)); else res(r.textes || []);
+        };
+        window.AppliNatif.ecouter(lang);
+      });
+    }
+    return new Promise((res, rej) => {
+      const r = new Reconnaissance();
+      r.lang = lang;
+      r.maxAlternatives = 5;
+      r.interimResults = false;
+      r.continuous = false;
+      let fini = false;
+      r.onresult = (ev) => { fini = true; res([...ev.results[0]].map((a) => a.transcript)); };
+      r.onerror = (ev) => { fini = true; rej(new Error(ev.error)); };
+      r.onend = () => { if (!fini) res([]); };
+      r.start();
+    });
+  }
+
+  function replier(t) {
+    return t.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
+      .replace(/[’']/g, "'").replace(/[^\p{L}\p{N}' ]+/gu, " ").replace(/\s+/g, " ").trim();
+  }
+
+  function distance(a, b) {
+    const d = Array.from({ length: b.length + 1 }, (_, j) => j);
+    for (let i = 1; i <= a.length; i++) {
+      let prec = d[0];
+      d[0] = i;
+      for (let j = 1; j <= b.length; j++) {
+        const t = d[j];
+        d[j] = Math.min(d[j] + 1, d[j - 1] + 1, prec + (a[i - 1] === b[j - 1] ? 0 : 1));
+        prec = t;
+      }
+    }
+    return d[b.length];
+  }
+
+  // Bien prononcé : une transcription égale au mot (accents, ponctuation et petits mots
+  // facultatifs comme « to » ou « the » ignorés), le contenant, ou à une lettre près.
+  function prononceBien(entendus, oral) {
+    const particules = (oral.particules || []).map(replier);
+    const sans = (t) => {
+      for (const p of particules) if (t.startsWith(p + " ")) return t.slice(p.length + 1);
+      return t;
+    };
+    const cibles = oral.reponses.map((r) => sans(replier(r))).filter(Boolean);
+    return entendus.some((brut) => {
+      const t = sans(replier(brut));
+      return cibles.some((c) => t === c || (" " + t + " ").includes(" " + c + " ")
+        || (c.length >= 5 && distance(t, c) <= (c.length >= 10 ? 2 : 1)));
+    });
+  }
+
+  const ERREURS_MICRO = {
+    "not-allowed": "Micro refusé : autorise-le pour ce site, ou retourne la carte.",
+    "service-not-allowed": "Reconnaissance vocale refusée par le navigateur.",
+    "audio-capture": "Aucun micro détecté.",
+    "network": "La reconnaissance vocale a besoin d'Internet ici.",
+    "no-speech": "Rien entendu : réessaie, plus près du micro.",
+    "indisponible": "Reconnaissance vocale indisponible sur cet appareil.",
+    "annule": "Écoute annulée.",
+  };
   const A_REVOIR = 1, DIFFICILE = 2, BIEN = 3, FACILE = 4;
   const NOTES = [[A_REVOIR, "À revoir"], [DIFFICILE, "Difficile"], [BIEN, "Bien"], [FACILE, "Facile"]];
 
@@ -180,7 +257,8 @@
     const e = exo();
     let t;
     if (s.verdict) t = s.verdict.verdict === "juste" ? "Entrée Suivant · F C'était trop facile · Q Quitter" : "Entrée / Espace Suivant · Q Quitter";
-    else if (e.forme === "carte") t = s.revele ? "1 À revoir · 2 Difficile · 3 Bien (Espace) · 4 Facile" : "Espace Retourner la carte · Q Quitter";
+    else if (e.forme === "carte") t = s.revele ? NOTES.map(([n, l]) => `${n} ${l}${n === (s.suggestion || BIEN) ? " (Espace)" : ""}`).join(" · ")
+      : s.micro ? "Espace Prononcer · R Écouter · Q Quitter" : "Espace Retourner la carte · Q Quitter";
     else if (e.forme === "saisie") t = (e.audio && e.audio.quand === "debut" && synthese ? "🔊 Réécouter avec le bouton · " : "") + "Tape ta réponse · Entrée Valider · Échap Quitter";
     else if (e.forme === "choix") t = (e.multiple ? "Lettres : cocher plusieurs réponses" : "Lettre : choisir") + " · Entrée Valider · Q Quitter";
     else t = "Clique les mots (ou tape leur numéro) · ⌫ Retirer le dernier · Entrée Valider · Q Quitter";
@@ -224,6 +302,9 @@
   function buildCarte(e, zone) {
     const recto = el("div", "quiz-recto markdown", e.recto);
     zone.appendChild(recto);
+    if (e.oral && peutEcouter) return buildOral(e, zone);
+    if (e.oral) zone.appendChild(text("p", "muted", "Dis le mot à voix haute, puis retourne la carte pour l'écouter "
+      + "(reconnaissance vocale indisponible sur ce navigateur)."));
     if (synthese && e.audio && e.audio.quand === "debut") {
       zone.appendChild(boutonSon(e.audio));
       lireSi(e, "debut");
@@ -235,11 +316,58 @@
     s.flip = flip;
   }
 
+  // Carte de prononciation : « Prononcer » lance l'écoute ; bien prononcé, la carte se
+  // retourne avec « Bien » proposé ; trois essais manqués : « À revoir ».
+  function buildOral(e, zone) {
+    s.essais = 0;
+    const micro = el("button", "button primary quiz-micro", "🎤 Prononcer (Espace)");
+    micro.type = "button";
+    const resultat = el("p", "quiz-oral-resultat");
+    resultat.setAttribute("role", "status");
+    micro.addEventListener("click", async () => {
+      if (micro.disabled || s.revele) return;
+      micro.disabled = true;
+      micro.textContent = "🎤 J'écoute…";
+      resultat.className = "quiz-oral-resultat";
+      resultat.textContent = "";
+      try {
+        const entendus = await ecouter(e.oral.lang || (e.audio && e.audio.lang) || "en-GB");
+        if (s.revele || exo() !== e) return;
+        if (!entendus.length) throw new Error("no-speech");
+        s.essais++;
+        if (prononceBien(entendus, e.oral)) {
+          resultat.className = "quiz-oral-resultat juste";
+          resultat.textContent = `✓ Bien prononcé : « ${entendus[0]} »`;
+          s.suggestion = s.essais === 1 ? BIEN : DIFFICILE;
+          reveler();
+        } else {
+          resultat.className = "quiz-oral-resultat faux";
+          resultat.textContent = `✗ Entendu : « ${entendus[0]} »` + (s.essais < 3 ? " — réessaie !" : "");
+          if (s.essais >= 3) { s.suggestion = A_REVOIR; reveler(); }
+        }
+      } catch (err) {
+        resultat.className = "quiz-oral-resultat faux";
+        resultat.textContent = ERREURS_MICRO[err.message] || "Écoute impossible (" + err.message + ").";
+      } finally {
+        micro.disabled = false;
+        micro.textContent = "🎤 Réessayer (Espace)";
+      }
+    });
+    zone.append(micro, resultat);
+    s.micro = micro;
+    const passer = el("button", "button", "Je ne sais pas : voir et écouter");
+    passer.type = "button";
+    passer.addEventListener("click", () => { s.suggestion = A_REVOIR; reveler(); });
+    s.actions.appendChild(passer);
+    s.flip = passer;
+  }
+
   function reveler() {
     const e = exo();
     if (s.revele) return;
     s.revele = true;
     s.flip.remove();
+    if (s.micro) s.micro.remove();
     const verso = el("div", "quiz-verso markdown", e.verso);
     stage.insertBefore(verso, s.actions);
     if (synthese && e.audio && e.audio.quand === "verso") {
@@ -254,6 +382,7 @@
       b.appendChild(text("span", "", n + " · " + libelle));
       b.appendChild(text("small", "", (e.previsions || {})[n] || ""));
       b.addEventListener("click", () => noter(n));
+      if (s.suggestion === n) b.classList.add("suggere");
       notes.appendChild(b);
     }
     stage.insertBefore(text("p", "muted", "Tu t'en souvenais ?"), s.actions);
@@ -634,9 +763,12 @@
     if (k === "q" || key === "Escape") { ev.preventDefault(); quitter(); return; }
     if (k === "r" && e.audio && synthese) { ev.preventDefault(); parler(e.audio); return; }
     if (e.forme === "carte") {
-      if (!s.revele) { if (key === " " || key === "Enter") { ev.preventDefault(); reveler(); } return; }
+      if (!s.revele) {
+        if (key === " " || key === "Enter") { ev.preventDefault(); if (s.micro) s.micro.click(); else reveler(); }
+        return;
+      }
       if ("1234".includes(key) && key.length === 1) { ev.preventDefault(); noter(Number(key)); }
-      else if (key === " " || key === "Enter") { ev.preventDefault(); noter(BIEN); }
+      else if (key === " " || key === "Enter") { ev.preventDefault(); noter(s.suggestion || BIEN); }
     } else if (e.forme === "choix") {
       const i = LETTERS.indexOf(key.toUpperCase());
       if (key.length === 1 && i >= 0 && i < e.choix.length) { ev.preventDefault(); basculer(i); }

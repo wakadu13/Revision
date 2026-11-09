@@ -5,7 +5,8 @@
 <article class="note demander" id="demander" data-url="{% url 'wiki:demander' %}" data-csrf="{{ csrf_token }}">
   <h1 class="note-title">Demander au wiki</h1>
   <p class="muted">Claude répond d'après vos pages et le texte de vos PDF, et cite ses sources : chaque [1], [2]… mène
-    à la page ou à la page du PDF concernée. Il dit quand le wiki n'en parle pas.</p>
+    à la page ou à la page du PDF concernée. Il dit quand le wiki n'en parle pas.
+    Un exercice fait sur papier ? <a href="{% url 'wiki:copie' %}">📷 Corriger ma copie</a>.</p>
   {% if not dispo %}
   <div class="callout" data-callout="info"><div class="callout-title">Pas de clé d'API Claude sur le serveur : un admin peut l'ajouter dans « Claude (clé d'API) ».</div></div>
   {% else %}

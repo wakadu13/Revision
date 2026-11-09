@@ -1,6 +1,6 @@
 from django.urls import path
 
-from . import explorer_views, hors_ligne_views, langues_views, masque_views, quiz_views, views
+from . import copie_views, explorer_views, hors_ligne_views, langues_views, masque_views, quiz_views, views
 
 app_name = "wiki"
 
@@ -14,6 +14,9 @@ urlpatterns = [
     path("sommaire/", views.sommaire, name="sommaire"),
     path("recherche/", views.search, name="search"),
     path("demander/", explorer_views.demander, name="demander"),
+    path("copie/", copie_views.copie, name="copie"),
+    path("copie/photo/<int:pk>/<int:n>", copie_views.photo, name="copie_photo"),
+    path("copie/<int:pk>/supprimer/", copie_views.supprimer, name="copie_supprimer"),
     path("graphe/", explorer_views.graphe, name="graphe"),
     path("graphe.json", explorer_views.graphe_donnees, name="graphe_donnees"),
     path("palette.json", views.palette, name="palette"),

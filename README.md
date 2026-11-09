@@ -79,7 +79,8 @@ l'adresse publique du wiki.
 
 **Espaces personnels** : les sets et listes de mots que chaque compte importe
 dans « Mon espace » sont rangés dans `perso/<compte>/` du même dossier de
-données, hors du coffre : à sauvegarder aussi.
+données, hors du coffre : à sauvegarder aussi (comme `copies/`, les photos des
+copies corrigées).
 
 **Fichiers du coffre** : le wiki vérifie au plus toutes les 2 secondes si des
 fichiers ont changé (`WIKI_VERIF_INTERVALLE`, en secondes) au lieu de parcourir
@@ -223,6 +224,15 @@ d'Android.
   PDF. Il dit quand le wiki n'en parle pas. Les questions de suite tiennent
   compte des précédentes ; l'historique reste sur la page. Même plafond mensuel
   que le tuteur.
+- **📷 Corriger ma copie** (`/copie/`, palette, lien sous le tuteur de chaque
+  page) : les photos d'une copie manuscrite (1 à 4 pages), l'énoncé et la page
+  du cours en option ; Claude (Sonnet, qui lit bien l'écriture manuscrite)
+  transcrit la démarche, la corrige étape par étape (✅ juste, ⚠️ imprécis,
+  ❌ faux, avec la correction) et fait un bilan avec une note indicative. Photos
+  réduites dans le navigateur avant l'envoi, gardées avec la correction (30
+  dernières par compte, dans `copies/` du dossier de données), visibles de leur
+  seul auteur. Dans l'application Android, le choix des photos propose aussi
+  l'appareil photo. Même plafond mensuel que le tuteur.
 - **Graphe** (`/graphe/`, menu, et « Voir dans le graphe » sous les rétroliens
   d'une page) : les pages et leurs liens, colorés par dossier ; glisser pour se
   déplacer, molette ou deux doigts pour zoomer, survol pour voir les liens d'une
@@ -342,7 +352,8 @@ dans les réglages de Claude) :
   (« Réviser ce paquet ») ou avec le reste de la langue, ou en **révision intensive** (« Intensif »). Types de cartes :
   carte FR → EN, traduction à taper FR → EN, QCM FR → EN (le bon mot parmi
   ceux du paquet), phrase à compléter, **dictée** (le mot est lu à voix haute,
-  on l'écrit), carte EN → FR, traduction à taper EN → FR ; cochés par défaut : les trois premiers du français vers l'anglais
+  on l'écrit), carte EN → FR, traduction à taper EN → FR, **prononciation**
+  (voir plus bas) ; cochés par défaut : les trois premiers du français vers l'anglais
   hors QCM (choix retenu sur l'appareil). La première carte cochée fait
   découvrir le mot, les autres viennent ensuite.
 - **QCM** : choisir une page du wiki (ou coller un texte) et un nombre de
@@ -389,7 +400,17 @@ dans les réglages de Claude) :
 Le suivi (et le coût) de chaque demande est sur la page **Travaux de Claude**.
 Dans un fichier de langue écrit à la main, la clé `"exercices"` choisit de la
 même façon les cartes de vocabulaire (`decouverte`, `production`, `choix`,
-`contexte`, `dictee`, `reconnaissance`, `traduction`) ; sans elle, rien ne change.
+`contexte`, `dictee`, `reconnaissance`, `traduction`, `prononciation`) ; sans elle, rien ne change.
+
+**Prononciation vérifiée** (carte `prononciation`) : le mot s'affiche, « 🎤
+Prononcer » (ou Espace) écoute ; la reconnaissance vocale compare ce qu'elle
+a entendu au mot (accents, ponctuation et petits mots comme « to » ignorés, une
+lettre d'écart tolérée sur les mots longs). Bien prononcé : la carte se
+retourne avec « Bien » proposé ; trois essais manqués : « À revoir » ; un
+silence ne compte pas. La carte retournée lit le mot pour comparer. Marche dans
+Chrome et Edge (ordinateur, Android) et dans l'application Android (écran
+d'écoute du système) ; ailleurs (Firefox…), la carte devient une carte à dire
+puis retourner. La reconnaissance du navigateur passe souvent par Internet.
 
 **Son** : les mots en langue apprise sont lus par la synthèse vocale du
 navigateur (gratuite, hors ligne) : à l'affichage d'une carte EN → FR, au
@@ -718,6 +739,8 @@ en-têtes) sont dans [`core/tests.py`](core/tests.py) :
 - `/tags/` et `/tags/<tag>` : les tags
 - `/recherche/?q=...` : recherche plein texte (insensible aux accents), notes et texte des PDF
 - `/demander/` : « Demander au wiki » (Claude, sources citées) ; `/graphe/` et `/graphe.json` : graphe des liens
+- `/copie/` : « Corriger ma copie » (photos, Claude) ; `/copie/photo/<id>/<n>`, `/copie/<id>/supprimer/`
+- `/qcm/image-masquee/` : éditeur de cartes à image masquée ; `/qcm/mon-espace/images/<nom>` : images de l'espace personnel
 - `/historique/<page>` : versions précédentes d'une page (admins) ; `/pdf-annotation/` (POST, admins) : passage d'un PDF → carte ou citation
 - `/sw.js`, `/manifest.webmanifest`, `/hors-connexion/`, `/hors-ligne/dossier.json` : lecture hors ligne du wiki (PWA)
 - `/qcm/exporter/?set=…` : export d'un set ou d'un paquet en `.apkg` (Anki) ou `.tsv` (`&format=tsv`)
