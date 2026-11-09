@@ -351,7 +351,6 @@ def _facettes_vocabulaire(id_, mot, trads, o, types, langue, abr_l, abr_m, autre
 
 def set_depuis_json(data, rel: PurePosixPath) -> SetLangue:
     """Construit un fichier de langue et ses facettes. Lève ValueError si malformé."""
-    nom = rel.name
     langue = _texte(data.get("langue"))
     if not langue.strip():
         raise ValueError(f"{rel} : 'langue' ne doit pas être vide.")

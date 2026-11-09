@@ -776,6 +776,21 @@ GitHub) en pull requests regroupées, testées par la même CI.
 uv run python manage.py test
 ```
 
+Les tests du wiki sont rangés par thème dans `wiki/tests/` (`test_pages`,
+`test_fichiers`, `test_qcm`, `test_langues`, `test_claude`, `test_appli`), avec
+les bases communes dans `wiki/tests/base.py` ; `uv run python manage.py test
+wiki.tests.test_qcm` n'en lance qu'une partie.
+
+**Organisation du code** (`wiki/`) : `views.py` (pages, édition, recherche,
+historique), `claude_views.py` (tout ce qui passe par Claude), `pdf_views.py`
+(lecteur de PDF, pièces jointes), `pwa_views.py` (lecture hors ligne),
+`quiz_views.py` (sessions de QCM, statistiques, planning, « Aujourd'hui »),
+`qcm_gestion_views.py` (import, rangement, export, signalements, « Mon
+espace »), `langues_views.py`, `hors_ligne_views.py` (QCM hors ligne),
+`explorer_views.py` (« Demander au wiki », graphe), `masque_views.py`,
+`copie_views.py` ; `claude.py` (client, travaux en file, lots, plafond) et
+`claude_demandes.py` (appels courts : explications, tuteur, corrections).
+
 Le scénario navigateur (`e2e/scenario.js`) lance le wiki sur le coffre de test
 `e2e/vault` : connexion, lecture d'une page et de son panneau « Réviser ce
 cours », thème, palette, session de QCM avec signalement puis traitement par
