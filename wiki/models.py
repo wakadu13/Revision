@@ -128,15 +128,18 @@ class Transformation(models.Model):
     """Travail confié à Claude, fait en arrière-plan (claude.py) : un cours (PDF ou
     LaTeX) transformé en page, un QCM ou un paquet de vocabulaire généré."""
 
-    ATTENTE, EN_COURS, FAIT, ERREUR = "attente", "en_cours", "fait", "erreur"
-    STATUTS = [(ATTENTE, "En attente"), (EN_COURS, "En cours"), (FAIT, "Terminée"), (ERREUR, "Échec")]
-    PAGE, QCM, VOCABULAIRE = "page", "qcm", "vocabulaire"
-    GENRES = [(PAGE, "Page de cours"), (QCM, "QCM"), (VOCABULAIRE, "Vocabulaire")]
+    ATTENTE, EN_COURS, BROUILLON, FAIT, ERREUR = "attente", "en_cours", "brouillon", "fait", "erreur"
+    STATUTS = [(ATTENTE, "En attente"), (EN_COURS, "En cours"), (BROUILLON, "À relire"), (FAIT, "Terminée"), (ERREUR, "Échec")]
+    PAGE, QCM, VOCABULAIRE, FICHE = "page", "qcm", "vocabulaire", "fiche"
+    GENRES = [(PAGE, "Page de cours"), (QCM, "QCM"), (VOCABULAIRE, "Vocabulaire"), (FICHE, "Fiche de révision")]
 
     genre = models.CharField(max_length=12, choices=GENRES, default=PAGE)
-    # QCM : nombre de questions, catégorie, titre ; vocabulaire : langue, types de
-    # cartes, dossier, titre.
+    # QCM : nombre de questions, catégorie, titre, publier (sans relecture) ;
+    # vocabulaire : langue, types de cartes, dossier, titre, publier.
     options = models.JSONField(default=dict, blank=True)
+    # QCM ou paquet généré, en attente de relecture (statut « brouillon ») : le
+    # JSON du fichier à écrire, et le dossier.
+    resultat = models.JSONField(null=True, blank=True)
 
     # PDF : son chemin dans le coffre. LaTeX : le nom du fichier envoyé, et son
     # texte (le coffre ne garde que la page convertie sur place).
@@ -166,13 +169,13 @@ class Transformation(models.Model):
 
     @property
     def nom(self):
-        if self.genre == self.QCM:
+        if self.genre in (self.QCM, self.FICHE):
             return (self.options or {}).get("nom") or self.source.rsplit("/", 1)[-1].removesuffix(".md")
         return self.source.rsplit("/", 1)[-1]
 
     @property
     def termine(self):
-        return self.statut in (self.FAIT, self.ERREUR)
+        return self.statut in (self.BROUILLON, self.FAIT, self.ERREUR)
 
 
 class ReglagesClaude(models.Model):
@@ -296,3 +299,19 @@ class Activite(models.Model):
             "justes_trente_jours": totaux["justes"] or 0,
             "jours_actifs_trente": sum(1 for j in jours if j >= depuis),
         }
+
+
+class Explication(models.Model):
+    """Explication d'une question de QCM écrite par Claude à la demande (« Explique-moi »),
+    gardée pour ne pas payer deux fois."""
+
+    set_id = models.CharField(max_length=500)
+    question_id = models.CharField(max_length=255)
+    texte = models.TextField()
+    modele = models.CharField(max_length=64, blank=True)
+    jetons_entree = models.PositiveIntegerField(default=0)
+    jetons_sortie = models.PositiveIntegerField(default=0)
+    cree_le = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ("set_id", "question_id")

@@ -762,3 +762,22 @@ body.plein-ecran.editing.pe-haut .toolbar {
 .quiz-correction-reponse, .quiz-correction-attendu { margin: .3rem 0; font-size: .95rem; }
 .quiz-correction-item.ko .quiz-correction-reponse { color: rgb(233, 49, 71); }
 .quiz-correction-attendu { color: #16a34a; }
+
+/* Brouillons de Claude : relecture */
+.claude-brouillon-actions { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .5rem; }
+.claude-relire { max-width: none; }
+.claude-relire-liste { padding-left: 1.4rem; }
+.claude-relire-item { margin: 0 0 1rem; padding: .7rem .9rem; border: 1px solid var(--border); border-radius: 10px; background: var(--bg-alt); }
+.claude-relire-item textarea { display: block; width: 100%; padding: .45rem .6rem; border: 1px solid var(--border); border-radius: 6px; background: var(--bg); color: var(--text); font: inherit; resize: vertical; }
+.claude-relire-item .claude-garder { font-size: .95rem; color: var(--text); margin: 0 0 .4rem; }
+.claude-relire-item:has(.claude-garder input:not(:checked)) { opacity: .5; }
+.claude-relire-choix { list-style: none; padding: 0; margin: .5rem 0 0; display: grid; gap: .3rem; }
+.claude-relire-choix li { display: flex; align-items: center; gap: .5rem; }
+.claude-relire-choix input[type=text] { flex: 1; }
+.claude-relire-choix input[type=radio], .claude-relire-choix input[type=checkbox] { width: auto; }
+.claude-relire-actions { position: sticky; bottom: 0; padding: .6rem 0; background: var(--bg); border-top: 1px solid var(--border); }
+.panel-actions { display: grid; gap: .4rem; }
+/* Explique-moi */
+.quiz-expliquer { margin-top: .6rem; }
+.quiz-explication-claude { margin-top: .6rem; padding: .6rem .8rem; border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; background: var(--accent-soft); }
+.quiz-explication-source { font-size: .78rem; margin: 0 0 .3rem; }

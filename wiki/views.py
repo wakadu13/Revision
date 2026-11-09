@@ -18,7 +18,7 @@ from . import claude
 from . import latex as latex_converter
 from . import paquets
 from . import uploads
-from .models import ReglagesClaude, Transformation
+from .models import Explication, ReglagesClaude, Transformation
 from .render import Renderer, render_note
 from .vault import CODE_RE, Note, clean_key, get_vault, split_frontmatter
 
@@ -48,12 +48,17 @@ def _render(request, vault, template, context, status=200):
 def _note_page(request, vault, note):
     content, toc = vault.render(note)
     backlinks = sorted(vault.backlinks.get(note.key.lower(), ()), key=lambda n: n.title.lower())
+    fiche = vault.notes.get(note.path.with_name(f"{note.path.stem} (Fiche)").with_suffix("").as_posix().lower())
     return _render(request, vault, "wiki/page.html", {
         "note": note,
         "content": content,
         "toc": toc,
         "backlinks": backlinks,
         "claude_dispo": can_edit(request) and claude.disponible(),
+        "fiche": fiche,
+        "fiche_en_cours": fiche is None and Transformation.objects.filter(
+            genre=Transformation.FICHE, source=note.path.as_posix(),
+            statut__in=[Transformation.ATTENTE, Transformation.EN_COURS]).exists(),
     })
 
 
@@ -136,6 +141,7 @@ def edit(request, path):
         "preview_url": reverse("wiki:preview", args=[key]),
         "import_url": reverse("wiki:import"),
         "latex_url": reverse("wiki:latex"),
+        "ameliorer_url": reverse("wiki:claude_ameliorer") if claude.disponible() else "",
     })
 
 
@@ -288,7 +294,8 @@ def _resultat(vault, t):
         langue = (t.options or {}).get("langue", "Anglais")
         return f"{reverse('wiki:langue_play', args=[langue])}?mode=quotidien&fichier={quote(set_id)}", "Réviser ce paquet"
     note = vault.notes.get(t.page_ecrite.removesuffix(".md").lower())
-    return (reverse("wiki:page", args=[note.key]), "Ouvrir la page") if note else ("", "")
+    lien = "Ouvrir la fiche" if t.genre == Transformation.FICHE else "Ouvrir la page"
+    return (reverse("wiki:page", args=[note.key]), lien) if note else ("", "")
 
 
 def transformations(request):
@@ -301,6 +308,26 @@ def transformations(request):
             messages.error(request, "Aucune clé d'API : ajoutez-la dans les réglages de Claude.")
         elif pk := request.POST.get("relancer"):
             claude.relancer(get_object_or_404(Transformation, pk=pk))
+        elif pk := request.POST.get("publier"):
+            t = get_object_or_404(Transformation, pk=pk)
+            try:
+                claude.publier(t)
+                messages.success(request, f"« {t.nom} » publié.")
+            except claude.Echec as e:
+                messages.error(request, str(e))
+        elif pk := request.POST.get("supprimer"):
+            claude.supprimer_brouillon(get_object_or_404(Transformation, pk=pk, statut=Transformation.BROUILLON))
+            messages.success(request, "Brouillon supprimé.")
+        elif cle := request.POST.get("fiche"):
+            note = vault.notes.get(cle.lower())
+            if note is None:
+                raise Http404("Page introuvable")
+            if Transformation.objects.filter(genre=Transformation.FICHE, source=note.path.as_posix(),
+                                             statut__in=[Transformation.ATTENTE, Transformation.EN_COURS]).exists():
+                messages.info(request, f"La fiche de « {note.title} » est déjà en préparation.")
+            else:
+                claude.demander_fiche(note, request.user.get_username())
+                messages.success(request, f"Claude rédige la fiche de révision de « {note.title} ».")
         elif chemin := request.POST.get("pdf"):
             pdf = vault.attachments.get(chemin.lower())
             if pdf is None or pdf.suffix != ".pdf":
@@ -437,7 +464,7 @@ def generer(request):
             return retour
         claude.demander_qcm(note=note, texte="" if note else texte, nombre=nombre,
                             categorie=claude.dossier_valide(categorie) or "", titre=request.POST.get("titre", "").strip()[:120],
-                            utilisateur=qui)
+                            utilisateur=qui, publier=request.POST.get("publier") == "1")
         messages.success(request, f"Claude écrit {nombre} questions sur « {note.title if note else 'le texte collé'} ».")
     elif genre == "vocabulaire":
         mots = request.POST.get("mots", "").strip()
@@ -450,7 +477,8 @@ def generer(request):
         if erreur:
             messages.error(request, erreur)
             return retour
-        claude.demander_vocabulaire(mots="\n".join(l.strip() for l in lignes)[:20_000], utilisateur=qui, **options)
+        claude.demander_vocabulaire(mots="\n".join(l.strip() for l in lignes)[:20_000], utilisateur=qui,
+                                    publier=request.POST.get("publier") == "1", **options)
         messages.success(request, f"Claude prépare un paquet de {len(lignes)} mot{'s' if len(lignes) > 1 else ''} en {options['langue'].lower()}.")
     else:
         messages.error(request, "Demande inconnue.")
@@ -552,6 +580,159 @@ def palette(request):
     response = JsonResponse({"pages": pages, "qcm": qcm, "langues": langues, "commandes": commandes})
     response["Cache-Control"] = "private, max-age=60"
     return response
+
+
+def relire(request, pk):
+    """Relecture d'un brouillon (QCM ou paquet de vocabulaire généré) : garder, corriger, publier."""
+    from . import quiz
+
+    if not can_edit(request):
+        return _deny(request)
+    t = get_object_or_404(Transformation, pk=pk)
+    if t.statut != Transformation.BROUILLON or not t.resultat:
+        messages.info(request, "Ce travail n'est plus un brouillon.")
+        return redirect("wiki:transformations")
+    contenu = t.resultat["contenu"]
+    if request.method == "POST":
+        if request.POST.get("action") == "supprimer":
+            claude.supprimer_brouillon(t)
+            messages.success(request, "Brouillon supprimé.")
+            return redirect("wiki:transformations")
+        corrige = dict(contenu)
+        corrige["titre"] = request.POST.get("titre", "").strip() or contenu.get("titre", "")
+        corrige["description"] = request.POST.get("description", "").strip()
+        gardes, refus = [], []
+        if t.genre == Transformation.QCM:
+            for i, q in enumerate(contenu["questions"]):
+                if request.POST.get(f"q{i}-garder") != "1":
+                    continue
+                nouvelle = _question_relue(request, i, q)
+                try:
+                    quiz.question_depuis_json(nouvelle, i + 1, f"question {i + 1}")
+                except ValueError as e:
+                    refus.append(str(e))
+                    continue
+                gardes.append(nouvelle)
+            corrige["questions"] = gardes
+            total = len(contenu["questions"])
+        else:
+            for i, fiche in enumerate(contenu["vocabulaire"]):
+                if request.POST.get(f"v{i}-garder") != "1":
+                    continue
+                nouvelle = dict(fiche)
+                nouvelle["mot"] = request.POST.get(f"v{i}-mot", "").strip() or fiche["mot"]
+                trads = [x.strip() for x in request.POST.get(f"v{i}-traductions", "").split(";") if x.strip()]
+                nouvelle["traductions"] = trads or fiche["traductions"]
+                for champ in ("exemple", "exemple_traduction", "note"):
+                    valeur = request.POST.get(f"v{i}-{champ}", "").strip()
+                    if valeur:
+                        nouvelle[champ] = valeur
+                    else:
+                        nouvelle.pop(champ, None)
+                gardes.append(nouvelle)
+            corrige["vocabulaire"] = gardes
+            total = len(contenu["vocabulaire"])
+        if refus:
+            messages.error(request, "Questions non publiées : " + " · ".join(refus))
+        if not gardes:
+            messages.error(request, "Rien à publier : gardez au moins un élément.")
+            return redirect("wiki:relire", pk=t.pk)
+        try:
+            claude.publier(t, corrige)
+        except claude.Echec as e:
+            messages.error(request, str(e))
+            return redirect("wiki:relire", pk=t.pk)
+        t.message = f"Publié après relecture : {len(gardes)} sur {total} gardé{'s' if len(gardes) > 1 else ''}."
+        t.save(update_fields=["message"])
+        messages.success(request, f"« {corrige['titre']} » publié ({len(gardes)} sur {total}).")
+        url, _ = _resultat(get_vault(), t)
+        return redirect(url or reverse("wiki:transformations"))
+
+    questions = []
+    if t.genre == Transformation.QCM:
+        for i, q in enumerate(contenu["questions"]):
+            questions.append({"i": i, "q": q, "choix": list(enumerate(q.get("choix", []))),
+                              "reponses_texte": " / ".join(q.get("reponses_texte", [])), "qcr": q.get("type") == "QCR"})
+    return _render(request, get_vault(), "wiki/claude_relire.html", {
+        "t": t, "contenu": contenu, "questions": questions,
+        "fiches": list(enumerate(contenu.get("vocabulaire", []))) if t.genre == Transformation.VOCABULAIRE else [],
+        "avertissement": t.message.replace("À relire avant publication.", "").strip(),
+    })
+
+
+def _question_relue(request, i, q):
+    """Question du brouillon après correction dans le formulaire de relecture."""
+    nouvelle = {k: v for k, v in q.items() if k not in ("choix", "reponses", "reponses_texte", "verso", "explication", "consigne")}
+    nouvelle["question"] = request.POST.get(f"q{i}-question", "").strip() or q.get("question", "")
+    type_q = str(q.get("type", "QCM")).upper()
+    if type_q in ("QCM", "QCR"):
+        choix = [request.POST.get(f"q{i}-choix-{j}", "").strip() for j in range(len(q.get("choix", [])))]
+        bonnes = [j for j in range(len(choix)) if request.POST.get(f"q{i}-bonne-{j}") == "1"] if type_q == "QCR" \
+            else [int(request.POST.get(f"q{i}-bonne", -1))] if request.POST.get(f"q{i}-bonne", "").isdigit() else []
+        # Un choix vidé disparaît ; les indices des bonnes réponses suivent.
+        garde = [j for j, c in enumerate(choix) if c]
+        nouvelle["choix"] = [choix[j] for j in garde]
+        nouvelle["reponses"] = sorted(garde.index(j) for j in bonnes if j in garde)
+    elif type_q in ("TROU", "QRC"):
+        nouvelle["reponses_texte"] = [x.strip() for x in request.POST.get(f"q{i}-reponses", "").split("/") if x.strip()]
+        if request.POST.get(f"q{i}-consigne", "").strip():
+            nouvelle["consigne"] = request.POST.get(f"q{i}-consigne", "").strip()
+    elif type_q == "FLASHCARD":
+        nouvelle["verso"] = request.POST.get(f"q{i}-verso", "").strip()
+    explication = request.POST.get(f"q{i}-explication", "").strip()
+    if explication:
+        nouvelle["explication"] = explication
+    return nouvelle
+
+
+@require_POST
+def expliquer(request):
+    """« Explique-moi » sur une question de QCM : explication par Claude, gardée."""
+    import json
+
+    from . import quiz
+    from .quiz_views import _render_html
+
+    try:
+        data = json.loads(request.body)
+        set_id, question_id = str(data["set_id"]), str(data["question_id"])
+    except (KeyError, ValueError, TypeError):
+        return JsonResponse({"error": "requête invalide"}, status=400)
+    qset = quiz.get_library().get(set_id)
+    question = next((q for q in qset.questions if q.id == question_id), None) if qset else None
+    if question is None:
+        return JsonResponse({"error": "question inconnue"}, status=404)
+    vault = get_vault()
+    existante = Explication.objects.filter(set_id=set_id, question_id=question_id).first()
+    if existante is not None:
+        return JsonResponse({"html": _render_html(vault, existante.texte), "modele": existante.modele, "gardee": True})
+    if not claude.disponible():
+        return JsonResponse({"error": "Pas de clé d'API Claude sur le serveur."}, status=503)
+    try:
+        texte, usage, modele_id = claude.expliquer(qset, question)
+    except claude.Echec as e:
+        return JsonResponse({"error": str(e)}, status=502)
+    Explication.objects.update_or_create(
+        set_id=set_id, question_id=question_id,
+        defaults={"texte": texte, "modele": modele_id, "jetons_entree": usage[0], "jetons_sortie": usage[1]})
+    return JsonResponse({"html": _render_html(vault, texte), "modele": modele_id, "gardee": False})
+
+
+@require_POST
+def ameliorer(request):
+    """« Améliorer la rédaction » dans l'éditeur : le passage sélectionné, relu par Claude."""
+    if not can_edit(request):
+        return JsonResponse({"error": "Réservé aux admins."}, status=403)
+    if not claude.disponible():
+        return JsonResponse({"error": "Pas de clé d'API Claude sur le serveur."}, status=503)
+    texte = request.POST.get("texte", "")
+    if not texte.strip():
+        return JsonResponse({"error": "Sélectionnez d'abord le texte à améliorer."}, status=400)
+    try:
+        resultat, usage = claude.ameliorer(texte)
+    except claude.Echec as e:
+        return JsonResponse({"error": str(e)}, status=400)
+    return JsonResponse({"texte": resultat, "jetons": list(usage)})
 
 
 # Pièces jointes affichées dans la page ; tout le reste (HTML, SVG, JS...) est

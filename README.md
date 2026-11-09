@@ -216,6 +216,23 @@ dans les réglages de Claude) :
   questions ; Claude écrit un set (QCM, QCR, textes à trous, réponses courtes,
   cartes), rangé dans la catégorie de la page. Bouton **« Générer un QCM »**
   aussi dans la marge de chaque page de cours.
+- **Relecture avant publication** : QCM et paquets arrivent en **brouillon**
+  sur la page Travaux de Claude. « Relire et publier » montre chaque question
+  (énoncé, choix, bonne réponse, explication) ou chaque mot (traductions,
+  exemple, note) : on décoche ce qu'on ne garde pas, on corrige, on publie.
+  « Publier tel quel » et « Supprimer » sont aussi là ; la case « Publier
+  directement, sans relecture » des formulaires saute l'étape.
+- **« Explique-moi »** : après une réponse à une question de QCM (hors examen
+  blanc), un bouton demande à Claude (Haiku, quasi gratuit) d'expliquer la
+  bonne réponse d'après la page du cours dont le set vient ; l'explication
+  est gardée et resservie sans nouvel appel.
+- **Fiche de révision** : dans la marge d'une page, « ✦ Fiche de révision »
+  fait rédiger par Claude l'essentiel de la page (définitions, formules,
+  méthodes, pièges, « à retenir ») dans « Page (Fiche).md », liée à la page.
+- **« ✦ Améliorer »** dans la barre de l'éditeur : Claude corrige
+  l'orthographe et rend plus clair le passage sélectionné (ou toute la page,
+  12 000 caractères au plus) sans toucher au sens ni au balisage ;
+  <kbd>Ctrl</kbd>+<kbd>Z</kbd> annule.
 
 Le suivi (et le coût) de chaque demande est sur la page **Travaux de Claude**.
 Dans un fichier de langue écrit à la main, la clé `"exercices"` choisit de la
@@ -432,7 +449,9 @@ en-têtes) sont dans [`core/tests.py`](core/tests.py) :
 - `/wiki/<chemin>` : une note
 - `/modifier/<chemin>` : éditeur d'une note (admins) ; `/nouvelle/` : nouvelle page
 - `/importer/` : import de fichiers `.md`, de PDF et de pièces jointes (admins)
-- `/transformations/` : cours transformés en pages par Claude (admins)
+- `/transformations/` : travaux de Claude (admins) ; `/transformations/<id>/relire/` : relecture d'un brouillon
+- `/qcm/expliquer/` : explication d'une question par Claude (POST, connecté)
+- `/claude/ameliorer/` : relecture d'un passage par Claude pour l'éditeur (admins, POST)
 - `/claude/reglages/` : clé d'API et modèle de Claude (admins)
 - `/qcm/generer/` : QCM et paquets de vocabulaire générés par Claude (admins, POST)
 - `/qcm/importer-vocabulaire/` : paquet de vocabulaire d'après une liste ou un export (admins, POST)

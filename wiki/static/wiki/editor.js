@@ -33,7 +33,7 @@
   const countLabel = form.querySelector("[data-count]");
   const autosaveBox = form.querySelector("[data-autosave]");
   const closeLink = form.querySelector(".editor-actions a");
-  const { previewUrl, importUrl, latexUrl, noteKey, noteName } = form.dataset;
+  const { previewUrl, importUrl, latexUrl, ameliorerUrl, noteKey, noteName } = form.dataset;
   const choices = JSON.parse(document.getElementById("link-choices").textContent);
   const attachments = JSON.parse(document.getElementById("attachment-choices").textContent);
 
@@ -969,6 +969,40 @@
     }
   }
 
+  // -- « Améliorer la rédaction » : le passage sélectionné (ou toute la page) relu par Claude ---------
+
+  let amelioration = false;
+  async function ameliorerTexte() {
+    if (!ameliorerUrl || amelioration) return;
+    const { from, to } = view.state.selection.main;
+    const whole = from === to;
+    const source = whole ? view.state.doc.toString() : view.state.sliceDoc(from, to);
+    if (!source.trim()) return status("Rien à améliorer : sélectionnez un passage.", "error");
+    if (source.length > 12000) return status("Passage trop long : sélectionnez une partie de la page (12 000 caractères au plus).", "error");
+    amelioration = true;
+    status(whole ? "Claude relit toute la page…" : "Claude relit le passage…");
+    const data = new FormData();
+    data.append("csrfmiddlewaretoken", csrf);
+    data.append("texte", source);
+    try {
+      const response = await fetch(ameliorerUrl, { method: "POST", body: data, headers: { Accept: "application/json" } });
+      const json = await response.json().catch(() => ({}));
+      if (!response.ok || typeof json.texte !== "string") throw new Error(json.error || "Relecture impossible (session expirée ?).");
+      if (json.texte.trim() === source.trim()) return status("Rien à changer : Claude trouve le texte correct.", "ok");
+      view.dispatch({
+        changes: whole ? { from: 0, to: view.state.doc.length, insert: json.texte } : { from, to, insert: json.texte },
+        selection: whole ? { anchor: 0 } : { anchor: from, head: from + json.texte.length },
+        scrollIntoView: true,
+        userEvent: "input",
+      });
+      status("Texte amélioré par Claude : relisez, Ctrl+Z pour annuler.", "dirty");
+    } catch (e) {
+      status(e.message, "error");
+    } finally {
+      amelioration = false;
+    }
+  }
+
   const isLatexFile = (file) => /\.(tex|latex)$/i.test(file.name);
   const isMarkdown = (file) => /\.(md|markdown|txt|tex|latex)$/i.test(file.name);
   const readText = (file) => file.text().then((t) => t.replace(/^﻿/, "").replace(/\r\n?/g, "\n"));
@@ -1537,6 +1571,7 @@
     },
     "open-md": () => mdInput.click(),
     latex: () => convertDocument(),
+    ameliorer: () => ameliorerTexte(),
     "download-md": download,
     save: () => save(),
   };
@@ -1553,7 +1588,7 @@
       const keepsMode = ["download-md", "open-md"].includes(action);
       if (mode === "reading" && !keepsMode) setMode(editMode);
       actions[action]();
-      if (!["page-link", "web-link", "attach", "open-md", "download-md", "latex"].includes(action)) view.focus();
+      if (!["page-link", "web-link", "attach", "open-md", "download-md", "latex", "ameliorer"].includes(action)) view.focus();
     });
   });
   form.querySelector("[data-action=save]").addEventListener("click", () => save());

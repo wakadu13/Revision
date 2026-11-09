@@ -1,0 +1,77 @@
+{% extends "wiki/base.html" %}
+{% block title %}Relire · {{ contenu.titre }}{% endblock %}
+{% block content %}
+<article class="note">
+  <p><a class="button small" href="{% url 'wiki:transformations' %}">← Travaux de Claude</a></p>
+  <h1 class="note-title">Relire avant publication</h1>
+  <p class="muted">{{ t.get_genre_display }} généré par Claude d'après <b>{{ t.nom }}</b>. Décochez ce que vous ne gardez pas,
+    corrigez ce qu'il faut, puis publiez.{% if avertissement %} {{ avertissement }}{% endif %}</p>
+  <form method="post" class="form claude-relire">
+    {% csrf_token %}
+    <div class="claude-champs">
+      <label>Titre <input name="titre" value="{{ contenu.titre }}" required></label>
+      <label>Description <input name="description" value="{{ contenu.description }}"></label>
+    </div>
+    {% if questions %}
+    <ol class="claude-relire-liste">
+      {% for item in questions %}
+      <li class="claude-relire-item">
+        <label class="checkbox claude-garder"><input type="checkbox" name="q{{ item.i }}-garder" value="1" checked> Garder <span class="claude-genre">{{ item.q.type }}</span></label>
+        <textarea name="q{{ item.i }}-question" rows="2" required>{{ item.q.question }}</textarea>
+        {% if item.q.type == "QCM" or item.q.type == "QCR" %}
+        <ul class="claude-relire-choix">
+          {% for j, c in item.choix %}
+          <li>
+            {% if item.qcr %}<input type="checkbox" name="q{{ item.i }}-bonne-{{ j }}" value="1"{% if j in item.q.reponses %} checked{% endif %} title="Bonne réponse">
+            {% else %}<input type="radio" name="q{{ item.i }}-bonne" value="{{ j }}"{% if j in item.q.reponses %} checked{% endif %} title="Bonne réponse">{% endif %}
+            <input type="text" name="q{{ item.i }}-choix-{{ j }}" value="{{ c }}">
+          </li>
+          {% endfor %}
+        </ul>
+        <p class="muted">Cochez la ou les bonnes réponses ; videz un choix pour le retirer.</p>
+        {% elif item.q.type == "TROU" or item.q.type == "QRC" %}
+        <label>Réponses acceptées (séparées par /) <input name="q{{ item.i }}-reponses" value="{{ item.reponses_texte }}"></label>
+        {% if item.q.type == "QRC" %}<label>Consigne <input name="q{{ item.i }}-consigne" value="{{ item.q.consigne|default:'' }}"></label>{% endif %}
+        {% elif item.q.type == "FLASHCARD" %}
+        <label>Verso <textarea name="q{{ item.i }}-verso" rows="2">{{ item.q.verso }}</textarea></label>
+        {% endif %}
+        <label>Explication <input name="q{{ item.i }}-explication" value="{{ item.q.explication|default:'' }}"></label>
+      </li>
+      {% endfor %}
+    </ol>
+    {% else %}
+    <ol class="claude-relire-liste">
+      {% for i, f in fiches %}
+      <li class="claude-relire-item">
+        <label class="checkbox claude-garder"><input type="checkbox" name="v{{ i }}-garder" value="1" checked> Garder</label>
+        <div class="claude-champs">
+          <label>Mot <input name="v{{ i }}-mot" value="{{ f.mot }}" required></label>
+          <label>Traductions (séparées par ;) <input name="v{{ i }}-traductions" value="{{ f.traductions|join:' ; ' }}" required></label>
+        </div>
+        <label>Exemple (mot entre crochets) <input name="v{{ i }}-exemple" value="{{ f.exemple|default:'' }}"></label>
+        <div class="claude-champs">
+          <label>Traduction de l'exemple <input name="v{{ i }}-exemple_traduction" value="{{ f.exemple_traduction|default:'' }}"></label>
+          <label>Note <input name="v{{ i }}-note" value="{{ f.note|default:'' }}"></label>
+        </div>
+        {% if f.prononciation %}<p class="muted">Prononciation : {{ f.prononciation }}</p>{% endif %}
+      </li>
+      {% endfor %}
+    </ol>
+    {% endif %}
+    <div class="editor-actions claude-relire-actions">
+      <button type="submit" class="button primary">Publier</button>
+      <button type="submit" class="button" name="action" value="supprimer" data-confirm="Supprimer ce brouillon ?">Supprimer le brouillon</button>
+    </div>
+  </form>
+</article>
+{% endblock %}
+{% block aside %}
+<section class="panel">
+  <h2>Conseils</h2>
+  <ul class="memo">
+    <li>Vérifiez chaque bonne réponse contre le cours : c'est le point où Claude se trompe le plus souvent.</li>
+    <li>Une question douteuse ? Décochez « Garder » plutôt que de la corriger à la va-vite.</li>
+    <li>Les identifiants des questions sont gardés : la progression suit même si vous republiez plus tard.</li>
+  </ul>
+</section>
+{% endblock %}

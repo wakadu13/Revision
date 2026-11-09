@@ -13,15 +13,16 @@
     </div>
   </div>
   {% endif %}
-  <p>Cours importés (PDF ou LaTeX) transformés en pages, QCM écrits d'après un cours et paquets de vocabulaire
-    préparés d'après vos mots. {% if en_cours %}<b>Transformation en cours</b> : cette page se met à jour toute seule
+  <p>Cours importés (PDF ou LaTeX) transformés en pages, fiches de révision, QCM écrits d'après un cours et paquets
+    de vocabulaire préparés d'après vos mots. Les QCM et paquets arrivent en <b>brouillon</b> : relisez, corrigez,
+    puis publiez. {% if en_cours %}<b>Transformation en cours</b> : cette page se met à jour toute seule
     (compter de quelques dizaines de secondes à quelques minutes par cours).{% endif %}</p>
   {% if transformations %}
   <ul class="claude-liste">
     {% for t in transformations %}
     <li class="claude-ligne" data-statut="{{ t.statut }}">
       <div class="claude-titre">
-        <span class="claude-etat">{% if t.statut == "fait" %}✓{% elif t.statut == "erreur" %}✗{% elif t.statut == "en_cours" %}⏳{% else %}…{% endif %}</span>
+        <span class="claude-etat">{% if t.statut == "fait" %}✓{% elif t.statut == "erreur" %}✗{% elif t.statut == "en_cours" %}⏳{% elif t.statut == "brouillon" %}✎{% else %}…{% endif %}</span>
         <span class="claude-genre">{{ t.get_genre_display }}</span>
         <b>{{ t.nom }}</b>
         <span class="muted">· {{ t.get_statut_display }}{% if t.statut == "en_cours" and t.debut %} depuis {{ t.debut|timesince }}{% endif %}</span>
@@ -33,6 +34,13 @@
       {% if t.statut == "erreur" and claude_dispo %}
       <form method="post">{% csrf_token %}
         <button type="submit" class="button small" name="relancer" value="{{ t.pk }}">Relancer</button>
+      </form>
+      {% endif %}
+      {% if t.statut == "brouillon" %}
+      <form method="post" class="claude-brouillon-actions">{% csrf_token %}
+        <a class="button small primary" href="{% url 'wiki:relire' t.pk %}">Relire et publier</a>
+        <button type="submit" class="button small" name="publier" value="{{ t.pk }}">Publier tel quel</button>
+        <button type="submit" class="button small" name="supprimer" value="{{ t.pk }}" data-confirm="Supprimer ce brouillon ?">Supprimer</button>
       </form>
       {% endif %}
     </li>

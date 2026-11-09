@@ -235,13 +235,26 @@ def traiter(t):
     """Fait un travail et enregistre son résultat (fichier écrit, ou erreur)."""
     t.modele = modele()
     try:
-        if t.genre == Transformation.QCM:
-            t.page_ecrite, avertissement, usage = _generer_qcm(t)
-        elif t.genre == Transformation.VOCABULAIRE:
-            t.page_ecrite, avertissement, usage = _generer_vocabulaire(t)
+        if t.genre in (Transformation.QCM, Transformation.VOCABULAIRE):
+            generer = _generer_qcm if t.genre == Transformation.QCM else _generer_vocabulaire
+            contenu, dossier, avertissement, usage = generer(t)
+            t.jetons_entree, t.jetons_sortie = usage
+            if (t.options or {}).get("publier"):
+                t.page_ecrite = _publier_contenu(t.genre, dossier, contenu)
+                t.statut, t.message = Transformation.FAIT, avertissement or ""
+            else:
+                # Brouillon : relu, corrigé et publié depuis la page des travaux.
+                t.resultat = {"dossier": dossier, "contenu": contenu}
+                t.statut = Transformation.BROUILLON
+                t.message = " ".join(filter(None, [avertissement, "À relire avant publication."]))
+            t.fin = timezone.now()
+            t.save()
+            return
+        if t.genre == Transformation.FICHE:
+            texte, avertissement, usage = _generer_fiche(t)
         else:
             texte, avertissement, usage = _transformer(t)
-            t.page_ecrite = _ecrire(t, texte, avertissement)
+        t.page_ecrite = _ecrire(t, texte, avertissement)
         t.jetons_entree, t.jetons_sortie = usage
         t.statut = Transformation.FAIT
         t.message = avertissement or ""
@@ -264,19 +277,21 @@ def _client():
     return anthropic.Anthropic(api_key=cle(), max_retries=3)
 
 
-def _demande(t, systeme, contenu, *, schema=None, max_tokens=MAX_TOKENS):
-    """Requête à l'API : réponse en continu, effort réglable, repli automatique en cas de refus."""
-    output_config = {"effort": os.environ.get("WIKI_CLAUDE_EFFORT", "").strip() or "medium"}
+def _demande(t, systeme, contenu, *, schema=None, max_tokens=MAX_TOKENS, effort=None):
+    """Requête à l'API : réponse en continu, effort réglable, repli automatique en cas de refus.
+    ``t`` : le travail (son modèle), ou directement un identifiant de modèle."""
+    modele_id = t if isinstance(t, str) else t.modele
+    output_config = {"effort": effort or os.environ.get("WIKI_CLAUDE_EFFORT", "").strip() or "medium"}
     if schema is not None:
         output_config["format"] = {"type": "json_schema", "schema": schema}
     demande = {
-        "model": t.modele,
+        "model": modele_id,
         "max_tokens": max_tokens,
         "system": systeme,
         "output_config": output_config,
         "messages": [{"role": "user", "content": contenu}],
     }
-    if t.modele in REPLI:
+    if modele_id in REPLI:
         demande.update(betas=[BETA_REPLI], fallbacks="default")
     return demande
 
@@ -504,7 +519,7 @@ SCHEMA_VOCABULAIRE = {
 dossier_valide = paquets.dossier_valide
 
 
-def demander_qcm(*, note=None, texte="", nombre=20, categorie="", titre="", utilisateur=""):
+def demander_qcm(*, note=None, texte="", nombre=20, categorie="", titre="", utilisateur="", publier=False):
     """QCM généré d'après une note du wiki (``note``) ou un texte collé."""
     source = note.path.as_posix() if note is not None else "Texte collé"
     if not categorie:
@@ -513,18 +528,18 @@ def demander_qcm(*, note=None, texte="", nombre=20, categorie="", titre="", util
         genre=Transformation.QCM, source=source, texte_source="" if note is not None else texte,
         page=f"{DOSSIER_QCM}/{categorie}", demande_par=utilisateur,
         options={"nombre": nombre, "categorie": categorie, "titre": titre,
-                 "nom": note.title if note is not None else ""})
+                 "nom": note.title if note is not None else "", "publier": bool(publier)})
     lancer()
     return t
 
 
-def demander_vocabulaire(*, mots, langue="Anglais", types=(), dossier="", titre="", utilisateur=""):
+def demander_vocabulaire(*, mots, langue="Anglais", types=(), dossier="", titre="", utilisateur="", publier=False):
     """Paquet de vocabulaire (un fichier de langue à lui) d'après une liste de mots collée."""
     dossier = dossier or DOSSIER_VOCABULAIRE
     t = Transformation.objects.create(
         genre=Transformation.VOCABULAIRE, source=titre or f"Vocabulaire ({langue})", texte_source=mots,
         page=f"{DOSSIER_QCM}/{dossier}", demande_par=utilisateur,
-        options={"langue": langue, "exercices": list(types), "dossier": dossier, "titre": titre})
+        options={"langue": langue, "exercices": list(types), "dossier": dossier, "titre": titre, "publier": bool(publier)})
     lancer()
     return t
 
@@ -548,7 +563,7 @@ def _sans_vides(o):
 
 
 def _generer_qcm(t):
-    """(chemin du set écrit, avertissement ou None, usage)."""
+    """(JSON du set, catégorie, avertissement ou None, usage)."""
     from . import quiz
 
     options = t.options or {}
@@ -585,16 +600,12 @@ def _generer_qcm(t):
                 "genere_par": f"Claude ({t.modele})", "questions": questions}
     if not t.texte_source:
         set_json["source_page"] = t.source.removesuffix(".md")
-    try:
-        rel = PurePosixPath(paquets.ecrire_set_qcm(categorie, set_json))
-    except paquets.PaquetInvalide as e:
-        raise Echec(str(e)) from None
     avertissement = f"{ecartees} question{'s' if ecartees > 1 else ''} mal formée{'s' if ecartees > 1 else ''} écartée{'s' if ecartees > 1 else ''}." if ecartees else None
-    return rel.as_posix(), avertissement, _usage(message)
+    return set_json, categorie, avertissement, _usage(message)
 
 
 def _generer_vocabulaire(t):
-    """(chemin du paquet écrit, avertissement ou None, usage)."""
+    """(JSON du paquet, dossier, avertissement ou None, usage)."""
     from . import langues
 
     options = t.options or {}
@@ -613,7 +624,141 @@ def _generer_vocabulaire(t):
                                         f"Claude ({t.modele})")
     if not paquet["vocabulaire"]:
         raise Echec("Claude n'a renvoyé aucun mot utilisable : vérifiez la liste et relancez.")
+    return paquet, dossier, None, _usage(message)
+
+
+def _publier_contenu(genre, dossier, contenu):
+    """Écrit un set de QCM ou un paquet de langue dans le coffre ; renvoie son chemin."""
     try:
-        return paquets.ecrire_paquet_langue(dossier, paquet), None, _usage(message)
+        if genre == Transformation.QCM:
+            return paquets.ecrire_set_qcm(dossier, contenu)
+        return paquets.ecrire_paquet_langue(dossier, contenu)
     except paquets.PaquetInvalide as e:
         raise Echec(str(e)) from None
+
+
+def publier(t, contenu=None):
+    """Publie un brouillon (tel quel, ou relu : ``contenu`` corrigé). Renvoie le chemin
+    écrit ; lève Echec si le contenu ne passe pas le chargeur."""
+    if t.statut != Transformation.BROUILLON or not t.resultat:
+        raise Echec("Ce travail n'est pas un brouillon.")
+    chemin = _publier_contenu(t.genre, t.resultat["dossier"], contenu if contenu is not None else t.resultat["contenu"])
+    t.page_ecrite, t.resultat, t.statut, t.message = chemin, None, Transformation.FAIT, ""
+    t.fin = timezone.now()
+    t.save()
+    return chemin
+
+
+def supprimer_brouillon(t):
+    t.resultat, t.statut, t.message = None, Transformation.ERREUR, "Brouillon supprimé sans publication."
+    t.fin = timezone.now()
+    t.save()
+
+
+# -- Fiches de révision ---------------------------------------------------------------------------
+
+CONSIGNE_FICHE = """Tu rédiges la fiche de révision d'une page de cours, pour un étudiant qui révise la veille d'un examen.
+
+- Une seule page : l'essentiel, rien de plus. Pas de phrase d'introduction, pas de commentaire.
+- Dans l'ordre du cours : définitions clés, formules et lois à connaître (en LaTeX : $...$ ou $$...$$), \
+méthodes et étapes à suivre, pièges et erreurs fréquentes, ordres de grandeur et exemples très courts.
+- Markdown d'Obsidian : sections ##, listes courtes, **gras** pour les mots clés, encadrés \
+> [!definition], > [!theoreme], > [!methode], > [!warning] (pièges), > [!retenir] (l'essentiel en 5 lignes, à la fin).
+- Rien qui ne soit pas dans la page. Pas de liens [[...]] ni d'images. Dans la langue de la page.
+Réponds uniquement par le contenu de la fiche, sans bloc de code autour."""
+
+
+def demander_fiche(note, utilisateur=""):
+    """Fiche de révision d'une page du wiki, écrite à côté (« Page (Fiche).md »)."""
+    page = note.path.with_name(f"{note.path.stem} (Fiche).md").as_posix()
+    t = Transformation.objects.create(
+        genre=Transformation.FICHE, source=note.path.as_posix(), page=page,
+        empreinte_page=_empreinte_actuelle(page), demande_par=utilisateur, options={"nom": note.title, "cle": note.key})
+    lancer()
+    return t
+
+
+def _generer_fiche(t):
+    """(texte de la fiche, avertissement ou None, usage)."""
+    fichier = get_vault().root / t.source
+    if not fichier.is_file():
+        raise Echec("La page n'est plus dans le wiki.")
+    nom = (t.options or {}).get("nom") or PurePosixPath(t.source).stem
+    client = _client_pret()
+    message = _appeler(client, _demande(t, CONSIGNE_FICHE, [
+        {"type": "text", "text": f"Page « {nom} » :\n\n{fichier.read_text(encoding='utf-8')}"},
+        {"type": "text", "text": "Rédige la fiche de révision de cette page."},
+    ], max_tokens=MAX_TOKENS_GENERATION))
+    texte = _sans_cadre(_texte_reponse(message))
+    if not texte:
+        raise Echec("Claude n'a renvoyé aucun texte.")
+    cle = (t.options or {}).get("cle") or PurePosixPath(t.source).with_suffix("").as_posix()
+    texte = f"> [!abstract] Fiche de révision de [[{cle}|{nom}]]\n\n{texte}"
+    avertissement = "Fiche trop longue : la fin manque." if message.stop_reason == "max_tokens" else None
+    return texte, avertissement, _usage(message)
+
+
+# -- « Explique-moi » (question de QCM) et « Améliorer la rédaction » (éditeur) --------------------
+
+MODELE_EXPLICATIONS = "claude-haiku-5-5"  # explications courtes : le modèle le moins cher suffit
+MAX_CHARS_COURS = 80_000
+MAX_CHARS_AMELIORER = 12_000
+
+CONSIGNE_EXPLICATION = """Tu expliques à un étudiant la réponse d'une question de révision, en français, en 4 à 8 phrases.
+- Dis pourquoi la bonne réponse est juste et, si des choix étaient proposés, pourquoi les autres sont faux.
+- Appuie-toi sur le cours fourni s'il y en a un ; sinon dis que tu expliques d'après tes connaissances générales.
+- Markdown simple (gras, listes courtes, formules en $...$). Pas de titre, pas de préambule."""
+
+CONSIGNE_AMELIORER = """Tu améliores la rédaction d'un extrait de page de wiki (notes de cours) en Markdown.
+- Corrige l'orthographe, la grammaire et la ponctuation ; rends les phrases claires et fluides ; garde le sens, \
+le niveau de détail, l'ordre et la langue d'origine. N'ajoute aucune information.
+- Conserve tel quel tout ce qui est du balisage : titres #, listes, tableaux, blocs de code, formules LaTeX \
+($...$, $$...$$), liens [[...]] et ![[...]], encadrés > [!…], propriétés --- en tête.
+Réponds uniquement par le texte corrigé, sans commentaire ni bloc de code autour."""
+
+
+def expliquer(qset, question):
+    """Explication d'une question par Claude (Haiku), d'après la page du cours quand le
+    set en vient. Renvoie (texte Markdown, (jetons entrée, sortie), modèle)."""
+    client = _client_pret()
+    vault = get_vault()
+    note = vault.notes.get(qset.source_page.lower()) if qset.source_page else None
+    contexte = ""
+    if note is not None:
+        contexte = (vault.root / note.path).read_text(encoding="utf-8")[:MAX_CHARS_COURS]
+    lignes = [f"Question ({question.type}) : {question.enonce}"]
+    if question.consigne:
+        lignes.append(f"Consigne : {question.consigne}")
+    if question.choix:
+        lignes.append("Choix : " + " ; ".join(f"{chr(65 + i)}. {c}" for i, c in enumerate(question.choix)))
+        lignes.append("Bonne(s) réponse(s) : " + ", ".join(chr(65 + i) for i in question.reponses))
+    if question.reponses_texte:
+        lignes.append("Réponse attendue : " + " / ".join(question.reponses_texte))
+    if question.verso:
+        lignes.append(f"Réponse : {question.verso}")
+    if question.explication:
+        lignes.append(f"Explication déjà donnée (à développer) : {question.explication}")
+    contenu = []
+    if contexte:
+        contenu.append({"type": "text", "text": f"Cours « {note.title} » :\n\n{contexte}"})
+    contenu.append({"type": "text", "text": "\n".join(lignes) + ("\n\nAucun cours fourni." if not contexte else "")})
+    message = _appeler(client, _demande(MODELE_EXPLICATIONS, CONSIGNE_EXPLICATION, contenu, max_tokens=1500, effort="low"))
+    texte = _texte_reponse(message)
+    if not texte:
+        raise Echec("Claude n'a renvoyé aucune explication.")
+    return texte, _usage(message), MODELE_EXPLICATIONS
+
+
+def ameliorer(texte):
+    """Texte Markdown relu et corrigé par Claude (modèle réglé). Renvoie (texte, usage)."""
+    if len(texte) > MAX_CHARS_AMELIORER:
+        raise Echec(f"Sélectionnez un passage plus court ({MAX_CHARS_AMELIORER} caractères au plus).")
+    client = _client_pret()
+    message = _appeler(client, _demande(modele(), CONSIGNE_AMELIORER, [{"type": "text", "text": texte}],
+                                        max_tokens=16000, effort="low"))
+    resultat = _sans_cadre(_texte_reponse(message))
+    if not resultat:
+        raise Echec("Claude n'a renvoyé aucun texte.")
+    if message.stop_reason == "max_tokens":
+        raise Echec("Passage trop long pour une seule relecture : sélectionnez-en une partie.")
+    return resultat, _usage(message)
