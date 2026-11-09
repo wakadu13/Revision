@@ -40,6 +40,11 @@
         <span><b>{{ nom }}</b> <span class="muted">— {{ aide }}</span></span></label>
       {% endfor %}
     </fieldset>
+    <label for="claude-plafond">Plafond mensuel des usages à la demande <span class="muted">(dollars ; 0 : aucun)</span></label>
+    <input type="number" id="claude-plafond" name="plafond" min="0" max="1000" step="0.5" value="{{ reglages.plafond_mensuel|stringformat:'g' }}">
+    <p class="muted">Explications, corrections des réponses rédigées et tuteur, ouverts à tous les comptes, s'arrêtent
+      pour le mois quand ce plafond est atteint ({{ cout_demande|floatformat:2 }} $ ce mois-ci ; {{ cout_total|floatformat:2 }} $
+      avec les transformations). Les transformations demandées par un admin ne sont pas plafonnées.</p>
     <div class="editor-actions">
       <button type="submit" class="button primary">Vérifier et enregistrer</button>
       <a class="button" href="{% url 'wiki:transformations' %}">Cours transformés</a>

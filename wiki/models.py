@@ -129,15 +129,19 @@ class Transformation(models.Model):
     """Travail confié à Claude, fait en arrière-plan (claude.py) : un cours (PDF ou
     LaTeX) transformé en page, un QCM ou un paquet de vocabulaire généré."""
 
-    ATTENTE, EN_COURS, BROUILLON, FAIT, ERREUR = "attente", "en_cours", "brouillon", "fait", "erreur"
-    STATUTS = [(ATTENTE, "En attente"), (EN_COURS, "En cours"), (BROUILLON, "À relire"), (FAIT, "Terminée"), (ERREUR, "Échec")]
+    ATTENTE, EN_COURS, LOT, BROUILLON, FAIT, ERREUR = "attente", "en_cours", "lot", "brouillon", "fait", "erreur"
+    STATUTS = [(ATTENTE, "En attente"), (EN_COURS, "En cours"), (LOT, "Dans un lot"), (BROUILLON, "À relire"),
+               (FAIT, "Terminée"), (ERREUR, "Échec")]
     PAGE, QCM, VOCABULAIRE, FICHE = "page", "qcm", "vocabulaire", "fiche"
     GENRES = [(PAGE, "Page de cours"), (QCM, "QCM"), (VOCABULAIRE, "Vocabulaire"), (FICHE, "Fiche de révision")]
 
     genre = models.CharField(max_length=12, choices=GENRES, default=PAGE)
     # QCM : nombre de questions, catégorie, titre, publier (sans relecture) ;
-    # vocabulaire : langue, types de cartes, dossier, titre, publier.
+    # vocabulaire : langue, types de cartes, dossier, titre, publier ;
+    # tous : lot (traitement différé à moitié prix), fichier_api (PDF envoyé).
     options = models.JSONField(default=dict, blank=True)
+    # Traitement différé : identifiant du lot (Message Batches) qui porte la requête.
+    lot_id = models.CharField(max_length=64, blank=True)
     # QCM ou paquet généré, en attente de relecture (statut « brouillon ») : le
     # JSON du fichier à écrire, et le dossier.
     resultat = models.JSONField(null=True, blank=True)
@@ -188,6 +192,10 @@ class ReglagesClaude(models.Model):
 
     cle = models.CharField(max_length=300, blank=True)
     modele = models.CharField(max_length=64, blank=True)
+    # Plafond mensuel (en dollars) des usages « à la demande » : corrections de
+    # réponses rédigées, explications et tuteur. Les transformations demandées
+    # par un admin ne sont pas plafonnées.
+    plafond_mensuel = models.FloatField(default=5.0)
     modifie_le = models.DateTimeField(null=True, blank=True)
     modifie_par = models.CharField(max_length=150, blank=True)
 
@@ -337,3 +345,33 @@ class Signalement(models.Model):
 
     def __str__(self):
         return f"{self.set_id} » {self.question_id}"
+
+
+class UsageClaude(models.Model):
+    """Appels à Claude hors transformations (correction d'une réponse rédigée, tuteur) :
+    jetons consommés, pour le coût du mois et le plafond."""
+
+    QRC, TUTEUR = "qrc", "tuteur"
+    genre = models.CharField(max_length=12)
+    player = models.CharField(max_length=150, blank=True, default="")
+    modele = models.CharField(max_length=64, blank=True)
+    jetons_entree = models.PositiveIntegerField(default=0)
+    jetons_sortie = models.PositiveIntegerField(default=0)
+    cree_le = models.DateTimeField(auto_now_add=True)
+
+
+class EchangeTuteur(models.Model):
+    """Question posée au tuteur sur une page du cours, et la réponse de Claude : l'historique
+    de l'utilisateur sur la page nourrit la conversation suivante."""
+
+    player = models.CharField(max_length=150, blank=True, default="")
+    page = models.CharField(max_length=500)  # clé de la note
+    question = models.TextField()
+    reponse = models.TextField()
+    modele = models.CharField(max_length=64, blank=True)
+    jetons_entree = models.PositiveIntegerField(default=0)
+    jetons_sortie = models.PositiveIntegerField(default=0)
+    cree_le = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["cree_le", "pk"]

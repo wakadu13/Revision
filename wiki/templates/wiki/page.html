@@ -24,7 +24,7 @@
 </article>
 {% endblock %}
 {% block aside %}
-  {% if fiche or qcm_page or can_edit and claude_dispo %}
+  {% if fiche or qcm_page or cartes or can_edit and claude_dispo %}
   <section class="panel">
     <h2>Réviser ce cours</h2>
     {% if fiche %}<p><a class="button small" href="{{ fiche.url }}">📄 Fiche de révision</a></p>{% endif %}
@@ -40,6 +40,14 @@
       </span>
     </div>
     {% endfor %}
+    {% if cartes %}
+    <form method="post" action="{% url 'wiki:quiz_cartes_page' %}" class="panel-actions">
+      {% csrf_token %}
+      <input type="hidden" name="page" value="{{ note.key }}">
+      <button type="submit" class="button small"
+              title="Sans Claude : une carte par encadré (définition, théorème, méthode…) et un texte à trous par surlignage ==texte==">🃏 {% if cartes.existe %}Mettre à jour les cartes de la page{% else %}Créer les cartes de la page{% endif %} ({{ cartes.nombre }})</button>
+    </form>
+    {% endif %}
     {% if can_edit and claude_dispo %}
     <div class="panel-actions">
       <form method="post" action="{% url 'wiki:quiz_generer' %}">
@@ -61,6 +69,28 @@
       </form>
       {% endif %}
     </div>
+    {% endif %}
+  </section>
+  {% endif %}
+  {% if tuteur %}
+  <section class="panel panel-tuteur" id="tuteur" data-tuteur-url="{% url 'wiki:claude_tuteur' %}" data-page="{{ note.key }}" data-csrf="{{ csrf_token }}">
+    <h2>✦ Demander au tuteur</h2>
+    <div class="tuteur-echanges" data-tuteur-echanges>
+      {% for e in tuteur.echanges %}
+      <div class="tuteur-echange">
+        <p class="tuteur-question">{{ e.question }}</p>
+        <div class="tuteur-reponse markdown">{{ e.html|safe }}</div>
+      </div>
+      {% endfor %}
+    </div>
+    {% if tuteur.plafond %}
+    <p class="muted">Plafond mensuel de Claude atteint : le tuteur reviendra le mois prochain.</p>
+    {% else %}
+    <form class="tuteur-form" data-tuteur-form>
+      <textarea name="question" rows="2" required maxlength="2000" placeholder="Une question sur ce cours ? (Ctrl+Entrée pour envoyer)"></textarea>
+      <button type="submit" class="button small primary">Demander</button>
+    </form>
+    <p class="muted tuteur-aide">Claude répond d'après cette page ; il dit quand la réponse n'y est pas. Les échanges restent dans ce panneau.</p>
     {% endif %}
   </section>
   {% endif %}

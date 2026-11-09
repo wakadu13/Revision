@@ -173,6 +173,8 @@
       data.append("dossier", destination());
       if (form.elements.remplacer.checked) data.append("remplacer", "1");
       if (claudeBox && claudeBox.checked) data.append("claude", "1");
+      const lotBox = form.querySelector("[data-lot]");
+      if (claudeBox && claudeBox.checked && lotBox && lotBox.checked) data.append("lot", "1");
       for (const p of group) {
         data.append("fichiers", p.file, p.file.name);
         data.append("chemins", p.path);

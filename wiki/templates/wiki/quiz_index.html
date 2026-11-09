@@ -61,6 +61,7 @@
         <p class="muted">Chaque envoi crée un paquet à part, révisable seul (au plus {{ generation.max_mots }} mots). Claude
           ajoute la traduction, un exemple et la prononciation de chaque mot.</p>
         <label class="checkbox"><input type="checkbox" name="publier" value="1"> Publier directement, sans relecture</label>
+        <label class="checkbox" title="Dans un lot traité à moitié prix, résultat sous 24 heures"><input type="checkbox" name="lot" value="1"> Sans urgence : en lot, moitié prix</label>
         <button type="submit" class="button primary">✦ Créer le paquet</button>
       </form>
     </details>
@@ -84,6 +85,7 @@
         <p class="muted">QCM à une ou plusieurs réponses, textes à trous, réponses courtes et cartes, fidèles au cours.
           Le QCM arrive en brouillon : vous relisez, corrigez et publiez.</p>
         <label class="checkbox"><input type="checkbox" name="publier" value="1"> Publier directement, sans relecture</label>
+        <label class="checkbox" title="Dans un lot traité à moitié prix, résultat sous 24 heures"><input type="checkbox" name="lot" value="1"> Sans urgence : en lot, moitié prix</label>
         <button type="submit" class="button primary">✦ Générer le QCM</button>
       </form>
     </details>

@@ -42,6 +42,9 @@ EXTENSIONS_LATEX = {".tex", ".latex"}
 # sécurité refuse un document légitime.
 REPLI = {"claude-opus-5-5", "claude-opus-5", "claude-fable-5-1", "claude-sonnet-5-5"}
 BETA_REPLI = "server-side-fallback-2026-07-01"
+# Lots (Message Batches) : moitié prix, résultats sous 24 heures ; vérifiés périodiquement.
+REMISE_LOT = 0.5
+INTERVALLE_LOTS_S = 600
 # Prix en dollars par million de jetons (entrée, sortie), pour l'estimation affichée.
 PRIX = {
     "claude-opus-5-5": (4.0, 20.0),
@@ -130,11 +133,13 @@ def modele():
 
 
 def cout(t):
-    """Coût estimé d'une transformation en dollars, ou None (modèle inconnu)."""
+    """Coût estimé d'une transformation en dollars, ou None (modèle inconnu). Les lots
+    (Message Batches) sont facturés moitié prix."""
     prix = PRIX.get(t.modele)
     if prix is None or not (t.jetons_entree or t.jetons_sortie):
         return None
-    return (t.jetons_entree * prix[0] + t.jetons_sortie * prix[1]) / 1_000_000
+    total = (t.jetons_entree * prix[0] + t.jetons_sortie * prix[1]) / 1_000_000
+    return total * REMISE_LOT if (t.options or {}).get("lot") else total
 
 
 def empreinte(texte):
@@ -144,20 +149,23 @@ def empreinte(texte):
 # -- Demandes -------------------------------------------------------------------------------------
 
 
-def demander_pdf(attachment, utilisateur=""):
-    """Transformation d'un PDF du coffre en page (à côté de lui, même nom en .md)."""
+def demander_pdf(attachment, utilisateur="", lot=False):
+    """Transformation d'un PDF du coffre en page (à côté de lui, même nom en .md).
+    ``lot`` : traitement différé dans un lot (moitié prix, résultat sous 24 h)."""
     page = PurePosixPath(attachment.path).with_suffix(".md").as_posix()
     t = Transformation.objects.create(source=attachment.path.as_posix(), page=page,
-                                      empreinte_page=_empreinte_actuelle(page), demande_par=utilisateur)
+                                      empreinte_page=_empreinte_actuelle(page), demande_par=utilisateur,
+                                      options={"lot": bool(lot)})
     lancer()
     return t
 
 
-def demander_latex(nom, texte, page, utilisateur=""):
+def demander_latex(nom, texte, page, utilisateur="", lot=False):
     """Transformation d'un cours LaTeX importé : remplace la page convertie sur place
     (``page``), si personne ne l'a modifiée d'ici là."""
     t = Transformation.objects.create(source=nom, texte_source=texte, page=page,
-                                      empreinte_page=_empreinte_actuelle(page), demande_par=utilisateur)
+                                      empreinte_page=_empreinte_actuelle(page), demande_par=utilisateur,
+                                      options={"lot": bool(lot)})
     lancer()
     return t
 
@@ -232,13 +240,53 @@ def traiter_en_attente():
 
 
 def traiter(t):
-    """Fait un travail et enregistre son résultat (fichier écrit, ou erreur)."""
+    """Fait un travail et enregistre son résultat (fichier écrit, brouillon, ou erreur) ;
+    avec l'option « lot », la requête part dans un lot et le résultat viendra plus tard."""
     t.modele = modele()
     try:
+        client = _client_pret()
+        demande, fichier_id = _requete(t, client)
+        if (t.options or {}).get("lot"):
+            _envoyer_en_lot(t, client, demande, fichier_id)
+            return
+        try:
+            message = _appeler(client, demande)
+        finally:
+            _supprimer_fichier(client, fichier_id)
+        _terminer(t, message)
+        return
+    except Echec as e:
+        t.statut, t.message = Transformation.ERREUR, str(e)
+    except Exception:  # noqa: BLE001
+        log.exception("Transformation Claude de %s", t.source)
+        t.statut, t.message = Transformation.ERREUR, "Erreur inattendue (détail dans la fenêtre du serveur)."
+    t.fin = timezone.now()
+    t.save()
+
+
+def _requete(t, client):
+    """(requête à l'API, identifiant du fichier envoyé à l'API Files ou None) selon le genre."""
+    if t.genre == Transformation.QCM:
+        if (t.options or {}).get("variantes"):
+            return _requete_variantes(t), None
+        return _requete_qcm(t), None
+    if t.genre == Transformation.VOCABULAIRE:
+        return _requete_vocabulaire(t), None
+    if t.genre == Transformation.FICHE:
+        return _requete_fiche(t), None
+    return _requete_transformation(t, client)
+
+
+def _terminer(t, message):
+    """Enregistre le résultat d'une réponse de Claude : page écrite, set publié ou brouillon."""
+    try:
         if t.genre in (Transformation.QCM, Transformation.VOCABULAIRE):
-            generer = _generer_qcm if t.genre == Transformation.QCM else _generer_vocabulaire
-            contenu, dossier, avertissement, usage = generer(t)
-            t.jetons_entree, t.jetons_sortie = usage
+            if t.genre == Transformation.QCM:
+                resultat = _resultat_variantes if (t.options or {}).get("variantes") else _resultat_qcm
+            else:
+                resultat = _resultat_vocabulaire
+            contenu, dossier, avertissement = resultat(t, message)
+            t.jetons_entree, t.jetons_sortie = _usage(message)
             if (t.options or {}).get("publier"):
                 t.page_ecrite = _publier_contenu(t.genre, dossier, contenu)
                 t.statut, t.message = Transformation.FAIT, avertissement or ""
@@ -247,17 +295,11 @@ def traiter(t):
                 t.resultat = {"dossier": dossier, "contenu": contenu}
                 t.statut = Transformation.BROUILLON
                 t.message = " ".join(filter(None, [avertissement, "À relire avant publication."]))
-            t.fin = timezone.now()
-            t.save()
-            return
-        if t.genre == Transformation.FICHE:
-            texte, avertissement, usage = _generer_fiche(t)
         else:
-            texte, avertissement, usage = _transformer(t)
-        t.page_ecrite = _ecrire(t, texte, avertissement)
-        t.jetons_entree, t.jetons_sortie = usage
-        t.statut = Transformation.FAIT
-        t.message = avertissement or ""
+            texte, avertissement = (_resultat_fiche if t.genre == Transformation.FICHE else _resultat_transformation)(t, message)
+            t.page_ecrite = _ecrire(t, texte, avertissement)
+            t.jetons_entree, t.jetons_sortie = _usage(message)
+            t.statut, t.message = Transformation.FAIT, avertissement or ""
     except Echec as e:
         t.statut, t.message = Transformation.ERREUR, str(e)
     except Exception:  # noqa: BLE001
@@ -265,6 +307,16 @@ def traiter(t):
         t.statut, t.message = Transformation.ERREUR, "Erreur inattendue (détail dans la fenêtre du serveur)."
     t.fin = timezone.now()
     t.save()
+
+
+def _supprimer_fichier(client, fichier_id):
+    import anthropic
+
+    if fichier_id:
+        try:
+            client.files.delete(fichier_id)
+        except anthropic.APIError:
+            log.warning("Fichier %s non supprimé de l'API Files", fichier_id)
 
 
 class Echec(Exception):
@@ -277,19 +329,25 @@ def _client():
     return anthropic.Anthropic(api_key=cle(), max_retries=3)
 
 
-def _demande(t, systeme, contenu, *, schema=None, max_tokens=MAX_TOKENS, effort=None):
+def _demande(t, systeme, contenu, *, schema=None, max_tokens=MAX_TOKENS, effort=None, historique=()):
     """Requête à l'API : réponse en continu, effort réglable, repli automatique en cas de refus.
-    ``t`` : le travail (son modèle), ou directement un identifiant de modèle."""
+    ``t`` : le travail (son modèle), ou directement un identifiant de modèle ;
+    ``historique`` : échanges précédents [(question, réponse)] placés avant ``contenu``."""
     modele_id = t if isinstance(t, str) else t.modele
     output_config = {"effort": effort or os.environ.get("WIKI_CLAUDE_EFFORT", "").strip() or "medium"}
     if schema is not None:
         output_config["format"] = {"type": "json_schema", "schema": schema}
+    messages = []
+    for question, reponse in historique:
+        messages.append({"role": "user", "content": question})
+        messages.append({"role": "assistant", "content": reponse})
+    messages.append({"role": "user", "content": contenu})
     demande = {
         "model": modele_id,
         "max_tokens": max_tokens,
         "system": systeme,
         "output_config": output_config,
-        "messages": [{"role": "user", "content": contenu}],
+        "messages": messages,
     }
     if modele_id in REPLI:
         demande.update(betas=[BETA_REPLI], fallbacks="default")
@@ -337,47 +395,43 @@ def _client_pret():
     return _client()
 
 
-def _transformer(t):
-    """(texte de la page, avertissement ou None, (jetons en entrée, en sortie))."""
+def _requete_transformation(t, client):
+    """Requête de transformation d'un cours (PDF ou LaTeX) en page : (requête, fichier
+    envoyé à l'API Files ou None — les gros PDF y passent plutôt qu'en ligne)."""
     import anthropic
 
-    client = _client_pret()
     fichier_id = None
-    try:
-        if t.texte_source:
-            document = {"type": "text", "text": f"Source LaTeX du cours « {t.nom} » :\n\n{t.texte_source}"}
-        else:
-            vault = get_vault()
-            pdf = vault.attachments.get(t.source.lower())
-            if pdf is None or not (vault.root / pdf.path).is_file():
-                raise Echec("Le PDF n'est plus dans le wiki.")
-            donnees = (vault.root / pdf.path).read_bytes()
-            if len(donnees) > PDF_EN_LIGNE_MAX:
-                try:
-                    fichier_id = client.files.upload(file=(pdf.path.name, donnees, "application/pdf")).id
-                except anthropic.APIError:
-                    raise Echec("Envoi du PDF à Anthropic impossible : relancez plus tard.") from None
-                source = {"type": "file", "file_id": fichier_id}
-            else:
-                source = {"type": "base64", "media_type": "application/pdf",
-                          "data": base64.standard_b64encode(donnees).decode("ascii")}
-            document = {"type": "document", "source": source, "title": pdf.path.name}
-        message = _appeler(client, _demande(t, CONSIGNE, [
-            document,
-            {"type": "text", "text": f"Transforme ce cours ({t.nom}) en page du wiki."},
-        ]))
-    finally:
-        if fichier_id:
+    if t.texte_source:
+        document = {"type": "text", "text": f"Source LaTeX du cours « {t.nom} » :\n\n{t.texte_source}"}
+    else:
+        vault = get_vault()
+        pdf = vault.attachments.get(t.source.lower())
+        if pdf is None or not (vault.root / pdf.path).is_file():
+            raise Echec("Le PDF n'est plus dans le wiki.")
+        donnees = (vault.root / pdf.path).read_bytes()
+        if len(donnees) > PDF_EN_LIGNE_MAX:
             try:
-                client.files.delete(fichier_id)
+                fichier_id = client.files.upload(file=(pdf.path.name, donnees, "application/pdf")).id
             except anthropic.APIError:
-                log.warning("Fichier %s non supprimé de l'API Files", fichier_id)
+                raise Echec("Envoi du PDF à Anthropic impossible : relancez plus tard.") from None
+            source = {"type": "file", "file_id": fichier_id}
+        else:
+            source = {"type": "base64", "media_type": "application/pdf",
+                      "data": base64.standard_b64encode(donnees).decode("ascii")}
+        document = {"type": "document", "source": source, "title": pdf.path.name}
+    return _demande(t, CONSIGNE, [
+        document,
+        {"type": "text", "text": f"Transforme ce cours ({t.nom}) en page du wiki."},
+    ]), fichier_id
 
+
+def _resultat_transformation(t, message):
+    """(texte de la page, avertissement ou None)."""
     texte = _sans_cadre(_texte_reponse(message))
     if not texte:
         raise Echec("Claude n'a renvoyé aucun texte.")
     avertissement = "Cours trop long : la fin de la page manque." if message.stop_reason == "max_tokens" else None
-    return texte, avertissement, _usage(message)
+    return texte, avertissement
 
 
 def _sans_cadre(texte):
@@ -519,7 +573,7 @@ SCHEMA_VOCABULAIRE = {
 dossier_valide = paquets.dossier_valide
 
 
-def demander_qcm(*, note=None, texte="", nombre=20, categorie="", titre="", utilisateur="", publier=False):
+def demander_qcm(*, note=None, texte="", nombre=20, categorie="", titre="", utilisateur="", publier=False, lot=False):
     """QCM généré d'après une note du wiki (``note``) ou un texte collé."""
     source = note.path.as_posix() if note is not None else "Texte collé"
     if not categorie:
@@ -528,18 +582,19 @@ def demander_qcm(*, note=None, texte="", nombre=20, categorie="", titre="", util
         genre=Transformation.QCM, source=source, texte_source="" if note is not None else texte,
         page=f"{DOSSIER_QCM}/{categorie}", demande_par=utilisateur,
         options={"nombre": nombre, "categorie": categorie, "titre": titre,
-                 "nom": note.title if note is not None else "", "publier": bool(publier)})
+                 "nom": note.title if note is not None else "", "publier": bool(publier), "lot": bool(lot)})
     lancer()
     return t
 
 
-def demander_vocabulaire(*, mots, langue="Anglais", types=(), dossier="", titre="", utilisateur="", publier=False):
+def demander_vocabulaire(*, mots, langue="Anglais", types=(), dossier="", titre="", utilisateur="", publier=False, lot=False):
     """Paquet de vocabulaire (un fichier de langue à lui) d'après une liste de mots collée."""
     dossier = dossier or DOSSIER_VOCABULAIRE
     t = Transformation.objects.create(
         genre=Transformation.VOCABULAIRE, source=titre or f"Vocabulaire ({langue})", texte_source=mots,
         page=f"{DOSSIER_QCM}/{dossier}", demande_par=utilisateur,
-        options={"langue": langue, "exercices": list(types), "dossier": dossier, "titre": titre, "publier": bool(publier)})
+        options={"langue": langue, "exercices": list(types), "dossier": dossier, "titre": titre,
+                 "publier": bool(publier), "lot": bool(lot)})
     lancer()
     return t
 
@@ -562,26 +617,48 @@ def _sans_vides(o):
     return {k: v for k, v in o.items() if v not in ("", [], None)}
 
 
-def _generer_qcm(t):
-    """(JSON du set, catégorie, avertissement ou None, usage)."""
-    from . import quiz
-
+def _nom_du_cours(t):
     options = t.options or {}
-    categorie = dossier_valide(options.get("categorie", "")) or CATEGORIE_GENEREE
+    if t.texte_source:
+        return "texte collé"
+    return options.get("nom") or PurePosixPath(t.source).stem
+
+
+def _requete_qcm(t):
+    """Requête d'un QCM d'après une page du wiki ou un texte collé."""
+    options = t.options or {}
     nombre = options.get("nombre") if options.get("nombre") in NOMBRES_QUESTIONS else 20
     if t.texte_source:
-        cours, nom = t.texte_source, "texte collé"
+        cours = t.texte_source
     else:
         fichier = get_vault().root / t.source
         if not fichier.is_file():
             raise Echec("La page du cours n'est plus dans le wiki.")
-        cours, nom = fichier.read_text(encoding="utf-8"), options.get("nom") or PurePosixPath(t.source).stem
-    client = _client_pret()
-    message = _appeler(client, _demande(t, CONSIGNE_QCM, [
-        {"type": "text", "text": f"Cours « {nom} » :\n\n{cours}"},
+        cours = fichier.read_text(encoding="utf-8")
+    return _demande(t, CONSIGNE_QCM, [
+        {"type": "text", "text": f"Cours « {_nom_du_cours(t)} » :\n\n{cours}"},
         {"type": "text", "text": f"Écris {nombre} questions sur ce cours."},
-    ], schema=SCHEMA_QCM, max_tokens=MAX_TOKENS_GENERATION))
+    ], schema=SCHEMA_QCM, max_tokens=MAX_TOKENS_GENERATION)
+
+
+def _resultat_qcm(t, message):
+    """(JSON du set, catégorie, avertissement ou None)."""
+    options = t.options or {}
+    categorie = dossier_valide(options.get("categorie", "")) or CATEGORIE_GENEREE
     data = _json_reponse(message, "Réponse trop longue : demandez moins de questions.")
+    questions, ecartees = _questions_valides(data)
+    titre = str(options.get("titre") or data.get("titre") or _nom_du_cours(t)).strip()
+    set_json = {"titre": titre, "description": str(data.get("description", "")).strip(),
+                "genere_par": f"Claude ({t.modele})", "questions": questions}
+    if not t.texte_source:
+        set_json["source_page"] = t.source.removesuffix(".md")
+    return set_json, categorie, _avertissement_ecartees(ecartees)
+
+
+def _questions_valides(data):
+    """Questions d'une réponse JSON de Claude qui passent le chargeur des sets
+    (identifiants ia001, ia002…), et nombre de questions écartées."""
+    from . import quiz
 
     questions, ecartees = [], 0
     for i, q in enumerate(data.get("questions") or [], start=1):
@@ -595,36 +672,39 @@ def _generer_qcm(t):
         questions.append(q)
     if not questions:
         raise Echec("Claude n'a renvoyé aucune question utilisable : relancez.")
-    titre = str(options.get("titre") or data.get("titre") or nom).strip()
-    set_json = {"titre": titre, "description": str(data.get("description", "")).strip(),
-                "genere_par": f"Claude ({t.modele})", "questions": questions}
-    if not t.texte_source:
-        set_json["source_page"] = t.source.removesuffix(".md")
-    avertissement = f"{ecartees} question{'s' if ecartees > 1 else ''} mal formée{'s' if ecartees > 1 else ''} écartée{'s' if ecartees > 1 else ''}." if ecartees else None
-    return set_json, categorie, avertissement, _usage(message)
+    return questions, ecartees
 
 
-def _generer_vocabulaire(t):
-    """(JSON du paquet, dossier, avertissement ou None, usage)."""
+def _avertissement_ecartees(ecartees):
+    if not ecartees:
+        return None
+    s = "s" if ecartees > 1 else ""
+    return f"{ecartees} question{s} mal formée{s} écartée{s}."
+
+
+def _requete_vocabulaire(t):
+    langue = str((t.options or {}).get("langue") or "Anglais").strip()
+    return _demande(t, CONSIGNE_VOCABULAIRE.format(langue=langue.lower()), [
+        {"type": "text", "text": f"Mots à préparer en {langue.lower()} :\n\n{t.texte_source}"},
+    ], schema=SCHEMA_VOCABULAIRE, max_tokens=MAX_TOKENS_GENERATION)
+
+
+def _resultat_vocabulaire(t, message):
+    """(JSON du paquet, dossier, avertissement ou None)."""
     from . import langues
 
     options = t.options or {}
     langue = str(options.get("langue") or "Anglais").strip()
     dossier = dossier_valide(options.get("dossier", "")) or DOSSIER_VOCABULAIRE
     types = [x for x in options.get("exercices") or [] if x in langues.TYPES_VOCABULAIRE] or list(langues.VOCABULAIRE_PAR_DEFAUT)
-    client = _client_pret()
-    message = _appeler(client, _demande(t, CONSIGNE_VOCABULAIRE.format(langue=langue.lower()), [
-        {"type": "text", "text": f"Mots à préparer en {langue.lower()} :\n\n{t.texte_source}"},
-    ], schema=SCHEMA_VOCABULAIRE, max_tokens=MAX_TOKENS_GENERATION))
     data = _json_reponse(message, "Réponse trop longue : envoyez moins de mots à la fois.")
-
     titre = str(options.get("titre") or data.get("titre") or f"Vocabulaire ({langue})").strip()
     fiches = [_sans_vides(v) for v in data.get("vocabulaire") or [] if isinstance(v, dict)]
     paquet = paquets.paquet_vocabulaire(langue, titre, str(data.get("description", "")).strip(), types, fiches,
                                         f"Claude ({t.modele})")
     if not paquet["vocabulaire"]:
         raise Echec("Claude n'a renvoyé aucun mot utilisable : vérifiez la liste et relancez.")
-    return paquet, dossier, None, _usage(message)
+    return paquet, dossier, None
 
 
 def _publier_contenu(genre, dossier, contenu):
@@ -678,24 +758,27 @@ def demander_fiche(note, utilisateur=""):
     return t
 
 
-def _generer_fiche(t):
-    """(texte de la fiche, avertissement ou None, usage)."""
+def _requete_fiche(t):
     fichier = get_vault().root / t.source
     if not fichier.is_file():
         raise Echec("La page n'est plus dans le wiki.")
     nom = (t.options or {}).get("nom") or PurePosixPath(t.source).stem
-    client = _client_pret()
-    message = _appeler(client, _demande(t, CONSIGNE_FICHE, [
+    return _demande(t, CONSIGNE_FICHE, [
         {"type": "text", "text": f"Page « {nom} » :\n\n{fichier.read_text(encoding='utf-8')}"},
         {"type": "text", "text": "Rédige la fiche de révision de cette page."},
-    ], max_tokens=MAX_TOKENS_GENERATION))
+    ], max_tokens=MAX_TOKENS_GENERATION)
+
+
+def _resultat_fiche(t, message):
+    """(texte de la fiche, avertissement ou None)."""
     texte = _sans_cadre(_texte_reponse(message))
     if not texte:
         raise Echec("Claude n'a renvoyé aucun texte.")
+    nom = (t.options or {}).get("nom") or PurePosixPath(t.source).stem
     cle = (t.options or {}).get("cle") or PurePosixPath(t.source).with_suffix("").as_posix()
     texte = f"> [!abstract] Fiche de révision de [[{cle}|{nom}]]\n\n{texte}"
     avertissement = "Fiche trop longue : la fin manque." if message.stop_reason == "max_tokens" else None
-    return texte, avertissement, _usage(message)
+    return texte, avertissement
 
 
 # -- « Explique-moi » (question de QCM) et « Améliorer la rédaction » (éditeur) --------------------
@@ -823,3 +906,283 @@ def corriger_question(qset, question, commentaires):
     except ValueError as e:
         raise Echec(f"Correction invalide : {e}") from e
     return nouvelle, modification, _usage(message), modele()
+
+
+# ---------------------------------------------------------------------------
+# Variantes des questions ratées
+# ---------------------------------------------------------------------------
+CONSIGNE_VARIANTES = """Tu écris des variantes de questions de révision qu'un étudiant a ratées, pour qu'il retravaille \
+la notion au lieu de réapprendre une réponse par cœur. Pour chaque question d'origine, écris une question nouvelle \
+sur la même notion : angle différent (application, contre-exemple, cas particulier, autre formulation, calcul \
+voisin), même difficulté ou un peu plus, en variant les types (QCM, QCR, TROU, QRC, FLASHCARD). Jamais la même \
+question reformulée. Fidèle au cours fourni quand il y en a un ; explication courte. Les formules s'écrivent en LaTeX \
+entre $. Réponds avec le titre, une description et la liste des questions."""
+MAX_VARIANTES = 20
+
+
+def demander_variantes(qset, question_ids, utilisateur=""):
+    """Brouillon de QCM fait de variantes des questions ratées d'un set (une par question)."""
+    titre = f"Variantes · {qset.titre}"
+    t = Transformation.objects.create(
+        genre=Transformation.QCM, source=qset.path.as_posix() if qset.path else qset.id,
+        page=f"{DOSSIER_QCM}/{qset.categorie}", demande_par=utilisateur,
+        options={"variantes": list(question_ids)[:MAX_VARIANTES], "set_source": qset.id, "categorie": qset.categorie,
+                 "titre": titre, "nom": titre, "publier": False})
+    lancer()
+    return t
+
+
+def _set_des_variantes(options):
+    from . import quiz
+
+    qset = quiz.get_library().get(str(options.get("set_source", "")))
+    if qset is None:
+        raise Echec("Le set d'origine n'est plus dans le wiki.")
+    return qset
+
+
+def _requete_variantes(t):
+    """Requête de variantes des questions ratées d'un set."""
+    import json as json_module
+
+    options = t.options or {}
+    qset = _set_des_variantes(options)
+    voulues = set(options.get("variantes") or [])
+    questions = [q for q in qset.questions if q.id in voulues]
+    if not questions:
+        raise Echec("Les questions ratées n'existent plus dans le set.")
+    vault = get_vault()
+    note = vault.notes.get(qset.source_page.lower()) if qset.source_page else None
+    contenu = []
+    if note is not None:
+        contexte = (vault.root / note.path).read_text(encoding="utf-8")[:MAX_CHARS_COURS]
+        contenu.append({"type": "text", "text": f"Cours « {note.title} » :\n\n{contexte}"})
+    n = len(questions)
+    texte = "Questions ratées :\n" + json_module.dumps([question_en_json(q) for q in questions], ensure_ascii=False, indent=1)
+    texte += f"\n\nÉcris {n} variante{'s' if n > 1 else ''} : une par question, dans le même ordre."
+    if note is None:
+        texte += "\n\nAucun cours fourni : reste fidèle aux questions et à leurs explications."
+    contenu.append({"type": "text", "text": texte})
+    return _demande(t, CONSIGNE_VARIANTES, contenu, schema=SCHEMA_QCM, max_tokens=MAX_TOKENS_GENERATION)
+
+
+def _resultat_variantes(t, message):
+    """(JSON du set de variantes, catégorie, avertissement ou None)."""
+    options = t.options or {}
+    qset = _set_des_variantes(options)
+    data = _json_reponse(message, "Réponse trop longue : demandez des variantes pour moins de questions.")
+    questions_json, ecartees = _questions_valides(data)
+    set_json = {"titre": str(options.get("titre") or f"Variantes · {qset.titre}"),
+                "description": f"Variantes des questions ratées de « {qset.titre} », pour retravailler les notions "
+                               "sans apprendre les réponses par cœur.",
+                "genere_par": f"Claude ({t.modele})", "questions": questions_json}
+    if qset.source_page:
+        set_json["source_page"] = qset.source_page
+    return set_json, dossier_valide(qset.categorie) or CATEGORIE_GENEREE, _avertissement_ecartees(ecartees)
+
+
+# ---------------------------------------------------------------------------
+# Réponses rédigées (QRC) corrigées par Claude ; coût du mois et plafond
+# ---------------------------------------------------------------------------
+CONSIGNE_QRC = """Tu corriges la réponse rédigée d'un étudiant à une question de révision, en français. Compare le fond \
+avec la ou les réponses attendues : une formulation différente, plus précise ou plus complète est juste. Verdict \
+« juste » si l'essentiel y est sans erreur, « partiel » s'il manque un élément important ou s'il y a une imprécision, \
+« faux » sinon (hors sujet, contresens, réponse vide de sens). « retour » : une à trois phrases qui disent ce qui est \
+bon, ce qui manque ou ce qui est faux, sans répéter la question ; tutoie l'étudiant."""
+SCHEMA_QRC = {
+    "type": "object",
+    "properties": {"verdict": {"type": "string", "enum": ["juste", "partiel", "faux"]}, "retour": {"type": "string"}},
+    "required": ["verdict", "retour"],
+    "additionalProperties": False,
+}
+MAX_TOKENS_QRC = 600
+MAX_CHARS_REPONSE = 2000
+
+
+def corriger_qrc(qset, question, reponse):
+    """Verdict de Claude (Haiku) sur une réponse rédigée : (verdict, retour, usage, modèle)."""
+    client = _client_pret()
+    lignes = [f"Question : {question.enonce}"]
+    if question.consigne:
+        lignes.append(f"Consigne : {question.consigne}")
+    lignes.append("Réponse(s) attendue(s) : " + " / ".join(question.reponses_texte))
+    if question.explication:
+        lignes.append(f"Explication du corrigé : {question.explication}")
+    lignes.append(f"Réponse de l'étudiant : {reponse[:MAX_CHARS_REPONSE]}")
+    message = _appeler(client, _demande(MODELE_EXPLICATIONS, CONSIGNE_QRC, [{"type": "text", "text": "\n".join(lignes)}],
+                                        schema=SCHEMA_QRC, max_tokens=MAX_TOKENS_QRC, effort="low"))
+    data = _json_reponse(message, "Réponse de Claude trop longue.")
+    verdict = data.get("verdict") if data.get("verdict") in ("juste", "partiel", "faux") else "faux"
+    return verdict, str(data.get("retour", "")).strip(), _usage(message), MODELE_EXPLICATIONS
+
+
+def cout_jetons(modele_id, entree, sortie):
+    """Coût en dollars d'un appel, ou None si le modèle est inconnu."""
+    prix = PRIX.get(modele_id)
+    if prix is None:
+        return None
+    return (entree * prix[0] + sortie * prix[1]) / 1_000_000
+
+
+def _debut_du_mois():
+    return timezone.localtime().replace(day=1, hour=0, minute=0, second=0, microsecond=0)
+
+
+def cout_a_la_demande_du_mois():
+    """Dollars dépensés ce mois-ci par les usages à la demande (explications, corrections
+    de réponses rédigées, tuteur), ceux que le plafond limite."""
+    from .models import Explication, UsageClaude
+
+    debut = _debut_du_mois()
+    total = 0.0
+    for e in Explication.objects.filter(cree_le__gte=debut):
+        total += cout_jetons(e.modele, e.jetons_entree, e.jetons_sortie) or 0.0
+    for u in UsageClaude.objects.filter(cree_le__gte=debut):
+        total += cout_jetons(u.modele, u.jetons_entree, u.jetons_sortie) or 0.0
+    return total
+
+
+def cout_du_mois():
+    """Dollars dépensés ce mois-ci, tout compris (transformations terminées incluses)."""
+    total = cout_a_la_demande_du_mois()
+    for t in Transformation.objects.filter(fin__gte=_debut_du_mois()):
+        total += cout(t) or 0.0
+    return total
+
+
+def plafond_atteint():
+    """Vrai si les usages à la demande du mois dépassent le plafond des réglages (0 : pas de plafond)."""
+    plafond = ReglagesClaude.charger().plafond_mensuel
+    return plafond > 0 and cout_a_la_demande_du_mois() >= plafond
+
+
+def noter_usage(genre, player, modele_id, usage):
+    from .models import UsageClaude
+
+    UsageClaude.objects.create(genre=genre, player=player, modele=modele_id, jetons_entree=usage[0], jetons_sortie=usage[1])
+
+
+# ---------------------------------------------------------------------------
+# Lots (Message Batches) : moitié prix, résultats sous 24 heures
+# ---------------------------------------------------------------------------
+_fil_lots = None
+
+
+def _envoyer_en_lot(t, client, demande, fichier_id):
+    """Dépose la requête dans un lot ; le résultat sera récupéré par surveiller_lots()."""
+    import anthropic
+
+    params = {k: v for k, v in demande.items() if k != "betas"}
+    betas = demande.get("betas") or []
+    try:
+        lot = client.beta.messages.batches.create(requests=[{"custom_id": f"t{t.pk}", "params": params}],
+                                                  **({"betas": betas} if betas else {}))
+    except anthropic.APIError as e:
+        _supprimer_fichier(client, fichier_id)
+        raise Echec(f"Envoi du lot refusé par l'API : {getattr(e, 'message', e)}") from None
+    options = dict(t.options or {})
+    if fichier_id:
+        options["fichier_api"] = fichier_id
+    t.options, t.lot_id, t.statut = options, lot.id, Transformation.LOT
+    t.message = "Dans un lot : résultat sous 24 heures, moitié prix."
+    t.save()
+    surveiller_lots()
+
+
+def surveiller_lots():
+    """Démarre, s'il ne tourne pas, le fil qui vérifie les lots en attente toutes les
+    INTERVALLE_LOTS_S secondes (rien en mode synchrone : tests)."""
+    global _fil_lots
+    if not getattr(settings, "WIKI_CLAUDE_FIL", True):
+        return
+    with _verrou:
+        if _fil_lots is None and Transformation.objects.filter(statut=Transformation.LOT).exists():
+            _fil_lots = threading.Thread(target=_boucle_lots, name="lots-claude", daemon=True)
+            _fil_lots.start()
+
+
+def _boucle_lots():
+    global _fil_lots
+    try:
+        while True:
+            close_old_connections()
+            try:
+                verifier_lots()
+            except Exception:  # noqa: BLE001
+                log.exception("Lots Claude : vérification en échec")
+            if not Transformation.objects.filter(statut=Transformation.LOT).exists():
+                return
+            time.sleep(getattr(settings, "WIKI_CLAUDE_LOTS_INTERVALLE", INTERVALLE_LOTS_S))
+    finally:
+        with _verrou:
+            _fil_lots = None
+        connection.close()
+
+
+def verifier_lots():
+    """Interroge l'API pour chaque lot en attente ; enregistre les résultats des lots
+    terminés. Renvoie le nombre de transformations terminées."""
+    import anthropic
+
+    en_attente = list(Transformation.objects.filter(statut=Transformation.LOT).exclude(lot_id=""))
+    if not en_attente:
+        return 0
+    client = _client_pret()
+    terminees = 0
+    for lot_id in sorted({t.lot_id for t in en_attente}):
+        membres = {f"t{t.pk}": t for t in en_attente if t.lot_id == lot_id}
+        try:
+            lot = client.beta.messages.batches.retrieve(lot_id)
+            if lot.processing_status != "ended":
+                continue
+            resultats = list(client.beta.messages.batches.results(lot_id))
+        except anthropic.APIError as e:
+            log.warning("Lot %s : %s", lot_id, e)
+            continue
+        vus = set()
+        for r in resultats:
+            t = membres.get(r.custom_id)
+            if t is None:
+                continue
+            vus.add(r.custom_id)
+            if r.result.type == "succeeded":
+                _terminer(t, r.result.message)
+            else:
+                detail = getattr(getattr(r.result, "error", None), "message", "") or r.result.type
+                t.statut, t.message, t.fin = Transformation.ERREUR, f"Lot : {detail}", timezone.now()
+                t.save()
+            _supprimer_fichier(client, (t.options or {}).get("fichier_api"))
+            terminees += 1
+        for custom_id, t in membres.items():
+            if custom_id not in vus:
+                t.statut, t.message, t.fin = Transformation.ERREUR, "Lot terminé sans résultat pour ce travail.", timezone.now()
+                t.save()
+                terminees += 1
+    return terminees
+
+
+# ---------------------------------------------------------------------------
+# Tuteur : questions sur la page ouverte
+# ---------------------------------------------------------------------------
+CONSIGNE_TUTEUR = """Tu es le tuteur d'un étudiant qui révise la page de cours fournie. Réponds en français, en 3 à 10 \
+phrases, en Markdown léger (gras pour les mots clés, listes courtes, formules en LaTeX entre $). Appuie-toi d'abord sur \
+la page : cite la section ou la définition utile. Si la réponse n'est pas dans la page, dis-le clairement, puis réponds \
+avec prudence d'après tes connaissances. Si l'étudiant propose un raisonnement, dis ce qui est juste et ce qui ne l'est \
+pas. Tutoie l'étudiant ; pas de formule de politesse."""
+MAX_TOKENS_TUTEUR = 1500
+MAX_CHARS_QUESTION = 2000
+HISTORIQUE_TUTEUR = 6  # derniers échanges rejoués
+
+
+def tuteur(note, question, historique=()):
+    """Réponse du tuteur (Haiku) à une question sur une page : (texte Markdown, usage, modèle)."""
+    client = _client_pret()
+    vault = get_vault()
+    page = (vault.root / note.path).read_text(encoding="utf-8")[:MAX_CHARS_COURS]
+    systeme = f"{CONSIGNE_TUTEUR}\n\nPage « {note.title} » :\n\n{page}"
+    message = _appeler(client, _demande(MODELE_EXPLICATIONS, systeme, question[:MAX_CHARS_QUESTION],
+                                        max_tokens=MAX_TOKENS_TUTEUR, effort="low", historique=historique))
+    texte = _texte_reponse(message)
+    if not texte:
+        raise Echec("Claude n'a renvoyé aucune réponse.")
+    return texte, _usage(message), MODELE_EXPLICATIONS
