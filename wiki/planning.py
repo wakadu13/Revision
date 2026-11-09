@@ -3,28 +3,31 @@
 Deux quotas par jour, comme dans Anki : les nouvelles questions (jamais vues) et
 les révisions (questions déjà vues, revenues à échéance).
 
-L'estimation simule la révision espacée (Leitner) jour après jour : chaque jour,
-les questions dues sont révisées dans la limite des quotas, avec un taux de bonnes
-réponses égal à la précision du joueur sur ce set. Une question est « sue »
-dès qu'elle a atteint la boîte BOITE_OBJECTIF, même si elle retombe ensuite
-(une erreur renvoie en boîte 0 : compter les questions actuellement en boîte
-haute ne convergerait pas toujours). Le set est prêt quand une part
-PART_OBJECTIF des questions est sue (viser 100 % ferait dépendre l'estimation
-de la question la plus malchanceuse).
+L'estimation simule la révision espacée (FSRS, comme la planification réelle)
+jour après jour : chaque jour, les questions dues sont révisées dans la limite
+des quotas, avec un taux de bonnes réponses égal à la précision du joueur sur ce
+set. Une question est « sue » dès que sa stabilité atteint STABILITE_OBJECTIF
+jours, même si elle retombe ensuite (compter les questions actuellement stables
+ne convergerait pas toujours). Le set est prêt quand une part PART_OBJECTIF des
+questions est sue (viser 100 % ferait dépendre l'estimation de la question la
+plus malchanceuse).
 
-Comme quiz.py, ce module ne dépend ni des modèles ni des vues.
+À l'approche d'un examen, la rétention visée passe de 90 % à RETENTION_EXAMEN :
+les révisions se resserrent. Comme quiz.py, ce module ne dépend ni des modèles
+ni des vues.
 """
 
 import math
-import random
 from datetime import timedelta
 
 from django.utils import timezone
 
-from . import quiz
+from . import fsrs, langues, quiz
 
-BOITE_OBJECTIF = 3          # réussie 3 fois (intervalle de 7 jours) : considérée comme sue
+STABILITE_OBJECTIF = 7.0    # stabilité (jours de rétention à 90 %) à partir de laquelle une question est sue
 PART_OBJECTIF = 0.95        # part des questions sues pour considérer le set prêt
+RETENTION_EXAMEN = 0.95     # rétention visée quand l'examen approche
+JOURS_EXAMEN_PROCHE = 30    # … c'est-à-dire à moins de 30 jours
 PRECISION_DEFAUT = 0.8      # tant qu'il y a trop peu de réponses pour la mesurer
 PRECISION_MIN, PRECISION_MAX = 0.6, 0.97
 REPONSES_MIN_PRECISION = 20
@@ -54,34 +57,56 @@ def restant(limite, deja):
     return None if limite is None else max(0, limite - deja)
 
 
-def simuler(cartes, quota_nouvelles, quota_revisions, precision, deja=(0, 0)):
-    """Simule les révisions. `cartes` : liste de (boîte, jour où elle est due, jamais vue).
+def retention_cible(date_objectif, now):
+    """Rétention visée à l'enregistrement d'une réponse : plus haute (révisions plus
+    serrées) dans les JOURS_EXAMEN_PROCHE derniers jours avant l'examen."""
+    if date_objectif is None:
+        return fsrs.RETENTION
+    dispo = (date_objectif - timezone.localdate(now)).days
+    return RETENTION_EXAMEN if 0 < dispo <= JOURS_EXAMEN_PROCHE else fsrs.RETENTION
+
+
+def simuler(cartes, quota_nouvelles, quota_revisions, precision, deja=(0, 0), retention=fsrs.RETENTION):
+    """Simule les révisions. `cartes` : liste de (état FSRS ou None si jamais vue,
+    jour où elle est due, jours depuis la dernière révision).
 
     Les quotas sont des nombres par jour ; `deja` = (nouvelles, révisions) déjà
     faites aujourd'hui. Renvoie (jours nécessaires, nombre de réponses), ou None
     au-delà de HORIZON_JOURS.
     """
-    boites = [b for b, _, _ in cartes]
+    etats = [e for e, _, _ in cartes]
     dues = [d for _, d, _ in cartes]
-    nouvelles = [i for i, (_, _, n) in enumerate(cartes) if n]
-    vues = [i for i, (_, _, n) in enumerate(cartes) if not n]
-    sues = {i for i, b in enumerate(boites) if b >= BOITE_OBJECTIF}
-    restantes = math.ceil(PART_OBJECTIF * len(boites)) - len(sues)
+    derniere = [-depuis for _, _, depuis in cartes]
+    nouvelles = [i for i, (e, _, _) in enumerate(cartes) if e is None]
+    vues = [i for i, (e, _, _) in enumerate(cartes) if e is not None]
+    sues = {i for i in vues if etats[i].stabilite >= STABILITE_OBJECTIF}
+    restantes = math.ceil(PART_OBJECTIF * len(cartes)) - len(sues)
     if restantes <= 0:
         return 0, 0
-    hasard = random.Random(0)  # graine fixe : même estimation à chaque affichage
+    # Échecs répartis régulièrement, carte par carte (une réponse sur 1/(1-p), premier
+    # échec décalé d'une carte à l'autre) plutôt que tirés au sort : estimation stable,
+    # sans carte « malchanceuse » qui concentrerait tous les échecs, et plus de
+    # nouvelles par jour donne une durée plus courte (dichotomie ci-dessous).
+    echecs = [(i * 0.6180339887) % 1.0 for i in range(len(cartes))]
     reponses = 0
     for jour in range(HORIZON_JOURS):
         places_n = max(0, quota_nouvelles - (deja[0] if jour == 0 else 0))
         places_r = max(0, quota_revisions - (deja[1] if jour == 0 else 0))
-        # Même ordre que la file du jour : révisions (boîtes basses d'abord), puis nouvelles.
-        a_revoir = sorted((i for i in vues if dues[i] <= jour), key=lambda i: (boites[i], dues[i]))[:places_r]
+        # Même ordre que la file du jour : les plus menacées d'oubli d'abord, puis nouvelles.
+        a_revoir = sorted((i for i in vues if dues[i] <= jour),
+                          key=lambda i: (fsrs.retrievabilite(jour - derniere[i], etats[i].stabilite), dues[i]))[:places_r]
         decouvertes, nouvelles = nouvelles[:places_n], nouvelles[places_n:]
         for i in a_revoir + decouvertes:
             reponses += 1
-            boites[i] = quiz.nouvelle_boite(boites[i], hasard.random() < precision)
-            dues[i] = jour + max(1, quiz.INTERVALLES_JOURS[boites[i]])
-            if boites[i] >= BOITE_OBJECTIF and i not in sues:
+            echecs[i] += 1 - precision
+            reussie = echecs[i] < 1
+            if not reussie:
+                echecs[i] -= 1
+            note = fsrs.BIEN if reussie else fsrs.A_REVOIR
+            etats[i] = fsrs.premiere(note) if etats[i] is None else fsrs.suivante(etats[i], jour - derniere[i], note)
+            derniere[i] = jour
+            dues[i] = jour + (1 if not reussie else max(1, int(fsrs.intervalle_jours(etats[i].stabilite, retention) + 0.5)))
+            if etats[i].stabilite >= STABILITE_OBJECTIF and i not in sues:
                 sues.add(i)
                 restantes -= 1
         vues += decouvertes
@@ -95,13 +120,18 @@ def _cartes(qset, progress, now):
     cartes = []
     for q in qset.questions:
         st = progress.get(q.id)
-        if st is None:
-            cartes.append((0, 0, True))
-        elif st.is_due(now):
-            cartes.append((st.box, 0, False))
+        if st is None or st.seen == 0 and st.stabilite is None:
+            cartes.append((None, 0, 0))
+            continue
+        if st.stabilite is not None:
+            etat = fsrs.Etat(st.stabilite, st.difficulte if st.difficulte is not None else 5.0)
+            echeance = st.echeance
         else:
-            echeance = timezone.localdate(st.last_review + timedelta(days=quiz.INTERVALLES_JOURS[st.box]))
-            cartes.append((st.box, max(1, (echeance - aujourdhui).days), False))
+            # Progression antérieure à FSRS : boîte de Leitner.
+            etat = fsrs.Etat(quiz.STABILITE_LEITNER.get(st.box, 30.0), 5.0)
+            echeance = st.last_review + timedelta(days=quiz.INTERVALLES_JOURS[st.box]) if st.last_review else None
+        due = 0 if st.is_due(now) or echeance is None else max(1, (timezone.localdate(echeance) - aujourdhui).days)
+        cartes.append((etat, due, langues._jours_depuis(st, now)))
     return cartes
 
 
@@ -121,6 +151,9 @@ def estimer(qset, progress, deck, now):
     p, p_mesuree = precision(progress)
     secondes, s_mesure = deck.secondes_par_carte(SECONDES_DEFAUT, REPONSES_MIN_CHRONO)
     deja = faites_aujourdhui(progress, now)
+    # La simulation garde la rétention standard : le resserrement avant l'examen
+    # (retention_cible) joue sur la planification réelle, pas sur « quand saurai-je ».
+    retention = retention_cible(deck.date_objectif, now)
 
     def duree(nouvelles, revisions):
         return simuler(cartes, nouvelles, revisions, p, deja)
@@ -138,12 +171,14 @@ def estimer(qset, progress, deck, now):
     e = {
         "nouvelles_jour": deck.nouvelles_jour,
         "revisions_jour": deck.revisions_jour,
+        "auto": deck.auto_quota,
         "precision": round(p * 100),
         "precision_mesuree": p_mesuree,
         "secondes": round(secondes),
         "secondes_mesurees": s_mesure,
-        "boite_objectif": BOITE_OBJECTIF,
+        "stabilite_objectif": int(STABILITE_OBJECTIF),
         "part_objectif": round(PART_OBJECTIF * 100),
+        "retention": round(retention * 100),
         "su": res == (0, 0),
         "jours": res[0] if res else None,
         "fin": aujourdhui + timedelta(days=res[0] - 1) if res and res[0] else None,
@@ -187,3 +222,16 @@ def estimer(qset, progress, deck, now):
         e["minutes_conseillees"] = minutes(meilleur)
         e["revisions_limitees"] = bool(deck.revisions_jour)
     return e
+
+
+def quotas_effectifs(qset, progress, deck, now):
+    """Quotas du jour : ceux du set, ou, si l'ajustement automatique est coché et que
+    l'estimation dit « en retard » pour l'examen, les nouvelles conseillées et des
+    révisions sans limite. Renvoie (nouvelles_jour, revisions_jour)."""
+    if deck is None:
+        return None, None
+    if deck.auto_quota and deck.date_objectif:
+        e = estimer(qset, progress, deck, now)
+        if e.get("statut") == "retard":
+            return e["nouvelles_conseillees"], None
+    return deck.nouvelles_jour, deck.revisions_jour

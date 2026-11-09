@@ -38,44 +38,65 @@ class QuizProgress(models.Model):
         unique_together = ("player", "set_id", "question_id")
         indexes = [models.Index(fields=["player", "set_id"])]
 
-    def record(self, reponse, quand=None) -> None:
-        """Enregistre une réponse : note (quiz.NOTES) ou booléen juste/faux.
+    def record(self, reponse, quand=None, retention=None) -> None:
+        """Enregistre une réponse : note (quiz.NOTES) ou booléen juste/faux. Met à jour
+        les statistiques, la boîte de Leitner (indicateur hérité) et l'état FSRS, qui fixe
+        la prochaine échéance.
 
-        `quand` : date de la réponse si elle n'est pas immédiate (réponses faites
-        hors ligne puis synchronisées) ; maintenant par défaut."""
-        correcte = quiz.note_de(reponse) != quiz.A_REVOIR
+        `quand` : date de la réponse si elle n'est pas immédiate (réponses faites hors
+        ligne puis synchronisées) ; `retention` : probabilité de rappel visée (90 % par
+        défaut, plus haute à l'approche d'un examen)."""
+        now = quand or timezone.now()
+        note = quiz.note_de(reponse)
+        correcte = note != quiz.A_REVOIR
+        note_fsrs = quiz.NOTES.index(note) + 1
+        deja_appris = self.stabilite is not None or self.seen > 0
+        etat = self._etat_suivant(note_fsrs, now)  # avant de changer last_review
         self.seen += 1
         if correcte:
             self.correct += 1
         self.box = quiz.nouvelle_boite(self.box, reponse)
         self.last_correct = correcte
-        self.last_review = quand or timezone.now()
-        if self.premiere_revue is None:
-            self.premiere_revue = self.last_review
-
-    def record_langue(self, note: int, quand=None) -> None:
-        """Enregistre une révision du module Langues (note FSRS 1 à 4) : statistiques,
-        boîte de Leitner et état FSRS. `quand` : date de la réponse si elle a été
-        faite hors ligne ; maintenant par défaut."""
-        now = quand or timezone.now()
-        deja_appris = not langues.est_nouveau(self)
-        etat = langues.etat_suivant(self, note, now)  # avant record(), qui change last_review
-        self.record(quiz.NOTES[note - 1], now)
         self.last_review = now
+        if self.premiere_revue is None:
+            self.premiere_revue = now
         self.stabilite = round(etat.stabilite, 3)
         self.difficulte = round(etat.difficulte, 3)
-        self.echeance = now + langues.delai(etat, note)
+        self.echeance = now + langues.delai(etat, note_fsrs, retention)
         if self.decouverte is None and not deja_appris:
             self.decouverte = now
-        if deja_appris and note == fsrs.A_REVOIR:
+        if deja_appris and not correcte:
             self.oublis += 1
 
+    def _etat_suivant(self, note: int, now):
+        if self.stabilite is not None and self.difficulte is not None:
+            return langues.etat_suivant(self, note, now)
+        if self.seen > 0:
+            # Progression antérieure à FSRS (boîtes de Leitner) : stabilité estimée d'après la boîte.
+            depuis = langues._jours_depuis(self, now)
+            return fsrs.suivante(fsrs.Etat(quiz.STABILITE_LEITNER.get(self.box, 30.0), 5.0), depuis, note)
+        return fsrs.premiere(note)
+
+    def record_langue(self, note: int, quand=None) -> None:
+        """Enregistre une révision du module Langues (note FSRS 1 à 4) ; même suivi que
+        les QCM. `quand` : date de la réponse si elle a été faite hors ligne."""
+        self.record(quiz.NOTES[note - 1], quand)
+
     def is_due(self, now=None) -> bool:
-        return quiz.intervalle_ecoule(self.box, self.last_review, now or timezone.now())
+        now = now or timezone.now()
+        if self.echeance is not None:
+            return self.echeance <= now
+        return quiz.intervalle_ecoule(self.box, self.last_review, now)
+
+    def urgence(self, now=None) -> float:
+        """0 (oublié) à 1 (bien su) : rétention FSRS, ou boîte de Leitner pour une progression ancienne."""
+        if self.stabilite is not None:
+            return langues.retention(self, now or timezone.now())
+        return self.box / quiz.BOITE_MAX
 
     def priority(self, now=None):
-        """Clé de tri : à réviser d'abord, puis boîtes basses, puis plus ancien."""
-        return (0 if self.is_due(now) else 1, self.box, self.last_review or _JAMAIS)
+        """Clé de tri : à réviser d'abord, puis les plus menacées d'oubli, puis plus ancien."""
+        return (0 if self.is_due(now) else 1, self.urgence(now), self.last_review or _JAMAIS)
 
     @classmethod
     def map_for(cls, player: str, set_id: str) -> dict:
@@ -98,6 +119,7 @@ class QuizDeck(models.Model):
     nouvelles_jour = models.PositiveIntegerField(null=True, blank=True)  # questions jamais vues, max par jour
     revisions_jour = models.PositiveIntegerField(null=True, blank=True)  # questions déjà vues, max par jour
     date_objectif = models.DateField(null=True, blank=True)            # date d'examen
+    auto_quota = models.BooleanField(default=False)                    # nouvelles/jour ajustées pour être prêt à temps
     temps_ms = models.PositiveBigIntegerField(default=0)               # cumul des temps de réponse
     reponses_chronometrees = models.PositiveIntegerField(default=0)
 

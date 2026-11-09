@@ -23,9 +23,13 @@ from pathlib import Path, PurePosixPath
 
 from django.conf import settings
 
-# --- Révision espacée (système de Leitner) ---
-# Intervalle (en jours) avant qu'une question d'une boîte donnée soit « à réviser ».
+# --- Révision espacée ---
+# Les questions sont planifiées par FSRS (fsrs.py, comme le module Langues) ; la
+# boîte de Leitner reste tenue à jour comme indicateur simple (0 à 5). Une
+# progression antérieure à FSRS (sans échéance) suit encore les intervalles de
+# Leitner jusqu'à sa prochaine réponse, où sa stabilité est estimée d'après sa boîte.
 INTERVALLES_JOURS = {0: 0, 1: 1, 2: 3, 3: 7, 4: 14, 5: 30}
+STABILITE_LEITNER = {0: 0.5, 1: 1.0, 2: 3.0, 3: 7.0, 4: 14.0, 5: 30.0}
 BOITE_MAX = 5
 TYPES_VALIDES = {"QCM", "QCR", "TROU", "QRC", "FLASHCARD"}
 TYPES_TEXTE = {"TROU", "QRC"}  # réponse tapée au clavier, comparée à reponses_texte

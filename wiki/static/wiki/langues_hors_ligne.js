@@ -12,55 +12,12 @@
   const A = window.QcmAttente;
   if (!A) return;
 
-  // -- FSRS (fsrs.py) --
-  const W = [0.4072, 1.1829, 3.1262, 15.4722, 7.2102, 0.5316, 1.0651, 0.0234, 1.616, 0.1544, 1.0824, 1.9813,
-    0.0953, 0.2975, 2.2042, 0.2407, 2.9466];
-  const DECAY = -0.5, FACTOR = 19 / 81, RETENTION = 0.9, S_MIN = 0.01;
-  const A_REVOIR = 1, DIFFICILE = 2, BIEN = 3, FACILE = 4;
-  const JOUR_MS = 86400000;
+  // -- FSRS et suivi (fsrs.js, partagé avec les QCM hors ligne) --
+  const F = window.FSRS;
+  if (!F) return;
+  const { A_REVOIR, DIFFICILE, BIEN, JOUR_MS, estNouveau, estDu, retention, etatSuivant, delaiMs, texteDelai } = F;
   const clamp = (x, bas, haut) => Math.min(haut, Math.max(bas, x));
 
-  const retrievabilite = (jours, s) => Math.pow(1 + FACTOR * Math.max(jours, 0) / Math.max(s, S_MIN), DECAY);
-  const difficulteInitiale = (note) => clamp(W[4] - (note - 3) * W[5], 1, 10);
-  const premiere = (note) => ({ stabilite: W[note - 1], difficulte: difficulteInitiale(note) });
-
-  function suivante(etat, jours, note) {
-    const s = Math.max(etat.stabilite, S_MIN), d = etat.difficulte;
-    const r = retrievabilite(jours, s);
-    const dNote = d - W[6] * (note - 3);
-    const d2 = clamp(W[7] * difficulteInitiale(FACILE) + (1 - W[7]) * dNote, 1, 10);
-    let s2;
-    if (note === A_REVOIR) {
-      const oubli = W[11] * Math.pow(d, -W[12]) * (Math.pow(s + 1, W[13]) - 1) * Math.exp(W[14] * (1 - r));
-      s2 = Math.min(oubli, s);
-    } else {
-      const penalite = note === DIFFICILE ? W[15] : 1, bonus = note === FACILE ? W[16] : 1;
-      s2 = s * (1 + Math.exp(W[8]) * (11 - d) * Math.pow(s, -W[9]) * (Math.exp(W[10] * (1 - r)) - 1) * penalite * bonus);
-    }
-    return { stabilite: Math.max(s2, S_MIN), difficulte: d2 };
-  }
-  const intervalleJours = (s) => s / FACTOR * (Math.pow(RETENTION, 1 / DECAY) - 1);
-
-  // -- Suivi (langues.py) --
-  const joursDepuis = (st, now) => st.last_review ? Math.max(0, now - Date.parse(st.last_review)) / JOUR_MS : 0;
-  const estNouveau = (st) => !st || st.stabilite == null;
-  const estDu = (st, now) => !st.echeance || Date.parse(st.echeance) <= now;
-  const retention = (st, now) => st.stabilite == null ? 0 : retrievabilite(joursDepuis(st, now), st.stabilite);
-  const etatSuivant = (st, note, now) => (st && st.stabilite != null && st.difficulte != null)
-    ? suivante({ stabilite: st.stabilite, difficulte: st.difficulte }, joursDepuis(st, now), note)
-    : premiere(note);
-  function delaiMs(etat, note) {
-    if (note === A_REVOIR) return 10 * 60000;
-    const jours = Math.floor(intervalleJours(etat.stabilite) + 0.5);
-    return Math.min(36500, Math.max(1, jours)) * JOUR_MS;
-  }
-  function texteDelai(ms) {
-    const jours = Math.floor(ms / JOUR_MS);
-    if (jours < 1) return Math.floor(ms / 60000) + " min";
-    if (jours < 31) return jours + " j";
-    if (jours < 365) return Math.floor(jours / 30.4 + 0.5) + " mois";
-    return (jours / 365).toFixed(1).replace(".", ",") + " an";
-  }
   const previsions = (st, now) => {
     const p = {};
     for (const n of [1, 2, 3, 4]) p[n] = texteDelai(delaiMs(etatSuivant(st, n, now), n));

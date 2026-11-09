@@ -19,6 +19,7 @@ on:
       - "android/**"
       - "wiki/static/wiki/quiz.js"
       - "wiki/static/wiki/qcm_attente.js"
+      - "wiki/static/wiki/fsrs.js"
       - "wiki/static/wiki/qcm_hors_ligne.js"
       - "wiki/static/wiki/quiz_langue.js"
       - "wiki/static/wiki/langues_hors_ligne.js"

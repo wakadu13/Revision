@@ -86,7 +86,9 @@ def telecharger(request):
             "questions": [_question_payload(vault, qset, q, progress) for q in qset.questions],
             "progression": {
                 qid: {"box": p.box, "seen": p.seen, "correct": p.correct,
-                      "last_review": _date_iso(p.last_review), "premiere_revue": _date_iso(p.premiere_revue)}
+                      "last_review": _date_iso(p.last_review), "premiere_revue": _date_iso(p.premiere_revue),
+                      "stabilite": p.stabilite, "difficulte": p.difficulte, "echeance": _date_iso(p.echeance),
+                      "decouverte": _date_iso(p.decouverte), "oublis": p.oublis, "last_correct": p.last_correct}
                 for qid, p in progress.items()
             },
             "quotas": {"nouvelles_jour": deck.nouvelles_jour if deck else None,
