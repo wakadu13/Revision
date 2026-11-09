@@ -11,6 +11,7 @@ import shutil
 import tempfile
 from datetime import date, timedelta
 from pathlib import Path, PurePosixPath
+from urllib.parse import urlencode
 
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -26,7 +27,7 @@ from django.views.decorators.http import require_POST
 from . import anki, claude, paquets, planning, quiz
 from .models import _JAMAIS, Activite, ObjectifRevision, QuizDeck, QuizProgress, Signalement, TempsRevision
 from .render import Renderer
-from .vault import Note, clean_key, get_vault
+from .vault import Note, clean_key, get_vault, invalider
 
 # Import par glisser-déposer : dossier du coffre qui reçoit les sets.
 DOSSIER_QCM = "QCM"
@@ -36,6 +37,11 @@ QUOTA_MAX = 9999
 EXAMEN_QUESTIONS = 20   # questions d'un examen blanc par défaut
 EXAMEN_DUREE_MAX = 180  # minutes
 DUREE_MAX_MS = 120_000  # au-delà, le joueur s'est sans doute absenté
+
+
+def bibliotheque(request):
+    """Bibliothèque vue par le compte connecté : sets communs et son espace personnel."""
+    return quiz.get_library().pour(player_id(request))
 
 
 def player_id(request):
@@ -77,6 +83,7 @@ def _question_payload(vault, qset, question, progress):
         "verso": _render_html(vault, question.verso),
         "explication": _render_html(vault, question.explication),
         "box": st.box if st else 0,
+        "perso": bool(qset.proprietaire),
     }
 
 
@@ -157,7 +164,7 @@ def _set_summary(qset, progress, now, deck=None):
 
 @login_required
 def index(request):
-    library = quiz.get_library()
+    library = bibliotheque(request)
     player = player_id(request)
     now = timezone.now()
     q = request.GET.get("q", "").strip()
@@ -265,7 +272,7 @@ def _shuffled(pairs):
 @login_required
 def play(request):
     """Construit une session selon le mode demandé et rend le moteur de quiz."""
-    library = quiz.get_library()
+    library = bibliotheque(request)
     player = player_id(request)
     now = timezone.now()
     mode = request.GET.get("mode", "all")
@@ -374,7 +381,7 @@ def record(request):
     except (KeyError, ValueError, TypeError):
         return JsonResponse({"error": "requête invalide"}, status=400)
 
-    library = quiz.get_library()
+    library = bibliotheque(request)
     qset = library.get(set_id)
     if qset is None or not any(q.id == question_id for q in qset.questions):
         return JsonResponse({"error": "question inconnue"}, status=404)
@@ -411,7 +418,7 @@ def chronometrer(player, set_id, duree, matiere="", quand=None):
 
 @login_required
 def stats(request):
-    library = quiz.get_library()
+    library = bibliotheque(request)
     player = player_id(request)
     now = timezone.now()
     decks = QuizDeck.map_for(player)
@@ -468,7 +475,7 @@ def etat_rappel(player, library=None, now=None):
     l'application Android, notifications web, page « Aujourd'hui »."""
     from .langues_views import resume_langue
 
-    library = library or quiz.get_library()
+    library = (library or quiz.get_library()).pour(player)
     now = now or timezone.now()
     decks = QuizDeck.map_for(player)
     qcm = sum(_set_summary(s, QuizProgress.map_for(player, s.id), now, decks.get(s.id))["a_reviser"] for s in library.sets.values())
@@ -510,7 +517,7 @@ def aujourdhui(request):
         objectif = int(valeur) if valeur.isdigit() and 0 < int(valeur) <= 2000 else None
         ObjectifRevision.objects.update_or_create(player=player, defaults={"reponses_jour": objectif})
         return redirect("wiki:aujourdhui")
-    library = quiz.get_library()
+    library = bibliotheque(request)
     now = timezone.now()
     jour = timezone.localdate(now)
     decks = QuizDeck.map_for(player)
@@ -579,11 +586,11 @@ def _plan_categorie(request, library, player):
 
 def plan(request):
     """Enregistre les quotas journaliers et la date d'examen d'un set."""
-    library = quiz.get_library()
+    library = bibliotheque(request)
     if request.POST.get("categorie"):
         return _plan_categorie(request, library, player_id(request))
     set_id = request.POST.get("set", "")
-    if quiz.get_library().get(set_id) is None:
+    if bibliotheque(request).get(set_id) is None:
         raise Http404("Set inconnu")
     quotas = {}
     for champ, nom in (("nouvelles_jour", "nouvelles questions"), ("revisions_jour", "révisions")):
@@ -612,7 +619,7 @@ def plan(request):
 @login_required
 def reset(request):
     set_id = request.POST.get("set", "")
-    library = quiz.get_library()
+    library = bibliotheque(request)
     if library.get(set_id) is None:
         raise Http404("Set inconnu")
     QuizProgress.objects.filter(player=player_id(request), set_id=set_id).delete()
@@ -627,8 +634,9 @@ def _categories_import():
     return sorted((d.name for d in racine.iterdir() if d.is_dir() and not d.name.startswith(".")), key=str.lower)
 
 
-def _importer_fichier(fichier, categorie, remplacer):
-    """Valide puis enregistre un set déposé. Renvoie (succès, message)."""
+def _importer_fichier(fichier, categorie, remplacer, racine=None, prefixe=DOSSIER_QCM, lieu=None):
+    """Valide puis enregistre un set déposé, dans le coffre (``racine`` None :
+    QCM/<catégorie>/) ou dans un espace personnel. Renvoie (succès, message)."""
     nom = PurePosixPath(fichier.name.replace("\\", "/")).name
     if not nom.lower().endswith(".json"):
         return False, f"{nom} : seuls les fichiers .json sont acceptés."
@@ -642,7 +650,7 @@ def _importer_fichier(fichier, categorie, remplacer):
     except UnicodeDecodeError:
         return False, f"{nom} : le fichier doit être encodé en UTF-8."
 
-    rel = PurePosixPath(DOSSIER_QCM, categorie, f"{stem}.json")
+    rel = PurePosixPath(*([prefixe] if prefixe else []), categorie, f"{stem}.json")
     # Validation avec le chargeur des sets, dans un dossier temporaire.
     with tempfile.TemporaryDirectory() as tmp:
         essai = Path(tmp, rel)
@@ -653,15 +661,16 @@ def _importer_fichier(fichier, categorie, remplacer):
         except ValueError as e:
             return False, str(e)
 
-    destination = Path(get_vault().root, rel)
+    destination = Path(racine or get_vault().root, rel)
     if destination.exists() and not remplacer:
         return False, (f"{rel} existe déjà : cochez « Remplacer les sets existants » pour l'écraser "
                        "(la progression est conservée pour les questions dont l'id ne change pas).")
     destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_text(texte, encoding="utf-8", newline="\n")
+    invalider()
     n = len(qset)
-    unite = "exercice" if hasattr(qset, "langue") else "question"
-    return True, f"« {qset.titre} » importé dans {rel} ({n} {unite}{'s' if n > 1 else ''})."
+    unite = "question" if isinstance(qset, quiz.QuestionSet) else "exercice"
+    return True, f"« {qset.titre} » importé dans {lieu or rel} ({n} {unite}{'s' if n > 1 else ''})."
 
 
 @require_POST
@@ -718,7 +727,7 @@ def deplacer(request):
     vault/QCM/<dossier>. La progression suit le set (son identifiant change)."""
     if not _can_edit(request):
         raise PermissionDenied
-    library = quiz.get_library()
+    library = quiz.get_library().commune()
     element = _element(library, request.POST.get("set", ""))
     if element is None:
         raise Http404("Set inconnu")
@@ -756,7 +765,7 @@ def supprimer(request):
     avec la progression associée."""
     if not _can_edit(request):
         raise PermissionDenied
-    library = quiz.get_library()
+    library = quiz.get_library().commune()
     set_id = request.POST.get("set", "")
     if set_id:
         element = _element(library, set_id)
@@ -787,15 +796,14 @@ def supprimer(request):
 @login_required
 def exporter(request):
     """Un set de QCM ou un paquet de langue en .apkg (Anki) ou en .tsv (Quizlet, tableur)."""
-    library = quiz.get_library()
+    library = bibliotheque(request)
     set_id = request.GET.get("set", "")
     element = library.get(set_id) or library.langues.get(set_id)
     if element is None:
         raise Http404
     donnees = None
     if not isinstance(element, quiz.QuestionSet):
-        racine = get_vault().root
-        _, donnees = quiz.lire_json(racine / element.path, racine)
+        _, donnees = quiz.lire_json(element.fichier, element.fichier.parent)
     titre, notes = anki.exporter(element, donnees)
     nom = slugify(titre) or "export"
     if request.GET.get("format") == "tsv":
@@ -820,9 +828,11 @@ def signaler(request):
         commentaire = str(data.get("commentaire") or "").strip()[:2000]
     except (KeyError, ValueError, TypeError):
         return JsonResponse({"error": "requête invalide"}, status=400)
-    qset = quiz.get_library().get(set_id)
+    qset = bibliotheque(request).get(set_id)
     if qset is None or not any(q.id == question_id for q in qset.questions):
         return JsonResponse({"error": "question inconnue"}, status=404)
+    if qset.proprietaire:
+        return JsonResponse({"error": "set personnel : corrigez-le dans « Mon espace »"}, status=400)
     s, cree = Signalement.objects.get_or_create(
         set_id=set_id, question_id=question_id, player=player_id(request), traite=False,
         defaults={"commentaire": commentaire})
@@ -857,7 +867,7 @@ def _remplacer_question(qset, question_id, nouvelle):
     la retire si ``nouvelle`` est None. Les identifiants implicites (q1, q2…) des
     questions suivantes sont figés pour que leur progression reste rattachée."""
     racine = get_vault().root
-    rel, data = quiz.lire_json(racine / qset.path, racine)
+    rel, data = quiz.lire_json(racine / qset.path, racine)  # sets communs seulement (signalements)
     questions = data["questions"]
     for i, q in enumerate(questions, start=1):
         if str(q.get("id", f"q{i}")) == question_id:
@@ -989,3 +999,115 @@ def push_tester(request):
     except Exception as e:  # noqa: BLE001
         return JsonResponse({"error": f"envoi impossible : {e}"}, status=502)
     return JsonResponse({"ok": True})
+
+
+# ---------------------------------------------------------------------------
+# Espace personnel : sets et paquets importés par chaque compte, visibles de lui seul
+# ---------------------------------------------------------------------------
+MAX_FICHIERS_PERSO = 200
+MAX_OCTETS_PERSO = 20 * 2**20
+CATEGORIE_PERSO = "Mes sets"
+
+
+def _fichiers_perso(player):
+    dossier = quiz.dossier_perso(player)
+    return list(dossier.rglob("*.json")) if dossier.is_dir() else []
+
+
+def _taille_perso(player):
+    return sum(f.stat().st_size for f in _fichiers_perso(player))
+
+
+def _ecrire_paquet_perso(player, dossier, paquet):
+    """Écrit un paquet de langue dans l'espace personnel ; renvoie son identifiant."""
+    from . import langues
+
+    racine = quiz.dossier_perso(player)
+    base = (slugify(paquet.get("titre", "")) or "vocabulaire")[:60]
+    for i in range(1, 1000):
+        rel = PurePosixPath(dossier, f"{base}.json" if i == 1 else f"{base}-{i}.json")
+        if not (racine / rel).exists():
+            break
+    try:
+        langues.set_depuis_json(paquet, rel)
+    except ValueError as e:
+        raise paquets.PaquetInvalide(f"Paquet invalide : {e}") from None
+    cible = racine / rel
+    cible.parent.mkdir(parents=True, exist_ok=True)
+    cible.write_text(json.dumps(paquet, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
+    invalider()
+    return quiz.PERSO + quiz.nom_perso(player) + "/" + rel.with_suffix("").as_posix()
+
+
+@login_required
+def perso(request):
+    """« Mon espace » : importer ses propres sets (JSON) et listes de mots, les supprimer."""
+    from . import langues
+    from .views import lire_liste, message_paquet
+
+    player = player_id(request)
+    if request.method == "POST":
+        action = request.POST.get("action", "")
+        if action == "supprimer":
+            element = _element(bibliotheque(request), request.POST.get("set", ""))
+            if element is None or element.proprietaire != quiz.nom_perso(player):
+                raise Http404("Set inconnu")
+            element.fichier.unlink(missing_ok=True)
+            _retirer_dossiers_vides(element.fichier.parent, quiz.dossier_perso(player))
+            _oublier([element.id])
+            invalider()
+            messages.success(request, f"« {element.titre} » supprimé de votre espace.")
+            return redirect("wiki:quiz_perso")
+        if len(_fichiers_perso(player)) >= MAX_FICHIERS_PERSO or _taille_perso(player) >= MAX_OCTETS_PERSO:
+            messages.error(request, f"Votre espace est plein ({MAX_FICHIERS_PERSO} fichiers, {MAX_OCTETS_PERSO // 2**20} Mo) : supprimez-en d'abord.")
+            return redirect("wiki:quiz_perso")
+        if action == "json":
+            categorie = clean_key(request.POST.get("categorie", "").strip() or CATEGORIE_PERSO)
+            fichiers = request.FILES.getlist("fichiers")
+            if categorie is None or "/" in categorie:
+                messages.error(request, 'Dossier invalide : un seul nom, sans / \\ : * ? " < > | # ^ [ ].')
+            elif not fichiers:
+                messages.error(request, "Aucun fichier reçu.")
+            else:
+                place = MAX_FICHIERS_PERSO - len(_fichiers_perso(player))
+                for fichier in fichiers[:place]:
+                    if _taille_perso(player) + fichier.size > MAX_OCTETS_PERSO:
+                        messages.error(request, f"{fichier.name} : votre espace est plein ({MAX_OCTETS_PERSO // 2**20} Mo).")
+                        break
+                    ok, message = _importer_fichier(fichier, categorie, request.POST.get("remplacer") == "1",
+                                                    racine=quiz.dossier_perso(player), prefixe="",
+                                                    lieu=f"votre espace, dossier « {categorie} »")
+                    (messages.success if ok else messages.error)(request, message)
+                if len(fichiers) > place:
+                    messages.error(request, f"{len(fichiers) - place} fichier(s) non importé(s) : {MAX_FICHIERS_PERSO} fichiers au plus.")
+            return redirect("wiki:quiz_perso")
+        if action == "liste":
+            paquet, options, ignorees, erreur = lire_liste(request)
+            if erreur:
+                messages.error(request, erreur)
+                return redirect("wiki:quiz_perso")
+            try:
+                set_id = _ecrire_paquet_perso(player, options["dossier"] or "Vocabulaire", paquet)
+            except paquets.PaquetInvalide as e:
+                messages.error(request, str(e))
+                return redirect("wiki:quiz_perso")
+            messages.success(request, message_paquet(paquet, ignorees))
+            return redirect(reverse("wiki:langue_menu", args=[options["langue"]]) + "?" + urlencode({"fichier": set_id}))
+        return redirect("wiki:quiz_perso")
+
+    library = bibliotheque(request)
+    elements = []
+    for e in library.personnels(player):
+        est_langue = not isinstance(e, quiz.QuestionSet)
+        elements.append({"set": e, "langue": est_langue, "dossier": e.path.parent.name, "taille": len(e),
+                         "jouer": (reverse("wiki:langue_menu", args=[e.langue]) + "?" + urlencode({"fichier": e.id})) if est_langue
+                         else reverse("wiki:quiz_play") + "?" + urlencode({"set": e.id, "mode": "all"})})
+    from . import claude
+
+    return render(request, "wiki/quiz_perso.html", _ctx(
+        request, elements=elements, erreurs=library.erreurs_perso.get(quiz.nom_perso(player), []),
+        max_fichiers=MAX_FICHIERS_PERSO, nombre=len(_fichiers_perso(player)),
+        langues=sorted(set(library.noms_langues()) | {"Anglais"}, key=str.lower),
+        cartes=[(t, langues.nom_type(t, "Anglais"), t in claude.CARTES_PAR_DEFAUT) for t in langues.TYPES_VOCABULAIRE],
+        dossiers=sorted({x["dossier"] for x in elements}, key=str.lower),
+    ))

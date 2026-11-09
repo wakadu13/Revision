@@ -489,7 +489,7 @@ def scan(root):
 # (VerificationCoffreMiddleware), et invalider() force le prochain parcours (après
 # la requête, ou après une écriture du fil de Claude).
 _scan_lock = threading.Lock()
-_scan = {"root": None, "signature": None, "quand": 0.0, "generation": -1}
+_scans = {}  # dossier -> {"signature", "quand", "generation"} (coffre, espaces personnels)
 _generation = 0
 _local = threading.local()
 
@@ -517,14 +517,16 @@ def signature_coffre(root):
     WIKI_VERIF_INTERVALLE secondes (partagée par les pages et les QCM)."""
     intervalle = float(getattr(settings, "WIKI_VERIF_INTERVALLE", 2.0))
     maintenant = time.monotonic()
+    root = Path(root)
     with _scan_lock:
-        if (_scan["root"] == root and _scan["generation"] == _generation and not getattr(_local, "forcer", 0)
-                and maintenant - _scan["quand"] < intervalle):
-            return _scan["signature"]
+        c = _scans.get(root)
+        if (c is not None and c["generation"] == _generation and not getattr(_local, "forcer", 0)
+                and maintenant - c["quand"] < intervalle):
+            return c["signature"]
         generation = _generation
     signature = scan(root) if root.is_dir() else ()
     with _scan_lock:
-        _scan.update(root=root, signature=signature, quand=maintenant, generation=generation)
+        _scans[root] = {"signature": signature, "quand": maintenant, "generation": generation}
     return signature
 
 

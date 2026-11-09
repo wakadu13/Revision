@@ -285,7 +285,7 @@
         (explicationHtml ? '<div class="quiz-explication markdown">' + explicationHtml + "</div>" : "");
       renderMath(feedback);
       if (options.expliquer) ajouterExpliqueMoi(feedback, state._els.q);
-      if (options.signaler) ajouterSignaler(feedback, state._els.q);
+      if (options.signaler && !state._els.q.perso) ajouterSignaler(feedback, state._els.q);
       nextBtn.style.display = "";
       nextBtn.focus();
     }

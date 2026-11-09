@@ -3190,3 +3190,125 @@ class NotificationsWebTests(TestCase):
         self.assertIn('addEventListener("push"', sw)
         self.assertIn("notificationclick", sw)
         self.assertIn("rappel_web.js", sw)
+
+
+class EspacePersoTests(QuizTests):
+    """Espace personnel : chaque compte importe ses sets et listes de mots, visibles de lui seul."""
+
+    def setUp(self):
+        super().setUp()
+        self.data = tempfile.TemporaryDirectory()
+        self.addCleanup(self.data.cleanup)
+        override = override_settings(DATA_DIR=Path(self.data.name))
+        override.enable()
+        self.addCleanup(override.disable)
+        self.bob = get_user_model().objects.create_user("bob", password="x")
+        self.admin = get_user_model().objects.create_user("admin", password="x", is_staff=True)
+
+    def _set(self, titre="Mes verbes"):
+        return {"titre": titre, "questions": [
+            {"id": "v1", "type": "QCM", "question": "be → ?", "choix": ["was", "is"], "reponses": [0]},
+            {"id": "v2", "type": "FLASHCARD", "question": "go", "verso": "went"}]}
+
+    def _importer(self, nom="verbes.json", contenu=None, **champs):
+        fichier = SimpleUploadedFile(nom, json.dumps(contenu or self._set()).encode())
+        return self.client.post("/qcm/mon-espace/", {"action": "json", "fichiers": [fichier], **champs}, follow=True)
+
+    def _repondre(self, set_id, question_id="v1"):
+        return self.client.post("/qcm/reponse/", {"set_id": set_id, "question_id": question_id, "correct": True},
+                                content_type="application/json")
+
+    def test_set_importe_visible_de_son_seul_proprietaire(self):
+        reponse = self._importer()
+        self.assertContains(reponse, "« Mes verbes » importé dans votre espace, dossier « Mes sets » (2 questions).")
+        self.assertTrue((Path(self.data.name) / "perso/alice/Mes sets/verbes.json").is_file())
+        self.assertFalse((self.root / "QCM").exists())
+        set_id = "~alice/Mes sets/verbes"
+        index = self.client.get("/qcm/").content.decode()
+        self.assertIn("Mes verbes", index)
+        self.assertIn("🔒 perso", index)
+        self.assertEqual(self.client.get("/qcm/jouer/", {"set": set_id}).status_code, 200)
+        self.assertEqual(self._repondre(set_id).status_code, 200)
+        self.assertEqual(self.client.get("/qcm/exporter/", {"set": set_id}).status_code, 200)
+        catalogue = self.client.get("/qcm/hors-ligne/catalogue/").json()
+        self.assertIn(set_id, [s["id"] for s in catalogue["sets"]])
+        self.assertContains(self.client.get("/qcm/mon-espace/"), "Mes verbes")
+        # Un autre compte, même admin, ne le voit nulle part.
+        for compte in (self.bob, self.admin):
+            with self.subTest(compte=compte.username):
+                self.client.force_login(compte)
+                self.assertNotIn("Mes verbes", self.client.get("/qcm/").content.decode())
+                self.assertNotIn("Mes verbes", self.client.get("/qcm/mon-espace/").content.decode())
+                self.assertEqual(self.client.get("/qcm/jouer/", {"set": set_id}).status_code, 404)
+                self.assertEqual(self._repondre(set_id).status_code, 404)
+                self.assertEqual(self.client.get("/qcm/exporter/", {"set": set_id}).status_code, 404)
+                catalogue = self.client.get("/qcm/hors-ligne/catalogue/").json()
+                self.assertNotIn(set_id, [s["id"] for s in catalogue["sets"]])
+                telecharge = self.client.get("/qcm/hors-ligne/sets/", {"id": set_id}).json()
+                self.assertEqual(telecharge["sets"], [])
+                reponse = self.client.post("/qcm/mon-espace/", {"action": "supprimer", "set": set_id})
+                self.assertEqual(reponse.status_code, 404)
+        # Les outils de rangement des admins ne touchent pas aux espaces personnels.
+        self.client.force_login(self.admin)
+        self.client.post("/qcm/supprimer/", {"set": set_id})
+        self.client.post("/qcm/deplacer/", {"set": set_id, "dossier": "Ailleurs"})
+        self.assertTrue((Path(self.data.name) / "perso/alice/Mes sets/verbes.json").is_file())
+
+    def test_liste_de_mots_dans_son_espace(self):
+        reponse = self.client.post("/qcm/mon-espace/", {
+            "action": "liste", "liste": "a job\tun emploi\nto run\tcourir\n", "ordre": "langue_fr",
+            "langue": "anglais", "cartes": ["decouverte", "production"], "titre": "Métiers"})
+        set_id = "~alice/Vocabulaire/metiers"
+        self.assertRedirects(reponse, "/qcm/langues/Anglais/?fichier=%7Ealice%2FVocabulaire%2Fmetiers", fetch_redirect_response=False)
+        paquet = json.loads((Path(self.data.name) / "perso/alice/Vocabulaire/metiers.json").read_text(encoding="utf-8"))
+        self.assertEqual([f["mot"] for f in paquet["vocabulaire"]], ["a job", "to run"])
+        self.assertContains(self.client.get("/qcm/langues/Anglais/", {"fichier": set_id}), "Métiers")
+        self.assertIn(set_id, [s["id"] for s in self.client.get("/qcm/hors-ligne/catalogue/").json()["langues"]])
+        self.assertContains(self.client.get("/qcm/exporter/", {"set": set_id, "format": "tsv"}), "a job")
+        self.client.force_login(self.bob)
+        # Pour bob, l'anglais n'existe même pas (aucun paquet commun dans cette langue).
+        self.assertEqual(self.client.get("/qcm/langues/Anglais/").status_code, 404)
+        self.assertNotIn(set_id, [s["id"] for s in self.client.get("/qcm/hors-ligne/catalogue/").json()["langues"]])
+        # Erreurs de saisie : messages comme pour l'import des admins.
+        self.assertContains(self.client.post("/qcm/mon-espace/", {"action": "liste", "liste": "", "cartes": ["production"]},
+                                             follow=True), "Aucune ligne")
+
+    def test_suppression_et_progression(self):
+        from wiki.models import QuizProgress
+        self._importer()
+        set_id = "~alice/Mes sets/verbes"
+        self._repondre(set_id)
+        self.assertTrue(QuizProgress.objects.filter(set_id=set_id).exists())
+        reponse = self.client.post("/qcm/mon-espace/", {"action": "supprimer", "set": set_id}, follow=True)
+        self.assertContains(reponse, "« Mes verbes » supprimé de votre espace.")
+        self.assertFalse((Path(self.data.name) / "perso/alice/Mes sets").exists())
+        self.assertFalse(QuizProgress.objects.filter(set_id=set_id).exists())
+        self.assertEqual(self.client.get("/qcm/jouer/", {"set": set_id}).status_code, 404)
+
+    def test_signalement_refuse_et_json_invalide(self):
+        self._importer()
+        reponse = self.client.post("/qcm/signaler/", {"set_id": "~alice/Mes sets/verbes", "question_id": "v1"},
+                                   content_type="application/json")
+        self.assertEqual(reponse.status_code, 400)
+        reponse = self._importer("faux.json", {"titre": "x", "questions": [{"type": "QCM"}]})
+        self.assertFalse((Path(self.data.name) / "perso/alice/Mes sets/faux.json").exists())
+        self.assertNotContains(reponse, "importé dans votre espace")
+        # Un fichier abîmé à la main est signalé à son seul propriétaire.
+        (Path(self.data.name) / "perso/alice/Mes sets/abime.json").write_text("{", encoding="utf-8")
+        from wiki.vault import invalider
+        invalider()
+        self.assertContains(self.client.get("/qcm/mon-espace/"), "abime.json")
+        self.client.force_login(self.bob)
+        self.assertNotContains(self.client.get("/qcm/"), "abime.json")
+
+    def test_quota(self):
+        from wiki import quiz_views
+        with mock.patch.object(quiz_views, "MAX_FICHIERS_PERSO", 1):
+            self._importer()
+            reponse = self._importer("autre.json", self._set("Autre"))
+        self.assertContains(reponse, "Votre espace est plein")
+        self.assertFalse((Path(self.data.name) / "perso/alice/Mes sets/autre.json").exists())
+
+    def test_nom_de_dossier_sur(self):
+        self.assertEqual(quiz.nom_perso("jean/../x"), "jean_.._x")
+        self.assertEqual(quiz.nom_perso("é.a@b+c-d"), "é.a@b+c-d")
