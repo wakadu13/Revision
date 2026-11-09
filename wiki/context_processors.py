@@ -15,4 +15,17 @@ def wiki(request):
         "in_app": "ProjetPluriApp/" in request.headers.get("User-Agent", ""),
         # Pages de lecture : menu caché, sauf s'il a été épinglé (cookie posé par plein_ecran.js).
         "menu_epingle": request.COOKIES.get("menu") == "epingle",
+        # Admins : nombre d'erreurs du serveur à regarder (menu du compte).
+        "erreurs_ouvertes": SimpleLazyObject(lambda: _erreurs_ouvertes(request)),
     }
+
+
+def _erreurs_ouvertes(request):
+    from accounts.roles import is_admin
+
+    from .models import ErreurServeur
+
+    user = getattr(request, "user", None)
+    if user is None or not is_admin(user):
+        return 0
+    return ErreurServeur.objects.filter(reglee=False).count()

@@ -2946,3 +2946,99 @@ class AnnotationPdfTests(WikiTestCase):
         page = self.client.get("/pdf/Cours/Signal.pdf")
         self.assertNotContains(page, "data-can-edit")
         self.assertNotContains(page, "pdf-annotation-dialog")
+
+
+class VerificationCoffreTests(WikiTestCase):
+    """Le coffre n'est parcouru qu'au plus toutes les WIKI_VERIF_INTERVALLE secondes ;
+    ce que le wiki écrit lui-même est visible tout de suite."""
+
+    def test_parcours_espace_et_invalidation(self):
+        from unittest import mock
+        from wiki import vault as module
+        self.write("Une.md", "# Une\n")
+        with override_settings(WIKI_VERIF_INTERVALLE=60), mock.patch.object(module, "scan", wraps=module.scan) as scan:
+            module.invalider()
+            self.assertIn("une", module.get_vault().notes)
+            self.write("Deux.md", "# Deux\n")
+            from wiki.quiz import get_library
+            get_library()
+            self.assertNotIn("deux", module.get_vault().notes)  # pas encore revu
+            self.assertEqual(scan.call_count, 1)                 # pages et QCM : un seul parcours
+            module.invalider()
+            self.assertIn("deux", module.get_vault().notes)
+            self.assertEqual(scan.call_count, 2)
+            self.write("Trois.md", "# Trois\n")
+            with module.toujours_verifier():
+                self.assertIn("trois", module.get_vault().notes)
+
+    def test_ecriture_par_le_wiki_visible_tout_de_suite(self):
+        from django.core.files.uploadedfile import SimpleUploadedFile
+        from wiki import vault as module
+        admin = get_user_model().objects.create_user("admin", password="x", is_staff=True)
+        self.client.force_login(admin)
+        with override_settings(WIKI_VERIF_INTERVALLE=60):
+            module.invalider()
+            self.client.get("/sommaire/")
+            r = self.client.post("/importer/", {"fichiers": SimpleUploadedFile("Nouvelle.md", b"# Nouvelle\n"),
+                                                "chemins": "Nouvelle.md"}, HTTP_ACCEPT="application/json")
+            self.assertEqual(r.json()["results"][0]["url"], "/wiki/Nouvelle")  # relu pendant la requête
+            self.assertContains(self.client.get("/sommaire/"), "Nouvelle")       # et juste après
+
+
+class ErreursServeurTests(WikiTestCase):
+    def test_erreur_500_notee_et_regroupee(self):
+        from unittest import mock
+        from wiki.models import ErreurServeur
+        client = self.client_class(raise_request_exception=False)
+        client.force_login(self.reader)
+        with mock.patch("wiki.views.get_vault", side_effect=RuntimeError("disque illisible")):
+            self.assertEqual(client.get("/sommaire/").status_code, 500)
+            client.get("/sommaire/?x=1")
+        e = ErreurServeur.objects.get()
+        self.assertEqual((e.type, e.message, e.nombre, e.methode, e.utilisateur), ("RuntimeError", "disque illisible", 2, "GET", "lecteur"))
+        self.assertEqual(e.chemin, "/sommaire/?x=1")
+        self.assertIn("Traceback", e.trace)
+        self.assertIn("wiki/views.py", e.lieu)
+        # Page réservée aux admins, badge dans le menu.
+        self.assertEqual(self.client.get("/erreurs/").status_code, 403)
+        admin = get_user_model().objects.create_user("admin", password="x", is_staff=True)
+        self.client.force_login(admin)
+        page = self.client.get("/erreurs/")
+        self.assertContains(page, "disque illisible")
+        self.assertContains(page, "2 fois")
+        self.assertContains(self.client.get("/sommaire/"), 'class="badge-erreurs">1<')
+        self.client.post("/erreurs/", {"action": "reglee", "pk": e.pk})
+        self.assertTrue(ErreurServeur.objects.get().reglee)
+        self.assertNotContains(self.client.get("/sommaire/"), "badge-erreurs")
+        self.client.post("/erreurs/", {"action": "effacer"})
+        self.assertFalse(ErreurServeur.objects.exists())
+
+    def test_noter_hors_requete_et_limite(self):
+        from wiki import erreurs
+        from wiki.models import ErreurServeur
+        for i in range(erreurs.MAX_ERREURS + 3):
+            try:
+                raise ValueError(f"erreur {i}")
+            except ValueError:
+                erreurs.noter("Fil des travaux de Claude")
+        self.assertEqual(ErreurServeur.objects.count(), erreurs.MAX_ERREURS)
+        self.assertEqual(ErreurServeur.objects.order_by("-derniere").first().chemin, "Fil des travaux de Claude")
+        erreurs.noter("rien")  # aucune exception en cours : rien à noter
+        self.assertEqual(ErreurServeur.objects.count(), erreurs.MAX_ERREURS)
+
+
+class ProductionTests(WikiTestCase):
+    def test_gunicorn_impression_dependabot(self):
+        import runpy
+        import yaml
+        from django.conf import settings
+        conf = runpy.run_path(str(settings.BASE_DIR / "config" / "gunicorn.conf.py"))
+        self.assertEqual((conf["workers"], conf["worker_class"]), (1, "gthread"))
+        self.assertGreaterEqual(conf["threads"], 2)
+        self.write("Fiche.md", "# Fiche\n")
+        page = self.client.get("/wiki/Fiche").content.decode()
+        self.assertIn("data-imprimer", page)
+        css = (settings.BASE_DIR / "wiki" / "static" / "wiki" / "wiki.css").read_text(encoding="utf-8")
+        self.assertIn("@media print", css)
+        deps = yaml.safe_load((settings.BASE_DIR / ".github" / "dependabot.yml").read_text(encoding="utf-8"))
+        self.assertEqual({u["package-ecosystem"] for u in deps["updates"]}, {"uv", "gradle", "github-actions"})

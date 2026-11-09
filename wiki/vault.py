@@ -11,6 +11,7 @@ import os
 import posixpath
 import re
 import threading
+import time
 import unicodedata
 from collections import defaultdict
 from dataclasses import dataclass
@@ -481,6 +482,52 @@ def scan(root):
     return tuple(sorted(files))
 
 
+# Détection des changements du coffre. Parcourir tout le coffre à chaque requête
+# coûte (deux fois : pages et QCM) ; le parcours est donc fait au plus toutes les
+# WIKI_VERIF_INTERVALLE secondes. Les écritures faites par le wiki lui-même sont
+# vues tout de suite : pendant une requête POST le coffre est toujours relu
+# (VerificationCoffreMiddleware), et invalider() force le prochain parcours (après
+# la requête, ou après une écriture du fil de Claude).
+_scan_lock = threading.Lock()
+_scan = {"root": None, "signature": None, "quand": 0.0, "generation": -1}
+_generation = 0
+_local = threading.local()
+
+
+def invalider():
+    """Le prochain accès au coffre le relira (un fichier vient d'être écrit)."""
+    global _generation
+    with _scan_lock:
+        _generation += 1
+
+
+class toujours_verifier:
+    """Pendant ce bloc (une requête qui écrit), le coffre est relu à chaque accès."""
+
+    def __enter__(self):
+        _local.forcer = getattr(_local, "forcer", 0) + 1
+
+    def __exit__(self, *exc):
+        _local.forcer -= 1
+        invalider()
+
+
+def signature_coffre(root):
+    """Liste (chemin, date, taille) des fichiers du coffre, parcourue au plus toutes les
+    WIKI_VERIF_INTERVALLE secondes (partagée par les pages et les QCM)."""
+    intervalle = float(getattr(settings, "WIKI_VERIF_INTERVALLE", 2.0))
+    maintenant = time.monotonic()
+    with _scan_lock:
+        if (_scan["root"] == root and _scan["generation"] == _generation and not getattr(_local, "forcer", 0)
+                and maintenant - _scan["quand"] < intervalle):
+            return _scan["signature"]
+        generation = _generation
+    signature = scan(root) if root.is_dir() else ()
+    with _scan_lock:
+        _scan.update(root=root, signature=signature, quand=maintenant, generation=generation)
+    return signature
+
+
 _lock = threading.Lock()
 _cache = {"root": None, "signature": None, "vault": None}
 
@@ -488,7 +535,7 @@ _cache = {"root": None, "signature": None, "vault": None}
 def get_vault():
     """Renvoie le coffre, réindexé seulement si un fichier a changé."""
     root = Path(settings.WIKI_DIR)
-    signature = scan(root) if root.is_dir() else ()
+    signature = signature_coffre(root)
     with _lock:
         if _cache["vault"] is None or _cache["root"] != root or _cache["signature"] != signature:
             _cache.update(root=root, signature=signature, vault=Vault(root, signature, previous=_cache["vault"]))

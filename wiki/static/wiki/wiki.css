@@ -866,3 +866,28 @@ body.plein-ecran.editing.pe-haut .toolbar {
 .pdf-annotation-retour.is-error { background: rgba(185, 28, 28, .95); }
 .pdf-annotation-extrait { max-height: 9rem; overflow: auto; margin: 0 0 .6rem; font-size: .9rem; }
 .pdf-annotation-choix { display: flex; flex-direction: column; gap: .3rem; margin-bottom: .4rem; }
+
+/* Erreurs du serveur */
+.badge-erreurs { display: inline-block; min-width: 1.2em; padding: 0 .35em; border-radius: 1em; background: #dc2626; color: #fff; font-size: .75rem; text-align: center; }
+.erreur { border: 1px solid var(--border); border-radius: 8px; padding: .6rem .9rem; margin: .6rem 0; }
+.erreur summary { cursor: pointer; }
+.erreur-message { font-family: var(--mono); font-size: .85rem; }
+.erreurs-actions { margin: .6rem 0; }
+
+/* Impression : la page seule, en clair, sans menus ni boutons */
+@media print {
+  :root, :root[data-theme="dark"] { --bg: #fff; --bg-alt: #f6f6f6; --text: #000; --muted: #444; --border: #bbb; color-scheme: light; }
+  body { background: #fff !important; color: #000 !important; }
+  .sidebar, .aside, .topbar, .menu-poignee, .app-nav, .app-backdrop, .toolbar, .pdf-toolbar, .editor-footer,
+  .note-header .button, .note-footer, .breadcrumb, .callout[data-callout] + form, form, button, .button,
+  .quiz-actions, .pe-astuce, .panel { display: none !important; }
+  .layout, .content, main, article.note { display: block !important; width: auto !important; max-width: none !important;
+    margin: 0 !important; padding: 0 !important; box-shadow: none !important; }
+  .note-title { margin-top: 0; }
+  a { color: inherit; text-decoration: underline; }
+  h1, h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
+  .callout, pre, table, figure, img, .katex-display, blockquote { break-inside: avoid; page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  pre, code { white-space: pre-wrap; word-break: break-word; }
+  @page { margin: 1.6cm 1.4cm; }
+}

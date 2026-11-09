@@ -323,11 +323,10 @@ _cache = {"root": None, "signature": None, "library": None}
 
 def get_library():
     """Renvoie la bibliothèque de QCM, réindexée seulement si un fichier a changé."""
-    from .vault import scan  # import tardif : évite un cycle à l'import du module
+    from .vault import signature_coffre  # import tardif : évite un cycle à l'import du module
 
     root = Path(settings.WIKI_DIR)
-    signature = tuple(f for f in (scan(root) if root.is_dir() else ())
-                      if f[0].lower().endswith(".json"))
+    signature = tuple(f for f in signature_coffre(root) if f[0].lower().endswith(".json"))
     with _lock:
         if _cache["library"] is None or _cache["root"] != root or _cache["signature"] != signature:
             _cache.update(root=root, signature=signature, library=Library(root, signature))

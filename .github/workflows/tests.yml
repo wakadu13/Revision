@@ -62,7 +62,8 @@ jobs:
           # arrière-plan garderait le verrou du cache d'uv (nettoyage de fin de job).
           .venv/bin/python manage.py migrate --noinput -v 0
           .venv/bin/python manage.py shell -c "from django.contrib.auth import get_user_model; get_user_model().objects.create_user('testeur', password='Test-pass-1234!', is_staff=True)"
-          nohup .venv/bin/python manage.py runserver 127.0.0.1:8765 --noreload > "$RUNNER_TEMP/serveur.log" 2>&1 &
+          # Même serveur qu'en production (gunicorn, config/gunicorn.conf.py).
+          GUNICORN_BIND=127.0.0.1:8765 nohup .venv/bin/gunicorn -c config/gunicorn.conf.py config.wsgi > "$RUNNER_TEMP/serveur.log" 2>&1 &
           for i in $(seq 1 40); do curl -sf -o /dev/null http://127.0.0.1:8765/connexion/ && break; sleep 1; done
 
       - name: Scénario
@@ -70,7 +71,7 @@ jobs:
 
       - name: Arrêt du serveur
         if: always()
-        run: pkill -f "manage.py runserver" || true
+        run: pkill -f "gunicorn -c config/gunicorn.conf.py" || true
 
       - name: Journal du serveur
         if: failure()

@@ -16,6 +16,7 @@ urlpatterns = [
     path("palette.json", views.palette, name="palette"),
     path("documentation/", views.documentation, name="documentation"),
     path("historique/<path:path>", views.historique_page, name="historique"),
+    path("erreurs/", views.erreurs, name="erreurs"),
     path("hors-connexion/", views.hors_connexion, name="hors_connexion"),
     path("sw.js", views.sw_wiki, name="sw_wiki"),
     path("manifest.webmanifest", views.manifest_wiki, name="manifest_wiki"),

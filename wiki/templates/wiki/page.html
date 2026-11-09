@@ -8,6 +8,7 @@
   {% endif %}
   <div class="note-header">
     <h1 class="note-title">{{ note.title }}</h1>
+    <button type="button" class="button imprimer" data-imprimer title="Imprimer la page ou l'enregistrer en PDF (Ctrl+P)">Imprimer</button>
     {% if can_edit %}<a class="button" href="{% url 'wiki:edit' note.key %}" title="Modifier (Ctrl+E)" data-edit-shortcut>Modifier</a>{% endif %}
   </div>
   {% if note.properties or note.tags or note.aliases %}

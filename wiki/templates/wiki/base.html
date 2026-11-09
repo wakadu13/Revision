@@ -76,6 +76,7 @@
           {% if is_admin %}
           <li><a href="{% url 'accounts:users' %}">Utilisateurs</a></li>
           <li><a href="{% url 'wiki:claude_reglages' %}">✦ Claude (clé d'API)</a></li>
+          <li><a href="{% url 'wiki:erreurs' %}">Erreurs du serveur{% if erreurs_ouvertes %} <b class="badge-erreurs">{{ erreurs_ouvertes }}</b>{% endif %}</a></li>
           <li><a href="{% url 'admin:index' %}">Administration</a></li>
           {% endif %}
           {% if in_app %}

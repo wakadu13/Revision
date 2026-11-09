@@ -397,3 +397,26 @@ class EchangeTuteur(models.Model):
 
     class Meta:
         ordering = ["cree_le", "pk"]
+
+
+class ErreurServeur(models.Model):
+    """Erreur du serveur (page en erreur 500, fil de Claude), regroupée par empreinte."""
+
+    empreinte = models.CharField(max_length=40, unique=True)
+    type = models.CharField(max_length=200)
+    message = models.TextField(blank=True)
+    lieu = models.CharField(max_length=500, blank=True)      # fichier:ligne du code
+    chemin = models.CharField(max_length=500, blank=True)    # adresse demandée (dernière occurrence)
+    methode = models.CharField(max_length=10, blank=True)
+    utilisateur = models.CharField(max_length=150, blank=True)
+    trace = models.TextField(blank=True)
+    nombre = models.PositiveIntegerField(default=1)
+    premiere = models.DateTimeField()
+    derniere = models.DateTimeField()
+    reglee = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ["reglee", "-derniere"]
+
+    def __str__(self):
+        return f"{self.type}: {self.message[:60]}"

@@ -478,6 +478,18 @@ public class MainActivity extends Activity {
         }
 
         @JavascriptInterface
+        public void imprimer(String titre) {
+            // window.print() ne fait rien dans une WebView : l'impression passe par Android
+            // (imprimante, ou « Enregistrer au format PDF »).
+            runOnUiThread(() -> {
+                android.print.PrintManager impression = (android.print.PrintManager) getSystemService(PRINT_SERVICE);
+                if (impression == null) return;
+                String nom = titre == null || titre.isEmpty() ? "ProjetPluri" : titre;
+                impression.print(nom, vue.createPrintDocumentAdapter(nom), null);
+            });
+        }
+
+        @JavascriptInterface
         public void ouvrirWiki() {
             runOnUiThread(() -> MainActivity.this.ouvrirWiki("/"));
         }

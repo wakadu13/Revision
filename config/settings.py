@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 
 import os
 import secrets
+import sys
 from pathlib import Path
 
 from django.utils.csp import CSP
@@ -86,6 +87,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.LoginRequiredMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # Coffre relu pendant les requêtes qui écrivent (vérification espacée sinon).
+    'wiki.middleware.VerificationCoffreMiddleware',
     # Anti-force brute : doit rester en dernier.
     'axes.middleware.AxesMiddleware',
 ]
@@ -198,6 +201,14 @@ WIKI_DIR = BASE_DIR / 'vault'
 
 # Note affichée sur la page d'accueil (nom de fichier sans .md).
 WIKI_HOME = 'Accueil'
+
+# Délai (secondes) entre deux vérifications des fichiers du coffre : un fichier
+# déposé à la main ou par Obsidian apparaît au plus tard après ce délai ; ce que le
+# wiki écrit lui-même est visible tout de suite. Tests : 0 (fichiers écrits puis
+# relus aussitôt).
+WIKI_VERIF_INTERVALLE = float(os.environ.get('WIKI_VERIF_INTERVALLE', '2'))
+if len(sys.argv) > 1 and sys.argv[1] == 'test':
+    WIKI_VERIF_INTERVALLE = 0.0
 
 # Cours (PDF, LaTeX) transformés en pages par Claude (wiki/claude.py) : clé
 # d'API dans la variable d'environnement WIKI_CLAUDE_CLE, modèle dans

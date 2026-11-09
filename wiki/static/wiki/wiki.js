@@ -122,6 +122,23 @@
     };
   }
 
+  // Impression : bouton « Imprimer » (l'application Android imprime par son pont), et
+  // encadrés repliés ouverts le temps de l'impression.
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest || !e.target.closest("[data-imprimer]")) return;
+    if (window.AppliNatif && window.AppliNatif.imprimer) window.AppliNatif.imprimer(document.title);
+    else window.print();
+  });
+  let replies = [];
+  window.addEventListener("beforeprint", () => {
+    replies = [...document.querySelectorAll(".markdown details:not([open])")];
+    replies.forEach((d) => { d.open = true; });
+  });
+  window.addEventListener("afterprint", () => {
+    replies.forEach((d) => { d.open = false; });
+    replies = [];
+  });
+
   // Formulaires à confirmer (suppression, réinitialisation) : data-confirm, car la
   // politique de sécurité du site bloque les « onsubmit » écrits dans la page.
   document.addEventListener("submit", (e) => {

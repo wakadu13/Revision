@@ -7,10 +7,12 @@ dependencies = [
     "anthropic>=2.6.0",
     "django>=6.1.1",
     "django-axes>=8.3.1",
+    "gunicorn>=26.2.0",
     "markdown>=3.11",
     "nh3>=0.3.7",
     "pillow>=13.0.0",
     "pymdown-extensions>=12.1",
+    "pypdf>=7.0.0",
     "pyyaml>=6.0.3",
     "whitenoise>=6.12.0",
 ]

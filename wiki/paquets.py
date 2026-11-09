@@ -11,7 +11,7 @@ from pathlib import PurePosixPath
 from django.utils.text import slugify
 
 from . import langues, quiz
-from .vault import INVALID_NAME_RE, get_vault
+from .vault import INVALID_NAME_RE, get_vault, invalider
 
 DOSSIER_QCM = "QCM"
 
@@ -46,6 +46,7 @@ def enregistrer_json(rel, donnees):
         raise PaquetInvalide("Dossier invalide.")
     cible.parent.mkdir(parents=True, exist_ok=True)
     cible.write_text(json.dumps(donnees, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
+    invalider()
 
 
 def ecrire_paquet_langue(dossier, paquet):
