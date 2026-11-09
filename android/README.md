@@ -28,6 +28,14 @@ synchronisent avec le serveur.
   l'heure choisie, avec ce qu'il reste à réviser et la série de jours
   (`/api/rappel/`, avec le jeton) ; rien si tout est déjà révisé. Android 13 et
   plus demande la permission d'afficher des notifications.
+- **Widget d'écran d'accueil** : ce qu'il reste à réviser (QCM et langues) et la
+  série de jours, mis à jour à l'ouverture de l'appli, par le rappel quotidien et
+  toutes les 30 minutes ; un appui ouvre les QCM. **Raccourcis** (appui long sur
+  l'icône) : Révision du jour, QCM, Hors ligne.
+- **Alerte serveur** (admins) : si le téléphone a du réseau mais que le wiki ne
+  répond pas au rappel quotidien, une notification « Le wiki ne répond pas »
+  prévient ; sur le PC, `scripts/surveiller-serveur.ps1` (Planificateur de tâches)
+  fait de même en local.
 - **Partager vers le wiki** : depuis un lecteur PDF, un mail, Drive…,
   « Partager » un PDF, un `.md` ou un `.tex` vers ProjetPluri l'importe dans le
   dossier « Importés » du wiki (admins) et lance la transformation du cours en
@@ -149,7 +157,12 @@ pas encore envoyées sont perdues.
 - `Rappel.java` : tâche WorkManager quotidienne (relancée après un redémarrage
   du téléphone) qui interroge `/api/rappel/` avec le jeton et affiche la
   notification ; réglée depuis `connexion.html` (`QcmNatif.rappel`,
-  `QcmNatif.reglerRappel`).
+  `QcmNatif.reglerRappel`). Sans réponse du serveur alors que le réseau est là,
+  les admins reçoivent une alerte.
+- `Widget.java` et `MajWidget.java` : widget d'écran d'accueil (RemoteViews,
+  `res/layout/widget.xml`) rafraîchi par un travail WorkManager ;
+  `res/xml/shortcuts.xml` : raccourcis d'application ouverts par `MainActivity`
+  (`EXTRA_CHEMIN`).
 - `Pont.envoyerFichiers` : fichiers reçus par « Partager » (intention `SEND`)
   envoyés en multipart à `/importer/` avec le jeton d'appareil (dossier
   « Importés », transformation par Claude demandée).

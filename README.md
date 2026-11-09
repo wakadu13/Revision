@@ -432,8 +432,10 @@ disponibles sans réseau. L'appli peut envoyer un **rappel quotidien**
 et la série de jours ; rien si tout est déjà fait) et recevoir un PDF ou une
 note depuis une autre application (« **Partager** » vers ProjetPluri : le fichier
 est importé dans le dossier Importés et, pour un cours, transformé en page par
-Claude ; admins). Marche aussi avec l'adresse du réseau local (HTTP, ou HTTPS
-avec Caddy). Détails : [`android/README.md`](android/README.md).
+Claude ; admins). **Widget** d'écran d'accueil (à réviser, série de jours) et
+**raccourcis** d'application (révision du jour, QCM, hors ligne). Marche aussi
+avec l'adresse du réseau local (HTTP, ou HTTPS avec Caddy). Détails :
+[`android/README.md`](android/README.md).
 
 ## Comptes et rôles
 
@@ -453,6 +455,20 @@ avec Caddy). Détails : [`android/README.md`](android/README.md).
   chiffres, ni proches du nom d'utilisateur. Stockés hachés (PBKDF2).
 - Sessions : 2 semaines avec « Rester connecté », sinon jusqu'à la fermeture du
   navigateur.
+
+## Surveillance du serveur
+
+- **Depuis l'extérieur** : un moniteur gratuit (UptimeRobot, Better Stack…) qui
+  appelle `https://wiki.airhiterofprovence.fr/api/status/` toutes les 5 minutes
+  prévient par mail ou notification quand le wiki ne répond plus, même si le PC
+  est éteint.
+- **Sur le PC** : `scripts/surveiller-serveur.ps1` vérifie `/api/status/` en
+  local, affiche une notification Windows et note l'incident dans
+  `scripts/surveillance.log` (option `-Relance` pour relancer le script du
+  serveur) ; à planifier toutes les 5 minutes dans le Planificateur de tâches
+  (commande `schtasks` en tête du script).
+- **Sur le téléphone** : l'application Android avertit les admins quand le
+  rappel quotidien ne joint pas le serveur alors que le réseau est là.
 
 ## Sécurité
 

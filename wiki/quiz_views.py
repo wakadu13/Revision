@@ -470,7 +470,7 @@ def rappel(request):
             langues_dues += resume_langue(player, nom, fichiers, now)["a_revoir"]
     activite = Activite.resume(player, timezone.localdate(now))
     return JsonResponse({"a_revoir": qcm + langues_dues, "qcm": qcm, "langues": langues_dues,
-                         "serie": activite["serie"], "aujourdhui": activite["aujourdhui"]})
+                         "serie": activite["serie"], "aujourdhui": activite["aujourdhui"], "admin": _can_edit(request)})
 
 
 def _ancre(set_id):

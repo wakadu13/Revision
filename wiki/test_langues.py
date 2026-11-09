@@ -461,7 +461,10 @@ class RappelTests(TestCase):
     def test_compte_les_elements_dus(self):
         r = self.client.get("/api/rappel/").json()
         # Une question jamais vue est à réviser ; un mot jamais vu n'est pas « dû ».
-        self.assertEqual(r, {"a_revoir": 1, "qcm": 1, "langues": 0, "serie": 0, "aujourdhui": 0})
+        self.assertEqual(r, {"a_revoir": 1, "qcm": 1, "langues": 0, "serie": 0, "aujourdhui": 0, "admin": False})
+        self.user.is_staff = True
+        self.user.save()
+        self.assertTrue(self.client.get("/api/rappel/").json()["admin"])
         now = timezone.now()
         QuizProgress.objects.create(player="alice", set_id="langues/t", question_id="v1#rec", stabilite=2.0, difficulte=5.0,
                                     echeance=now - timedelta(days=1), last_review=now - timedelta(days=3), decouverte=now - timedelta(days=3))

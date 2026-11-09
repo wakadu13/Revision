@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Raccourcis d'application (appui long sur l'icône) : ouverts par MainActivity (EXTRA_CHEMIN). -->
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="revision"
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:shortcutShortLabel="@string/raccourci_revision"
+        android:shortcutLongLabel="@string/raccourci_revision_long">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="fr.projetpluri.qcm"
+            android:targetClass="fr.projetpluri.qcm.MainActivity">
+            <extra android:name="fr.projetpluri.qcm.CHEMIN" android:value="/qcm/jouer/?revision=1" />
+        </intent>
+    </shortcut>
+    <shortcut
+        android:shortcutId="qcm"
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:shortcutShortLabel="@string/raccourci_qcm"
+        android:shortcutLongLabel="@string/raccourci_qcm_long">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="fr.projetpluri.qcm"
+            android:targetClass="fr.projetpluri.qcm.MainActivity">
+            <extra android:name="fr.projetpluri.qcm.CHEMIN" android:value="/qcm/" />
+        </intent>
+    </shortcut>
+    <shortcut
+        android:shortcutId="hors-ligne"
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:shortcutShortLabel="@string/raccourci_hors_ligne"
+        android:shortcutLongLabel="@string/raccourci_hors_ligne_long">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="fr.projetpluri.qcm"
+            android:targetClass="fr.projetpluri.qcm.MainActivity">
+            <extra android:name="fr.projetpluri.qcm.CHEMIN" android:value="hors-ligne" />
+        </intent>
+    </shortcut>
+</shortcuts>
