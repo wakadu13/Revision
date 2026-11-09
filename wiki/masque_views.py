@@ -13,8 +13,13 @@ from django.shortcuts import render
 from django.urls import reverse
 
 from . import masque, paquets, quiz
-from .quiz_views import (DOSSIER_QCM, MAX_FICHIERS_PERSO, MAX_OCTETS_PERSO, _can_edit, _ctx, _fichiers_perso,
-                         _taille_perso, bibliotheque, player_id)
+from .qcm_gestion_views import (
+    MAX_FICHIERS_PERSO,
+    MAX_OCTETS_PERSO,
+    _fichiers_perso,
+    _taille_perso,
+)
+from .quiz_views import DOSSIER_QCM, _can_edit, _ctx, bibliotheque, player_id
 from .vault import Attachment, clean_key, get_vault, invalider
 
 DOSSIER_DEFAUT = "Images masquées"

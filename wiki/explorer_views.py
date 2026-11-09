@@ -6,10 +6,10 @@ import json
 from django.http import JsonResponse
 from django.views.decorators.cache import never_cache
 
-from . import claude, demander as recherche_sources
+from . import claude, claude_demandes, demander as recherche_sources
 from .models import EchangeTuteur, UsageClaude
 from .vault import get_vault
-from .views import _render
+from .vues_communes import _render
 
 HISTORIQUE_AFFICHE = 10
 HISTORIQUE_REJOUE = 3
@@ -51,11 +51,11 @@ def demander(request):
     # Les questions précédentes aident à retrouver les pages d'une question de suite (« et pourquoi ? »).
     sources = recherche_sources.rassembler(vault, question, [e.question for e in precedents[-1:]])
     try:
-        texte, usage, modele_id = claude.demander_wiki(question, sources, [(e.question, e.reponse) for e in precedents])
+        texte, usage, modele_id = claude_demandes.demander_wiki(question, sources, [(e.question, e.reponse) for e in precedents])
     except claude.Echec as e:
         return JsonResponse({"error": str(e)}, status=502)
     echange = EchangeTuteur.objects.create(
-        player=player, page=EchangeTuteur.PAGE_WIKI, question=question[:claude.MAX_CHARS_QUESTION], reponse=texte,
+        player=player, page=EchangeTuteur.PAGE_WIKI, question=question[:claude_demandes.MAX_CHARS_QUESTION], reponse=texte,
         sources=[{k: s[k] for k in ("titre", "url", "type")} for s in sources],
         modele=modele_id, jetons_entree=usage[0], jetons_sortie=usage[1])
     claude.noter_usage(UsageClaude.WIKI, player, modele_id, usage)

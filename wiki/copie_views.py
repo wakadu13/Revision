@@ -12,11 +12,11 @@ from django.shortcuts import get_object_or_404
 from django.template.loader import render_to_string
 from django.views.decorators.http import require_POST
 
-from . import claude, quiz
+from . import claude, claude_demandes, quiz
 from .models import CorrectionCopie, UsageClaude
 from .quiz_views import _render_html, player_id
 from .vault import get_vault
-from .views import _render
+from .vues_communes import _render
 
 MAX_PHOTOS = 4
 TAILLE_MAX_PHOTO = 15 * 1024 * 1024
@@ -96,7 +96,7 @@ def copie(request):
         return JsonResponse({"error": f"Page inconnue : {cle}"}, status=400)
     cours = (vault.root / note.path).read_text(encoding="utf-8", errors="replace") if note else ""
     try:
-        texte, usage, modele_id = claude.corriger_copie(photos, enonce, cours, note.title if note else "")
+        texte, usage, modele_id = claude_demandes.corriger_copie(photos, enonce, cours, note.title if note else "")
     except claude.Echec as e:
         return JsonResponse({"error": str(e)}, status=502)
     c = CorrectionCopie.objects.create(player=player, enonce=enonce, page=note.key if note else "", photos=len(photos),

@@ -15,8 +15,11 @@ from django.core.management.base import CommandError
 from django.test import SimpleTestCase, TestCase, override_settings
 from django.utils import timezone
 
-from . import fsrs, langues, quiz, verifier
-from .models import QuizProgress
+from wiki import fsrs, langues, quiz, verifier
+from wiki.models import QuizProgress
+from wiki.vault import get_vault
+
+from .base import WikiTestCase
 
 SET_TEST = {
     "langue": "Anglais", "particules_optionnelles": ["to"],
@@ -419,7 +422,7 @@ class LangueHorsLigneTests(TestCase):
         self.assertEqual(list(s["progression"]), ["v1#rec"])
 
     def test_synchro_rejoue_les_notes_fsrs(self):
-        from .models import Activite
+        from wiki.models import Activite
         r = self._synchro(
             {"uid": "b", "set_id": "langues/t", "exo_id": "v1#rec", "note": 1, "date": "2026-10-02T08:00:00Z"},
             {"uid": "a", "set_id": "langues/t", "exo_id": "v1#rec", "note": 3, "date": "2026-10-01T08:00:00Z"},
@@ -479,3 +482,31 @@ class RappelTests(TestCase):
     def test_connexion_requise(self):
         self.client.logout()
         self.assertEqual(self.client.get("/api/rappel/").status_code, 302)
+
+
+class PrononciationTests(WikiTestCase):
+    """Langues : cartes de prononciation, vérifiées par la reconnaissance vocale de l'appareil."""
+
+    def setUp(self):
+        super().setUp()
+        paquet = {"langue": "Anglais", "titre": "Verbes", "exercices": ["decouverte", "prononciation"],
+                  "particules_optionnelles": ["to"],
+                  "vocabulaire": [{"id": "v1", "mot": "to achieve", "traductions": ["réussir"], "prononciation": "/əˈtʃiːv/",
+                                   "variantes": ["achieve"]}]}
+        self.write("QCM/Anglais/verbes.json", json.dumps(paquet))
+
+    def test_carte_de_prononciation(self):
+        from wiki import langues
+        s = quiz.get_library().langues["QCM/Anglais/verbes"]
+        oral = next(e for e in s.exercices if e.id == "v1#oral")
+        self.assertEqual((oral.forme, oral.prerequis, oral.audio["quand"]), (langues.CARTE, "v1#dec", langues.VERSO))
+        self.assertEqual(oral.donnees["oral"], {"reponses": ["to achieve", "achieve"]})
+        self.assertIn("Prononciation", langues.nom_type("prononciation", "Anglais"))
+        # Dans la session (après la découverte) et hors ligne : de quoi vérifier sur l'appareil.
+        from wiki.langues_views import payload_hors_ligne
+        p = payload_hors_ligne(get_vault(), s, oral)
+        self.assertEqual(p["oral"], {"reponses": ["to achieve", "achieve"], "particules": ["to"], "lang": "en-GB"})
+        self.assertIn("<strong>to achieve</strong>", p["recto"])
+        self.assertIn("/əˈtʃiːv/", p["verso"])
+        # Choix proposé à l'import de listes et à la génération par Claude.
+        self.assertContains(self.client.get("/qcm/mon-espace/"), 'value="prononciation"')
