@@ -24,10 +24,22 @@
 </article>
 {% endblock %}
 {% block aside %}
-  {% if fiche or can_edit and claude_dispo %}
+  {% if fiche or qcm_page or can_edit and claude_dispo %}
   <section class="panel">
     <h2>Réviser ce cours</h2>
     {% if fiche %}<p><a class="button small" href="{{ fiche.url }}">📄 Fiche de révision</a></p>{% endif %}
+    {% for entry in qcm_page %}
+    <div class="page-qcm">
+      <a href="{% url 'wiki:quiz_index' %}#{{ entry.ancre }}"><b>{{ entry.set.titre }}</b></a>
+      <span class="muted">· {{ entry.summary.total }} question{{ entry.summary.total|pluralize }} · maîtrise {{ entry.summary.pct_maitrise|floatformat:0 }} %</span>
+      <div class="mastery" title="Maîtrise {{ entry.summary.pct_maitrise|floatformat:0 }} %"><div class="mastery-fill" style="width: {{ entry.summary.pct_maitrise|floatformat:0 }}%"></div></div>
+      <span class="quiz-set-buttons">
+        {% if entry.summary.a_reviser %}<a class="button small primary" href="{% url 'wiki:quiz_play' %}?set={{ entry.set.id|urlencode }}&mode=review">Réviser ({{ entry.summary.a_reviser }})</a>{% else %}<span class="muted">à jour ✓</span>{% endif %}
+        <a class="button small" href="{% url 'wiki:quiz_play' %}?set={{ entry.set.id|urlencode }}&mode=all">Tout</a>
+        <a class="button small" href="{% url 'wiki:quiz_play' %}?set={{ entry.set.id|urlencode }}&mode=examen" title="Questions chronométrées, note sur 20">Examen</a>
+      </span>
+    </div>
+    {% endfor %}
     {% if can_edit and claude_dispo %}
     <div class="panel-actions">
       <form method="post" action="{% url 'wiki:quiz_generer' %}">

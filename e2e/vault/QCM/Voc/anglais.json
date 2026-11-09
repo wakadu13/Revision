@@ -1,0 +1,9 @@
+{
+  "langue": "Anglais", "titre": "Anglais de test", "description": "Paquet du scénario de bout en bout.",
+  "particules_optionnelles": ["to", "a"], "exercices": ["decouverte", "production"],
+  "vocabulaire": [
+    {"id": "v1", "mot": "to achieve", "traductions": ["réussir", "accomplir"], "exemple": "She [achieved] her goal."},
+    {"id": "v2", "mot": "a kitchen", "traductions": ["une cuisine"], "exemple": "The [kitchen] is clean."},
+    {"id": "v3", "mot": "a meeting", "traductions": ["une réunion"], "exemple": "The [meeting] starts at nine."}
+  ]
+}

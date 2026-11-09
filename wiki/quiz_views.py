@@ -15,16 +15,16 @@ from pathlib import Path, PurePosixPath
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
-from django.http import Http404, JsonResponse
+from django.http import Http404, HttpResponse, JsonResponse
 from django.db.models import F
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.text import slugify
 from django.views.decorators.http import require_POST
 
-from . import claude, planning, quiz
-from .models import _JAMAIS, Activite, QuizDeck, QuizProgress
+from . import anki, claude, paquets, planning, quiz
+from .models import _JAMAIS, Activite, QuizDeck, QuizProgress, Signalement
 from .render import Renderer
 from .vault import Note, clean_key, get_vault
 
@@ -225,6 +225,7 @@ def index(request):
     context = _ctx(
         request,
         serie=serie,
+        signalements_ouverts=Signalement.objects.filter(traite=False).count() if _can_edit(request) else 0,
         generation=generation,
         langues=langues,
         categories=categories,
@@ -638,3 +639,143 @@ def supprimer(request):
     _oublier([e.id for e in cibles])
     messages.success(request, f"{libelle} supprimé.")
     return redirect("wiki:quiz_index")
+
+
+# ---------------------------------------------------------------------------
+# Export Anki / texte tabulé
+# ---------------------------------------------------------------------------
+@login_required
+def exporter(request):
+    """Un set de QCM ou un paquet de langue en .apkg (Anki) ou en .tsv (Quizlet, tableur)."""
+    library = quiz.get_library()
+    set_id = request.GET.get("set", "")
+    element = library.get(set_id) or library.langues.get(set_id)
+    if element is None:
+        raise Http404
+    donnees = None
+    if not isinstance(element, quiz.QuestionSet):
+        racine = get_vault().root
+        _, donnees = quiz.lire_json(racine / element.path, racine)
+    titre, notes = anki.exporter(element, donnees)
+    nom = slugify(titre) or "export"
+    if request.GET.get("format") == "tsv":
+        return HttpResponse(anki.tsv(notes), content_type="text/tab-separated-values; charset=utf-8",
+                            headers={"Content-Disposition": f'attachment; filename="{nom}.tsv"'})
+    contenu = anki.apkg(set_id, titre, element.description, notes)
+    return HttpResponse(contenu, content_type="application/apkg",
+                        headers={"Content-Disposition": f'attachment; filename="{nom}.apkg"'})
+
+
+# ---------------------------------------------------------------------------
+# Questions signalées
+# ---------------------------------------------------------------------------
+@login_required
+@require_POST
+def signaler(request):
+    """Un joueur signale une question (erreur, ambiguïté) ; un signalement ouvert par
+    joueur et par question, le commentaire remplace le précédent."""
+    try:
+        data = json.loads(request.body)
+        set_id, question_id = str(data["set_id"]), str(data["question_id"])
+        commentaire = str(data.get("commentaire") or "").strip()[:2000]
+    except (KeyError, ValueError, TypeError):
+        return JsonResponse({"error": "requête invalide"}, status=400)
+    qset = quiz.get_library().get(set_id)
+    if qset is None or not any(q.id == question_id for q in qset.questions):
+        return JsonResponse({"error": "question inconnue"}, status=404)
+    s, cree = Signalement.objects.get_or_create(
+        set_id=set_id, question_id=question_id, player=player_id(request), traite=False,
+        defaults={"commentaire": commentaire})
+    if not cree and commentaire:
+        s.commentaire = commentaire
+        s.save(update_fields=["commentaire"])
+    return JsonResponse({"ok": True, "nouveau": cree})
+
+
+def _ligne_signalement(vault, library, s):
+    qset = library.get(s.set_id)
+    question = next((q for q in qset.questions if q.id == s.question_id), None) if qset else None
+    ligne = {"s": s, "set": qset, "question": question, "html": None, "proposition": None}
+    if question is not None:
+        ligne["html"] = _question_payload(vault, qset, question, {})
+    if s.proposition:
+        p = s.proposition
+        ligne["proposition"] = {
+            "type": p.get("type", ""),
+            "enonce": _render_html(vault, p.get("question", "")),
+            "consigne": p.get("consigne", ""),
+            "choix": [(_render_html(vault, c, block=False), i in p.get("reponses", [])) for i, c in enumerate(p.get("choix", []))],
+            "reponses_texte": p.get("reponses_texte", []),
+            "verso": _render_html(vault, p.get("verso", "")),
+            "explication": _render_html(vault, p.get("explication", "")),
+        }
+    return ligne
+
+
+def _remplacer_question(qset, question_id, nouvelle):
+    """Remplace une question dans le fichier JSON du set (``nouvelle`` : champs JSON), ou
+    la retire si ``nouvelle`` est None. Les identifiants implicites (q1, q2…) des
+    questions suivantes sont figés pour que leur progression reste rattachée."""
+    racine = get_vault().root
+    rel, data = quiz.lire_json(racine / qset.path, racine)
+    questions = data["questions"]
+    for i, q in enumerate(questions, start=1):
+        if str(q.get("id", f"q{i}")) == question_id:
+            if nouvelle is None:
+                for j in range(i, len(questions)):
+                    questions[j].setdefault("id", f"q{j + 1}")
+                del questions[i - 1]
+            else:
+                garde = {k: v for k, v in q.items() if k not in claude.CHAMPS_QUESTION}
+                questions[i - 1] = {**garde, **nouvelle}
+            break
+    else:
+        raise Http404
+    if not questions:
+        raise ValueError("C'était la dernière question du set : supprimez plutôt le set.")
+    quiz.set_depuis_json(data, rel)  # validation avant d'écrire
+    paquets.enregistrer_json(rel, data)
+
+
+@login_required
+def signalements(request):
+    """Questions signalées (admins) : corriger avec Claude, appliquer, retirer la question, clore."""
+    if not _can_edit(request):
+        raise PermissionDenied
+    library = quiz.get_library()
+    if request.method == "POST":
+        s = get_object_or_404(Signalement, pk=request.POST.get("pk"))
+        action = request.POST.get("action", "")
+        qset = library.get(s.set_id)
+        question = next((q for q in qset.questions if q.id == s.question_id), None) if qset else None
+        try:
+            if action == "proposer" and question is not None:
+                if not claude.disponible():
+                    raise claude.Echec("Pas de clé d'API Claude sur le serveur.")
+                commentaires = list(Signalement.objects.filter(set_id=s.set_id, question_id=s.question_id, traite=False)
+                                    .exclude(commentaire="").values_list("commentaire", flat=True))
+                nouvelle, note, _, _ = claude.corriger_question(qset, question, commentaires)
+                s.proposition, s.proposition_note = nouvelle, note
+                s.save(update_fields=["proposition", "proposition_note"])
+                messages.success(request, "Claude propose une correction : relisez-la, puis appliquez-la ou non.")
+            elif action in ("appliquer", "retirer") and question is not None:
+                if action == "appliquer" and not s.proposition:
+                    raise ValueError("Aucune correction à appliquer.")
+                _remplacer_question(qset, s.question_id, s.proposition if action == "appliquer" else None)
+                Signalement.objects.filter(set_id=s.set_id, question_id=s.question_id, traite=False).update(
+                    traite=True, traite_le=timezone.now())
+                messages.success(request, "Question corrigée dans le set." if action == "appliquer" else "Question retirée du set.")
+            elif action == "clore":
+                Signalement.objects.filter(set_id=s.set_id, question_id=s.question_id, traite=False).update(
+                    traite=True, traite_le=timezone.now())
+                messages.success(request, "Signalement clos.")
+            else:
+                messages.error(request, "Question introuvable : le set a changé.")
+        except (claude.Echec, ValueError) as e:
+            messages.error(request, str(e))
+        return redirect("wiki:quiz_signalements")
+    vault = get_vault()
+    ouverts = [_ligne_signalement(vault, library, s) for s in Signalement.objects.filter(traite=False)]
+    traites = Signalement.objects.filter(traite=True).order_by("-traite_le")[:20]
+    return render(request, "wiki/quiz_signalements.html", _ctx(
+        request, ouverts=ouverts, traites=traites, claude_dispo=claude.disponible()))

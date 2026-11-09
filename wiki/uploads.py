@@ -8,8 +8,9 @@ Tout le reste est refusé (HTML, scripts, JSON de QCM...). On n'écrit jamais
 hors du coffre, ni dans ses dossiers cachés (``.obsidian``, ``.trash``).
 """
 
+import io
 from dataclasses import asdict, dataclass, field
-from pathlib import PurePosixPath
+from pathlib import Path, PurePosixPath
 
 from django.urls import reverse
 
@@ -22,6 +23,11 @@ LATEX_EXTS = {".tex", ".latex"}
 ATTACHMENT_EXTS = IMAGE_EXTS | AUDIO_EXTS | VIDEO_EXTS | {".pdf"}
 MAX_NOTE_SIZE = 5 * 1024 * 1024
 MAX_ATTACHMENT_SIZE = 100 * 1024 * 1024  # PDF scannés compris
+# Images allégées à l'import : réduites à IMAGE_COTE_MAX pixels de côté au plus et
+# recompressées dans leur format (une photo de téléphone de 4 Mo tient en 400 Ko).
+IMAGE_COTE_MAX = 2000
+IMAGE_QUALITE = 85
+IMAGES_ALLEGEES = {".png", ".jpg", ".jpeg", ".webp"}
 FORBIDDEN_CHARS = '/ \\ : * ? " < > | # ^ [ ]'
 
 
@@ -144,8 +150,55 @@ def import_file(vault, upload, relative, folder="", replace=False, rename=False)
     except OSError:
         # Ex. : un fichier porte le nom d'un des dossiers du chemin.
         return Result(shown, False, "écriture impossible à cet emplacement")
+    if not is_note:
+        gain = alleger_image(target)
+        if gain:
+            message += f" (image allégée : {taille_lisible(gain[0])} → {taille_lisible(gain[1])})"
     return Result(shown, True, message, path=path.as_posix(), is_note=is_note,
                   source_latex=source_latex if is_note else "")
+
+
+def taille_lisible(octets):
+    if octets >= 1024 * 1024:
+        return f"{octets / 1024 / 1024:.1f} Mo".replace(".", ",")
+    return f"{max(1, round(octets / 1024))} Ko"
+
+
+def alleger_image(chemin):
+    """Réduit une image trop grande (côté > IMAGE_COTE_MAX) et la recompresse dans son
+    format, en gardant le nom du fichier (les liens des notes restent valables).
+    Renvoie (taille avant, taille après), ou None si l'image est gardée telle quelle
+    (petite et déjà bien compressée, animation, GIF ou SVG, fichier illisible...)."""
+    chemin = Path(chemin)
+    if chemin.suffix.lower() not in IMAGES_ALLEGEES:
+        return None
+    try:
+        from PIL import Image, ImageOps
+
+        avant = chemin.stat().st_size
+        with Image.open(chemin) as image:
+            if getattr(image, "n_frames", 1) > 1:
+                return None  # animation : gardée intacte
+            image = ImageOps.exif_transpose(image)  # orientation des photos
+            reduite = max(image.size) > IMAGE_COTE_MAX
+            if reduite:
+                image.thumbnail((IMAGE_COTE_MAX, IMAGE_COTE_MAX), Image.Resampling.LANCZOS)
+            tampon = io.BytesIO()
+            if chemin.suffix.lower() in (".jpg", ".jpeg"):
+                if image.mode not in ("RGB", "L"):
+                    image = image.convert("RGB")
+                image.save(tampon, "JPEG", quality=IMAGE_QUALITE, optimize=True, progressive=True)
+            elif chemin.suffix.lower() == ".png":
+                image.save(tampon, "PNG", optimize=True)
+            else:
+                image.save(tampon, "WEBP", quality=IMAGE_QUALITE, method=4)
+    except Exception:  # noqa: BLE001 — image illisible ou démesurée : gardée telle quelle
+        return None
+    apres = tampon.getbuffer().nbytes
+    if apres >= avant or (not reduite and apres > avant * 0.9):
+        return None  # gain négligeable
+    chemin.write_bytes(tampon.getvalue())
+    return avant, apres
 
 
 def finish(vault, results):

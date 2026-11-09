@@ -23,6 +23,7 @@
         <a class="button small primary" href="{% url 'wiki:langue_play' cat.langue %}?mode=quotidien&amp;fichier={{ entry.set.id|urlencode }}">Réviser ce paquet</a>
         <a class="button small" href="{% url 'wiki:langue_play' cat.langue %}?mode=intensif&amp;fichier={{ entry.set.id|urlencode }}" title="Tous les exercices ; ceux ratés reviennent jusqu'à être sus">Intensif</a>
         <a class="button small" href="{% url 'wiki:langue_menu' cat.langue %}?fichier={{ entry.set.id|urlencode }}">Modes et statistiques</a>
+        <a class="button small quiz-export" href="{% url 'wiki:quiz_export' %}?set={{ entry.set.id|urlencode }}" title="Exporter pour Anki (.apkg) ; ajoutez &amp;format=tsv pour Quizlet ou un tableur">⬇ Anki</a>
       </span>
       {% if can_edit %}{% include "wiki/_quiz_gerer.html" with set=entry.set %}{% endif %}
     </li>

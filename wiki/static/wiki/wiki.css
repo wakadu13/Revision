@@ -781,3 +781,16 @@ body.plein-ecran.editing.pe-haut .toolbar {
 .quiz-expliquer { margin-top: .6rem; }
 .quiz-explication-claude { margin-top: .6rem; padding: .6rem .8rem; border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; background: var(--accent-soft); }
 .quiz-explication-source { font-size: .78rem; margin: 0 0 .3rem; }
+
+/* Signalement d'une question, export Anki, QCM d'une page */
+.quiz-signaler { margin-top: .6rem; margin-left: .4rem; opacity: .75; }
+.quiz-signaler:hover { opacity: 1; }
+.page-qcm { margin: .6rem 0; display: flex; flex-direction: column; gap: .35rem; }
+.page-qcm .mastery { margin: 0; }
+.signalement { border: 1px solid var(--border, #ddd); border-radius: 8px; padding: .8rem 1rem; margin: .8rem 0; }
+.signalement-question { margin: .4rem 0; }
+.signalement-question ul { margin: .3rem 0 .3rem 1.2rem; }
+.signalement-question .bonne { font-weight: 600; }
+.signalement-proposition { border-left: 3px solid currentColor; padding-left: .8rem; margin: .6rem 0; }
+.signalement-actions { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; }
+.signalement-actions form { display: inline; }

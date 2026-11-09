@@ -1,4 +1,5 @@
-# Tests du wiki (Django) et vérification de la syntaxe des scripts, à chaque
+# Tests du wiki (Django), vérification de la syntaxe des scripts et scénario de
+# bout en bout dans un vrai navigateur (Playwright, e2e/scenario.js), à chaque
 # push et sur chaque pull request. L'APK a son propre workflow (apk.yml).
 name: Tests
 
@@ -28,3 +29,56 @@ jobs:
           for f in wiki/static/wiki/*.js android/app/src/main/assets/*.js; do
             node --check "$f"
           done
+
+  navigateur:
+    name: Navigateur (Playwright)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Dépendances
+        run: |
+          uv sync --frozen
+          npm install --no-save --no-audit --no-fund playwright@1.63.0
+          npx playwright install --with-deps chromium
+
+      # Le wiki tourne sur un coffre de test (e2e/vault) copié hors du dépôt, avec sa
+      # propre base de données et un compte admin « testeur ».
+      - name: Serveur du wiki
+        run: |
+          cp -r e2e/vault "$RUNNER_TEMP/vault"
+          mkdir -p "$RUNNER_TEMP/data"
+          export E2E_VAULT="$RUNNER_TEMP/vault" DJANGO_DATA_DIR="$RUNNER_TEMP/data"
+          export DJANGO_SETTINGS_MODULE=settings_e2e PYTHONPATH="$PWD/e2e"
+          # Python de l'environnement directement : un « uv run » qui resterait en
+          # arrière-plan garderait le verrou du cache d'uv (nettoyage de fin de job).
+          .venv/bin/python manage.py migrate --noinput -v 0
+          .venv/bin/python manage.py shell -c "from django.contrib.auth import get_user_model; get_user_model().objects.create_user('testeur', password='Test-pass-1234!', is_staff=True)"
+          nohup .venv/bin/python manage.py runserver 127.0.0.1:8765 --noreload > "$RUNNER_TEMP/serveur.log" 2>&1 &
+          for i in $(seq 1 40); do curl -sf -o /dev/null http://127.0.0.1:8765/connexion/ && break; sleep 1; done
+
+      - name: Scénario
+        run: node e2e/scenario.js "$RUNNER_TEMP"
+
+      - name: Arrêt du serveur
+        if: always()
+        run: pkill -f "manage.py runserver" || true
+
+      - name: Journal du serveur
+        if: failure()
+        run: cat "$RUNNER_TEMP/serveur.log"
+
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: captures-e2e
+          path: ${{ runner.temp }}/*.png
+          if-no-files-found: ignore

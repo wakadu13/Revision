@@ -7,6 +7,7 @@
          data-back-url="{{ back_url }}"
          data-mode="{% if examen %}examen{% elif intensif %}intensif{% else %}normal{% endif %}"{% if examen %} data-duree="{{ duree_s }}"{% endif %}
          data-csrf="{{ csrf_token }}"{% if expliquer_url %} data-expliquer-url="{{ expliquer_url }}"{% endif %}
+         data-signaler-url="{% url 'wiki:quiz_signaler' %}"
          data-joueur="{{ user.get_username }}">
   <div class="quiz-topbar">
     <a class="button small" href="{{ back_url }}">← Sets</a>
