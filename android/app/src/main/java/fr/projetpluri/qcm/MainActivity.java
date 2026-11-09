@@ -164,12 +164,24 @@ public class MainActivity extends Activity {
             return true;
         }
         String chemin = intention.getStringExtra(EXTRA_CHEMIN);
+        if ("hors-ligne".equals(chemin)) {
+            // Raccourci « Hors ligne » : la page locale des QCM et langues hors ligne.
+            intention.removeExtra(EXTRA_CHEMIN);
+            vue.loadUrl(LOCAL + "index.html");
+            return true;
+        }
         if (chemin != null && chemin.startsWith("/")) {
             intention.removeExtra(EXTRA_CHEMIN);
             ouvrirWiki(chemin);
             return true;
         }
         return false;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Widget.planifier(this); // le widget d'écran d'accueil se remet à jour à chaque ouverture
     }
 
     /** Envoie au wiki des fichiers reçus par « Partager » (PDF, .md, .tex). */

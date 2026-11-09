@@ -8,6 +8,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkCapabilities;
 import android.os.Build;
 
 import androidx.annotation.NonNull;
@@ -39,8 +41,10 @@ import java.util.concurrent.TimeUnit;
 public class Rappel extends Worker {
     static final String TRAVAIL = "rappel-quotidien";
     static final String CANAL = "rappels";
+    static final String CANAL_ALERTES = "alertes";
     static final String PREFS = "rappel";
     private static final int NOTIFICATION = 1;
+    private static final int NOTIFICATION_ALERTE = 2;
 
     public Rappel(@NonNull Context contexte, @NonNull WorkerParameters params) {
         super(contexte, params);
@@ -99,6 +103,13 @@ public class Rappel extends Worker {
         String texte = "C'est l'heure de réviser un peu.";
         JSONObject etat = demander(serveur + "/api/rappel/", jeton);
         if (etat != null) {
+            compte.edit().putBoolean("admin", etat.optBoolean("admin", false)).apply();
+            Widget.rafraichir(contexte, etat);
+        } else if (enLigne(contexte) && compte.getBoolean("admin", false)) {
+            // Le téléphone a du réseau mais le wiki ne répond pas : les admins sont prévenus.
+            alerter(contexte, serveur);
+        }
+        if (etat != null) {
             int aRevoir = etat.optInt("a_revoir", 0);
             int serie = etat.optInt("serie", 0);
             int aujourdhui = etat.optInt("aujourdhui", 0);
@@ -111,7 +122,39 @@ public class Rappel extends Worker {
         return Result.success();
     }
 
-    private static JSONObject demander(String adresse, String jeton) {
+    static boolean enLigne(Context contexte) {
+        ConnectivityManager cm = (ConnectivityManager) contexte.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (cm == null || cm.getActiveNetwork() == null) return false;
+        NetworkCapabilities caps = cm.getNetworkCapabilities(cm.getActiveNetwork());
+        return caps != null && caps.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET);
+    }
+
+    /** Notification d'alerte (admins) : le serveur du wiki n'a pas répondu au rappel. */
+    private static void alerter(Context contexte, String serveur) {
+        NotificationManager gestion = (NotificationManager) contexte.getSystemService(Context.NOTIFICATION_SERVICE);
+        if (gestion == null) return;
+        gestion.createNotificationChannel(new NotificationChannel(CANAL_ALERTES, "Alertes serveur", NotificationManager.IMPORTANCE_HIGH));
+        Intent ouvrir = new Intent(contexte, MainActivity.class)
+                .putExtra(MainActivity.EXTRA_CHEMIN, "/")
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        PendingIntent clic = PendingIntent.getActivity(contexte, 2, ouvrir, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+        String texte = serveur.replaceFirst("^https?://", "") + " n'a pas répondu au rappel. Vérifiez le serveur (scripts/surveiller-serveur.ps1).";
+        Notification n = new NotificationCompat.Builder(contexte, CANAL_ALERTES)
+                .setSmallIcon(android.R.drawable.stat_notify_error)
+                .setContentTitle("Le wiki ne répond pas")
+                .setContentText(texte)
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(texte))
+                .setContentIntent(clic)
+                .setAutoCancel(true)
+                .build();
+        try {
+            gestion.notify(NOTIFICATION_ALERTE, n);
+        } catch (SecurityException ignore) {
+            // Permission retirée entre-temps.
+        }
+    }
+
+    static JSONObject demander(String adresse, String jeton) {
         HttpURLConnection cnx = null;
         try {
             cnx = (HttpURLConnection) new URL(adresse).openConnection();

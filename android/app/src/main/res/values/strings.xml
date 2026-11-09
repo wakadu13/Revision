@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">ProjetPluri</string>
+    <string name="widget_description">Ce qu\'il reste à réviser et la série de jours</string>
+    <string name="widget_attente">…</string>
+    <string name="widget_ouvrir">Ouvrir les QCM</string>
+    <string name="widget_a_jour">Tout est à jour ✓</string>
+    <string name="widget_serie_vide">Commencer une série aujourd\'hui</string>
+    <string name="raccourci_revision">Révision du jour</string>
+    <string name="raccourci_revision_long">Révision intelligente : ce qui est dû aujourd\'hui</string>
+    <string name="raccourci_qcm">QCM</string>
+    <string name="raccourci_qcm_long">Page des QCM</string>
+    <string name="raccourci_hors_ligne">Hors ligne</string>
+    <string name="raccourci_hors_ligne_long">QCM et langues hors ligne</string>
 </resources>
