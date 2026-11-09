@@ -94,6 +94,8 @@ def _payload(vault, item, st, now):
         "nouveau": item.nouveau,
         "details": [html(t) for t in exo.details],
     }
+    if exo.audio:
+        p["audio"] = {**exo.audio, "lang": item.set.code_langue}
     if exo.forme == langues.CARTE:
         p.update(recto=html(d["recto"]), verso=html(d["verso"]),
                  previsions={str(n): t for n, t in langues.previsions(st, now).items()})
@@ -101,6 +103,8 @@ def _payload(vault, item, st, now):
         p.update(consigne=html(d["consigne"]), invite=d["invite"],
                  prerempli=d["prerempli"], tableau=d["tableau"],
                  caracteres=item.set.caracteres_speciaux)
+        if d.get("indice"):
+            p["indice"] = d["indice"]
     elif exo.forme == langues.CHOIX:
         p.update(enonce=html(d["enonce"]), choix=[html(c) for c in d["choix"]], multiple=d["multiple"])
     elif exo.forme == langues.ORDRE:

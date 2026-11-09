@@ -212,6 +212,83 @@ class InterfaceTests(WikiTestCase):
         self.assertEqual(self.client.get("/palette.json").status_code, 302)
 
 
+class ImportVocabulaireTests(WikiTestCase):
+    """Paquets de vocabulaire d'après une liste collée ou un export (Quizlet, Anki, tableur)."""
+
+    def setUp(self):
+        super().setUp()
+        self.admin = get_user_model().objects.create_user("admin", password="x", is_staff=True)
+        self.client.force_login(self.admin)
+
+    def test_parser(self):
+        from . import paquets
+
+        quizlet = "a job\tun emploi, un travail\nto achieve\tréussir; atteindre\n\ncolour / color\tcouleur\n"
+        fiches, ignorees = paquets.analyser_liste(quizlet)
+        self.assertEqual(fiches, [
+            {"mot": "a job", "traductions": ["un emploi", "un travail"]},
+            {"mot": "to achieve", "traductions": ["réussir", "atteindre"]},
+            {"mot": "colour", "traductions": ["couleur"], "variantes": ["color"]},
+        ])
+        self.assertEqual(ignorees, 0)
+        anki = "#separator:tab\n#html:true\n<b>a kitchen</b>&nbsp;\tune cuisine\tThe <i>kitchen</i> is clean.\tPièce\nseul\n"
+        fiches, ignorees = paquets.analyser_liste(anki)
+        self.assertEqual(fiches, [{"mot": "a kitchen", "traductions": ["une cuisine"], "exemple": "The kitchen is clean.", "note": "Pièce"}])
+        self.assertEqual(ignorees, 1)
+        tableur = '"un emploi","a job"\n"cuisiner, faire la cuisine","to cook"\n'
+        fiches, _ = paquets.analyser_liste(tableur, paquets.FR_PUIS_LANGUE)
+        self.assertEqual(fiches, [{"mot": "a job", "traductions": ["un emploi"]},
+                                  {"mot": "to cook", "traductions": ["cuisiner", "faire la cuisine"]}])
+        fiches, _ = paquets.analyser_liste("to run = courir\nto eat = manger")
+        self.assertEqual([f["mot"] for f in fiches], ["to run", "to eat"])
+        fiches, _ = paquets.analyser_liste("mot;traduction\n")
+        self.assertEqual(fiches, [{"mot": "mot", "traductions": ["traduction"]}])
+        with self.assertRaisesMessage(paquets.PaquetInvalide, "Trop de lignes"):
+            paquets.analyser_liste("\n".join(f"m{i}\tt{i}" for i in range(501)))
+
+    def test_import_creates_a_separate_pack(self):
+        index = self.client.get("/qcm/").content.decode()
+        self.assertIn('id="importer-vocabulaire"', index)
+        reponse = self.client.post("/qcm/importer-vocabulaire/", {
+            "liste": "a job\tun emploi\nto achieve\tréussir, atteindre\n", "ordre": "langue_fr", "langue": "anglais",
+            "cartes": ["decouverte", "dictee"], "titre": "Métiers", "dossier": "Quizlet",
+        })
+        self.assertRedirects(reponse, "/qcm/langues/Anglais/?fichier=QCM%2FQuizlet%2Fmetiers", fetch_redirect_response=False)
+        paquet = json.loads((self.root / "QCM/Quizlet/metiers.json").read_text(encoding="utf-8"))
+        self.assertEqual(paquet["langue"], "Anglais")
+        self.assertEqual(paquet["exercices"], ["decouverte", "dictee"])
+        self.assertEqual(paquet["origine"], "Import de liste")
+        self.assertEqual(paquet["particules_optionnelles"], ["to", "a", "an", "the"])
+        self.assertEqual([(f["id"], f["mot"]) for f in paquet["vocabulaire"]], [("metiers-001", "a job"), ("metiers-002", "to achieve")])
+        s = quiz.get_library().langues["QCM/Quizlet/metiers"]
+        self.assertEqual([e.id for e in s.exercices], ["metiers-001#dec", "metiers-001#dict", "metiers-002#dec", "metiers-002#dict"])
+        self.assertContains(self.client.get("/qcm/langues/Anglais/", {"fichier": "QCM/Quizlet/metiers"}), "Métiers")
+        # Fichier envoyé, ordre inverse, titre par défaut.
+        fichier = SimpleUploadedFile("export.csv", "un emploi,a job\r\ncuisiner,to cook\r\n".encode("utf-8-sig"))
+        reponse = self.client.post("/qcm/importer-vocabulaire/", {"fichier": fichier, "ordre": "fr_langue", "cartes": ["production"]},
+                                   follow=True)
+        self.assertContains(reponse, "2 mots")
+        fichiers = sorted(p.name for p in (self.root / "QCM/Vocabulaire").glob("*.json"))
+        self.assertEqual(len(fichiers), 1)
+        paquet = json.loads((self.root / "QCM/Vocabulaire" / fichiers[0]).read_text(encoding="utf-8"))
+        self.assertEqual([f["mot"] for f in paquet["vocabulaire"]], ["a job", "to cook"])
+        self.assertTrue(paquet["titre"].startswith("Vocabulaire anglais du "))
+
+    def test_import_errors_and_permissions(self):
+        for donnees, message in [
+            ({"liste": "", "cartes": ["production"]}, "Aucune ligne"),
+            ({"liste": "a job\tun emploi", "cartes": []}, "Cochez au moins un type de carte"),
+            ({"liste": "a job\tun emploi", "cartes": ["production"], "langue": "x/y"}, "Langue invalide"),
+            ({"liste": "a job\tun emploi", "cartes": ["production"], "dossier": "a/b"}, "Dossier invalide"),
+        ]:
+            with self.subTest(message=message):
+                self.assertContains(self.client.post("/qcm/importer-vocabulaire/", donnees, follow=True), message)
+        self.assertFalse((self.root / "QCM").exists())
+        self.client.force_login(self.reader)
+        self.assertEqual(self.client.post("/qcm/importer-vocabulaire/", {"liste": "a\tb", "cartes": ["production"]}).status_code, 403)
+        self.assertNotIn("importer-vocabulaire", self.client.get("/qcm/").content.decode())
+
+
 class EditorTests(WikiTestCase):
     def setUp(self):
         super().setUp()

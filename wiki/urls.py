@@ -21,6 +21,7 @@ urlpatterns = [
     path("latex/", views.latex, name="latex"),
     path("transformations/", views.transformations, name="transformations"),
     path("qcm/generer/", views.generer, name="quiz_generer"),
+    path("qcm/importer-vocabulaire/", views.importer_vocabulaire, name="quiz_importer_vocabulaire"),
     path("claude/reglages/", views.reglages_claude, name="claude_reglages"),
     path("modifier/<path:path>", views.edit, name="edit"),
     path("apercu/<path:path>", views.preview, name="preview"),

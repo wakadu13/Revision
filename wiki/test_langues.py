@@ -105,6 +105,28 @@ class FacettesCorrectionTests(SimpleTestCase):
         # Sans clé « exercices » : comme avant.
         self.assertEqual(set_test().types_vocabulaire, ["reconnaissance", "production", "contexte"])
 
+    def test_dictee_et_son(self):
+        mots = [{"id": "v1", "mot": "to achieve", "traductions": ["réussir"], "exemple": "She [achieved] it."}]
+        s = langues.set_depuis_json({"langue": "Anglais", "exercices": ["dictee", "production", "contexte"], "vocabulaire": mots},
+                                    PurePosixPath("t.json"))
+        self.assertEqual(s.code_langue, "en-GB")
+        dictee = s.exercice("v1#dict")
+        self.assertEqual(dictee.forme, langues.SAISIE)
+        self.assertEqual(dictee.audio, {"texte": "to achieve", "quand": "debut"})
+        self.assertEqual(dictee.donnees["reponses"], ["to achieve"])
+        self.assertEqual(dictee.donnees["indice"], "réussir")
+        self.assertEqual(dictee.details[0], "Sens : « réussir »")
+        # La dictée ne fait jamais découvrir un mot quand une autre carte existe.
+        self.assertEqual(dictee.prerequis, "v1#prod")
+        self.assertEqual(s.exercice("v1#prod").audio, {"texte": "to achieve", "quand": "fin"})
+        self.assertEqual(s.exercice("v1#ctx").audio, {"texte": "She achieved it.", "quand": "fin"})
+        self.assertEqual(set_test().exercice("v1#rec").audio, {"texte": "to achieve", "quand": "debut"})
+        self.assertIsNone(set_test().exercice("c1#I").audio)
+        es = langues.set_depuis_json({"langue": "Espagnol", "code_langue": "es-MX", "vocabulaire": mots}, PurePosixPath("t.json"))
+        self.assertEqual(es.code_langue, "es-MX")
+        self.assertEqual(langues.code_langue("Roumain"), "ro-RO")
+        self.assertEqual(langues.code_langue("Klingon"), "kl")
+
     def test_erreurs_de_format(self):
         rel = PurePosixPath("t.json")
         with self.assertRaisesMessage(ValueError, "'traductions' manquante"):
@@ -281,6 +303,12 @@ class LangueViewTests(TestCase):
         paquet = self.client.get("/qcm/langues/Anglais/jouer/?mode=intensif&fichier=langues/t")
         self.assertEqual(len(paquet.context["exercices"]), 9)
         self.assertContains(self.client.get("/qcm/langues/Anglais/jouer/?mode=quotidien"), 'data-mode="normal"')
+
+    def test_son_dans_la_session(self):
+        exos = self.client.get("/qcm/langues/Anglais/jouer/?mode=intensif").context["exercices"]
+        carte = next(e for e in exos if e["exo_id"] == "v1#rec")
+        self.assertEqual(carte["audio"], {"texte": "to achieve", "quand": "debut", "lang": "en-GB"})
+        self.assertNotIn("audio", next(e for e in exos if e["exo_id"] == "g1"))
 
     def test_corriger_et_enregistrer(self):
         r = self.post("/qcm/langue/corriger/", {"set_id": "langues/t", "exo_id": "c1#I", "reponse": "is"}).json()
