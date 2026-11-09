@@ -4,7 +4,7 @@
 {% block content %}
 <article class="note">
   <h1 class="note-title">QCM de révision</h1>
-  <p class="muted">{{ total_sets }} set{{ total_sets|pluralize }} · {{ total_due }} question{{ total_due|pluralize }} à réviser</p>
+  <p class="muted">{{ total_sets }} set{{ total_sets|pluralize }} · {{ total_due }} question{{ total_due|pluralize }} à réviser{% if serie %} · <span class="quiz-serie" title="Jours consécutifs avec au moins une réponse (QCM ou langues)">🔥 {{ serie }} jour{{ serie|pluralize }} d'affilée</span>{% endif %}</p>
 
   <div class="quiz-actions">
     <a class="button primary" href="{% url 'wiki:quiz_play' %}?revision=1">Révision intelligente</a>

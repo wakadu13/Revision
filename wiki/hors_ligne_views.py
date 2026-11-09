@@ -26,7 +26,7 @@ from django.views.decorators.csp import csp_override
 from django.views.decorators.http import require_POST
 
 from . import quiz
-from .models import QuizDeck, QuizProgress
+from .models import Activite, QuizDeck, QuizProgress
 from .quiz_views import _question_payload, chronometrer, player_id
 from .vault import get_vault
 
@@ -137,6 +137,7 @@ def synchro(request):
             continue
         obj.record(reponse, quand)
         obj.save()
+        Activite.noter(player, obj.last_correct, nouveau=obj.seen == 1, quand=quand)
         chronometrer(player, set_id, duree)
         enregistrees += 1
     return JsonResponse({"traitees": traitees, "enregistrees": enregistrees})

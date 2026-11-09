@@ -4,6 +4,8 @@
 // progression (Leitner) via une requête POST après chaque réponse.
 // Mode « intensif » : les questions ratées reviennent plus loin dans la session
 // jusqu'à être réussies 2 fois de suite ; seule la 1re réponse est enregistrée.
+// Mode « examen » : chronomètre, aucune correction avant la fin, puis note sur
+// 20 et correction détaillée ; les réponses sont enregistrées normalement.
 // Le moteur sert aussi au mode hors ligne (QuizMoteur.demarrer), qui fournit
 // ses questions et sa façon d'enregistrer les réponses.
 (function () {
@@ -54,6 +56,9 @@
     sessionPrecedente = session;
     const { stage, questions, backUrl } = options;
     const intensif = !!options.intensif;
+    const examen = options.examen || null; // { duree: secondes }
+    let finExamen = null;
+    let chrono = null;
     const progressText = document.getElementById("quiz-progress");
     const barFill = document.getElementById("quiz-bar-fill");
 
@@ -76,6 +81,28 @@
     let score = 0;
     let mastered = 0;
     const state = { selection: [], answered: false, known: null, shownAt: 0 };
+    let termine = false;
+
+    function texteTemps(ms) {
+      const s = Math.max(0, Math.ceil(ms / 1000));
+      return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0");
+    }
+
+    // Examen : le temps est écoulé, les questions restantes comptent faux.
+    function tempsEcoule() {
+      if (termine) return;
+      pos = queue.length;
+      results();
+    }
+
+    if (examen && examen.duree > 0) {
+      finExamen = performance.now() + examen.duree * 1000;
+      chrono = setInterval(() => {
+        if (session.signal.aborted) { clearInterval(chrono); return; }
+        if (finExamen - performance.now() <= 0) { clearInterval(chrono); tempsEcoule(); }
+        else if (pos < queue.length) updateHeader();
+      }, 500);
+    }
 
     // -- Comparaison souple pour les TROU/QRC (casse, accents, espaces, apostrophes
     // typographiques et ponctuation finale ignorés) — même règle que normaliser_reponse --
@@ -89,6 +116,13 @@
     }
 
     function updateHeader() {
+      if (examen) {
+        const reste = finExamen === null ? "" : " · ⏱ " + texteTemps(finExamen - performance.now());
+        progressText.textContent = `Question ${pos + 1} / ${questions.length}${reste}`;
+        progressText.classList.toggle("quiz-temps-court", finExamen !== null && finExamen - performance.now() < 60000);
+        barFill.style.width = (pos / questions.length * 100) + "%";
+        return;
+      }
       if (intensif) {
         const reste = queue.length - pos - (state.answered ? 1 : 0);
         progressText.textContent = `Maîtrisées ${mastered} / ${questions.length} · ${reste} passage${reste > 1 ? "s" : ""} restant${reste > 1 ? "s" : ""}`;
@@ -116,6 +150,7 @@
       // Seule la 1re réponse compte pour le score et la révision espacée : les
       // répétitions de la session ne doivent pas gonfler les boîtes de Leitner.
       if (t.attempts === 1) {
+        t.ok = !!correct;
         if (correct) score++;
         options.enregistrer(q, correct, note, Math.round(performance.now() - state.shownAt));
       }
@@ -236,6 +271,14 @@
 
     function showFeedback(correct, explicationHtml) {
       const { feedback, nextBtn } = state._els;
+      if (examen) {
+        // Pas de correction avant la fin : juste un accusé.
+        feedback.innerHTML = '<div class="quiz-verdict muted">Réponse enregistrée</div>';
+        nextBtn.textContent = pos + 1 >= queue.length ? "Terminer l'examen" : "Suivant →";
+        nextBtn.style.display = "";
+        nextBtn.focus();
+        return;
+      }
       feedback.innerHTML =
         '<div class="quiz-verdict ' + (correct ? "ok" : "ko") + '">' +
         (correct ? "✓ Correct" : "✗ Incorrect") + "</div>" +
@@ -253,8 +296,10 @@
       const correctSet = new Set(q.reponses);
       const chosen = new Set(state.selection);
       const correct = chosen.size === correctSet.size && [...chosen].every((i) => correctSet.has(i));
+      track[queue[pos]].reponse = state.selection.slice();
       choiceEls.forEach((c, i) => {
         c.disabled = true;
+        if (examen) return;
         if (correctSet.has(i)) c.classList.add("is-correct");
         else if (chosen.has(i)) c.classList.add("is-wrong");
       });
@@ -269,7 +314,8 @@
       if (state._validateBtn) state._validateBtn.disabled = true;
       input.disabled = true;
       const correct = q.reponses_texte.some((r) => normalize(r) === normalize(input.value));
-      input.classList.add(correct ? "is-correct" : "is-wrong");
+      track[queue[pos]].reponse = input.value.trim();
+      if (!examen) input.classList.add(correct ? "is-correct" : "is-wrong");
       let exp = q.explication;
       if (!correct) {
         exp = '<p>Réponse attendue : <b>' + q.reponses_texte.map(escapeHtml).join(" / ") + "</b></p>" + exp;
@@ -322,11 +368,20 @@
     }
 
     function results() {
+      if (termine) return;
+      termine = true;
+      if (chrono) clearInterval(chrono);
       stage.replaceChildren();
       barFill.style.width = "100%";
       progressText.textContent = "Terminé";
+      progressText.classList.remove("quiz-temps-court");
       const pct = questions.length ? Math.round(score / questions.length * 100) : 0;
       const box = el("div", "quiz-results");
+      if (examen) {
+        resultatsExamen(box);
+        stage.appendChild(box);
+        return;
+      }
       box.appendChild(el("div", "quiz-score", score + " / " + questions.length));
       box.appendChild(el("div", "mastery", '<div class="mastery-fill" style="width:' + pct + '%"></div>'));
       const msg = pct >= 80 ? "Excellent 🎉" : pct >= 50 ? "Bien, continuez !" : "À retravailler 💪";
@@ -362,6 +417,49 @@
       actions.appendChild(again);
       box.appendChild(actions);
       stage.appendChild(box);
+    }
+
+    // Examen : note sur 20, puis la correction de chaque question.
+    function resultatsExamen(box) {
+      const total = questions.length;
+      const repondues = track.filter((t) => t.attempts).length;
+      const note = total ? Math.round(score / total * 20 * 10) / 10 : 0;
+      box.appendChild(el("div", "quiz-score", String(note).replace(".", ",") + " / 20"));
+      box.appendChild(el("div", "mastery", '<div class="mastery-fill" style="width:' + Math.round(note / 20 * 100) + '%"></div>'));
+      let bilan = "<b>" + score + "</b> bonne" + (score > 1 ? "s" : "") + " réponse" + (score > 1 ? "s" : "") + " sur " + total;
+      if (repondues < total) bilan += " · <b>" + (total - repondues) + "</b> sans réponse (temps écoulé)";
+      box.appendChild(el("p", "", bilan));
+      const msg = note >= 16 ? "Excellent 🎉" : note >= 12 ? "Bien, continuez !" : note >= 10 ? "Juste la moyenne : à consolider." : "À retravailler 💪";
+      box.appendChild(el("p", "muted", msg + " Les réponses comptent pour la révision espacée."));
+      const liste = el("ol", "quiz-correction");
+      questions.forEach((q, i) => {
+        const t = track[i];
+        const juste = t.attempts && t.ok;
+        const li = el("li", "quiz-correction-item " + (juste ? "ok" : "ko"));
+        li.appendChild(el("div", "quiz-correction-enonce markdown", q.enonce));
+        const donnee = el("p", "quiz-correction-reponse");
+        let texte;
+        if (!t.attempts) texte = "— (sans réponse)";
+        else if (q.type === "QCM" || q.type === "QCR") texte = (t.reponse || []).map((k) => el("div", "", q.choix[k]).textContent.trim()).join(" · ") || "—";
+        else texte = t.reponse || "—";
+        donnee.innerHTML = "<b>Votre réponse :</b> " + escapeHtml(texte);
+        li.appendChild(donnee);
+        if (!juste) {
+          const bonne = el("p", "quiz-correction-attendu");
+          const attendu = (q.type === "QCM" || q.type === "QCR") ? q.reponses.map((k) => el("div", "", q.choix[k]).textContent.trim()).join(" · ") : q.reponses_texte.join(" / ");
+          bonne.innerHTML = "<b>Bonne réponse :</b> " + escapeHtml(attendu);
+          li.appendChild(bonne);
+        }
+        if (q.explication) li.appendChild(el("div", "quiz-explication markdown", q.explication));
+        liste.appendChild(li);
+      });
+      box.appendChild(liste);
+      renderMath(box);
+      const actions = el("div", "quiz-actions");
+      const again = el("a", "button primary", "Retour aux sets");
+      again.href = backUrl;
+      actions.appendChild(again);
+      box.appendChild(actions);
     }
 
     function escapeHtml(s) {
@@ -434,6 +532,7 @@
     stage: stage,
     questions: JSON.parse(dataTag.textContent),
     intensif: root.dataset.mode === "intensif",
+    examen: root.dataset.mode === "examen" ? { duree: Number(root.dataset.duree) || 0 } : null,
     backUrl: root.dataset.backUrl,
     enregistrer: enregistrer,
   });

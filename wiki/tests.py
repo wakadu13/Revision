@@ -7,6 +7,7 @@ from unittest import mock
 from django.contrib.auth import get_user_model
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase, override_settings
+from django.utils import timezone
 
 from . import quiz
 from .vault import get_vault
@@ -287,6 +288,93 @@ class ImportVocabulaireTests(WikiTestCase):
         self.client.force_login(self.reader)
         self.assertEqual(self.client.post("/qcm/importer-vocabulaire/", {"liste": "a\tb", "cartes": ["production"]}).status_code, 403)
         self.assertNotIn("importer-vocabulaire", self.client.get("/qcm/").content.decode())
+
+
+class ActiviteExamenTests(WikiTestCase):
+    """Série de jours, calendrier d'activité et examen blanc."""
+
+    SET = {"titre": "Signal", "questions": [
+        {"id": "q1", "type": "QCM", "question": "2+2 ?", "choix": ["3", "4"], "reponses": [1], "explication": "Addition."},
+        {"id": "q2", "type": "TROU", "question": "Le _____ apparaît", "reponses_texte": ["repliement"]},
+        {"id": "q3", "type": "QCR", "question": "Pairs ?", "choix": ["1", "2", "4"], "reponses": [1, 2]},
+        {"id": "q4", "type": "FLASHCARD", "question": "Shannon", "verso": "f_e > 2 f_max"},
+    ]}
+
+    def setUp(self):
+        super().setUp()
+        self.write("QCM/Cours/signal.json", json.dumps(self.SET))
+
+    def post_json(self, url, data):
+        return self.client.post(url, json.dumps(data), content_type="application/json")
+
+    def test_streak_and_calendar(self):
+        from datetime import date, timedelta
+
+        from .models import Activite
+
+        auj = date(2026, 11, 9)  # un lundi
+        for d in (0, 1, 2, 5, 6, 7, 8, 40):
+            Activite.objects.create(player="lecteur", jour=auj - timedelta(days=d), reponses=d + 1, justes=1)
+        self.assertEqual(Activite.serie("lecteur", auj), (3, 4))
+        # Rien aujourd'hui mais hier : la série tient encore.
+        Activite.objects.filter(player="lecteur", jour=auj).delete()
+        self.assertEqual(Activite.serie("lecteur", auj), (2, 4))
+        self.assertEqual(Activite.serie("personne", auj), (0, 0))
+        grille = Activite.calendrier("lecteur", auj, semaines=4)
+        self.assertEqual(len(grille), 4)
+        self.assertTrue(all(len(s) == 7 for s in grille))
+        self.assertEqual(grille[0][0]["jour"].weekday(), 0)
+        self.assertEqual(grille[-1][0]["jour"], auj)  # dernière semaine : celle d'aujourd'hui
+        self.assertTrue(grille[-1][1]["futur"])
+        hier = grille[-2][6]
+        self.assertEqual((hier["reponses"], hier["niveau"]), (2, 1))
+        self.assertEqual([sum(n >= p for p in Activite.PALIERS) for n in (0, 1, 10, 30, 60)], [0, 1, 2, 3, 4])
+        resume = Activite.resume("lecteur", auj)
+        self.assertEqual((resume["serie"], resume["record"], resume["aujourdhui"]), (2, 4, 0))
+        self.assertEqual(resume["trente_jours"], sum(d + 1 for d in (1, 2, 5, 6, 7, 8)))
+        self.assertEqual(resume["jours_actifs_trente"], 6)
+
+    def test_answers_feed_the_activity_log(self):
+        from datetime import timedelta
+
+        from .models import Activite
+
+        self.post_json("/qcm/reponse/", {"set_id": "QCM/Cours/signal", "question_id": "q1", "correct": True})
+        self.post_json("/qcm/reponse/", {"set_id": "QCM/Cours/signal", "question_id": "q1", "correct": False})
+        a = Activite.objects.get(player="lecteur", jour=timezone.localdate())
+        self.assertEqual((a.reponses, a.justes, a.nouveaux), (2, 1, 1))
+        # Réponse hors ligne synchronisée : comptée à sa date.
+        avant_hier = timezone.now() - timedelta(days=2)
+        self.post_json("/qcm/hors-ligne/synchro/", {"reponses": [
+            {"uid": "u1", "set_id": "QCM/Cours/signal", "question_id": "q2", "correct": True, "date": avant_hier.isoformat()}]})
+        self.assertEqual(Activite.objects.get(player="lecteur", jour=timezone.localdate(avant_hier)).reponses, 1)
+        # Module Langues.
+        self.write("QCM/langues/en.json", json.dumps({"langue": "Anglais", "vocabulaire": [{"id": "v1", "mot": "a job", "traductions": ["un emploi"]}]}))
+        self.post_json("/qcm/langue/reponse/", {"set_id": "QCM/langues/en", "exo_id": "v1#rec", "note": 3})
+        a.refresh_from_db()
+        self.assertEqual((a.reponses, a.nouveaux), (3, 2))
+        self.assertContains(self.client.get("/qcm/"), "1 jour d'affilée")
+        stats = self.client.get("/qcm/stats/").content.decode()
+        self.assertIn("jour d'affilée", stats)
+        self.assertEqual(stats.count('class="quiz-jour'), 26 * 7 + 5)  # grille + légende
+        self.assertIn("3 réponses, 2 justes", stats)
+
+    def test_exam_mode(self):
+        response = self.client.get("/qcm/jouer/", {"set": "QCM/Cours/signal", "mode": "examen"})
+        self.assertEqual(response.context["titre"], "Examen blanc · Signal")
+        types = [q["type"] for q in response.context["questions"]]
+        self.assertEqual(sorted(types), ["QCM", "QCR", "TROU"])  # pas de flashcard
+        self.assertEqual((response.context["duree_min"], response.context["total_dispo"]), (3, 3))
+        self.assertContains(response, 'data-mode="examen" data-duree="180"')
+        self.assertContains(response, "sans correction avant la fin")
+        response = self.client.get("/qcm/jouer/", {"set": "QCM/Cours/signal", "mode": "examen", "n": "2", "duree": "500"})
+        self.assertEqual((len(response.context["questions"]), response.context["duree_min"]), (2, 180))
+        response = self.client.get("/qcm/jouer/", {"categorie": "Cours", "mode": "examen", "n": "99"})
+        self.assertEqual((response.context["titre"], len(response.context["questions"])), ("Examen blanc · Cours", 3))
+        self.assertEqual(self.client.get("/qcm/jouer/", {"categorie": "Inconnue", "mode": "examen"}).status_code, 404)
+        index = self.client.get("/qcm/").content.decode()
+        self.assertIn("set=QCM/Cours/signal&mode=examen", index)
+        self.assertIn("categorie=Cours&mode=examen", index)
 
 
 class EditorTests(WikiTestCase):

@@ -282,6 +282,15 @@ dans la barre latérale ou sur `/qcm/`.
   exercices sans attendre leur échéance, et chaque exercice raté revient dans la
   session jusqu'à être réussi 2 fois de suite ; seule la première réponse compte
   pour la répétition espacée.
+- **Examen blanc** (bouton « Examen » sur un set, « Examen blanc » sur une
+  catégorie) : 20 questions tirées au sort (réglable, sans flashcards),
+  chronométrées (1 min par question par défaut), aucune correction avant la
+  fin ; puis note sur 20 et correction détaillée. Les réponses comptent pour
+  la révision espacée.
+- **Activité** : la page des statistiques montre la série de jours
+  consécutifs avec au moins une réponse (QCM et langues), le record, les
+  réponses du jour et des 30 derniers jours, et un calendrier d'activité sur
+  26 semaines. La série s'affiche aussi en haut de la page des QCM.
 - **Prompts IA** : `prompts_ia/` contient un prompt prêt à copier-coller par
   type de carte (QCM, QCR, TROU, FLASHCARD, set mixte, vocabulaire, conjugaison,
   grammaire). Vérifier ensuite le fichier produit :
