@@ -14,7 +14,7 @@
     {% for entry in cat.sets %}
     <li id="{{ entry.ancre }}" class="quiz-set" data-search="{{ entry.search }}"{% if not entry.match %} hidden{% endif %}>
       <div class="quiz-set-head">
-        <span class="quiz-set-title">{{ entry.set.titre }}</span>
+        <span class="quiz-set-title">{{ entry.set.titre }}{% if entry.set.proprietaire %} <span class="badge-perso" title="Dans votre espace : visible de vous seul">🔒 perso</span>{% endif %}</span>
         <span class="muted">{{ entry.set|length }} exercice{{ entry.set|length|pluralize }}</span>
       </div>
       {% if entry.set.description %}<p class="muted quiz-set-desc">{{ entry.set.description }}</p>{% endif %}
@@ -25,7 +25,7 @@
         <a class="button small" href="{% url 'wiki:langue_menu' cat.langue %}?fichier={{ entry.set.id|urlencode }}">Modes et statistiques</a>
         <a class="button small quiz-export" href="{% url 'wiki:quiz_export' %}?set={{ entry.set.id|urlencode }}" title="Exporter pour Anki (.apkg) ; ajoutez &amp;format=tsv pour Quizlet ou un tableur">⬇ Anki</a>
       </span>
-      {% if can_edit %}{% include "wiki/_quiz_gerer.html" with set=entry.set %}{% endif %}
+      {% if can_edit and not entry.set.proprietaire %}{% include "wiki/_quiz_gerer.html" with set=entry.set %}{% endif %}
     </li>
     {% endfor %}
   </ul>

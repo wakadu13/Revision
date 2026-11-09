@@ -47,6 +47,7 @@ urlpatterns = [
     path("qcm/planning/", quiz_views.plan, name="quiz_plan"),
     path("qcm/stats/", quiz_views.stats, name="quiz_stats"),
     path("qcm/exporter/", quiz_views.exporter, name="quiz_export"),
+    path("qcm/mon-espace/", quiz_views.perso, name="quiz_perso"),
     path("qcm/signaler/", quiz_views.signaler, name="quiz_signaler"),
     path("qcm/signalements/", quiz_views.signalements, name="quiz_signalements"),
     path("qcm/reinitialiser/", quiz_views.reset, name="quiz_reset"),

@@ -105,6 +105,8 @@ class SetLangue:
     path: PurePosixPath | None = None
     types_vocabulaire: list[str] = field(default_factory=list)  # cartes de vocabulaire du paquet
     code_langue: str = ""  # synthèse vocale (ex. "en-GB")
+    proprietaire: str = ""  # espace personnel : nom (quiz.nom_perso) du seul compte qui le voit
+    fichier: object = None  # chemin complet du fichier JSON (Path)
 
     def __len__(self):
         return len(self.exercices)

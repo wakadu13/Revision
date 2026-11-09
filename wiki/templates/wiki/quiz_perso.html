@@ -1,0 +1,86 @@
+{% extends "wiki/base.html" %}
+{% block title %}Mon espace · QCM{% endblock %}
+{% block content %}
+<article class="note">
+  <h1 class="note-title">Mon espace</h1>
+  <p class="muted">Vos propres sets de QCM et paquets de vocabulaire : <b>vous seul les voyez</b>. Ils apparaissent
+    avec les autres sur la page des QCM (marqués 🔒), se révisent pareil, en ligne comme hors ligne, et s'exportent
+    vers Anki. {{ nombre }} fichier{{ nombre|pluralize }} sur {{ max_fichiers }}.</p>
+  <p><a class="button small" href="{% url 'wiki:quiz_index' %}">← QCM</a></p>
+
+  {% if erreurs %}
+  <div class="callout" data-callout="warning">
+    <div class="callout-title">Fichiers de votre espace ignorés (JSON invalide)</div>
+    <div class="callout-content"><ul>{% for e in erreurs %}<li>{{ e }}</li>{% endfor %}</ul></div>
+  </div>
+  {% endif %}
+
+  <section>
+    <h2>Mes sets et paquets</h2>
+    {% if elements %}
+    <ul class="perso-liste">
+      {% for x in elements %}
+      <li>
+        <a href="{{ x.jouer }}"><b>{{ x.set.titre }}</b></a>
+        <span class="muted">· {% if x.langue %}{{ x.set.langue }} · {% endif %}{{ x.dossier }} · {{ x.taille }} {% if x.langue %}exercice{{ x.taille|pluralize }}{% else %}question{{ x.taille|pluralize }}{% endif %}</span>
+        <span class="perso-actions">
+          <a class="button small" href="{% url 'wiki:quiz_export' %}?set={{ x.set.id|urlencode }}">⬇ Anki</a>
+          <form method="post" data-confirm="Supprimer « {{ x.set.titre }} » et sa progression ?">{% csrf_token %}
+            <input type="hidden" name="action" value="supprimer"><input type="hidden" name="set" value="{{ x.set.id }}">
+            <button type="submit" class="button small danger">Supprimer</button></form>
+        </span>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p class="muted">Rien pour l'instant : importez une liste de mots ou un set ci-dessous.</p>
+    {% endif %}
+  </section>
+
+  <section class="claude-generer">
+    <details class="claude-bloc" open>
+      <summary><b>Importer une liste de mots</b> <span class="muted">— Quizlet, Anki, tableur ou liste tapée</span></summary>
+      <form method="post" enctype="multipart/form-data" class="form claude-form">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="liste">
+        <label for="perso-liste">Une ligne par mot : mot, puis traduction (tabulation, virgule ou « = » entre les deux)</label>
+        <textarea id="perso-liste" name="liste" rows="6" spellcheck="false" placeholder="a job&#9;un emploi&#10;to achieve = réussir"></textarea>
+        <label>ou un fichier exporté (.csv, .txt, .tsv) <input type="file" name="fichier" accept=".csv,.txt,.tsv,text/plain,text/csv"></label>
+        <div class="claude-champs">
+          <label class="checkbox"><input type="radio" name="ordre" value="langue_fr" checked> mot en langue apprise, puis traduction</label>
+          <label class="checkbox"><input type="radio" name="ordre" value="fr_langue"> français d'abord, puis le mot</label>
+        </div>
+        <fieldset class="claude-cartes">
+          <legend>Types de cartes</legend>
+          {% for cle, nom, coche in cartes %}
+          <label class="checkbox"><input type="checkbox" name="cartes" value="{{ cle }}"{% if coche %} checked{% endif %}> {{ nom }}</label>
+          {% endfor %}
+        </fieldset>
+        <div class="claude-champs">
+          <label>Langue <input name="langue" list="perso-langues" value="Anglais" required></label>
+          <label>Nom du paquet <span class="muted">(facultatif)</span> <input name="titre"></label>
+          <label>Dossier <input name="dossier" list="perso-dossiers" placeholder="Vocabulaire"></label>
+        </div>
+        <datalist id="perso-langues">{% for l in langues %}<option value="{{ l }}">{% endfor %}</datalist>
+        <datalist id="perso-dossiers">{% for d in dossiers %}<option value="{{ d }}">{% endfor %}</datalist>
+        <button type="submit" class="button primary">Créer le paquet</button>
+      </form>
+    </details>
+    <details class="claude-bloc">
+      <summary><b>Importer des sets de QCM</b> <span class="muted">— fichiers .json au format du wiki</span></summary>
+      <form method="post" enctype="multipart/form-data" class="form claude-form">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="json">
+        <label>Fichiers .json <input type="file" name="fichiers" accept=".json,application/json" multiple required></label>
+        <div class="claude-champs">
+          <label>Dossier <input name="categorie" list="perso-dossiers" placeholder="Mes sets"></label>
+          <label class="checkbox"><input type="checkbox" name="remplacer" value="1"> Remplacer les sets existants</label>
+        </div>
+        <p class="muted">Même format que les sets du wiki (voir la page <a href="{% url 'wiki:page' 'Guide/QCM' %}">Guide/QCM</a>) ; chaque fichier est vérifié avant d'être ajouté.
+          Les prompts du dossier <code>prompts_ia/</code> aident à en faire écrire par une IA.</p>
+        <button type="submit" class="button primary">Importer</button>
+      </form>
+    </details>
+  </section>
+</article>
+{% endblock %}

@@ -20,7 +20,7 @@
     {% for entry in cat.sets %}
     <li id="{{ entry.ancre }}" class="quiz-set" data-search="{{ entry.set.texte_recherche }}"{% if not entry.match %} hidden{% endif %}>
       <div class="quiz-set-head">
-        <span class="quiz-set-title">{{ entry.set.titre }}</span>
+        <span class="quiz-set-title">{{ entry.set.titre }}{% if entry.set.proprietaire %} <span class="badge-perso" title="Dans votre espace : visible de vous seul">🔒 perso</span>{% endif %}</span>
         <span class="muted">{{ entry.summary.total }} question{{ entry.summary.total|pluralize }}</span>
       </div>
       {% if entry.set.description %}<p class="muted quiz-set-desc">{{ entry.set.description }}</p>{% endif %}
@@ -43,7 +43,7 @@
         </span>
       </div>
       {% include "wiki/_quiz_plan.html" with deck=entry.deck e=entry.estimation set=entry.set %}
-      {% if can_edit %}{% include "wiki/_quiz_gerer.html" with set=entry.set %}{% endif %}
+      {% if can_edit and not entry.set.proprietaire %}{% include "wiki/_quiz_gerer.html" with set=entry.set %}{% endif %}
     </li>
     {% endfor %}
   </ul>

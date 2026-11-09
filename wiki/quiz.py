@@ -14,6 +14,7 @@ des énoncés est fait dans les vues.
 from __future__ import annotations
 
 import json
+import re
 import threading
 import unicodedata
 from dataclasses import dataclass, field
@@ -135,6 +136,8 @@ class QuestionSet:
     path: PurePosixPath | None = None
     langue: str = ""   # set rangé dans la section Langues (ex. "Anglais")
     source_page: str = ""  # page du wiki dont le set a été généré (clé), s'il y en a une
+    proprietaire: str = ""  # espace personnel : nom (nom_perso) du seul compte qui le voit
+    fichier: Path | None = None  # chemin complet du fichier JSON
 
     def __len__(self) -> int:
         return len(self.questions)
@@ -264,16 +267,38 @@ def charger(chemin, racine):
     return set_depuis_json(data, rel)
 
 
-class Library:
-    """Ensemble des sets de questions et des fichiers de langue trouvés dans le coffre."""
+# --- Espaces personnels ---
+# Chaque compte peut importer ses propres sets et paquets de langue, visibles de lui
+# seul : DATA_DIR/perso/<compte>/<dossier>/<nom>.json, identifiants « ~<compte>/… ».
+PERSO = "~"
 
-    def __init__(self, root, files):
+
+def nom_perso(player):
+    """Nom du dossier personnel d'un compte (caractères sûrs pour un nom de fichier)."""
+    return re.sub(r"[^\w.@+-]", "_", str(player or ""))[:150] or "_"
+
+
+def racine_perso():
+    return Path(settings.DATA_DIR) / "perso"
+
+
+def dossier_perso(player):
+    return racine_perso() / nom_perso(player)
+
+
+class Library:
+    """Ensemble des sets de questions et des fichiers de langue : ceux du coffre
+    (communs) et ceux des espaces personnels (vus seulement par leur propriétaire,
+    voir pour())."""
+
+    def __init__(self, root, files, perso_root=None, perso_files=()):
         from .langues import SetLangue
 
         self.root = Path(root)
         self.sets: dict[str, QuestionSet] = {}
         self.langues: dict[str, SetLangue] = {}
         self.errors: list[str] = []
+        self.erreurs_perso: dict[str, list[str]] = {}
         for rel, _mtime, _size in files:
             if not rel.lower().endswith(".json"):
                 continue
@@ -285,10 +310,56 @@ class Library:
                 if "questions' (liste) manquante" not in str(e):
                     self.errors.append(str(e))
                 continue
+            charge.fichier = self.root / rel
             if isinstance(charge, SetLangue):
                 self.langues[charge.id] = charge
             else:
                 self.sets[charge.id] = charge
+        if perso_root is None:
+            return
+        from . import langues
+
+        perso_root = Path(perso_root)
+        for rel, _mtime, _size in perso_files:
+            if not rel.lower().endswith(".json") or "/" not in rel:
+                continue
+            proprietaire = rel.split("/", 1)[0]
+            chemin = perso_root / rel
+            try:
+                _, data = lire_json(chemin, perso_root)
+                rel_id = PurePosixPath(PERSO + rel)
+                charge = (langues.set_depuis_json(data, rel_id) if langues.est_fichier_langue(data)
+                          else set_depuis_json(data, rel_id))
+            except ValueError as e:
+                if "questions' (liste) manquante" not in str(e):
+                    self.erreurs_perso.setdefault(proprietaire, []).append(str(e))
+                continue
+            charge.proprietaire, charge.fichier = proprietaire, chemin
+            if isinstance(charge, SetLangue):
+                self.langues[charge.id] = charge
+            else:
+                self.sets[charge.id] = charge
+
+    def pour(self, player):
+        """La bibliothèque vue par un compte : sets communs et ses sets personnels.
+        ``player`` None : sets communs seulement (rangement du coffre par les admins)."""
+        import copy
+
+        nom = nom_perso(player) if player is not None else None
+        vue = copy.copy(self)
+        vue.sets = {k: s for k, s in self.sets.items() if not s.proprietaire or s.proprietaire == nom}
+        vue.langues = {k: s for k, s in self.langues.items() if not s.proprietaire or s.proprietaire == nom}
+        vue.errors = self.errors + (self.erreurs_perso.get(nom, []) if nom else [])
+        return vue
+
+    def commune(self):
+        return self.pour(None)
+
+    def personnels(self, player):
+        """Sets et paquets de l'espace personnel d'un compte."""
+        nom = nom_perso(player)
+        return sorted([s for s in (*self.sets.values(), *self.langues.values()) if s.proprietaire == nom],
+                      key=lambda s: (s.path.parent.name.lower(), s.titre.lower()))
 
     def get(self, set_id):
         return self.sets.get(set_id)
@@ -318,16 +389,20 @@ class Library:
 
 
 _lock = threading.Lock()
-_cache = {"root": None, "signature": None, "library": None}
+_cache = {"cle": None, "library": None}
 
 
 def get_library():
-    """Renvoie la bibliothèque de QCM, réindexée seulement si un fichier a changé."""
+    """Renvoie la bibliothèque de QCM (coffre et espaces personnels), réindexée
+    seulement si un fichier a changé. Pour un compte : get_library().pour(compte)."""
     from .vault import signature_coffre  # import tardif : évite un cycle à l'import du module
 
     root = Path(settings.WIKI_DIR)
+    perso = racine_perso()
     signature = tuple(f for f in signature_coffre(root) if f[0].lower().endswith(".json"))
+    signature_perso = tuple(f for f in signature_coffre(perso) if f[0].lower().endswith(".json"))
+    cle = (root, perso, signature, signature_perso)
     with _lock:
-        if _cache["library"] is None or _cache["root"] != root or _cache["signature"] != signature:
-            _cache.update(root=root, signature=signature, library=Library(root, signature))
+        if _cache["library"] is None or _cache["cle"] != cle:
+            _cache.update(cle=cle, library=Library(root, signature, perso, signature_perso))
         return _cache["library"]

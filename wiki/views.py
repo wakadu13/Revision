@@ -53,7 +53,7 @@ def _qcm_de_la_page(request, note):
     from .quiz_views import _ancre, _set_summary, player_id
 
     cle = note.key.lower()
-    sets = [s for s in quiz.get_library().sets.values() if s.source_page.lower() == cle]
+    sets = [s for s in quiz.get_library().pour(player_id(request)).sets.values() if s.source_page.lower() == cle]
     if not sets:
         return []
     player, now, decks = player_id(request), timezone.now(), QuizDeck.map_for(player_id(request))
@@ -73,7 +73,7 @@ def _cartes_de_la_page(vault, note):
     nombre = len(cartes.extraire(texte))
     if not nombre:
         return None
-    return {"nombre": nombre, "existe": quiz.get_library().get(cartes.chemin_du_set(note).removesuffix(".json")) is not None}
+    return {"nombre": nombre, "existe": quiz.get_library().commune().get(cartes.chemin_du_set(note).removesuffix(".json")) is not None}
 
 
 @require_POST
@@ -506,12 +506,9 @@ def _options_vocabulaire(request):
 
 
 @require_POST
-def importer_vocabulaire(request):
+def lire_liste(request):
     """Paquet de vocabulaire d'après une liste collée ou un fichier exporté (Quizlet,
-    Anki, tableur), sans Claude : un paquet à part, prêt à réviser."""
-    if not can_edit(request):
-        return _deny(request)
-    retour = redirect(reverse("wiki:quiz_index") + "#importer-vocabulaire")
+    Anki, tableur) du formulaire : (paquet, options, lignes ignorées, erreur)."""
     options, erreur = _options_vocabulaire(request)
     texte = request.POST.get("liste", "")
     fichier = request.FILES.get("fichier")
@@ -527,6 +524,7 @@ def importer_vocabulaire(request):
     ordre = request.POST.get("ordre", paquets.LANGUE_PUIS_FR)
     if ordre not in paquets.ORDRES:
         ordre = paquets.LANGUE_PUIS_FR
+    fiches, ignorees = [], 0
     if not erreur:
         try:
             fiches, ignorees = paquets.analyser_liste(texte, ordre)
@@ -536,21 +534,38 @@ def importer_vocabulaire(request):
             if not fiches:
                 erreur = "Aucune ligne « mot – traduction » reconnue : une ligne par mot, séparés par une tabulation, une virgule ou « = »."
     if erreur:
-        messages.error(request, erreur)
-        return retour
+        return None, options, 0, erreur
     titre = options["titre"] or f"Vocabulaire {options['langue'].lower()} du {timezone.localdate():%d/%m/%Y}"
     paquet = paquets.paquet_vocabulaire(options["langue"], titre, "", options["types"], fiches, "Import de liste")
+    return paquet, options, ignorees, None
+
+
+def message_paquet(paquet, ignorees):
+    n = len(paquet["vocabulaire"])
+    return (f"Paquet « {paquet['titre']} » créé : {n} mot{'s' if n > 1 else ''}"
+            + (f", {ignorees} ligne{'s' if ignorees > 1 else ''} ignorée{'s' if ignorees > 1 else ''}" if ignorees else "") + ".")
+
+
+def importer_vocabulaire(request):
+    """Paquet de vocabulaire d'après une liste collée ou un fichier exporté (Quizlet,
+    Anki, tableur), sans Claude : un paquet à part, prêt à réviser."""
+    if not can_edit(request):
+        return _deny(request)
+    retour = redirect(reverse("wiki:quiz_index") + "#importer-vocabulaire")
+    paquet, options, ignorees, erreur = lire_liste(request)
+    if erreur:
+        messages.error(request, erreur)
+        return retour
     try:
         rel = paquets.ecrire_paquet_langue(options["dossier"] or claude.DOSSIER_VOCABULAIRE, paquet)
     except paquets.PaquetInvalide as e:
         messages.error(request, str(e))
         return retour
-    n = len(paquet["vocabulaire"])
-    messages.success(request, f"Paquet « {titre} » créé : {n} mot{'s' if n > 1 else ''}"
-                     + (f", {ignorees} ligne{'s' if ignorees > 1 else ''} ignorée{'s' if ignorees > 1 else ''}" if ignorees else "") + ".")
+    messages.success(request, message_paquet(paquet, ignorees))
     from urllib.parse import urlencode
 
     return redirect(reverse("wiki:langue_menu", args=[options["langue"]]) + "?" + urlencode({"fichier": rel.removesuffix(".json")}))
+
 
 
 @require_POST
@@ -597,7 +612,7 @@ def generer(request):
         from . import quiz
         from .quiz_views import player_id, question_ratee
 
-        qset = quiz.get_library().get(request.POST.get("set", ""))
+        qset = quiz.get_library().pour(player_id(request)).get(request.POST.get("set", ""))
         if qset is None:
             messages.error(request, "Set introuvable.")
             return redirect("wiki:quiz_stats")
@@ -693,7 +708,9 @@ def palette(request):
     from . import quiz
 
     vault = get_vault()
-    library = quiz.get_library()
+    from .quiz_views import player_id
+
+    library = quiz.get_library().pour(player_id(request))
     pages = [{"t": n.title, "s": str(n.path.parent) if n.path.parent.parts else "", "u": reverse("wiki:page", args=[n.key])}
              for n in vault.notes.values()]
     pages += [{"t": a.path.stem, "s": "PDF" + (f" · {a.path.parent}" if a.path.parent.parts else ""), "u": a.view_url}
@@ -712,6 +729,7 @@ def palette(request):
         {"t": "Sommaire", "u": reverse("wiki:sommaire")},
         {"t": "Tags", "u": reverse("wiki:tags")},
         {"t": "Aujourd'hui", "u": reverse("wiki:aujourdhui")},
+        {"t": "Mon espace (QCM personnels)", "u": reverse("wiki:quiz_perso")},
         {"t": "QCM", "u": reverse("wiki:quiz_index")},
         {"t": "Révision intelligente (QCM)", "u": f"{jouer}?revision=1"},
         {"t": "Statistiques des QCM", "u": reverse("wiki:quiz_stats")},
@@ -845,14 +863,14 @@ def expliquer(request):
     import json
 
     from . import quiz
-    from .quiz_views import _render_html
+    from .quiz_views import _render_html, player_id
 
     try:
         data = json.loads(request.body)
         set_id, question_id = str(data["set_id"]), str(data["question_id"])
     except (KeyError, ValueError, TypeError):
         return JsonResponse({"error": "requête invalide"}, status=400)
-    qset = quiz.get_library().get(set_id)
+    qset = quiz.get_library().pour(player_id(request)).get(set_id)
     question = next((q for q in qset.questions if q.id == question_id), None) if qset else None
     if question is None:
         return JsonResponse({"error": "question inconnue"}, status=404)
@@ -885,7 +903,7 @@ def corriger_qrc(request):
         set_id, question_id, reponse = str(data["set_id"]), str(data["question_id"]), str(data["reponse"]).strip()
     except (KeyError, ValueError, TypeError):
         return JsonResponse({"error": "requête invalide"}, status=400)
-    qset = quiz.get_library().get(set_id)
+    qset = quiz.get_library().pour(player_id(request)).get(set_id)
     question = next((q for q in qset.questions if q.id == question_id), None) if qset else None
     if question is None or not question.est_qrc or not reponse:
         return JsonResponse({"error": "question inconnue"}, status=404)

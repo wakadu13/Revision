@@ -32,9 +32,10 @@ def dossier_de(set_langue):
     return (set_langue.path.parent.name if set_langue.path else "") or quiz.CATEGORIE_DEFAUT
 
 
-def _sets(langue, dossier="", fichier=""):
-    """Fichiers d'une langue, restreints à un dossier ou à un seul fichier (paquet)."""
-    sets = quiz.get_library().sets_langue(langue)
+def _sets(langue, dossier="", fichier="", player=None):
+    """Fichiers d'une langue vus par le compte (communs et personnels), restreints à un
+    dossier ou à un seul fichier (paquet)."""
+    sets = quiz.get_library().pour(player).sets_langue(langue)
     if fichier:
         sets = [s for s in sets if s.id == fichier]
     elif dossier:
@@ -64,7 +65,7 @@ def resume_langue(player, langue, sets, now):
 @login_required
 def menu(request, langue):
     dossier, fichier = _filtre(request)
-    sets = _sets(langue, dossier, fichier)
+    sets = _sets(langue, dossier, fichier, player_id(request))
     now = timezone.now()
     r = langues.resume(sets, QuizProgress.map_langue(player_id(request), sets), now)
     modes = [(cle, nom) for cle, nom in langues.MODES.items()
@@ -135,7 +136,7 @@ def payload_hors_ligne(vault, set_langue, exo):
 @login_required
 def play(request, langue):
     dossier, fichier = _filtre(request)
-    sets = _sets(langue, dossier, fichier)
+    sets = _sets(langue, dossier, fichier, player_id(request))
     mode = request.GET.get("mode", langues.QUOTIDIEN)
     if mode not in langues.MODES:
         raise Http404("Mode inconnu")
@@ -156,9 +157,9 @@ def play(request, langue):
     ))
 
 
-def _exercice(data):
+def _exercice(data, player=None):
     """(set, exercice) désignés par la requête, ou une réponse d'erreur."""
-    set_langue = quiz.get_library().langues.get(str(data.get("set_id", "")))
+    set_langue = quiz.get_library().pour(player).langues.get(str(data.get("set_id", "")))
     exo = set_langue.exercice(str(data.get("exo_id", ""))) if set_langue else None
     if exo is None:
         return None, None, JsonResponse({"error": "exercice inconnu"}, status=404)
@@ -180,7 +181,7 @@ def corriger(request):
     data = _json(request)
     if data is None:
         return JsonResponse({"error": "requête invalide"}, status=400)
-    set_langue, exo, erreur = _exercice(data)
+    set_langue, exo, erreur = _exercice(data, player_id(request))
     if erreur:
         return erreur
     reponse = data.get("reponse")
@@ -203,7 +204,7 @@ def record(request):
     data = _json(request)
     if data is None or data.get("note") not in fsrs.NOTES:
         return JsonResponse({"error": "requête invalide"}, status=400)
-    set_langue, exo, erreur = _exercice(data)
+    set_langue, exo, erreur = _exercice(data, player_id(request))
     if erreur:
         return erreur
     obj, _ = QuizProgress.objects.get_or_create(
@@ -222,7 +223,7 @@ def record(request):
 def reset(request, langue):
     fichier = request.POST.get("fichier", "")
     dossier = "" if fichier else request.POST.get("dossier", "")
-    sets = _sets(langue, dossier, fichier)
+    sets = _sets(langue, dossier, fichier, player_id(request))
     QuizProgress.objects.filter(player=player_id(request), set_id__in=[s.id for s in sets]).delete()
     precision = f" ({sets[0].titre})" if fichier else f" ({dossier})" if dossier else ""
     messages.success(request, f"Progression en {langue}{precision} réinitialisée.")

@@ -905,3 +905,10 @@ body.plein-ecran.editing.pe-haut .toolbar {
 .tableau-defilant { overflow-x: auto; }
 .quiz-temps-table td, .quiz-temps-table th { text-align: right; white-space: nowrap; }
 .quiz-temps-table td:first-child, .quiz-temps-table th:first-child { text-align: left; white-space: normal; }
+
+/* Espace personnel */
+.badge-perso { display: inline-block; margin-left: .35rem; padding: 0 .45em; border-radius: 1em; background: var(--accent-soft); color: var(--accent); font-size: .72rem; font-weight: 500; vertical-align: 1px; }
+.perso-liste { list-style: none; padding: 0; }
+.perso-liste li { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem .6rem; padding: .5rem 0; border-bottom: 1px solid var(--border); }
+.perso-actions { margin-left: auto; display: flex; gap: .4rem; }
+.perso-actions form { display: inline; }

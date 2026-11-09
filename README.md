@@ -77,6 +77,10 @@ réactiver le rappel. `WIKI_PUSH_CONTACT` (une adresse `mailto:` ou `https://`)
 remplace au besoin le contact donné aux services de notifications, par défaut
 l'adresse publique du wiki.
 
+**Espaces personnels** : les sets et listes de mots que chaque compte importe
+dans « Mon espace » sont rangés dans `perso/<compte>/` du même dossier de
+données, hors du coffre : à sauvegarder aussi.
+
 **Fichiers du coffre** : le wiki vérifie au plus toutes les 2 secondes si des
 fichiers ont changé (`WIKI_VERIF_INTERVALLE`, en secondes) au lieu de parcourir
 tout le coffre à chaque requête ; une page déposée à la main ou par Obsidian
@@ -410,6 +414,14 @@ dans la barre latérale ou sur `/qcm/`.
   sa catégorie. Voir la page d'aide `vault/Guide/QCM.md`. Les admins peuvent
   aussi **glisser-déposer** des fichiers `.json` sur la page `/qcm/` : chaque set
   est validé puis enregistré dans `vault/QCM/<catégorie>/`.
+- **Mon espace** (`/qcm/mon-espace/`, bouton « 🔒 Mon espace » sur la page des
+  QCM) : **chaque compte**, pas seulement les admins, importe ses propres sets
+  (`.json`) et listes de mots (collées ou exportées de Quizlet, Anki, d'un
+  tableur), **visibles de lui seul**. Ils apparaissent avec les autres, marqués
+  « 🔒 perso », et se révisent pareil : FSRS, planning, hors ligne, export Anki,
+  page « Aujourd'hui ». Un autre compte, même admin, ne les voit nulle part.
+  Limite : 200 fichiers et 20 Mo par compte. Fichiers rangés hors du coffre,
+  dans `perso/<compte>/` du dossier de données.
 - 5 types de questions : **QCM**, **QCR** (plusieurs réponses), **TROU** (texte à
   trous), **QRC** (réponse courte tapée : traduction, synonyme…, avec sens inverse
   optionnel) et **FLASHCARD** (recto/verso). Markdown et formules LaTeX `$...$` gérés.
@@ -663,6 +675,7 @@ en-têtes) sont dans [`core/tests.py`](core/tests.py) :
 - `/claude/reglages/` : clé d'API et modèle de Claude (admins)
 - `/qcm/generer/` : QCM et paquets de vocabulaire générés par Claude (admins, POST)
 - `/qcm/importer-vocabulaire/` : paquet de vocabulaire d'après une liste ou un export (admins, POST)
+- `/qcm/mon-espace/` : espace personnel (sets et listes de mots de chaque compte, visibles de lui seul)
 - `/pdf/<chemin>` : lecteur de PDF (`?integre=1` : version intégrée dans les notes)
 - `/sommaire/` : sommaire de toutes les notes
 - `/tags/` et `/tags/<tag>` : les tags

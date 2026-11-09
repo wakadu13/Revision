@@ -48,7 +48,7 @@ def page(request):
 @never_cache
 def catalogue(request):
     """Sets disponibles (sans les questions), jeton CSRF et joueur connecté."""
-    library = quiz.get_library()
+    library = quiz.get_library().pour(player_id(request))
     sets = [{"id": s.id, "titre": s.titre, "description": s.description, "categorie": s.categorie,
              "langue": s.langue, "total": len(s)}
             for s in library.sorted_sets()]
@@ -61,7 +61,7 @@ def catalogue(request):
 @never_cache
 def telecharger(request):
     """Sets demandés (?id=…&id=…) avec questions pré-rendues, progression et quotas."""
-    library = quiz.get_library()
+    library = quiz.get_library().pour(player_id(request))
     player = player_id(request)
     decks = QuizDeck.map_for(player)
     vault = get_vault()
@@ -147,7 +147,7 @@ def synchro(request):
     except (KeyError, ValueError, TypeError):
         return JsonResponse({"error": "requête invalide"}, status=400)
 
-    library = quiz.get_library()
+    library = quiz.get_library().pour(player_id(request))
     player = player_id(request)
     now = timezone.now()
     valides, traitees = [], []
