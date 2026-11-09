@@ -46,6 +46,28 @@ exemple Pillow pour les images allégées), reconstruire d'abord l'image si elle
 installe les dépendances (`docker compose build`, puis `docker compose up -d`).
 La configuration Docker est dans `/home/pi/deploy`, hors de ce dépôt.
 
+**Serveur de production : gunicorn.** Dans le `compose.yaml` de `/home/pi/deploy`,
+le service `web` doit lancer gunicorn avec la configuration du dépôt, plutôt que
+`runserver` (serveur de développement de Django, pas fait pour Internet) :
+
+```yaml
+    command: gunicorn -c config/gunicorn.conf.py config.wsgi
+    restart: unless-stopped
+```
+
+La configuration garde **un seul processus** avec plusieurs fils
+(`GUNICORN_THREADS`, 4 par défaut ; `GUNICORN_BIND`, `0.0.0.0:8000` par défaut) :
+la file des travaux de Claude vit dans le processus, et plusieurs processus
+pourraient reprendre deux fois un même travail. gunicorn étant une dépendance du
+projet, reconstruire l'image avant de changer la commande. Les journaux restent
+lisibles avec `docker compose logs web`.
+
+**Fichiers du coffre** : le wiki vérifie au plus toutes les 2 secondes si des
+fichiers ont changé (`WIKI_VERIF_INTERVALLE`, en secondes) au lieu de parcourir
+tout le coffre à chaque requête ; une page déposée à la main ou par Obsidian
+apparaît donc au plus tard 2 secondes après. Ce que le wiki écrit lui-même
+(éditeur, import, Claude) est visible tout de suite.
+
 Sur un PC Windows (PowerShell, dans le dossier du projet) :
 
 ```powershell
@@ -155,6 +177,12 @@ depuis le bord, ou quand la souris touche le bord ; un appui sur le texte (ou
 <kbd>Échap</kbd>) le referme. Le bouton ▯ en haut du menu le garde affiché
 pendant la lecture (choix retenu sur l'appareil) ; un nouvel appui le cache de
 nouveau. Sur téléphone, le menu reste derrière le bouton ☰.
+
+**Imprimer** : le bouton « Imprimer » d'une page (ou <kbd>Ctrl</kbd>+<kbd>P</kbd>)
+n'imprime que le contenu, en clair même en thème sombre, sans menus ni boutons,
+encadrés repliés ouverts ; « Enregistrer au format PDF » du navigateur donne une
+fiche à garder. Dans l'application Android, le bouton passe par l'impression
+d'Android.
 
 ### Thème et palette de commandes
 
@@ -495,6 +523,10 @@ avec l'adresse du réseau local (HTTP, ou HTTPS avec Caddy). Détails :
 
 - **Sur le téléphone** : l'application Android avertit les admins quand le
   rappel quotidien ne joint pas le serveur alors que le réseau est là.
+- **Erreurs du serveur** (`/erreurs/`, menu des admins, avec un badge quand il y
+  en a de nouvelles) : chaque page en erreur 500 et chaque incident du fil des
+  travaux de Claude, regroupés quand ils se répètent, avec l'adresse, le compte,
+  l'endroit du code et la trace complète ; « Marquer comme réglée », « Effacer ».
 
 ## Sécurité
 
@@ -579,9 +611,9 @@ $env:DJANGO_CLOUDFLARE = "1"
   PDF s'importe depuis l'adresse locale.
 
 Mise en production : définir `DJANGO_ALLOWED_HOSTS` et `DJANGO_CSRF_TRUSTED_ORIGINS`,
-servir le site en HTTPS derrière un proxy (`DJANGO_BEHIND_PROXY=1`) avec un
-serveur WSGI (gunicorn, waitress…) plutôt que `runserver`, puis vérifier avec
-`uv run python manage.py check --deploy`.
+servir le site en HTTPS derrière un proxy (`DJANGO_BEHIND_PROXY=1`) avec gunicorn
+(`config/gunicorn.conf.py`, voir « Mettre le serveur à jour ») plutôt que
+`runserver`, puis vérifier avec `uv run python manage.py check --deploy`.
 
 Les tests d'attaque (accès sans compte, élévation de privilèges, XSS, traversée
 de chemins, CSRF, force brute, redirections ouvertes, fixation de session,
@@ -628,7 +660,10 @@ en-têtes) sont dans [`core/tests.py`](core/tests.py) :
 
 Ils tournent sur GitHub à chaque push et chaque pull request (workflow
 « Tests » : tests Django, syntaxe des scripts, et un scénario de bout en bout
-dans Chromium avec Playwright), en plus de l'APK.
+dans Chromium avec Playwright, sur gunicorn comme en production), en plus de
+l'APK. **Dependabot** (`.github/dependabot.yml`) propose chaque lundi les mises à
+jour des dépendances Python et Android (et chaque mois celles des actions
+GitHub) en pull requests regroupées, testées par la même CI.
 
 ```bash
 uv run python manage.py test

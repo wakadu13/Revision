@@ -1,0 +1,33 @@
+# Mises à jour des dépendances : Dependabot ouvre chaque lundi des pull requests,
+# testées par la CI (tests Django, scénario navigateur, APK). On les fusionne quand
+# tout est vert ; une mise à jour Python demande ensuite de reconstruire l'image
+# Docker du serveur (README, « Mettre le serveur à jour »).
+version: 2
+updates:
+  - package-ecosystem: "uv"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+    groups:
+      python:
+        patterns: ["*"]
+
+  - package-ecosystem: "gradle"
+    directory: "/android"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+    groups:
+      android:
+        patterns: ["*"]
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    groups:
+      actions:
+        patterns: ["*"]

@@ -14,7 +14,7 @@ automatiquement à partir des fichiers, il n'y a ni base de données de pages ni
   Ex. `vault/Cours/BDD/5.Jointure.md` → `/wiki/Cours/BDD/5.Jointure`.
 - **1 fichier `.json` dans `vault/` contenant une clé `questions` = 1 set de QCM**,
   visible sur `/qcm/`. Le **nom du dossier parent** devient la catégorie.
-- Le wiki se réindexe tout seul à chaque requête si un fichier a changé :
+- Le wiki se réindexe tout seul (au plus 2 secondes après) si un fichier a changé :
   **aucun redémarrage, aucune migration, aucun commit n'est nécessaire** pour
   qu'une page apparaisse.
 - Tu ne dois **modifier que des fichiers dans `vault/`**. Ne touche pas au code
@@ -27,7 +27,7 @@ Chemins sur le Raspberry Pi :
 |---|---|
 | Racine du projet | `/home/pi/ProjetPluri/ProjetPluri` |
 | Coffre (pages) | `/home/pi/ProjetPluri/ProjetPluri/vault` |
-| Déploiement Docker | `/home/pi/deploy` (le projet est monté en volume : un fichier écrit est en ligne immédiatement) |
+| Déploiement Docker | `/home/pi/deploy` (le projet est monté en volume : un fichier écrit est en ligne au plus tard 2 secondes après) |
 
 ---
 

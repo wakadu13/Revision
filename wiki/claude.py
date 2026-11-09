@@ -212,6 +212,9 @@ def _boucle():
             traiter(t)
     except Exception:  # noqa: BLE001 - le fil ne doit pas mourir en laissant _fil occupé
         log.exception("Transformations Claude : arrêt inattendu")
+        from .erreurs import noter
+
+        noter("Fil des travaux de Claude")
         with _verrou:
             _fil = None
     finally:
@@ -259,7 +262,10 @@ def traiter(t):
         t.statut, t.message = Transformation.ERREUR, str(e)
     except Exception:  # noqa: BLE001
         log.exception("Transformation Claude de %s", t.source)
-        t.statut, t.message = Transformation.ERREUR, "Erreur inattendue (détail dans la fenêtre du serveur)."
+        from .erreurs import noter
+
+        noter(f"Travail de Claude : {t.source}")
+        t.statut, t.message = Transformation.ERREUR, "Erreur inattendue (détail dans « Erreurs du serveur »)."
     t.fin = timezone.now()
     t.save()
 
@@ -304,7 +310,10 @@ def _terminer(t, message):
         t.statut, t.message = Transformation.ERREUR, str(e)
     except Exception:  # noqa: BLE001
         log.exception("Transformation Claude de %s", t.source)
-        t.statut, t.message = Transformation.ERREUR, "Erreur inattendue (détail dans la fenêtre du serveur)."
+        from .erreurs import noter
+
+        noter(f"Travail de Claude : {t.source}")
+        t.statut, t.message = Transformation.ERREUR, "Erreur inattendue (détail dans « Erreurs du serveur »)."
     t.fin = timezone.now()
     t.save()
 
@@ -473,6 +482,9 @@ def _ecrire(t, texte, avertissement):
 
         historique.sauvegarder(page.as_posix(), cible.read_text(encoding="utf-8"), "Claude")
     cible.write_text(texte + "\n", encoding="utf-8", newline="\n")
+    from .vault import invalider
+
+    invalider()
     return page.as_posix()
 
 

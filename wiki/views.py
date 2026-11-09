@@ -1236,3 +1236,27 @@ def pdf_annotation(request):
         fichier.write_text(nouveau, encoding="utf-8", newline="\n")
         return JsonResponse({"ok": True, "message": f"Citation ajoutée à « {titre} ».", "url": reverse("wiki:page", args=[cle])})
     return JsonResponse({"error": "cible inconnue"}, status=400)
+
+
+# ---------------------------------------------------------------------------
+# Erreurs du serveur (admins)
+# ---------------------------------------------------------------------------
+def erreurs(request):
+    """Dernières erreurs du serveur : regroupées, avec leur trace ; marquer comme réglée, effacer."""
+    from .models import ErreurServeur
+
+    if not can_edit(request):
+        return _deny(request)
+    if request.method == "POST":
+        action = request.POST.get("action")
+        if action == "reglee":
+            ErreurServeur.objects.filter(pk=request.POST.get("pk")).update(reglee=True)
+        elif action == "tout_regle":
+            ErreurServeur.objects.filter(reglee=False).update(reglee=True)
+        elif action == "effacer":
+            ErreurServeur.objects.filter(reglee=True).delete()
+        return redirect("wiki:erreurs")
+    liste = list(ErreurServeur.objects.all()[:100])
+    return _render(request, get_vault(), "wiki/erreurs.html", {
+        "ouvertes": [e for e in liste if not e.reglee], "reglees": [e for e in liste if e.reglee],
+    })

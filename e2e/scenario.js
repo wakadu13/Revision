@@ -172,8 +172,9 @@ const texte = async (sel) => ((await page.textContent(sel)) || "").replace(/\s+/
   await contexte.setOffline(false);
   await page.click("#quiz-langue .quiz-topbar a");
   await page.waitForSelector("#hl-accueil:not([hidden])");
+  // Au retour du réseau, la synchronisation part toute seule ; le bouton la relance au besoin.
   await page.click("#hl-synchroniser");
-  await page.waitForFunction(() => /synchronisées/.test(document.getElementById("hl-etat").textContent));
+  await page.waitForFunction(() => /synchronisées|tout est synchronisé/.test(document.getElementById("hl-etat").textContent));
   const serveur = await (await page.request.get(BASE + `/qcm/hors-ligne/sets/?id=${encodeURIComponent(PAQUET)}`)).json();
   await verifier("révisions hors ligne reçues par le serveur", Object.keys(serveur.sets[0].progression).length === 3, JSON.stringify(Object.keys(serveur.sets[0].progression)));
   const rappel = await (await page.request.get(BASE + "/api/rappel/")).json();
