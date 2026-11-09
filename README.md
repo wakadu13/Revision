@@ -325,8 +325,19 @@ dans la barre latérale ou sur `/qcm/`.
 - 5 types de questions : **QCM**, **QCR** (plusieurs réponses), **TROU** (texte à
   trous), **QRC** (réponse courte tapée : traduction, synonyme…, avec sens inverse
   optionnel) et **FLASHCARD** (recto/verso). Markdown et formules LaTeX `$...$` gérés.
-- Feedback immédiat, navigation clavier, et **révision espacée** (système de
-  Leitner) avec statistiques de maîtrise par set.
+- Feedback immédiat, navigation clavier, et **révision espacée FSRS** (le même
+  planificateur que le module Langues) : chaque question revient juste avant
+  d'être oubliée, les plus menacées d'abord ; statistiques de maîtrise et de
+  rétention par set, **révisions à venir** sur 14 jours dans les statistiques.
+  La progression faite avant FSRS (boîtes de Leitner) est reprise telle quelle
+  à la prochaine réponse.
+- **Planning** par set (quotas de nouvelles et de révisions par jour, date
+  d'examen, estimation de la durée) ; **date d'examen par catégorie** en un
+  clic (« Examen le … » en tête de catégorie) ; case « Ajuster automatiquement
+  pour être prêt à temps » : si l'estimation dit « en retard », les nouvelles
+  par jour passent au nombre conseillé et les révisions ne sont plus limitées.
+  Dans les 30 jours avant l'examen, les révisions visent 95 % de rappel au lieu
+  de 90 % (intervalles plus serrés).
 - **Révision intensive** (par set ou par catégorie) : les questions ratées
   reviennent dans la session jusqu'à être réussies 2 fois de suite.
 - **Module Langues** (comme dans revision_qcm) : un fichier `.json` avec une clé

@@ -790,16 +790,19 @@ class QuizTests(TestCase):
     def test_estimation(self):
         from datetime import timedelta
         from django.utils import timezone
-        from wiki import planning
-        neuves = [(0, 0, True)] * 4
-        # Réponses toujours justes : boîte 3 au bout de 0+1+3 jours → 5 jours, 12 réponses.
-        self.assertEqual(planning.simuler(neuves, 4, 4, 1.0), (5, 12))
+        from wiki import fsrs, planning
+        neuves = [(None, 0, 0)] * 4
+        # Réponses toujours justes : découverte (stabilité 3 j), révision 3 jours plus tard
+        # → stabilité > 7 j, sue : 4 jours, 8 réponses.
+        self.assertEqual(planning.simuler(neuves, 4, 4, 1.0), (4, 8))
         # Un quota de nouvelles plus faible rallonge la durée ; un quota épuisé aujourd'hui décale d'un jour.
-        self.assertGreater(planning.simuler(neuves, 1, 4, 1.0)[0], 5)
-        self.assertEqual(planning.simuler(neuves, 4, 4, 1.0, deja=(4, 0))[0], 6)
-        # Des révisions plafonnées ralentissent aussi.
-        self.assertGreater(planning.simuler(neuves, 4, 1, 1.0)[0], 5)
-        self.assertEqual(planning.simuler([(3, 0, False)], 1, 1, 1.0), (0, 0))
+        self.assertGreater(planning.simuler(neuves, 1, 4, 1.0)[0], 4)
+        self.assertEqual(planning.simuler(neuves, 4, 4, 1.0, deja=(4, 0))[0], 5)
+        # Des révisions plafonnées ralentissent aussi ; une question déjà stable est sue d'emblée.
+        self.assertGreater(planning.simuler(neuves, 4, 1, 1.0)[0], 4)
+        self.assertEqual(planning.simuler([(fsrs.Etat(7.0, 5.0), 0, 0)], 1, 1, 1.0), (0, 0))
+        # Examen proche : rétention visée plus haute, révisions plus serrées, donc plus nombreuses.
+        self.assertGreater(planning.simuler(neuves, 4, 4, 1.0, retention=0.95)[1], 8)
 
         aujourdhui = timezone.localdate()
         self.client.post("/qcm/planning/", {"set": "reseaux/test_set", "nouvelles_jour": "1",
@@ -2623,3 +2626,137 @@ class EditeurConvivialTests(WikiTestCase):
         self.assertEqual(page.context["tag_choices"], ["maths", "physique", "signal"])
         # L'ancien bouton « Encadré » unique a laissé la place au menu.
         self.assertNotIn('data-action="callout"', html)
+
+
+class FsrsQcmTests(TestCase):
+    """QCM planifiés par FSRS : échéances, progression ancienne (Leitner), examen par
+    catégorie, ajustement automatique, prévisions."""
+
+    def setUp(self):
+        QuizTests.setUp(self)
+
+    def _reponse(self, qid, correct=True, **extra):
+        import json
+        return self.client.post("/qcm/reponse/", data=json.dumps({"set_id": "reseaux/test_set", "question_id": qid,
+                                                                  "correct": correct, **extra}), content_type="application/json")
+
+    def test_record_fixe_une_echeance_fsrs(self):
+        from datetime import timedelta
+        from django.utils import timezone
+        from wiki.models import QuizProgress
+        r = self._reponse("q-qcm").json()
+        p = QuizProgress.objects.get(question_id="q-qcm")
+        self.assertAlmostEqual(p.stabilite, 3.126, places=3)
+        self.assertEqual((p.box, p.oublis, p.last_correct), (1, 0, True))
+        self.assertIsNotNone(p.decouverte)
+        self.assertGreaterEqual(p.echeance, p.last_review + timedelta(days=1))
+        self.assertEqual(r["stabilite"], p.stabilite)
+        self.assertFalse(p.is_due())
+        # Ratée : revient dans 10 minutes, un oubli de plus.
+        self._reponse("q-qcm", correct=False)
+        p.refresh_from_db()
+        self.assertEqual((p.box, p.oublis, p.last_correct), (0, 1, False))
+        self.assertEqual(p.echeance, p.last_review + timedelta(minutes=10))
+        self.assertFalse(p.is_due())
+        self.assertTrue(p.is_due(timezone.now() + timedelta(minutes=11)))
+        # Priorité : les plus menacées d'oubli d'abord.
+        self.assertLess(p.urgence(timezone.now() + timedelta(days=30)), p.urgence())
+
+    def test_progression_ancienne_leitner(self):
+        from datetime import timedelta
+        from django.utils import timezone
+        from wiki.models import QuizProgress
+        il_y_a = timezone.now() - timedelta(days=10)
+        # Ligne d'avant FSRS : boîte 3 (intervalle 7 jours), sans échéance → due selon Leitner.
+        p = QuizProgress.objects.create(player="alice", set_id="reseaux/test_set", question_id="q-qcm", box=3,
+                                        seen=3, correct=3, last_review=il_y_a, premiere_revue=il_y_a)
+        self.assertTrue(p.is_due())
+        self.assertAlmostEqual(p.urgence(), 0.6)
+        self._reponse("q-qcm")
+        p.refresh_from_db()
+        # Stabilité estimée d'après la boîte (7 j) puis révision réussie : elle grandit.
+        self.assertGreater(p.stabilite, 7)
+        self.assertEqual(p.box, 4)
+        self.assertGreater(p.echeance, timezone.now() + timedelta(days=7))
+        self.assertIsNone(p.decouverte)  # déjà apprise avant FSRS
+        summary = self.client.get("/qcm/").context["categories"][0]["sets"][0]["summary"]
+        self.assertIsNotNone(summary["retention"])
+        self.assertGreater(summary["pct_maitrise"], 0)
+
+    def test_retention_visee_avant_examen(self):
+        from datetime import timedelta
+        from django.utils import timezone
+        from wiki import fsrs, planning
+        from wiki.models import QuizDeck, QuizProgress
+        auj = timezone.localdate()
+        self.assertEqual(planning.retention_cible(None, timezone.now()), fsrs.RETENTION)
+        self.assertEqual(planning.retention_cible(auj + timedelta(days=60), timezone.now()), fsrs.RETENTION)
+        self.assertEqual(planning.retention_cible(auj + timedelta(days=10), timezone.now()), planning.RETENTION_EXAMEN)
+        self.assertEqual(planning.retention_cible(auj - timedelta(days=1), timezone.now()), fsrs.RETENTION)
+        # Examen dans 10 jours : même réponse, échéance plus proche.
+        self._reponse("q-qcr")
+        loin = QuizProgress.objects.get(question_id="q-qcr").echeance
+        QuizDeck.objects.create(player="alice", set_id="reseaux/test_set", date_objectif=auj + timedelta(days=10))
+        self._reponse("q-trou")
+        pres = QuizProgress.objects.get(question_id="q-trou").echeance
+        self.assertLess(pres, loin)
+
+    def test_examen_par_categorie_et_ajustement_auto(self):
+        import json
+        from datetime import timedelta
+        from django.utils import timezone
+        from wiki.models import QuizDeck
+        (self.root / "reseaux" / "autre.json").write_text(json.dumps({"titre": "Autre", "questions": [
+            {"id": "a1", "type": "FLASHCARD", "question": "a", "verso": "A"}]}), encoding="utf-8")
+        (self.root / "reseaux" / "grand.json").write_text(json.dumps({"titre": "Grand", "questions": [
+            {"id": f"g{i}", "type": "FLASHCARD", "question": f"q{i}", "verso": "r"} for i in range(12)]}), encoding="utf-8")
+        auj = timezone.localdate()
+        r = self.client.post("/qcm/planning/", {"categorie": "reseaux", "langue": "", "date_objectif": str(auj + timedelta(days=20))}, follow=True)
+        self.assertContains(r, "pour les 3 sets de « reseaux »")
+        self.assertEqual(sorted(str(d.date_objectif) for d in QuizDeck.objects.filter(player="alice")),
+                         [str(auj + timedelta(days=20))] * 3)
+        self.assertContains(r, f'value="{auj + timedelta(days=20):%Y-%m-%d}"')
+        self.assertEqual(self.client.post("/qcm/planning/", {"categorie": "inconnue", "date_objectif": ""}).status_code, 404)
+        # Ajustement automatique : 1 nouvelle par jour (22 jours estimés) ne suffit pas pour
+        # 12 questions en 14 jours ; l'estimation conseille 3 par jour, appliquées à la file.
+        self.client.post("/qcm/planning/", {"set": "reseaux/grand", "nouvelles_jour": "1",
+                                            "date_objectif": str(auj + timedelta(days=14)), "auto": "1"})
+        deck = QuizDeck.objects.get(player="alice", set_id="reseaux/grand")
+        self.assertTrue(deck.auto_quota)
+        ids = [q["id"] for q in self.client.get("/qcm/jouer/?set=reseaux/grand&mode=review").context["questions"]]
+        self.assertEqual(len(ids), 3)
+        page = self.client.get("/qcm/")
+        self.assertContains(page, "Ajustement automatique : 3 nouvelles par jour")
+        self.assertContains(page, "name=\"auto\" value=\"1\" checked")
+        # Sans date, l'ajustement ne s'applique pas.
+        self.client.post("/qcm/planning/", {"set": "reseaux/grand", "nouvelles_jour": "1", "auto": "1"})
+        deck.refresh_from_db()
+        self.assertFalse(deck.auto_quota)
+        ids = [q["id"] for q in self.client.get("/qcm/jouer/?set=reseaux/grand&mode=review").context["questions"]]
+        self.assertEqual(len(ids), 1)
+
+    def test_previsions_et_telechargement(self):
+        from datetime import timedelta
+        from django.utils import timezone
+        from wiki.models import QuizProgress
+        now = timezone.now()
+        QuizProgress.objects.create(player="alice", set_id="reseaux/test_set", question_id="q-qcm", seen=1, correct=1,
+                                    stabilite=3.0, difficulte=5.0, last_review=now - timedelta(days=1), echeance=now + timedelta(days=2))
+        QuizProgress.objects.create(player="alice", set_id="reseaux/test_set", question_id="q-qcr", seen=1, correct=1,
+                                    stabilite=3.0, difficulte=5.0, last_review=now - timedelta(days=5), echeance=now - timedelta(days=2))
+        QuizProgress.objects.create(player="alice", set_id="reseaux/test_set", question_id="q-trou", box=2, seen=1, correct=1,
+                                    last_review=now - timedelta(days=1))  # Leitner : due dans 2 jours
+        QuizProgress.objects.create(player="alice", set_id="disparu", question_id="x", seen=1, stabilite=1.0, echeance=now,
+                                    last_review=now)
+        response = self.client.get("/qcm/stats/")
+        self.assertContains(response, "Révisions à venir")
+        previsions = response.context["previsions"]
+        self.assertEqual(len(previsions), 14)
+        self.assertEqual((previsions[0]["n"], previsions[2]["n"], response.context["previsions_total"]), (1, 2, 3))
+        self.assertContains(response, "<th>Rétention</th>")
+        data = self.client.get("/qcm/hors-ligne/sets/", {"id": "reseaux/test_set"}).json()
+        p = data["sets"][0]["progression"]["q-qcm"]
+        self.assertEqual((p["stabilite"], p["oublis"]), (3.0, 0))
+        self.assertTrue(p["echeance"])
+        self.assertContains(self.client.get("/qcm/hors-ligne/"), "fsrs.js")
+        self.assertContains(self.client.get("/qcm/sw.js"), "fsrs.js")

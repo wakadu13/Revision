@@ -21,12 +21,27 @@
     </div>
   </section>
 
+  <section class="quiz-previsions">
+    <h2>Révisions à venir</h2>
+    <p class="muted">{{ previsions_total }} révision{{ previsions_total|pluralize }} prévue{{ previsions_total|pluralize }} sur {{ previsions|length }} jours (QCM et langues),
+      d'après les échéances FSRS ; les retards comptent aujourd'hui.</p>
+    <div class="quiz-previsions-barres" role="img" aria-label="Révisions prévues par jour">
+      {% for p in previsions %}
+      <div class="quiz-prevision" title="{{ p.jour|date:'l j F' }} : {{ p.n }} révision{{ p.n|pluralize }}">
+        <span class="quiz-prevision-n">{{ p.n|default:"" }}</span>
+        <div class="quiz-prevision-barre" style="height: {% widthratio p.n previsions_max 100 %}%"></div>
+        <span class="quiz-prevision-jour">{% if forloop.first %}auj.{% else %}{{ p.jour|date:"D j" }}{% endif %}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
   {% for cat in categories %}
   <section class="quiz-category">
     <h2>{{ cat.nom }}</h2>
     <table class="quiz-stats">
       <thead>
-        <tr><th>Set</th><th>Maîtrise</th><th>Vues</th><th>Précision</th><th>À réviser</th><th>Ratées</th><th></th></tr>
+        <tr><th>Set</th><th>Maîtrise</th><th>Rétention</th><th>Vues</th><th>Précision</th><th>À réviser</th><th>Ratées</th><th></th></tr>
       </thead>
       <tbody>
         {% for entry in cat.sets %}
@@ -36,6 +51,7 @@
             <div class="mastery"><div class="mastery-fill" style="width: {{ entry.summary.pct_maitrise|floatformat:0 }}%"></div></div>
             <span class="muted">{{ entry.summary.pct_maitrise|floatformat:0 }} %</span>
           </td>
+          <td title="Probabilité moyenne de se souvenir des questions déjà vues, maintenant">{% if entry.summary.retention is not None %}{{ entry.summary.retention|floatformat:0 }} %{% else %}<span class="muted">—</span>{% endif %}</td>
           <td>{{ entry.summary.rencontrees }}/{{ entry.summary.total }}</td>
           <td>{{ entry.summary.precision|floatformat:0 }} %</td>
           <td>{% if entry.summary.a_reviser %}{{ entry.summary.a_reviser }}{% else %}<span class="muted">à jour ✓</span>{% endif %}</td>

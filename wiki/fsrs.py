@@ -81,6 +81,7 @@ def suivante(etat: Etat, jours: float, note: int) -> Etat:
     return Etat(max(s2, S_MIN), d2)
 
 
-def intervalle_jours(stabilite: float) -> float:
-    """Intervalle (en jours) avant que la probabilité de rappel retombe à RETENTION."""
-    return stabilite / FACTOR * (RETENTION ** (1 / DECAY) - 1)
+def intervalle_jours(stabilite: float, retention: float = RETENTION) -> float:
+    """Intervalle (en jours) avant que la probabilité de rappel retombe à `retention`
+    (90 % par défaut ; plus haut à l'approche d'un examen : révisions plus serrées)."""
+    return stabilite / FACTOR * (retention ** (1 / DECAY) - 1)

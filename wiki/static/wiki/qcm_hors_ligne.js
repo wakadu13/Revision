@@ -2,23 +2,24 @@
 // synchronisation avec le serveur quand la connexion revient. Les paquets du
 // module Langues (FSRS) passent par langues_hors_ligne.js, même file d'attente.
 //
-// La progression (boîtes de Leitner) est recalculée sur l'appareil avec les
-// mêmes règles que quiz.py, pour savoir quelles questions sont à réviser sans
-// le serveur. Le serveur reste la référence : à chaque synchronisation, les
-// réponses en attente lui sont envoyées puis la progression est re-téléchargée.
+// La progression (FSRS, et boîte de Leitner comme indicateur) est recalculée
+// sur l'appareil avec les mêmes règles que models.py et quiz.py (fsrs.js), pour
+// savoir quelles questions sont à réviser sans le serveur. Le serveur reste la
+// référence : à chaque synchronisation, les réponses en attente lui sont
+// envoyées puis la progression est re-téléchargée.
 (function () {
   const A = window.QcmAttente;
   const app = document.getElementById("hl");
   if (!app || !A) return;
   const $ = (id) => document.getElementById(id);
   const L = window.LanguesHorsLigne || null;
+  const F = window.FSRS;
+  if (!F) return;
   const estLangue = (s) => s.type === "langue";
 
-  // --- Révision espacée : mêmes règles que quiz.py ---
-  const INTERVALLES_JOURS = [0, 1, 3, 7, 14, 30];
+  // --- Révision espacée : mêmes règles que models.py / quiz.py ---
   const BOITE_MAX = 5;
   const NOTES = ["a_revoir", "difficile", "bien", "facile"];
-  const JOUR_MS = 86400000;
 
   function nouvelleBoite(boite, note) {
     if (note === "a_revoir") return 0;
@@ -26,26 +27,35 @@
     return Math.min(BOITE_MAX, boite + (note === "facile" ? 2 : 1));
   }
 
-  function estDue(st, now) {
-    if (!st || !st.last_review) return true;
-    return now >= Date.parse(st.last_review) + INTERVALLES_JOURS[Math.min(st.box, BOITE_MAX)] * JOUR_MS;
-  }
+  const estDue = (st, now) => F.estDuQcm(st, now);
 
   function jour(d) {
     const x = new Date(d);
     return x.getFullYear() + "-" + (x.getMonth() + 1) + "-" + x.getDate();
   }
 
-  // Applique une réponse à la progression locale d'un set (comme QuizProgress.record).
+  // Applique une réponse à la progression locale d'un set (comme QuizProgress.record) :
+  // statistiques, boîte de Leitner et état FSRS, qui fixe la prochaine échéance.
   function appliquer(set, rep) {
-    const st = set.progression[rep.question_id] || { box: 0, seen: 0, correct: 0, last_review: null, premiere_revue: null };
+    const st = set.progression[rep.question_id] || { box: 0, seen: 0, correct: 0, last_review: null, premiere_revue: null,
+      stabilite: null, difficulte: null, echeance: null, decouverte: null, oublis: 0, last_correct: null };
     if (st.last_review && Date.parse(rep.date) <= Date.parse(st.last_review)) return;
     const note = NOTES.includes(rep.note) ? rep.note : (rep.correct ? "bien" : "a_revoir");
+    const noteFsrs = NOTES.indexOf(note) + 1;
+    const now = Date.parse(rep.date);
+    const dejaAppris = st.stabilite != null || st.seen > 0;
+    const etat = F.etatSuivantQcm(st, noteFsrs, now);
     st.seen++;
     if (note !== "a_revoir") st.correct++;
     st.box = nouvelleBoite(st.box, note);
+    st.last_correct = note !== "a_revoir";
     st.last_review = rep.date;
     if (!st.premiere_revue) st.premiere_revue = rep.date;
+    st.stabilite = Math.round(etat.stabilite * 1000) / 1000;
+    st.difficulte = Math.round(etat.difficulte * 1000) / 1000;
+    st.echeance = new Date(now + F.delaiMs(etat, noteFsrs)).toISOString();
+    if (!st.decouverte && !dejaAppris) st.decouverte = rep.date;
+    if (dejaAppris && note === "a_revoir") st.oublis = (st.oublis || 0) + 1;
     set.progression[rep.question_id] = st;
   }
 
@@ -63,7 +73,8 @@
       }
     }
     const cle = (q) => set.progression[q.id];
-    vues.sort((a, b) => (cle(a).box - cle(b).box) || (Date.parse(cle(a).last_review || 0) - Date.parse(cle(b).last_review || 0)));
+    // Les plus menacées d'oubli d'abord (rétention FSRS ; boîte pour une progression ancienne).
+    vues.sort((a, b) => (F.urgence(cle(a), now) - F.urgence(cle(b), now)) || (Date.parse(cle(a).last_review || 0) - Date.parse(cle(b).last_review || 0)));
     let dejaN = 0, dejaR = 0;
     for (const st of Object.values(set.progression)) {
       if (st.premiere_revue && jour(st.premiere_revue) === aujourdhui) dejaN++;
@@ -266,7 +277,7 @@
         if (estLangue(s)) continue;
         for (const q of fileDuJour(s, now)) {
           const st = s.progression[q.id];
-          paires.push({ q, prio: st ? [estDue(st, now) ? 0 : 1, st.box, Date.parse(st.last_review || 0)] : [0, -1, 0] });
+          paires.push({ q, prio: st ? [estDue(st, now) ? 0 : 1, F.urgence(st, now), Date.parse(st.last_review || 0)] : [0, -1, 0] });
         }
       }
       paires.sort((a, b) => a.prio[0] - b.prio[0] || a.prio[1] - b.prio[1] || a.prio[2] - b.prio[2]);

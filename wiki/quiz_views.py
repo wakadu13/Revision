@@ -9,7 +9,7 @@ import json
 import random
 import shutil
 import tempfile
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path, PurePosixPath
 
 from django.contrib import messages
@@ -99,13 +99,14 @@ def _file_du_jour(qset, progress, deck, now):
                 reapprendre.append(q)
             else:
                 vues.append((st, q))
-    vues.sort(key=lambda t: (t[0].box, t[0].last_review or _JAMAIS))
+    vues.sort(key=lambda t: (t[0].urgence(now), t[0].last_review or _JAMAIS))
     vues = [q for _, q in vues]
     dues = len(reapprendre) + len(vues) + len(nouvelles)
     if deck is not None:
         deja_n, deja_r = planning.faites_aujourdhui(progress, now)
-        places_r = planning.restant(deck.revisions_jour, deja_r)
-        places_n = planning.restant(deck.nouvelles_jour, deja_n)
+        quota_n, quota_r = planning.quotas_effectifs(qset, progress, deck, now)
+        places_r = planning.restant(quota_r, deja_r)
+        places_n = planning.restant(quota_n, deja_n)
         vues = vues[:places_r] if places_r is not None else vues
         nouvelles = nouvelles[:places_n] if places_n is not None else nouvelles
     detail = {"dues": dues, "nouvelles": len(nouvelles), "revisions": len(vues), "reapprendre": len(reapprendre)}
@@ -119,7 +120,10 @@ def question_ratee(st):
 
 def _set_summary(qset, progress, now, deck=None):
     """Statistiques d'un set (maîtrise, à réviser, précision, répartition)."""
-    seen = corrects = total_rep = 0
+    from . import langues
+
+    seen = corrects = total_rep = maitrisees = 0
+    maitrise = retention = 0.0
     repartition = {b: 0 for b in range(quiz.BOITE_MAX + 1)}
     for q in qset.questions:
         st = progress.get(q.id)
@@ -128,22 +132,26 @@ def _set_summary(qset, progress, now, deck=None):
             corrects += st.correct
             total_rep += st.seen
             repartition[st.box] += 1
+            # Maîtrise : stabilité FSRS rapportée à MAITRISE_JOURS (boîte de Leitner pour une progression ancienne).
+            maitrise += min(1.0, st.stabilite / langues.MAITRISE_JOURS) if st.stabilite is not None else st.box / quiz.BOITE_MAX
+            retention += st.urgence(now)
+            maitrisees += st.stabilite is not None and st.stabilite >= langues.MAITRISE_JOURS
         else:
             repartition[0] += 1
     file, detail = _file_du_jour(qset, progress, deck, now)
-    maitrise = sum(b * n for b, n in repartition.items())
-    maitrise_max = quiz.BOITE_MAX * len(qset) or 1
     ids = {q.id for q in qset.questions}
     return {
         "total": len(qset),
         "rencontrees": seen,
+        "maitrisees": maitrisees,
+        "retention": retention / seen * 100 if seen else None,
         "a_reviser": len(file),
         "ratees": sum(1 for qid, st in progress.items() if qid in ids and question_ratee(st)),
         **detail,
         "quota_atteint": detail["dues"] > 0 and not file,
         "precision": (corrects / total_rep * 100) if total_rep else 0.0,
         "repartition": repartition,
-        "pct_maitrise": maitrise / maitrise_max * 100,
+        "pct_maitrise": maitrise / (len(qset) or 1) * 100,
     }
 
 
@@ -177,12 +185,14 @@ def index(request):
     for (langue, cat), entries in groupes.items():
         shown = sum(e["match"] for e in entries)
         matches += shown
+        dates = [e["deck"].date_objectif for e in entries if e["deck"].date_objectif]
         par_langue.setdefault(langue, []).append({
             "nom": cat,
             "langue": langue,
             "sets": entries,
             "shown": shown,
             "a_reviser": sum(e["summary"]["a_reviser"] for e in entries),
+            "date_objectif": min(dates) if dates else None,
         })
     categories = par_langue.pop("", [])
     from .langues_views import dossier_de, resume_langue
@@ -372,12 +382,14 @@ def record(request):
     obj, _ = QuizProgress.objects.get_or_create(
         player=player_id(request), set_id=set_id, question_id=question_id
     )
-    obj.record(reponse)
+    deck = QuizDeck.objects.filter(player=obj.player, set_id=set_id).first()
+    obj.record(reponse, retention=planning.retention_cible(deck.date_objectif if deck else None, timezone.now()))
     obj.save()
     Activite.noter(obj.player, obj.last_correct, nouveau=obj.seen == 1)
 
     chronometrer(obj.player, set_id, data.get("duree_ms"))
-    return JsonResponse({"box": obj.box, "seen": obj.seen, "correct": obj.correct})
+    return JsonResponse({"box": obj.box, "seen": obj.seen, "correct": obj.correct,
+                         "stabilite": obj.stabilite, "echeance": obj.echeance.isoformat()})
 
 
 def chronometrer(player, set_id, duree):
@@ -402,14 +414,33 @@ def stats(request):
                    for qset in sets]
         categories.append({"nom": cat, "sets": entries})
     aujourdhui = timezone.localdate(now)
+    previsions = _previsions(player, library, now)
     return render(request, "wiki/quiz_stats.html", _ctx(
         request, categories=categories, boites=range(quiz.BOITE_MAX + 1), claude_dispo=claude.disponible(),
+        previsions=previsions, previsions_max=max([p["n"] for p in previsions] + [1]),
+        previsions_total=sum(p["n"] for p in previsions),
         activite=Activite.resume(player, aujourdhui), calendrier=Activite.calendrier(player, aujourdhui),
         mois=_mois_du_calendrier(Activite.calendrier(player, aujourdhui)),
     ))
 
 
 MOIS_COURTS = ["Jan", "Fév", "Mars", "Avr", "Mai", "Juin", "Juil", "Août", "Sep", "Oct", "Nov", "Déc"]
+JOURS_PREVISION = 14
+
+
+def _previsions(player, library, now, jours=JOURS_PREVISION):
+    """Révisions à venir (QCM et langues) : une case par jour, les retards comptés aujourd'hui."""
+    aujourdhui = timezone.localdate(now)
+    compteurs = [0] * jours
+    connus = set(library.sets) | set(library.langues)
+    for p in QuizProgress.objects.filter(player=player).exclude(last_review=None):
+        if p.set_id not in connus:
+            continue
+        echeance = p.echeance or (p.last_review + timedelta(days=quiz.INTERVALLES_JOURS.get(p.box, 30)))
+        d = (timezone.localdate(echeance) - aujourdhui).days
+        if d < jours:
+            compteurs[max(0, d)] += 1
+    return [{"jour": aujourdhui + timedelta(days=d), "n": compteurs[d]} for d in range(jours)]
 
 
 def _mois_du_calendrier(grille):
@@ -448,8 +479,31 @@ def _ancre(set_id):
 
 @require_POST
 @login_required
+def _plan_categorie(request, library, player):
+    """Date d'examen appliquée à tous les sets d'une catégorie."""
+    categorie, langue = request.POST.get("categorie", ""), request.POST.get("langue", "")
+    sets = [s for s in library.categories().get(categorie, []) if s.langue == langue]
+    if not sets:
+        raise Http404("Catégorie inconnue")
+    objectif = request.POST.get("date_objectif", "").strip()
+    try:
+        objectif = date.fromisoformat(objectif) if objectif else None
+    except ValueError:
+        messages.error(request, "Date d'examen invalide.")
+        return redirect("wiki:quiz_index")
+    for s in sets:
+        QuizDeck.objects.update_or_create(player=player, set_id=s.id, defaults={"date_objectif": objectif})
+    combien = "le set" if len(sets) == 1 else f"les {len(sets)} sets"
+    messages.success(request, f"Date d'examen {'fixée au ' + objectif.strftime('%d/%m/%Y') if objectif else 'retirée'} "
+                              f"pour {combien} de « {categorie} ».")
+    return redirect("wiki:quiz_index")
+
+
 def plan(request):
     """Enregistre les quotas journaliers et la date d'examen d'un set."""
+    library = quiz.get_library()
+    if request.POST.get("categorie"):
+        return _plan_categorie(request, library, player_id(request))
     set_id = request.POST.get("set", "")
     if quiz.get_library().get(set_id) is None:
         raise Http404("Set inconnu")
@@ -471,7 +525,7 @@ def plan(request):
         return redirect(reverse("wiki:quiz_index") + "#" + _ancre(set_id))
     QuizDeck.objects.update_or_create(
         player=player_id(request), set_id=set_id,
-        defaults={**quotas, "date_objectif": objectif},
+        defaults={**quotas, "date_objectif": objectif, "auto_quota": request.POST.get("auto") == "1" and objectif is not None},
     )
     return redirect(reverse("wiki:quiz_index") + "#" + _ancre(set_id))
 

@@ -7,6 +7,13 @@
   <div class="quiz-category-actions">
     <a class="button small" href="{% url 'wiki:quiz_play' %}?categorie={{ cat.nom|urlencode }}{% if cat.langue %}&langue={{ cat.langue|urlencode }}{% endif %}&mode=intensif" title="Répéter les questions ratées jusqu'à tout savoir">Révision intensive de la catégorie</a>
     <a class="button small" href="{% url 'wiki:quiz_play' %}?categorie={{ cat.nom|urlencode }}{% if cat.langue %}&langue={{ cat.langue|urlencode }}{% endif %}&mode=examen" title="20 questions de la catégorie, chronométrées, corrigées à la fin, note sur 20">Examen blanc</a>
+    <form method="post" action="{% url 'wiki:quiz_plan' %}" class="quiz-plan-categorie" title="La même date d'examen pour tous les sets de la catégorie ; chaque set garde ses quotas">
+      {% csrf_token %}
+      <input type="hidden" name="categorie" value="{{ cat.nom }}">
+      <input type="hidden" name="langue" value="{{ cat.langue }}">
+      <label>Examen le <input type="date" name="date_objectif" value="{{ cat.date_objectif|date:'Y-m-d' }}"></label>
+      <button type="submit" class="button small">OK</button>
+    </form>
     {% if can_edit %}{% include "wiki/_quiz_supprimer_dossier.html" %}{% endif %}
   </div>
   <ul class="quiz-sets">

@@ -643,12 +643,13 @@ def etat_suivant(st, note: int, now) -> fsrs.Etat:
     return fsrs.premiere(note)
 
 
-def delai(etat: fsrs.Etat, note: int) -> timedelta:
+def delai(etat: fsrs.Etat, note: int, retention=None) -> timedelta:
     """Délai avant la prochaine révision : un élément oublié revient dès la
-    prochaine session ; sinon l'intervalle FSRS arrondi (au moins un jour)."""
+    prochaine session ; sinon l'intervalle FSRS arrondi (au moins un jour), pour
+    la rétention visée (`retention`, 90 % par défaut)."""
     if note == fsrs.A_REVOIR:
         return timedelta(minutes=10)
-    jours = int(fsrs.intervalle_jours(etat.stabilite) + 0.5)
+    jours = int(fsrs.intervalle_jours(etat.stabilite, retention or fsrs.RETENTION) + 0.5)
     return timedelta(days=min(36_500, max(1, jours)))
 
 
