@@ -52,8 +52,8 @@
                   placeholder="un emploi&#10;to achieve&#10;la cuisine = the kitchen&#10;…"></textarea>
         <fieldset class="claude-cartes">
           <legend>Types de cartes</legend>
-          {% for cle, nom, coche in generation.cartes %}
-          <label class="checkbox"><input type="checkbox" name="cartes" value="{{ cle }}"{% if coche %} checked{% endif %}> {{ nom }}</label>
+          {% for c in generation.cartes %}
+          <label class="checkbox"><input type="checkbox" name="cartes" value="{{ c.cle }}"{% if c.coche %} checked{% endif %}> <span data-modele="{{ c.modele }}">{{ c.nom }}</span></label>
           {% endfor %}
         </fieldset>
         <div class="claude-champs">
@@ -113,8 +113,8 @@
         </div>
         <fieldset class="claude-cartes">
           <legend>Types de cartes</legend>
-          {% for cle, nom, coche in generation.cartes %}
-          <label class="checkbox"><input type="checkbox" name="cartes" value="{{ cle }}"{% if coche %} checked{% endif %}> {{ nom }}</label>
+          {% for c in generation.cartes %}
+          <label class="checkbox"><input type="checkbox" name="cartes" value="{{ c.cle }}"{% if c.coche %} checked{% endif %}> <span data-modele="{{ c.modele }}">{{ c.nom }}</span></label>
           {% endfor %}
         </fieldset>
         <div class="claude-champs">
@@ -208,6 +208,8 @@
   </div>
   {% endif %}
 </article>
+{% if generation %}{{ generation.abreviations|json_script:"abreviations-langues" }}{% endif %}
+<script src="{% static 'wiki/types_cartes.js' %}" defer></script>
 <script src="{% static 'wiki/quiz_index.js' %}" defer></script>
 {% if can_edit %}<script src="{% static 'wiki/quiz_import.js' %}" defer></script>{% endif %}
 {% endblock %}
