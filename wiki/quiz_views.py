@@ -237,8 +237,8 @@ def index(request):
             "nombres": claude.NOMBRES_QUESTIONS,
             "langues": sorted(set(library.noms_langues()) | {"Anglais"}, key=str.lower),
             "dossiers_langue": dossiers_langue,
-            "cartes": [(t, module_langues.nom_type(t, "Anglais"), t in claude.CARTES_PAR_DEFAUT)
-                       for t in module_langues.TYPES_VOCABULAIRE],
+            "cartes": module_langues.choix_des_types(claude.CARTES_PAR_DEFAUT),
+            "abreviations": module_langues.ABREVIATIONS,
             "max_mots": claude.MAX_MOTS,
         }
     serie, _ = Activite.serie(player, timezone.localdate(now))

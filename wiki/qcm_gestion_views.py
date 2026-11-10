@@ -447,6 +447,6 @@ def perso(request):
         request, elements=elements, erreurs=library.erreurs_perso.get(quiz.nom_perso(player), []),
         max_fichiers=MAX_FICHIERS_PERSO, nombre=len(_fichiers_perso(player)),
         langues=sorted(set(library.noms_langues()) | {"Anglais"}, key=str.lower),
-        cartes=[(t, langues.nom_type(t, "Anglais"), t in claude.CARTES_PAR_DEFAUT) for t in langues.TYPES_VOCABULAIRE],
+        cartes=langues.choix_des_types(claude.CARTES_PAR_DEFAUT), abreviations=langues.ABREVIATIONS,
         dossiers=sorted({x["dossier"] for x in elements}, key=str.lower),
     ))

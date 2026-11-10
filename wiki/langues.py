@@ -177,16 +177,19 @@ def _sans_crochets(s):
     return s.replace("[", "").replace("]", "")
 
 
+ABREVIATIONS = {
+    "anglais": "EN", "english": "EN", "français": "FR", "francais": "FR", "french": "FR",
+    "espagnol": "ES", "español": "ES", "spanish": "ES", "allemand": "DE", "deutsch": "DE",
+    "german": "DE", "italien": "IT", "italiano": "IT", "italian": "IT", "portugais": "PT",
+    "português": "PT",
+}
+
+
 def abreviation(langue: str) -> str:
-    """« Anglais » → « EN », « Français » → « FR » (sinon deux premières lettres)."""
-    connues = {
-        "anglais": "EN", "english": "EN", "français": "FR", "francais": "FR", "french": "FR",
-        "espagnol": "ES", "español": "ES", "spanish": "ES", "allemand": "DE", "deutsch": "DE",
-        "german": "DE", "italien": "IT", "italiano": "IT", "italian": "IT", "portugais": "PT",
-        "português": "PT",
-    }
+    """« Anglais » → « EN », « Français » → « FR » (sinon deux premières lettres).
+    Même règle dans types_cartes.js, pour les libellés des formulaires."""
     l = langue.lower()
-    return connues.get(l) or "".join(c for c in l if c.isalpha())[:2].upper()
+    return ABREVIATIONS.get(l) or "".join(c for c in l if c.isalpha())[:2].upper()
 
 
 def mots_a_ordonner(phrase: str) -> list[str]:
@@ -284,6 +287,14 @@ def types_vocabulaire(data, rel="") -> list[str]:
 
 def nom_type(t, langue, maternelle="Français") -> str:
     return TYPES_VOCABULAIRE[t].format(L=abreviation(langue), M=abreviation(maternelle), langue=langue.lower())
+
+
+def choix_des_types(coches, langue="Anglais", maternelle="Français"):
+    """Cases à cocher des types de cartes : {cle, nom, coche, modele}. ``modele`` garde
+    {L} et {langue} : types_cartes.js réécrit les libellés quand la langue change."""
+    return [{"cle": t, "nom": nom_type(t, langue, maternelle), "coche": t in coches,
+             "modele": TYPES_VOCABULAIRE[t].replace("{M}", abreviation(maternelle))}
+            for t in TYPES_VOCABULAIRE]
 
 
 def _distracteurs(id_, mot, autres_mots, n=3, exclus=()):
