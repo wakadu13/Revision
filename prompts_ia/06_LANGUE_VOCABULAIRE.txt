@@ -14,7 +14,7 @@ le module Langues : tu peux générer un fichier par thème.
 Chaque mot devient automatiquement trois exercices : reconnaissance
 (langue → français), production (français → langue, à taper) et rappel en
 contexte (l'exemple à compléter), planifiés par répétition espacée. Avec
-la clé "exercices", d'autres cartes : définition → mot (anglais → anglais),
+la clé "exercices", d'autres cartes : définition → mot (tout dans la langue étudiée),
 QCM de traduction, QCM à l'écoute, phrase à compléter en QCM… (voir
 README-IA.md).
 

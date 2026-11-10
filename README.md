@@ -347,7 +347,7 @@ dans les réglages de Claude) :
 - **Vocabulaire** : coller des mots ou expressions, un par ligne (en français
   ou dans la langue apprise, avec ou sans traduction), cocher les **types de
   cartes**, choisir la langue (anglais par défaut). Claude ajoute la
-  traduction, une définition en anglais, une phrase d'exemple et la
+  traduction, une définition dans la langue apprise, une phrase d'exemple et la
   prononciation de chaque mot. Chaque
   envoi crée un **paquet à part** (un fichier de langue), révisable seul
   (« Réviser ce paquet ») ou avec le reste de la langue, ou en **révision intensive** (« Intensif »). Types de cartes :
@@ -356,7 +356,8 @@ dans les réglages de Claude) :
   mot qui manque), **dictée** (le mot est lu à voix haute, on l'écrit), **QCM à
   l'écoute** (le mot est lu sans être écrit, choisir son sens), carte EN → FR,
   traduction à taper EN → FR, **QCM EN → FR** (choisir la bonne traduction),
-  **anglais → anglais** d'après la définition du mot (carte définition → mot,
+  **tout dans la langue apprise** (anglais → anglais, italien → italien…)
+  d'après la définition du mot (carte définition → mot,
   **définition puis mot à remplir** avec un indice « a······ (7 lettres) »,
   **QCM définition → mot**), **prononciation** (voir plus bas) ; cochés par défaut : les trois premiers du français vers l'anglais
   hors QCM (choix retenu sur l'appareil). La première carte cochée fait
@@ -408,9 +409,11 @@ même façon les cartes de vocabulaire (`decouverte`, `production`, `choix`,
 `contexte`, `contexte_choix`, `dictee`, `ecoute_choix`, `reconnaissance`, `traduction`,
 `choix_traduction`, `definition`, `definition_saisie`, `definition_choix`, `prononciation`) ; sans elle,
 rien ne change. Le champ `"definition"` d'un mot (dans la langue apprise) sert aux cartes
-anglais → anglais ; le mot y est caché s'il y figure.
+tout en langue apprise ; le mot y est caché s'il y figure. Tout suit la langue du
+paquet : pour un paquet d'italien, définitions en italien, étiquettes « IT → IT »,
+voix italienne.
 
-**Listes anglais → anglais** : à l'import d'une liste (page des QCM ou « Mon
+**Listes sans traduction** (anglais → anglais, italien → italien…) : à l'import d'une liste (page des QCM ou « Mon
 espace »), l'ordre « mot puis sa définition, tout en langue apprise » lit des
 lignes « reliable – that can be trusted » (comme un set Quizlet anglais →
 anglais), sans traduction ; seules les cartes qui s'en passent sont créées

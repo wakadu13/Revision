@@ -251,7 +251,7 @@ d'une même langue sont regroupés. Exemples complets :
 | Champ | Détail |
 |---|---|
 | `langue` | **obligatoire** ; regroupe les fichiers d'une même langue |
-| `vocabulaire[]` | `mot`, et `traductions` ou `definition` (au moins l'un des deux) ; `definition` : définition courte **dans la langue étudiée**, sans le mot (cartes anglais → anglais) ; `exemple` avec le mot **entre crochets** (crée l'exercice en contexte), `exemple_traduction`, `note`, `prononciation`, `variantes` facultatifs |
+| `vocabulaire[]` | `mot`, et `traductions` ou `definition` (au moins l'un des deux) ; `definition` : définition courte **dans la langue étudiée**, sans le mot (cartes tout en langue étudiée : anglais → anglais, italien → italien…) ; `exemple` avec le mot **entre crochets** (crée l'exercice en contexte), `exemple_traduction`, `note`, `prononciation`, `variantes` facultatifs |
 | `conjugaison[]` | `verbe`, `temps`, `formes` (personne → forme, ou liste de formes acceptées) |
 | `grammaire[]` | `TROU`, `QCM`, `QCR`, `FLASHCARD` (format des sets), `ORDRE` (`phrase`, `variantes`, `traduction`) ou `CORRECTION` (`phrase` fautive, `corrections`) |
 | `particules_optionnelles` | mots facultatifs en tête de réponse (« achieve » accepté pour « to achieve ») |

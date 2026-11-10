@@ -138,7 +138,7 @@ def analyser_liste(texte, ordre=LANGUE_PUIS_FR):
     Plusieurs traductions séparées par « , », « ; » ou « / » ; plusieurs formes
     du mot séparées par « / » (la première est le mot, les autres des variantes).
     MOT_PUIS_DEFINITION : « mot – définition » dans la langue apprise (pas de
-    traduction), comme un set Quizlet anglais → anglais ; avec des virgules ou des
+    traduction), comme un set Quizlet anglais → anglais ou italien → italien ; avec des virgules ou des
     points-virgules comme séparateur, tout ce qui suit le mot est la définition.
     """
     lignes = [l for l in texte.replace("\r\n", "\n").split("\n") if l.strip() and not l.lstrip().startswith("#")]

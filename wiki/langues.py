@@ -213,7 +213,7 @@ CHOIX_MOT = "choix"                # QCM M → L : le bon mot parmi ceux du paqu
 CONTEXTE = "contexte"              # phrase d'exemple à compléter
 DICTEE = "dictee"                  # le mot est lu (synthèse vocale), on l'écrit en L
 PRONONCIATION = "prononciation"    # le mot est à dire : vérifié par la reconnaissance vocale
-# Tout en langue apprise (anglais → anglais) : d'après la « definition » de chaque mot.
+# Tout en langue apprise (anglais → anglais, italien → italien…) : d'après la « definition » de chaque mot.
 DEFINITION = "definition"                # carte : la définition, puis le mot
 DEFINITION_SAISIE = "definition_saisie"  # la définition, le mot à taper (indice : 1re lettre, longueur)
 DEFINITION_CHOIX = "definition_choix"    # QCM : le mot qui correspond à la définition
