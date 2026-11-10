@@ -128,6 +128,12 @@ def notes_langue(set_langue, donnees):
             recto += f' <span class="muted">{formater(v["prononciation"])}</span>'
         verso = ", ".join(formater(t) for t in trads if t)
         extra = []
+        if v.get("definition"):
+            # Liste sans traduction : la définition au dos ; sinon en complément.
+            if verso:
+                extra.append(f"<i>{formater(v['definition'])}</i>")
+            else:
+                verso = formater(v["definition"])
         if v.get("exemple"):
             exemple = formater(str(v["exemple"]).replace("[", "<b>").replace("]", "</b>"))
             extra.append(exemple + (f"<br><i>{formater(v['exemple_traduction'])}</i>" if v.get("exemple_traduction") else ""))

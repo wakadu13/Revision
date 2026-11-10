@@ -260,7 +260,8 @@
     else if (e.forme === "carte") t = s.revele ? NOTES.map(([n, l]) => `${n} ${l}${n === (s.suggestion || BIEN) ? " (Espace)" : ""}`).join(" · ")
       : s.micro ? "Espace Prononcer · R Écouter · Q Quitter" : "Espace Retourner la carte · Q Quitter";
     else if (e.forme === "saisie") t = (e.audio && e.audio.quand === "debut" && synthese ? "🔊 Réécouter avec le bouton · " : "") + "Tape ta réponse · Entrée Valider · Échap Quitter";
-    else if (e.forme === "choix") t = (e.multiple ? "Lettres : cocher plusieurs réponses" : "Lettre : choisir") + " · Entrée Valider · Q Quitter";
+    else if (e.forme === "choix") t = (e.audio && e.audio.quand === "debut" && synthese ? "R Réécouter · " : "")
+      + (e.multiple ? "Lettres : cocher plusieurs réponses" : "Lettre : choisir") + " · Entrée Valider · Q Quitter";
     else t = "Clique les mots (ou tape leur numéro) · ⌫ Retirer le dernier · Entrée Valider · Q Quitter";
     if (aide) aide.textContent = t;
   }
@@ -455,6 +456,18 @@
 
   function buildChoix(e, zone) {
     zone.appendChild(el("div", "quiz-enonce markdown", e.enonce));
+    if (e.audio && e.audio.quand === "debut") {
+      if (synthese) {
+        const ecouter = boutonSon(e.audio, e.ecoute ? "🔊 Écouter le mot" : "🔊 Écouter");
+        if (e.ecoute) { ecouter.classList.remove("small"); ecouter.classList.add("quiz-dictee"); }
+        zone.appendChild(ecouter);
+        lireSi(e, "debut");
+        // QCM à l'écoute : toujours lu au moins une fois, même son coupé.
+        if (e.ecoute && !lectureAuto) setTimeout(() => parler(e.audio), 0);
+      } else if (e.ecoute && e.indice) {
+        zone.appendChild(text("p", "muted", "Synthèse vocale indisponible sur cet appareil — le mot : « " + e.indice + " »"));
+      }
+    }
     const list = el("div", "quiz-choices");
     s.choiceEls = e.choix.map((html, i) => {
       const b = el("button", "quiz-choice");

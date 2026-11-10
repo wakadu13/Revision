@@ -132,7 +132,7 @@ class FacettesCorrectionTests(SimpleTestCase):
 
     def test_erreurs_de_format(self):
         rel = PurePosixPath("t.json")
-        with self.assertRaisesMessage(ValueError, "'traductions' manquante"):
+        with self.assertRaisesMessage(ValueError, "'traductions' (ou 'definition') manquante"):
             langues.set_depuis_json({"langue": "Anglais", "vocabulaire": [{"mot": "x"}]}, rel)
         with self.assertRaisesMessage(ValueError, "identifiant en double"):
             langues.set_depuis_json({"langue": "Anglais", "grammaire": [
@@ -510,3 +510,130 @@ class PrononciationTests(WikiTestCase):
         self.assertIn("/əˈtʃiːv/", p["verso"])
         # Choix proposé à l'import de listes et à la génération par Claude.
         self.assertContains(self.client.get("/qcm/mon-espace/"), 'value="prononciation"')
+
+
+class DefinitionsEtQcmTests(WikiTestCase):
+    """Langues : cartes anglais → anglais d'après la définition, et les autres QCM
+    (traduction, phrase à compléter, à l'écoute)."""
+
+    PAQUET = {
+        "langue": "Anglais", "titre": "Mots", "particules_optionnelles": ["to", "a", "an", "the"],
+        "exercices": ["definition", "definition_saisie", "definition_choix", "choix_traduction", "contexte_choix",
+                      "ecoute_choix"],
+        "vocabulaire": [
+            {"id": "v1", "mot": "to achieve", "traductions": ["réussir", "atteindre"],
+             "definition": "to achieve something is to succeed in doing it", "exemple": "She [achieved] her goal."},
+            {"id": "v2", "mot": "a kitchen", "traductions": ["une cuisine"], "definition": "the room where food is cooked",
+             "exemple": "The [kitchen] is clean."},
+            {"id": "v3", "mot": "reliable", "traductions": ["fiable"], "definition": "that can be trusted"},
+            {"id": "v4", "mot": "to succeed", "traductions": ["réussir"], "definition": "to do what you tried to do"},
+        ],
+    }
+
+    def setUp(self):
+        super().setUp()
+        self.data = tempfile.TemporaryDirectory()
+        self.addCleanup(self.data.cleanup)
+        override = override_settings(DATA_DIR=Path(self.data.name))
+        override.enable()
+        self.addCleanup(override.disable)
+
+    def _set(self, paquet=None):
+        return langues.set_depuis_json(paquet or self.PAQUET, PurePosixPath("QCM/Anglais/mots.json"))
+
+    def test_cartes_de_definition(self):
+        s = self._set()
+        par_id = {e.id: e for e in s.exercices}
+        self.assertEqual(sorted(i for i in par_id if i.startswith("v1#")),
+                         ["v1#def", "v1#defm", "v1#defq", "v1#qctx", "v1#qson", "v1#qtrad"])
+        carte = par_id["v1#def"]
+        self.assertEqual((carte.forme, carte.prerequis), (langues.CARTE, None))  # la carte fait découvrir le mot
+        # Le mot (et sa forme sans « to ») est caché dans la définition.
+        self.assertEqual(carte.donnees["recto"], "« _____ something is to succeed in doing it »")
+        saisie = par_id["v1#defm"]
+        self.assertEqual((saisie.forme, saisie.prerequis), (langues.SAISIE, "v1#def"))
+        self.assertIn("Indice : a······ (7 lettres)", saisie.donnees["consigne"])
+        self.assertEqual(saisie.donnees["reponses"], ["to achieve"])
+        qcm = par_id["v2#defq"]
+        self.assertEqual(qcm.donnees["choix"][qcm.donnees["reponses"][0]], "a kitchen")
+        self.assertEqual(len(qcm.donnees["choix"]), 4)
+        self.assertEqual(langues.indice_lettres("give up"), "g··· u· (2 mots)")
+
+    def test_autres_qcm(self):
+        par_id = {e.id: e for e in self._set().exercices}
+        trad = par_id["v1#qtrad"].donnees
+        self.assertEqual(trad["choix"][trad["reponses"][0]], "réussir")
+        # « réussir » est aussi la traduction de v4 : jamais proposé comme piège ailleurs pour v1.
+        self.assertEqual(trad["choix"].count("réussir"), 1)
+        ctx = par_id["v1#qctx"].donnees
+        self.assertIn("She _____ her goal.", ctx["enonce"])
+        self.assertEqual(ctx["choix"][ctx["reponses"][0]], "achieved")
+        self.assertNotIn("to succeed", ctx["choix"])  # pièges sans « to » ni « a »
+        self.assertIn("succeed", ctx["choix"])
+        ecoute = par_id["v3#qson"]
+        self.assertEqual((ecoute.donnees["ecoute"], ecoute.donnees["indice"], ecoute.audio["quand"]), (True, "reliable", "debut"))
+        self.assertEqual(ecoute.donnees["choix"][ecoute.donnees["reponses"][0]], "fiable")
+        self.assertNotIn("reliable", ecoute.donnees["enonce"])
+        # Rien à corriger de neuf : la correction des QCM sert telle quelle.
+        v = langues.corriger(self._set(), par_id["v1#qtrad"], trad["reponses"])
+        self.assertEqual(v["verdict"], langues.JUSTE)
+
+    def test_liste_sans_traduction(self):
+        paquet = {"langue": "Anglais", "exercices": ["decouverte", "production", "reconnaissance", "definition_saisie", "ecoute_choix"],
+                  "vocabulaire": [{"id": "a", "mot": "reliable", "definition": "that can be trusted"},
+                                  {"id": "b", "mot": "thrifty", "definition": "careful with money"}]}
+        par_id = {e.id: e for e in self._set(paquet).exercices}
+        # Sans traduction : pas de carte FR ; « reconnaissance » montre la définition.
+        self.assertEqual(sorted(par_id), ["a#defm", "a#qson", "a#rec", "b#defm", "b#qson", "b#rec"])
+        self.assertEqual(par_id["a#rec"].donnees["verso"], "that can be trusted")
+        self.assertEqual(par_id["a#rec"].etiquette, "Vocabulaire · mot → définition (EN → EN)")
+        qson = par_id["a#qson"].donnees
+        self.assertEqual(qson["choix"][qson["reponses"][0]], "that can be trusted")
+        with self.assertRaisesMessage(ValueError, "aucune carte de vocabulaire possible"):
+            self._set({**paquet, "exercices": ["decouverte", "production"]})
+
+    def test_session_et_hors_ligne(self):
+        self.write("QCM/Anglais/mots.json", json.dumps(self.PAQUET))
+        page = self.client.get("/qcm/langues/Anglais/jouer/", {"mode": "quotidien"}).content.decode()
+        self.assertIn("v1#def", page)
+        s = quiz.get_library().langues["QCM/Anglais/mots"]
+        from wiki.langues_views import payload_hors_ligne
+        exo = next(e for e in s.exercices if e.id == "v2#qson")
+        p = payload_hors_ligne(get_vault(), s, exo)
+        self.assertEqual((p["forme"], p["ecoute"], p["indice"]), ("choix", True, "a kitchen"))
+        self.assertEqual(p["choix"][p["reponses"][0]], "une cuisine")
+        # Les nouveaux types sont proposés partout où l'on choisit les cartes.
+        self.assertContains(self.client.get("/qcm/mon-espace/"), 'value="definition_saisie"')
+        self.assertContains(self.client.get("/qcm/mon-espace/"), 'value="langue_def"')
+
+    def test_import_mot_puis_definition(self):
+        reponse = self.client.post("/qcm/mon-espace/", {
+            "action": "liste", "ordre": "langue_def", "langue": "anglais", "titre": "Adjectifs",
+            "cartes": ["decouverte", "production", "contexte"],
+            "liste": "reliable\tthat can be trusted\tShe is very [reliable].\nthrifty / frugal\tcareful with money\n"})
+        self.assertEqual(reponse.status_code, 302, reponse.content)
+        fichier = next((Path(settings.DATA_DIR) / "perso/lecteur/Vocabulaire").glob("*.json"))
+        paquet = json.loads(fichier.read_text(encoding="utf-8"))
+        # Cartes de traduction impossibles sans traduction : seule la phrase à compléter reste.
+        self.assertEqual(paquet["exercices"], ["contexte"])
+        self.assertEqual(paquet["vocabulaire"][0]["definition"], "that can be trusted")
+        self.assertEqual(paquet["vocabulaire"][1]["variantes"], ["frugal"])
+        # Rien de compatible coché : les cartes de définition par défaut ; virgules dans la définition.
+        from wiki import paquets
+        fiches, ignorees = paquets.analyser_liste("reliable, that can be trusted, dependable\n", paquets.MOT_PUIS_DEFINITION)
+        self.assertEqual((fiches, ignorees), ([{"mot": "reliable", "definition": "that can be trusted, dependable"}], 0))
+        self.client.post("/qcm/mon-espace/", {"action": "liste", "ordre": "langue_def", "cartes": ["production"],
+                                               "liste": "thrifty\tcareful with money", "titre": "Autre"})
+        autre = json.loads((Path(settings.DATA_DIR) / "perso/lecteur/Vocabulaire/autre.json").read_text(encoding="utf-8"))
+        self.assertEqual(autre["exercices"], ["definition", "definition_choix", "definition_saisie"])
+
+    def test_claude_et_anki(self):
+        from wiki import anki, claude
+        self.assertIn("definition", claude.SCHEMA_VOCABULAIRE["properties"]["vocabulaire"]["items"]["required"])
+        self.assertIn("definition", claude.CONSIGNE_VOCABULAIRE)
+        paquet = {"langue": "Anglais", "vocabulaire": [{"id": "a", "mot": "reliable", "definition": "that can be trusted"},
+                                                       {"id": "b", "mot": "a kitchen", "traductions": ["une cuisine"],
+                                                        "definition": "the room where food is cooked"}]}
+        notes = anki.notes_langue(self._set(paquet), paquet)
+        self.assertEqual(notes[0][2], "that can be trusted")
+        self.assertIn("<i>the room where food is cooked</i>", notes[1][2])

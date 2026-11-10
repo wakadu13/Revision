@@ -213,16 +213,38 @@ CHOIX_MOT = "choix"                # QCM M → L : le bon mot parmi ceux du paqu
 CONTEXTE = "contexte"              # phrase d'exemple à compléter
 DICTEE = "dictee"                  # le mot est lu (synthèse vocale), on l'écrit en L
 PRONONCIATION = "prononciation"    # le mot est à dire : vérifié par la reconnaissance vocale
+# Tout en langue apprise (anglais → anglais) : d'après la « definition » de chaque mot.
+DEFINITION = "definition"                # carte : la définition, puis le mot
+DEFINITION_SAISIE = "definition_saisie"  # la définition, le mot à taper (indice : 1re lettre, longueur)
+DEFINITION_CHOIX = "definition_choix"    # QCM : le mot qui correspond à la définition
+# Autres QCM.
+CHOIX_TRADUCTION = "choix_traduction"    # QCM L → M : la bonne traduction
+CONTEXTE_CHOIX = "contexte_choix"        # QCM : le mot qui manque dans la phrase d'exemple
+ECOUTE_CHOIX = "ecoute_choix"            # QCM : le mot est lu (sans être écrit), choisir son sens
 TYPES_VOCABULAIRE = {
     DECOUVERTE: "Carte {M} → {L}",
     PRODUCTION: "Traduction à taper {M} → {L}",
     CHOIX_MOT: "QCM {M} → {L} (choisir le bon mot)",
     CONTEXTE: "Phrase à compléter (en {langue})",
+    CONTEXTE_CHOIX: "QCM phrase à compléter (choisir le mot qui manque, en {langue})",
     DICTEE: "Dictée : écouter le mot et l'écrire (en {langue})",
+    ECOUTE_CHOIX: "QCM à l'écoute : entendre le mot, choisir son sens",
     RECONNAISSANCE: "Carte {L} → {M}",
     TRADUCTION: "Traduction à taper {L} → {M}",
+    CHOIX_TRADUCTION: "QCM {L} → {M} (choisir la bonne traduction)",
+    DEFINITION: "Carte définition → mot ({L} → {L})",
+    DEFINITION_SAISIE: "Définition → mot à remplir ({L} → {L})",
+    DEFINITION_CHOIX: "QCM définition → mot ({L} → {L})",
     PRONONCIATION: "Prononciation : dire le mot (en {langue}), vérifiée au micro",
 }
+# Types qui demandent une traduction, une définition ou une phrase d'exemple « [mot] ».
+AVEC_TRADUCTION = {DECOUVERTE, PRODUCTION, TRADUCTION, CHOIX_MOT, CHOIX_TRADUCTION}
+AVEC_DEFINITION = {DEFINITION, DEFINITION_SAISIE, DEFINITION_CHOIX}
+AVEC_EXEMPLE = {CONTEXTE, CONTEXTE_CHOIX}
+# Types possibles sans traduction (listes « mot – définition » dans la langue apprise).
+SANS_TRADUCTION = [DEFINITION, DEFINITION_SAISIE, DEFINITION_CHOIX, RECONNAISSANCE, CONTEXTE, CONTEXTE_CHOIX,
+                   ECOUTE_CHOIX, DICTEE, PRONONCIATION]
+VOCABULAIRE_DEFINITIONS = [DEFINITION, DEFINITION_CHOIX, DEFINITION_SAISIE]
 # Code de langue (BCP 47) pour la synthèse vocale du navigateur ; la clé
 # « code_langue » d'un fichier l'impose (ex. "en-US").
 CODES_LANGUE = {
@@ -238,9 +260,12 @@ def code_langue(langue: str) -> str:
 VOCABULAIRE_PAR_DEFAUT = [RECONNAISSANCE, PRODUCTION, CONTEXTE]
 # La première carte retenue (dans cet ordre) fait découvrir le mot ; les autres
 # ne viennent qu'une fois celle-ci réussie.
-ORDRE_DECOUVERTE = [DECOUVERTE, RECONNAISSANCE, CHOIX_MOT, PRODUCTION, TRADUCTION, CONTEXTE, DICTEE, PRONONCIATION]
+ORDRE_DECOUVERTE = [DECOUVERTE, RECONNAISSANCE, DEFINITION, CHOIX_MOT, CHOIX_TRADUCTION, DEFINITION_CHOIX, PRODUCTION,
+                    TRADUCTION, DEFINITION_SAISIE, CONTEXTE, CONTEXTE_CHOIX, ECOUTE_CHOIX, DICTEE, PRONONCIATION]
 SUFFIXES = {RECONNAISSANCE: "rec", DECOUVERTE: "dec", PRODUCTION: "prod", TRADUCTION: "trad",
-            CHOIX_MOT: "qcm", CONTEXTE: "ctx", DICTEE: "dict", PRONONCIATION: "oral"}
+            CHOIX_MOT: "qcm", CONTEXTE: "ctx", DICTEE: "dict", PRONONCIATION: "oral",
+            DEFINITION: "def", DEFINITION_SAISIE: "defm", DEFINITION_CHOIX: "defq",
+            CHOIX_TRADUCTION: "qtrad", CONTEXTE_CHOIX: "qctx", ECOUTE_CHOIX: "qson"}
 # Quand lire le mot à voix haute : à l'affichage, au retournement de la carte, après la correction.
 DEBUT, VERSO, FIN = "debut", "verso", "fin"
 
@@ -261,24 +286,54 @@ def nom_type(t, langue, maternelle="Français") -> str:
     return TYPES_VOCABULAIRE[t].format(L=abreviation(langue), M=abreviation(maternelle), langue=langue.lower())
 
 
-def _distracteurs(id_, mot, autres_mots, n=3):
+def _distracteurs(id_, mot, autres_mots, n=3, exclus=()):
     """Choix du QCM : le mot et jusqu'à `n` autres mots du paquet, dans un ordre
-    stable (le même à chaque chargement). Renvoie (choix, indice du bon mot)."""
+    stable (le même à chaque chargement). ``exclus`` : réponses justes aussi (autres
+    traductions du mot), jamais proposées comme pièges. Renvoie (choix, indice du bon mot)."""
     hasard = random.Random(zlib.crc32(id_.encode("utf-8")))
-    autres = sorted({m for m in autres_mots if m.strip().lower() != mot.strip().lower()})
+    interdits = {mot.strip().lower(), *(x.strip().lower() for x in exclus)}
+    autres = sorted({m for m in autres_mots if m.strip().lower() not in interdits})
     choix = hasard.sample(autres, min(n, len(autres))) + [mot]
     hasard.shuffle(choix)
     return choix, choix.index(mot)
 
 
-def _facettes_vocabulaire(id_, mot, trads, o, types, langue, abr_l, abr_m, autres_mots):
-    """Exercices d'un mot selon les types de cartes choisis."""
+def sans_particule(mot, particules):
+    """« to achieve » → « achieve » (petits mots facultatifs du paquet en tête)."""
+    premier, _, reste = mot.partition(" ")
+    return reste.strip() if reste.strip() and premier.lower() in particules else mot
+
+
+def _masquer(texte, formes):
+    """La définition sans le mot qu'elle définit, ni ses variantes (remplacés par _____)."""
+    for f in sorted({x.strip() for x in formes if len(x.strip()) >= 3}, key=len, reverse=True):
+        texte = re.sub(rf"(?<!\w){re.escape(f)}(?!\w)", "_____", texte, flags=re.IGNORECASE)
+    return texte
+
+
+def indice_lettres(mot):
+    """Première lettre et longueur de chaque mot : « achieve » → « a······ (7 lettres) »."""
+    mots = mot.split()
+    trace = " ".join(m[0] + "·" * (len(m) - 1) for m in mots)
+    if len(mots) > 1:
+        return f"{trace} ({len(mots)} mots)"
+    return f"{trace} ({len(mot)} lettre{'s' if len(mot) > 1 else ''})"
+
+
+def _facettes_vocabulaire(id_, mot, trads, o, types, langue, abr_l, abr_m, autres, particules=()):
+    """Exercices d'un mot selon les types de cartes choisis. ``autres`` : les autres
+    entrées du paquet ({mot, trad, definition}), pour les choix des QCM."""
     trad = ", ".join(trads)
     exemple = _texte(o.get("exemple"))
     ex_trad = _texte(o.get("exemple_traduction"))
     prononciation = _texte(o.get("prononciation"))
-    reponses = [mot] + _textes(o.get("variantes"))
+    variantes = _textes(o.get("variantes"))
+    reponses = [mot] + variantes
+    base = sans_particule(mot, particules)
+    definition = _masquer(_texte(o.get("definition")).strip(), [mot, base, *variantes])
+    sens = trad or definition  # ce que veut dire le mot, en français si possible
     avec_prononciation = f"{mot}   {prononciation}" if prononciation else mot
+    autres_mots = [a["mot"] for a in autres]
 
     details = []
     if exemple:
@@ -287,25 +342,37 @@ def _facettes_vocabulaire(id_, mot, trads, o, types, langue, abr_l, abr_m, autre
             d += f" = « {ex_trad} »"
         details.append(d)
     details += [_texte(o[c]) for c in ("note", "explication") if _texte(o.get(c))]
+    # Après la réponse, la définition complète les cartes qui ne la montrent pas déjà.
+    detail_definition = [f"Définition : « {definition} »"] if definition and trads else []
 
     troue = trouer(exemple)
+    # QCM du sens : traductions des autres mots (ou leurs définitions s'il n'y a pas de traduction).
+    sens_autres = [a["trad"] for a in autres if a["trad"]] if trads else [a["definition"] for a in autres if a["definition"]]
     possibles = [t for t in types
-                 if not (t == CONTEXTE and not troue) and not (t == CHOIX_MOT and not autres_mots)]
+                 if not (t in AVEC_TRADUCTION and not trads) and not (t in AVEC_DEFINITION and not definition)
+                 and not (t in AVEC_EXEMPLE and not troue) and not (t == RECONNAISSANCE and not sens)
+                 and not (t in (CHOIX_MOT, DEFINITION_CHOIX, CONTEXTE_CHOIX) and not autres_mots)
+                 and not (t in (CHOIX_TRADUCTION, ECOUTE_CHOIX) and not (sens and sens_autres))]
     entree = next((t for t in ORDRE_DECOUVERTE if t in possibles), None)
     # Son : le mot (ou la phrase d'exemple) en langue apprise, lu par le navigateur.
+    phrase_lue = _sans_crochets(exemple)
     sons = {RECONNAISSANCE: (mot, DEBUT), DECOUVERTE: (mot, VERSO), PRODUCTION: (mot, FIN), TRADUCTION: (mot, DEBUT),
-            CHOIX_MOT: (mot, FIN), CONTEXTE: (_sans_crochets(exemple), FIN), DICTEE: (mot, DEBUT),
-            PRONONCIATION: (mot, VERSO)}
+            CHOIX_MOT: (mot, FIN), CONTEXTE: (phrase_lue, FIN), DICTEE: (mot, DEBUT), PRONONCIATION: (mot, VERSO),
+            DEFINITION: (mot, VERSO), DEFINITION_SAISIE: (mot, FIN), DEFINITION_CHOIX: (mot, FIN),
+            CHOIX_TRADUCTION: (mot, DEBUT), CONTEXTE_CHOIX: (phrase_lue, FIN), ECOUTE_CHOIX: (mot, DEBUT)}
     facettes = []
     for t in possibles:
         exo_id = f"{id_}#{SUFFIXES[t]}"
         prerequis = None if t == entree else f"{id_}#{SUFFIXES[entree]}"
-        commun = {"entree": id_, "genre": VOCABULAIRE, "details": list(details), "prerequis": prerequis,
+        commun = {"entree": id_, "genre": VOCABULAIRE, "prerequis": prerequis,
+                  "details": details + ([] if t in AVEC_DEFINITION else detail_definition),
                   "audio": {"texte": sons[t][0], "quand": sons[t][1]}}
         if t == RECONNAISSANCE:
-            facettes.append(Exercice(id=exo_id, etiquette=f"Vocabulaire · reconnaissance ({abr_l} → {abr_m})",
-                                     resume=f"{mot} → {trad}", forme=CARTE,
-                                     donnees={"recto": avec_prononciation, "verso": trad}, **commun))
+            etiquette = (f"Vocabulaire · reconnaissance ({abr_l} → {abr_m})" if trads
+                         else f"Vocabulaire · mot → définition ({abr_l} → {abr_l})")
+            facettes.append(Exercice(id=exo_id, etiquette=etiquette,
+                                     resume=f"{mot} → {sens}", forme=CARTE,
+                                     donnees={"recto": avec_prononciation, "verso": sens}, **commun))
         elif t == DECOUVERTE:
             facettes.append(Exercice(id=exo_id, etiquette=f"Vocabulaire · carte ({abr_m} → {abr_l})",
                                      resume=f"{trad} → {mot}", forme=CARTE,
@@ -327,24 +394,67 @@ def _facettes_vocabulaire(id_, mot, trads, o, types, langue, abr_l, abr_m, autre
                                               "choix": choix, "reponses": [bon], "multiple": False},
                                      **commun))
         elif t == CONTEXTE:
-            phrase, attendu = troue
+            trouee, attendu = troue
             facettes.append(Exercice(id=exo_id, etiquette="Vocabulaire · en contexte",
                                      resume=f"{mot} (en contexte)", forme=SAISIE,
-                                     donnees=_saisie(f"Complète : {phrase}\n(indice : {trad})",
+                                     donnees=_saisie(f"Complète : {trouee}" + (f"\n(indice : {sens})" if sens else ""),
                                                      [a.strip() for a in attendu.split("|")], tolerant=True),
                                      **commun))
         elif t == DICTEE:
-            commun["details"] = [f"Sens : « {trad} »"] + commun["details"]
+            if sens:
+                commun["details"] = [f"Sens : « {sens} »"] + commun["details"]
             facettes.append(Exercice(id=exo_id, etiquette=f"Vocabulaire · dictée ({abr_l})",
                                      resume=f"{mot} (dictée)", forme=SAISIE,
                                      donnees={**_saisie(f"Écoute le mot et écris-le en {langue.lower()}.", reponses, tolerant=True),
-                                              "indice": trad},
+                                              "indice": sens},
                                      **commun))
         elif t == PRONONCIATION:
             facettes.append(Exercice(id=exo_id, etiquette=f"Vocabulaire · prononciation ({abr_l})",
                                      resume=f"{mot} (à l'oral)", forme=CARTE,
-                                     donnees={"recto": f"Dis à voix haute : **{mot}**\n({trad})", "verso": avec_prononciation,
-                                              "oral": {"reponses": reponses}},
+                                     donnees={"recto": f"Dis à voix haute : **{mot}**" + (f"\n({sens})" if sens else ""),
+                                              "verso": avec_prononciation, "oral": {"reponses": reponses}},
+                                     **commun))
+        elif t == DEFINITION:
+            facettes.append(Exercice(id=exo_id, etiquette=f"Vocabulaire · définition ({abr_l} → {abr_l})",
+                                     resume=f"{definition[:40]} → {mot}", forme=CARTE,
+                                     donnees={"recto": f"« {definition} »", "verso": avec_prononciation}, **commun))
+        elif t == DEFINITION_SAISIE:
+            facettes.append(Exercice(id=exo_id, etiquette=f"Vocabulaire · définition → mot ({abr_l} → {abr_l})",
+                                     resume=f"{mot} (d'après sa définition)", forme=SAISIE,
+                                     donnees=_saisie(f"Quel mot correspond à cette définition ?\n« {definition} »\n"
+                                                     f"Indice : {indice_lettres(base)}", reponses, tolerant=True),
+                                     **commun))
+        elif t == DEFINITION_CHOIX:
+            choix, bon = _distracteurs(exo_id, mot, autres_mots)
+            facettes.append(Exercice(id=exo_id, etiquette=f"Vocabulaire · QCM définition ({abr_l} → {abr_l})",
+                                     resume=f"{mot} (d'après sa définition)", forme=CHOIX,
+                                     donnees={"enonce": f"Quel mot correspond à cette définition ?\n« {definition} »",
+                                              "choix": choix, "reponses": [bon], "multiple": False},
+                                     **commun))
+        elif t == CHOIX_TRADUCTION:
+            choix, bon = _distracteurs(exo_id, trads[0], sens_autres, exclus=trads)
+            facettes.append(Exercice(id=exo_id, etiquette=f"Vocabulaire · QCM ({abr_l} → {abr_m})",
+                                     resume=f"{mot} → {trad}", forme=CHOIX,
+                                     donnees={"enonce": f"Que veut dire « {avec_prononciation} » ?",
+                                              "choix": choix, "reponses": [bon], "multiple": False},
+                                     **commun))
+        elif t == CONTEXTE_CHOIX:
+            trouee, attendu = troue
+            bonne = attendu.split("|")[0].strip()
+            pieges = [sans_particule(m, particules) for m in autres_mots]
+            choix, bon = _distracteurs(exo_id, bonne, pieges, exclus=[a.strip() for a in attendu.split("|")])
+            facettes.append(Exercice(id=exo_id, etiquette="Vocabulaire · QCM en contexte",
+                                     resume=f"{mot} (en contexte)", forme=CHOIX,
+                                     donnees={"enonce": f"Quel mot complète la phrase ?\n{trouee}",
+                                              "choix": choix, "reponses": [bon], "multiple": False},
+                                     **commun))
+        elif t == ECOUTE_CHOIX:
+            bonne = trads[0] if trads else definition
+            choix, bon = _distracteurs(exo_id, bonne, sens_autres, exclus=trads)
+            facettes.append(Exercice(id=exo_id, etiquette=f"Vocabulaire · QCM à l'écoute ({abr_l})",
+                                     resume=f"{mot} (à l'écoute)", forme=CHOIX,
+                                     donnees={"enonce": "Écoute le mot et choisis son sens.", "choix": choix,
+                                              "reponses": [bon], "multiple": False, "ecoute": True, "indice": mot},
                                      **commun))
     return facettes
 
@@ -360,23 +470,29 @@ def set_depuis_json(data, rel: PurePosixPath) -> SetLangue:
 
     # --- Vocabulaire ---
     types = types_vocabulaire(data, rel)
+    particules = [p.lower() for p in _textes(data.get("particules_optionnelles"))]
     entrees = _section(data, "vocabulaire", rel)
-    tous_les_mots = []
-    for i, v in enumerate(entrees, start=1):
-        o = _objet(v, f"{rel} » vocabulaire #{i}")
-        tous_les_mots.append(_requis(o, "mot", f"{rel} » vocabulaire #{i}"))
+    fiches = []
     for i, v in enumerate(entrees, start=1):
         contexte = f"{rel} » vocabulaire #{i}"
         o = _objet(v, contexte)
         mot = _requis(o, "mot", contexte)
         trads = _textes(o.get("traductions", o.get("traduction")))
-        if not trads:
-            raise ValueError(f"{contexte} : clé 'traductions' manquante ou vide.")
+        definition = _texte(o.get("definition")).strip()
+        if not trads and not definition:
+            raise ValueError(f"{contexte} : clé 'traductions' (ou 'definition') manquante ou vide.")
+        formes = [mot, sans_particule(mot, particules), *_textes(o.get("variantes"))]
+        fiches.append((i, o, mot, trads, {"mot": mot, "trad": trads[0] if trads else "",
+                                           "definition": _masquer(definition, formes)}))
+    for i, o, mot, trads, _ in fiches:
         id_ = _texte(o["id"]) if "id" in o else f"voc{i}"
         exercices += _facettes_vocabulaire(
             id_, mot, trads, o, types, langue, abr_l, abr_m,
-            autres_mots=[m for m in tous_les_mots if m != mot],
+            autres=[f for _, _, m, _, f in fiches if m != mot], particules=particules,
         )
+    if entrees and not any(e.genre == VOCABULAIRE for e in exercices):
+        raise ValueError(f"{rel} : aucune carte de vocabulaire possible avec les types choisis (les cartes "
+                         "de traduction demandent des 'traductions', celles de définition une 'definition').")
 
     # --- Conjugaison ---
     for i, c in enumerate(_section(data, "conjugaison", rel), start=1):
@@ -474,7 +590,7 @@ def set_depuis_json(data, rel: PurePosixPath) -> SetLangue:
         titre=_texte(data.get("titre")) or rel.stem,
         description=_texte(data.get("description")),
         exercices=exercices,
-        particules=[p.lower() for p in _textes(data.get("particules_optionnelles"))],
+        particules=particules,
         caracteres_speciaux=_textes(data.get("caracteres_speciaux")),
         nouveaux_par_jour=quota if isinstance(quota, int) and not isinstance(quota, bool) and quota >= 0 else None,
         path=rel,

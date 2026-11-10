@@ -265,6 +265,11 @@ def lire_liste(request):
     ordre = request.POST.get("ordre", paquets.LANGUE_PUIS_FR)
     if ordre not in paquets.ORDRES:
         ordre = paquets.LANGUE_PUIS_FR
+    if ordre == paquets.MOT_PUIS_DEFINITION:
+        # Liste dans la seule langue apprise : les cartes qui se passent de traduction.
+        from . import langues
+
+        options["types"] = [t for t in options["types"] if t in langues.SANS_TRADUCTION] or list(langues.VOCABULAIRE_DEFINITIONS)
     fiches, ignorees = [], 0
     if not erreur:
         try:
@@ -273,7 +278,8 @@ def lire_liste(request):
             erreur = str(e)
         else:
             if not fiches:
-                erreur = "Aucune ligne « mot – traduction » reconnue : une ligne par mot, séparés par une tabulation, une virgule ou « = »."
+                erreur = ("Aucune ligne « mot – traduction » (ou « mot – définition ») reconnue : une ligne par mot, "
+                          "séparés par une tabulation, une virgule ou « = ».")
     if erreur:
         return None, options, 0, erreur
     titre = options["titre"] or f"Vocabulaire {options['langue'].lower()} du {timezone.localdate():%d/%m/%Y}"
