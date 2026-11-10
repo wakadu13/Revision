@@ -251,13 +251,13 @@ d'une même langue sont regroupés. Exemples complets :
 | Champ | Détail |
 |---|---|
 | `langue` | **obligatoire** ; regroupe les fichiers d'une même langue |
-| `vocabulaire[]` | `mot` et `traductions` obligatoires ; `exemple` avec le mot **entre crochets** (crée l'exercice en contexte), `exemple_traduction`, `note`, `prononciation`, `variantes` facultatifs |
+| `vocabulaire[]` | `mot`, et `traductions` ou `definition` (au moins l'un des deux) ; `definition` : définition courte **dans la langue étudiée**, sans le mot (cartes anglais → anglais) ; `exemple` avec le mot **entre crochets** (crée l'exercice en contexte), `exemple_traduction`, `note`, `prononciation`, `variantes` facultatifs |
 | `conjugaison[]` | `verbe`, `temps`, `formes` (personne → forme, ou liste de formes acceptées) |
 | `grammaire[]` | `TROU`, `QCM`, `QCR`, `FLASHCARD` (format des sets), `ORDRE` (`phrase`, `variantes`, `traduction`) ou `CORRECTION` (`phrase` fautive, `corrections`) |
 | `particules_optionnelles` | mots facultatifs en tête de réponse (« achieve » accepté pour « to achieve ») |
 | `caracteres_speciaux` | boutons d'insertion sous le champ (ex. `["á", "ñ", "¿"]`) |
 | `nouveaux_par_jour` | quota de nouveautés par jour (défaut 20) |
-| `exercices` | types de cartes de vocabulaire, parmi `decouverte` (carte FR → langue), `production` (traduction à taper FR → langue), `choix` (QCM : le bon mot parmi ceux du fichier), `contexte` (phrase à compléter), `dictee` (le mot est lu par la synthèse vocale, on l'écrit), `reconnaissance` (carte langue → FR), `traduction` (traduction à taper langue → FR). La première de la liste, dans cet ordre, fait découvrir le mot. Absent : `["reconnaissance", "production", "contexte"]` |
+| `exercices` | types de cartes de vocabulaire, parmi `decouverte` (carte FR → langue), `production` (traduction à taper FR → langue), `choix` (QCM : le bon mot parmi ceux du fichier), `contexte` (phrase à compléter), `contexte_choix` (QCM : le mot qui manque dans la phrase), `dictee` (le mot est lu par la synthèse vocale, on l'écrit), `ecoute_choix` (QCM : le mot est lu, choisir son sens), `reconnaissance` (carte langue → FR, ou → définition sans traduction), `traduction` (traduction à taper langue → FR), `choix_traduction` (QCM langue → FR), `definition` (carte définition → mot), `definition_saisie` (définition, mot à taper avec un indice), `definition_choix` (QCM définition → mot), `prononciation` (dire le mot, vérifié au micro). Les cartes de définition demandent `definition`, les cartes FR demandent `traductions`. La première de la liste, dans cet ordre, fait découvrir le mot. Absent : `["reconnaissance", "production", "contexte"]` |
 | `code_langue` | code BCP 47 de la voix de synthèse (ex. `"en-US"`) ; sinon déduit du nom de la langue (`Anglais` → `en-GB`) |
 
 Les `id` servent au suivi : garde-les **stables** et uniques. Des prompts prêts

@@ -552,6 +552,8 @@ leur traduction. Pour chaque ligne, dans l'ordre, une fiche :
 - mot : le mot en {langue}, sous sa forme de dictionnaire. En anglais : « a » ou « an » devant les noms \
 dénombrables, « to » devant les verbes.
 - traductions : une à trois traductions françaises usuelles, avec l'article pour les noms (« un emploi »).
+- definition : une définition courte et simple en {langue}, comme dans un dictionnaire pour apprenants \
+(niveau B1), qui n'emploie pas le mot lui-même.
 - variantes : d'autres façons correctes de dire le mot en {langue} (orthographe britannique ou \
 américaine, synonyme très proche), sinon liste vide.
 - exemple : une phrase simple et naturelle en {langue} où le mot à retrouver est entre crochets, comme \
@@ -572,13 +574,15 @@ SCHEMA_VOCABULAIRE = {
             "properties": {
                 "mot": {"type": "string"},
                 "traductions": _TEXTES,
+                "definition": {"type": "string"},
                 "variantes": _TEXTES,
                 "exemple": {"type": "string"},
                 "exemple_traduction": {"type": "string"},
                 "prononciation": {"type": "string"},
                 "note": {"type": "string"},
             },
-            "required": ["mot", "traductions", "variantes", "exemple", "exemple_traduction", "prononciation", "note"],
+            "required": ["mot", "traductions", "definition", "variantes", "exemple", "exemple_traduction", "prononciation",
+                         "note"],
             "additionalProperties": False,
         }},
     },

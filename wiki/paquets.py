@@ -80,13 +80,13 @@ def ecrire_set_qcm(dossier, set_json):
 
 
 def paquet_vocabulaire(langue, titre, description, types, fiches, origine):
-    """Fichier de langue d'après des fiches {mot, traductions, …} (ids ajoutés)."""
+    """Fichier de langue d'après des fiches {mot, traductions et/ou definition, …} (ids ajoutés)."""
     prefixe = (slugify(titre) or "voc")[:30]
     vus, propres = set(), []
     for fiche in fiches:
         mot = str(fiche.get("mot", "")).strip()
         trads = [t for t in (fiche.get("traductions") or []) if str(t).strip()]
-        if not mot or not trads or mot.lower() in vus:
+        if not mot or not (trads or str(fiche.get("definition") or "").strip()) or mot.lower() in vus:
             continue
         vus.add(mot.lower())
         propres.append({"id": f"{prefixe}-{len(propres) + 1:03d}", **{k: v for k, v in fiche.items() if v not in ("", [], None)}})
@@ -104,8 +104,8 @@ import html as html_  # noqa: E402
 import io  # noqa: E402
 import re  # noqa: E402
 
-LANGUE_PUIS_FR, FR_PUIS_LANGUE = "langue_fr", "fr_langue"
-ORDRES = (LANGUE_PUIS_FR, FR_PUIS_LANGUE)
+LANGUE_PUIS_FR, FR_PUIS_LANGUE, MOT_PUIS_DEFINITION = "langue_fr", "fr_langue", "langue_def"
+ORDRES = (LANGUE_PUIS_FR, FR_PUIS_LANGUE, MOT_PUIS_DEFINITION)
 MAX_LIGNES = 500
 _BALISES = re.compile(r"<[^>]+>")
 
@@ -137,6 +137,9 @@ def analyser_liste(texte, ordre=LANGUE_PUIS_FR):
     lignes « mot = traduction ». Un 3e champ devient l'exemple, un 4e la note.
     Plusieurs traductions séparées par « , », « ; » ou « / » ; plusieurs formes
     du mot séparées par « / » (la première est le mot, les autres des variantes).
+    MOT_PUIS_DEFINITION : « mot – définition » dans la langue apprise (pas de
+    traduction), comme un set Quizlet anglais → anglais ; avec des virgules ou des
+    points-virgules comme séparateur, tout ce qui suit le mot est la définition.
     """
     lignes = [l for l in texte.replace("\r\n", "\n").split("\n") if l.strip() and not l.lstrip().startswith("#")]
     if len(lignes) > MAX_LIGNES:
@@ -156,6 +159,25 @@ def analyser_liste(texte, ordre=LANGUE_PUIS_FR):
             ignorees += 1
             continue
         a, b = cellules[0], cellules[1]
+        if ordre == MOT_PUIS_DEFINITION:
+            formes = [f.strip() for f in a.split("/") if f.strip()]
+            if not formes:
+                ignorees += 1
+                continue
+            fiche = {"mot": formes[0]}
+            if len(formes) > 1:
+                fiche["variantes"] = formes[1:]
+            if sep in ",;":
+                fiche["definition"] = f"{sep} ".join(c for c in cellules[1:] if c)
+            else:
+                fiche["definition"] = b
+                extra = [c for c in cellules[2:] if c]
+                if extra:
+                    fiche["exemple"] = extra[0]
+                if len(extra) > 1:
+                    fiche["note"] = extra[1]
+            fiches.append(fiche)
+            continue
         mot_brut, trad_brut = (a, b) if ordre == LANGUE_PUIS_FR else (b, a)
         formes = [f.strip() for f in mot_brut.split("/") if f.strip()]
         trads = [t.strip() for t in re.split(r"[;,/]", trad_brut) if t.strip()]

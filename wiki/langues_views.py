@@ -112,6 +112,9 @@ def _payload(vault, item, st, now):
             p["indice"] = d["indice"]
     elif exo.forme == langues.CHOIX:
         p.update(enonce=html(d["enonce"]), choix=[html(c) for c in d["choix"]], multiple=d["multiple"])
+        if d.get("ecoute"):
+            # QCM à l'écoute : le mot est lu, pas écrit (montré seulement sans synthèse vocale).
+            p.update(ecoute=True, indice=d["indice"])
     elif exo.forme == langues.ORDRE:
         p.update(consigne=html(d["consigne"]), mots=d["mots"], melange=item.melange)
     return p

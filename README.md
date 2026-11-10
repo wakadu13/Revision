@@ -347,13 +347,18 @@ dans les réglages de Claude) :
 - **Vocabulaire** : coller des mots ou expressions, un par ligne (en français
   ou dans la langue apprise, avec ou sans traduction), cocher les **types de
   cartes**, choisir la langue (anglais par défaut). Claude ajoute la
-  traduction, une phrase d'exemple et la prononciation de chaque mot. Chaque
+  traduction, une définition en anglais, une phrase d'exemple et la
+  prononciation de chaque mot. Chaque
   envoi crée un **paquet à part** (un fichier de langue), révisable seul
   (« Réviser ce paquet ») ou avec le reste de la langue, ou en **révision intensive** (« Intensif »). Types de cartes :
   carte FR → EN, traduction à taper FR → EN, QCM FR → EN (le bon mot parmi
-  ceux du paquet), phrase à compléter, **dictée** (le mot est lu à voix haute,
-  on l'écrit), carte EN → FR, traduction à taper EN → FR, **prononciation**
-  (voir plus bas) ; cochés par défaut : les trois premiers du français vers l'anglais
+  ceux du paquet), phrase à compléter, **QCM phrase à compléter** (choisir le
+  mot qui manque), **dictée** (le mot est lu à voix haute, on l'écrit), **QCM à
+  l'écoute** (le mot est lu sans être écrit, choisir son sens), carte EN → FR,
+  traduction à taper EN → FR, **QCM EN → FR** (choisir la bonne traduction),
+  **anglais → anglais** d'après la définition du mot (carte définition → mot,
+  **définition puis mot à remplir** avec un indice « a······ (7 lettres) »,
+  **QCM définition → mot**), **prononciation** (voir plus bas) ; cochés par défaut : les trois premiers du français vers l'anglais
   hors QCM (choix retenu sur l'appareil). La première carte cochée fait
   découvrir le mot, les autres viennent ensuite.
 - **QCM** : choisir une page du wiki (ou coller un texte) et un nombre de
@@ -400,7 +405,18 @@ dans les réglages de Claude) :
 Le suivi (et le coût) de chaque demande est sur la page **Travaux de Claude**.
 Dans un fichier de langue écrit à la main, la clé `"exercices"` choisit de la
 même façon les cartes de vocabulaire (`decouverte`, `production`, `choix`,
-`contexte`, `dictee`, `reconnaissance`, `traduction`, `prononciation`) ; sans elle, rien ne change.
+`contexte`, `contexte_choix`, `dictee`, `ecoute_choix`, `reconnaissance`, `traduction`,
+`choix_traduction`, `definition`, `definition_saisie`, `definition_choix`, `prononciation`) ; sans elle,
+rien ne change. Le champ `"definition"` d'un mot (dans la langue apprise) sert aux cartes
+anglais → anglais ; le mot y est caché s'il y figure.
+
+**Listes anglais → anglais** : à l'import d'une liste (page des QCM ou « Mon
+espace »), l'ordre « mot puis sa définition, tout en langue apprise » lit des
+lignes « reliable – that can be trusted » (comme un set Quizlet anglais →
+anglais), sans traduction ; seules les cartes qui s'en passent sont créées
+(définition, phrase à compléter, dictée, QCM à l'écoute, prononciation, carte
+mot → définition), les trois cartes de définition si rien de compatible
+n'est coché.
 
 **Prononciation vérifiée** (carte `prononciation`) : le mot s'affiche, « 🎤
 Prononcer » (ou Espace) écoute ; la reconnaissance vocale compare ce qu'elle
