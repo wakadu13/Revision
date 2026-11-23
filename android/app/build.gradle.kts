@@ -57,7 +57,7 @@ android {
 dependencies {
     implementation("androidx.webkit:webkit:1.13.0")
     implementation("androidx.core:core:1.13.1")
-    implementation("androidx.work:work-runtime:2.9.1")
+    implementation("androidx.work:work-runtime:2.12.0")
 }
 
 // Le moteur des QCM est celui du wiki (wiki/static/wiki/) : copié à chaque build,
